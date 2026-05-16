@@ -1,0 +1,2 @@
+Add the git plugin to .gitignore
+Make a start screen
