@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://duig5pisbnbl8"]
+
+[ext_resource type="Texture2D" uid="uid://t5rp68bjhf23" path="res://Placeholder Assets (UI)/testtitle.jpg" id="1_1xr1c"]
+[ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://icon.svg" id="1_fnlyl"]
+[ext_resource type="Texture2D" uid="uid://c3ohnr63kdikx" path="res://Placeholder Assets (UI)/testsig.jpg" id="3_tu0on"]
+
+[sub_resource type="Gradient" id="Gradient_2k3je"]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_skwql"]
+gradient = SubResource("Gradient_2k3je")
+fill_from = Vector2(0.52136755, 0.52136755)
+repeat = 2
+
+[sub_resource type="Gradient" id="Gradient_1xr1c"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.71488494, 0.2699619, 0.2321662, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tu0on"]
+gradient = SubResource("Gradient_1xr1c")
+
+[sub_resource type="Gradient" id="Gradient_6iguo"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.4155721, 0.72880614, 0.30718562, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g3l3g"]
+gradient = SubResource("Gradient_6iguo")
+
+[sub_resource type="Gradient" id="Gradient_brl6n"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.35048088, 0.109896265, 0.089706875, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5trnc"]
+gradient = SubResource("Gradient_brl6n")
+
+[sub_resource type="Gradient" id="Gradient_skwql"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.69785875, 0.16652206, 0.39658603, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6iguo"]
+gradient = SubResource("Gradient_skwql")
+
+[sub_resource type="Gradient" id="Gradient_g3l3g"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.31764707, 0.89411765, 0.18431373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brl6n"]
+gradient = SubResource("Gradient_g3l3g")
+
+[sub_resource type="Gradient" id="Gradient_tu0on"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.3647059, 0.05882353, 0.19607843, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2k3je"]
+gradient = SubResource("Gradient_tu0on")
+
+[node name="MarginContainer" type="MarginContainer" unique_id=827505374]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="." unique_id=1201064109]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_skwql")
+expand_mode = 2
+
+[node name="ColumnLayout" type="HBoxContainer" parent="." unique_id=1296547097]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColumnLayout" unique_id=533991614]
+layout_mode = 2
+
+[node name="LeftColumn" type="VBoxContainer" parent="ColumnLayout/MarginContainer" unique_id=257438566]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TitleImage" type="TextureRect" parent="ColumnLayout/MarginContainer/LeftColumn" unique_id=393389685]
+layout_mode = 2
+texture = ExtResource("1_1xr1c")
+stretch_mode = 3
+
+[node name="MenuOptions" type="VBoxContainer" parent="ColumnLayout/MarginContainer/LeftColumn" unique_id=361737552]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="NewGameButton" type="TextureButton" parent="ColumnLayout/MarginContainer/LeftColumn/MenuOptions" unique_id=213622232]
+layout_mode = 2
+texture_normal = SubResource("GradientTexture2D_tu0on")
+texture_pressed = SubResource("GradientTexture2D_g3l3g")
+texture_hover = SubResource("GradientTexture2D_5trnc")
+stretch_mode = 0
+
+[node name="QuitButton" type="TextureButton" parent="ColumnLayout/MarginContainer/LeftColumn/MenuOptions" unique_id=951586802]
+layout_mode = 2
+texture_normal = SubResource("GradientTexture2D_6iguo")
+texture_pressed = SubResource("GradientTexture2D_brl6n")
+texture_hover = SubResource("GradientTexture2D_2k3je")
+stretch_mode = 0
+
+[node name="SignatureImage" type="TextureRect" parent="ColumnLayout/MarginContainer/LeftColumn" unique_id=369495170]
+layout_mode = 2
+texture = ExtResource("3_tu0on")
+stretch_mode = 5
+
+[node name="RightColumn" type="CenterContainer" parent="ColumnLayout" unique_id=1504342595]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameLogo" type="TextureRect" parent="ColumnLayout/RightColumn" unique_id=1145879336]
+layout_mode = 2
+texture = ExtResource("1_fnlyl")
