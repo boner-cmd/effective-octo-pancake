@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://t5rp68bjhf23" path="res://Placeholder Assets (UI)/testtitle.jpg" id="1_1xr1c"]
 [ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://icon.svg" id="1_fnlyl"]
+[ext_resource type="Script" uid="uid://buubpdem5wqyi" path="res://Scenes/title_screen.gd" id="1_n15yj"]
 [ext_resource type="Texture2D" uid="uid://c3ohnr63kdikx" path="res://Placeholder Assets (UI)/testsig.jpg" id="3_tu0on"]
 
 [sub_resource type="Gradient" id="Gradient_2k3je"]
@@ -64,6 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_n15yj")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1201064109]
 layout_mode = 2
@@ -118,3 +120,6 @@ size_flags_horizontal = 3
 [node name="GameLogo" type="TextureRect" parent="ColumnLayout/RightColumn" unique_id=1145879336]
 layout_mode = 2
 texture = ExtResource("1_fnlyl")
+
+[connection signal="pressed" from="ColumnLayout/MarginContainer/LeftColumn/MenuOptions/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="ColumnLayout/MarginContainer/LeftColumn/MenuOptions/QuitButton" to="." method="_on_quit_button_pressed"]
