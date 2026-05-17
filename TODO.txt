@@ -1,2 +1,3 @@
-Add the git plugin to .gitignore
-Make a start screen
+Map UI needs SVG elements so it stretches OK
+Player needs listener for map key "m" to toggle visibility of map UI, however map will always be loaded, just not drawn
+Map has confirmation dialog on click before transition, can select options with arrow keys, enter confirms, escape cancels, block m hiding map while confirmation is up
