@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dph7p1bj6ray4"]
 
-[ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="2_ylgs7"]
+[ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="1_hpc76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cm424"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -40,7 +40,7 @@ height = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylgs7"]
 
-[node name="TestScene" type="Node3D" unique_id=1858530210]
+[node name="MainScene" type="Node3D" unique_id=1858530210]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1624694031]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -49,7 +49,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1445793124]
 environment = SubResource("Environment_ylgs7")
 
-[node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") instance=ExtResource("2_ylgs7")]
+[node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") instance=ExtResource("1_hpc76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6285563, 7.136212, 0)
 collision_mask = 1
 planet = NodePath("../TestPlanet")
