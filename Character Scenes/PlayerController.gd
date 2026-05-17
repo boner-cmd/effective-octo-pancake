@@ -14,12 +14,16 @@ var _camera_input_direction := Vector2.ZERO
 
 @export var planet : Node3D
 
+var move_direction : Vector3
+
+var _last_movement_direction := Vector3.BACK
+
 var grav_strength : float = 10.0
 var grav_vector : Vector3 = Vector3(0,0,0)
 var xform : Transform3D
 
 func grav_calc():
-	grav_vector = planet.position - position
+	grav_vector = (planet.position - position).normalized()
 	up_direction = -grav_vector
 	
 func align_with_floor(floor_normal):
@@ -55,16 +59,17 @@ func _physics_process(delta: float) -> void:
 	var raw_input := Input.get_vector("left", "right", "up", "down")
 	var forward := _camera.global_basis.z
 	var right := _camera.global_basis.x
-	var move_direction := forward * raw_input.y + right * raw_input.x
-	move_direction.y = 0.0
+	
+	move_direction = forward * raw_input.y + right * raw_input.x
 	move_direction = move_direction.normalized()
+
 
 	grav_calc()
 	
 	#if not is_on_floor():
 		#velocity = grav_vector
 		
-	velocity = velocity.move_toward((move_direction * move_speed) + grav_vector, acceleration * delta)
+	velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
 	
 	#align character with floor
 	if is_on_floor():
