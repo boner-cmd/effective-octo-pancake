@@ -40,6 +40,9 @@ height = 10.0
 [sub_resource type="BoxMesh" id="BoxMesh_00acv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylgs7"]
+size = Vector3(4.7684326, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oo4um"]
 
 [node name="TestScene" type="Node3D" unique_id=1858530210]
 
@@ -53,7 +56,7 @@ environment = SubResource("Environment_ylgs7")
 [node name="PlayerController" type="Node3D" parent="." unique_id=993951714 node_paths=PackedStringArray("planet", "player_character")]
 transform = Transform3D(1, 0, 0, 0, 0.912206, 0.409732, 0, -0.409732, 0.912206, 0, 5.012189, 6.8514695)
 script = ExtResource("1_00acv")
-planet = NodePath("../TestPlanet")
+planet = NodePath("../TestPlanet2")
 player_character = NodePath("../PlayerCharacter")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerController" unique_id=306642970]
@@ -64,6 +67,7 @@ fov = 50.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.136212, 0)
 
 [node name="TestPlanet" type="StaticBody3D" parent="." unique_id=7469528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.815571, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet" unique_id=1898464040]
 shape = SubResource("SphereShape3D_ylgs7")
@@ -80,3 +84,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet/CollisionShape3D/StaticBody3D" unique_id=1785896033]
 shape = SubResource("BoxShape3D_ylgs7")
+
+[node name="TestPlanet2" type="StaticBody3D" parent="." unique_id=1655001799]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet2" unique_id=1280999898]
+shape = SubResource("SphereShape3D_ylgs7")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="TestPlanet2" unique_id=1296648108]
+collision_layer = 2
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+gravity_scale = 0.0
+angular_damp = 10.0
+
+[node name="MeshInstance" type="MeshInstance3D" parent="TestPlanet2/RigidBody3D" unique_id=511117036]
+mesh = SubResource("SphereMesh_oo4um")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestPlanet2/RigidBody3D" unique_id=137482944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
+mesh = SubResource("BoxMesh_00acv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestPlanet2/RigidBody3D" unique_id=2146392875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet2/RigidBody3D/StaticBody3D" unique_id=859541614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8842163, 0, 0)
+shape = SubResource("BoxShape3D_ylgs7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet2/RigidBody3D" unique_id=2050572151]
+shape = SubResource("SphereShape3D_oo4um")
