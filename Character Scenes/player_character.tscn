@@ -20,20 +20,23 @@ material = SubResource("StandardMaterial3D_ee4y8")
 [sub_resource type="BoxMesh" id="BoxMesh_0vv0x"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="PlayerCharacter" type="Node3D" unique_id=700328766]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1611932631]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1611932631]
 collision_mask = 2
 script = ExtResource("1_0vv0x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1831739463]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1831739463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_4chgf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1243173985]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1243173985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ee4y8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D" unique_id=921440727]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=921440727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3463945, 0.4952407)
 mesh = SubResource("BoxMesh_0vv0x")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=425421893]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2003731831]
+transform = Transform3D(-1, 4.0658044e-08, -7.7392926e-08, 0, 0.8852719, 0.46507382, 8.742278e-08, 0.46507382, -0.8852719, -1.9380114e-07, 3.5171385, -6.133759)
