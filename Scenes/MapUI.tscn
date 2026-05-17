@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://du48lbtyb65at"]
+
+[ext_resource type="Script" uid="uid://c4k8xk5tlwsx4" path="res://Scenes/map_ui.gd" id="1_5755a"]
+
+[node name="MapUI" type="Control" unique_id=2029188815]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5755a")
