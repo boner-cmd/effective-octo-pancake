@@ -3,13 +3,51 @@
 [ext_resource type="Script" uid="uid://c4k8xk5tlwsx4" path="res://Scenes/map_ui.gd" id="1_5755a"]
 [ext_resource type="Script" uid="uid://cxftq1o40caoj" path="res://Scenes/confirmation_dialog.gd" id="2_5evtu"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5evtu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c1bqd"]
+
 [node name="MapUI" type="TextureRect" unique_id=929155831]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_5evtu")
 script = ExtResource("1_5755a")
 
 [node name="ConfirmationDialog" type="TextureRect" parent="." unique_id=1259339517]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_c1bqd")
+script = ExtResource("2_5evtu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmationDialog" unique_id=1177627137]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_5evtu")
+
+[node name="yeahButton" type="TextureButton" parent="ConfirmationDialog/VBoxContainer" unique_id=478614221]
+layout_mode = 2
+
+[node name="nahButton" type="TextureButton" parent="ConfirmationDialog/VBoxContainer" unique_id=531780950]
+layout_mode = 2
