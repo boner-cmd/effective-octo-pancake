@@ -5,7 +5,7 @@ extends Node3D
 
 @onready var camera: Camera3D = $Camera3D
 
-@export var speed: float = 1.5
+@export var speed: float = .8
 
 var player_model
 
@@ -20,7 +20,10 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	
+	if Input.is_action_pressed("spin_left"):
+		planet.global_rotate(Vector3.UP, -speed * delta)
+	if Input.is_action_pressed("spin_right"):
+		planet.global_rotate(Vector3.UP, speed * delta)
 	if Input.is_action_pressed("left"):
 		planet.global_rotate(Vector3.FORWARD, speed * delta)
 	if Input.is_action_pressed("right"):

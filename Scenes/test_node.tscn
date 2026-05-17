@@ -39,6 +39,8 @@ height = 10.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_00acv"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylgs7"]
+
 [node name="TestScene" type="Node3D" unique_id=1858530210]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1624694031]
@@ -72,3 +74,9 @@ mesh = SubResource("SphereMesh_oo4um")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestPlanet/CollisionShape3D" unique_id=1097089063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
 mesh = SubResource("BoxMesh_00acv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestPlanet/CollisionShape3D" unique_id=2066629269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet/CollisionShape3D/StaticBody3D" unique_id=1785896033]
+shape = SubResource("BoxShape3D_ylgs7")
