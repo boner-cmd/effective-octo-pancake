@@ -19,7 +19,7 @@ var grav_vector : Vector3 = Vector3(0,0,0)
 var xform : Transform3D
 
 func grav_calc():
-	grav_vector = (planet.position - position).normalized()
+	grav_vector = planet.position - position
 	up_direction = -grav_vector
 	
 func align_with_floor(floor_normal):
@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 	#if not is_on_floor():
 		#velocity = grav_vector
 		
-	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta) + grav_vector
+	velocity = velocity.move_toward((move_direction * move_speed) + grav_vector, acceleration * delta)
 	
 	#align character with floor
 	if is_on_floor():
