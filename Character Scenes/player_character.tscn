@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bdas7npc5wwhx"]
+
+[ext_resource type="Script" uid="uid://v0bkrv86k0dd" path="res://Character Scenes/character_body_3d.gd" id="1_0vv0x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4chgf"]
+
+[sub_resource type="Gradient" id="Gradient_0vv0x"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4chgf"]
+gradient = SubResource("Gradient_0vv0x")
+fill = 2
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ee4y8"]
+albedo_texture = SubResource("GradientTexture2D_4chgf")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ee4y8"]
+material = SubResource("StandardMaterial3D_ee4y8")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vv0x"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="PlayerCharacter" type="Node3D" unique_id=700328766]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1611932631]
+script = ExtResource("1_0vv0x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1831739463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_4chgf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1243173985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ee4y8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D" unique_id=921440727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3463945, 0.4952407)
+mesh = SubResource("BoxMesh_0vv0x")

@@ -1,3 +1,74 @@
 [gd_scene format=3 uid="uid://dph7p1bj6ray4"]
 
-[node name="Node3D" type="Node3D" unique_id=1858530210]
+[ext_resource type="Script" uid="uid://lmyjhahwar0b" path="res://Scenes/camera_origin.gd" id="1_00acv"]
+[ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="2_ylgs7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cm424"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_00acv"]
+sky_material = SubResource("ProceduralSkyMaterial_cm424")
+
+[sub_resource type="Environment" id="Environment_ylgs7"]
+background_mode = 2
+sky = SubResource("Sky_00acv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_00acv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ylgs7"]
+gradient = SubResource("Gradient_00acv")
+width = 10
+height = 10
+fill = 2
+fill_to = Vector2(0.5, 0.5)
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt4ne"]
+albedo_texture = SubResource("GradientTexture2D_ylgs7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_oo4um"]
+material = SubResource("StandardMaterial3D_yt4ne")
+radius = 5.0
+height = 10.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_00acv"]
+
+[node name="TestScene" type="Node3D" unique_id=1858530210]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1624694031]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1445793124]
+environment = SubResource("Environment_ylgs7")
+
+[node name="PlayerController" type="Node3D" parent="." unique_id=993951714 node_paths=PackedStringArray("planet", "player_character")]
+transform = Transform3D(1, 0, 0, 0, 0.912206, 0.409732, 0, -0.409732, 0.912206, 0, 5.012189, 6.8514695)
+script = ExtResource("1_00acv")
+planet = NodePath("../TestPlanet")
+player_character = NodePath("../PlayerCharacter")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerController" unique_id=306642970]
+transform = Transform3D(1, 0, 0, 0, 0.97235763, 0.23349625, 0, -0.23349625, 0.97235763, 0, 3.5870168, 4.2197065)
+fov = 50.2
+
+[node name="PlayerCharacter" parent="." unique_id=700328766 instance=ExtResource("2_ylgs7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.136212, 0)
+
+[node name="TestPlanet" type="StaticBody3D" parent="." unique_id=7469528]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet" unique_id=1898464040]
+shape = SubResource("SphereShape3D_ylgs7")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="TestPlanet/CollisionShape3D" unique_id=1557991456]
+mesh = SubResource("SphereMesh_oo4um")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestPlanet/CollisionShape3D" unique_id=1097089063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
+mesh = SubResource("BoxMesh_00acv")
