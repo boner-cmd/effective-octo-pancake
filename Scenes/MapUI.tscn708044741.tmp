@@ -5,15 +5,15 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5evtu"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dvv6b"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jowyw"]
-
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c1bqd"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1pdc1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g8sh8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dvv6b"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jowyw"]
 
 [node name="MapUI" type="TextureRect" unique_id=929155831]
 anchors_preset = 8
@@ -31,24 +31,6 @@ scale = Vector2(4, 4)
 pivot_offset = Vector2(20, 20)
 texture = SubResource("PlaceholderTexture2D_5evtu")
 script = ExtResource("1_5755a")
-
-[node name="Planet1" type="TextureButton" parent="." unique_id=1330502733]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.5
-offset_right = 16.0
-offset_bottom = 16.5
-texture_normal = SubResource("PlaceholderTexture2D_dvv6b")
-stretch_mode = 0
-
-[node name="Planet2" type="TextureButton" parent="." unique_id=1841237231]
-layout_mode = 0
-offset_left = 20.25
-offset_top = 21.5
-offset_right = 35.25
-offset_bottom = 36.5
-texture_normal = SubResource("PlaceholderTexture2D_jowyw")
-stretch_mode = 0
 
 [node name="ConfirmationDialog" type="TextureRect" parent="." unique_id=1259339517]
 visible = false
@@ -86,7 +68,25 @@ size_flags_vertical = 3
 texture_normal = SubResource("PlaceholderTexture2D_g8sh8")
 stretch_mode = 0
 
-[connection signal="pressed" from="Planet1" to="." method="_on_planet_pressed" binds= [1]]
-[connection signal="pressed" from="Planet2" to="." method="_on_planet_pressed" binds= [2]]
+[node name="Planet1" type="TextureButton" parent="." unique_id=1330502733]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.5
+offset_right = 16.0
+offset_bottom = 16.5
+texture_normal = SubResource("PlaceholderTexture2D_dvv6b")
+stretch_mode = 0
+
+[node name="Planet2" type="TextureButton" parent="." unique_id=1841237231]
+layout_mode = 0
+offset_left = 20.25
+offset_top = 21.5
+offset_right = 35.25
+offset_bottom = 36.5
+texture_normal = SubResource("PlaceholderTexture2D_jowyw")
+stretch_mode = 0
+
 [connection signal="pressed" from="ConfirmationDialog/VBoxContainer/yeahButton" to="ConfirmationDialog" method="_on_yeah_button_pressed"]
 [connection signal="pressed" from="ConfirmationDialog/VBoxContainer/nahButton" to="ConfirmationDialog" method="_on_nah_button_pressed"]
+[connection signal="pressed" from="Planet1" to="." method="_on_planet_pressed" binds= [1]]
+[connection signal="pressed" from="Planet2" to="." method="_on_planet_pressed" binds= [2]]
