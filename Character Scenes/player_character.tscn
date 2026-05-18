@@ -31,11 +31,13 @@ shape = SubResource("CapsuleShape3D_4chgf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ee4y8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=921440727]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.346, -0.495)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=921440727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34599996, -0.495)
 mesh = SubResource("BoxMesh_0vv0x")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=425421893]
+target_position = Vector3(0, -3, 0)
+collision_mask = 2
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=10778862]
 

@@ -2,7 +2,7 @@ extends CharacterBody3D
 #camera tweaks
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
 @export var tilt_upper_limit := PI / 3.0
-@export var tilt_lower_limit := -PI / 8.0
+@export var tilt_lower_limit := -PI / 5.0
 #character
 @export var move_speed := 8.0
 @export var acceleration := 20.0
@@ -31,7 +31,6 @@ func align_with_floor(floor_normal):
 	xform.basis.y = floor_normal
 	xform.basis.x = -xform.basis.z.cross(floor_normal)
 	xform.basis = xform.basis.orthonormalized()
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -63,6 +62,9 @@ func _physics_process(delta: float) -> void:
 	move_direction = forward * raw_input.y + right * raw_input.x
 	move_direction = move_direction.normalized()
 
+	#rotate char mesh
+	if raw_input != Vector2(0,0):
+		$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90), .2)
 
 	grav_calc()
 	
@@ -72,9 +74,12 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
 	
 	#align character with floor
-	if is_on_floor():
-		align_with_floor($RayCast3D.get_collision_normal())
-		global_transform = global_transform.interpolate_with(xform, 0.1)
+	
+	align_with_floor($RayCast3D.get_collision_normal())
+	global_transform = global_transform.interpolate_with(xform, .3)
+	
+	if is_on_floor() and Input.is_action_pressed("jump"):
+		velocity = up_direction * 5
 	
 	
 	move_and_slide()
