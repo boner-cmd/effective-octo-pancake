@@ -14,7 +14,7 @@ var _camera_input_direction := Vector2.ZERO
 
 @export var planet : Node3D
 
-@onready var clown: Node3D = $Clown
+@onready var clown: Node3D = $MeshInstance3D
 
 var move_direction : Vector3
 
