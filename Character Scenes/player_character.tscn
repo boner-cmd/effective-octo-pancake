@@ -3,22 +3,9 @@
 [ext_resource type="Script" uid="uid://d3dv6stic6t51" path="res://Character Scenes/PlayerController.gd" id="1_0vv0x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4chgf"]
+radius = 0.35
 
-[sub_resource type="Gradient" id="Gradient_0vv0x"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4chgf"]
-gradient = SubResource("Gradient_0vv0x")
-fill = 2
-repeat = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ee4y8"]
-albedo_texture = SubResource("GradientTexture2D_4chgf")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ee4y8"]
-material = SubResource("StandardMaterial3D_ee4y8")
-
-[sub_resource type="BoxMesh" id="BoxMesh_0vv0x"]
-size = Vector3(0.2, 0.2, 0.2)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0vv0x"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1611932631]
 script = ExtResource("1_0vv0x")
@@ -26,14 +13,6 @@ script = ExtResource("1_0vv0x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1831739463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_4chgf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1243173985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_ee4y8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=921440727]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34599996, -0.495)
-mesh = SubResource("BoxMesh_0vv0x")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=425421893]
 target_position = Vector3(0, -3, 0)
@@ -43,3 +22,7 @@ collision_mask = 2
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2003731831]
 transform = Transform3D(1, 0, 0, 0, 0.8853936, 0.46484205, 0, -0.46484205, 0.8853936, 0, 3.517, 6.134)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1283566089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_0vv0x")

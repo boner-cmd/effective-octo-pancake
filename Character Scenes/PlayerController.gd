@@ -14,6 +14,8 @@ var _camera_input_direction := Vector2.ZERO
 
 @export var planet : Node3D
 
+@onready var clown: Node3D = $Clown
+
 var move_direction : Vector3
 
 var _last_movement_direction := Vector3.BACK
@@ -64,7 +66,7 @@ func _physics_process(delta: float) -> void:
 
 	#rotate char mesh
 	if raw_input != Vector2(0,0):
-		$MeshInstance3D.rotation.y = lerp_angle($MeshInstance3D.rotation.y, _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90), .2)
+		clown.rotation.y = lerp_angle(clown.rotation.y, _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90), .2)
 
 	grav_calc()
 	

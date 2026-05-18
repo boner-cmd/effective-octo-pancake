@@ -13,12 +13,12 @@ dest_files=["res://.godot/imported/clown.gltf-159fa1a92528dd57133c5ca6564893df.s
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="Skeleton3D"
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
-nodes/import_as_skeleton_bones=false
+nodes/import_as_skeleton_bones=true
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
