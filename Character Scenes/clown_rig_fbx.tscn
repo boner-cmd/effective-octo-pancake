@@ -33,23 +33,25 @@ animation = &"ClownAnims/ClownWalkCycle"
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_sqv3x"]
 
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_tpj65"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_8pnao"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tpj65"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sqv3x"]
 
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_tpj65"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tpj65"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_sqv3x"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_stcd8"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7bg5t"]
-graph_offset = Vector2(-280.29474, -190.15848)
+graph_offset = Vector2(-382.0921, -452.87982)
 nodes/output/position = Vector2(1660, 140)
 nodes/Anim_Idle/node = SubResource("AnimationNodeAnimation_ecp6r")
 nodes/Anim_Idle/position = Vector2(60, -220)
 nodes/Anim_Walk/node = SubResource("AnimationNodeAnimation_jq2au")
-nodes/Anim_Walk/position = Vector2(-180, -20)
+nodes/Anim_Walk/position = Vector2(-120, -20)
 nodes/Anim_Jump/node = SubResource("AnimationNodeAnimation_18k66")
 nodes/Anim_Jump/position = Vector2(80, 180)
 nodes/Anim_GetItem/node = SubResource("AnimationNodeAnimation_sqv3x")
@@ -59,7 +61,7 @@ nodes/Anim_GiveItem/position = Vector2(120, 660)
 nodes/Anim_Listen/node = SubResource("AnimationNodeAnimation_fgftn")
 nodes/Anim_Listen/position = Vector2(120, 480)
 nodes/Anim_Victory/node = SubResource("AnimationNodeAnimation_ygjs2")
-nodes/Anim_Victory/position = Vector2(1060, 480)
+nodes/Anim_Victory/position = Vector2(1020, 620)
 nodes/Walk/node = SubResource("AnimationNodeBlend2_stcd8")
 nodes/Walk/position = Vector2(340, -120)
 nodes/Jump/node = SubResource("AnimationNodeOneShot_sqv3x")
@@ -74,11 +76,13 @@ nodes/Victory/node = SubResource("AnimationNodeBlend2_sqv3x")
 nodes/Victory/position = Vector2(1400, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tpj65")
 nodes/TimeScale/position = Vector2(340, 180)
-"nodes/TimeSeek Walk/node" = SubResource("AnimationNodeTimeSeek_tpj65")
-"nodes/TimeSeek Walk/position" = Vector2(140, -20)
+nodes/Reset_Walk/node = SubResource("AnimationNodeTimeSeek_tpj65")
+nodes/Reset_Walk/position = Vector2(140, -20)
 nodes/Reset_Victory/node = SubResource("AnimationNodeTimeSeek_sqv3x")
-nodes/Reset_Victory/position = Vector2(1300, 480)
-node_connections = [&"output", 0, &"Victory", &"Walk", 0, &"Anim_Idle", &"Walk", 1, &"TimeSeek Walk", &"Jump", 0, &"Walk", &"Jump", 1, &"TimeScale", &"Get", 0, &"Give", &"Get", 1, &"Anim_GetItem", &"Give", 0, &"Anim_Listen", &"Give", 1, &"Anim_GiveItem", &"Talk", 0, &"Jump", &"Talk", 1, &"Get", &"Victory", 0, &"Talk", &"Victory", 1, &"Reset_Victory", &"TimeScale", 0, &"Anim_Jump", &"TimeSeek Walk", 0, &"Anim_Walk", &"Reset_Victory", 0, &"Anim_Victory"]
+nodes/Reset_Victory/position = Vector2(1260, 620)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_sqv3x")
+"nodes/TimeScale 2/position" = Vector2(1536.4, 602.5)
+node_connections = [&"output", 0, &"Victory", &"Walk", 0, &"Anim_Idle", &"Walk", 1, &"Reset_Walk", &"Jump", 0, &"Walk", &"Jump", 1, &"TimeScale", &"Get", 0, &"Give", &"Get", 1, &"Anim_GetItem", &"Give", 0, &"Anim_Listen", &"Give", 1, &"Anim_GiveItem", &"Talk", 0, &"Jump", &"Talk", 1, &"Get", &"Victory", 0, &"Talk", &"Victory", 1, &"TimeScale 2", &"TimeScale", 0, &"Anim_Jump", &"Reset_Walk", 0, &"Anim_Walk", &"Reset_Victory", 0, &"Anim_Victory", &"TimeScale 2", 0, &"Reset_Victory"]
 
 [node name="ClownRigFBX" unique_id=77601808 instance=ExtResource("1_ygjs2")]
 
@@ -150,5 +154,6 @@ parameters/Give/blend_amount = 0.0
 parameters/Talk/blend_amount = 0.0
 parameters/Victory/blend_amount = 1.0
 parameters/TimeScale/scale = 2.0
-"parameters/TimeSeek Walk/seek_request" = -1.0
+parameters/Reset_Walk/seek_request = -1.0
 parameters/Reset_Victory/seek_request = -1.0
+"parameters/TimeScale 2/scale" = 2.0

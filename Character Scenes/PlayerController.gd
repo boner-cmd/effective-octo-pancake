@@ -4,8 +4,8 @@ extends CharacterBody3D
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 5.0
 #character
-@export var move_speed := 8.0
-@export var acceleration := 20.0
+@export var move_speed := 3.75
+@export var acceleration := 2000.0
 
 var _camera_input_direction := Vector2.ZERO
 
@@ -30,6 +30,7 @@ var give_val : float = 0.0
 var vic_val : float = 0.0
 
 var Vic_Reset : bool = false
+var Walk_Reset : bool = false
 var Idle_Check : bool = false
 
 func handle_animations(delta):
@@ -40,7 +41,11 @@ func handle_animations(delta):
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
+			Walk_Reset = true
 		WALK:
+			if Walk_Reset:
+				anim_tree.set("parameters/Reset_Walk/seek_request", 0.0)
+				Walk_Reset = false
 			walk_val = lerpf(walk_val, 1.0, blend_speed * delta)
 			talk_val = lerpf(talk_val, 0.0, blend_speed * delta)
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
@@ -52,6 +57,7 @@ func handle_animations(delta):
 			get_val = 0.0
 			give_val = 0.0
 			vic_val = 0.0
+			Walk_Reset = true
 		TALK:
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = 1.0
@@ -117,7 +123,6 @@ func _input(event: InputEvent) -> void:
 	if is_on_floor() and event.is_action_pressed("jump"):
 		current_anim = JUMP
 		anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
@@ -129,7 +134,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	anim_tree = clown.get_node("AnimationTree")
-	
 
 func _physics_process(delta: float) -> void:
 	handle_animations(delta)
@@ -150,15 +154,15 @@ func _physics_process(delta: float) -> void:
 
 	#rotate char mesh
 	if raw_input != Vector2(0,0):
-		clown.rotation.y = lerp_angle(clown.rotation.y, _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90), 1.0)
-		current_anim = WALK
+		clown.rotation.y = _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90)
 		Idle_Check = true
+		current_anim = WALK
+		
 	elif Idle_Check:
 		current_anim = IDLE
 		Idle_Check = false
 	
 	grav_calc()
-
 	velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
 	
 	#align character with floor

@@ -13,13 +13,12 @@ script = ExtResource("1_0vv0x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_4chgf")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=425421893]
-target_position = Vector3(0, -3, 0)
-collision_mask = 2
-
 [node name="CameraPivot" type="Node3D" parent="." unique_id=10778862]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2003731831]
 transform = Transform3D(1, 0, 0, 0, 0.8853936, 0.46484205, 0, -0.46484205, 0.8853936, 0, 3.517, 6.134)
 
 [node name="ClownRigFBX" parent="." unique_id=77601808 instance=ExtResource("2_4chgf")]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=425421893]
+collision_mask = 2
