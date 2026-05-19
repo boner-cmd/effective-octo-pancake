@@ -1,8 +1,10 @@
 === MAP NOTES ===
 Map UI needs SVG elements so it stretches OK
 Player needs listener for map key "m" to toggle visibility of map UI, however map will always be loaded, just not drawn
-Map has confirmation dialog on click before transition, can select options with arrow keys, enter confirms, escape cancels, block m hiding map while confirmation is up
-Test map ui with different window sizes to make sure the scaling is working right
-Scaling may require dynamically setting pivots and size from script
+Map confirmation dialog needs to respond to arrow keys but also suppress 'm' hiding the whole map
+Map should autoscale based on project settings but need to confirm
 
-=== XXXXX ===
+=== INVENTORY NOTES ===
+Make the inventory UI and script. There are tutorials. Similar to map UI. Script holds array
+
+=== XXXX NOTES ===
