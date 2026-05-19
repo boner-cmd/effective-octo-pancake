@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://bdas7npc5wwhx"]
 
 [ext_resource type="Script" uid="uid://d3dv6stic6t51" path="res://Character Scenes/PlayerController.gd" id="1_0vv0x"]
-[ext_resource type="PackedScene" uid="uid://oncrpmqt4uub" path="res://Character Export Files/clown/ClownRigFBX.fbx" id="2_4chgf"]
+[ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="2_4chgf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4chgf"]
 radius = 0.35
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0vv0x"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1611932631]
 script = ExtResource("1_0vv0x")
@@ -24,11 +22,4 @@ collision_mask = 2
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2003731831]
 transform = Transform3D(1, 0, 0, 0, 0.8853936, 0.46484205, 0, -0.46484205, 0.8853936, 0, 3.517, 6.134)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1283566089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_0vv0x")
-
 [node name="ClownRigFBX" parent="." unique_id=77601808 instance=ExtResource("2_4chgf")]
-
-[editable path="ClownRigFBX"]
