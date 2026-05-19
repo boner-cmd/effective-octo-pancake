@@ -14,7 +14,6 @@ var _camera_input_direction := Vector2.ZERO
 
 #planet stuff
 @export var planet : Node3D
-
 @onready var clown: Node3D = $ClownRigFBX
 
 #anim handling
