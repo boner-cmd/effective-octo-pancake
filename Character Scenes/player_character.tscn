@@ -6,7 +6,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4chgf"]
 radius = 0.35
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4chgf"]
+radius = 0.1
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1611932631]
+collision_mask = 2
 script = ExtResource("1_0vv0x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1831739463]
@@ -22,3 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8853936, 0.46484205, 0, -0.46484205, 0.885
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=425421893]
 collision_mask = 2
+
+[node name="SpaceBubble" type="CollisionShape3D" parent="." unique_id=1188661807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_4chgf")

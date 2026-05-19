@@ -14,7 +14,7 @@ var _camera_input_direction := Vector2.ZERO
 
 #planet stuff
 @export var planet : Node3D
-
+@onready var space_bubble : CollisionShape3D = $SpaceBubble
 
 
 
