@@ -36,6 +36,7 @@ var Idle_Check : bool = false
 func handle_animations(delta):
 	match current_anim:
 		IDLE:
+			
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = lerpf(talk_val, 0.0, blend_speed * delta)
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
@@ -159,6 +160,7 @@ func _physics_process(delta: float) -> void:
 		current_anim = WALK
 		
 	elif Idle_Check:
+		anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
 		current_anim = IDLE
 		Idle_Check = false
 	
