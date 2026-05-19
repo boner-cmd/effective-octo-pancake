@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dph7p1bj6ray4"]
 
 [ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://du48lbtyb65at" path="res://Scenes/MapUI.tscn" id="2_tr2i4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cm424"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -41,6 +42,8 @@ height = 10.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylgs7"]
 
 [node name="MainScene" type="Node3D" unique_id=1858530210]
+
+[node name="MapUI" parent="." unique_id=1506166126 instance=ExtResource("2_tr2i4")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1624694031]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

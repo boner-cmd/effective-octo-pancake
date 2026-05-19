@@ -22,6 +22,7 @@ func _input(event):
 
 func _on_yeah_button_pressed() -> void:
 	visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_node(^"..").go_to_planet()
 
 func _on_nah_button_pressed() -> void:

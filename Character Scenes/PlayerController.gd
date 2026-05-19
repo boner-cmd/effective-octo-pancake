@@ -111,7 +111,7 @@ func align_with_floor(floor_normal):
 	xform.basis = xform.basis.orthonormalized()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("left_click") and $"../MapUI".visible == false:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -119,7 +119,11 @@ func _input(event: InputEvent) -> void:
 		#set explosion
 		Vic_Reset = true
 		current_anim = VICTORY
-		printt(current_anim, anim_tree["parameters/Victory/blend_amount"])
+		
+	if event.is_action_pressed("toggle_map"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+
 		
 	if is_on_floor() and event.is_action_pressed("jump"):
 		current_anim = JUMP
