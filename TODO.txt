@@ -1,10 +1,20 @@
 === MAP NOTES ===
 Map UI needs SVG elements so it stretches OK
-Player needs listener for map key "m" to toggle visibility of map UI, however map will always be loaded, just not drawn
 Map confirmation dialog needs to respond to arrow keys but also suppress 'm' hiding the whole map
 Map should autoscale based on project settings but need to confirm
+complete keyboard nav for confirmation dialog
+
+Replace planet id int with node3d pass in signal
+factor out planet id
+remove array map
+is '$' by reference?
+try acting directly on player sibling node instead of creating local player variable if not
 
 === INVENTORY NOTES ===
 Make the inventory UI and script. There are tutorials. Similar to map UI. Script holds array
 
-=== XXXX NOTES ===
+=== PLAYER NOTES ===
+stop listening for movement when map is visible
+
+=== GENERAL NOTES ===
+custom mouse cursor???
