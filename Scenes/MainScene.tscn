@@ -43,7 +43,9 @@ height = 10.0
 
 [node name="MainScene" type="Node3D" unique_id=1858530210]
 
-[node name="MapUI" parent="." unique_id=1506166126 instance=ExtResource("2_tr2i4")]
+[node name="MapUI" parent="." unique_id=1506166126 node_paths=PackedStringArray("planet_1", "planet_2") instance=ExtResource("2_tr2i4")]
+planet_1 = NodePath("../TestPlanet")
+planet_2 = NodePath("../TestPlanet2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1624694031]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -74,4 +76,24 @@ mesh = SubResource("BoxMesh_00acv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet/CollisionShape3D/StaticBody3D" unique_id=1785896033]
+shape = SubResource("BoxShape3D_ylgs7")
+
+[node name="TestPlanet2" type="StaticBody3D" parent="." unique_id=572413196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5316944, -32.116516)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet2" unique_id=1015555737]
+shape = SubResource("SphereShape3D_ylgs7")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="TestPlanet2/CollisionShape3D" unique_id=1343264817]
+mesh = SubResource("SphereMesh_oo4um")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestPlanet2/CollisionShape3D" unique_id=534611548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
+mesh = SubResource("BoxMesh_00acv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestPlanet2/CollisionShape3D" unique_id=1033598462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529497, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestPlanet2/CollisionShape3D/StaticBody3D" unique_id=645169319]
 shape = SubResource("BoxShape3D_ylgs7")

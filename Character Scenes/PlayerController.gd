@@ -12,7 +12,11 @@ var _camera_input_direction := Vector2.ZERO
 @onready var _camera_pivot: Node3D = $CameraPivot
 @onready var _camera: Camera3D = $CameraPivot/Camera3D
 
+#planet stuff
 @export var planet : Node3D
+
+
+
 
 @onready var clown: Node3D = $ClownRigFBX
 

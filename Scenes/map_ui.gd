@@ -1,6 +1,17 @@
 extends MarginContainer
 
-var	planet_id : int
+var planet_id : int
+
+@export var planet_1 : Node3D
+@export var planet_2 : Node3D
+
+@onready var player : CharacterBody3D = $"../PlayerCharacter"
+
+@onready var planet_array : Array =[
+	0,
+	planet_1,
+	planet_2,
+]
 
 func _ready() -> void:
 	visible = false
@@ -12,6 +23,7 @@ func _input(event: InputEvent) -> void:
 func go_to_planet():
 	visible = false
 	print("DEBUG: FLYING TO PLANET ID " + str(planet_id))
+	player.planet = planet_array[planet_id]
 	# go to other planet
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
