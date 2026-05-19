@@ -14,9 +14,6 @@ var _camera_input_direction := Vector2.ZERO
 
 #planet stuff
 @export var planet : Node3D
-@onready var space_bubble : CollisionShape3D = $SpaceBubble
-
-
 
 @onready var clown: Node3D = $ClownRigFBX
 
@@ -40,7 +37,6 @@ var Idle_Check : bool = false
 func handle_animations(delta):
 	match current_anim:
 		IDLE:
-			
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = lerpf(talk_val, 0.0, blend_speed * delta)
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
