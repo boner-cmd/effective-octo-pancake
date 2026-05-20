@@ -86,6 +86,10 @@ advance_dialogue={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_5="Interactable"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

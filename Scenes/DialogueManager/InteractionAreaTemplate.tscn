@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dd1q0dg8wn1nx"]
+
+[ext_resource type="Script" uid="uid://cfrvqrfsuonyf" path="res://Scenes/DialogueManager/interaction_area_template.gd" id="1_5i06m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y5h15"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
+radius = 2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ihs6g"]
+viewport_path = NodePath("SubViewport")
+
+[node name="InteractionAreaTemplate" type="Node3D" unique_id=1441746603]
+
+[node name="PlaceholderMesh" type="MeshInstance3D" parent="." unique_id=1970345478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_y5h15")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1533181775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_5i06m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1777274432]
+shape = SubResource("CylinderShape3D_ihs6g")
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D" unique_id=1145438084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5243759, 0)
+transparency = 1.0
+cast_shadow = 0
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_ihs6g")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=222289861]
+unique_name_in_owner = true
+transparent_bg = true
