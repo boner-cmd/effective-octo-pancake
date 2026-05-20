@@ -10,13 +10,15 @@ func set_default_indicator_state() -> void:
 
 func _input(event):
 	if visible:
-		if event.is_action_pressed("down"):
-			pass
-		if event.is_action_pressed("up"):
-			pass
+		if event.is_action_pressed("down") || event.is_action_pressed("up"):
+			$"yeahIndicator".visible = !$"yeahIndicator".visible
+			$"nahIndicator".visible = !$"nahIndicator".visible
 		if event.is_action_pressed("ui_accept"):
 			visible = false
-			$"..".go_to_planet()
+			if $"yeahIndicator".visible:
+				$"..".go_to_planet()
+			else:
+				visible = false
 		if event.is_action_pressed("ui_cancel"):
 			visible = false
 
