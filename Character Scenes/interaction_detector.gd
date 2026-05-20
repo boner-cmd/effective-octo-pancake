@@ -1,7 +1,7 @@
 extends Area3D
 
-@onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
-@onready var interact_ui : MarginContainer = %interact
+var CanvasLayer_in: CanvasLayer
+var interact_ui : MarginContainer
 
 var talking : bool = false
 

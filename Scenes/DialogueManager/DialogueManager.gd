@@ -17,18 +17,17 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, lines: Array[String]):
 		return
 	canvas_layer = CanvasLayer_in
 	dialogue_lines = lines
-	_show_text_box(canvas_layer)
+	_show_text_box(CanvasLayer_in)
 	
 	is_dialogue_active = true
 
-func _show_text_box(canvas_layer):
+func _show_text_box(CanvasLayer_in):
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
-	canvas_layer.add_child(text_box)
+	CanvasLayer_in.add_child(text_box)
 	text_box.display_text(dialogue_lines[current_line_index])
 	can_advance_line = false
-	
-	
+
 func _on_text_box_finished_displaying():
 	can_advance_line = true
 

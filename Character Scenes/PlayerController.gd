@@ -17,11 +17,12 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 @onready var clown: Node3D = $ClownRigFBX
 
 #anim handling
+
 var anim_tree : AnimationTree
 var blend_speed := 50.0
 
 enum {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY}
-var current_anim = IDLE
+@export var current_anim = IDLE
 
 var walk_val : float = 0.0
 var talk_val : float = 0.0
@@ -36,6 +37,7 @@ var Idle_Check : bool = false
 func handle_animations(delta):
 	match current_anim:
 		IDLE:
+			movement_frozen = false
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = lerpf(talk_val, 0.0, blend_speed * delta)
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
@@ -43,6 +45,7 @@ func handle_animations(delta):
 			vic_val = 0.0
 			Walk_Reset = true
 		WALK:
+			movement_frozen = false
 			if Walk_Reset:
 				anim_tree.set("parameters/Reset_Walk/seek_request", 0.0)
 				Walk_Reset = false
@@ -52,6 +55,7 @@ func handle_animations(delta):
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
 		JUMP:
+			movement_frozen = false
 			walk_val = 0.0
 			talk_val = 0.0
 			get_val = 0.0
@@ -59,24 +63,28 @@ func handle_animations(delta):
 			vic_val = 0.0
 			Walk_Reset = true
 		TALK:
+			movement_frozen = true
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = 1.0
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
 		GET:
+			movement_frozen = true
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = 1.0
 			get_val = lerpf(get_val, 1.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
 		GIVE:
+			movement_frozen = true
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
 			talk_val = 1.0
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 1.0, blend_speed * delta)
 			vic_val = 0.0
 		VICTORY:
+			movement_frozen = true
 			if Vic_Reset:
 				anim_tree.set("parameters/Reset_Victory/seek_request", 0.0)
 				Vic_Reset = false
