@@ -84,7 +84,7 @@ func handle_animations(delta):
 			give_val = lerpf(give_val, 1.0, blend_speed * delta)
 			vic_val = 0.0
 		VICTORY:
-			movement_frozen = true
+			movement_frozen = false
 			if Vic_Reset:
 				anim_tree.set("parameters/Reset_Victory/seek_request", 0.0)
 				Vic_Reset = false
@@ -126,12 +126,17 @@ func _input(event: InputEvent) -> void:
 		#set explosion
 		Vic_Reset = true
 		current_anim = VICTORY
-		
+	
+	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down"):
+		if $"../MapUI".visible == false:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	
 	if event.is_action_pressed("toggle_map"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		
-
-		
+	
+	
+	
 	if is_on_floor() and event.is_action_pressed("jump"):
 		current_anim = JUMP
 		anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

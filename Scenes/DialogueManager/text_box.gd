@@ -8,8 +8,8 @@ const  MAX_WIDTH = 256
 var text : String = ""
 var letter_index : int = 0
 
-var letter_time : float = 0.03
-var space_time : float = 0.06
+var letter_time : float = 0.05
+var space_time : float = 0.08
 var punctuation_time : float = 0.2
 
 signal finished_displaying()

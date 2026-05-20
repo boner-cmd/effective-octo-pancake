@@ -66,3 +66,5 @@ vertical_alignment = 1
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="Area3D" unique_id=1970345478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1275613, 0)
 mesh = SubResource("CapsuleMesh_y5h15")
+
+[connection signal="child_exiting_tree" from="Area3D/CanvasLayer" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]
