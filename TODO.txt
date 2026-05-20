@@ -1,14 +1,10 @@
 === MAP NOTES ===
 Map UI needs SVG elements so it stretches OK
 Map confirmation dialog needs to respond to arrow keys but also suppress 'm' hiding the whole map
-Map should autoscale based on project settings but need to confirm
-complete keyboard nav for confirmation dialog
+test keyboard nav
+
 
 Replace planet id int with node3d pass in signal
-factor out planet id
-remove array map
-is '$' by reference?
-try acting directly on player sibling node instead of creating local player variable if not
 
 === INVENTORY NOTES ===
 Make the inventory UI and script. There are tutorials. Similar to map UI. Script holds array

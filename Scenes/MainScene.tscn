@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dph7p1bj6ray4"]
 
+[ext_resource type="Script" uid="uid://b2krcvl2csd6x" path="res://Scenes/main_scene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://du48lbtyb65at" path="res://Scenes/MapUI.tscn" id="2_tr2i4"]
 [ext_resource type="PackedScene" uid="uid://dp211qoeihfpj" path="res://Scenes/Planets/planet_template.tscn" id="3_nhkr4"]
@@ -9,6 +10,7 @@
 radius = 5.0
 
 [node name="MainScene" type="Node3D" unique_id=1858530210]
+script = ExtResource("1_7rqgy")
 
 [node name="MapUI" parent="." unique_id=1506166126 instance=ExtResource("2_tr2i4")]
 visible = false
