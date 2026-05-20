@@ -1,13 +1,13 @@
 extends CharacterBody3D
 #camera tweaks
-@export_range(0.0, 1.0) var mouse_sensitivity := 0.25
+@export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 5.0
 #character
-@export var move_speed := 3.75
-@export var acceleration := 2000.0
-
-var _camera_input_direction := Vector2.ZERO
+@export var move_speed : float = 3.75
+@export var acceleration : float = 2000.0
+var movement_frozen : bool = false
+var _camera_input_direction : Vector2 = Vector2.ZERO
 
 @onready var _camera_pivot: Node3D = $CameraPivot
 @onready var _camera: Camera3D = $CameraPivot/Camera3D
@@ -143,35 +143,37 @@ func _physics_process(delta: float) -> void:
 	handle_animations(delta)
 	update_tree()
 	
-	_camera_pivot.rotation.x -= _camera_input_direction.y * delta
-	_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)
-	_camera_pivot.rotation.y -= _camera_input_direction.x * delta
+	if !movement_frozen:
+		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
+		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)
+		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 
-	_camera_input_direction = Vector2.ZERO
+		_camera_input_direction = Vector2.ZERO
 
-	var raw_input := Input.get_vector("left", "right", "up", "down")
-	var forward := _camera.global_basis.z
-	var right := _camera.global_basis.x
-	
-	move_direction = forward * raw_input.y + right * raw_input.x
-	move_direction = move_direction.normalized()
+		var raw_input := Input.get_vector("left", "right", "up", "down")
+		var forward := _camera.global_basis.z
+		var right := _camera.global_basis.x
 
-	#rotate char mesh
-	if raw_input != Vector2(0,0):
-		clown.rotation.y = _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90)
-		Idle_Check = true
-		current_anim = WALK
-		
-	elif Idle_Check:
-		anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
-		current_anim = IDLE
-		Idle_Check = false
-	
-	grav_calc()
-	velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
-	
-	#align character with floor
-	align_with_floor($RayCast3D.get_collision_normal())
-	global_transform = global_transform.interpolate_with(xform, .3)
-	
-	move_and_slide()
+		move_direction = forward * raw_input.y + right * raw_input.x
+		move_direction = move_direction.normalized()
+
+		#rotate char mesh
+		if raw_input != Vector2(0,0):
+			clown.rotation.y = _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90)
+			Idle_Check = true
+			current_anim = WALK
+			
+		elif Idle_Check:
+			anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
+			current_anim = IDLE
+			Idle_Check = false
+
+		grav_calc()
+
+		velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
+
+		#align character with floor
+		align_with_floor($RayCast3D.get_collision_normal())
+		global_transform = global_transform.interpolate_with(xform, .3)
+
+		move_and_slide()

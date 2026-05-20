@@ -148,6 +148,7 @@ size_flags_vertical = 3
 texture_normal = SubResource("PlaceholderTexture2D_g8sh8")
 stretch_mode = 0
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Planets/Planet1" to="." method="_on_planet_pressed" binds= ["\"_1\""]]
 [connection signal="pressed" from="Planets/Planet2" to="." method="_on_planet_pressed" binds= ["_2"]]
 [connection signal="pressed" from="ConfirmationControl/ConfirmationDialog/ConfirmationBackground/VBoxContainer/yeahButton" to="ConfirmationControl" method="_on_yeah_button_pressed"]
