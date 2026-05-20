@@ -2,6 +2,8 @@ extends Node
 
 @onready var text_box_scene = preload("res://Scenes/DialogueManager/text_box.tscn")
 
+var sub_viewport : SubViewport
+
 var dialogue_lines : Array[String] = []
 var current_line_index = 0
 
@@ -10,16 +12,16 @@ var text_box
 var is_dialogue_active = false
 var can_advance_line = false
 
-func start_dialogue(sub_viewport : SubViewport, lines: Array[String]):
+func start_dialogue(sub_viewport_in : SubViewport, lines: Array[String]):
 	if is_dialogue_active:
 		return
-	
+	sub_viewport = sub_viewport_in
 	dialogue_lines = lines
 	_show_text_box(sub_viewport)
 	
 	is_dialogue_active = true
 
-func _show_text_box(sub_viewport : SubViewport):
+func _show_text_box(sub_viewport):
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	sub_viewport.add_child(text_box)
@@ -44,4 +46,4 @@ func _unhandled_input(event):
 			current_line_index = 0
 			return
 			
-		#_show_text_box()
+		_show_text_box(sub_viewport)

@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var sub_viewport: SubViewport = %SubViewport
+@onready var sub_viewport_in: SubViewport = %SubViewport
 
 
 
@@ -10,4 +10,4 @@ const lines: Array[String] = [
 ]
 
 func interact() -> void:
-	DialogueManager.start_dialogue(sub_viewport, lines)
+	DialogueManager.start_dialogue(sub_viewport_in, lines)
