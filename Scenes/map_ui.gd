@@ -1,7 +1,5 @@
 extends MarginContainer
 
-@onready var player_character: CharacterBody3D = $"../PlayerCharacter"
-
 var selected_planet_id : String
 var current_scene : Node3D
 var last_planet_lookup : Node3D
@@ -51,9 +49,10 @@ func _on_planet_pressed(signal_planet_id: String) -> void:
 
 func _on_visibility_changed() -> void:
 	if is_visible_in_tree():
-		player_character.movement_frozen = true
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		ui_opened.emit()
 	else:
-		if player_character:
-			player_character.movement_frozen = false
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		ui_closed.emit()
+			
+signal ui_opened()
+
+signal ui_closed()
