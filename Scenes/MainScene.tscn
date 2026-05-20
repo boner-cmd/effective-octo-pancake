@@ -16,7 +16,7 @@ script = ExtResource("1_7rqgy")
 visible = false
 
 [node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") instance=ExtResource("1_hpc76")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024622917, 5.6306133, -0.023982048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
 collision_mask = 6
 planet = NodePath("../DefaultLoadingPlanet")
 
@@ -29,4 +29,3 @@ shape = SubResource("SphereShape3D_ylgs7")
 [node name="PlanetTemplate" parent="DefaultLoadingPlanet" unique_id=731662202 instance=ExtResource("3_nhkr4")]
 
 [node name="InteractionAreaTemplate" parent="DefaultLoadingPlanet" unique_id=1441746603 instance=ExtResource("4_7rqgy")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -5.0489464, 0, 0)
