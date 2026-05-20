@@ -27,8 +27,8 @@ func display_text(text_to_display: String):
 		await resized # wait for y to size
 		custom_minimum_size.y = size.y
 	
-	global_position.x -= size.x / 2
-	global_position.y -= size.y + 24
+	#global_position.x -= size.x / 2
+	global_position.y -= size.y - 200
 	
 	label.text = ""
 	_display_letter()

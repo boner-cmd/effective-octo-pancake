@@ -1,13 +1,31 @@
 extends Node3D
 
+@export var Canvas : CanvasLayer
+@export var interact_ui : MarginContainer
 @onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
 
-
-
-const lines: Array[String] = [
-	"press F to pay respects",
-	"blah blah blah"
+var lines: Array[String] = [
+	"boy howdy",
+	"i'm stuck in the mud",
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func interact() -> void:
 	DialogueManager.start_dialogue(CanvasLayer_in, lines)
+	
+func _ready() -> void:
+	Canvas = CanvasLayer_in

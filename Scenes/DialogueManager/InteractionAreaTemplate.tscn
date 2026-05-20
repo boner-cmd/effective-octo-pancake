@@ -1,28 +1,68 @@
 [gd_scene format=3 uid="uid://dd1q0dg8wn1nx"]
 
 [ext_resource type="Script" uid="uid://cfrvqrfsuonyf" path="res://Scenes/DialogueManager/interaction_area_template.gd" id="1_5i06m"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_y5h15"]
-height = 1.0
+[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_y5h15"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
 radius = 2.0
 
-[node name="InteractionAreaTemplate" type="Node3D" unique_id=1441746603]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y5h15"]
+height = 1.0
 
-[node name="PlaceholderMesh" type="MeshInstance3D" parent="." unique_id=1970345478]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12756133, 0)
-mesh = SubResource("CapsuleMesh_y5h15")
+[node name="InteractionArea" type="Node3D" unique_id=1441746603]
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1533181775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Area3D" type="Area3D" parent="." unique_id=1533181775 node_paths=PackedStringArray("Canvas", "interact_ui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_5i06m")
+Canvas = NodePath("CanvasLayer")
+interact_ui = NodePath("CanvasLayer/interact")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1777274432]
 shape = SubResource("CylinderShape3D_ihs6g")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2010746368]
+[node name="CanvasLayer" type="CanvasLayer" parent="Area3D" unique_id=2010746368]
 unique_name_in_owner = true
 follow_viewport_enabled = true
+
+[node name="interact" type="MarginContainer" parent="Area3D/CanvasLayer" unique_id=125531223]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -170.0
+offset_right = 96.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Area3D/CanvasLayer/interact" unique_id=744803760]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_y5h15")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Area3D/CanvasLayer/interact" unique_id=563200887]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Area3D/CanvasLayer/interact/MarginContainer" unique_id=469406741]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "press F to pay respects"
+vertical_alignment = 1
+
+[node name="PlaceholderMesh" type="MeshInstance3D" parent="Area3D" unique_id=1970345478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1275613, 0)
+mesh = SubResource("CapsuleMesh_y5h15")
