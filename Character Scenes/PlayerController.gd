@@ -155,6 +155,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	handle_animations(delta)
 	update_tree()
+	if DialogueManager.is_dialogue_active == true:
+		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.LISTEN:
+			current_anim = TALK
+		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.GIVE:
+			current_anim = GIVE
+		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.RECEIVE:
+			current_anim = GET
+	else:
+		current_anim = IDLE
+		
 	
 	if !movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
@@ -188,5 +198,6 @@ func _physics_process(delta: float) -> void:
 		#align character with floor
 		align_with_floor($RayCast3D.get_collision_normal())
 		global_transform = global_transform.interpolate_with(xform, .3)
-
+		
 		move_and_slide()
+		

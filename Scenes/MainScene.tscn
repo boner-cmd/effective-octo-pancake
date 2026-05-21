@@ -32,9 +32,5 @@ shape = SubResource("SphereShape3D_ylgs7")
 
 [connection signal="ui_closed" from="MapUI" to="." method="_on_map_ui_ui_closed"]
 [connection signal="ui_opened" from="MapUI" to="." method="_on_map_ui_ui_opened"]
-[connection signal="_complete" from="DefaultLoadingPlanet/InteractionAreaTemplate/Area3D" to="." method="_on_area_3d__complete"]
-[connection signal="_give" from="DefaultLoadingPlanet/InteractionAreaTemplate/Area3D" to="." method="_on_area_3d__give"]
-[connection signal="_listen" from="DefaultLoadingPlanet/InteractionAreaTemplate/Area3D" to="." method="_on_area_3d__listen"]
-[connection signal="_receive" from="DefaultLoadingPlanet/InteractionAreaTemplate/Area3D" to="." method="_on_area_3d__receive"]
 
 [editable path="DefaultLoadingPlanet/InteractionAreaTemplate"]

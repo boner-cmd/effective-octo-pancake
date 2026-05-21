@@ -4,75 +4,79 @@ extends Node3D
 @export var interact_ui : MarginContainer
 @onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
 
-enum CONV_STATE {LISTEN, GIVE, RECEIVE, POST, COMPLETE, EASTER}
-#LISTEN is for the initial conversation
-#GIVE is for giving the NPC the required item
-#RECEIVE is for getting the reward from the NPC
-#POST is the NPC lines after task complete
-#EASTER is for the post victory conversations
+var current_NPC : MeshInstance3D
+
+var NPC_Normal_Template_Check : bool = true
 
 #COMPLETE is to escape the current loop
+var lines: Array[String] = []
+var lines_2: Array[String] = []
+var lines_3: Array[String] = []
 
-var lines: Array[String] = ["default lines"]
-var initial_lines: Array[String] = ["initial lines"]
-var give_lines: Array[String] = ["give lines"]
-var receive_lines: Array[String] = ["receive lines"]
-var post_lines: Array[String] = ["post lines"]
-var easter_lines: Array[String] = ["easter lines"]
+#these are populated when 
+var initial_lines: Array[String] = []
+var give_lines: Array[String] = []
+var receive_lines: Array[String] = []
+var post_lines: Array[String] = []
+var easter_lines: Array[String] = []
 
 #placeholder status
-var temp_status : CONV_STATE
-var current_status: CONV_STATE = CONV_STATE.LISTEN:
+var temp_status : DialogueManager.CONV_STATE
+var current_status: DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.LISTEN:
 	set(set_current_status):
 		current_status = set_current_status
 		print("status changed")
 
 func conversation_dialogue():
 	match current_status:
-		CONV_STATE.LISTEN:
+		DialogueManager.CONV_STATE.LISTEN:
 			lines = initial_lines
-			_listen.emit()
-			temp_status = CONV_STATE.GIVE
+			temp_status = DialogueManager.CONV_STATE.GIVE
 			
-		CONV_STATE.GIVE:
+		DialogueManager.CONV_STATE.GIVE:
 			lines = give_lines
-			_give.emit()
-			temp_status = CONV_STATE.RECEIVE
+			if NPC_Normal_Template_Check:
+				lines_2 = receive_lines
 			
-		CONV_STATE.RECEIVE:
+		DialogueManager.CONV_STATE.RECEIVE:
 			lines = receive_lines
-			_receive.emit()
-			temp_status = CONV_STATE.COMPLETE
+			temp_status = DialogueManager.CONV_STATE.COMPLETE
 			
-		CONV_STATE.POST:
+		DialogueManager.CONV_STATE.POST:
 			lines = post_lines
-			_listen.emit()
 			
-		CONV_STATE.EASTER:
+		DialogueManager.CONV_STATE.EASTER:
 			lines = easter_lines
-			_listen.emit()
-				
-		CONV_STATE.COMPLETE:
+			
+		DialogueManager.CONV_STATE.COMPLETE:
 			print("complete")
+			
 	print("something")
 	print(lines)
 
+
 func interact() -> void:
 	conversation_dialogue()
-	if current_status != CONV_STATE.COMPLETE:
-		DialogueManager.start_dialogue(CanvasLayer_in, lines)
-		
+	current_NPC.current_state = current_status
+	
+	if current_status != DialogueManager.CONV_STATE.COMPLETE:
+		DialogueManager.start_dialogue(CanvasLayer_in, lines, lines_2, lines_3)
+		lines = []
+		lines_2 = []
+		lines_3 = []
 
 func _ready() -> void:
 	Canvas = CanvasLayer_in
+	current_NPC = get_child(2)
+	NPC_Normal_Template_Check = current_NPC.NPC_Normal_Template_Check
+	
+	print(current_NPC)
+	initial_lines = current_NPC.initial_lines
+	give_lines = current_NPC.give_lines
+	receive_lines = current_NPC.receive_lines
+	post_lines = current_NPC.post_lines
+	easter_lines = current_NPC.easter_lines
 
-signal _listen()
-signal _give()
-signal _receive()
-signal _complete()
-
-
-func _on_canvas_layer_child_exiting_tree(node: Node) -> void:
+func _on_canvas_layer_child_exiting_tree(_node: Node) -> void:
 	if !DialogueManager.is_dialogue_active:
 		current_status = temp_status
-		_complete.emit()

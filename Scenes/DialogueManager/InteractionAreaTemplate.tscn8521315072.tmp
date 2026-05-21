@@ -68,6 +68,7 @@ vertical_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1275613, 0)
 mesh = SubResource("CapsuleMesh_y5h15")
 script = ExtResource("3_ihs6g")
+initial_progress_check = true
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Area3D/CanvasLayer" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]
