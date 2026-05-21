@@ -2,7 +2,7 @@ extends Node3D
 
 @export var Canvas : CanvasLayer
 @export var interact_ui : MarginContainer
-@onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
+@onready var CanvasLayer_in: CanvasLayer = %CanvasLayerDoor
 
 var current_NPC : MeshInstance3D
 
@@ -22,23 +22,23 @@ var easter_lines: Array[String] = []
 
 #placeholder status
 var temp_status : DialogueManager.CONV_STATE
-var current_status: DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.LISTEN:
+var current_status: DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN:
 	set(set_current_status):
 		current_status = set_current_status
 		print("status changed")
 
 func conversation_dialogue():
 	match current_status:
-		DialogueManager.CONV_STATE.LISTEN:
+		DialogueManager.CONV_STATE.PLAYER_LISTEN:
 			lines = initial_lines
-			temp_status = DialogueManager.CONV_STATE.GIVE
+			temp_status = DialogueManager.CONV_STATE.PLAYER_GIVE
 			
-		DialogueManager.CONV_STATE.GIVE:
+		DialogueManager.CONV_STATE.PLAYER_GIVE:
 			lines = give_lines
 			if NPC_Normal_Template_Check:
 				lines_2 = receive_lines
 			
-		DialogueManager.CONV_STATE.RECEIVE:
+		DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 			lines = receive_lines
 			temp_status = DialogueManager.CONV_STATE.COMPLETE
 			

@@ -36,3 +36,6 @@ script = ExtResource("3_ee4y8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionDetector" unique_id=498889190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_4chgf")
+
+[connection signal="area_entered" from="InteractionDetector" to="InteractionDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractionDetector" to="InteractionDetector" method="_on_area_exited"]

@@ -1,12 +1,10 @@
 extends Node
 
 #enums for passing between NPCs and dialogue interaction
-enum CONV_STATE {LISTEN, GIVE, RECEIVE, POST, COMPLETE, EASTER}
+enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, COMPLETE, EASTER}
 var dialogue_state : CONV_STATE = CONV_STATE.COMPLETE
 
-
-@onready var text_box_scene = preload("res://Scenes/DialogueManager/text_box.tscn")
-
+var text_box_scene = preload("res://Scenes/DialogueManager/text_box.tscn")
 
 var canvas_layer : CanvasLayer
 
@@ -17,11 +15,9 @@ var dialogue_lines_3 : Array[String] = []
 var set_animation_at_2 : bool = false
 var set_animation_at_3 : bool = false
 
-
 var animation_point : int
 var complex : bool = false
 var append_once : bool = false
-
 
 var dialogue_length : int
 var current_line_index = 0
@@ -37,13 +33,13 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, lines: Array[String], lines_2:
 	canvas_layer = CanvasLayer_in
 	dialogue_lines = lines
 	dialogue_length = dialogue_lines.size()
-	dialogue_state = CONV_STATE.LISTEN
+	dialogue_state = CONV_STATE.PLAYER_LISTEN
 	
 	#handle wonk cases
 	if lines_2 != []:
 		complex = true
 		dialogue_lines_2 = lines_2
-		dialogue_state = CONV_STATE.GIVE
+		dialogue_state = CONV_STATE.PLAYER_GIVE
 		if lines_3 != []:
 			dialogue_lines_3 = lines_3
 			set_animation_at_3 = true
@@ -67,7 +63,7 @@ func _show_text_box(CanvasLayer_in):
 			animation_point = dialogue_length
 		dialogue_lines.append_array(dialogue_lines_3)
 		dialogue_lines_3 = []
-		#dialogue_state = CONV_STATE.RECEIVE
+		#dialogue_state = CONV_STATE.PLAYER_RECEIVE
 		
 	text_box.display_text(dialogue_lines[current_line_index])
 	can_advance_line = false
@@ -86,7 +82,7 @@ func _unhandled_input(event):
 
 		if current_line_index >= animation_point and complex:
 			printt(current_line_index, animation_point)
-			dialogue_state = CONV_STATE.RECEIVE
+			dialogue_state = CONV_STATE.PLAYER_RECEIVE
 		
 		if current_line_index >= dialogue_lines.size():
 		#reset happense here

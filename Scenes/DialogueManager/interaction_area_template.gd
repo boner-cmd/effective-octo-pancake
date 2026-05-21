@@ -1,12 +1,11 @@
 extends Node3D
 
-@export var Canvas : CanvasLayer
-@export var interact_ui : MarginContainer
+@onready var interact_ui : MarginContainer = %interact
 @onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
 
 var current_NPC : MeshInstance3D
 
-var NPC_Normal_Template_Check : bool = true
+var NPC_Normal_Template_Check : bool
 
 #COMPLETE is to escape the current loop
 var lines: Array[String] = []
@@ -22,23 +21,23 @@ var easter_lines: Array[String] = []
 
 #placeholder status
 var temp_status : DialogueManager.CONV_STATE
-var current_status: DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.LISTEN:
+var current_status: DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN:
 	set(set_current_status):
 		current_status = set_current_status
 		print("status changed")
 
 func conversation_dialogue():
 	match current_status:
-		DialogueManager.CONV_STATE.LISTEN:
+		DialogueManager.CONV_STATE.PLAYER_LISTEN:
 			lines = initial_lines
-			temp_status = DialogueManager.CONV_STATE.GIVE
+			temp_status = DialogueManager.CONV_STATE.PLAYER_GIVE
 			
-		DialogueManager.CONV_STATE.GIVE:
+		DialogueManager.CONV_STATE.PLAYER_GIVE:
 			lines = give_lines
 			if NPC_Normal_Template_Check:
 				lines_2 = receive_lines
 			
-		DialogueManager.CONV_STATE.RECEIVE:
+		DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 			lines = receive_lines
 			temp_status = DialogueManager.CONV_STATE.COMPLETE
 			
@@ -66,7 +65,6 @@ func interact() -> void:
 		lines_3 = []
 
 func _ready() -> void:
-	Canvas = CanvasLayer_in
 	current_NPC = get_child(2)
 	NPC_Normal_Template_Check = current_NPC.NPC_Normal_Template_Check
 	

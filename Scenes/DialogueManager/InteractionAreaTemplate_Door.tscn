@@ -12,20 +12,22 @@ height = 1.0
 
 [node name="InteractionAreaDoor" type="Node3D" unique_id=1441746603]
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1533181775]
+[node name="Area3D" type="Area3D" parent="." unique_id=1533181775 node_paths=PackedStringArray("Canvas", "interact_ui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_wil1b")
+Canvas = NodePath("CanvasLayerDoor")
+interact_ui = NodePath("CanvasLayerDoor/interactDoor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1777274432]
 shape = SubResource("CylinderShape3D_ihs6g")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Area3D" unique_id=2010746368]
+[node name="CanvasLayerDoor" type="CanvasLayer" parent="Area3D" unique_id=2010746368]
 unique_name_in_owner = true
 follow_viewport_enabled = true
 
-[node name="interact" type="MarginContainer" parent="Area3D/CanvasLayer" unique_id=125531223]
+[node name="interactDoor" type="MarginContainer" parent="Area3D/CanvasLayerDoor" unique_id=125531223]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 7
@@ -40,7 +42,7 @@ offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Area3D/CanvasLayer/interact" unique_id=744803760]
+[node name="NinePatchRect" type="NinePatchRect" parent="Area3D/CanvasLayerDoor/interactDoor" unique_id=744803760]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("2_0y3uc")
@@ -49,14 +51,14 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="Area3D/CanvasLayer/interact" unique_id=563200887]
+[node name="MarginContainer" type="MarginContainer" parent="Area3D/CanvasLayerDoor/interactDoor" unique_id=563200887]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="Area3D/CanvasLayer/interact/MarginContainer" unique_id=469406741]
+[node name="Label" type="Label" parent="Area3D/CanvasLayerDoor/interactDoor/MarginContainer" unique_id=469406741]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "press F to pay respects"
@@ -68,4 +70,4 @@ mesh = SubResource("CapsuleMesh_y5h15")
 script = ExtResource("3_d7bcd")
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
-[connection signal="child_exiting_tree" from="Area3D/CanvasLayer" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="Area3D/CanvasLayerDoor" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]

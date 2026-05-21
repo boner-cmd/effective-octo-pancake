@@ -111,9 +111,10 @@ func grav_calc():
 	grav_vector = (planet.position - position).normalized()
 	up_direction = -grav_vector
 	
-func align_with_floor(floor_normal):
+func align_with_floor(floor_normal : Vector3):
 	xform = global_transform
 	xform.basis.y = floor_normal
+	print(floor_normal)
 	xform.basis.x = -xform.basis.z.cross(floor_normal)
 	xform.basis = xform.basis.orthonormalized()
 
@@ -156,11 +157,11 @@ func _physics_process(delta: float) -> void:
 	handle_animations(delta)
 	update_tree()
 	if DialogueManager.is_dialogue_active == true:
-		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.LISTEN:
+		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.PLAYER_LISTEN:
 			current_anim = TALK
-		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.GIVE:
+		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.PLAYER_GIVE:
 			current_anim = GIVE
-		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.RECEIVE:
+		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 			current_anim = GET
 	else:
 		current_anim = IDLE
@@ -182,7 +183,7 @@ func _physics_process(delta: float) -> void:
 
 		#rotate char mesh
 		if raw_input != Vector2(0,0):
-			clown.rotation.y = _camera_pivot.rotation.y - deg_to_rad(rad_to_deg(raw_input.angle()) + 90)
+			clown.rotation.y = _camera_pivot.rotation.y - (raw_input.angle() + PI/2)
 			Idle_Check = true
 			current_anim = WALK
 			
@@ -196,7 +197,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
 
 		#align character with floor
-		align_with_floor($RayCast3D.get_collision_normal())
+		align_with_floor($RayCast3D.get_collision_normal()) # get collision normal can return a zero vector if no collision
 		global_transform = global_transform.interpolate_with(xform, .3)
 		
 		move_and_slide()
