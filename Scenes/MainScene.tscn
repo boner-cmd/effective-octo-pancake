@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://du48lbtyb65at" path="res://Scenes/MapUI.tscn" id="2_tr2i4"]
 [ext_resource type="PackedScene" uid="uid://dp211qoeihfpj" path="res://Scenes/Planets/planet_template.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_7rqgy"]
+[ext_resource type="PackedScene" uid="uid://bpl8ixdy44th1" path="res://Scenes/DialogueManager/InteractionAreaTemplate_Door.tscn" id="6_y4jh7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
 radius = 5.0
@@ -29,6 +30,9 @@ shape = SubResource("SphereShape3D_ylgs7")
 [node name="PlanetTemplate" parent="DefaultLoadingPlanet" unique_id=731662202 instance=ExtResource("3_nhkr4")]
 
 [node name="InteractionAreaTemplate" parent="DefaultLoadingPlanet" unique_id=1441746603 instance=ExtResource("4_7rqgy")]
+
+[node name="InteractionAreaDoor" parent="." unique_id=1135995096 instance=ExtResource("6_y4jh7")]
+transform = Transform3D(0.04843135, -0.9988265, 0, 0.9988265, 0.04843135, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="ui_closed" from="MapUI" to="." method="_on_map_ui_ui_closed"]
 [connection signal="ui_opened" from="MapUI" to="." method="_on_map_ui_ui_opened"]
