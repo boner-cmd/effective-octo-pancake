@@ -7,10 +7,10 @@ extends MeshInstance3D
 
 
 
-#Dialogue goes here
+#Dialogue goes here, 100 char per string limit, strongly suggest breaking it up if it can be
 @export var initial_lines: Array[String] = [
-	"initial lines 1 asdfajnsldkfjh akljsdhflk askljhalskj alskjskjsdkdk weoioieoak oidoie aoiufoiuwe oi",
-	"initial lines 2 asdfaoihje ioauefhiauh aiopuesfpiauh opuiashgpoiauhg owieqoiuwe oiausfpoaiufeo",
+	"initial lines 1 asdfajnsldkfjh akljsdhflk askljhalskj alskjskjsdkdk weoioieoak oidoie aoiufoiuwe.",
+	"initial lines 2 asdfaoihje ioauefhiauh aiopuesfpiauh opuiashgpoiauhg owieqoiuwe oiausfpoaiufeo,",
 	"initial lines 3asfew  awefasdf ewfwerwoikjloai oauifpioau owi uiayfiouweayhoiuahsdf",
 	]
 

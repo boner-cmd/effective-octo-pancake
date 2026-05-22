@@ -39,7 +39,6 @@ animation = &"DoorSpawn"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_k6kb1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_285g0"]
-graph_offset = Vector2(-349.96332, -186.83801)
 nodes/output/position = Vector2(1180, 120)
 nodes/Anim_DoorIdle/node = SubResource("AnimationNodeAnimation_t78re")
 nodes/Anim_DoorIdle/position = Vector2(240, -340)
