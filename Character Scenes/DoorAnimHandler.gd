@@ -34,7 +34,7 @@ func _set_door_anim(anim : AnimStates):
 			_set_door_anim(AnimStates.STASIS)
 			
 		AnimStates.EXIT:
-			exit_anim_started
+			exit_anim_started.emit()
 			anim_tree.set("parameters/Reset_DoorExit/seek_request", 0.0)
 			anim_tree.set("parameters/DoorExit/blend_amount", 1.0)
 			await anim_tree.animation_finished
