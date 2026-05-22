@@ -3,13 +3,14 @@ extends Node3D
 
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
-var current_anim := AnimStates.SPAWN
+var current_anim := AnimStates.STASIS
 
 # spawn		-> idle
 # despawn	-> stasis
 # exit		-> stasis
 
-func _set_door_anim():
+func _set_door_anim(anim : AnimStates):
+	current_anim = anim
 	match current_anim:
 		AnimStates.STASIS:
 			anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
@@ -19,8 +20,7 @@ func _set_door_anim():
 			anim_tree.set("parameters/DoorSpawnTimescale/scale", 2.0)
 			anim_tree.set("parameters/Door_Active/blend_amount", 1.0)
 			await anim_tree.animation_finished
-			current_anim = AnimStates.IDLE
-			_set_door_anim()
+			_set_door_anim(AnimStates.IDLE)
 			
 		AnimStates.IDLE:
 			anim_tree.set("parameters/DoorIdle_Reset/seek_request", 0.0)
@@ -31,19 +31,17 @@ func _set_door_anim():
 			anim_tree.set("parameters/DoorSpawnTimescale/scale", -2.0)
 			await anim_tree.animation_finished
 			exit_anim_finished.emit()
-			current_anim = AnimStates.STASIS
-			_set_door_anim()
+			_set_door_anim(AnimStates.STASIS)
 			
 		AnimStates.EXIT:
 			exit_anim_started
 			anim_tree.set("parameters/Reset_DoorExit/seek_request", 0.0)
 			anim_tree.set("parameters/DoorExit/blend_amount", 1.0)
 			await anim_tree.animation_finished
-			current_anim = AnimStates.STASIS
-			_set_door_anim()
+			_set_door_anim(AnimStates.STASIS)
 
 func _ready() -> void:
-	_set_door_anim()
+	_set_door_anim(AnimStates.STASIS)
 
 signal exit_anim_finished
 signal exit_anim_started

@@ -68,6 +68,9 @@ nodes/DoorIdle_Reset/node = SubResource("AnimationNodeTimeSeek_op1q4")
 nodes/DoorIdle_Reset/position = Vector2(380, -340)
 node_connections = [&"output", 0, &"DoorExit", &"Door_Active", 0, &"DoorStasis", &"Door_Active", 1, &"Reset_DoorSpawn", &"DoorStasis", 0, &"Anim_DoorInactive", &"Reset_DoorExit", 0, &"TimeScale 3", &"DoorSpawnTimescale", 0, &"Anim_DoorSpawn", &"Reset_DoorSpawn", 0, &"DoorSpawnTimescale", &"Door_Idle", 0, &"DoorIdle_Reset", &"Door_Idle", 1, &"Door_Active", &"DoorExit", 0, &"Door_Idle", &"DoorExit", 1, &"Reset_DoorExit", &"TimeScale 3", 0, &"Anim_DoorExit", &"DoorIdle_Reset", 0, &"Anim_DoorIdle"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_op1q4"]
+size = Vector3(1.1, 1, 0.2)
+
 [node name="Door" type="Node3D" unique_id=1012687003]
 script = ExtResource("1_op1q4")
 
@@ -100,5 +103,12 @@ parameters/Door_Idle/blend_amount = 1.0
 parameters/DoorExit/blend_amount = 0.0
 "parameters/TimeScale 3/scale" = 1.0
 parameters/DoorIdle_Reset/seek_request = -1.0
+
+[node name="DoorCollider" type="Area3D" parent="." unique_id=1228772227]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorCollider" unique_id=1775488323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6566018, 0)
+shape = SubResource("BoxShape3D_op1q4")
 
 [editable path="DoorAnims"]
