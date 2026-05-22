@@ -125,6 +125,7 @@ bones/13/position = Vector3(-0.00030511033, 0.003186539, -4.5399648e-10)
 surface_material_override/0 = ExtResource("2_qq7ma")
 
 [node name="Left_Foot_mesh" parent="Rig/Skeleton3D" index="1" unique_id=1149919671]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0, 0, 0)
 surface_material_override/0 = ExtResource("2_qq7ma")
 
 [node name="Left_Leg_mesh" parent="Rig/Skeleton3D" index="2" unique_id=574669261]

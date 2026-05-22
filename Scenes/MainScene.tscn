@@ -20,17 +20,9 @@ collision_mask = 6
 planet = NodePath("../DefaultLoadingPlanet")
 
 [node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1346645065) index="0" unique_id=1334537233]
-bones/2/position = Vector3(0.0007913627, 0.004041649, 0.000114312104)
-bones/2/rotation = Quaternion(6.927638e-24, -8.271806e-25, 0.036849633, 0.9993208)
-bones/3/rotation = Quaternion(-0.01986351, 0.0006861177, 0.09760917, 0.9950264)
-bones/4/rotation = Quaternion(-0.976488, -0.045152772, 0.028739363, 0.2088218)
-bones/6/rotation = Quaternion(-0.11916359, 0.2248881, 0.9625521, 0.0933749)
-bones/8/rotation = Quaternion(0.9955412, -0.08916666, -0.026239626, -0.016081396)
-bones/9/rotation = Quaternion(0.019563131, 0.009704869, 0.3542929, 0.93487954)
-bones/10/rotation = Quaternion(0.9976876, -0.06060147, 0.02668975, 0.015322862)
-bones/11/rotation = Quaternion(-0.020177454, -0.010009328, 0.3654134, 0.93057287)
-bones/12/rotation = Quaternion(-0.055636857, 0.0017351598, 0.25005504, 0.9666302)
-bones/13/rotation = Quaternion(0.008721189, 0.039309416, 0.032812588, 0.99865013)
+bones/4/rotation = Quaternion(-0.9890514, -4.3092086e-08, 1.16018036e-07, 0.14757188)
+bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574766, -0.013666067)
+bones/10/rotation = Quaternion(0.99952626, 0.0003770258, 0.02757483, 0.013666067)
 
 [node name="MapUI" parent="." unique_id=1506166126 instance=ExtResource("2_tr2i4")]
 visible = false
@@ -51,13 +43,7 @@ transform = Transform3D(0.04843135, -0.9988265, 0, 0.9988265, 0.04843135, 0, 0, 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_q68mp")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -5)
 
-[node name="Skeleton3D" parent="Door/DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(683049571, 1012687003, 1938978798) index="0" unique_id=1115533347]
-bones/1/position = Vector3(1.3280718, 8.3063635e-16, 0)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
-bones/3/position = Vector3(1.1175799, 0.47247896, -4.318813e-16)
-bones/3/rotation = Quaternion(0.9996079, 0.02800081, -1.2070214e-16, 5.7777216e-17)
-
-[node name="Viewport" parent="Door/DoorBaseModel/DoorAnims/Skeleton3D" index="1" unique_id=2090780855]
+[node name="Viewport" parent="Door/DoorBaseModel/DoorAnims/Skeleton3D" parent_id_path=PackedInt32Array(683049571, 1012687003, 1938978798, 1115533347) index="1" unique_id=2090780855]
 surface_material_override/0 = null
 
 [connection signal="ui_closed" from="MapUI" to="." method="_on_map_ui_ui_closed"]
@@ -69,3 +55,5 @@ surface_material_override/0 = null
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel2"]
+[editable path="Door/DoorBaseModel2/DoorAnims"]

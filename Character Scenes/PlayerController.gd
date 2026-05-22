@@ -21,7 +21,7 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 var anim_tree : AnimationTree
 var blend_speed := 50.0
 
-enum {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY}
+enum {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY, EXIT}
 @export var current_anim = IDLE
 
 var walk_val : float = 0.0
@@ -29,6 +29,7 @@ var talk_val : float = 0.0
 var get_val : float = 0.0
 var give_val : float = 0.0
 var vic_val : float = 0.0
+var exit_val : float = 0.0
 
 var Vic_Reset : bool = false
 var Walk_Reset : bool = false
@@ -43,6 +44,7 @@ func handle_animations(delta):
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
+			exit_val = 0.0
 			Walk_Reset = true
 		WALK:
 			movement_frozen = false
@@ -54,6 +56,7 @@ func handle_animations(delta):
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
+			exit_val = 0.0
 		JUMP:
 			movement_frozen = false
 			walk_val = 0.0
@@ -61,6 +64,7 @@ func handle_animations(delta):
 			get_val = 0.0
 			give_val = 0.0
 			vic_val = 0.0
+			exit_val = 0.0
 			Walk_Reset = true
 		TALK:
 			movement_frozen = true
@@ -69,6 +73,7 @@ func handle_animations(delta):
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
+			exit_val = 0.0
 		GET:
 			movement_frozen = true
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
@@ -76,6 +81,7 @@ func handle_animations(delta):
 			get_val = lerpf(get_val, 1.0, blend_speed * delta)
 			give_val = lerpf(give_val, 0.0, blend_speed * delta)
 			vic_val = 0.0
+			exit_val = 0.0
 		GIVE:
 			movement_frozen = true
 			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
@@ -83,6 +89,7 @@ func handle_animations(delta):
 			get_val = lerpf(get_val, 0.0, blend_speed * delta)
 			give_val = lerpf(give_val, 1.0, blend_speed * delta)
 			vic_val = 0.0
+			exit_val = 0.0
 		VICTORY:
 			movement_frozen = false
 			if Vic_Reset:
@@ -93,6 +100,17 @@ func handle_animations(delta):
 			get_val = 0.0
 			give_val = 0.0
 			vic_val = 1.0
+			exit_val = 0.0
+		EXIT:
+			movement_frozen = true
+			anim_tree.set("parameters/Reset_Exit/seek_request", 0.0)
+			walk_val = 0.0
+			talk_val = 0.0
+			get_val = 0.0
+			give_val = 0.0
+			vic_val = 0.0
+			exit_val = 1.0
+			
 
 func update_tree():
 	anim_tree["parameters/Walk/blend_amount"] = walk_val
@@ -100,6 +118,7 @@ func update_tree():
 	anim_tree["parameters/Get/blend_amount"] = get_val
 	anim_tree["parameters/Give/blend_amount"] = give_val
 	anim_tree["parameters/Victory/blend_amount"] = vic_val
+	anim_tree["parameters/Exit/blend_amount"] = exit_val
 
 var move_direction : Vector3
 
