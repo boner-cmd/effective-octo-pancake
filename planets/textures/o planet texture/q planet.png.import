@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvwryv2va8maw"
-path="res://.godot/imported/grease puddle.png-99dcc154b7a54e6229eb00949f79f573.ctex"
+uid="uid://cngxvgl46q0rx"
+path="res://.godot/imported/q planet.png-bdd9d275ce1201d648cc36330bdb3d1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grease puddle planet texture/grease puddle.png"
-dest_files=["res://.godot/imported/grease puddle.png-99dcc154b7a54e6229eb00949f79f573.ctex"]
+source_file="res://planets/textures/o planet texture/q planet.png"
+dest_files=["res://.godot/imported/q planet.png-bdd9d275ce1201d648cc36330bdb3d1f.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cea4qqppfgm2"]
 
-[ext_resource type="PackedScene" uid="uid://df67w758w3f4v" path="res://Character Export Files/clown/DoorStuff/door.tscn" id="2_coq8p"]
+[ext_resource type="PackedScene" uid="uid://df67w758w3f4v" path="res://Character Scenes/door.tscn" id="2_coq8p"]
 [ext_resource type="Material" uid="uid://cipybu1vobpug" path="res://Character Export Files/Materials/glow_placeholder.tres" id="3_coq8p"]
 
 [node name="Door" type="Node3D" unique_id=683049571]

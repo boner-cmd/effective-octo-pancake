@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c0in0gsbk5uch"
-path="res://.godot/imported/digfhtaiopwgfh;edj planet.gltf-b8760c40db745566ca63a244a23ece94.scn"
+path="res://.godot/imported/digfhtaiopwgfh;edj planet.gltf-4471fda422ed7dc1c1242778bff5c8ac.scn"
 
 [deps]
 
-source_file="res://digfhtaiopwgfh;edj planet model/digfhtaiopwgfh;edj planet.gltf"
-dest_files=["res://.godot/imported/digfhtaiopwgfh;edj planet.gltf-b8760c40db745566ca63a244a23ece94.scn"]
+source_file="res://planets/models/digfhtaiopwgfh;edj planet model/digfhtaiopwgfh;edj planet.gltf"
+dest_files=["res://.godot/imported/digfhtaiopwgfh;edj planet.gltf-4471fda422ed7dc1c1242778bff5c8ac.scn"]
 
 [params]
 

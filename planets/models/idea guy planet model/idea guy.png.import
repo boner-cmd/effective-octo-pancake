@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk1fwi0omtaj7"
-path.s3tc="res://.godot/imported/digfhtaiopwgfh;edj skybox.png-034bf15059a060a0df1afbc376261d17.s3tc.ctex"
+uid="uid://btl7poig1d1nq"
+path.s3tc="res://.godot/imported/idea guy.png-87258edf5c892c4ecbbadcb9517a0f1e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://digfhtaiopwgfh;edj planet model/digfhtaiopwgfh;edj skybox.png"
-dest_files=["res://.godot/imported/digfhtaiopwgfh;edj skybox.png-034bf15059a060a0df1afbc376261d17.s3tc.ctex"]
+source_file="res://planets/models/idea guy planet model/idea guy.png"
+dest_files=["res://.godot/imported/idea guy.png-87258edf5c892c4ecbbadcb9517a0f1e.s3tc.ctex"]
 
 [params]
 

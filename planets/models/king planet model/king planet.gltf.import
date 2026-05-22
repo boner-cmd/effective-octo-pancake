@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://clr5ostwu7ndd"
-path="res://.godot/imported/king planet.gltf-b6c7009ae7a14c8153b145a33b5c0601.scn"
+path="res://.godot/imported/king planet.gltf-81bbdd278598b6717964fa4437549ed0.scn"
 
 [deps]
 
-source_file="res://king planet model/king planet.gltf"
-dest_files=["res://.godot/imported/king planet.gltf-b6c7009ae7a14c8153b145a33b5c0601.scn"]
+source_file="res://planets/models/king planet model/king planet.gltf"
+dest_files=["res://.godot/imported/king planet.gltf-81bbdd278598b6717964fa4437549ed0.scn"]
 
 [params]
 

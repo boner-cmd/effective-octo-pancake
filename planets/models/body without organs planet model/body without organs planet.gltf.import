@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://rymhcidn3jgx"
-path="res://.godot/imported/body without organs planet.gltf-cb40b0ff1e90cfc343ab025bfc618244.scn"
+path="res://.godot/imported/body without organs planet.gltf-94541521fc125f48b5f5652eeeae689a.scn"
 
 [deps]
 
-source_file="res://body without organs planet model/body without organs planet.gltf"
-dest_files=["res://.godot/imported/body without organs planet.gltf-cb40b0ff1e90cfc343ab025bfc618244.scn"]
+source_file="res://planets/models/body without organs planet model/body without organs planet.gltf"
+dest_files=["res://.godot/imported/body without organs planet.gltf-94541521fc125f48b5f5652eeeae689a.scn"]
 
 [params]
 
