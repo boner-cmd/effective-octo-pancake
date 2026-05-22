@@ -5,6 +5,9 @@ enum AnimStates {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY, EXIT}
 
 var current_anim := AnimStates.IDLE
 
+func _get_current_anim() -> AnimStates:
+	return current_anim
+
 func _set_player_anim(anim : AnimStates):
 	current_anim = anim
 	match current_anim:
