@@ -114,11 +114,11 @@ bones/3/position = Vector3(-1.6885689e-10, 0.0029941183, -8.050192e-11)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/4/rotation = Quaternion(-0.9890514, -4.309209e-08, 1.16018036e-07, 0.14757188)
 bones/6/rotation = Quaternion(7.69735e-08, 0.16749677, 0.9858726, -1.30775675e-08)
-bones/8/rotation = Quaternion(0.99952626, 0.00037702793, -0.027574765, -0.013666067)
+bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574765, -0.013666067)
 bones/9/position = Vector3(0.00010731806, 0.005562804, -6.0597074e-07)
 bones/10/rotation = Quaternion(0.99952626, 0.00037702578, 0.02757483, 0.013666067)
 bones/12/position = Vector3(9.199295e-06, 0.0051881243, 0.00019031962)
-bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201041, 0.991851)
+bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201042, 0.991851)
 bones/13/position = Vector3(-0.00030511033, 0.003186539, -4.5399648e-10)
 
 [node name="Collar_mesh" parent="Rig/Skeleton3D" index="0" unique_id=931603580]
