@@ -114,7 +114,6 @@ func grav_calc():
 func align_with_floor(floor_normal : Vector3):
 	xform = global_transform
 	xform.basis.y = floor_normal
-	print(floor_normal)
 	xform.basis.x = -xform.basis.z.cross(floor_normal)
 	xform.basis = xform.basis.orthonormalized()
 
@@ -139,7 +138,7 @@ func _input(event: InputEvent) -> void:
 	
 	
 	if is_on_floor() and event.is_action_pressed("jump"):
-		current_anim = JUMP
+		#current_anim = JUMP
 		anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dp211qoeihfpj" path="res://Scenes/Planets/planet_template.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://bpl8ixdy44th1" path="res://Scenes/DialogueManager/InteractionAreaTemplate_Door.tscn" id="6_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Scenes/Door_Boiler.tscn" id="7_q68mp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
 radius = 5.0
@@ -34,7 +35,19 @@ shape = SubResource("SphereShape3D_ylgs7")
 [node name="InteractionAreaDoor" parent="." unique_id=1135995096 instance=ExtResource("6_y4jh7")]
 transform = Transform3D(0.04843135, -0.9988265, 0, 0.9988265, 0.04843135, 0, 0, 0, 1, 0, 0, 0)
 
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_q68mp")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -5)
+
+[node name="Skeleton3D" parent="Door/DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(683049571, 1012687003, 1938978798) index="0" unique_id=1115533347]
+bones/1/position = Vector3(3.7408535, 0.63479745, 0)
+bones/1/rotation = Quaternion(0, 0, 0.12221582, 0.99250364)
+bones/3/position = Vector3(3.5799398, 0.012196839, -4.318813e-16)
+bones/3/rotation = Quaternion(0.9955366, -0.09437706, -1.2769681e-16, 7.251488e-17)
+
 [connection signal="ui_closed" from="MapUI" to="." method="_on_map_ui_ui_closed"]
 [connection signal="ui_opened" from="MapUI" to="." method="_on_map_ui_ui_opened"]
 
 [editable path="DefaultLoadingPlanet/InteractionAreaTemplate"]
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]

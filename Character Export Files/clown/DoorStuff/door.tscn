@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://biagbhjemrxyn" path="res://Character Export Files/clown/DoorStuff/DoorAnims.fbx" id="1_km3ct"]
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_km3ct"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6yyf7"]
 animation = &"DoorExit"
 
@@ -22,6 +20,8 @@ play_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcwvx"]
 animation = &"DoorSpawn"
 
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_km3ct"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4f2r8"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m37ct"]
@@ -39,16 +39,16 @@ animation = &"DoorSpawn"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_p4n7t"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_285g0"]
-graph_offset = Vector2(-181.9057, -83.167114)
-nodes/output/position = Vector2(1000, 120)
-nodes/DoorIdle/node = SubResource("AnimationNodeAnimation_t78re")
-nodes/DoorIdle/position = Vector2(360, -180)
+graph_offset = Vector2(-480.02002, -128.3166)
+nodes/output/position = Vector2(1180, 200)
+nodes/Anim_DoorIdle/node = SubResource("AnimationNodeAnimation_t78re")
+nodes/Anim_DoorIdle/position = Vector2(360, -180)
 nodes/Door_Active/node = SubResource("AnimationNodeBlend2_4f2r8")
 nodes/Door_Active/position = Vector2(360, 20)
-nodes/DoorSpawn/node = SubResource("AnimationNodeAnimation_bcwvx")
-nodes/DoorSpawn/position = Vector2(-160, 20)
-nodes/DoorShrink/node = SubResource("AnimationNodeAnimation_jx1km")
-nodes/DoorShrink/position = Vector2(-160, 240)
+nodes/Anim_DoorSpawn/node = SubResource("AnimationNodeAnimation_bcwvx")
+nodes/Anim_DoorSpawn/position = Vector2(-240, 60)
+nodes/Anim_DoorShrink/node = SubResource("AnimationNodeAnimation_jx1km")
+nodes/Anim_DoorShrink/position = Vector2(-240, 240)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_p4n7t")
 nodes/TimeScale/position = Vector2(-20, 240)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_jub30")
@@ -57,29 +57,29 @@ nodes/Reset_DoorSpawn/node = SubResource("AnimationNodeTimeSeek_fy274")
 nodes/Reset_DoorSpawn/position = Vector2(100, 20)
 nodes/Reset_DoorShrink/node = SubResource("AnimationNodeTimeSeek_5jgav")
 nodes/Reset_DoorShrink/position = Vector2(100, 240)
-nodes/Door_Idle_Blend/node = SubResource("AnimationNodeBlend2_m37ct")
-nodes/Door_Idle_Blend/position = Vector2(560, -80)
-"nodes/DoorExit 2/node" = SubResource("AnimationNodeBlend2_km3ct")
-"nodes/DoorExit 2/position" = Vector2(860, 120)
-nodes/DoorExit/node = SubResource("AnimationNodeAnimation_6yyf7")
-nodes/DoorExit/position = Vector2(300, 400)
+nodes/Door_Idle/node = SubResource("AnimationNodeBlend2_m37ct")
+nodes/Door_Idle/position = Vector2(560, -80)
+nodes/DoorExit/node = SubResource("AnimationNodeBlend2_km3ct")
+nodes/DoorExit/position = Vector2(860, 120)
+nodes/Anim_DoorExit/node = SubResource("AnimationNodeAnimation_6yyf7")
+nodes/Anim_DoorExit/position = Vector2(260, 420)
 "nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_k6kb1")
 "nodes/TimeScale 3/position" = Vector2(420, 400)
 nodes/Reset_DoorExit/node = SubResource("AnimationNodeTimeSeek_xjdhb")
-nodes/Reset_DoorExit/position = Vector2(560, 400)
-node_connections = [&"output", 0, &"DoorExit 2", &"Door_Active", 0, &"Reset_DoorSpawn", &"Door_Active", 1, &"Reset_DoorShrink", &"TimeScale", 0, &"DoorShrink", &"TimeScale 2", 0, &"DoorSpawn", &"Reset_DoorSpawn", 0, &"TimeScale 2", &"Reset_DoorShrink", 0, &"TimeScale", &"Door_Idle_Blend", 0, &"DoorIdle", &"Door_Idle_Blend", 1, &"Door_Active", &"DoorExit 2", 0, &"Door_Idle_Blend", &"DoorExit 2", 1, &"Reset_DoorExit", &"TimeScale 3", 0, &"DoorExit", &"Reset_DoorExit", 0, &"TimeScale 3"]
+nodes/Reset_DoorExit/position = Vector2(580, 400)
+node_connections = [&"output", 0, &"DoorExit", &"Door_Active", 0, &"Reset_DoorSpawn", &"Door_Active", 1, &"Reset_DoorShrink", &"TimeScale", 0, &"Anim_DoorShrink", &"TimeScale 2", 0, &"Anim_DoorSpawn", &"Reset_DoorSpawn", 0, &"TimeScale 2", &"Reset_DoorShrink", 0, &"TimeScale", &"Door_Idle", 0, &"Anim_DoorIdle", &"Door_Idle", 1, &"Door_Active", &"DoorExit", 0, &"Door_Idle", &"DoorExit", 1, &"Reset_DoorExit", &"TimeScale 3", 0, &"Anim_DoorExit", &"Reset_DoorExit", 0, &"TimeScale 3"]
 
 [node name="Door" type="Node3D" unique_id=1012687003]
 
 [node name="DoorAnims" parent="." unique_id=1938978798 instance=ExtResource("1_km3ct")]
 
 [node name="Skeleton3D" parent="DoorAnims" index="0" unique_id=1115533347]
-bones/1/position = Vector3(3.6813946, -1.3213528, 0)
-bones/1/rotation = Quaternion(0, 0, -0.42699385, 0.90425456)
 bones/2/rotation = Quaternion(0.9996079, 0.0280008, -6.120631e-17, 1.7144901e-18)
-bones/3/position = Vector3(3.4779835, 1.7905414, -4.318813e-16)
-bones/3/rotation = Quaternion(0.8919439, 0.45214623, -8.1546555e-17, -7.5794875e-19)
+bones/3/rotation = Quaternion(0.9996079, 0.02800081, -1.2070214e-16, 5.7777216e-17)
 bones/3/scale = Vector3(1, 1, 1)
+
+[node name="Viewport" parent="DoorAnims/Skeleton3D" index="1" unique_id=2090780855]
+visible = false
 
 [node name="AnimationPlayer" parent="DoorAnims" index="1" unique_id=2136793808]
 speed_scale = 2.0
@@ -93,8 +93,8 @@ parameters/TimeScale/scale = 2.0
 "parameters/TimeScale 2/scale" = 2.0
 parameters/Reset_DoorSpawn/seek_request = -1.0
 parameters/Reset_DoorShrink/seek_request = -1.0
-parameters/Door_Idle_Blend/blend_amount = 0.0
-"parameters/DoorExit 2/blend_amount" = 0.0
+parameters/Door_Idle/blend_amount = 0.0
+parameters/DoorExit/blend_amount = 0.0
 "parameters/TimeScale 3/scale" = 2.0
 parameters/Reset_DoorExit/seek_request = -1.0
 
