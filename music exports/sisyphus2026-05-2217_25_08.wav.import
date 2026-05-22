@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0jgr0yfo68j"
+path="res://.godot/imported/sisyphus2026-05-2217_25_08.wav-27b4144e9a55e0cee76153afacf076ce.sample"
+
+[deps]
+
+source_file="res://music exports/sisyphus2026-05-2217_25_08.wav"
+dest_files=["res://.godot/imported/sisyphus2026-05-2217_25_08.wav-27b4144e9a55e0cee76153afacf076ce.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
