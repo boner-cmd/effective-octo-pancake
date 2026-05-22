@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djiierdtf1vpf"
+path="res://.godot/imported/gatekeeper2026-05-2117_19_41.wav-55792347ab64904079c9bc85a7b7671d.sample"
+
+[deps]
+
+source_file="res://music exports/gatekeeper2026-05-2117_19_41.wav"
+dest_files=["res://.godot/imported/gatekeeper2026-05-2117_19_41.wav-55792347ab64904079c9bc85a7b7671d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

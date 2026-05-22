@@ -4,6 +4,9 @@
 [ext_resource type="Material" uid="uid://duxrv1sbho72h" path="res://Character Export Files/Materials/ClownTexture.tres" id="2_qq7ma"]
 [ext_resource type="AnimationLibrary" uid="uid://wt4lshmxqrle" path="res://Character Export Files/clown/ClownAnimations/FromGodot/ClownAnimLibrary.res" id="3_sqv3x"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qq7ma"]
+animation = &"ClownAnims/ClownExit"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sqv3x"]
 animation = &"ClownAnims/ClownItemGet"
 
@@ -25,11 +28,15 @@ animation = &"ClownAnims/ClownVictory"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jq2au"]
 animation = &"ClownAnims/ClownWalkCycle"
 
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_pchca"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qq7ma"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_g4f4y"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_sqv3x"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_8pnao"]
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_ecp6r"]
 
@@ -41,6 +48,8 @@ animation = &"ClownAnims/ClownWalkCycle"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sqv3x"]
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_28by5"]
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tpj65"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_sqv3x"]
@@ -48,7 +57,7 @@ animation = &"ClownAnims/ClownWalkCycle"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_stcd8"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7bg5t"]
-graph_offset = Vector2(-253.42398, -274.44812)
+graph_offset = Vector2(-251.91534, -97.5636)
 nodes/output/position = Vector2(1800, 120)
 nodes/Anim_Idle/node = SubResource("AnimationNodeAnimation_ecp6r")
 nodes/Anim_Idle/position = Vector2(-80, -220)
@@ -63,7 +72,7 @@ nodes/Anim_GiveItem/position = Vector2(120, 660)
 nodes/Anim_Listen/node = SubResource("AnimationNodeAnimation_fgftn")
 nodes/Anim_Listen/position = Vector2(120, 480)
 nodes/Anim_Victory/node = SubResource("AnimationNodeAnimation_ygjs2")
-nodes/Anim_Victory/position = Vector2(960, 660)
+nodes/Anim_Victory/position = Vector2(1040, 580)
 nodes/Walk/node = SubResource("AnimationNodeBlend2_stcd8")
 nodes/Walk/position = Vector2(340, -120)
 nodes/Jump/node = SubResource("AnimationNodeOneShot_sqv3x")
@@ -75,37 +84,45 @@ nodes/Give/position = Vector2(400, 480)
 nodes/Talk/node = SubResource("AnimationNodeBlend2_8pnao")
 nodes/Talk/position = Vector2(1080, 100)
 nodes/Victory/node = SubResource("AnimationNodeBlend2_sqv3x")
-nodes/Victory/position = Vector2(1400, 120)
+nodes/Victory/position = Vector2(1500, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tpj65")
 nodes/TimeScale/position = Vector2(340, 180)
 nodes/Reset_Walk/node = SubResource("AnimationNodeTimeSeek_tpj65")
 nodes/Reset_Walk/position = Vector2(140, -20)
 nodes/Reset_Victory/node = SubResource("AnimationNodeTimeSeek_sqv3x")
-nodes/Reset_Victory/position = Vector2(1240, 640)
+nodes/Reset_Victory/position = Vector2(1320, 560)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_sqv3x")
-"nodes/TimeScale 2/position" = Vector2(1480, 640)
+"nodes/TimeScale 2/position" = Vector2(1500, 480)
 nodes/Reset_Idle/node = SubResource("AnimationNodeTimeSeek_ecp6r")
 nodes/Reset_Idle/position = Vector2(160, -220)
-node_connections = [&"output", 0, &"Victory", &"Walk", 0, &"Reset_Idle", &"Walk", 1, &"Reset_Walk", &"Jump", 0, &"Walk", &"Jump", 1, &"TimeScale", &"Get", 0, &"Give", &"Get", 1, &"Anim_GetItem", &"Give", 0, &"Anim_Listen", &"Give", 1, &"Anim_GiveItem", &"Talk", 0, &"Jump", &"Talk", 1, &"Get", &"Victory", 0, &"Talk", &"Victory", 1, &"TimeScale 2", &"TimeScale", 0, &"Anim_Jump", &"Reset_Walk", 0, &"Anim_Walk", &"Reset_Victory", 0, &"Anim_Victory", &"TimeScale 2", 0, &"Reset_Victory", &"Reset_Idle", 0, &"Anim_Idle"]
+nodes/Anim_ExitDoor/node = SubResource("AnimationNodeAnimation_qq7ma")
+nodes/Anim_ExitDoor/position = Vector2(800, 1000)
+nodes/Exit/node = SubResource("AnimationNodeBlend2_pchca")
+nodes/Exit/position = Vector2(1300, 280)
+"nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_28by5")
+"nodes/TimeScale 3/position" = Vector2(1040, 1000)
+nodes/Reset_Exit/node = SubResource("AnimationNodeTimeSeek_8pnao")
+nodes/Reset_Exit/position = Vector2(1180, 1000)
+node_connections = [&"output", 0, &"Victory", &"Walk", 0, &"Reset_Idle", &"Walk", 1, &"Reset_Walk", &"Jump", 0, &"Walk", &"Jump", 1, &"TimeScale", &"Get", 0, &"Give", &"Get", 1, &"Anim_GetItem", &"Give", 0, &"Anim_Listen", &"Give", 1, &"Anim_GiveItem", &"Talk", 0, &"Jump", &"Talk", 1, &"Get", &"Victory", 0, &"Exit", &"Victory", 1, &"TimeScale 2", &"TimeScale", 0, &"Anim_Jump", &"Reset_Walk", 0, &"Anim_Walk", &"Reset_Victory", 0, &"Anim_Victory", &"TimeScale 2", 0, &"Reset_Victory", &"Reset_Idle", 0, &"Anim_Idle", &"Exit", 0, &"Talk", &"Exit", 1, &"Reset_Exit", &"TimeScale 3", 0, &"Anim_ExitDoor", &"Reset_Exit", 0, &"TimeScale 3"]
 
 [node name="ClownRigFBX" unique_id=77601808 instance=ExtResource("1_ygjs2")]
 
 [node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(1346645065) index="0" unique_id=1334537233]
 bones/2/position = Vector3(0.0007913627, 0.004041649, 0.000114312104)
-bones/2/rotation = Quaternion(6.927638e-24, -8.271806e-25, 0.036849633, 0.99932086)
+bones/2/rotation = Quaternion(6.927638e-24, -8.271806e-25, 0.036849633, 0.9993208)
 bones/3/position = Vector3(-1.6885689e-10, 0.0029941183, -8.050192e-11)
 bones/3/rotation = Quaternion(-0.01986351, 0.0006861176, 0.09760916, 0.99502635)
 bones/4/rotation = Quaternion(-0.97648805, -0.045152772, 0.028739363, 0.2088218)
 bones/6/rotation = Quaternion(-0.11916359, 0.22488807, 0.9625522, 0.0933749)
-bones/8/rotation = Quaternion(0.99554116, -0.089166656, -0.026239624, -0.016081396)
+bones/8/rotation = Quaternion(0.9955412, -0.08916666, -0.026239628, -0.016081396)
 bones/9/position = Vector3(0.00010731806, 0.005562804, -6.0597074e-07)
-bones/9/rotation = Quaternion(0.019563131, 0.009704868, 0.35429287, 0.93487954)
-bones/10/rotation = Quaternion(0.9976875, -0.060601465, 0.026689745, 0.015322862)
+bones/9/rotation = Quaternion(0.019563131, 0.009704869, 0.3542929, 0.93487954)
+bones/10/rotation = Quaternion(0.9976876, -0.06060147, 0.02668975, 0.015322864)
 bones/11/rotation = Quaternion(-0.020177452, -0.010009327, 0.36541337, 0.93057287)
 bones/12/position = Vector3(9.199295e-06, 0.0051881243, 0.00019031962)
 bones/12/rotation = Quaternion(-0.055636857, 0.0017351598, 0.25005504, 0.9666302)
 bones/13/position = Vector3(-0.00030511033, 0.003186539, -4.5399648e-10)
-bones/13/rotation = Quaternion(0.008721189, 0.039309416, 0.032812588, 0.99865013)
+bones/13/rotation = Quaternion(0.008721188, 0.039309412, 0.032812584, 0.9986501)
 
 [node name="Collar_mesh" parent="Rig/Skeleton3D" index="0" unique_id=931603580]
 surface_material_override/0 = ExtResource("2_qq7ma")
@@ -156,3 +173,6 @@ parameters/Reset_Walk/seek_request = -1.0
 parameters/Reset_Victory/seek_request = -1.0
 "parameters/TimeScale 2/scale" = 2.0
 parameters/Reset_Idle/seek_request = -1.0
+parameters/Exit/blend_amount = 0.0
+"parameters/TimeScale 3/scale" = 2.0
+parameters/Reset_Exit/seek_request = -1.0
