@@ -3,7 +3,7 @@ extends Node3D
 
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
-var current_anim := AnimStates.STASIS
+var current_anim := AnimStates.SPAWN
 
 # spawn		-> idle
 # despawn	-> stasis
@@ -41,6 +41,9 @@ func _set_door_anim():
 			await anim_tree.animation_finished
 			current_anim = AnimStates.STASIS
 			_set_door_anim()
+
+func _ready() -> void:
+	_set_door_anim()
 
 signal exit_anim_finished
 signal exit_anim_started

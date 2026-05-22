@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://eqfmf8j0l8u2"
+path="res://.godot/imported/honk2026-05-2214_40_55.wav-132001c28fe00b87538bfa1ed4b2ed34.sample"
+
+[deps]
+
+source_file="res://sound fx exports/honk2026-05-2214_40_55.wav"
+dest_files=["res://.godot/imported/honk2026-05-2214_40_55.wav-132001c28fe00b87538bfa1ed4b2ed34.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
