@@ -17,108 +17,27 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 @onready var clown: Node3D = $ClownRigFBX
 
 #anim handling
+@onready var current_anim = clown.AnimStates.IDLE
 
-var anim_tree : AnimationTree
-var blend_speed := 50.0
-
-enum {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY, EXIT}
-@export var current_anim = IDLE
-
-var walk_val : float = 0.0
-var talk_val : float = 0.0
-var get_val : float = 0.0
-var give_val : float = 0.0
-var vic_val : float = 0.0
-var exit_val : float = 0.0
-
-var Vic_Reset : bool = false
-var Walk_Reset : bool = false
 var Idle_Check : bool = false
-
-func handle_animations(delta):
+func handle_frozen():
 	match current_anim:
-		IDLE:
+		clown.AnimStates.IDLE:
 			movement_frozen = false
-			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
-			talk_val = lerpf(talk_val, 0.0, blend_speed * delta)
-			get_val = lerpf(get_val, 0.0, blend_speed * delta)
-			give_val = lerpf(give_val, 0.0, blend_speed * delta)
-			vic_val = 0.0
-			exit_val = 0.0
-			Walk_Reset = true
-		WALK:
+		clown.AnimStates.WALK:
 			movement_frozen = false
-			if Walk_Reset:
-				anim_tree.set("parameters/Reset_Walk/seek_request", 0.0)
-				Walk_Reset = false
-			walk_val = lerpf(walk_val, 1.0, blend_speed * delta)
-			talk_val = lerpf(talk_val, 0.0, blend_speed * delta)
-			get_val = lerpf(get_val, 0.0, blend_speed * delta)
-			give_val = lerpf(give_val, 0.0, blend_speed * delta)
-			vic_val = 0.0
-			exit_val = 0.0
-		JUMP:
+		clown.AnimStates.JUMP:
 			movement_frozen = false
-			walk_val = 0.0
-			talk_val = 0.0
-			get_val = 0.0
-			give_val = 0.0
-			vic_val = 0.0
-			exit_val = 0.0
-			Walk_Reset = true
-		TALK:
+		clown.AnimStates.TALK:
 			movement_frozen = true
-			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
-			talk_val = 1.0
-			get_val = lerpf(get_val, 0.0, blend_speed * delta)
-			give_val = lerpf(give_val, 0.0, blend_speed * delta)
-			vic_val = 0.0
-			exit_val = 0.0
-		GET:
+		clown.AnimStates.GET:
 			movement_frozen = true
-			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
-			talk_val = 1.0
-			get_val = lerpf(get_val, 1.0, blend_speed * delta)
-			give_val = lerpf(give_val, 0.0, blend_speed * delta)
-			vic_val = 0.0
-			exit_val = 0.0
-		GIVE:
+		clown.AnimStates.GIVE:
 			movement_frozen = true
-			walk_val = lerpf(walk_val, 0.0, blend_speed * delta)
-			talk_val = 1.0
-			get_val = lerpf(get_val, 0.0, blend_speed * delta)
-			give_val = lerpf(give_val, 1.0, blend_speed * delta)
-			vic_val = 0.0
-			exit_val = 0.0
-		VICTORY:
+		clown.AnimStates.VICTORY:
 			movement_frozen = false
-			if Vic_Reset:
-				anim_tree.set("parameters/Reset_Victory/seek_request", 0.0)
-				Vic_Reset = false
-			walk_val = 0.0
-			talk_val = 0.0
-			get_val = 0.0
-			give_val = 0.0
-			vic_val = 1.0
-			exit_val = 0.0
-		EXIT:
+		clown.AnimStates.EXIT:
 			movement_frozen = true
-			anim_tree.set("parameters/Reset_Exit/seek_request", 0.0)
-			walk_val = 0.0
-			talk_val = 0.0
-			get_val = 0.0
-			give_val = 0.0
-			vic_val = 0.0
-			exit_val = 1.0
-			
-
-func update_tree():
-	anim_tree["parameters/Walk/blend_amount"] = walk_val
-	anim_tree["parameters/Talk/blend_amount"] = talk_val
-	anim_tree["parameters/Get/blend_amount"] = get_val
-	anim_tree["parameters/Give/blend_amount"] = give_val
-	anim_tree["parameters/Victory/blend_amount"] = vic_val
-	anim_tree["parameters/Exit/blend_amount"] = exit_val
 
 var move_direction : Vector3
 
@@ -142,22 +61,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
-		#set explosion
-		Vic_Reset = true
-		current_anim = VICTORY
+		clown._set_player_anim(clown.AnimStates.VICTORY)
 	
 	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down"):
 		if $"../MapUI".visible == false:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	
+
 	if event.is_action_pressed("toggle_map"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-	
-	
+
 	if is_on_floor() and event.is_action_pressed("jump"):
-		anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		clown._set_player_anim(clown.AnimStates.JUMP)
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
@@ -168,22 +82,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _ready() -> void:
-	anim_tree = clown.get_node("AnimationTree")
+	pass
 
 func _physics_process(delta: float) -> void:
-	handle_animations(delta)
-	update_tree()
 	if DialogueManager.is_dialogue_active == true:
-		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.PLAYER_LISTEN:
-			current_anim = TALK
-		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.PLAYER_GIVE:
-			current_anim = GIVE
-		if DialogueManager.dialogue_state == DialogueManager.CONV_STATE.PLAYER_RECEIVE:
-			current_anim = GET
-	else:
-		current_anim = IDLE
-		
-	
+		match DialogueManager.dialogue_state:
+			DialogueManager.CONV_STATE.PLAYER_LISTEN:
+				clown._set_player_anim(clown.AnimStates.TALK)
+			DialogueManager.CONV_STATE.PLAYER_GIVE:
+				clown._set_player_anim(clown.AnimStates.GIVE)
+			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
+				clown._set_player_anim(clown.AnimStates.GET)
+			DialogueManager.CONV_STATE.COMPLETE:
+				clown._set_player_anim(clown.AnimStates.IDLE)
+
 	if !movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)
@@ -202,11 +114,11 @@ func _physics_process(delta: float) -> void:
 		if raw_input != Vector2(0,0):
 			clown.rotation.y = _camera_pivot.rotation.y - (raw_input.angle() + PI/2)
 			Idle_Check = true
-			current_anim = WALK
+			if clown.current_anim != clown.AnimStates.WALK:
+				clown._set_player_anim(clown.AnimStates.WALK)
 			
 		elif Idle_Check:
-			anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
-			current_anim = IDLE
+			clown._set_player_anim(clown.AnimStates.IDLE)
 			Idle_Check = false
 
 		grav_calc()
@@ -218,4 +130,3 @@ func _physics_process(delta: float) -> void:
 		global_transform = global_transform.interpolate_with(xform, .3)
 		
 		move_and_slide()
-		
