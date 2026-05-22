@@ -157,7 +157,6 @@ func _input(event: InputEvent) -> void:
 	
 	
 	if is_on_floor() and event.is_action_pressed("jump"):
-		#current_anim = JUMP
 		anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func _unhandled_input(event: InputEvent) -> void:

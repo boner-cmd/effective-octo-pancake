@@ -20,9 +20,17 @@ collision_mask = 6
 planet = NodePath("../DefaultLoadingPlanet")
 
 [node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1346645065) index="0" unique_id=1334537233]
-bones/4/rotation = Quaternion(-0.9890514, -4.3092086e-08, 1.16018036e-07, 0.14757188)
-bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574766, -0.013666067)
-bones/10/rotation = Quaternion(0.99952626, 0.0003770258, 0.02757483, 0.013666067)
+bones/2/position = Vector3(-0.0011467235, 0.002524902, 0.0003706064)
+bones/2/rotation = Quaternion(0.02216755, 0.0041761817, -0.04048715, 0.9989255)
+bones/3/rotation = Quaternion(-0.0030049384, -0.0016402706, -0.07543147, 0.9971451)
+bones/4/rotation = Quaternion(-0.925464, 0.0686871, -0.3272313, 0.17809637)
+bones/6/rotation = Quaternion(-0.17203894, 0.14195676, 0.9686031, -0.109813966)
+bones/8/rotation = Quaternion(0.9835253, 0.17652532, -0.03655091, 0.013451418)
+bones/9/rotation = Quaternion(0.070988365, 0.012401652, 0.023071257, 0.9971332)
+bones/10/rotation = Quaternion(0.9819164, 0.16532433, 0.088516936, 0.025937038)
+bones/11/rotation = Quaternion(-0.031185754, -0.02932609, -0.0005048418, 0.99908316)
+bones/12/rotation = Quaternion(-0.013178121, -0.006456093, 0.067394994, 0.99761856)
+bones/13/rotation = Quaternion(0.08117428, 0.035492223, -0.04850132, 0.9948863)
 
 [node name="MapUI" parent="." unique_id=1506166126 instance=ExtResource("2_tr2i4")]
 visible = false

@@ -2,6 +2,7 @@ extends Node3D
 
 enum {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY}
 @onready var main_scene: Node3D = $"."
+@onready var player_character: CharacterBody3D = $PlayerCharacter
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
