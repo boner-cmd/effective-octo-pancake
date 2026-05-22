@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://df67w758w3f4v"]
 
 [ext_resource type="PackedScene" uid="uid://biagbhjemrxyn" path="res://Character Export Files/clown/DoorStuff/DoorAnims.fbx" id="1_km3ct"]
+[ext_resource type="Script" uid="uid://nx54407x73xm" path="res://Character Scenes/DoorAnimHandler.gd" id="1_op1q4"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6yyf7"]
 animation = &"DoorExit"
@@ -14,16 +15,18 @@ start_offset = 0.0
 loop_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1j0c4"]
-animation = &"Door_Inactive"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jx1km"]
 animation = &"DoorSpawn"
-play_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcwvx"]
 animation = &"DoorSpawn"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_km3ct"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_op1q4"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jub30"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_63ed3"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4f2r8"]
 
@@ -31,50 +34,43 @@ animation = &"DoorSpawn"
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_xjdhb"]
 
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_5jgav"]
-
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_fy274"]
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jub30"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_k6kb1"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_p4n7t"]
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_285g0"]
-graph_offset = Vector2(-429.57275, -371.01703)
-nodes/output/position = Vector2(1180, 200)
+graph_offset = Vector2(-349.96332, -186.83801)
+nodes/output/position = Vector2(1180, 120)
 nodes/Anim_DoorIdle/node = SubResource("AnimationNodeAnimation_t78re")
-nodes/Anim_DoorIdle/position = Vector2(360, -180)
+nodes/Anim_DoorIdle/position = Vector2(240, -340)
 nodes/Door_Active/node = SubResource("AnimationNodeBlend2_4f2r8")
-nodes/Door_Active/position = Vector2(360, 20)
+nodes/Door_Active/position = Vector2(360, 0)
 nodes/Anim_DoorSpawn/node = SubResource("AnimationNodeAnimation_bcwvx")
-nodes/Anim_DoorSpawn/position = Vector2(-200, 80)
-nodes/Anim_DoorShrink/node = SubResource("AnimationNodeAnimation_jx1km")
-nodes/Anim_DoorShrink/position = Vector2(-500, 360)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_p4n7t")
-nodes/TimeScale/position = Vector2(-280, 360)
-"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_jub30")
-"nodes/TimeScale 2/position" = Vector2(-20, 80)
+nodes/Anim_DoorSpawn/position = Vector2(-240, 80)
+nodes/DoorStasis/node = SubResource("AnimationNodeTimeScale_63ed3")
+nodes/DoorStasis/position = Vector2(-40, -220)
+nodes/Reset_DoorExit/node = SubResource("AnimationNodeTimeSeek_xjdhb")
+nodes/Reset_DoorExit/position = Vector2(540, 400)
+nodes/DoorSpawnTimescale/node = SubResource("AnimationNodeTimeScale_jub30")
+nodes/DoorSpawnTimescale/position = Vector2(-80, 80)
 nodes/Reset_DoorSpawn/node = SubResource("AnimationNodeTimeSeek_fy274")
 nodes/Reset_DoorSpawn/position = Vector2(100, 80)
-nodes/Reset_DoorShrink/node = SubResource("AnimationNodeTimeSeek_5jgav")
-nodes/Reset_DoorShrink/position = Vector2(-160, 360)
+nodes/Anim_DoorInactive/node = SubResource("AnimationNodeAnimation_1j0c4")
+nodes/Anim_DoorInactive/position = Vector2(-200, -220)
 nodes/Door_Idle/node = SubResource("AnimationNodeBlend2_m37ct")
-nodes/Door_Idle/position = Vector2(560, -80)
+nodes/Door_Idle/position = Vector2(600, -120)
 nodes/DoorExit/node = SubResource("AnimationNodeBlend2_km3ct")
-nodes/DoorExit/position = Vector2(860, 120)
+nodes/DoorExit/position = Vector2(1040, 120)
 nodes/Anim_DoorExit/node = SubResource("AnimationNodeAnimation_6yyf7")
-nodes/Anim_DoorExit/position = Vector2(260, 420)
+nodes/Anim_DoorExit/position = Vector2(280, 400)
 "nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_k6kb1")
 "nodes/TimeScale 3/position" = Vector2(420, 400)
-nodes/Reset_DoorExit/node = SubResource("AnimationNodeTimeSeek_xjdhb")
-nodes/Reset_DoorExit/position = Vector2(580, 400)
-nodes/Anim_DoorInactive/node = SubResource("AnimationNodeAnimation_1j0c4")
-nodes/Anim_DoorInactive/position = Vector2(-160, -220)
-node_connections = [&"output", 0, &"DoorExit", &"Door_Active", 0, &"Anim_DoorInactive", &"Door_Active", 1, &"Reset_DoorSpawn", &"TimeScale", 0, &"Anim_DoorShrink", &"TimeScale 2", 0, &"Anim_DoorSpawn", &"Reset_DoorSpawn", 0, &"TimeScale 2", &"Reset_DoorShrink", 0, &"TimeScale", &"Door_Idle", 0, &"Anim_DoorIdle", &"Door_Idle", 1, &"Door_Active", &"DoorExit", 0, &"Door_Idle", &"DoorExit", 1, &"Reset_DoorExit", &"TimeScale 3", 0, &"Anim_DoorExit", &"Reset_DoorExit", 0, &"TimeScale 3"]
+nodes/DoorIdle_Reset/node = SubResource("AnimationNodeTimeSeek_op1q4")
+nodes/DoorIdle_Reset/position = Vector2(380, -340)
+node_connections = [&"output", 0, &"DoorExit", &"Door_Active", 0, &"DoorStasis", &"Door_Active", 1, &"Reset_DoorSpawn", &"DoorStasis", 0, &"Anim_DoorInactive", &"Reset_DoorExit", 0, &"TimeScale 3", &"DoorSpawnTimescale", 0, &"Anim_DoorSpawn", &"Reset_DoorSpawn", 0, &"DoorSpawnTimescale", &"Door_Idle", 0, &"DoorIdle_Reset", &"Door_Idle", 1, &"Door_Active", &"DoorExit", 0, &"Door_Idle", &"DoorExit", 1, &"Reset_DoorExit", &"TimeScale 3", 0, &"Anim_DoorExit", &"DoorIdle_Reset", 0, &"Anim_DoorIdle"]
 
 [node name="Door" type="Node3D" unique_id=1012687003]
+script = ExtResource("1_op1q4")
 
 [node name="DoorAnims" parent="." unique_id=1938978798 instance=ExtResource("1_km3ct")]
 
@@ -96,14 +92,14 @@ speed_scale = 2.0
 root_node = NodePath("../DoorAnims")
 tree_root = SubResource("AnimationNodeBlendTree_285g0")
 anim_player = NodePath("../DoorAnims/AnimationPlayer")
-parameters/Door_Active/blend_amount = 1.0
-parameters/TimeScale/scale = 2.0
-"parameters/TimeScale 2/scale" = -2.0
+parameters/Door_Active/blend_amount = 0.0
+parameters/DoorStasis/scale = 0.0
+parameters/Reset_DoorExit/seek_request = -1.0
+parameters/DoorSpawnTimescale/scale = -2.0
 parameters/Reset_DoorSpawn/seek_request = -1.0
-parameters/Reset_DoorShrink/seek_request = -1.0
 parameters/Door_Idle/blend_amount = 1.0
 parameters/DoorExit/blend_amount = 0.0
-"parameters/TimeScale 3/scale" = 2.0
-parameters/Reset_DoorExit/seek_request = -1.0
+"parameters/TimeScale 3/scale" = 1.0
+parameters/DoorIdle_Reset/seek_request = -1.0
 
 [editable path="DoorAnims"]
