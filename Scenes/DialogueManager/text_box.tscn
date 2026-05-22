@@ -2,6 +2,39 @@
 
 [ext_resource type="Script" uid="uid://6wsb833gjgyj" path="res://Scenes/DialogueManager/text_box.gd" id="1_0kxgl"]
 [ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_ot2p7"]
+[ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="3_mg6cl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ravpb"]
+atlas = ExtResource("3_mg6cl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55dj6"]
+atlas = ExtResource("3_mg6cl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knbji"]
+atlas = ExtResource("3_mg6cl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bg0oq"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ravpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55dj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knbji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55dj6")
+}],
+"loop": true,
+"name": &"dialogue_conf",
+"speed": 3.0
+}]
 
 [node name="TextBox" type="MarginContainer" unique_id=1198593662]
 anchors_preset = 8
@@ -12,7 +45,7 @@ anchor_bottom = 0.5
 offset_left = -16.0
 offset_top = -19.5
 offset_right = 16.0
-offset_bottom = 24.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(16, 22)
@@ -26,6 +59,29 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
+
+[node name="Control" type="Control" parent="NinePatchRect" unique_id=373519007]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="NinePatchRect/Control" unique_id=679104116]
+visible = false
+position = Vector2(4.5, 23.5)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bg0oq")
+animation = &"dialogue_conf"
+autoplay = "dialogue_conf"
+frame_progress = 0.05235145
+centered = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=874844112]
 layout_mode = 2

@@ -3,6 +3,8 @@ extends MarginContainer
 @onready var label = $MarginContainer/Label
 @onready var timer = $LetterDisplayTimer
 @onready var audio_player = $AudioStreamPlayer
+@onready var next_indicator = $NinePatchRect/Control/NextIndicator
+var conf_sound : AudioStream = preload("res://sound fx exports/typewriter slide2026-05-2014_01_48.wav")
 
 const  MAX_WIDTH = 256
 
@@ -41,6 +43,13 @@ func _display_letter():
 	letter_index += 1
 	if letter_index >= text.length():
 		finished_displaying.emit()
+		next_indicator.visible = true
+		var conf_audio_player = audio_player.duplicate()
+		get_tree().root.add_child(conf_audio_player)
+		conf_audio_player.stream = conf_sound
+		conf_audio_player.play()
+		await conf_audio_player.finished
+		conf_audio_player.queue_free()
 		return
 		
 	match text[letter_index]:
