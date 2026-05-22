@@ -9,9 +9,9 @@ extends MeshInstance3D
 
 #Dialogue goes here
 @export var initial_lines: Array[String] = [
-	"initial lines 1",
-	"initial lines 2",
-	"initial lines 3",
+	"initial lines 1 asdfajnsldkfjh akljsdhflk askljhalskj alskjskjsdkdk weoioieoak oidoie aoiufoiuwe oi",
+	"initial lines 2 asdfaoihje ioauefhiauh aiopuesfpiauh opuiashgpoiauhg owieqoiuwe oiausfpoaiufeo",
+	"initial lines 3asfew  awefasdf ewfwerwoikjloai oauifpioau owi uiayfiouweayhoiuahsdf",
 	]
 
 @export var give_lines: Array[String] = [

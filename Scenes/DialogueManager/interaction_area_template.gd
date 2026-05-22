@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var interact_ui : MarginContainer = %interact
 @onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
+@onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
+
 
 var current_NPC : MeshInstance3D
 
@@ -59,7 +61,7 @@ func interact() -> void:
 	current_NPC.current_state = current_status
 	
 	if current_status != DialogueManager.CONV_STATE.COMPLETE:
-		DialogueManager.start_dialogue(CanvasLayer_in, lines, lines_2, lines_3)
+		DialogueManager.start_dialogue(CanvasLayer_in, lines, lines_2, lines_3, speech_sound)
 		lines = []
 		lines_2 = []
 		lines_3 = []

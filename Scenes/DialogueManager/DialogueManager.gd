@@ -6,6 +6,9 @@ var dialogue_state : CONV_STATE = CONV_STATE.COMPLETE
 
 var text_box_scene = preload("res://Scenes/DialogueManager/text_box.tscn")
 
+var sfx: AudioStream
+var dialogue_finished_sfx: AudioStream
+
 var canvas_layer : CanvasLayer
 
 var dialogue_lines : Array[String] = []
@@ -27,7 +30,7 @@ var text_box
 var is_dialogue_active = false
 var can_advance_line = false
 
-func start_dialogue(CanvasLayer_in : CanvasLayer, lines: Array[String], lines_2: Array[String], lines_3: Array[String]):
+func start_dialogue(CanvasLayer_in : CanvasLayer, lines: Array[String], lines_2: Array[String], lines_3: Array[String], voice_sfx: AudioStream):
 	if is_dialogue_active:
 		return
 	canvas_layer = CanvasLayer_in
@@ -35,6 +38,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, lines: Array[String], lines_2:
 	dialogue_length = dialogue_lines.size()
 	dialogue_state = CONV_STATE.PLAYER_LISTEN
 	
+	sfx = voice_sfx
 	#handle wonk cases
 	if lines_2 != []:
 		complex = true
@@ -65,7 +69,7 @@ func _show_text_box(CanvasLayer_in):
 		dialogue_lines_3 = []
 		#dialogue_state = CONV_STATE.PLAYER_RECEIVE
 		
-	text_box.display_text(dialogue_lines[current_line_index])
+	text_box.display_text(dialogue_lines[current_line_index], sfx)
 	can_advance_line = false
 
 func _on_text_box_finished_displaying():
