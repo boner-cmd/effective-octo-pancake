@@ -66,5 +66,8 @@ vertical_alignment = 1
 [node name="PlayerAnimationPosition" type="Node3D" parent="." unique_id=1635482596]
 transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 0.033, 0.6)
 
+[connection signal="area_entered" from="DoorBaseModel/DoorSpawnRadius" to="DoorBaseModel" method="_on_door_spawn_radius_area_entered"]
+[connection signal="area_exited" from="DoorBaseModel/DoorSpawnRadius" to="DoorBaseModel" method="_on_door_spawn_radius_area_exited"]
+
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]

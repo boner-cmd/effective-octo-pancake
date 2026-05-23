@@ -56,7 +56,7 @@ func align_with_floor(floor_normal : Vector3):
 	xform.basis = xform.basis.orthonormalized()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and $"../MapUI".visible == false:
+	if event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -64,8 +64,7 @@ func _input(event: InputEvent) -> void:
 		clown._set_player_anim(clown.AnimStates.VICTORY)
 	
 	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down"):
-		if $"../MapUI".visible == false:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	if event.is_action_pressed("toggle_map"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

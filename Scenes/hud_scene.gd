@@ -1,8 +1,7 @@
 extends CanvasLayer
 
-@onready var interaction_prompt : MarginContainer = $VBoxContainer/InteractionMargin
-@onready var interaction_label : Label = $VBoxContainer/InteractionMargin/LabelMargin/InteractionLabel
-@onready var inventory_itemlist : ItemList = $VBoxContainer/InventoryItemList
+@onready var interaction_prompt : MarginContainer = $Control/InteractionMargin
+@onready var interaction_label : Label = $Control/InteractionMargin/LabelMargin/InteractionLabel
 @onready var stickerbook : NinePatchRect = $StickerbookBackground
 @onready var pause_background : NinePatchRect = $PauseBackground
 @onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
