@@ -1,0 +1,296 @@
+[gd_scene format=3 uid="uid://b58oygg7njg67"]
+
+[ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
+[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="1_uy0wo"]
+[ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/master_audio_slider.gd" id="2_yw1hr"]
+[ext_resource type="Script" uid="uid://uutr5x58bdch" path="res://Scenes/music_audio_slider.gd" id="3_30jjv"]
+[ext_resource type="Script" uid="uid://b0cmaqk0herjg" path="res://Scenes/sfx_audio_slider.gd" id="4_ivp0t"]
+[ext_resource type="Script" uid="uid://ccdcjyi3r58yx" path="res://Scenes/stickerbook_background.gd" id="6_30jjv"]
+[ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
+size = Vector2(60, 60)
+
+[node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
+script = ExtResource("1_1m71x")
+
+[node name="PauseBackground" type="NinePatchRect" parent="." unique_id=1506672344]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MasterAudioSlider" type="HSlider" parent="PauseBackground" unique_id=1183634847]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.05
+script = ExtResource("2_yw1hr")
+
+[node name="MusicAudioSlider" type="HSlider" parent="PauseBackground" unique_id=447510025]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+script = ExtResource("3_30jjv")
+
+[node name="SfxAudioSlider" type="HSlider" parent="PauseBackground" unique_id=1153038057]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+script = ExtResource("4_ivp0t")
+
+[node name="AudioLabel" type="Label" parent="PauseBackground" unique_id=477267092]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Audio Settings"
+
+[node name="ContinueButton" type="Button" parent="PauseBackground" unique_id=197499035]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="QuitButton" type="Button" parent="PauseBackground" unique_id=1755189773]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Control" type="Control" parent="." unique_id=1135616992]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InteractionMargin" type="MarginContainer" parent="Control" unique_id=1523812863]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 504.0
+offset_top = 1190.0
+offset_right = 696.0
+offset_bottom = 1230.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InteractionBackground" type="NinePatchRect" parent="Control/InteractionMargin" unique_id=301736427]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_uy0wo")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="LabelMargin" type="MarginContainer" parent="Control/InteractionMargin" unique_id=1180095255]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InteractionLabel" type="Label" parent="Control/InteractionMargin/LabelMargin" unique_id=1082798133]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "press F to pay respects"
+vertical_alignment = 1
+
+[node name="InventoryMargin" type="MarginContainer" parent="Control" unique_id=706599872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 1140
+script = ExtResource("6_ivp0t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/InventoryMargin" unique_id=180218825]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ItemSlot1" type="TextureRect" parent="Control/InventoryMargin/VBoxContainer" unique_id=308854507]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_30jjv")
+stretch_mode = 3
+
+[node name="ItemSlot1Label" type="Label" parent="Control/InventoryMargin/VBoxContainer/ItemSlot1" unique_id=1911140951]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Item 1"
+horizontal_alignment = 1
+
+[node name="ItemSlot2" type="TextureRect" parent="Control/InventoryMargin/VBoxContainer" unique_id=661199461]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_30jjv")
+stretch_mode = 3
+
+[node name="ItemSlot2Label" type="Label" parent="Control/InventoryMargin/VBoxContainer/ItemSlot2" unique_id=711442911]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Item 2"
+horizontal_alignment = 1
+
+[node name="ItemSlot3" type="TextureRect" parent="Control/InventoryMargin/VBoxContainer" unique_id=947251293]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_30jjv")
+stretch_mode = 3
+
+[node name="ItemSlot3Label" type="Label" parent="Control/InventoryMargin/VBoxContainer/ItemSlot3" unique_id=1928373476]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Item 3"
+horizontal_alignment = 1
+
+[node name="StickerbookBackground" type="NinePatchRect" parent="." unique_id=878957700]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_30jjv")
+
+[node name="KingSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1416114579]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HorseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=616505084]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AstronautSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1002752034]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SnowmanSticker" type="TextureRect" parent="StickerbookBackground" unique_id=752233729]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SisyphusSticker" type="TextureRect" parent="StickerbookBackground" unique_id=784344791]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GreaseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1648624159]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DeerSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1724011015]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GateSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1480087912]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1142725549]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OrgansSticker" type="TextureRect" parent="StickerbookBackground" unique_id=530485664]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MassSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1949142771]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LampSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1586886347]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NorgansSticker" type="TextureRect" parent="StickerbookBackground" unique_id=823099394]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MichaelwaveSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1783725147]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RobotSticker" type="TextureRect" parent="StickerbookBackground" unique_id=59128618]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GibberishSticker" type="TextureRect" parent="StickerbookBackground" unique_id=714743182]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IndividualSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1316062858]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IdeaSticker" type="TextureRect" parent="StickerbookBackground" unique_id=434983327]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BodhiSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1228603223]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SlimeSticker" type="TextureRect" parent="StickerbookBackground" unique_id=448576117]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CompleteStamp" type="TextureRect" parent="StickerbookBackground" unique_id=859565293]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="mouse_exited" from="PauseBackground/MasterAudioSlider" to="PauseBackground/MasterAudioSlider" method="_on_mouse_exited"]
+[connection signal="value_changed" from="PauseBackground/MasterAudioSlider" to="PauseBackground/MasterAudioSlider" method="_on_value_changed"]
+[connection signal="pressed" from="PauseBackground/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseBackground/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="visibility_changed" from="StickerbookBackground" to="StickerbookBackground" method="_on_stickerbook_background_visibility_changed"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://t7bbrvb0xc4b"]
 
-[ext_resource type="Script" uid="uid://ddv6ljldka0gh" path="res://Scenes/confirmation_dialog.gd" id="1_4x3e3"]
+[ext_resource type="Script" uid="uid://ddv6ljldka0gh" path="res://Scenes/to be integrated and deleted/old2.gd" id="1_dbl38"]
 
 [sub_resource type="Gradient" id="Gradient_c1bqd"]
 
@@ -27,9 +27,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=291248414]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ConfirmationControl" type="Control" parent="." unique_id=520656534]
 anchors_preset = 0
-script = ExtResource("1_4x3e3")
+script = ExtResource("1_dbl38")
 
 [node name="yeahIndicator" type="TextureRect" parent="ConfirmationControl" unique_id=992860358]
 layout_mode = 1
