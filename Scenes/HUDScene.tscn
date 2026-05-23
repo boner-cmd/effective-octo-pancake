@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b58oygg7njg67"]
 
 [ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
-[ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/master_audio_slider.gd" id="2_yw1hr"]
+[ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
+[ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://Placeholder Assets (UI)/icon.svg" id="3_yw1hr"]
 [ext_resource type="Script" uid="uid://ccdcjyi3r58yx" path="res://Scenes/stickerbook_background.gd" id="6_30jjv"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 
@@ -87,33 +88,118 @@ text = "Item 3"
 horizontal_alignment = 1
 
 [node name="PauseBackground" type="NinePatchRect" parent="." unique_id=1506672344]
-visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -442.0
+offset_top = -212.0
+offset_right = 442.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yw1hr")
+patch_margin_left = 52
+patch_margin_top = 56
+patch_margin_right = 52
+patch_margin_bottom = 53
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="PauseLabel" type="Label" parent="PauseBackground" unique_id=404488287]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 56
+text = "~P~A~U~S~E~"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseBackground" unique_id=1394599374]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="MasterAudioSlider" type="HSlider" parent="PauseBackground" unique_id=1183634847]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
-max_value = 1.0
-step = 0.05
 script = ExtResource("2_yw1hr")
 
-[node name="AudioLabel" type="Label" parent="PauseBackground" unique_id=477267092]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Audio Settings"
+[node name="MasterAudioSlider" type="HSlider" parent="PauseBackground/VBoxContainer" unique_id=1183634847]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
 
-[node name="ContinueButton" type="Button" parent="PauseBackground" unique_id=197499035]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="MasterAudioLabel" type="Label" parent="PauseBackground/VBoxContainer/MasterAudioSlider" unique_id=477267092]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = -10.0
+offset_right = 56.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Master Volume Control"
 
-[node name="QuitButton" type="Button" parent="PauseBackground" unique_id=1755189773]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="MusicAudioSlider" type="HSlider" parent="PauseBackground/VBoxContainer" unique_id=373813254]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="MusicAudioLabel" type="Label" parent="PauseBackground/VBoxContainer/MusicAudioSlider" unique_id=1035481597]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = -10.0
+offset_right = 56.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Music Volume Control"
+
+[node name="SfxAudioSlider" type="HSlider" parent="PauseBackground/VBoxContainer" unique_id=1726474070]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="SfxAudioLabel" type="Label" parent="PauseBackground/VBoxContainer/SfxAudioSlider" unique_id=1409284279]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = -10.0
+offset_right = 56.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "SFX Audio Control"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseBackground" unique_id=1250342233]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -61.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="PauseBackground/HBoxContainer" unique_id=197499035]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Continue"
+
+[node name="QuitButton" type="Button" parent="PauseBackground/HBoxContainer" unique_id=1755189773]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit
+"
 
 [node name="StickerbookBackground" type="NinePatchRect" parent="." unique_id=878957700]
 visible = false
@@ -227,8 +313,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="mouse_exited" from="PauseBackground/MasterAudioSlider" to="PauseBackground/MasterAudioSlider" method="_on_mouse_exited"]
-[connection signal="value_changed" from="PauseBackground/MasterAudioSlider" to="PauseBackground/MasterAudioSlider" method="_on_value_changed"]
-[connection signal="pressed" from="PauseBackground/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PauseBackground/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_exited" from="PauseBackground/VBoxContainer/MasterAudioSlider" to="PauseBackground/VBoxContainer" method="_on_any_mouse_exited"]
+[connection signal="value_changed" from="PauseBackground/VBoxContainer/MasterAudioSlider" to="PauseBackground/VBoxContainer" method="_on_master_value_changed"]
+[connection signal="mouse_exited" from="PauseBackground/VBoxContainer/MusicAudioSlider" to="PauseBackground/VBoxContainer" method="_on_any_mouse_exited"]
+[connection signal="value_changed" from="PauseBackground/VBoxContainer/MusicAudioSlider" to="PauseBackground/VBoxContainer" method="_on_music_value_changed"]
+[connection signal="mouse_exited" from="PauseBackground/VBoxContainer/SfxAudioSlider" to="PauseBackground/VBoxContainer" method="_on_any_mouse_exited"]
+[connection signal="value_changed" from="PauseBackground/VBoxContainer/SfxAudioSlider" to="PauseBackground/VBoxContainer" method="_on_sfx_value_changed"]
+[connection signal="pressed" from="PauseBackground/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseBackground/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="visibility_changed" from="StickerbookBackground" to="StickerbookBackground" method="_on_stickerbook_background_visibility_changed"]
