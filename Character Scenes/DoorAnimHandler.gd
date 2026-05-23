@@ -50,8 +50,9 @@ signal exit_anim_started
 
 
 func _on_door_spawn_radius_area_entered(_area: Area3D) -> void:
-	_set_door_anim(AnimStates.SPAWN)
 	print("entered")
+	_set_door_anim(AnimStates.SPAWN)
+	
 
 func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
 	_set_door_anim(AnimStates.DESPAWN)

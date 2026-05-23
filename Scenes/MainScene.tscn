@@ -21,19 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
 collision_mask = 6
 planet = NodePath("../DefaultLoadingPlanet")
 
-[node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 735522767) index="0" unique_id=2084603542]
-bones/2/position = Vector3(0, 0.002500003, 0)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
-bones/4/rotation = Quaternion(-0.9890514, -4.309209e-08, 1.16018036e-07, 0.14757188)
-bones/6/rotation = Quaternion(7.69735e-08, 0.16749677, 0.9858726, -1.30775675e-08)
-bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574765, -0.013666067)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
-bones/10/rotation = Quaternion(0.99952626, 0.00037702578, 0.02757483, 0.013666067)
-bones/11/rotation = Quaternion(0, 0, 0, 1)
-bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201042, 0.991851)
-bones/13/rotation = Quaternion(0, 0, 0, 1)
-
 [node name="DefaultLoadingPlanet" type="StaticBody3D" parent="." unique_id=7469528]
 collision_layer = 2
 
