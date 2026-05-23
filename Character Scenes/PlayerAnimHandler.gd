@@ -86,6 +86,7 @@ func _get_current_anim() -> AnimStates:
 
 func _set_player_anim(anim : AnimStates):
 	current_anim = anim
+	print(current_anim)
 	match current_anim:
 		AnimStates.IDLE:
 			anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
@@ -123,7 +124,9 @@ func _set_player_anim(anim : AnimStates):
 			
 			await anim_tree.animation_finished
 			_set_player_anim(AnimStates.IDLE)
+			
 		AnimStates.GET:
+			
 			get_sound_player()
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)
 			anim_tree.set("parameters/Exit/blend_amount", 0.0)
@@ -132,6 +135,7 @@ func _set_player_anim(anim : AnimStates):
 			anim_tree.set("parameters/Talk/blend_amount", 1.0)
 			anim_tree.set("parameters/Get/blend_amount", 1.0)
 			anim_tree.set("parameters/Give/blend_amount", 0.0)
+			
 		AnimStates.GIVE:
 			give_sound_player()
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)

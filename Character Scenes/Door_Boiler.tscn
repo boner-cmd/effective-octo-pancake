@@ -75,7 +75,7 @@ collision_mask = 0
 shape = SubResource("CylinderShape3D_ua6hq")
 
 [node name="PlayerAnimationPosition" type="Node3D" parent="." unique_id=1635482596]
-transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 0.033, 0.6)
+transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 5.1129584, 0.60419047)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941331369]
 

@@ -6,7 +6,7 @@ const sfx_spawn = preload("uid://t6h5ww03rkm7")
 const sfx_exit = preload("uid://dklltp1vyr8pp")
 
 @onready var anim_tree: AnimationTree = $AnimationTree
-@onready var player_animation_position: Node3D = $"../PlayerAnimationPosition"
+@onready var player_exit_position: Node3D = $"../PlayerAnimationPosition"
 
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
@@ -76,7 +76,7 @@ func spawn_sound_player():
 func despawn_sound_player():
 	var despawn_player = audio_stream_player.duplicate()
 	despawn_player.stream = sfx_despawn
-	get_tree().root.add_child(despawn_player)
+	get_tree().root.call_deferred("add_child", despawn_player)
 	despawn_player.pitch_scale += randf_range(-0.1, 0.1)
 	despawn_player.play()
 	await despawn_player.finished
@@ -90,5 +90,17 @@ func exit_sound_player():
 	await exit_player.finished
 	exit_player.queue_free()
 	
-func interact():
-	pass
+func interact(player : CharacterBody3D):
+	player.FUCKOFF = true
+	var rig = player.get_child(2)
+	var clone = rig.duplicate()
+	get_tree().root.add_child(clone)
+	rig.visible = false
+	rig._set_player_anim(rig.AnimStates.IDLE)
+	clone.global_position = player_exit_position.global_position
+	clone.global_rotation = player_exit_position.global_rotation
+	clone._set_player_anim(clone.AnimStates.EXIT)
+	
+	_set_door_anim(AnimStates.EXIT)
+	
+	

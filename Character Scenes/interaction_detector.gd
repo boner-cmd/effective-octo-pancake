@@ -13,6 +13,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and current_npc:
 		current_npc.interact()
 		interact_ui.visible = false
+		
+	#initiate exit animation
+	if event.is_action_pressed("interact") and current_exit:
+		var exit
+		exit = current_exit.get_parent()
+		var player = self.get_parent()
+		exit.interact(player)
+
 
 func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Door"):

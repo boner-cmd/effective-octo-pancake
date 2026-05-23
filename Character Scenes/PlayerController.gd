@@ -24,6 +24,8 @@ var convo_flip_1 = true
 var convo_flip_2 = true
 var convo_flip_3 = true
 
+var FUCKOFF = false
+
 var Idle_Check : bool = false
 
 var move_direction : Vector3
@@ -56,7 +58,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_map"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	if is_on_floor() and event.is_action_pressed("jump"):
+	if is_on_floor() and event.is_action_pressed("jump") and clown.current_anim != clown.AnimStates.EXIT:
 		clown._set_player_anim(clown.AnimStates.JUMP)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -89,6 +91,9 @@ func _physics_process(delta: float) -> void:
 			DialogueManager.CONV_STATE.COMPLETE:
 				clown._set_player_anim(clown.AnimStates.IDLE)
 		movement_frozen = true
+	elif FUCKOFF:
+		movement_frozen = true
+		velocity = Vector3(0,0,0)
 	else:
 		movement_frozen = false
 		convo_flip_1 = true
