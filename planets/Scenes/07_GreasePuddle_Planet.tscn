@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://5skj82rwpnms"]
+
+[ext_resource type="Material" uid="uid://la1b523mxj4" path="res://planets/materials/07_grease_planet.tres" id="1_ctb4u"]
+[ext_resource type="Material" uid="uid://cb2m2isclve0i" path="res://planets/materials/07_grease_skybox.tres" id="2_6h86k"]
+[ext_resource type="Material" uid="uid://7dyo7kkm0s0d" path="res://planets/materials/02_horse_skybox.tres" id="3_2nyx6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
+sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+sky_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_bottom_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_4pae5"]
+sky_material = SubResource("ProceduralSkyMaterial_id08o")
+
+[sub_resource type="Environment" id="Environment_rtanu"]
+background_mode = 2
+sky = SubResource("Sky_4pae5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_wwmx7"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_d0l1o"]
+flip_faces = true
+radius = 5.0
+height = 10.0
+
+[node name="07_Grease_Planet" type="Node3D" unique_id=731662202]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
+environment = SubResource("Environment_rtanu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1223939684]
+material_override = ExtResource("1_ctb4u")
+mesh = SubResource("SphereMesh_wwmx7")
+
+[node name="SkySphere" type="MeshInstance3D" parent="." unique_id=1890027866]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = ExtResource("2_6h86k")
+mesh = SubResource("SphereMesh_d0l1o")
+surface_material_override/0 = ExtResource("3_2nyx6")

@@ -57,5 +57,4 @@ surface_material_override/0 = null
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
-[editable path="Door/DoorBaseModel2"]
-[editable path="Door/DoorBaseModel2/DoorAnims"]
+[editable path="Door/InteractionArea"]

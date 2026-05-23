@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c4dc8tgvesidv"]
+
+[ext_resource type="Texture2D" uid="uid://corpj8fathg78" path="res://planets/textures/Skybox Textures/snowman skybox.png" id="1_2eel5"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_2eel5")
+uv1_scale = Vector3(2, 2, 2)

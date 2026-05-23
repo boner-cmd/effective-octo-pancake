@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c3lvpt6xbwcfa"]
+
+[resource]
+shading_mode = 0
+uv1_scale = Vector3(2, 2, 2)

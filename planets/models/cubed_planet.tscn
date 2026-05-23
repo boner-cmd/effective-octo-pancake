@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bkytuxq3o6ibv"]
+
+[ext_resource type="PackedScene" uid="uid://c0b777cfi1olv" path="res://planets/models/Cubed_Planet_FBX.fbx" id="1_sse8d"]
+
+[node name="Cubed_Planet" unique_id=313376245 instance=ExtResource("1_sse8d")]

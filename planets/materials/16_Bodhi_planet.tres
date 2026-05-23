@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ce7kyr7xjqowx"]
+
+[ext_resource type="Texture2D" uid="uid://t3hposi1axpf" path="res://planets/textures/Planet Textures/boddhisatva lotus texture.png" id="1_s4kgs"]
+
+[resource]
+albedo_texture = ExtResource("1_s4kgs")
+uv1_scale = Vector3(3, 3, 3)

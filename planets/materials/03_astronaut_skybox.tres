@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bnb0pjdjojyn2"]
+
+[ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="1_ckqfk"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_ckqfk")
+uv1_scale = Vector3(2, 2, 2)

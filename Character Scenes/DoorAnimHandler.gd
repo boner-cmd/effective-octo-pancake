@@ -1,6 +1,8 @@
 extends Node3D
 @onready var anim_tree: AnimationTree = $AnimationTree
 
+
+
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
 var current_anim := AnimStates.STASIS
@@ -45,3 +47,11 @@ func _ready() -> void:
 
 signal exit_anim_finished
 signal exit_anim_started
+
+
+func _on_door_spawn_radius_area_entered(_area: Area3D) -> void:
+	_set_door_anim(AnimStates.SPAWN)
+	print("entered")
+
+func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
+	_set_door_anim(AnimStates.DESPAWN)

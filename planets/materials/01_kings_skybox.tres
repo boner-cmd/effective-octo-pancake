@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://csvyqxvwtg5u0"]
+
+[ext_resource type="Texture2D" uid="uid://bsdu6ttvqnss" path="res://planets/textures/Skybox Textures/king skybox.png" id="1_1sbpi"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_1sbpi")

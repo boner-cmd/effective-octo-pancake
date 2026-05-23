@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c74pmtds6alo8"]
+
+[ext_resource type="Texture2D" uid="uid://cbi3wyweyd87d" path="res://planets/textures/Planet Textures/no i dear planet texture.png" id="1_k0rel"]
+
+[resource]
+albedo_texture = ExtResource("1_k0rel")
+uv1_scale = Vector3(2, 2, 2)

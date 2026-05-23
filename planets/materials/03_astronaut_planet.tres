@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://34cgvgmstxdi"]
+
+[ext_resource type="Texture2D" uid="uid://cj363unhfokc8" path="res://planets/textures/Planet Textures/moon planet texture expore png.png" id="1_pq57w"]
+
+[resource]
+albedo_texture = ExtResource("1_pq57w")
+uv1_scale = Vector3(2, 2, 2)

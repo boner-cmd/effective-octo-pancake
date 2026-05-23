@@ -1,31 +1,70 @@
 [gd_scene format=3 uid="uid://cea4qqppfgm2"]
 
 [ext_resource type="PackedScene" uid="uid://df67w758w3f4v" path="res://Character Scenes/door.tscn" id="2_coq8p"]
-[ext_resource type="Material" uid="uid://cipybu1vobpug" path="res://Character Export Files/Materials/glow_placeholder.tres" id="3_coq8p"]
+[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_cyo0d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ua6hq"]
+height = 4.0
+radius = 5.0
 
 [node name="Door" type="Node3D" unique_id=683049571]
 
 [node name="DoorBaseModel" parent="." unique_id=1012687003 instance=ExtResource("2_coq8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
 
-[node name="Viewport" parent="DoorBaseModel/DoorAnims/Skeleton3D" parent_id_path=PackedInt32Array(1012687003, 1938978798, 1115533347) index="1" unique_id=2090780855]
-visible = true
-surface_material_override/0 = ExtResource("3_coq8p")
+[node name="DoorCollider" parent="DoorBaseModel" index="2" unique_id=1935212185]
+collision_mask = 1
 
-[node name="DoorBaseModel2" parent="." unique_id=1631512656 instance=ExtResource("2_coq8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.841933, -0.1, 0)
+[node name="DoorSpawnRadius" type="Area3D" parent="DoorBaseModel" unique_id=1921781608 groups=["Door"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999999, 0)
+collision_layer = 16
+collision_mask = 0
 
-[node name="Viewport" parent="DoorBaseModel2/DoorAnims/Skeleton3D" parent_id_path=PackedInt32Array(1631512656, 1938978798, 1115533347) index="1" unique_id=2090780855]
-visible = true
-surface_material_override/0 = ExtResource("3_coq8p")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBaseModel/DoorSpawnRadius" unique_id=196864834]
+shape = SubResource("CylinderShape3D_ua6hq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="DoorBaseModel/DoorSpawnRadius" unique_id=260731792]
+unique_name_in_owner = true
+follow_viewport_enabled = true
+
+[node name="interact" type="MarginContainer" parent="DoorBaseModel/DoorSpawnRadius/CanvasLayer" unique_id=6819583]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -170.0
+offset_right = 96.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DoorBaseModel/DoorSpawnRadius/CanvasLayer/interact" unique_id=1479198824]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_cyo0d")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="DoorBaseModel/DoorSpawnRadius/CanvasLayer/interact" unique_id=228315921]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="DoorBaseModel/DoorSpawnRadius/CanvasLayer/interact/MarginContainer" unique_id=328678636]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "press F to pay respects"
+vertical_alignment = 1
 
 [node name="PlayerAnimationPosition" type="Node3D" parent="." unique_id=1635482596]
 transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 0.033, 0.6)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1192522549]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.990438, 0.7667844, 2.101192)
-
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]
-[editable path="DoorBaseModel2"]
-[editable path="DoorBaseModel2/DoorAnims"]

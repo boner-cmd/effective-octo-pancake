@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d2ggu0k5ei3n6"]
+
+[ext_resource type="Texture2D" uid="uid://ce7yaxtgpcj3o" path="res://planets/textures/Skybox Textures/body without organs skybox.png" id="1_tbjac"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_tbjac")

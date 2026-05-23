@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvjaide64hjns"]
+
+[ext_resource type="Texture2D" uid="uid://bfkcyyc7h443b" path="res://planets/textures/Skybox Textures/bodhisattva skybox.png" id="1_hpp7s"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_hpp7s")
+uv1_scale = Vector3(2, 2, 2)

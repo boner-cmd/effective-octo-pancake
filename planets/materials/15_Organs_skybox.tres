@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8085eq3m7wk3"]
+
+[ext_resource type="Texture2D" uid="uid://do2mp2o84l7pe" path="res://planets/textures/Skybox Textures/body with organs skybox.png" id="1_2sso7"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_2sso7")
+uv1_scale = Vector3(2, 2, 2)

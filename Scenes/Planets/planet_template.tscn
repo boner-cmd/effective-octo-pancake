@@ -1,17 +1,13 @@
 [gd_scene format=3 uid="uid://dp211qoeihfpj"]
 
-[ext_resource type="Material" uid="uid://du402rmq4g601" path="res://planets/materials/king_planet_mat.tres" id="1_yxctx"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_srowx"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_aq7eh"]
-
-[sub_resource type="Sky" id="Sky_v648s"]
-sky_material = SubResource("PhysicalSkyMaterial_aq7eh")
+[sub_resource type="Sky" id="Sky_yxctx"]
+sky_material = SubResource("ProceduralSkyMaterial_srowx")
 
 [sub_resource type="Environment" id="Environment_aq7eh"]
 background_mode = 2
-sky = SubResource("Sky_v648s")
-tonemap_mode = 2
-glow_enabled = true
+sky = SubResource("Sky_yxctx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhkr4"]
 albedo_color = Color(0.5220287, 1, 1, 1)
@@ -31,5 +27,5 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="MeshInstance" type="MeshInstance3D" parent="." unique_id=1376272532]
+visible = false
 mesh = SubResource("SphereMesh_7rqgy")
-surface_material_override/0 = ExtResource("1_yxctx")
