@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dgx7y2tmwq846"]
+
+[ext_resource type="PackedScene" uid="uid://biagbhjemrxyn" path="res://Character Export Files/clown/DoorStuff/DoorAnims.fbx" id="1_uhueb"]
+[ext_resource type="Material" uid="uid://bsi1h4klkvmwi" path="res://Character Export Files/clown/DoorStuff/knob_mat.tres" id="2_tlx66"]
+[ext_resource type="Material" uid="uid://bschggle55uun" path="res://Character Export Files/clown/DoorStuff/frame_mat.tres" id="3_qn03r"]
+
+[node name="DoorAnims" unique_id=1938978798 instance=ExtResource("1_uhueb")]
+
+[node name="Door" parent="Skeleton3D" parent_id_path=PackedInt32Array(1115533347) index="0" unique_id=1374544708]
+surface_material_override/1 = ExtResource("2_tlx66")
+
+[node name="Frame" parent="Skeleton3D" parent_id_path=PackedInt32Array(1115533347) index="2" unique_id=211299161]
+surface_material_override/0 = ExtResource("3_qn03r")

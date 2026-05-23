@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://du48lbtyb65at" path="res://Scenes/Inventory.tscn" id="2_tr2i4"]
 [ext_resource type="PackedScene" uid="uid://dp211qoeihfpj" path="res://Scenes/Planets/planet_template.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_7rqgy"]
-[ext_resource type="PackedScene" uid="uid://dlwm28pougg7e" path="res://planets/Scenes/01_Kings_Planet.tscn" id="7_f140w"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_q68mp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
@@ -29,17 +28,11 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_ylgs7")
 
 [node name="PlanetTemplate" parent="DefaultLoadingPlanet" unique_id=731662202 instance=ExtResource("3_nhkr4")]
-visible = false
 
 [node name="InteractionAreaTemplate" parent="DefaultLoadingPlanet" unique_id=1441746603 instance=ExtResource("4_7rqgy")]
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_q68mp")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -5)
-
-[node name="Viewport" parent="Door/DoorBaseModel/DoorAnims/Skeleton3D" parent_id_path=PackedInt32Array(683049571, 1012687003, 1938978798, 1115533347) index="1" unique_id=2090780855]
-surface_material_override/0 = null
-
-[node name="KingsPlanet" parent="." unique_id=1308541420 instance=ExtResource("7_f140w")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 
 [connection signal="ui_closed" from="MapUI" to="." method="_on_map_ui_ui_closed"]
 [connection signal="ui_opened" from="MapUI" to="." method="_on_map_ui_ui_opened"]
@@ -48,5 +41,4 @@ surface_material_override/0 = null
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
-[editable path="Door/DoorBaseModel2"]
-[editable path="Door/DoorBaseModel2/DoorAnims"]
+[editable path="Door/InteractionArea"]

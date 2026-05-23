@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://7banle6yv2gq"
+path="res://.godot/imported/door activate2026-05-2223_57_42.wav-3ce1f523fd630b630ca21974506d4599.sample"
+
+[deps]
+
+source_file="res://sound fx exports/door activate2026-05-2223_57_42.wav"
+dest_files=["res://.godot/imported/door activate2026-05-2223_57_42.wav-3ce1f523fd630b630ca21974506d4599.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
