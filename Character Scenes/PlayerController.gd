@@ -24,7 +24,7 @@ var convo_flip_1 = true
 var convo_flip_2 = true
 var convo_flip_3 = true
 
-var FUCKOFF = false
+var exit_check = false
 
 var Idle_Check : bool = false
 
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 			DialogueManager.CONV_STATE.COMPLETE:
 				clown._set_player_anim(clown.AnimStates.IDLE)
 		movement_frozen = true
-	elif FUCKOFF:
+	elif exit_check:
 		movement_frozen = true
 		velocity = Vector3(0,0,0)
 	else:

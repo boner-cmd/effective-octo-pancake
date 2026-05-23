@@ -91,7 +91,7 @@ func exit_sound_player():
 	exit_player.queue_free()
 	
 func interact(player : CharacterBody3D):
-	player.FUCKOFF = true
+	player.exit_check = true
 	var rig = player.get_child(2)
 	var clone = rig.duplicate()
 	get_tree().root.add_child(clone)
