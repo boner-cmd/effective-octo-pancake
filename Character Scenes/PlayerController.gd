@@ -20,24 +20,6 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 @onready var current_anim = clown.AnimStates.IDLE
 
 var Idle_Check : bool = false
-func handle_frozen():
-	match current_anim:
-		clown.AnimStates.IDLE:
-			movement_frozen = false
-		clown.AnimStates.WALK:
-			movement_frozen = false
-		clown.AnimStates.JUMP:
-			movement_frozen = false
-		clown.AnimStates.TALK:
-			movement_frozen = true
-		clown.AnimStates.GET:
-			movement_frozen = true
-		clown.AnimStates.GIVE:
-			movement_frozen = true
-		clown.AnimStates.VICTORY:
-			movement_frozen = false
-		clown.AnimStates.EXIT:
-			movement_frozen = true
 
 var move_direction : Vector3
 
@@ -94,6 +76,9 @@ func _physics_process(delta: float) -> void:
 				clown._set_player_anim(clown.AnimStates.GET)
 			DialogueManager.CONV_STATE.COMPLETE:
 				clown._set_player_anim(clown.AnimStates.IDLE)
+		movement_frozen = true
+	else:
+		movement_frozen = false
 
 	if !movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta

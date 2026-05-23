@@ -72,6 +72,7 @@ func _set_player_anim(anim : AnimStates):
 			anim_tree.set("parameters/Give/blend_amount", 0.0)
 			
 		AnimStates.VICTORY:
+			anim_tree.set("parameters/Reset_Victory/seek_request", 0.0)
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)
 			anim_tree.set("parameters/Exit/blend_amount", 0.0)
 			anim_tree.set("parameters/Victory/blend_amount", 1.0)
