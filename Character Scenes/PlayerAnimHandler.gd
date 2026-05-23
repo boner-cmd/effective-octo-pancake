@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 @onready var walk_cycle_time: Timer = $"../walk_cycle_time"
+@onready var honk_delay: Timer = $"../honk_delay"
 
 const sfx_get_item = preload("uid://cp17cger7bu5p")
 const sfx_give_item = preload("uid://dkwc6p8t3hdek")
@@ -38,12 +39,19 @@ func jump_sound_player():
 	jump_player.queue_free()
 
 func honk_sound_player():
+	
+	var honk_time = honk_delay.duplicate()
 	var honk_player = audio_stream_player.duplicate()
 	honk_player.stream = sfx_honk
 	get_tree().root.add_child(honk_player)
+	get_tree().root.add_child(honk_time)
+	honk_time.start()
+	await honk_time.timeout
 	honk_player.pitch_scale += randf_range(-0.05, 0.05)
 	honk_player.play()
 	await honk_player.finished
+	print("timerfinish")
+	honk_time.queue_free()
 	honk_player.queue_free()
 
 func get_sound_player():
@@ -103,7 +111,7 @@ func _set_player_anim(anim : AnimStates):
 			jump_sound_player()
 			honk_sound_player()
 			anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			
+
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)
 			anim_tree.set("parameters/Exit/blend_amount", 0.0)
 			anim_tree.set("parameters/Victory/blend_amount", 0.0)

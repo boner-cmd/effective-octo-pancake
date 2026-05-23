@@ -89,5 +89,3 @@ func exit_sound_player():
 	exit_player.play()
 	await exit_player.finished
 	exit_player.queue_free()
-	
-	

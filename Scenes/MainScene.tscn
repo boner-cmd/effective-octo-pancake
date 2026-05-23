@@ -33,9 +33,10 @@ shape = SubResource("SphereShape3D_ylgs7")
 visible = true
 
 [node name="InteractionAreaTemplate" parent="DefaultLoadingPlanet" unique_id=1441746603 instance=ExtResource("4_7rqgy")]
+transform = Transform3D(1, 0, 0, 0, 0.7938843, -0.6080688, 0, 0.6080688, 0.7938843, 0, 0, 0)
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_q68mp")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8559875, 0.5169966, 0, -0.5169966, 0.8559875, 0, 0, 0)
 
 [editable path="HUDOverlay"]
 [editable path="PlayerCharacter"]
