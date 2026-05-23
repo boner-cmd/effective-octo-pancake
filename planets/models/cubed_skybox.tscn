@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkew5vyxchdx1"]
+
+[ext_resource type="PackedScene" uid="uid://blaiv8ihwa5io" path="res://planets/models/Cubed_Skybox_FBX.fbx" id="1_fhs7i"]
+
+[node name="CubedSkybox" unique_id=780089516 instance=ExtResource("1_fhs7i")]
+transform = Transform3D(10000, 0, 0, 0, 10000, 0, 0, 0, 10000, 0, 0, 0)

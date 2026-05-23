@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://eyfitw40ikot"]
+
+[ext_resource type="Texture2D" uid="uid://dsnbwnl2vyssx" path="res://planets/textures/Skybox Textures/festering mass skybox.png" id="1_4a2rc"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_4a2rc")
+uv1_scale = Vector3(10, 10, 10)

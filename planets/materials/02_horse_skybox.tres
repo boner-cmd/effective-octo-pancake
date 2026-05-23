@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://7dyo7kkm0s0d"]
+
+[ext_resource type="Texture2D" uid="uid://cqm2e7obmwgw5" path="res://planets/textures/Skybox Textures/horse skybox.png" id="1_d5uhx"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_d5uhx")
+uv1_scale = Vector3(10, 10, 10)

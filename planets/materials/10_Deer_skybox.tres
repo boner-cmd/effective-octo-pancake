@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chrf665sj6kbi"]
+
+[ext_resource type="Texture2D" uid="uid://7enhml467b0d" path="res://planets/textures/Skybox Textures/no-eye'd deer skybox.png" id="1_7ueu3"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_7ueu3")

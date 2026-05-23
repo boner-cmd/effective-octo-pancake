@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d156wbmijit5p"]
+
+[ext_resource type="Texture2D" uid="uid://7t3gj52yuy5r" path="res://planets/textures/Planet Textures/lamp planet texture.png" id="1_sgo8f"]
+
+[resource]
+albedo_texture = ExtResource("1_sgo8f")
+uv1_scale = Vector3(3, 3, 3)

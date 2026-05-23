@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d2xv5hnl6t07t"]
+
+[ext_resource type="Texture2D" uid="uid://b74con28avjto" path="res://planets/textures/Skybox Textures/slime mould skybox.png" id="1_t6wvi"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_t6wvi")
+uv1_scale = Vector3(2, 2, 2)

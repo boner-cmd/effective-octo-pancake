@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://x1qt6blyh1l"]
+
+[ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_aejfo"]
+[ext_resource type="Material" uid="uid://caxblyc54d0uj" path="res://planets/materials/09_O_skybox.tres" id="2_pkas1"]
+[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_q6mny"]
+[ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_xtds4"]
+[ext_resource type="Material" uid="uid://cyljn6siq2i16" path="res://planets/materials/09_O_planet.tres" id="5_31abu"]
+[ext_resource type="Material" uid="uid://qgwupr3ubecg" path="res://planets/materials/09_Q_skybox.tres" id="6_oegdf"]
+[ext_resource type="Material" uid="uid://dk8lja3wpiagu" path="res://planets/materials/09_Q_planet.tres" id="7_7nae5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
+sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+sky_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_bottom_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_4pae5"]
+sky_material = SubResource("ProceduralSkyMaterial_id08o")
+
+[sub_resource type="Environment" id="Environment_rtanu"]
+background_mode = 2
+sky = SubResource("Sky_4pae5")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="09_O_Planet" type="Node3D" unique_id=731662202]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
+environment = SubResource("Environment_rtanu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_aejfo")]
+
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+material_override = ExtResource("2_pkas1")
+surface_material_override/0 = ExtResource("3_q6mny")
+
+[node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_xtds4")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
+
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
+material_override = ExtResource("5_31abu")
+surface_material_override/0 = ExtResource("3_q6mny")
+
+[node name="CubedSkybox2" parent="." unique_id=1521302041 instance=ExtResource("1_aejfo")]
+visible = false
+
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=445189043]
+material_override = ExtResource("6_oegdf")
+surface_material_override/0 = ExtResource("3_q6mny")
+
+[node name="Cubed_Planet2" parent="." unique_id=1226520102 instance=ExtResource("4_xtds4")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
+visible = false
+
+[node name="Cubed_Planet" parent="Cubed_Planet2" index="0" unique_id=1134823557]
+material_override = ExtResource("7_7nae5")
+surface_material_override/0 = ExtResource("3_q6mny")
+
+[editable path="CubedSkybox"]
+[editable path="Cubed_Planet"]
+[editable path="CubedSkybox2"]
+[editable path="Cubed_Planet2"]

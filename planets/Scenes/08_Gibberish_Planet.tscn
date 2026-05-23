@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ripj8i20fwe"]
+
+[ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_u12uo"]
+[ext_resource type="Material" uid="uid://r4b5rflh7rwe" path="res://planets/materials/08_gibberish_skybox.tres" id="2_idm3u"]
+[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_i5phk"]
+[ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_v25ah"]
+[ext_resource type="Material" uid="uid://po8pkfwwunnh" path="res://planets/materials/08_gibberish_planet.tres" id="5_an3im"]
+
+[node name="08_Gibberish_Planet" type="Node3D" unique_id=731662202]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_u12uo")]
+
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+material_override = ExtResource("2_idm3u")
+surface_material_override/0 = ExtResource("3_i5phk")
+
+[node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_v25ah")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
+
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
+material_override = ExtResource("5_an3im")
+surface_material_override/0 = ExtResource("3_i5phk")
+
+[editable path="CubedSkybox"]
+[editable path="Cubed_Planet"]

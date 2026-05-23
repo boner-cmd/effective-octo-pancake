@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cfsxmx6s6rysc"]
+
+[ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_x7cbi"]
+[ext_resource type="Material" uid="uid://dvjaide64hjns" path="res://planets/materials/16_Bodhi_skybox.tres" id="2_t23sy"]
+[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_t76h6"]
+[ext_resource type="Material" uid="uid://ce7kyr7xjqowx" path="res://planets/materials/16_Bodhi_planet.tres" id="5_t23sy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
+sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+sky_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_bottom_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_4pae5"]
+sky_material = SubResource("ProceduralSkyMaterial_id08o")
+
+[sub_resource type="Environment" id="Environment_rtanu"]
+background_mode = 2
+sky = SubResource("Sky_4pae5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_436d7"]
+radius = 5.0
+height = 10.0
+
+[node name="16_Bodhi_Planet" type="Node3D" unique_id=731662202]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
+environment = SubResource("Environment_rtanu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_x7cbi")]
+
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+material_override = ExtResource("2_t23sy")
+surface_material_override/0 = ExtResource("3_t76h6")
+
+[node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=485743204]
+material_override = ExtResource("5_t23sy")
+mesh = SubResource("SphereMesh_436d7")
+
+[editable path="CubedSkybox"]

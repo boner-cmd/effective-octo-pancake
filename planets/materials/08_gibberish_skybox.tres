@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://r4b5rflh7rwe"]
+
+[ext_resource type="Texture2D" uid="uid://d16r8ei2no08y" path="res://planets/textures/Skybox Textures/gibberish skybox.png" id="1_1ymrd"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_1ymrd")
+uv1_scale = Vector3(2, 2, 2)

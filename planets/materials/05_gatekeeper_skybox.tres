@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bou4i2icbyjic"]
+
+[ext_resource type="Texture2D" uid="uid://dp4yms2u27qyc" path="res://planets/textures/Skybox Textures/gatekeeper skybox.png" id="1_0p1lm"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_0p1lm")
+uv1_scale = Vector3(2, 2, 2)

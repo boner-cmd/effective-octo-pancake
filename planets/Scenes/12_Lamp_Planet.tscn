@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://duwruafn6xbdm"]
+
+[ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_v5l73"]
+[ext_resource type="Material" uid="uid://n1vy5mk0olje" path="res://planets/materials/12_Lamp_skybox.tres" id="2_mr5si"]
+[ext_resource type="Material" uid="uid://d156wbmijit5p" path="res://planets/materials/12_Lamp_planet.tres" id="3_d7g5m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
+sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+sky_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_bottom_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_horizon_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
+ground_energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_4pae5"]
+sky_material = SubResource("ProceduralSkyMaterial_id08o")
+
+[sub_resource type="Environment" id="Environment_rtanu"]
+background_mode = 2
+sky = SubResource("Sky_4pae5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_tnp6f"]
+radius = 5.0
+height = 10.0
+
+[node name="12_Lamp_Planet" type="Node3D" unique_id=731662202]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
+environment = SubResource("Environment_rtanu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_v5l73")]
+
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+surface_material_override/0 = ExtResource("2_mr5si")
+
+[node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1953236752]
+mesh = SubResource("SphereMesh_tnp6f")
+surface_material_override/0 = ExtResource("3_d7g5m")
+
+[editable path="CubedSkybox"]

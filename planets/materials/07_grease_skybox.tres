@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cb2m2isclve0i"]
+
+[ext_resource type="Texture2D" uid="uid://ci1tlswge33vl" path="res://planets/textures/Skybox Textures/grease puddle.png" id="1_juip2"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_juip2")
+uv1_scale = Vector3(2, 2, 2)
