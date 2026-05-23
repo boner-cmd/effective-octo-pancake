@@ -1,15 +1,9 @@
 extends Node3D
 @onready var anim_tree: AnimationTree = $AnimationTree
 
-
-
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
 var current_anim := AnimStates.STASIS
-
-# spawn		-> idle
-# despawn	-> stasis
-# exit		-> stasis
 
 func _set_door_anim(anim : AnimStates):
 	current_anim = anim
@@ -29,11 +23,9 @@ func _set_door_anim(anim : AnimStates):
 			anim_tree.set("parameters/Door_Idle/blend_amount", 0.0)
 
 		AnimStates.DESPAWN:
+			anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 			anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 1.0)
 			anim_tree.set("parameters/DoorSpawnTimescale/scale", -2.0)
-			await anim_tree.animation_finished
-			exit_anim_finished.emit()
-			_set_door_anim(AnimStates.STASIS)
 			
 		AnimStates.EXIT:
 			exit_anim_started.emit()
@@ -48,11 +40,16 @@ func _ready() -> void:
 signal exit_anim_finished
 signal exit_anim_started
 
+func spawn():
+	_set_door_anim(AnimStates.SPAWN)
+
+func despawn():
+	_set_door_anim(AnimStates.DESPAWN)
+
 
 func _on_door_spawn_radius_area_entered(_area: Area3D) -> void:
 	print("entered")
 	_set_door_anim(AnimStates.SPAWN)
-	
 
 func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
 	_set_door_anim(AnimStates.DESPAWN)

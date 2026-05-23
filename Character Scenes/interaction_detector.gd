@@ -13,12 +13,16 @@ func _input(event: InputEvent) -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Door"):
-		print(area)
+		var door = area.get_parent()
+		door.spawn()
 	else:
 		current_area = area
 		interact_ui = area.interact_ui
 		interact_ui.visible = true
 
-func _on_area_exited(_area: Area3D) -> void:
+func _on_area_exited(area: Area3D) -> void:
+		if area.is_in_group("Door"):
+			var door = area.get_parent()
+			door.despawn()
 		current_area = null
 		interact_ui.visible = false
