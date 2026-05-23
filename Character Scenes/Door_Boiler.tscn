@@ -66,5 +66,7 @@ vertical_alignment = 1
 [node name="PlayerAnimationPosition" type="Node3D" parent="." unique_id=1635482596]
 transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 0.033, 0.6)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941331369]
+
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]

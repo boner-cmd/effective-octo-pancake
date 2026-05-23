@@ -19,6 +19,11 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 #anim handling
 @onready var current_anim = clown.AnimStates.IDLE
 
+#audio stuff
+var convo_flip_1 = true
+var convo_flip_2 = true
+var convo_flip_3 = true
+
 var Idle_Check : bool = false
 
 var move_direction : Vector3
@@ -66,19 +71,29 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	
 	if DialogueManager.is_dialogue_active == true:
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
-				clown._set_player_anim(clown.AnimStates.TALK)
+				if convo_flip_1:
+					clown._set_player_anim(clown.AnimStates.TALK)
+					convo_flip_1 = false
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
-				clown._set_player_anim(clown.AnimStates.GIVE)
+				if convo_flip_2:
+					clown._set_player_anim(clown.AnimStates.GIVE)
+					convo_flip_2 = false
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
-				clown._set_player_anim(clown.AnimStates.GET)
+				if convo_flip_3:
+					clown._set_player_anim(clown.AnimStates.GET)
+					convo_flip_3 = false
 			DialogueManager.CONV_STATE.COMPLETE:
 				clown._set_player_anim(clown.AnimStates.IDLE)
 		movement_frozen = true
 	else:
 		movement_frozen = false
+		convo_flip_1 = true
+		convo_flip_2 = true
+		convo_flip_3 = true
 
 	if !movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
@@ -98,12 +113,15 @@ func _physics_process(delta: float) -> void:
 		if raw_input != Vector2(0,0):
 			clown.rotation.y = _camera_pivot.rotation.y - (raw_input.angle() + PI/2)
 			Idle_Check = true
+
 			if clown.current_anim != clown.AnimStates.WALK:
 				clown._set_player_anim(clown.AnimStates.WALK)
-			
+				
+
 		elif Idle_Check:
 			clown._set_player_anim(clown.AnimStates.IDLE)
 			Idle_Check = false
+
 
 		grav_calc()
 

@@ -29,6 +29,9 @@ shape = SubResource("SphereShape3D_ylgs7")
 
 [node name="PlanetTemplate" parent="DefaultLoadingPlanet" unique_id=731662202 instance=ExtResource("3_nhkr4")]
 
+[node name="MeshInstance" parent="DefaultLoadingPlanet/PlanetTemplate" index="2" unique_id=1376272532]
+visible = true
+
 [node name="InteractionAreaTemplate" parent="DefaultLoadingPlanet" unique_id=1441746603 instance=ExtResource("4_7rqgy")]
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_q68mp")]
@@ -37,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 [editable path="HUDOverlay"]
 [editable path="PlayerCharacter"]
 [editable path="PlayerCharacter/ClownRigFBX"]
+[editable path="DefaultLoadingPlanet/PlanetTemplate"]
 [editable path="DefaultLoadingPlanet/InteractionAreaTemplate"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
