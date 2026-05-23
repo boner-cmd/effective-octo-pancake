@@ -5,7 +5,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ua6hq"]
 height = 4.0
-radius = 5.0
+radius = 4.0
 
 [node name="Door" type="Node3D" unique_id=683049571]
 
