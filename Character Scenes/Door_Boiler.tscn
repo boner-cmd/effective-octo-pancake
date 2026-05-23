@@ -28,6 +28,7 @@ follow_viewport_enabled = true
 
 [node name="interact" type="MarginContainer" parent="DoorBaseModel/DoorInteractRadius/CanvasLayer" unique_id=6819583]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

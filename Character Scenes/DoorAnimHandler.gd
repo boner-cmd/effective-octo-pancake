@@ -5,8 +5,8 @@ const sfx_despawn = preload("uid://7banle6yv2gq")
 const sfx_spawn = preload("uid://t6h5ww03rkm7")
 const sfx_exit = preload("uid://dklltp1vyr8pp")
 
-
 @onready var anim_tree: AnimationTree = $AnimationTree
+@onready var player_animation_position: Node3D = $"../PlayerAnimationPosition"
 
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
@@ -89,3 +89,6 @@ func exit_sound_player():
 	exit_player.play()
 	await exit_player.finished
 	exit_player.queue_free()
+	
+func interact():
+	pass
