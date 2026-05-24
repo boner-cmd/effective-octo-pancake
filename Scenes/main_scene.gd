@@ -1,18 +1,13 @@
 extends Node3D
 
-@onready var main_scene: Node3D = $"."
-@onready var bgm_stream: AudioStreamPlayer = $BGM_controller
 var new_bgm_stream : AudioStreamPlayer
-@onready var player_character: CharacterBody3D = $PlayerCharacter
-#maybe useful related player things
-#player_character.reset_player()
 
-@onready var current_planet : Node3D = planet_nodes[1]
+@onready var bgm_stream: AudioStreamPlayer = $BGM_controller
+@onready var current_planet : Node3D = planet_nodes[1] # default assignment used to remove first planet
+@onready var current_music : AudioStream = BGM_nodes[1] # is default assignment required?
 
-@onready var current_music : AudioStream = BGM_nodes[1]
-		
-var last_planet_lookup : Node3D
-
+# planet_nodes and BGM_nodes could be const if their members were just resource paths [int, String]
+# but an additional one-time function would be required to actually preload and/or instantiate them
 var planet_nodes : Dictionary[int, Node] = {
 	1 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
 	2 : preload("res://planets/Scenes/02_Horse_Planet.tscn").instantiate(),
@@ -60,19 +55,18 @@ var BGM_nodes : Dictionary[int, AudioStream] = {
 }
 
 func _ready() -> void:
+	# music code doesn't work yet
 	new_bgm_stream = bgm_stream.duplicate()
 	new_bgm_stream.stream = BGM_nodes[1]
 	get_tree().root.add_child(new_bgm_stream)
 	new_bgm_stream.volume_db = -10
 	new_bgm_stream.play()
 	
-	# first time initialization (door is in group from _on_entered_tree)
-	get_tree().root.add_child(current_planet) 
-	for door in get_tree().get_nodes_in_group("Active_Door"):
-		if !door.request_planet_change.is_connected(on_planet_change_requested):
-			door.request_planet_change.connect(on_planet_change_requested)
-			door.request_music_change.connect(_bgm_track_cycle)
-
+	# initial setup for first planet, door, and bgm
+	get_tree().root.add_child(planet_nodes[1]) 
+	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
+	initial_door.request_planet_change.connect(on_planet_change_requested)
+	initial_door.request_music_change.connect(_bgm_track_cycle)
 
 func _bgm_track_cycle():
 #	fade out old stream
@@ -81,31 +75,25 @@ func _bgm_track_cycle():
 func _new_track_start():
 	pass
 	
-
 func on_playerExit_anim_start():
 	pass
 
 func on_planet_change_requested(planet_ID : int):
-	
 	var requested_planet = planet_nodes[planet_ID]
 	var requested_bgm = BGM_nodes[planet_ID]
-	requested_planet.request_ready()
+
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
 	
+	# swap over planet and music
 	current_planet = requested_planet
 	current_music = requested_bgm
 	
-	#for door in get_tree().get_nodes_in_group("Active_Door"):
-		#door.remove_from_group("Active_Door")
-		#
-	#for door in get_tree().get_nodes_in_group("Door_Base"):
-		#if is_ancestor_of(door):
-			#door.add_to_group("Active_Door")
-	
-	for door in get_tree().get_nodes_in_group("Active_Door"):
+	# try to connect new door and bgm signals, whether required or not
+	for door in get_tree().get_nodes_in_group("Door_Base"):
 		if !door.request_planet_change.is_connected(on_planet_change_requested):
 			door.request_planet_change.connect(on_planet_change_requested)
+		if !door.request_music_change.is_connected(_bgm_track_cycle):	
 			door.request_music_change.connect(_bgm_track_cycle)
-
-	player_character.reset_player()
+	
+	$PlayerCharacter.reset_player()

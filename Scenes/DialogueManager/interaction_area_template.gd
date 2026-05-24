@@ -73,7 +73,6 @@ func _ready() -> void:
 	current_NPC = get_child(2)
 	NPC_Normal_Template_Check = current_NPC.NPC_Normal_Template_Check
 	
-	print("InteractionAreaTemplate: Current NPC is " + str(current_NPC))
 	initial_lines = current_NPC.initial_lines
 	give_lines = current_NPC.give_lines
 	receive_lines = current_NPC.receive_lines

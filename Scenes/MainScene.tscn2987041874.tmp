@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dph7p1bj6ray4"]
+
+[ext_resource type="Script" uid="uid://b2krcvl2csd6x" path="res://Scenes/main_scene.gd" id="1_7rqgy"]
+[ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://b58oygg7njg67" path="res://Scenes/HUDScene.tscn" id="2_y4jh7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
+radius = 5.0
+
+[node name="MainScene" type="Node3D" unique_id=1858530210]
+script = ExtResource("1_7rqgy")
+
+[node name="HUDOverlay" parent="." unique_id=1314492231 instance=ExtResource("2_y4jh7")]
+follow_viewport_enabled = true
+
+[node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") groups=["Player"] instance=ExtResource("1_hpc76")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
+collision_mask = 6
+planet = NodePath("../DefaultLoadingPlanet")
+
+[node name="DefaultLoadingPlanet" type="StaticBody3D" parent="." unique_id=7469528]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DefaultLoadingPlanet" unique_id=1898464040]
+shape = SubResource("SphereShape3D_ylgs7")
+
+[node name="BGM_controller" type="AudioStreamPlayer" parent="." unique_id=1243576762]
+autoplay = true
+bus = &"Music"
+
+[node name="Reset_Raycast" type="RayCast3D" parent="." unique_id=1432491016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.251513, 0)
+
+[editable path="HUDOverlay"]
+[editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/ClownRigFBX"]

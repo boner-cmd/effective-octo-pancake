@@ -28,10 +28,8 @@ func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Door_Spawn"):
 		var door = area.get_parent()
 		door._set_door_anim(door.AnimStates.SPAWN)
-		print("InteractionDetector: Door_Spawn area entered")
 		current_door = area
 	elif area.is_in_group("Exit_Door"):
-		print("InteractionDetector: Exit_Door area entered")
 		current_exit = area
 	else:
 		current_npc = area
@@ -43,10 +41,8 @@ func _on_area_exited(area: Area3D) -> void:
 			var door = area.get_parent()
 			door._set_door_anim(door.AnimStates.DESPAWN)
 			current_door = null
-			print("InteractionDetector: Door_Spawn area exited")
 		elif area.is_in_group("Exit_Door"):
 			current_exit = null
-			print("InteractionDetector: Exit_Door area exited")
 		else:
 			current_npc = null
 			interact_ui.visible = false
