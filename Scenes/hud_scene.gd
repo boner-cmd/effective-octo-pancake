@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 			toggle_pausing_and_mouse()
 		stickerbook.visible = false
 		pause_menu.visible = !pause_menu.visible
-	if event._is_action_pressed("toggle_stickerbook"):
+	if event.is_action_pressed("toggle_stickerbook"):
 		if !pause_menu.visible: # don't allow showing the stickerbook while paused
 			toggle_pausing_and_mouse()
 			stickerbook.visible = !stickerbook.visible
