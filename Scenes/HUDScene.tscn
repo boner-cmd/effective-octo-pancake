@@ -10,9 +10,11 @@
 size = Vector2(60, 60)
 
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
+process_mode = 3
 script = ExtResource("1_1m71x")
 
 [node name="InventoryMargin" type="MarginContainer" parent="." unique_id=706599872]
+process_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -88,6 +90,7 @@ text = "Item 3"
 horizontal_alignment = 1
 
 [node name="PauseBackground" type="NinePatchRect" parent="." unique_id=1506672344]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

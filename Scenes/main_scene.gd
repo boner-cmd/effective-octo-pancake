@@ -70,9 +70,6 @@ func _ready() -> void:
 			door.request_music_change.connect(_bgm_track_cycle)
 			
 
-
-
-
 func _bgm_track_cycle():
 	#fade out old stream
 	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, -100, .1)
