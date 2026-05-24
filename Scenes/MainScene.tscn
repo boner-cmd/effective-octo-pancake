@@ -41,6 +41,8 @@ collision_layer = 2
 shape = SubResource("SphereShape3D_ylgs7")
 
 [node name="BGM_controller" type="AudioStreamPlayer" parent="." unique_id=1243576762]
+autoplay = true
+bus = &"Music"
 
 [editable path="HUDOverlay"]
 [editable path="PlayerCharacter"]

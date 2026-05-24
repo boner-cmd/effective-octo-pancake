@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cfk5rf7wpbnvy"]
+
+[ext_resource type="Script" uid="uid://dvnwnhgug8yhp" path="res://Scenes/test_collision.gd" id="1_qremu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qremu"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s7k4l"]
+sky_material = SubResource("ProceduralSkyMaterial_qremu")
+
+[sub_resource type="Environment" id="Environment_1cgnl"]
+background_mode = 2
+sky = SubResource("Sky_s7k4l")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_s7k4l"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s7k4l"]
+radius = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1cgnl"]
+radius = 5.0
+height = 10.0
+
+[node name="Node3D" type="Node3D" unique_id=892902949]
+script = ExtResource("1_qremu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=151151210]
+environment = SubResource("Environment_1cgnl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2107655371]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Object1" type="Node3D" parent="." unique_id=1800304392]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Object1" unique_id=314951412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("SphereMesh_s7k4l")
+
+[node name="Area3D" type="Area3D" parent="Object1/Mesh1" unique_id=316733842]
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object1/Mesh1/Area3D" unique_id=421003119]
+shape = SubResource("CylinderShape3D_s7k4l")
+
+[node name="Object2" type="Node3D" parent="." unique_id=1160605189]
+
+[node name="Mesh2" type="MeshInstance3D" parent="Object2" unique_id=761640656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("SphereMesh_s7k4l")
+
+[node name="Area3D" type="Area3D" parent="Object2" unique_id=768743252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object2/Area3D" unique_id=271536792]
+shape = SubResource("CylinderShape3D_s7k4l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1118013445]
+mesh = SubResource("SphereMesh_1cgnl")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=31155049]
+transform = Transform3D(1, 0, 0, 0, 0.8776151, 0.47936594, 0, -0.47936594, 0.8776151, 0, 10.262829, 10.80874)
+
+[node name="Object3" type="Node3D" parent="." unique_id=1292844063]
+
+[node name="Mesh3" type="MeshInstance3D" parent="Object3" unique_id=2111247052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("SphereMesh_s7k4l")
+
+[node name="Area3D" type="Area3D" parent="Object3" unique_id=1253762862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object3/Area3D" unique_id=1685429359]
+shape = SubResource("CylinderShape3D_s7k4l")
+
+[node name="Object4" type="Node3D" parent="." unique_id=1938295517]
+
+[node name="Mesh4" type="MeshInstance3D" parent="Object4" unique_id=136808121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("SphereMesh_s7k4l")
+
+[node name="Area3D" type="Area3D" parent="Object4" unique_id=59197810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object4/Area3D" unique_id=1056990919]
+shape = SubResource("CylinderShape3D_s7k4l")

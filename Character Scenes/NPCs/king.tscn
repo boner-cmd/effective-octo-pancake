@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b105sq8ybihs2"]
+
+[ext_resource type="PackedScene" uid="uid://d1lc6uf8ou8ce" path="res://Character Export Files/king/king.gltf" id="1_xvp85"]
+
+[node name="king" unique_id=1530485904 instance=ExtResource("1_xvp85")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
