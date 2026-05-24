@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://comafvxbn074i"]
+
+[ext_resource type="PackedScene" uid="uid://dt3akm51o0au4" path="res://Character Export Files/sisyphus/sisyphus.gltf" id="1_q3r48"]
+
+[node name="sisyphus" unique_id=403637881 instance=ExtResource("1_q3r48")]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://p4oooooq7s2d"]
+
+[ext_resource type="PackedScene" uid="uid://ckq61lvaep2pj" path="res://Character Export Files/lamp/lamp.gltf" id="1_flrba"]
+
+[node name="lamp" unique_id=162153067 instance=ExtResource("1_flrba")]

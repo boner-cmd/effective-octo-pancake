@@ -1,4 +1,8 @@
-#body without organs dialogue
+extends MeshInstance3D
+@export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
+@export var NPC_Normal_Template_Check : bool = true
+
+
 @export var initial_lines: Array[String] = [
 	"A thousand plateus to you, nomad.",
 	"I am a featureless surface: one who has experienced a becoming of pure intensity.",

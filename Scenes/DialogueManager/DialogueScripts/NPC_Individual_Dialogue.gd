@@ -1,3 +1,8 @@
+extends MeshInstance3D
+@export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
+@export var NPC_Normal_Template_Check : bool = true
+
+#Dialogue goes here, 100 char per string limit, strongly suggest breaking it up if it can be
 #Individuated individual
 @export var initial_lines: Array[String] = [
 	"Greetings, creature.",
@@ -13,7 +18,7 @@
 @export var give_lines: Array[String] = [
 	"No! NO!!! What have you done???",
 	"Do you have any idea how much time and work it took me to fully integrate all aspects of my being?",
-	"How much money I spent on psychoanalytical therapy?"
+	"How much money I spent on psychoanalytical therapy?",
 	"No. You obviously don't, you stupid idiot.",
 	"Why would you do this to me? What could you possibly have to gain?",
 	"I am so ANGRY right now! Do you know how long it's been since I've been angry???",

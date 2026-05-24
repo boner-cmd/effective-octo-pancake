@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b2caujdauh4hq"]
+
+[ext_resource type="PackedScene" uid="uid://cmd38sx6hdwda" path="res://Character Export Files/bodhisattva/bodhisattva.gltf" id="1_l5rtd"]
+
+[node name="bodhisattva" unique_id=1700854843 instance=ExtResource("1_l5rtd")]

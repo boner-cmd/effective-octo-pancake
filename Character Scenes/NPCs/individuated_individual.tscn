@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b5dfwoc7pqgqn"]
+
+[ext_resource type="PackedScene" uid="uid://b3d4bvn538sbg" path="res://Character Export Files/individuated individual/individuated individual.gltf" id="1_t6ptu"]
+
+[node name="individuated individual" unique_id=1840200528 instance=ExtResource("1_t6ptu")]

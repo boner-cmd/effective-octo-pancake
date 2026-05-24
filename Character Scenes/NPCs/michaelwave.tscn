@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bhmfj5xhfjrmg"]
+
+[ext_resource type="PackedScene" uid="uid://7scadlkt3cdt" path="res://Character Export Files/michaelwave/michaelwave.gltf" id="1_qrvbl"]
+
+[node name="michaelwave" unique_id=1980506230 instance=ExtResource("1_qrvbl")]
