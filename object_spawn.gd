@@ -14,42 +14,57 @@ var obj_determine_placement : Array = [
 	3,
 	4,
 ]
-var obj_pos_1 : Array = [
+
+const obj_pos_1_const : Array = [
 Vector3(349.0, 0.0, 268.0),
 Vector3(341.0, 0.0, 180.0),
 Vector3(333.0, 0.0, 21.0),
 Vector3(266.0, 0.0, 356.0),
 ]
-var obj_pos_2 : Array =[
+const obj_pos_2_const : Array =[
 Vector3(298.0, 0.0, 96),
 Vector3(317.0, 0.0, 294.0),
 Vector3(332.0, 0.0, 198.0),
 Vector3(212.0, 0.0, 189.0),
 ]
-var obj_pos_3 : Array =[
+const obj_pos_3_const : Array =[
 Vector3(293.0, 0.0, 235.0),
 Vector3(247.0, 0.0, 164.0),
 Vector3(15.0, 0.0, 98),
 Vector3(206.0, 0.0, 4.0),
 ]
-var obj_pos_4 : Array =[
+const obj_pos_4_const : Array =[
 Vector3(348.0, 0.0, 200.0),
 Vector3(102.0, 0.0, 232.0),
 Vector3(171.0, 0.0, 97),
 Vector3(152.0, 0.0, 155.0),
 ]
-var obj_pos_5 : Array =[
+const obj_pos_5_const : Array =[
 Vector3(119.0, 0.0, 206.0),
 Vector3(334.0, 0.0, 205.0),
 Vector3(24.0, 0.0, 352.0),
 Vector3(17.0, 0.0, 126.0),
 ]
+
+var obj_pos_1 : Array
+var obj_pos_2 : Array
+var obj_pos_3 : Array
+var obj_pos_4 : Array 
+var obj_pos_5 : Array 
 var Array_Choice : int
 var order : Array
+
+func reset_array() -> void:
+	obj_pos_1 = obj_pos_1_const.duplicate(true)
+	obj_pos_2 = obj_pos_2_const.duplicate(true)
+	obj_pos_3 = obj_pos_3_const.duplicate(true)
+	obj_pos_4 = obj_pos_4_const.duplicate(true)
+	obj_pos_5 = obj_pos_5_const.duplicate(true)
 
 
 #pick an array
 func placement():
+	reset_array()
 	Array_Choice = obj_determine_placement.pick_random()
 	if Array_Choice == 0:
 		order = obj_pos_1
