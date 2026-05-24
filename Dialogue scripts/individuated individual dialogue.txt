@@ -1,0 +1,37 @@
+#Individuated individual
+@export var initial_lines: Array[String] = [
+	"Greetings, creature.",
+	"I am all-incorporated: anima and animus, conscious and subconscious.",
+	"All aspects, all sites of desire and thought production not only made aware of eachother,",
+	"But seemless and indistinct.",
+	"There is no Other in my Self. No Object in my Subject.",
+	"I gaze into the abyss and am unmet.",
+	"I am sublimated, and it IS sublime.",
+	"No shadow. Only light.",
+]
+
+@export var give_lines: Array[String] = [
+	"No! NO!!! What have you done???",
+	"Do you have any idea how much time and work it took me to fully integrate all aspects of my being?",
+	"How much money I spent on psychoanalytical therapy?"
+	"No. You obviously don't, you stupid idiot.",
+	"Why would you do this to me? What could you possibly have to gain?",
+	"I am so ANGRY right now! Do you know how long it's been since I've been angry???",
+	"And I was doing so well, too!",
+]
+
+@export var receive_lines: Array[String] = [
+	"What's with that blank-yet-expectant look?",
+	"You can't seriously believe I'm going to GIVE you something, can you?",
+	"The only thing I'd give you is a broken clown-nose.",
+	"Now get out of my sight before I do!",
+]
+
+@export var post_lines: Array[String] = [
+	"I hate you so much."
+]
+
+@export var easter_lines: Array[String] = [
+	"I actually forgive you.",
+	"PSYCHE!!!",
+]
