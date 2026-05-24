@@ -25,7 +25,7 @@ func set_initial_visibility() -> void:
 	visible = true
 #	interaction_prompt.visible = false
 	stickerbook.visible = false
-	pause_background.visible = false
+	pause_background.visible = true # set true for debugging and false otherwise
 	complete_stamp.visible = false
 
 func _input(event: InputEvent) -> void:
