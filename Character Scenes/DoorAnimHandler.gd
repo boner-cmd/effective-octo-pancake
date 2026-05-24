@@ -1,8 +1,33 @@
 extends Node3D
 
 @onready var main_ : Node3D
-
 @export var destination_planet_ID : int
+
+@onready var door_mesh: MeshInstance3D = $DoorAnims/Skeleton3D/Door
+var door_mats : Dictionary[int, Material] = {
+	1 : preload("res://planets/materials/01_kings_planet_mat.tres"),
+	2 : preload("res://planets/materials/02_horse_planet.tres"),
+	3 : preload("res://planets/materials/03_astronaut_planet.tres"),
+	4 : preload("res://planets/materials/04_snowman_planet.tres"),
+	5 : preload("res://planets/materials/05_gatekeeper_planet.tres"),
+	6 : preload("res://planets/materials/06_rusty_planet.tres"),
+	7 : preload("res://planets/materials/07_grease_planet.tres"),
+	8 : preload("res://planets/materials/08_gibberish_planet.tres"),
+	9 : preload("res://planets/materials/09_O_planet.tres"),
+	10 : preload("res://planets/materials/10_Deer_planet.tres"),
+	11 : preload("res://planets/materials/11_Idea_planet.tres"),
+	12 : preload("res://planets/materials/12_Lamp_planet.tres"),
+	13 : preload("res://planets/materials/13_Individual_planet.tres"),
+	14 : null,
+	15 : preload("res://planets/materials/15_Organs_planet.tres"),
+	16 : preload("res://planets/materials/16_Bodhi_planet.tres"),
+	17 : preload("res://planets/materials/17_Sisyphus_planet.tres"),
+	18 : preload("res://planets/materials/18_Mass_planet.tres"),
+	19 : preload("res://planets/materials/19_Michaelwave_planet.tres"),
+	20 : preload("res://planets/materials/20_Slime_planet.tres"),
+}
+
+
 
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 const sfx_despawn = preload("uid://7banle6yv2gq")
@@ -11,6 +36,7 @@ const sfx_exit = preload("uid://dklltp1vyr8pp")
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var player_exit_position: Node3D = $"../PlayerAnimationPosition"
+
 
 var door_locked : bool = false
 
@@ -58,6 +84,7 @@ func _set_door_anim(anim : AnimStates):
 func _ready() -> void:
 	_set_door_anim(AnimStates.STASIS)
 	main_ = get_tree().get_root().get_node("MainScene")
+	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
 
 signal exit_anim_finished
 signal exit_anim_started
@@ -102,6 +129,7 @@ func exit_sound_player():
 	exit_player.queue_free()
 	
 func interact(player : CharacterBody3D):
+	request_music_change.emit()
 	player.exit_check = true
 	var rig = player.get_child(2)
 	var clone = rig.duplicate()
@@ -117,6 +145,14 @@ func interact(player : CharacterBody3D):
 	request_planet_change.emit(destination_planet_ID)
 
 signal request_planet_change(planet_ID : int)
+signal request_music_change
+
+func _process(delta: float) -> void:
+	if current_anim != AnimStates.EXIT:
+		var player = get_tree().get_child(2)
+		var direction = player.global_position - global_position
+		var target_angle = atan2(direction.x, direction.z)
+		rotation.y = lerp_angle(rotation.y, target_angle, .2) 
 
 func _on_tree_entered() -> void:
 	add_to_group("Active_Door")

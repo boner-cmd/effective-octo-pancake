@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_23ujk"]
 [ext_resource type="Material" uid="uid://b8085eq3m7wk3" path="res://planets/materials/15_Organs_skybox.tres" id="2_0dh2h"]
-[ext_resource type="PackedScene" uid="uid://rymhcidn3jgx" path="res://planets/models/body without organs planet model/body without organs planet.gltf" id="3_2vppk"]
+[ext_resource type="Material" uid="uid://c4u6qyrco428l" path="res://planets/materials/15_Organs_planet.tres" id="3_0dh2h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -20,6 +20,10 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="SphereMesh" id="SphereMesh_2vppk"]
+radius = 5.0
+height = 10.0
+
 [node name="15_Organs_Planet" type="Node3D" unique_id=731662202]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
@@ -31,10 +35,11 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_23ujk")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 surface_material_override/0 = ExtResource("2_0dh2h")
 
-[node name="body without organs planet" parent="." unique_id=1822381601 instance=ExtResource("3_2vppk")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+[node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1213588319]
+material_overlay = ExtResource("3_0dh2h")
+mesh = SubResource("SphereMesh_2vppk")
 
 [editable path="CubedSkybox"]

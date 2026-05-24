@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cbh20jpl4u641"]
 
-[ext_resource type="Texture2D" uid="uid://dsnbwnl2vyssx" path="res://planets/textures/Skybox Textures/festering mass skybox.png" id="1_6b86h"]
+[ext_resource type="Texture2D" uid="uid://be1jk7tu1hpre" path="res://planets/textures/festering mass/festering_mass_planet_texture.png" id="1_6b86h"]
 
 [resource]
 albedo_texture = ExtResource("1_6b86h")
