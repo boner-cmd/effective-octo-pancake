@@ -2,6 +2,9 @@
 
 [ext_resource type="Material" uid="uid://cbh20jpl4u641" path="res://planets/materials/18_Mass_planet.tres" id="1_wsw8c"]
 [ext_resource type="Material" uid="uid://eyfitw40ikot" path="res://planets/materials/18_Mass_skybox.tres" id="1_xbi7y"]
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_yab18"]
+[ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_v005d"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="5_501ac"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -28,7 +31,10 @@ flip_faces = true
 radius = 5.0
 height = 10.0
 
-[node name="18_Mass_Planet" type="Node3D" unique_id=731662202]
+[node name="18_Mass_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
+script = ExtResource("1_yab18")
+InteractionArea = NodePath("InteractionArea")
+Obj_2 = NodePath("Door")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
 environment = SubResource("Environment_rtanu")
@@ -45,3 +51,14 @@ mesh = SubResource("SphereMesh_wsw8c")
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 material_override = ExtResource("1_xbi7y")
 mesh = SubResource("SphereMesh_6rb65")
+
+[node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("4_v005d")]
+
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_501ac")]
+
+[node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
+destination_planet_ID = 10
+
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]

@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://5ccsfbvdn5ba"]
 
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_23ujk"]
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_hnx0q"]
 [ext_resource type="Material" uid="uid://b8085eq3m7wk3" path="res://planets/materials/15_Organs_skybox.tres" id="2_0dh2h"]
 [ext_resource type="Material" uid="uid://c4u6qyrco428l" path="res://planets/materials/15_Organs_planet.tres" id="3_0dh2h"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="5_y4idk"]
+[ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="6_3w53k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -24,7 +27,10 @@ glow_enabled = true
 radius = 5.0
 height = 10.0
 
-[node name="15_Organs_Planet" type="Node3D" unique_id=731662202]
+[node name="15_Organs_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
+script = ExtResource("1_hnx0q")
+InteractionArea = NodePath("InteractionArea")
+Obj_2 = NodePath("Door")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
 environment = SubResource("Environment_rtanu")
@@ -42,4 +48,14 @@ surface_material_override/0 = ExtResource("2_0dh2h")
 material_overlay = ExtResource("3_0dh2h")
 mesh = SubResource("SphereMesh_2vppk")
 
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_y4idk")]
+
+[node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
+destination_planet_ID = 11
+
+[node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_3w53k")]
+
 [editable path="CubedSkybox"]
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]

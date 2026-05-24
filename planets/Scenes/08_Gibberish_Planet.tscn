@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://ripj8i20fwe"]
 
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_b4dn5"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_u12uo"]
 [ext_resource type="Material" uid="uid://r4b5rflh7rwe" path="res://planets/materials/08_gibberish_skybox.tres" id="2_idm3u"]
 [ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_i5phk"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_v25ah"]
 [ext_resource type="Material" uid="uid://po8pkfwwunnh" path="res://planets/materials/08_gibberish_planet.tres" id="5_an3im"]
+[ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_660us"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="8_myhd6"]
 
-[node name="08_Gibberish_Planet" type="Node3D" unique_id=731662202]
+[node name="08_Gibberish_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3")]
+script = ExtResource("1_b4dn5")
+InteractionArea = NodePath("InteractionArea")
+Obj_2 = NodePath("Door")
+Obj_3 = NodePath("Door2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -14,7 +21,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_u12uo")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_idm3u")
 surface_material_override/0 = ExtResource("3_i5phk")
 
@@ -25,5 +32,23 @@ transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 material_override = ExtResource("5_an3im")
 surface_material_override/0 = ExtResource("3_i5phk")
 
+[node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_660us")]
+
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("8_myhd6")]
+
+[node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
+destination_planet_ID = 16
+
+[node name="Door2" parent="." unique_id=790013676 instance=ExtResource("8_myhd6")]
+
+[node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
+destination_planet_ID = 6
+
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door2"]
+[editable path="Door2/DoorBaseModel"]
+[editable path="Door2/DoorBaseModel/DoorAnims"]

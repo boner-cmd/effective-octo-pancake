@@ -24,10 +24,10 @@ glow_enabled = true
 [sub_resource type="SphereMesh" id="SphereMesh_lyt48"]
 flip_faces = true
 
-[node name="01_Kings_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("Obj_1", "Obj_2")]
+[node name="01_Kings_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
 script = ExtResource("1_ndrcc")
-Obj_1 = NodePath("Door")
-Obj_2 = NodePath("InteractionArea")
+InteractionArea = NodePath("InteractionArea")
+Obj_2 = NodePath("Door")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
 environment = SubResource("Environment_rtanu")

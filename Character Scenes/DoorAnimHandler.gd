@@ -2,7 +2,7 @@ extends Node3D
 var player: CharacterBody3D
 @onready var main_ : Node3D
 @export var destination_planet_ID : int
-
+@onready var door_skele: Node3D = $DoorAnims
 @onready var door_mesh: MeshInstance3D = $DoorAnims/Skeleton3D/Door
 var door_mats : Dictionary[int, Material] = {
 	1 : preload("res://planets/materials/01_kings_planet_mat.tres"),
@@ -144,15 +144,19 @@ func interact():
 	rig.visible = true
 	clone.queue_free()
 	request_planet_change.emit(destination_planet_ID)
+	print("requesting planet change")
+	_set_door_anim(AnimStates.STASIS)
+	
 
 signal request_planet_change(planet_ID : int)
 signal request_music_change
 
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:
-		var direction = player.global_position - global_position
-		var target_angle = -atan2(direction.x, direction.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, .2) 
+		var sphere_center = Vector3(0.0,0.0,0.0)
+		var toDoor = global_position - sphere_center
+		var surface_normal = toDoor.normalized()
+		door_skele.look_at(player.global_position, surface_normal)
 
 func _on_tree_entered() -> void:
 	add_to_group("Active_Door")

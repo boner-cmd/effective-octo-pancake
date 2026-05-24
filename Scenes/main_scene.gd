@@ -75,7 +75,7 @@ func _ready() -> void:
 
 func _bgm_track_cycle():
 #	fade out old stream
-	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, -80.0, .2)
+	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, 0.0, .2)
 	
 	
 	
@@ -88,9 +88,10 @@ func on_playerExit_anim_start():
 	pass
 
 func on_planet_change_requested(planet_ID : int):
+	
 	var requested_planet = planet_nodes[planet_ID]
 	var requested_bgm = BGM_nodes[planet_ID]
-		
+	requested_planet.request_ready()
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
 	
@@ -98,6 +99,11 @@ func on_planet_change_requested(planet_ID : int):
 	current_music = requested_bgm
 	
 	player_character.reset_player()
+	
+	for door in get_tree().get_nodes_in_group("Active_Door"):
+		if !door.request_planet_change.is_connected(on_planet_change_requested):
+			door.request_planet_change.connect(on_planet_change_requested)
+			door.request_music_change.connect(_bgm_track_cycle)
 	
 	
 	
