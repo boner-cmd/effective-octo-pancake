@@ -76,7 +76,9 @@ func spawn_sound_player():
 func despawn_sound_player():
 	var despawn_player = audio_stream_player.duplicate()
 	despawn_player.stream = sfx_despawn
-	get_tree().root.call_deferred("add_child", despawn_player)
+	get_tree().root.add_child(despawn_player)
+	print("despawn sound player")
+	despawn_player.volume_db += 0.0
 	despawn_player.pitch_scale += randf_range(-0.1, 0.1)
 	despawn_player.play()
 	await despawn_player.finished
