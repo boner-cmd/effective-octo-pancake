@@ -24,7 +24,10 @@ var convo_flip_1 = true
 var convo_flip_2 = true
 var convo_flip_3 = true
 
+#state stuff
 var exit_check = false
+var respawn_pos : Vector3 = Vector3(0.0, 6.0, 0.0)
+var respawn_rot : Vector3 = Vector3(0.0, 0.0, 0.0)
 
 var Idle_Check : bool = false
 
@@ -34,10 +37,18 @@ var grav_strength : float = 10.0
 var grav_vector : Vector3 = Vector3(0,0,0)
 var xform : Transform3D
 
+
+func reset_player():
+	position = respawn_pos
+	rotation = respawn_rot
+	#some stuff needs to happen with waits maybe
+	exit_check = false
+	
+
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
 	up_direction = -grav_vector
-	
+
 func align_with_floor(floor_normal : Vector3):
 	xform = global_transform
 	xform.basis.y = floor_normal

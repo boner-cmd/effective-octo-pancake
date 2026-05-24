@@ -29,9 +29,11 @@ window/stretch/mode="viewport"
 
 [global_group]
 
-Door="doors"
-Exit="used for actually leaving doors"
 npc="for those npc's"
+Door_Base=""
+Door_Spawn="doors"
+Active_Door="for active doors"
+Exit_Door="used for actually leaving doors"
 
 [input]
 

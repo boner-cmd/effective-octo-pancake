@@ -1,5 +1,9 @@
 extends Node3D
 
+@onready var main_ : Node3D
+
+@export var destination_planet_ID : int
+
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 const sfx_despawn = preload("uid://7banle6yv2gq")
 const sfx_spawn = preload("uid://t6h5ww03rkm7")
@@ -44,9 +48,11 @@ func _set_door_anim(anim : AnimStates):
 			await anim_tree.animation_finished
 			exit_anim_finished.emit()
 			_set_door_anim(AnimStates.STASIS)
+			
 
 func _ready() -> void:
 	_set_door_anim(AnimStates.STASIS)
+	main_ = get_tree().get_root().get_node("MainScene")
 
 signal exit_anim_finished
 signal exit_anim_started
@@ -78,7 +84,6 @@ func despawn_sound_player():
 	despawn_player.stream = sfx_despawn
 	get_tree().root.add_child(despawn_player)
 	print("despawn sound player")
-	despawn_player.volume_db += 0.0
 	despawn_player.pitch_scale += randf_range(-0.1, 0.1)
 	despawn_player.play()
 	await despawn_player.finished
@@ -102,7 +107,17 @@ func interact(player : CharacterBody3D):
 	clone.global_position = player_exit_position.global_position
 	clone.global_rotation = player_exit_position.global_rotation
 	clone._set_player_anim(clone.AnimStates.EXIT)
-	
-	_set_door_anim(AnimStates.EXIT)
-	
-	
+	await _set_door_anim(AnimStates.EXIT)
+	rig.visible = true
+	clone.queue_free()
+	request_planet_change.emit(destination_planet_ID)
+
+signal request_planet_change(planet_ID : int)
+
+func _on_tree_entered() -> void:
+	add_to_group("Active_Door")
+	print ("added to actives")
+
+func _on_tree_exited() -> void:
+	remove_from_group("Active_Door")
+	print ("removed from actives")
