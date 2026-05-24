@@ -11,6 +11,8 @@ const sfx_jump = preload("uid://cduu2q6v1l1yk")
 const sfx_explode = preload("uid://conpnqqcjln5n")
 const sfx_honk = preload("uid://eqfmf8j0l8u2")
 
+
+
 func walk_cycle_player():
 	var walk_player = audio_stream_player.duplicate()
 	walk_player.stream = sfx_walk
@@ -89,6 +91,7 @@ func _set_player_anim(anim : AnimStates):
 	print(current_anim)
 	match current_anim:
 		AnimStates.IDLE:
+			
 			anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
 			
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)
@@ -178,3 +181,5 @@ func _set_player_anim(anim : AnimStates):
 			anim_tree.set("parameters/Give/blend_amount", 0.0)
 			
 			await anim_tree.animation_finished
+			
+			

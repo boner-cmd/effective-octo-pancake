@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="2_tsosp"]
 [ext_resource type="Material" uid="uid://csvyqxvwtg5u0" path="res://planets/materials/01_kings_skybox.tres" id="3_ctuby"]
 [ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="4_tsosp"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_53jkq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53jkq"]
 panorama = ExtResource("1_vkkia")
@@ -35,7 +36,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("2_tsosp")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("3_ctuby")
 surface_material_override/0 = ExtResource("4_tsosp")
 
@@ -45,4 +46,13 @@ visible = false
 material_override = ExtResource("3_ctuby")
 mesh = SubResource("SphereMesh_lyt48")
 
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_53jkq")]
+transform = Transform3D(1, 0, 0, 0, 0.39828485, 0.9172618, 0, -0.9172618, 0.39828485, 0, 0, 0)
+
+[node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
+destination_planet_ID = 2
+
 [editable path="CubedSkybox"]
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]

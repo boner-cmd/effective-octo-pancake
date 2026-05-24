@@ -23,12 +23,12 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_area_entered(area: Area3D) -> void:
-	if area.is_in_group("Door"):
+	if area.is_in_group("Door_Spawn"):
 		var door = area.get_parent()
 		door.spawn()
 		print("DOOR")
 		current_door = area
-	elif area.is_in_group("Exit"):
+	elif area.is_in_group("Exit_Door"):
 		print("EXIT")
 		current_exit = area
 	else:
@@ -37,12 +37,12 @@ func _on_area_entered(area: Area3D) -> void:
 		interact_ui.visible = true
 
 func _on_area_exited(area: Area3D) -> void:
-		if area.is_in_group("Door"):
+		if area.is_in_group("Door_Spawn"):
 			var door = area.get_parent()
 			door.despawn()
 			current_door = null
 			print("DOOR")
-		elif area.is_in_group("Exit"):
+		elif area.is_in_group("Exit_Door"):
 			current_exit = null
 			print("EXIT")
 		else:

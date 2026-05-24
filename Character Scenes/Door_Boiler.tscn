@@ -11,13 +11,13 @@ radius = 3.0
 
 [node name="Door" type="Node3D" unique_id=683049571]
 
-[node name="DoorBaseModel" parent="." unique_id=1012687003 instance=ExtResource("2_coq8p")]
+[node name="DoorBaseModel" parent="." unique_id=1012687003 groups=["Door_Base"] instance=ExtResource("2_coq8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
 
 [node name="DoorCollider" parent="DoorBaseModel" index="2" unique_id=1935212185]
 collision_mask = 1
 
-[node name="DoorInteractRadius" type="Area3D" parent="DoorBaseModel" unique_id=1921781608 groups=["Exit"]]
+[node name="DoorInteractRadius" type="Area3D" parent="DoorBaseModel" unique_id=1921781608 groups=["Exit_Door"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999999, 0)
 collision_layer = 16
 collision_mask = 0
@@ -66,7 +66,7 @@ vertical_alignment = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBaseModel/DoorInteractRadius" unique_id=1748855025]
 shape = SubResource("CylinderShape3D_cyo0d")
 
-[node name="DoorSpawnRadius" type="Area3D" parent="DoorBaseModel" unique_id=1347008915 groups=["Door"]]
+[node name="DoorSpawnRadius" type="Area3D" parent="DoorBaseModel" unique_id=1347008915 groups=["Door_Spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999999, 0)
 collision_layer = 16
 collision_mask = 0
