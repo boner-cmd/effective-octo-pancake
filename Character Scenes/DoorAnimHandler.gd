@@ -52,6 +52,7 @@ func _set_door_anim(anim : AnimStates):
 		match current_anim:
 			AnimStates.STASIS:
 				anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
+				anim_tree.set("parameters/DoorExit/blend_amount", 0.0)
 				
 			AnimStates.SPAWN:
 				spawn_sound_player()

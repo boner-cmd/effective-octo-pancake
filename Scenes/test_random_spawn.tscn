@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfk5rf7wpbnvy"]
 
-[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_qremu"]
+[ext_resource type="Script" uid="uid://dvms5302pkt8b" path="res://Scenes/test_animation_reload.gd" id="1_s7k4l"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="2_s7k4l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qremu"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,12 +26,8 @@ radius = 3.0
 radius = 5.0
 height = 10.0
 
-[node name="Node3D" type="Node3D" unique_id=892902949 node_paths=PackedStringArray("Obj_1", "Obj_2", "Obj_3", "Obj_4")]
-script = ExtResource("1_qremu")
-Obj_1 = NodePath("Object1")
-Obj_2 = NodePath("Object2")
-Obj_3 = NodePath("Object3")
-Obj_4 = NodePath("Object4")
+[node name="Node3D" type="Node3D" unique_id=892902949]
+script = ExtResource("1_s7k4l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=151151210]
 environment = SubResource("Environment_1cgnl")
@@ -99,3 +96,9 @@ collision_mask = 2048
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object4/Area3D" unique_id=1056990919]
 shape = SubResource("CylinderShape3D_s7k4l")
+
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("2_s7k4l")]
+transform = Transform3D(0.9223224, -0.38642123, 0, 0.38642123, 0.9223224, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Door2" parent="." unique_id=173612060 instance=ExtResource("2_s7k4l")]
+transform = Transform3D(0.8865025, 0.4627236, 0, -0.4627236, 0.8865025, 0, 0, 0, 1, 0, 0, 0)

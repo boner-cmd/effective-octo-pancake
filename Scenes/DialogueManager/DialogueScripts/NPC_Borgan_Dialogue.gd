@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 @export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
 @export var NPC_Normal_Template_Check : bool = true
 
