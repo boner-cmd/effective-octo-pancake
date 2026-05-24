@@ -42,14 +42,10 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		
 		clown._set_player_anim(clown.AnimStates.VICTORY)
 	
 	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-	if event.is_action_pressed("toggle_map"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	if is_on_floor() and event.is_action_pressed("jump"):
 		clown._set_player_anim(clown.AnimStates.JUMP)
