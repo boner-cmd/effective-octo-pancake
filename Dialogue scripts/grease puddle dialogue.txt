@@ -1,0 +1,30 @@
+#grease puddle dialogue
+@export var initial_lines: Array[String] = [
+	"Grease, grease, grease! Is that all I'll ever get to see in life?",
+	"Is that all I'll ever get to BE in life? I want to go far away! See the world!",
+	"But how could I? I'm just a puddle of grease! I can't open doors.",
+	"Won't you take me somewhere far away? To a place that isn't grease?",
+]
+
+@export var give_lines: Array[String] = [
+#There aren't any give_lines, right?
+]
+
+@export var receive_lines: Array[String] = [
+	"Wow! My first time touching anything that isn't grease! You feel weird, lol.",
+]
+
+@export var post_lines: Array[String] = [
+	"(I'm not here)",
+]
+
+@export var easter_lines: Array[String] = [
+	"I gave it my best shot, but I decided to come back home.",
+	"Turns out non-grease just isn't the same as good-ol'-fashioned grease.",
+	"Plus that robot only wanted me for my grease, and couldn't appreciate me for who I am:",
+	"grease.",
+	"Then again, I couldn't appreciate grease either.", 
+	"Not until I had the chance to experience how you *dry-o's* live.",
+	"That's a slur I made up for things that aren't grease.",
+	"Oh yeah, that's right, I'm biggoted now.",
+]

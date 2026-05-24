@@ -30,6 +30,8 @@ window/stretch/mode="viewport"
 [global_group]
 
 Door="doors"
+Exit="used for actually leaving doors"
+npc="for those npc's"
 
 [input]
 

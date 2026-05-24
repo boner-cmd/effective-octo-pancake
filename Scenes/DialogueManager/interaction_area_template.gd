@@ -81,7 +81,6 @@ func _ready() -> void:
 	post_lines = current_NPC.post_lines
 	easter_lines = current_NPC.easter_lines
 
-
 #this was important for a reason I don't remember probably debugging
 func _on_canvas_layer_child_exiting_tree(_node: Node) -> void:
 	if !DialogueManager.is_dialogue_active:

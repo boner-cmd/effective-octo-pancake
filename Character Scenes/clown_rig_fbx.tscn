@@ -58,6 +58,7 @@ animation = &"ClownAnims/ClownWalkCycle"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_stcd8"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7bg5t"]
+graph_offset = Vector2(187.47327, 565.688)
 nodes/output/position = Vector2(1800, 120)
 nodes/Anim_Idle/node = SubResource("AnimationNodeAnimation_ecp6r")
 nodes/Anim_Idle/position = Vector2(-80, -220)
