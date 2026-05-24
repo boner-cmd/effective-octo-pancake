@@ -91,6 +91,7 @@ const npc_ids_by_name = {
 const meeting_mask 		: int = 0b00000000111111111111111111111000000000000000000000
 const completion_mask	: int = 0b00000000000000000000000000000111111111111111111111
 
+signal main_quest_complete()
 
 func has_met(npc_name : String) -> bool:
 	var row : int = state_rows_by_short_name.npc_name
@@ -164,3 +165,7 @@ func meeting_satisfied(npc_name : String) -> bool:
 func requirements_met(npc_name : String) -> bool:
 	# an NPC who has their requirements met is ready to give, receive, or exchange an item on next interact
 	return meeting_satisfied(npc_name) && completion_satisfied(npc_name)
+
+func stamp_completion() -> void: # call this at the same time that slime mould's quest state is marked completed
+	assert(is_complete("Slime"), "stamp_completion should not be called until Slime Mould's quest is complete.")
+	main_quest_complete.emit()
