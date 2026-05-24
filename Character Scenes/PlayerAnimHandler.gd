@@ -52,7 +52,7 @@ func honk_sound_player():
 	honk_player.pitch_scale += randf_range(-0.05, 0.05)
 	honk_player.play()
 	await honk_player.finished
-	print("timerfinish")
+	#print("timerfinish")
 	honk_time.queue_free()
 	honk_player.queue_free()
 
@@ -88,7 +88,7 @@ func _get_current_anim() -> AnimStates:
 
 func _set_player_anim(anim : AnimStates):
 	current_anim = anim
-	print(current_anim)
+	#print("current anim = ", current_anim)
 	match current_anim:
 		AnimStates.IDLE:
 			
