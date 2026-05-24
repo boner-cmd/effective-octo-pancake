@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dv0c0afvkyj5n"]
+
+[ext_resource type="PackedScene" uid="uid://crxnjf42amdql" path="res://Character Export Files/q/q.gltf" id="1_ge1ap"]
+
+[node name="q" unique_id=292895040 instance=ExtResource("1_ge1ap")]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://chwvoa582jgf1"]
+
+[ext_resource type="PackedScene" uid="uid://bierfyemhndx2" path="res://Character Export Files/festering mass/festering mass.gltf" id="1_485hy"]
+
+[node name="festering mass" unique_id=1082976903 instance=ExtResource("1_485hy")]

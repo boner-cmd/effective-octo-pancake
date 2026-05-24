@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ds0s8jav4pti3"]
+
+[ext_resource type="PackedScene" uid="uid://cl8dpf811ojdi" path="res://Character Export Files/snowman/snowman.gltf" id="1_b1453"]
+
+[node name="snowman" unique_id=832919613 instance=ExtResource("1_b1453")]

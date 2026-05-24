@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://g2u7c57lv33c"]
+
+[ext_resource type="PackedScene" uid="uid://bj1t81au2aaov" path="res://Character Export Files/rusty robot/robot.gltf" id="1_6iyql"]
+
+[node name="robot" unique_id=1916101213 instance=ExtResource("1_6iyql")]

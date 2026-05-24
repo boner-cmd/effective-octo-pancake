@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dt3akm51o0au4"
-path="res://.godot/imported/bodhisattva.gltf-9d4dc932d385a48830eea46253b3cafa.scn"
+path="res://.godot/imported/sisyphus.gltf-6b42c0f4645ca082a97c6e29dcd7eecc.scn"
 
 [deps]
 
-source_file="res://Character Export Files/sisyphus/bodhisattva.gltf"
-dest_files=["res://.godot/imported/bodhisattva.gltf-9d4dc932d385a48830eea46253b3cafa.scn"]
+source_file="res://Character Export Files/sisyphus/sisyphus.gltf"
+dest_files=["res://.godot/imported/sisyphus.gltf-6b42c0f4645ca082a97c6e29dcd7eecc.scn"]
 
 [params]
 

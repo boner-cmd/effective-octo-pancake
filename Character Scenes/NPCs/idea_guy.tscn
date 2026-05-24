@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ouu7ac5fbhbc"]
+
+[ext_resource type="PackedScene" uid="uid://bvn7edgfqdqo2" path="res://Character Export Files/idea guy/idea guy.gltf" id="1_v70xr"]
+
+[node name="idea guy" unique_id=1608837145 instance=ExtResource("1_v70xr")]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c4mw3llgpf4pp"]
+
+[ext_resource type="PackedScene" uid="uid://df5axsigllu1c" path="res://Character Export Files/o/o.gltf" id="1_bsyo6"]
+
+[node name="o" unique_id=454906086 instance=ExtResource("1_bsyo6")]

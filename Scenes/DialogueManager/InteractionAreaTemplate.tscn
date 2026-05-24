@@ -3,12 +3,35 @@
 [ext_resource type="Script" uid="uid://cfrvqrfsuonyf" path="res://Scenes/DialogueManager/interaction_area_template.gd" id="1_5i06m"]
 [ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_y5h15"]
 [ext_resource type="Script" uid="uid://nhug5lxcqucn" path="res://Scenes/DialogueManager/NPC_TemplateScript.gd" id="3_ihs6g"]
+[ext_resource type="PackedScene" uid="uid://4vq3mwkin4tn" path="res://Character Scenes/NPCs/astronaut.tscn" id="4_rmjit"]
+[ext_resource type="PackedScene" uid="uid://b2caujdauh4hq" path="res://Character Scenes/NPCs/bodhisattva.tscn" id="5_wgsat"]
+[ext_resource type="PackedScene" uid="uid://dl64ndaxlgl11" path="res://Character Scenes/NPCs/Body_Organs.tscn" id="6_uypxe"]
+[ext_resource type="PackedScene" uid="uid://chwvoa582jgf1" path="res://Character Scenes/NPCs/festering_mass.tscn" id="7_tnrcw"]
+[ext_resource type="PackedScene" uid="uid://prhivk67gykt" path="res://Character Scenes/NPCs/gatekeeper.tscn" id="8_1nt4o"]
+[ext_resource type="PackedScene" uid="uid://2f37epmgchvw" path="res://Character Scenes/NPCs/gibberish.tscn" id="9_rxrm2"]
+[ext_resource type="PackedScene" uid="uid://b6io2rohjs3a3" path="res://Character Scenes/NPCs/horse.tscn" id="10_0ltci"]
+[ext_resource type="PackedScene" uid="uid://ouu7ac5fbhbc" path="res://Character Scenes/NPCs/idea_guy.tscn" id="11_pfi2n"]
+[ext_resource type="PackedScene" uid="uid://b5dfwoc7pqgqn" path="res://Character Scenes/NPCs/individuated_individual.tscn" id="12_03vyx"]
+[ext_resource type="PackedScene" uid="uid://b105sq8ybihs2" path="res://Character Scenes/NPCs/king.tscn" id="13_s6xia"]
+[ext_resource type="PackedScene" uid="uid://p4oooooq7s2d" path="res://Character Scenes/NPCs/lamp.tscn" id="14_js1ou"]
+[ext_resource type="PackedScene" uid="uid://bhmfj5xhfjrmg" path="res://Character Scenes/NPCs/michaelwave.tscn" id="15_iblb7"]
+[ext_resource type="PackedScene" uid="uid://o6up6gykm1ci" path="res://Character Scenes/NPCs/Norgans.tscn" id="16_50gmm"]
+[ext_resource type="PackedScene" uid="uid://c4mw3llgpf4pp" path="res://Character Scenes/NPCs/o.tscn" id="17_rltig"]
+[ext_resource type="PackedScene" uid="uid://b8ab8kk2m2tnj" path="res://Character Scenes/NPCs/o_eye'd_deer.tscn" id="18_ey1ty"]
+[ext_resource type="PackedScene" uid="uid://dv0c0afvkyj5n" path="res://Character Scenes/NPCs/q.tscn" id="19_k8mm5"]
+[ext_resource type="PackedScene" uid="uid://g2u7c57lv33c" path="res://Character Scenes/NPCs/robot.tscn" id="20_6b0et"]
+[ext_resource type="PackedScene" uid="uid://comafvxbn074i" path="res://Character Scenes/NPCs/sisyphus.tscn" id="21_ub32n"]
+[ext_resource type="PackedScene" uid="uid://ds0s8jav4pti3" path="res://Character Scenes/NPCs/snowman.tscn" id="22_lspox"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
 radius = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y5h15"]
 height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_5pjf6"]
+radius = 5.0
+height = 10.0
 
 [node name="InteractionArea" type="Node3D" unique_id=1441746603]
 
@@ -66,6 +89,86 @@ vertical_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1275613, 0)
 mesh = SubResource("CapsuleMesh_y5h15")
 script = ExtResource("3_ihs6g")
+
+[node name="astronaut" parent="Area3D" unique_id=297081268 instance=ExtResource("4_rmjit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="bodhisattva" parent="Area3D" unique_id=1700854843 instance=ExtResource("5_wgsat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="body with organs" parent="Area3D" unique_id=500840685 instance=ExtResource("6_uypxe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="festering mass" parent="Area3D" unique_id=1082976903 instance=ExtResource("7_tnrcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="gatekeeper unlocked" parent="Area3D" unique_id=1866931042 instance=ExtResource("8_1nt4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="digfhtaiopwgfh;edj" parent="Area3D" unique_id=1320364681 instance=ExtResource("9_rxrm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="horse" parent="Area3D" unique_id=1429058884 instance=ExtResource("10_0ltci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="idea guy" parent="Area3D" unique_id=1608837145 instance=ExtResource("11_pfi2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="individuated individual" parent="Area3D" unique_id=1840200528 instance=ExtResource("12_03vyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="king" parent="Area3D" unique_id=1530485904 instance=ExtResource("13_s6xia")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="lamp" parent="Area3D" unique_id=162153067 instance=ExtResource("14_js1ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="michaelwave" parent="Area3D" unique_id=1980506230 instance=ExtResource("15_iblb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="body without organs" parent="Area3D" unique_id=265873924 instance=ExtResource("16_50gmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="o" parent="Area3D" unique_id=454906086 instance=ExtResource("17_rltig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="o-eye\'d deer" parent="Area3D" unique_id=728603670 instance=ExtResource("18_ey1ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="q" parent="Area3D" unique_id=292895040 instance=ExtResource("19_k8mm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="robot" parent="Area3D" unique_id=1916101213 instance=ExtResource("20_6b0et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="sisyphus" parent="Area3D" unique_id=403637881 instance=ExtResource("21_ub32n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="snowman" parent="Area3D" unique_id=832919613 instance=ExtResource("22_lspox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.128, 0)
+visible = false
+
+[node name="delete_size_checker" type="MeshInstance3D" parent="." unique_id=2076530000]
+visible = false
+mesh = SubResource("SphereMesh_5pjf6")
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Area3D/CanvasLayer" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]
