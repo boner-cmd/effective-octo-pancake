@@ -31,9 +31,9 @@ flip_faces = true
 radius = 5.0
 height = 10.0
 
-[node name="02_Horse_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("Obj_1", "Obj_2", "Obj_3", "Obj_4", "Obj_5")]
+[node name="02_Horse_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4", "Obj_5")]
 script = ExtResource("1_0yh3f")
-Obj_1 = NodePath("InteractionArea")
+InteractionArea = NodePath("InteractionArea")
 Obj_2 = NodePath("Door")
 Obj_3 = NodePath("Door2")
 Obj_4 = NodePath("Door3")

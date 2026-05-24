@@ -1,10 +1,11 @@
 extends Node3D
 
-@export var Obj_1 : Node3D
+@export var InteractionArea : Node3D
 @export var Obj_2 : Node3D
 @export var Obj_3 : Node3D
 @export var Obj_4 : Node3D
 @export var Obj_5 : Node3D
+
 
 var obj_determine_placement : Array = [
 	0,
@@ -45,6 +46,8 @@ Vector3(17.0, 0.0, 126.0),
 ]
 var Array_Choice : int
 var order : Array
+
+
 #pick an array
 func placement():
 	Array_Choice = obj_determine_placement.pick_random()
@@ -60,8 +63,8 @@ func placement():
 		order = obj_pos_5
 	order.shuffle()
 	
-	if Obj_1:
-		Obj_1.rotation_degrees = order.pop_back()
+	if InteractionArea:
+		InteractionArea.rotation_degrees = order.pop_back()
 	if Obj_2:
 		Obj_2.rotation_degrees = order.pop_back()
 	if Obj_3:

@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://b5xiglx8gxhhd"]
 
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_hb5q0"]
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_txy1j"]
 [ext_resource type="Material" uid="uid://chrf665sj6kbi" path="res://planets/materials/10_Deer_skybox.tres" id="2_swx71"]
 [ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_kfqw7"]
 [ext_resource type="Material" uid="uid://ekgtxdnawfrf" path="res://planets/materials/10_O_Deer_skybox.tres" id="4_3pjkr"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_m2m7x"]
 [ext_resource type="Material" uid="uid://c74pmtds6alo8" path="res://planets/materials/10_Deer_planet.tres" id="6_vlnvu"]
+[ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_36we4"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="9_5tpbv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -23,7 +26,12 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="10_Deer_Planet" type="Node3D" unique_id=731662202]
+[node name="10_Deer_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
+script = ExtResource("1_txy1j")
+InteractionArea = NodePath("InteractionArea")
+Obj_2 = NodePath("Door")
+Obj_3 = NodePath("Door2")
+Obj_4 = NodePath("Door3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
 environment = SubResource("Environment_rtanu")
@@ -34,14 +42,14 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_hb5q0")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_swx71")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="CubedSkybox2" parent="." unique_id=991346088 instance=ExtResource("1_hb5q0")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=445189043]
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
 material_override = ExtResource("4_3pjkr")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
@@ -52,6 +60,32 @@ transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 material_override = ExtResource("6_vlnvu")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
+[node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_36we4")]
+
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_5tpbv")]
+
+[node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
+destination_planet_ID = 3
+
+[node name="Door2" parent="." unique_id=367153842 instance=ExtResource("9_5tpbv")]
+
+[node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
+destination_planet_ID = 15
+
+[node name="Door3" parent="." unique_id=877364393 instance=ExtResource("9_5tpbv")]
+
+[node name="DoorBaseModel" parent="Door3" index="0" unique_id=1012687003]
+destination_planet_ID = 18
+
 [editable path="CubedSkybox"]
 [editable path="CubedSkybox2"]
 [editable path="Cubed_Planet"]
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door2"]
+[editable path="Door2/DoorBaseModel"]
+[editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door3"]
+[editable path="Door3/DoorBaseModel"]
+[editable path="Door3/DoorBaseModel/DoorAnims"]

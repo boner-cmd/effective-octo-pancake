@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://duwruafn6xbdm"]
 
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_1e5ij"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_v5l73"]
 [ext_resource type="Material" uid="uid://n1vy5mk0olje" path="res://planets/materials/12_Lamp_skybox.tres" id="2_mr5si"]
 [ext_resource type="Material" uid="uid://d156wbmijit5p" path="res://planets/materials/12_Lamp_planet.tres" id="3_d7g5m"]
+[ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="5_5xo3p"]
+[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_x06r3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -24,7 +27,11 @@ glow_enabled = true
 radius = 5.0
 height = 10.0
 
-[node name="12_Lamp_Planet" type="Node3D" unique_id=731662202]
+[node name="12_Lamp_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3")]
+script = ExtResource("1_1e5ij")
+InteractionArea = NodePath("InteractionArea")
+Obj_2 = NodePath("Door")
+Obj_3 = NodePath("Door2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
 environment = SubResource("Environment_rtanu")
@@ -35,11 +42,29 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_v5l73")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=445189043]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 surface_material_override/0 = ExtResource("2_mr5si")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1953236752]
 mesh = SubResource("SphereMesh_tnp6f")
 surface_material_override/0 = ExtResource("3_d7g5m")
 
+[node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_5xo3p")]
+
+[node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_x06r3")]
+
+[node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
+destination_planet_ID = 9
+
+[node name="Door2" parent="." unique_id=374508175 instance=ExtResource("6_x06r3")]
+
+[node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
+destination_planet_ID = 19
+
 [editable path="CubedSkybox"]
+[editable path="Door"]
+[editable path="Door/DoorBaseModel"]
+[editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door2"]
+[editable path="Door2/DoorBaseModel"]
+[editable path="Door2/DoorBaseModel/DoorAnims"]

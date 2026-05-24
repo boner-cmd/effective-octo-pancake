@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c4u6qyrco428l"]
 
-[ext_resource type="Texture2D" uid="uid://dmow47blyrxxn" path="res://planets/textures/Planet Textures/gatekeeper texture.png" id="1_p7st1"]
+[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/body with organs/body_with_organs_planet_texture.png" id="1_p7st1"]
 
 [resource]
 albedo_texture = ExtResource("1_p7st1")
