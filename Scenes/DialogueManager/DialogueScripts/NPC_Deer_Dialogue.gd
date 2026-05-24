@@ -1,3 +1,8 @@
+extends MeshInstance3D
+@export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
+@export var NPC_Normal_Template_Check : bool = true
+
+#Dialogue goes here, 100 char per string limit, strongly suggest breaking it up if it can be
 #no-eye'd deer dialogue
 @export var initial_lines: Array[String] = [
 	"H-Hello??? Is someone there??? Someone's there, right?.",
@@ -14,9 +19,9 @@
 @export var give_lines: Array[String] = [
 	"Oh he-WOAH! Okay, you're just touching my eye sockets like that.",
 	"Could have used some warning, but whatever.",
-	"So I guess you found something that could cover my gaping eyeholes?"
+	"So I guess you found something that could cover my gaping eyeholes?",
 	"That's very kind of you. Does it look good?",
-	"...Is that a "yes?"",
+	"...Is that a \"yes?\"",
 ]
 
 @export var receive_lines: Array[String] = [

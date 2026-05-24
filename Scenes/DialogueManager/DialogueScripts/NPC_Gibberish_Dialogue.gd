@@ -1,3 +1,8 @@
+extends MeshInstance3D
+@export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
+@export var NPC_Normal_Template_Check : bool = true
+
+#Dialogue goes here, 100 char per string limit, strongly suggest breaking it up if it can be
 #gibberish dialogue
 @export var initial_lines: Array[String] = [
 	"iuewgf[iurh. f;;refijfk dnuew hfaoihdsu. dksjhfaoi ufye waifjdsn flkdsjfns.",
@@ -20,12 +25,12 @@
 ]
 
 @export var easter_lines: Array[String] = [
-	"osiczjspdihdscsdnc szdijcdscusdncljnzends lc fhdosijvcidssjzkndcmd dzsondcsz /cdz'sdvcdv dzs",
-	"koxzckdsnczdovnds ccznoidsn;f cz;cndsoidsc zdzckjdsljc;dsc/z .dz' c/dc dczl/knc zsdszkjdnfzsdnfds.",
+	"osiczjspdihdscsdnc szdijcdscnzends lc fhdosijvcidssjzkndcmd dzsondcsz /cdz'sdvcdv dzs",
+	"koxzckdsncvnds ccznoidsn;f cz;cndsoidsc zdzc;dsc/z .dz' c/dc dczl/knc zsdszkjdnfzsdnfds.",
 	"lkdshfozncdszc jfdslfsbsdmfndsf dsjdksfds fdsoien[Wef nfzkefzdlks dkwadwdtskdasd awtdawdsa",
 	"soaishdgdskofsd fdsjslkfdmpzn dskpsff zopdfjzof",
 	"cmzskmzskc dzcmpsod djjxzoe fpsozcpdkzl dsl zfklknkdfjlkz xclcmlzknflxmckzx",
 	"jkxhkfd",
 	"xncosidjfodzx csodifjdsokfd lkjdshzeufsd dzkjsfhzsldyzkf elkszjfhlsudyk kjzhlerkjsc dkjzfyekr.",
-	"oxkcnzsdjf czodjzsoijcdszlck kjzckzdsc dfhjluvcykzdf jhfudyfkndmdxnkjf vdkjfdzx cvzdfkjnflzf flvz\",
+	"oxkcnzsdjf czodjzsoijcdszlck kjzckzdsc dfhjluvcykzdf jhfudyfkndmdxnkjf vdkjfdzx cvzdfkjnflzf flvz",
 ]

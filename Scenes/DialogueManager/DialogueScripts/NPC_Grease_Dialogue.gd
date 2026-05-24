@@ -1,3 +1,8 @@
+extends MeshInstance3D
+@export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
+@export var NPC_Normal_Template_Check : bool = true
+
+#Dialogue goes here, 100 char per string limit, strongly suggest breaking it up if it can be
 #grease puddle dialogue
 @export var initial_lines: Array[String] = [
 	"Grease, grease, grease! Is that all I'll ever get to see in life?",

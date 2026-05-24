@@ -1,11 +1,16 @@
+extends MeshInstance3D
+@export var current_state : DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN
+@export var NPC_Normal_Template_Check : bool = true
+
+#Dialogue goes here, 100 char per string limit, strongly suggest breaking it up if it can be
 #o dialogue
 @export var initial_lines: Array[String] = [
 	"Ohhhhhhhhhhhhhh",
 	"I am the Ohhhhhhh, didn't you knoooooooooow?",
 	"Noooooooooooo, nobody knooooooooooows.",
 	"Noooooobody knooooooows I am Ohhhhhhhhhhh.",
-	""A Zerooooooo?"", 
-	""A circooooooole?"",
+	"\"A Zerooooooo?\"", 
+	"\"A circooooooole?\"",
 	"Noooooooooo:",
 	"Ohhhhhhhhhhh.",
 	"If I were not Ohhhhhhhh, as long as everybody knoooooooooows,",
@@ -24,7 +29,7 @@
 
 @export var receive_lines: Array[String] = [
 	"I's? Why would I have any I's?",
-	"I have these left over O's, though."
+	"I have these left over O's, though.",
 	"Hope they help q out!",
 	"(No, that didn't work.)",
 ]
