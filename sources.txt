@@ -1,0 +1,7 @@
+<a href="https://www.vecteezy.com/free-vector/complete-stamp">Complete Stamp Vectors by Vecteezy</a> (asset, via Feris Setiawan)
+https://www.gdquest.com/tutorial/godot/audio/volume-slider/ (basis for audio slider connection)
+https://www.youtube.com/watch?v=1DRy5An_6DU (dialog manager and textboxes)
+https://git-scm.com/ (git pain)
+https://gdscript.com/solutions/coroutines-and-yield/ (await behavior)
+https://docs.godotengine.org/en/stable/ (everything)
+https://convertio.co/ (eps to svg)

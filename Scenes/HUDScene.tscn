@@ -1,13 +1,33 @@
 [gd_scene format=3 uid="uid://b58oygg7njg67"]
 
 [ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
+[ext_resource type="Texture2D" uid="uid://dmow47blyrxxn" path="res://planets/textures/Planet Textures/gatekeeper texture.png" id="2_30jjv"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
 [ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://Placeholder Assets (UI)/icon.svg" id="3_yw1hr"]
 [ext_resource type="Script" uid="uid://ccdcjyi3r58yx" path="res://Scenes/stickerbook_background.gd" id="6_30jjv"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
+[ext_resource type="Texture2D" uid="uid://bsdu6ttvqnss" path="res://planets/textures/Skybox Textures/king skybox.png" id="7_d34sf"]
+[ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="8_jqj6d"]
+[ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="9_rv5bf"]
+[ext_resource type="Texture2D" uid="uid://corpj8fathg78" path="res://planets/textures/Skybox Textures/snowman skybox.png" id="10_7h3cr"]
+[ext_resource type="Texture2D" uid="uid://d3tdvvpspeima" path="res://planets/textures/Skybox Textures/sisyphus skybox.png" id="11_ynwxi"]
+[ext_resource type="Texture2D" uid="uid://bvwryv2va8maw" path="res://planets/textures/Planet Textures/grease puddle.png" id="12_cm65r"]
+[ext_resource type="Texture2D" uid="uid://cbi3wyweyd87d" path="res://planets/textures/Planet Textures/no i dear planet texture.png" id="13_2wn8p"]
+[ext_resource type="Texture2D" uid="uid://dww0krcd78arx" path="res://planets/textures/Skybox Textures/o skybox.png" id="14_40r1x"]
+[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/body with organs/body_with_organs_planet_texture.png" id="15_rv8fl"]
+[ext_resource type="Texture2D" uid="uid://be1jk7tu1hpre" path="res://planets/textures/festering mass/festering_mass_planet_texture.png" id="16_sqpbf"]
+[ext_resource type="Texture2D" uid="uid://bgde8b03yqx1" path="res://planets/textures/Skybox Textures/lamp skybox.png" id="17_bphkb"]
+[ext_resource type="Texture2D" uid="uid://c8as2ukr6ikov" path="res://Character Export Files/body with organs/bwo body.png" id="18_00uqi"]
+[ext_resource type="Texture2D" uid="uid://bl7k88u5tn017" path="res://planets/textures/Planet Textures/circuit planet texture.png" id="19_iqywv"]
+[ext_resource type="Texture2D" uid="uid://bk1fwi0omtaj7" path="res://planets/models/gibberish/gibberish_skybox.png" id="20_yo8np"]
+[ext_resource type="Texture2D" uid="uid://ctf8rj1gusj36" path="res://Character Export Files/idea guy/idea guy.png" id="21_ftghg"]
+[ext_resource type="Texture2D" uid="uid://bfkcyyc7h443b" path="res://planets/textures/Skybox Textures/bodhisattva skybox.png" id="22_4u7pl"]
+[ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="23_ppan7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d34sf"]
 
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
 process_mode = 3
@@ -160,116 +180,250 @@ text = "Quit
 "
 
 [node name="StickerbookBackground" type="NinePatchRect" parent="." unique_id=878957700]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_30jjv")
+patch_margin_left = 85
+patch_margin_top = 65
+patch_margin_right = 78
+patch_margin_bottom = 68
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 script = ExtResource("6_30jjv")
 
 [node name="KingSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1416114579]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 250.0
+offset_top = 78.0
+offset_right = 314.0
+offset_bottom = 142.0
+texture = ExtResource("7_d34sf")
+expand_mode = 1
 
 [node name="HorseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=616505084]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1008.0
+offset_top = 524.0
+offset_right = 1072.0
+offset_bottom = 588.0
+texture = ExtResource("8_jqj6d")
+expand_mode = 1
 
 [node name="AstronautSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1002752034]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 154.0
+offset_top = 716.0
+offset_right = 218.0
+offset_bottom = 780.0
+texture = ExtResource("9_rv5bf")
+expand_mode = 1
 
 [node name="SnowmanSticker" type="TextureRect" parent="StickerbookBackground" unique_id=752233729]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1141.0
+offset_top = 69.0
+offset_right = 1205.0
+offset_bottom = 133.0
+texture = ExtResource("10_7h3cr")
+expand_mode = 1
 
 [node name="SisyphusSticker" type="TextureRect" parent="StickerbookBackground" unique_id=784344791]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 67.0
+offset_top = 593.0
+offset_right = 131.0
+offset_bottom = 657.0
+texture = ExtResource("11_ynwxi")
+expand_mode = 1
 
 [node name="GreaseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1648624159]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 732.0
+offset_top = 374.0
+offset_right = 796.0
+offset_bottom = 438.0
+texture = ExtResource("12_cm65r")
+expand_mode = 1
 
 [node name="DeerSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1724011015]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 397.0
+offset_top = 214.0
+offset_right = 461.0
+offset_bottom = 278.0
+texture = ExtResource("13_2wn8p")
+expand_mode = 1
 
 [node name="GateSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1480087912]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 985.0
+offset_top = 685.0
+offset_right = 1049.0
+offset_bottom = 749.0
+texture = ExtResource("2_30jjv")
+expand_mode = 1
 
 [node name="OSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1142725549]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 653.0
+offset_top = 694.0
+offset_right = 717.0
+offset_bottom = 758.0
+texture = ExtResource("14_40r1x")
+expand_mode = 1
 
 [node name="OrgansSticker" type="TextureRect" parent="StickerbookBackground" unique_id=530485664]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 289.0
+offset_top = 347.0
+offset_right = 353.0
+offset_bottom = 411.0
+texture = ExtResource("15_rv8fl")
+expand_mode = 1
 
 [node name="MassSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1949142771]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 260.0
+offset_top = 606.0
+offset_right = 324.0
+offset_bottom = 670.0
+texture = ExtResource("16_sqpbf")
+expand_mode = 1
 
 [node name="LampSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1586886347]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1017.0
+offset_top = 190.0
+offset_right = 1081.0
+offset_bottom = 254.0
+texture = ExtResource("17_bphkb")
+expand_mode = 1
 
 [node name="NorgansSticker" type="TextureRect" parent="StickerbookBackground" unique_id=823099394]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 875.0
+offset_top = 572.0
+offset_right = 939.0
+offset_bottom = 636.0
+texture = ExtResource("18_00uqi")
+expand_mode = 1
 
 [node name="MichaelwaveSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1783725147]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 516.0
+offset_top = 94.0
+offset_right = 580.0
+offset_bottom = 158.0
+texture = ExtResource("19_iqywv")
+expand_mode = 1
 
 [node name="RobotSticker" type="TextureRect" parent="StickerbookBackground" unique_id=59128618]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 438.0
+offset_top = 512.0
+offset_right = 502.0
+offset_bottom = 576.0
+texture = ExtResource("19_iqywv")
+expand_mode = 1
 
 [node name="GibberishSticker" type="TextureRect" parent="StickerbookBackground" unique_id=714743182]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 710.0
+offset_top = 151.0
+offset_right = 774.0
+offset_bottom = 215.0
+texture = ExtResource("20_yo8np")
+expand_mode = 1
 
 [node name="IndividualSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1316062858]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1120.0
+offset_top = 388.0
+offset_right = 1184.0
+offset_bottom = 452.0
+expand_mode = 1
 
 [node name="IdeaSticker" type="TextureRect" parent="StickerbookBackground" unique_id=434983327]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 629.0
+offset_top = 496.0
+offset_right = 693.0
+offset_bottom = 560.0
+texture = ExtResource("21_ftghg")
+expand_mode = 1
 
 [node name="BodhiSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1228603223]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 563.0
+offset_top = 340.0
+offset_right = 627.0
+offset_bottom = 404.0
+texture = ExtResource("22_4u7pl")
+expand_mode = 1
 
 [node name="SlimeSticker" type="TextureRect" parent="StickerbookBackground" unique_id=448576117]
+z_index = 1
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 60.0
+offset_top = 429.0
+offset_right = 124.0
+offset_bottom = 493.0
+texture = ExtResource("23_ppan7")
+expand_mode = 1
 
 [node name="CompleteStamp" type="TextureRect" parent="StickerbookBackground" unique_id=859565293]
-visible = false
+top_level = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 402.0
+offset_top = 303.00003
+offset_right = 1151.72
+offset_bottom = 805.01196
+rotation = -0.3159046
+texture = SubResource("PlaceholderTexture2D_d34sf")
 
 [connection signal="pressed" from="PauseBackground/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseBackground/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
