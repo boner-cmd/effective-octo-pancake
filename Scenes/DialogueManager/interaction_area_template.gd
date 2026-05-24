@@ -28,7 +28,7 @@ var temp_status : DialogueManager.CONV_STATE
 var current_status: DialogueManager.CONV_STATE = DialogueManager.CONV_STATE.PLAYER_LISTEN:
 	set(set_current_status):
 		current_status = set_current_status
-		print("status changed")
+		print("InteractionAreaTemplate: changed DialogueManager status to " + str(current_status))
 
 func conversation_dialogue():
 	match current_status:
@@ -52,11 +52,10 @@ func conversation_dialogue():
 			lines = easter_lines
 			
 		DialogueManager.CONV_STATE.COMPLETE:
-			print("complete")
+			print("InteractionAreaTemplate: Current DialogManager status is \"COMPLETE\"")
 			
-	print("something")
+	print("InteractionAreaTemplate: End of match statement.")
 	print(lines)
-
 
 #this should only run if child is an NPC
 func interact() -> void:
@@ -74,7 +73,7 @@ func _ready() -> void:
 	current_NPC = get_child(2)
 	NPC_Normal_Template_Check = current_NPC.NPC_Normal_Template_Check
 	
-	print(current_NPC)
+	print("InteractionAreaTemplate: Current NPC is " + str(current_NPC))
 	initial_lines = current_NPC.initial_lines
 	give_lines = current_NPC.give_lines
 	receive_lines = current_NPC.receive_lines

@@ -115,7 +115,6 @@ func despawn_sound_player():
 	var despawn_player = audio_stream_player.duplicate()
 	despawn_player.stream = sfx_despawn
 	get_tree().root.add_child(despawn_player)
-	print("despawn sound player")
 	despawn_player.pitch_scale += randf_range(-0.1, 0.1)
 	despawn_player.play()
 	await despawn_player.finished
@@ -144,7 +143,7 @@ func interact():
 	rig.visible = true
 	clone.queue_free()
 	request_planet_change.emit(destination_planet_ID)
-	print("requesting planet change")
+	print("DoorAnimHandler: sent planet change request signal with ID " + str(destination_planet_ID))
 	_set_door_anim(AnimStates.STASIS)
 	
 

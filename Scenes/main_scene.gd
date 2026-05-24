@@ -66,21 +66,19 @@ func _ready() -> void:
 	new_bgm_stream.volume_db = -10
 	new_bgm_stream.play()
 	
-	get_tree().root.add_child(current_planet)
+	# first time initialization (door is in group from _on_entered_tree)
+	get_tree().root.add_child(current_planet) 
 	for door in get_tree().get_nodes_in_group("Active_Door"):
 		if !door.request_planet_change.is_connected(on_planet_change_requested):
 			door.request_planet_change.connect(on_planet_change_requested)
 			door.request_music_change.connect(_bgm_track_cycle)
-			
+
 
 func _bgm_track_cycle():
 #	fade out old stream
 	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, 0.0, .2)
 	
-	
-	
 func _new_track_start():
-	
 	pass
 	
 
@@ -98,15 +96,16 @@ func on_planet_change_requested(planet_ID : int):
 	current_planet = requested_planet
 	current_music = requested_bgm
 	
-	player_character.reset_player()
+	#for door in get_tree().get_nodes_in_group("Active_Door"):
+		#door.remove_from_group("Active_Door")
+		#
+	#for door in get_tree().get_nodes_in_group("Door_Base"):
+		#if is_ancestor_of(door):
+			#door.add_to_group("Active_Door")
 	
 	for door in get_tree().get_nodes_in_group("Active_Door"):
 		if !door.request_planet_change.is_connected(on_planet_change_requested):
 			door.request_planet_change.connect(on_planet_change_requested)
 			door.request_music_change.connect(_bgm_track_cycle)
-	
-	
-	
-	
-	#connect new planet's door signals to this
-	
+
+	player_character.reset_player()

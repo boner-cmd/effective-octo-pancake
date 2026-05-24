@@ -33,16 +33,16 @@ func _spawn_check(var1 : Node3D, var2 : Node3D):
 
 func _randomize_spawn_2(obj1 : Node3D, obj2 : Node3D):
 	obj1.rotation_degrees = Vector3(randf_range(0, 360.0), 0, randf_range(0, 360.0))
-	print(obj1.rotation_degrees)
+	print("Test Dots: " + str(obj1.rotation_degrees))
 	obj2.rotation_degrees = Vector3(randf_range(0, 360.0), 0, randf_range(0, 360.0))
-	print(obj2.rotation_degrees)
+	print("Test Dots: " + str(obj2.rotation_degrees))
 	#_spawn_check(mesh_1, mesh_2)
 	
 func _randomize_spawn_3():
 	object_1.rotation_degrees = Vector3(randf_range(0, 360.0), 0, randf_range(0, 360.0))
-	print(object_1.rotation_degrees)
+	print("Test Dots: " + str(object_1.rotation_degrees))
 	object_2.rotation_degrees = Vector3(randf_range(0, 360.0), 0, randf_range(0, 360.0))
-	print(object_2.rotation_degrees)
+	print("Test Dots: " + str(object_2.rotation_degrees))
 	#object_3.rotation_degrees = Vector3(randf_range(0, 360.0), 0, randf_range(0, 360.0))
 	#print(object_3.rotation_degrees)
 	#_spawn_check(mesh_1, mesh_2)
@@ -51,7 +51,7 @@ func _randomize_spawn_3():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _spawn_check(mesh_1, mesh_2) < target_deg_min:
 		_randomize_spawn_2(object_1, object_2)
 	if _spawn_check(mesh_2, mesh_3) < target_deg_min:
