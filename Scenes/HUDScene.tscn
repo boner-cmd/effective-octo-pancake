@@ -117,7 +117,7 @@ theme_override_font_sizes/font_size = 56
 text = "~P~A~U~S~E~"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseBackground" unique_id=1394599374]
+[node name="AudioControlVBox" type="VBoxContainer" parent="PauseBackground" unique_id=1394599374]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,81 +268,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="StickerbookBackground" unique_id=2006654681]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 470.0
-offset_top = 261.0
-offset_right = 770.0
-offset_bottom = 419.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MasterAudioSlider" type="HSlider" parent="StickerbookBackground/VBoxContainer2" unique_id=1527064624]
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-scrollable = false
-
-[node name="MasterAudioLabel" type="Label" parent="StickerbookBackground/VBoxContainer2/MasterAudioSlider" unique_id=67776631]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -56.0
-offset_top = -10.0
-offset_right = 56.0
-offset_bottom = 13.0
-grow_horizontal = 2
-text = "Master Volume Control"
-
-[node name="MusicAudioSlider" type="HSlider" parent="StickerbookBackground/VBoxContainer2" unique_id=767420083]
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-
-[node name="MusicAudioLabel" type="Label" parent="StickerbookBackground/VBoxContainer2/MusicAudioSlider" unique_id=2056203416]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -56.0
-offset_top = -10.0
-offset_right = 56.0
-offset_bottom = 13.0
-grow_horizontal = 2
-text = "Music Volume Control"
-
-[node name="SfxAudioSlider" type="HSlider" parent="StickerbookBackground/VBoxContainer2" unique_id=471404201]
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-
-[node name="SfxAudioLabel" type="Label" parent="StickerbookBackground/VBoxContainer2/SfxAudioSlider" unique_id=1380970927]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -56.0
-offset_top = -10.0
-offset_right = 56.0
-offset_bottom = 13.0
-grow_horizontal = 2
-text = "SFX Audio Control"
-
 [connection signal="pressed" from="PauseBackground/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseBackground/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="visibility_changed" from="StickerbookBackground" to="StickerbookBackground" method="_on_stickerbook_background_visibility_changed"]
-[connection signal="mouse_exited" from="StickerbookBackground/VBoxContainer2/MasterAudioSlider" to="StickerbookBackground/VBoxContainer2" method="_on_any_mouse_exited"]
-[connection signal="value_changed" from="StickerbookBackground/VBoxContainer2/MasterAudioSlider" to="StickerbookBackground/VBoxContainer2" method="_on_master_value_changed"]
-[connection signal="mouse_exited" from="StickerbookBackground/VBoxContainer2/MusicAudioSlider" to="StickerbookBackground/VBoxContainer2" method="_on_any_mouse_exited"]
-[connection signal="value_changed" from="StickerbookBackground/VBoxContainer2/MusicAudioSlider" to="StickerbookBackground/VBoxContainer2" method="_on_music_value_changed"]
-[connection signal="mouse_exited" from="StickerbookBackground/VBoxContainer2/SfxAudioSlider" to="StickerbookBackground/VBoxContainer2" method="_on_any_mouse_exited"]
-[connection signal="value_changed" from="StickerbookBackground/VBoxContainer2/SfxAudioSlider" to="StickerbookBackground/VBoxContainer2" method="_on_sfx_value_changed"]

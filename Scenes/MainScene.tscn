@@ -13,6 +13,9 @@ script = ExtResource("1_7rqgy")
 [node name="HUDOverlay" parent="." unique_id=1314492231 instance=ExtResource("2_y4jh7")]
 follow_viewport_enabled = true
 
+[node name="PauseBackground" parent="HUDOverlay" index="1" unique_id=1506672344]
+visible = false
+
 [node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") instance=ExtResource("1_hpc76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
 collision_mask = 6
