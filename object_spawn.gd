@@ -1,0 +1,76 @@
+extends Node3D
+
+@export var Obj_1 : Node3D
+@export var Obj_2 : Node3D
+@export var Obj_3 : Node3D
+@export var Obj_4 : Node3D
+@export var Obj_5 : Node3D
+
+var obj_determine_placement : Array = [
+	0,
+	1,
+	2,
+	3,
+	4,
+]
+var obj_pos_1 : Array = [
+Vector3(349.0, 0.0, 268.0),
+Vector3(341.0, 0.0, 180.0),
+Vector3(333.0, 0.0, 21.0),
+Vector3(266.0, 0.0, 356.0),
+]
+var obj_pos_2 : Array =[
+Vector3(298.0, 0.0, 96),
+Vector3(317.0, 0.0, 294.0),
+Vector3(332.0, 0.0, 198.0),
+Vector3(212.0, 0.0, 189.0),
+]
+var obj_pos_3 : Array =[
+Vector3(293.0, 0.0, 235.0),
+Vector3(247.0, 0.0, 164.0),
+Vector3(15.0, 0.0, 98),
+Vector3(206.0, 0.0, 4.0),
+]
+var obj_pos_4 : Array =[
+Vector3(348.0, 0.0, 200.0),
+Vector3(102.0, 0.0, 232.0),
+Vector3(171.0, 0.0, 97),
+Vector3(152.0, 0.0, 155.0),
+]
+var obj_pos_5 : Array =[
+Vector3(119.0, 0.0, 206.0),
+Vector3(334.0, 0.0, 205.0),
+Vector3(24.0, 0.0, 352.0),
+Vector3(17.0, 0.0, 126.0),
+]
+var Array_Choice : int
+var order : Array
+#pick an array
+func placement():
+	Array_Choice = obj_determine_placement.pick_random()
+	if Array_Choice == 0:
+		order = obj_pos_1
+	if Array_Choice == 1:
+		order = obj_pos_2
+	if Array_Choice == 2:
+		order = obj_pos_3
+	if Array_Choice == 3:
+		order = obj_pos_4
+	if Array_Choice == 4:
+		order = obj_pos_5
+	order.shuffle()
+	
+	if Obj_1:
+		Obj_1.rotation_degrees = order.pop_back()
+	if Obj_2:
+		Obj_2.rotation_degrees = order.pop_back()
+	if Obj_3:
+		Obj_3.rotation_degrees = order.pop_back()
+	if Obj_4:
+		Obj_4.rotation_degrees = order.pop_back()
+	#Placeholder junk until can re-formulate best fit vectors
+	if Obj_5:
+		Obj_5.rotation_degrees = Vector3(randf_range(0.0, 360.0), 0.0, randf_range(0.0, 360.0))
+
+func _ready() -> void:
+	placement()

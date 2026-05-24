@@ -1,5 +1,5 @@
 extends Node3D
-
+var player: CharacterBody3D
 @onready var main_ : Node3D
 @export var destination_planet_ID : int
 
@@ -82,6 +82,7 @@ func _set_door_anim(anim : AnimStates):
 		pass
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	_set_door_anim(AnimStates.STASIS)
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
@@ -128,7 +129,7 @@ func exit_sound_player():
 	await exit_player.finished
 	exit_player.queue_free()
 	
-func interact(player : CharacterBody3D):
+func interact():
 	request_music_change.emit()
 	player.exit_check = true
 	var rig = player.get_child(2)
@@ -147,12 +148,11 @@ func interact(player : CharacterBody3D):
 signal request_planet_change(planet_ID : int)
 signal request_music_change
 
-#func _process(delta: float) -> void:
-	#if current_anim != AnimStates.EXIT:
-		#var player = get_tree().get_child(2)
-		#var direction = player.global_position - global_position
-		#var target_angle = atan2(direction.x, direction.z)
-		#rotation.y = lerp_angle(rotation.y, target_angle, .2) 
+func _process(_delta: float) -> void:
+	if current_anim != AnimStates.EXIT:
+		var direction = player.global_position - global_position
+		var target_angle = -atan2(direction.x, direction.z)
+		rotation.y = lerp_angle(rotation.y, target_angle, .2) 
 
 func _on_tree_entered() -> void:
 	add_to_group("Active_Door")

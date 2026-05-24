@@ -1,5 +1,5 @@
 extends Area3D
-
+var player: CharacterBody3D
 
 var interact_ui : MarginContainer
 
@@ -18,9 +18,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and current_exit:
 		var exit
 		exit = current_exit.get_parent()
-		var player = self.get_parent()
-		exit.interact(player)
+		player = self.get_parent()
+		exit.interact()
 
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 
 func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Door_Spawn"):

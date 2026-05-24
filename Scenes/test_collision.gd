@@ -31,7 +31,9 @@ func _process(delta: float) -> void:
 			_randomize(object_2)
 			if area_3d_3.has_overlapping_areas():
 				_randomize(object_3)
-				#if area_3d_4.has_overlapping_areas():
-					#_randomize(object_4)
+				if area_3d_4.has_overlapping_areas():
+					_randomize(object_4)
+	else:
+		printt(object_1.rotation_degrees, object_2.rotation_degrees, object_3.rotation_degrees, object_4.rotation_degrees)
 	
 	

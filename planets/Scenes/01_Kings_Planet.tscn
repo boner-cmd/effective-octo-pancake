@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dlwm28pougg7e"]
 
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_ndrcc"]
 [ext_resource type="Texture2D" uid="uid://bsdu6ttvqnss" path="res://planets/textures/Skybox Textures/king skybox.png" id="1_vkkia"]
 [ext_resource type="PackedScene" uid="uid://clr5ostwu7ndd" path="res://planets/models/king planet model/king planet.gltf" id="2_rtanu"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="2_tsosp"]
@@ -23,7 +24,10 @@ glow_enabled = true
 [sub_resource type="SphereMesh" id="SphereMesh_lyt48"]
 flip_faces = true
 
-[node name="01_Kings_Planet" type="Node3D" unique_id=731662202]
+[node name="01_Kings_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("Obj_1", "Obj_2")]
+script = ExtResource("1_ndrcc")
+Obj_1 = NodePath("Door")
+Obj_2 = NodePath("InteractionArea")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113572733]
 environment = SubResource("Environment_rtanu")

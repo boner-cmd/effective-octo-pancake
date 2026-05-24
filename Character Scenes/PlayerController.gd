@@ -12,6 +12,10 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 @onready var _camera_pivot: Node3D = $CameraPivot
 @onready var _camera: Camera3D = $CameraPivot/Camera3D
 
+@onready var reset_raycast: RayCast3D = $"../Reset_Raycast"
+@onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var current_raycast : RayCast3D
+
 #planet stuff
 @export var planet : Node3D
 @onready var clown: Node3D = $ClownRigFBX
@@ -26,7 +30,7 @@ var convo_flip_3 = true
 
 #state stuff
 var exit_check = false
-var respawn_pos : Vector3 = Vector3(0.0, 6.0, 0.0)
+var respawn_pos : Vector3 = Vector3(0.0, 0.0, 0.0)
 var respawn_rot : Vector3 = Vector3(0.0, 0.0, 0.0)
 
 var Idle_Check : bool = false
@@ -41,6 +45,7 @@ var xform : Transform3D
 func reset_player():
 	position = respawn_pos
 	rotation = respawn_rot
+	
 	#some stuff needs to happen with waits maybe
 	exit_check = false
 	
@@ -80,6 +85,8 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if !ray_cast_3d.is_colliding():
+		current_raycast = reset_raycast
 	
 	if DialogueManager.is_dialogue_active == true:
 		match DialogueManager.dialogue_state:
@@ -140,7 +147,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
 
 		#align character with floor
-		align_with_floor($RayCast3D.get_collision_normal()) # get collision normal can return a zero vector if no collision
+		align_with_floor(ray_cast_3d.get_collision_normal()) # get collision normal can return a zero vector if no collision
 		global_transform = global_transform.interpolate_with(xform, .3)
 		
 		move_and_slide()

@@ -34,6 +34,7 @@ Door_Base=""
 Door_Spawn="doors"
 Active_Door="for active doors"
 Exit_Door="used for actually leaving doors"
+Player="global group for player"
 
 [input]
 

@@ -61,6 +61,9 @@ var BGM_nodes : Dictionary[int, AudioStream] = {
 
 func _ready() -> void:
 	new_bgm_stream = bgm_stream.duplicate()
+	new_bgm_stream.stream = BGM_nodes[1]
+	get_tree().root.add_child(new_bgm_stream)
+	new_bgm_stream.volume_db = -10
 	new_bgm_stream.play()
 	
 	get_tree().root.add_child(current_planet)
@@ -71,15 +74,14 @@ func _ready() -> void:
 			
 
 func _bgm_track_cycle():
-	#fade out old stream
-	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, -100, .1)
+#	fade out old stream
+	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, -80.0, .2)
 	
 	
 	
 func _new_track_start():
 	
 	pass
-	
 	
 
 func on_playerExit_anim_start():
