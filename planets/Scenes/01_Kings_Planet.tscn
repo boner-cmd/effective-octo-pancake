@@ -48,21 +48,12 @@ material_override = ExtResource("3_ctuby")
 mesh = SubResource("SphereMesh_lyt48")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_53jkq")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.17323565, 0.9848803, 0, -0.9848803, 0.17323565, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 2
 
 [node name="interact" parent="Door/DoorBaseModel/DoorInteractRadius/CanvasLayer" parent_id_path=PackedInt32Array(683049571, 260731792) index="0" unique_id=6819583]
-visible = true
-
-[node name="Door2" parent="." unique_id=615661796 instance=ExtResource("6_53jkq")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
-destination_planet_ID = 2
-
-[node name="interact" parent="Door2/DoorBaseModel/DoorInteractRadius/CanvasLayer" parent_id_path=PackedInt32Array(615661796, 260731792) index="0" unique_id=6819583]
 visible = true
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_b0uid")]
@@ -71,6 +62,3 @@ visible = true
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
-[editable path="Door2"]
-[editable path="Door2/DoorBaseModel"]
-[editable path="Door2/DoorBaseModel/DoorAnims"]

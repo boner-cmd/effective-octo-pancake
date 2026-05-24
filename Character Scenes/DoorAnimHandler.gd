@@ -147,12 +147,12 @@ func interact(player : CharacterBody3D):
 signal request_planet_change(planet_ID : int)
 signal request_music_change
 
-func _process(delta: float) -> void:
-	if current_anim != AnimStates.EXIT:
-		var player = get_tree().get_child(2)
-		var direction = player.global_position - global_position
-		var target_angle = atan2(direction.x, direction.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, .2) 
+#func _process(delta: float) -> void:
+	#if current_anim != AnimStates.EXIT:
+		#var player = get_tree().get_child(2)
+		#var direction = player.global_position - global_position
+		#var target_angle = atan2(direction.x, direction.z)
+		#rotation.y = lerp_angle(rotation.y, target_angle, .2) 
 
 func _on_tree_entered() -> void:
 	add_to_group("Active_Door")

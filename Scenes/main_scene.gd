@@ -9,7 +9,7 @@ var new_bgm_stream : AudioStreamPlayer
 
 @onready var current_planet : Node3D = planet_nodes[1]
 
-var current_music : AudioStream = BGM_nodes[1]
+@onready var current_music : AudioStream = BGM_nodes[1]
 		
 var last_planet_lookup : Node3D
 
@@ -37,26 +37,26 @@ var planet_nodes : Dictionary[int, Node] = {
 }
 
 var BGM_nodes : Dictionary[int, AudioStream] = {
-	1 : preload("res://music exports/king2026-05-2113_23_05.wav").instantiate(),
-	2 : preload("res://music exports/horse2026-05-2217_28_31.wav").instantiate(),
-	3 : preload("res://music exports/astronaut2026-05-2115_37_01.wav").instantiate(),
-	4 : preload("res://music exports/snowman2026-05-2116_16_58.wav").instantiate(),
-	5 : preload("res://music exports/gatekeeper2026-05-2217_34_46.wav").instantiate(),
-	6 : preload("res://music exports/robot2026-05-2119_52_12.wav").instantiate(),
-	7 : preload("res://music exports/grease2026-05-2323_27_38.wav").instantiate(),
-	8 : preload("res://music exports/gibberish2026-05-2121_42_44.wav").instantiate(),
-	9 : preload("res://music exports/o2026-05-2322_20_48.wav").instantiate(),
-	10 : preload("res://music exports/no-eye'd deer2026-05-2121_27_03.wav").instantiate(),
-	11 : preload("res://music exports/idea guy2026-05-2122_27_19.wav").instantiate(),
-	12 : preload("res://music exports/lamp2026-05-2222_01_50.wav").instantiate(),
-	13 : preload("res://music exports/individuated individual2026-05-2121_51_23.wav").instantiate(),
-	14 : preload("res://music exports/body without organs2026-05-2323_48_46.wav").instantiate(),
-	15 : preload("res://music exports/body with organs2026-05-2216_17_11.wav").instantiate(),
-	16 : preload("res://music exports/boddhisattva2026-05-2221_27_06.wav").instantiate(),
-	17 : preload("res://music exports/sisyphus2026-05-2217_25_08.wav").instantiate(),
-	18 : preload("res://music exports/festering mass2026-05-2220_52_41.wav").instantiate(),
-	19 : preload("res://music exports/astronaut2026-05-2115_37_01.wav").instantiate(),
-	20 : preload("res://music exports/slime mould2026-05-2219_04_13.wav").instantiate(),
+	1 : preload("res://music exports/king2026-05-2113_23_05.wav"),
+	2 : preload("res://music exports/horse2026-05-2217_28_31.wav"),
+	3 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
+	4 : preload("res://music exports/snowman2026-05-2116_16_58.wav"),
+	5 : preload("res://music exports/gatekeeper2026-05-2217_34_46.wav"),
+	6 : preload("res://music exports/robot2026-05-2119_52_12.wav"),
+	7 : preload("res://music exports/grease2026-05-2323_27_38.wav"),
+	8 : preload("res://music exports/gibberish2026-05-2121_42_44.wav"),
+	9 : preload("res://music exports/o2026-05-2322_20_48.wav"),
+	10 : preload("res://music exports/no-eye'd deer2026-05-2121_27_03.wav"),
+	11 : preload("res://music exports/idea guy2026-05-2122_27_19.wav"),
+	12 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
+	13 : preload("res://music exports/individuated individual2026-05-2121_51_23.wav"),
+	14 : preload("res://music exports/body without organs2026-05-2323_48_46.wav"),
+	15 : preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
+	16 : preload("res://music exports/boddhisattva2026-05-2221_27_06.wav"),
+	17 : preload("res://music exports/sisyphus2026-05-2217_25_08.wav"),
+	18 : preload("res://music exports/festering mass2026-05-2220_52_41.wav"),
+	19 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
+	20 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
 }
 
 func _ready() -> void:
@@ -86,7 +86,6 @@ func _new_track_start():
 	
 
 func on_playerExit_anim_start():
-	
 	pass
 
 func on_planet_change_requested(planet_ID : int):
