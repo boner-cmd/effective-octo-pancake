@@ -3,43 +3,29 @@ extends Node
 #enums for passing between NPCs and dialogue interaction
 enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, COMPLETE, EASTER}
 
-#check talking to
-#is requisite previous state met or not
-#set that you talked to this person once
-
 var dialogue_state : CONV_STATE = CONV_STATE.COMPLETE
 
-var text_box_scene = preload("res://Scenes/DialogueManager/text_box.tscn")
-var text_box
+var canvas_layer : CanvasLayer
+var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.tscn")
+var text_box : Node
+var current_line_index : int = 0
+var is_dialogue_active : bool = false
+var can_advance_line : bool = false
+var dialogue_lines : Array = [] # can't type due to nesting
+var complex : bool = false
+var animation_point : int
+var animation_point2 : int
+var pending_animation_1 : CONV_STATE
+var pending_animation_2 : CONV_STATE
 
 var sfx: AudioStream
 var dialogue_finished_sfx: AudioStream
 
-var canvas_layer : CanvasLayer
+var sisyphus_lock : bool = true
+var gate_lock : bool = true
+var king_lock : bool = false
 
-var dialogue_lines : Array[String] = []
-var dialogue_lines_2 : Array[String] = []
-var dialogue_lines_3 : Array[String] = []
-
-var set_animation_at_2 : bool = false
-var set_animation_at_3 : bool = false
-var animation_point : int
-var animation_point2 : int
-var complex : bool = false
-var append_once : bool = false
-
-var current_line_index = 0
-var is_dialogue_active = false
-var can_advance_line = false
-
-var sisyphus_lock = true
-var gate_lock = true
-var king_lock = false
-
-var pending_animation_1 : CONV_STATE
-var pending_animation_2 : CONV_STATE
-
-const all_lines : Dictionary[String, Array] = {
+var all_lines : Dictionary[String, Array] = { # want this to be constant but it complains when appending
 	King 		= 	[[
 		"Control",
 		"Power",
@@ -220,7 +206,7 @@ const all_lines : Dictionary[String, Array] = {
 					],[
 		"Ayyyyy there we go. Now stick that key in my head ,you silly little weirdo.",
 					],[
-		"Happy trails! *scoff*",
+		# gate does not give an item
 					],[
 		"I hope I get to close the gate soon. I'm really off-balance unlocked like this.",
 					],[
@@ -649,11 +635,9 @@ const all_lines : Dictionary[String, Array] = {
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
 	if !is_dialogue_active:
 		is_dialogue_active = true
-		complex = false
 		canvas_layer = CanvasLayer_in
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
-		_show_text_box(CanvasLayer_in)
 		var npc_name : String = QuestManager.planet_id_by_npc_name.find_key(planet_id)
 		var first_meeting : bool = !QuestManager.has_met(npc_name)
 		if QuestManager.is_complete(npc_name):
@@ -691,6 +675,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							dialogue_lines = all_lines[npc_name][1]
 
 				"King", "Mass": # only require meetings, then will give
+					print("King depends on meetings:", QuestManager.depends_on_meeting(npc_name))
 					if first_meeting:
 						if QuestManager.requirements_met(npc_name):
 							complex = true
@@ -747,34 +732,12 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							dialogue_lines.append_array(all_lines[npc_name][2])
 						if npc_name == "Slime":
 							king_lock = false
-
-			#handle wonk cases
-			#if lines_2 != []:
-				#complex = true
-				#dialogue_lines_2 = lines_2
-				#dialogue_state = CONV_STATE.PLAYER_GIVE
-				#if lines_3 != []:
-					#dialogue_lines_3 = lines_3
-					#set_animation_at_3 = true
-				#else:
-					#set_animation_at_2 = true
+		_show_text_box(CanvasLayer_in)
 
 func _show_text_box(CanvasLayer_in):
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	CanvasLayer_in.add_child(text_box)
-	
-	#if complex:
-		#if set_animation_at_2:
-			#animation_point = dialogue_length
-		#dialogue_lines.append_array(dialogue_lines_2) # moving into dialog manager
-		#dialogue_lines_2 = []
-		#if set_animation_at_3:
-				#animation_point = dialogue_length
-		#dialogue_lines.append_array(dialogue_lines_3)
-		#dialogue_lines_3 = []
-		#dialogue_state = CONV_STATE.PLAYER_RECEIVE
-		
 	text_box.display_text(dialogue_lines[current_line_index], sfx)
 	can_advance_line = false
 
@@ -799,16 +762,11 @@ func _unhandled_input(event):
 			else:
 				if current_line_index >= animation_point:
 					dialogue_state = pending_animation_1
-					
-		#if current_line_index >= animation_point and complex:
-			## need to check which state to set based on what the current state is
-			## and what next desired ones would be
-			## all animation choices might play here?
-			#dialogue_state = CONV_STATE.PLAYER_RECEIVE
-		
+
 		if current_line_index >= dialogue_lines.size():
 		#reset happense here
 			is_dialogue_active = false
+			complex = false
 			current_line_index = 0
 			#set_animation_at_2 = false
 			#set_animation_at_3 = false

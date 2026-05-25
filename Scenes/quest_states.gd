@@ -118,70 +118,70 @@ const completion_mask	: int = 0b000000000000000000000000000001111111111111111111
 signal main_quest_complete()
 
 func has_met(npc_name : String) -> bool:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	return states[row] & 0b10000000000000000000000000000000000000000000000000
 
 func is_complete(npc_name : String) -> bool:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	return states[row] & 0b00000100000000000000000000000000000000000000000000
 
 #func receives(npc_name : String) -> bool:
-	#var row : int = state_rows_by_short_name.npc_name
+	#var row : int = state_rows_by_short_name[npc_name]
 	#return states[row] & 0b01000000000000000000000000000000000000000000000000
 #
 #func gives(npc_name : String) -> bool:
-	#var row : int = state_rows_by_short_name.npc_name
+	#var row : int = state_rows_by_short_name[npc_name]
 	#return states[row] & 0b00010000000000000000000000000000000000000000000000
 
 func player_already_received_from(npc_name : String) -> bool:
-	var row : int = state_rows_by_short_name.npc_name
-	return states[row] & 0b00100000000000000000000000000000000000000000000000
+	var row : int = state_rows_by_short_name[npc_name]
+	return states[row] & 0b00001000000000000000000000000000000000000000000000
 
 func player_already_gave_to(npc_name : String) -> bool:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	return states[row] & 0b00100000000000000000000000000000000000000000000000	
 
 func depends_on_meeting(npc_name : String) -> bool:
-	var row : int = state_rows_by_short_name.npc_name
-	return states[row] & 0b00001000000000000000000000000000000000000000000000	
+	var row : int = state_rows_by_short_name[npc_name]
+	return states[row] & 0b00000010000000000000000000000000000000000000000000	
 
 func depends_on_completion(npc_name : String) -> bool: # implicitly, npc_name receives an item
-	var row : int = state_rows_by_short_name.npc_name
-	return states[row] & 0b00000100000000000000000000000000000000000000000000	
+	var row : int = state_rows_by_short_name[npc_name]
+	return states[row] & 0b00000001000000000000000000000000000000000000000000	
 
 func set_player_met(npc_name : String) -> void:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	states[row] |= 0b10000000000000000000000000000000000000000000000000
 
 func set_player_gave_npc(npc_name : String) -> void:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	states[row] |= 0b00100000000000000000000000000000000000000000000000
 	
 func set_npc_gave_player(npc_name : String) -> void:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	states[row] |= 0b00001000000000000000000000000000000000000000000000
 	
 func set_complete(npc_name : String) -> void:
-	var row : int = state_rows_by_short_name.npc_name
+	var row : int = state_rows_by_short_name[npc_name]
 	states[row] = states[row] | 0b00000100000000000000000000000000000000000000000000
 
 func completion_satisfied(npc_name : String) -> bool: # this is a proxy for "player has what NPC needs"
 	if depends_on_completion(npc_name):
-		var temp_row : int = state_rows_by_short_name.npc_name
+		var temp_row : int = states[state_rows_by_short_name[npc_name]]
 		var found_id : int
 		var requirement : String
 		temp_row &= completion_mask	# grab the completion bits
 		requirement = String.num_int64(temp_row, 2)
 		for step in requirement.length():		# iterate over the bits to find 1s
 			if requirement[step].to_int(): 		# on each 1, investigate
-				found_id = 2**step 				# this assumes step started at 0
+				found_id = 2**(requirement.length()-(step+1))
 				if !is_complete(npc_ids_by_name.find_key(found_id)):
 					return false
 	return true
 
 func meeting_satisfied(npc_name : String) -> bool: # this is a proxy for "player has met correct prior NPCs"
 	if depends_on_meeting(npc_name):
-		var temp_row : int = state_rows_by_short_name.npc_name
+		var temp_row : int = states[state_rows_by_short_name[npc_name]]
 		var found_id : int
 		var requirement : String
 		temp_row &= meeting_mask				# grab the completion bits
@@ -189,7 +189,7 @@ func meeting_satisfied(npc_name : String) -> bool: # this is a proxy for "player
 		requirement = String.num_int64(temp_row, 2)
 		for step in requirement.length():		# iterate over the bits to find 1s
 			if requirement[step].to_int(): 		# on each 1, investigate
-				found_id = 2**step 				# this assumes step started at 0
+				found_id = 2**(requirement.length()-(step+1))
 				if !has_met(npc_ids_by_name.find_key(found_id)):
 					return false
 	return true
