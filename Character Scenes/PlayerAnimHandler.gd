@@ -126,7 +126,11 @@ func _set_player_anim(anim : AnimStates):
 			
 			
 			await anim_tree.animation_finished
-			_set_player_anim(AnimStates.IDLE)
+			if !DialogueManager.is_dialogue_active:
+				_set_player_anim(AnimStates.IDLE)
+			else:
+				anim_tree.set("parameters/Talk/blend_amount", 1.0)
+				
 			
 		AnimStates.GET:
 			
