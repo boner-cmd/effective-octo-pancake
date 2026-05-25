@@ -5,7 +5,28 @@ extends Node3D
 @onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
 
 #change to group check also
-var current_NPC : MeshInstance3D
+var current_NPC : Node3D
+
+
+#meet horse
+#get planet ID, map to NPC name
+# current_npc = whatever we pull out
+#main node 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #irrelevant based on quest system but needs implementation
 var NPC_Normal_Template_Check : bool

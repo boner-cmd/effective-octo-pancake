@@ -1,7 +1,7 @@
 # TODO put the interaction prompt handling in this script
 extends CanvasLayer
 
-@onready var stickerbook : NinePatchRect = $StickerbookBackground
+@onready var stickerbook : TextureRect = $StickerbookBackground
 @onready var pause_menu : NinePatchRect = $PauseBackground
 @onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
 @onready var transition_color: ColorRect = $ColorRect
