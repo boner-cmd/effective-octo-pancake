@@ -83,6 +83,13 @@ func remove_item(npc_name : String) -> void:
 	var found_key : String = inventory_slots.find_key(npc_name)
 	assert(found_key, "Tried to remove a non-existent item from inventory, check npc_name")
 	inventory_slots[found_key] = false
+	match found_key:
+		"Slot1":
+			slot_state &= 0b011
+		"Slot2":
+			slot_state &= 0b101
+		"Slot3":
+			slot_state &= 0b110
 	update_slots()
 
 func update_slots() -> void:
@@ -121,7 +128,7 @@ func update_slots() -> void:
 		label_slot2.text = item_texts[inventory_slots.Slot2]
 		item_slot2.visible = true
 	if slot_state & 0b001:
-		item_slot3.texture = item_resources[inventory_slots.Slot3]
+		item_slot3.texture = item_resources[inventory_slots.Slot3] #FLAG
 		label_slot3.text = item_texts[inventory_slots.Slot3]
 		item_slot3.visible = true
 
