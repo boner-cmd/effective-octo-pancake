@@ -75,6 +75,8 @@ func add_item(npc_name : String) -> void:
 	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
 	assert(item_texts.has(npc_name), "Tried to add an unknown item, check npc_name")
 	inventory_slots.Slot3 = npc_name
+	slot_state |= 0b001
+	
 	update_slots()
 	
 func remove_item(npc_name : String) -> void:
@@ -133,5 +135,4 @@ func _on_item_add_requested(giver_name : String) -> void:
 	add_item(giver_name)
 
 func _on_item_remove_requested(receiver_name : String) -> void:
-	var name : String = receiver_name
-	remove_item(origin_by_desiring_npc[name])
+	remove_item(origin_by_desiring_npc[receiver_name])

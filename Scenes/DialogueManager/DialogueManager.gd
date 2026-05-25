@@ -780,14 +780,14 @@ func _unhandled_input(event):
 			print("ANIMATION POINT 1 = ", animation_point, ". CURRENT LINE INDEX = ", current_line_index)
 			print("ANIMATION POINT 2 = ", animation_point2, ". CURRENT LINE INDEX = ", current_line_index)
 			if animation_point2 > 0: # there is a set second animation point
-				if current_line_index >= animation_point && current_line_index < animation_point2:
+				if current_line_index == animation_point: #&& current_line_index < animation_point2:
 					dialogue_state = pending_animation_1
 					emit_inventory_signal_by_conv_state(pending_animation_1)
-				elif current_line_index >= animation_point2:
+				elif current_line_index == animation_point2:
 					dialogue_state = pending_animation_2
 					emit_inventory_signal_by_conv_state(pending_animation_2)
 			else:
-				if current_line_index >= animation_point:
+				if current_line_index == animation_point:
 					dialogue_state = pending_animation_1
 					emit_inventory_signal_by_conv_state(pending_animation_1)
 					print("CONVERSATION PROGRESSED PAST ANIMATION POINT")
