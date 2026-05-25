@@ -18,6 +18,7 @@ var animation_point2 : int
 var pending_animation_1 : CONV_STATE
 var pending_animation_2 : CONV_STATE
 var npc_name : String
+var current_npc : String
 
 var sfx: AudioStream
 var dialogue_finished_sfx: AudioStream
@@ -638,12 +639,15 @@ signal request_item_remove(npc : String) # sends the NPC who consumes the time
 
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
 	if !is_dialogue_active:
+		
 		is_dialogue_active = true
 		canvas_layer = CanvasLayer_in
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
 		npc_name = QuestManager.planet_id_by_npc_name.find_key(planet_id)
+		current_npc = npc_name
 		var first_meeting : bool = !QuestManager.has_met(npc_name)
+		print("NPC name starting dialogue = ", npc_name)
 		if QuestManager.is_complete(npc_name):
 			dialogue_lines = all_lines[npc_name][3]
 		elif !first_meeting && !QuestManager.requirements_met(npc_name) :
@@ -745,8 +749,12 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
+			npc_name = current_npc
+			print("SIGNAL TO REQUEST ITEM FROM: ", npc_name)
 			request_item_add.emit(npc_name)
 		CONV_STATE.PLAYER_GIVE:
+			print("SIGNAL TO GIVE ITEM TO: ", npc_name)
+			npc_name = current_npc
 			request_item_remove.emit(npc_name)
 
 func _show_text_box(CanvasLayer_in):
@@ -767,9 +775,11 @@ func _unhandled_input(event):
 	):
 		text_box.queue_free()
 		current_line_index += 1
-
+		print("IS COMPLEX =", complex)
 		if complex:
-			if animation_point2 > -1: # there is a set second animation point
+			print("ANIMATION POINT 1 = ", animation_point, ". CURRENT LINE INDEX = ", current_line_index)
+			print("ANIMATION POINT 2 = ", animation_point2, ". CURRENT LINE INDEX = ", current_line_index)
+			if animation_point2 > 0: # there is a set second animation point
 				if current_line_index >= animation_point && current_line_index < animation_point2:
 					dialogue_state = pending_animation_1
 					emit_inventory_signal_by_conv_state(pending_animation_1)
@@ -780,14 +790,16 @@ func _unhandled_input(event):
 				if current_line_index >= animation_point:
 					dialogue_state = pending_animation_1
 					emit_inventory_signal_by_conv_state(pending_animation_1)
+					print("CONVERSATION PROGRESSED PAST ANIMATION POINT")
 
 		#reset happense here
 		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			complex = false
 			current_line_index = 0
-			animation_point = -1
-			animation_point2 = -1
+			animation_point = 0
+			animation_point2 = 0
+			current_npc = "null"
 			dialogue_state = CONV_STATE.COMPLETE
 		else:
 			_show_text_box(canvas_layer)

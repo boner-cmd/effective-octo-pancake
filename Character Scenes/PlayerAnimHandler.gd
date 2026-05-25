@@ -133,7 +133,7 @@ func _set_player_anim(anim : AnimStates):
 				
 			
 		AnimStates.GET:
-			
+			print("PLAYER RECEIVING")
 			get_sound_player()
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)
 			anim_tree.set("parameters/Exit/blend_amount", 0.0)
@@ -144,6 +144,7 @@ func _set_player_anim(anim : AnimStates):
 			anim_tree.set("parameters/Give/blend_amount", 0.0)
 			
 		AnimStates.GIVE:
+			print("PLAYER GIVING")
 			give_sound_player()
 			anim_tree.set("parameters/Walk/blend_amount", 0.0)
 			anim_tree.set("parameters/Exit/blend_amount", 0.0)

@@ -128,7 +128,7 @@ func _ready() -> void:
 	DialogueManager.request_item_remove.connect(_on_item_remove_requested)
 
 func _on_item_add_requested(giver_name : String) -> void:
-	add_item(name)
+	add_item(giver_name)
 
 func _on_item_remove_requested(receiver_name : String) -> void:
 	remove_item(origin_by_desiring_npc[name])
