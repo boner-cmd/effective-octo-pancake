@@ -32,6 +32,13 @@ var current_line_index = 0
 var is_dialogue_active = false
 var can_advance_line = false
 
+var sisyphus_lock = true
+var gate_lock = true
+var king_lock = false
+
+var pending_animation_1 : CONV_STATE
+var pending_animation_2 : CONV_STATE
+
 const all_lines : Dictionary[String, Array] = {
 	King 		= 	[[
 		"Control",
@@ -650,15 +657,74 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 		var npc_name : String = QuestManager.planet_id_by_npc_name.find_key(planet_id)
 		var first_meeting : bool = !QuestManager.has_met(npc_name)
 		if QuestManager.is_complete(npc_name):
-			dialogue_state = CONV_STATE.PLAYER_LISTEN
 			dialogue_lines = all_lines[npc_name][3]
-		else:
-			if 	first_meeting:
+		elif !first_meeting && !QuestManager.requirements_met(npc_name) :
+			dialogue_lines = all_lines[npc_name][0]
+		else:	
+			if first_meeting:
 				QuestManager.set_player_met(npc_name)
-				dialogue_state = CONV_STATE.PLAYER_LISTEN
 				dialogue_lines = all_lines[npc_name][0]
 
 			match (npc_name):
+				"Grease", "Organs": # node gives but does not receive, no conditions
+					complex = true
+					QuestManager.set_npc_gave_player(npc_name)
+					QuestManager.set_complete(npc_name)
+					animation_point = dialogue_lines.size() # transition to receive
+					dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
+					pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
+					
+				"Norgans", "Individual", "King2", "Bodhi": # node receives and has no give
+					if first_meeting:
+						if QuestManager.requirements_met(npc_name):
+							complex = true
+							QuestManager.set_player_gave_npc(npc_name)
+							QuestManager.set_complete(npc_name)
+							animation_point = dialogue_lines.size() # transition to player give
+							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
+							pending_animation_1 = CONV_STATE.PLAYER_GIVE
+					else:
+						if QuestManager.requirements_met(npc_name):
+							QuestManager.set_player_gave_npc(npc_name)
+							QuestManager.set_complete(npc_name)
+							dialogue_state = CONV_STATE.PLAYER_GIVE
+							dialogue_lines = all_lines[npc_name][1]
+
+				"King", "Mass": # only require meetings, then will give
+					if first_meeting:
+						if QuestManager.requirements_met(npc_name):
+							complex = true
+							QuestManager.set_npc_gave_player(npc_name)
+							QuestManager.set_complete(npc_name)
+							animation_point = dialogue_lines.size() # transition to receive
+							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
+							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
+					else:
+						if QuestManager.requirements_met(npc_name):
+							QuestManager.set_npc_gave_player(npc_name)
+							QuestManager.set_complete(npc_name)
+							dialogue_state = CONV_STATE.PLAYER_RECEIVE
+							dialogue_lines = all_lines[npc_name][2]
+						
+				"Sisyphus", "Gate": # receive only, unlocks door
+					if QuestManager.requirements_met(npc_name): # consider using this model in other places to save lines?
+						QuestManager.set_player_gave_npc(npc_name)
+						QuestManager.set_complete(npc_name)
+						if first_meeting:
+							complex = true
+							animation_point = dialogue_lines.size() # transition to player give
+							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
+							pending_animation_1 = CONV_STATE.PLAYER_GIVE
+						else:
+							dialogue_state = CONV_STATE.PLAYER_GIVE
+							dialogue_lines = all_lines[npc_name][1]
+						match (npc_name):
+							"Sisyphus":
+								sisyphus_lock = false
+							"Gate":
+								gate_lock = false
+								king_lock = true
+
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
 					if QuestManager.requirements_met(npc_name):
 						complex = true
@@ -668,43 +734,21 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 						if first_meeting:
 							# first meeting and player met reqs
 							animation_point = dialogue_lines.size() # transition to player give
+							pending_animation_1 = CONV_STATE.PLAYER_GIVE
 							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
 							animation_point2 = dialogue_lines.size()
+							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet, player give, player receive
 						else:
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							dialogue_lines = all_lines[npc_name][1]
 							animation_point = dialogue_lines.size() # transition to player receive
+							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(all_lines[npc_name][2])
-				"Grease", "Organs": # node gives but does not receive, no conditions
-					complex = true
-					QuestManager.set_npc_gave_player(npc_name)
-					QuestManager.set_complete(npc_name)
-					animation_point = dialogue_lines.size() # transition to give
-					dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
-				"Norgans", "Individual": # node receive on first meet and has no give
-					if first_meeting:
-						if QuestManager.requirements_met(npc_name):
-							complex = true
-							QuestManager.set_player_gave_npc(npc_name)
-							QuestManager.set_complete(npc_name)
-							animation_point = dialogue_lines.size() # transition to player give
-							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
-					else:
-						if QuestManager.requirements_met(npc_name):
-							QuestManager.set_player_gave_npc(npc_name)
-							QuestManager.set_complete(npc_name)
-							dialogue_state = CONV_STATE.PLAYER_GIVE
-							dialogue_lines = all_lines[npc_name][1]
-						else:
-							dialogue_state = CONV_STATE.PLAYER_LISTEN
-							dialogue_lines = all_lines[npc_name][0]
-				"King", "Mass": # only require meetings, then will give
-					
-				"Sisyphus", "Gate": # receive only, unlocks door
-					pass
-			
-			##handle wonk cases
+						if npc_name == "Slime":
+							king_lock = false
+
+			#handle wonk cases
 			#if lines_2 != []:
 				#complex = true
 				#dialogue_lines_2 = lines_2
@@ -746,20 +790,31 @@ func _unhandled_input(event):
 		text_box.queue_free()
 		current_line_index += 1
 
-		if current_line_index >= animation_point and complex:
-			# need to check which state to set based on what the current state is
-			# and what next desired ones would be
-			# all animation choices might play here?
-			dialogue_state = CONV_STATE.PLAYER_RECEIVE
+		if complex:
+			if animation_point2 > -1: # there is a set second animation point
+				if current_line_index >= animation_point && current_line_index < animation_point2:
+					dialogue_state = pending_animation_1
+				elif current_line_index >= animation_point2:
+					dialogue_state = pending_animation_2
+			else:
+				if current_line_index >= animation_point:
+					dialogue_state = pending_animation_1
+					
+		#if current_line_index >= animation_point and complex:
+			## need to check which state to set based on what the current state is
+			## and what next desired ones would be
+			## all animation choices might play here?
+			#dialogue_state = CONV_STATE.PLAYER_RECEIVE
 		
 		if current_line_index >= dialogue_lines.size():
 		#reset happense here
 			is_dialogue_active = false
 			current_line_index = 0
-			set_animation_at_2 = false
-			set_animation_at_3 = false
-			append_once = false
+			#set_animation_at_2 = false
+			#set_animation_at_3 = false
+			#append_once = false
+			animation_point = -1
+			animation_point2 = -1
 			dialogue_state = CONV_STATE.COMPLETE
-			return
-			
-		_show_text_box(canvas_layer)
+		else:
+			_show_text_box(canvas_layer)
