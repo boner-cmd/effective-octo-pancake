@@ -84,17 +84,14 @@ func _physics_process(delta: float) -> void:
 	if !DialogueManager.dialogue_state == DialogueManager.CONV_STATE.COMPLETE:
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
-				movement_frozen = true
 				if convo_flip_1:
 					clown._set_player_anim(clown.AnimStates.TALK)
 					convo_flip_1 = false
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
-				movement_frozen = true
 				if convo_flip_2:
 					clown._set_player_anim(clown.AnimStates.GIVE)
 					convo_flip_2 = false
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
-				movement_frozen = true
 				if convo_flip_3:
 					clown._set_player_anim(clown.AnimStates.GET)
 					convo_flip_3 = false
