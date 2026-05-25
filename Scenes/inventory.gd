@@ -7,29 +7,30 @@ var inventory_slots = {
 }
 
 var slot_state : int = 0b000
-@onready var item_slot1  : TextureRect = $VBoxContainer/ItemSlot1
-@onready var item_slot2  : TextureRect = $VBoxContainer/ItemSlot2
-@onready var item_slot3  : TextureRect = $VBoxContainer/ItemSlot3 
-@onready var label_slot1 : Label = $VBoxContainer/ItemSlot1/ItemSlot1Label
-@onready var label_slot2 : Label = $VBoxContainer/ItemSlot2/ItemSlot2Label
-@onready var label_slot3 : Label = $VBoxContainer/ItemSlot3/ItemSlot3Label
+@onready var item_slot1  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot1
+@onready var item_slot2  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot2
+@onready var item_slot3  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot3
+@onready var label_slot1 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot1/ItemSlot1Label
+@onready var label_slot2 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot2/ItemSlot2Label
+@onready var label_slot3 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot3/ItemSlot2Label
 
+# each item is the one GIVEN by that NPC
 const item_resources : Dictionary[String, Resource] = {
-	King 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Horse 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Astronaut 	= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Snowman 	= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Grease 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Deer 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	O 			= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Organs 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Mass 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Lamp 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Michaelwave = preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Robot 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Gibberish 	= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Idea 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
-	Bodhi 		= preload("res://Placeholder Assets (UI)/icon.svg"), # sample, replace with item icon
+	King 		= preload("res://item sprites/kings_key.png"),
+	Horse 		= preload("res://item sprites/gibberish.png"),
+	Astronaut 	= preload("res://item sprites/space_blanket.png"),
+	Snowman 	= preload("res://item sprites/carrot.png"),
+	Grease 		= preload("res://item sprites/oil_drop.png"),
+	Deer 		= preload("res://item sprites/idea.png"),
+	O 			= preload("res://item sprites/two_small_Os.png"),
+	Organs 		= preload("res://item sprites/organs.png"),
+	Mass 		= preload("res://item sprites/burrito.png"),
+	Lamp 		= preload("res://item sprites/jungian_shadow.png"),
+	Michaelwave = preload("res://item sprites/slime_mold_game.png"),
+	Robot 		= preload("res://item sprites/oxygen_tank_item.png"),
+	Gibberish 	= preload("res://item sprites/diagonal line.png"),
+	Idea 		= preload("res://item sprites/light_bulb.png"),
+	Bodhi 		= preload("res://item sprites/dharmachaka.png"),
 }
 
 const item_texts : Dictionary[String, String] = {
@@ -37,7 +38,7 @@ const item_texts : Dictionary[String, String] = {
 	Horse 		= "sagfuiasgfuiasgfasuig",
 	Astronaut 	= "Space Blanket",
 	Snowman 	= "Carrot",
-	Grease 		= "Grease Puddle",
+	Grease 		= "Oil",
 	Deer 		= "Idea",
 	O 			= "Two small 'o's",
 	Organs 		= "Organs",

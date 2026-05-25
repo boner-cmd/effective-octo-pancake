@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://36cluqtlptoa"
+path="res://.godot/imported/stickerbook_open.wav-17fe2e9cca226a1527f4cef5e64e699b.sample"
+
+[deps]
+
+source_file="res://Placeholder Assets (UI)/stickerbook_open.wav"
+dest_files=["res://.godot/imported/stickerbook_open.wav-17fe2e9cca226a1527f4cef5e64e699b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

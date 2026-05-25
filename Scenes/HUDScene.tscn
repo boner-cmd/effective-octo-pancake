@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmow47blyrxxn" path="res://planets/textures/Planet Textures/gatekeeper texture.png" id="2_30jjv"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
 [ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://Placeholder Assets (UI)/icon.svg" id="3_yw1hr"]
+[ext_resource type="Texture2D" uid="uid://c2nc44jkx5n62" path="res://Placeholder Assets (UI)/stickerbook_bg.png" id="5_jqj6d"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 [ext_resource type="Texture2D" uid="uid://bsdu6ttvqnss" path="res://planets/textures/Skybox Textures/king skybox.png" id="7_d34sf"]
 [ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="8_jqj6d"]
@@ -24,35 +25,55 @@
 [ext_resource type="Texture2D" uid="uid://cqi468vylubn5" path="res://Placeholder Assets (UI)/completed-stamp/cropped_complete.svg" id="23_d34sf"]
 [ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="23_ppan7"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d34sf"]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
+
+[sub_resource type="Gradient" id="Gradient_rv5bf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7h3cr"]
+gradient = SubResource("Gradient_rv5bf")
 
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
 process_mode = 3
 script = ExtResource("1_1m71x")
 
-[node name="InventoryMargin" type="MarginContainer" parent="." unique_id=706599872]
+[node name="InventoryBackgroundMargin" type="MarginContainer" parent="." unique_id=706599872]
 process_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 40
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 1140
+theme_override_constants/margin_bottom = 400
 script = ExtResource("6_ivp0t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryMargin" unique_id=180218825]
+[node name="InventoryBackground" type="NinePatchRect" parent="InventoryBackgroundMargin" unique_id=2120334583]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_d34sf")
+
+[node name="InventoryItemMargin" type="MarginContainer" parent="InventoryBackgroundMargin" unique_id=2099371917]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryBackgroundMargin/InventoryItemMargin" unique_id=180218825]
 texture_filter = 1
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="ItemSlot1" type="TextureRect" parent="InventoryMargin/VBoxContainer" unique_id=308854507]
+[node name="ItemSlot1" type="TextureRect" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer" unique_id=308854507]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_30jjv")
 stretch_mode = 3
 
-[node name="ItemSlot1Label" type="Label" parent="InventoryMargin/VBoxContainer/ItemSlot1" unique_id=1911140951]
+[node name="ItemSlot1Label" type="Label" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer/ItemSlot1" unique_id=1911140951]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -67,12 +88,12 @@ grow_vertical = 0
 text = "Item 1"
 horizontal_alignment = 1
 
-[node name="ItemSlot2" type="TextureRect" parent="InventoryMargin/VBoxContainer" unique_id=661199461]
+[node name="ItemSlot2" type="TextureRect" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer" unique_id=661199461]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_30jjv")
 stretch_mode = 3
 
-[node name="ItemSlot2Label" type="Label" parent="InventoryMargin/VBoxContainer/ItemSlot2" unique_id=711442911]
+[node name="ItemSlot2Label" type="Label" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer/ItemSlot2" unique_id=711442911]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -87,12 +108,12 @@ grow_vertical = 0
 text = "Item 2"
 horizontal_alignment = 1
 
-[node name="ItemSlot3" type="TextureRect" parent="InventoryMargin/VBoxContainer" unique_id=947251293]
+[node name="ItemSlot3" type="TextureRect" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer" unique_id=947251293]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_30jjv")
 stretch_mode = 3
 
-[node name="ItemSlot3Label" type="Label" parent="InventoryMargin/VBoxContainer/ItemSlot3" unique_id=1928373476]
+[node name="ItemSlot3Label" type="Label" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer/ItemSlot3" unique_id=1928373476]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -177,30 +198,23 @@ size_flags_horizontal = 3
 text = "Quit
 "
 
-[node name="StickerbookBackground" type="NinePatchRect" parent="." unique_id=878957700]
+[node name="StickerbookBackground" type="TextureRect" parent="." unique_id=432696859]
 z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_yw1hr")
-patch_margin_left = 75
-patch_margin_top = 96
-patch_margin_right = 74
-patch_margin_bottom = 46
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+texture = ExtResource("5_jqj6d")
 
 [node name="KingSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1416114579]
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 250.0
-offset_top = 78.0
-offset_right = 314.0
-offset_bottom = 142.0
+offset_left = 265.0
+offset_top = 137.0
+offset_right = 329.0
+offset_bottom = 201.0
 texture = ExtResource("7_d34sf")
 expand_mode = 1
 
@@ -208,10 +222,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 1090.0
-offset_top = 456.0
-offset_right = 1154.0
-offset_bottom = 520.0
+offset_left = 452.0
+offset_top = 266.0
+offset_right = 516.0
+offset_bottom = 330.0
 texture = ExtResource("8_jqj6d")
 expand_mode = 1
 
@@ -219,10 +233,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 154.0
-offset_top = 716.0
-offset_right = 218.0
-offset_bottom = 780.0
+offset_left = 577.0
+offset_top = 76.0
+offset_right = 641.0
+offset_bottom = 140.0
 texture = ExtResource("9_rv5bf")
 expand_mode = 1
 
@@ -230,10 +244,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 1141.0
-offset_top = 69.0
-offset_right = 1205.0
-offset_bottom = 133.0
+offset_left = 414.0
+offset_top = 427.0
+offset_right = 478.0
+offset_bottom = 491.0
 texture = ExtResource("10_7h3cr")
 expand_mode = 1
 
@@ -241,10 +255,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 67.0
-offset_top = 593.0
-offset_right = 131.0
-offset_bottom = 657.0
+offset_left = 194.0
+offset_top = 389.0
+offset_right = 258.0
+offset_bottom = 453.0
 texture = ExtResource("11_ynwxi")
 expand_mode = 1
 
@@ -252,10 +266,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 777.0
-offset_top = 293.0
-offset_right = 841.0
-offset_bottom = 357.0
+offset_left = 370.0
+offset_top = 37.0
+offset_right = 434.0
+offset_bottom = 101.0
 texture = ExtResource("12_cm65r")
 expand_mode = 1
 
@@ -263,10 +277,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 397.0
-offset_top = 214.0
-offset_right = 461.0
-offset_bottom = 278.0
+offset_left = 860.0
+offset_top = 184.0
+offset_right = 924.0
+offset_bottom = 248.0
 texture = ExtResource("13_2wn8p")
 expand_mode = 1
 
@@ -274,10 +288,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 939.0
-offset_top = 427.0
-offset_right = 1003.0
-offset_bottom = 491.0
+offset_left = 640.0
+offset_top = 359.0
+offset_right = 704.0
+offset_bottom = 423.0
 texture = ExtResource("2_30jjv")
 expand_mode = 1
 
@@ -285,10 +299,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 653.0
-offset_top = 694.0
-offset_right = 717.0
-offset_bottom = 758.0
+offset_left = 317.0
+offset_top = 594.0
+offset_right = 381.0
+offset_bottom = 658.0
 texture = ExtResource("14_40r1x")
 expand_mode = 1
 
@@ -296,10 +310,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 289.0
-offset_top = 347.0
-offset_right = 353.0
-offset_bottom = 411.0
+offset_left = 812.0
+offset_top = 85.0
+offset_right = 876.0
+offset_bottom = 149.0
 texture = ExtResource("15_rv8fl")
 expand_mode = 1
 
@@ -307,10 +321,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 260.0
-offset_top = 606.0
-offset_right = 324.0
-offset_bottom = 670.0
+offset_left = 934.0
+offset_top = 34.0
+offset_right = 998.0
+offset_bottom = 98.0
 texture = ExtResource("16_sqpbf")
 expand_mode = 1
 
@@ -318,10 +332,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 1052.0
-offset_top = 238.0
-offset_right = 1116.0
-offset_bottom = 302.0
+offset_left = 487.0
+offset_top = 648.0
+offset_right = 551.0
+offset_bottom = 712.0
 texture = ExtResource("17_bphkb")
 expand_mode = 1
 
@@ -329,10 +343,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 862.0
-offset_top = 627.0
-offset_right = 926.0
-offset_bottom = 691.0
+offset_left = 523.0
+offset_top = 500.0
+offset_right = 587.0
+offset_bottom = 564.0
 texture = ExtResource("18_00uqi")
 expand_mode = 1
 
@@ -340,10 +354,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 516.0
-offset_top = 94.0
-offset_right = 580.0
-offset_bottom = 158.0
+offset_left = 674.0
+offset_top = 657.0
+offset_right = 738.0
+offset_bottom = 721.0
 texture = ExtResource("19_iqywv")
 expand_mode = 1
 
@@ -351,10 +365,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 438.0
-offset_top = 512.0
-offset_right = 502.0
-offset_bottom = 576.0
+offset_left = 1111.0
+offset_top = 110.0
+offset_right = 1175.0
+offset_bottom = 174.0
 texture = ExtResource("19_iqywv")
 expand_mode = 1
 
@@ -362,10 +376,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 858.0
-offset_top = 135.0
-offset_right = 922.0
-offset_bottom = 199.0
+offset_left = 1173.0
+offset_top = 336.0
+offset_right = 1237.0
+offset_bottom = 400.0
 texture = ExtResource("20_yo8np")
 expand_mode = 1
 
@@ -373,20 +387,21 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 1120.0
-offset_top = 388.0
-offset_right = 1184.0
-offset_bottom = 452.0
+offset_left = 772.0
+offset_top = 494.0
+offset_right = 836.0
+offset_bottom = 558.0
+texture = SubResource("GradientTexture2D_7h3cr")
 expand_mode = 1
 
 [node name="IdeaSticker" type="TextureRect" parent="StickerbookBackground" unique_id=434983327]
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 629.0
-offset_top = 496.0
-offset_right = 693.0
-offset_bottom = 560.0
+offset_left = 1007.0
+offset_top = 281.0
+offset_right = 1071.0
+offset_bottom = 345.0
 texture = ExtResource("21_ftghg")
 expand_mode = 1
 
@@ -394,10 +409,10 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 563.0
-offset_top = 340.0
-offset_right = 627.0
-offset_bottom = 404.0
+offset_left = 935.0
+offset_top = 524.0
+offset_right = 999.0
+offset_bottom = 588.0
 texture = ExtResource("22_4u7pl")
 expand_mode = 1
 
@@ -405,20 +420,20 @@ expand_mode = 1
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 60.0
-offset_top = 429.0
-offset_right = 124.0
-offset_bottom = 493.0
+offset_left = 73.0
+offset_top = 521.0
+offset_right = 137.0
+offset_bottom = 585.0
 texture = ExtResource("23_ppan7")
 expand_mode = 1
 
 [node name="CompleteStamp" type="TextureRect" parent="StickerbookBackground" unique_id=859565293]
 top_level = true
 layout_mode = 0
-offset_left = 1021.0
-offset_top = 687.0
-offset_right = 1957.8308
-offset_bottom = 1317.3154
+offset_left = 1023.0
+offset_top = 591.0
+offset_right = 1959.8308
+offset_bottom = 1221.3154
 rotation = -0.3159046
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("23_d34sf")
