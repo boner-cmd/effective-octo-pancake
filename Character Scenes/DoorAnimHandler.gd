@@ -6,10 +6,6 @@ const sfx_despawn = preload("uid://7banle6yv2gq")
 const sfx_spawn = preload("uid://t6h5ww03rkm7")
 const sfx_exit = preload("uid://dklltp1vyr8pp")
 
-var sisyphus_lock = DialogueManager.sisyphus_lock
-var gate_lock = DialogueManager.gate_lock
-var king_lock = DialogueManager.king_lock
-
 var player: CharacterBody3D
 var door_locked : bool = false
 var current_anim := AnimStates.STASIS
@@ -34,6 +30,7 @@ var door_mats : Dictionary[int, Material] = {
 	18 : preload("res://planets/materials/18_Mass_planet.tres"),
 	19 : preload("res://planets/materials/19_Michaelwave_planet.tres"),
 	20 : preload("res://planets/materials/20_Slime_planet.tres"),
+	21 : preload("res://planets/materials/01_kings_planet_mat.tres"),
 }
 
 @export var destination_planet_ID : int
@@ -50,14 +47,23 @@ signal exit_anim_started()
 signal request_planet_change(planet_ID : int)
 signal request_music_change()
 
+func change_king_door():
+	if destination_planet_ID == 1:
+		destination_planet_ID = 21 
+
 func lock_check():
+	var sisyphus_lock = DialogueManager.sisyphus_lock
+	var gate_lock = DialogueManager.gate_lock
+	var king2_lock = DialogueManager.king2_lock
+
 	if destination_planet_ID == 6:
 		door_locked = gate_lock
 	if destination_planet_ID == 13:
 		door_locked = gate_lock
 	if destination_planet_ID == 20:
 		door_locked = sisyphus_lock
-#	if destination_planet_ID == 1 #this is for king's second lock at end of game
+	if destination_planet_ID == 21:
+		door_locked = king2_lock
 
 func _set_door_anim(anim : AnimStates):
 	current_anim = anim
@@ -105,6 +111,8 @@ func _ready() -> void:
 	_set_door_anim(AnimStates.STASIS)
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
+	DialogueManager.lock_changed.connect(lock_check)
+	DialogueManager.change_king.connect(change_king_door)
 	
 
 func spawn():

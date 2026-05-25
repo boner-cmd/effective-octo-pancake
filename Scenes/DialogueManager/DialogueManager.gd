@@ -25,7 +25,7 @@ var dialogue_finished_sfx: AudioStream
 
 var sisyphus_lock : bool = true
 var gate_lock : bool = true
-var king_lock : bool = false
+var king2_lock : bool = true
 
 var all_lines : Dictionary[String, Array] = { # want this to be constant but it complains when appending
 	King 		= 	[[
@@ -636,6 +636,7 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 
 signal request_item_add(npc : String) # sends the NPC who gives the item
 signal request_item_remove(npc : String) # sends the NPC who consumes the time
+signal change_king()
 
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
 	if !is_dialogue_active:
@@ -719,7 +720,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 								sisyphus_lock = false
 							"Gate":
 								gate_lock = false
-								king_lock = true
+								change_king.emit()
 
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
 					if QuestManager.requirements_met(npc_name):
@@ -743,7 +744,8 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(all_lines[npc_name][2])
 						if npc_name == "Slime":
-							king_lock = false
+							king2_lock = false
+							
 		_show_text_box(CanvasLayer_in)
 
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
