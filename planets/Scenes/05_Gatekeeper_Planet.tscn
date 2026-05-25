@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://bgcx1s6nrqyny" path="res://planets/materials/05_gatekeeper_planet.tres" id="5_wv5cx"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="6_n7ksx"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_lq66j"]
+[ext_resource type="Script" uid="uid://bs4akh70mag2n" path="res://Character Scenes/NPCs/gatekeeper_completion.gd" id="7_n7ksx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -62,6 +63,10 @@ visible = false
 
 [node name="gatekeeper unlocked" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="7" unique_id=1866931042]
 visible = true
+script = ExtResource("7_n7ksx")
+
+[node name="Cylinder" parent="InteractionArea/Area3D/gatekeeper unlocked" index="2" unique_id=825791210]
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1323657896]
 collision_layer = 2
@@ -87,6 +92,7 @@ destination_planet_ID = 13
 
 [editable path="CubedSkybox"]
 [editable path="InteractionArea"]
+[editable path="InteractionArea/Area3D/gatekeeper unlocked"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]

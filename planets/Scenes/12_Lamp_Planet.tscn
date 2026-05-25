@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://n1vy5mk0olje" path="res://planets/materials/12_Lamp_skybox.tres" id="2_mr5si"]
 [ext_resource type="Material" uid="uid://d156wbmijit5p" path="res://planets/materials/12_Lamp_planet.tres" id="3_d7g5m"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="5_5xo3p"]
+[ext_resource type="Script" uid="uid://dixvh14054u1o" path="res://Character Scenes/NPCs/lamp_completion.gd" id="6_5xo3p"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_x06r3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
@@ -41,6 +42,7 @@ environment = SubResource("Environment_rtanu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_v5l73")]
@@ -59,6 +61,15 @@ visible = false
 
 [node name="lamp" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="12" unique_id=162153067]
 visible = true
+script = ExtResource("6_5xo3p")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="InteractionArea/Area3D/lamp" index="2" unique_id=1263743200]
+transform = Transform3D(6.666666, 0, 0, 0, -2.9140926e-07, 6.666666, 0, -6.666666, -2.9140926e-07, 0, 5.3009224, 0)
+visible = false
+spot_range = 4.238
+spot_attenuation = 3.12
+spot_angle = 46.19
+spot_angle_attenuation = 0.07179398
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1301493009]
 collision_layer = 2
@@ -79,6 +90,7 @@ destination_planet_ID = 19
 
 [editable path="CubedSkybox"]
 [editable path="InteractionArea"]
+[editable path="InteractionArea/Area3D/lamp"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]

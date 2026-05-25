@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://c74pmtds6alo8" path="res://planets/materials/10_Deer_planet.tres" id="6_vlnvu"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_36we4"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="9_5tpbv"]
+[ext_resource type="Script" uid="uid://ckvcl8m1n4tpl" path="res://Character Scenes/NPCs/deer_completion.gd" id="9_36we4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -71,6 +72,13 @@ visible = false
 [node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=728603670]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.230259, 0)
 visible = true
+script = ExtResource("9_36we4")
+
+[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=450652402]
+visible = false
+
+[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=1043451508]
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1046663889]
 collision_layer = 2
@@ -98,6 +106,7 @@ destination_planet_ID = 18
 [editable path="CubedSkybox2"]
 [editable path="Cubed_Planet"]
 [editable path="InteractionArea"]
+[editable path="InteractionArea/Area3D/o-eye\'d deer"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]

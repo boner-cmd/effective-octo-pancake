@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://dk8lja3wpiagu" path="res://planets/materials/09_Q_planet.tres" id="7_7nae5"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="9_k3bn4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="10_fvbbk"]
+[ext_resource type="Script" uid="uid://d82ju163pjib" path="res://Character Scenes/NPCs/o_completion.gd" id="11_k3bn4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -94,6 +95,7 @@ visible = false
 
 [node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="15" unique_id=454906086]
 visible = true
+script = ExtResource("11_k3bn4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=474991968]
 collision_layer = 2

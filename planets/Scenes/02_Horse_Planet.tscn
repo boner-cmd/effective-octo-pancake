@@ -60,6 +60,9 @@ surface_material_override/0 = ExtResource("2_ga5oq")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("4_t51te")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
 [node name="horse" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="8" unique_id=1429058884]
 visible = true
 
