@@ -10,7 +10,7 @@
 ]
 
 @export var give_lines: Array[String] = [
-	"Ayyyyy there we go. Now stick that key in my head ,you silly little weirdo.",
+	"Ayyyyy there we go. Now stick that key in my head, you silly little weirdo.",
 ]
 
 @export var receive_lines: Array[String] = [

@@ -1,0 +1,87 @@
+#festering mass dialogue
+@export var initial_lines: Array[String] = [
+	"I'm vile! I'm bile! I'm gross!",
+	"Let out a "Yuck!" For you're in luck,",
+	"When Festering Mass's your host!",
+	"Thaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat's ME!",
+	"Hiya! Welcome to my putrid domain.",
+	"Do you like it? There's no need to lie.",
+	"There is much pleasure to be found in repulsion.",
+	"Just as there is life to be found in decay.",
+	"Isn't that romantic?",
+	"I've got love on my mind lately.",
+	"I believe in honesty and truthfulness so I'll spill my guts to you:",
+	"I'm hopelessly, head-over-heels for slime mould.",
+	"Have you met them yet? I'm sure you'd know if you have.",
+	"They're the only thing in this world even close to being as gross as I am",
+	"But there's also something truly beautiful about them too.",
+	"It's so hard to find them, though! You have to look really, really hard!",
+	"Like in a dark cave underground where someone would roll rocks around.",
+	"Absence only makes the heart grow fonder, am I right? Let me tell you, I am FOND, buster.",
+	"Look.",
+	"I can see you squriming there. You don't have to hide it. It's okay.",
+	"You want to leave. And I get it.",
+	"We all want things.",
+	"But do we really want what we want?",
+	"Or is it the act of wanting itself that we truly desire?",
+	"Before you go, I have a favor to ask of you.",
+	"And don't just skip all this dialogue because of the horrible wet sounds.",
+	"I'm really asking you to carefully pay attention to me and hear me out.",
+	"I would do anything to make slime mould happy.",
+	"I mean it.",
+	"Even if they don't love me back, as long as they're happy that would be good enough for me.",
+	"If you find a way to make slime mould happy, please let me know.",
+	"Even if that was the only thing I ever accomplish in my life, I'd die content."
+	"Even if I had to die! I would pay any price.",
+	"Okay.",
+	"Thank you for hearing me out.",
+	"I really appreciate it.",
+]
+
+@export var give_lines: Array[String] = [
+	"Oh, you came back. For real?",
+	"Wait.",
+	"Does this mean-?",
+	"No, it couldn't be.",
+	"Did you find a way to make slime mould happy?",
+	"Please please tell me! Tell me right away!",
+	"I simply can't wait any longer!",
+	"Okay... Okay... Uh huh...",
+	"Uh huh... wait, hold on, now. slow down a little.",
+	"Yeah... Uh-huh...",
+	"Mhmm... Okay...",
+	"So you're saying slime mould wants a game made about themselves?",
+	"And you found a game developer?",
+	"So what's the hold up? What do they need? Money?",
+	"I told you I'd pay any price, damnit!",
+	"I'd work every moment for the rest of my life if I have to!",
+	"What's that? They're hungry?",
+	"But all I have is this burrito.",
+	"And I was really REALLY looking forward to festering all over it.",
+	"You have to understand, I'm FESTERING mass! I'm not any other kind of mass.",
+	"Festering's kind of my whole schtick, and this burrito is the only thing I have left un-festered!"
+	"UGHHHHH.",
+	"FINE.",
+	"It pains me, but I must know slime mould is happy.",
+	"I have to be honest (as I always am!) that I didn't think the price would be so steep.",
+	"That it would cost so dearly.",
+	"That I would have to trade away my very identity, the very essence of my soul,",
+	"To meet that end.",
+	"Such is the way of the world it seems?",
+]
+
+@export var receive_lines: Array[String] = [
+	"Now take that burrito and get out of here before I change my mind.",
+	"Because I'm feeling EXTRA festery!",
+]
+
+@export var post_lines: Array[String] = [
+	"Wow, you must really like to fester to come back to a place like this!",
+	"You know I love a little freak. ;  )",
+]
+
+@export var easter_lines: Array[String] = [
+	"So??? Did the game make slime mould happy?",
+	"Wait! Don't tell me.",
+	"I don't want to know. I want to enjoy wanting to know.",
+]
