@@ -1,0 +1,18 @@
+"Truly",
+"Deeply",
+"From the bottom of our hearts:",
+"THANK YOU FOR PLAYING",
+
+#I will leave it up to you guys to add your own credits.
+#I usually do credits in alphabetical order of last name, but order it however.
+
+"CREDITS:",
+
+"ALLIE BURCH: 2D Asset Creation",
+
+"MARKCY HILBERT: Scenario, Dialogue, Music, SFX, Art Direction, 3D Asset Creation, 2D Asset Creation",
+
+"DIMELO WATERSON: Data Entry",
+
+"A full list of credited sources, references, and borrowed assets can be found on our itch.io page",
+"Including the link to a texture created by Jamespodesta91 on DeviantArt.",

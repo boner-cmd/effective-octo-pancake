@@ -1,0 +1,60 @@
+#slime mould dialogue
+@export var initial_lines: Array[String] = [
+	"Yeah? What dya want?",
+	"Jeez, you buy a planet in a gated solar system",
+	"Hire some sad rock guy as your private security",
+	"And you STILL have clowns trespassing on your property trying to sell you something.",
+	"Well listen, criminal, I'm not buying!",
+	"What was that? SPEAK UP.",
+	"You say you want to make me happy?",
+	"Why would ANYONE want to make someone other than themselves happy?",
+	"Is there something wrong with you? Did you get bonked on the head real hard?",
+	"One-too-many knocks on the noggin during a circus trick or something?",
+	"You are part of a circus, right? That's why you look all stupid?",
+	"Hold on, can you stop trying to interrupt me? I'm trying to insult you.",
+	"What were we talking about?",
+	"Oh yeah, how to make me happy. The only topic that matters.",
+	"It's easy: MONEY AND FAME, BABY.",
+	"I want to be POWERFUL and RICH!",
+	"So powerful and rich that I can go to a private island and do UNSPEAKABLE THINGS!",
+	"And even if everyone finds out about them I won't face any consequences because I OWN THE WORLD.",
+	"I WANT TO OWN REALITY ITSELF.",
+	"ALL THE NEWSPAPERS",
+	"THE GOVERNMENT",
+	"Everything you THINK you own actually belongs to ME",
+	"Your very THOUGHTS, your very WANTS, your very SOUL.",
+	"How do you do that?",
+	"How do you think the military industrial complex manufactured consent",
+	"For the Invasian of Iran and the Palestinian Genocide?",
+	"MEDIA!",
+	"I want what Call of Duty did for the war machine done for me!",
+	"Make me a video game! And it better be SUPER addicting!",
+	"Bursting at the seems with microtransactions and also put in REAL PORN!",
+	"Porn everywhere, I want those virgin chuds gooning for ME.",
+	"I'm a SLIME MOULD, BABY!!!",
+	"All I care about is CONSUMING, REPRODUCING, and INFINITE EXPONENTIAL GROWTH!",
+	"NOW GO. MAKE. ME. FAMOUS!!!",
+]
+
+@export var give_lines: Array[String] = [
+	"Well, is the game done yet?",
+	"GOOD.",
+	"What? No I don't want to play it!",
+	"Only losers play games and I'm a WINNER!",
+	"This game better be good enough to make me famous,",
+	"It better not be one of those niche "art" games that no one plays and doesn't make any money.",
+]
+
+@export var receive_lines: Array[String] = [
+	"Ooooh you know who should play this?",
+	"The King! Go bring this to the King right now!",
+]
+
+@export var post_lines: Array[String] = [
+	"Am I famous yet?",
+]
+
+@export var easter_lines: Array[String] = [
+	"I think I'm starting to feel famous",
+	"...Wait, no that's just my mycelium metabolizing leaves.",
+]

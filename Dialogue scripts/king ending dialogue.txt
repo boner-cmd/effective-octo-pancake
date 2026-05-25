@@ -1,0 +1,45 @@
+#king ending dialogue
+@export var initial_lines: Array[String] = [
+	"You have returned triumphantly, our dear servant.",
+	"All of my subjects are most pleased. We can feel it with our keen, kingly senses.",
+	"We can sense your weariness, too. It is well-deserved.",
+]
+
+@export var give_lines: Array[String] = [
+	"Oh, what's this we have here?",
+	"A gift for us? Our, our! You surely do know how to treat your King!",
+	"A computer game?",
+	"That's really cool. We like games.",
+	"Slime mould? It's from an indie developer?",
+	"Hell yeah, right on.",
+	"We'll play this.",
+]
+
+@export var receive_lines: Array[String] = [
+	"Attentive Helper,",
+	"We did indeed have our doubts.",
+	"The task which we had laid out for you was no trivial errand.",
+	"So important, in fact, that we promised you the one favor no one but ourself can grant:",
+	"Freedom from our rule.",
+	"Even we cannot be sure what will happen to you once you leave the Kingdom.",
+	"The choice is that grave,",
+	"But yours, nonetheless.",
+	"Before that, though...
+	"One last favor for your favorite King.",
+	"Do say goodbye to all of the subjects before you go, won't you?",
+	"I'm sure each and every one of them will have something or other to say to you.",
+	"You did help them, after all.",
+	"Nonetheless, you our now relieved of duty.",
+	"The door is open.",
+]
+
+@export var post_lines: Array[String] = [
+	"We will miss you, our silly little buddy.",
+	"But you have so thoughtfully offered your replacement as the King's entertainment",
+	"In the form of this slime mould game.",
+	"We shall think of you as we play it.",
+]
+
+@export var easter_lines: Array[String] = [
+#I assume nothing goes here???
+]

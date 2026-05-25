@@ -1,0 +1,55 @@
+#King Dialogue (Game Intro)
+@export var initial_lines: Array[String] = [
+	"Control",
+	"Power",
+	"Might",
+	"Domination",
+	"These are the tenants by which we have brought all of creation under our rule.",
+	"Heaven and earth,",
+	"Ideological and Material",
+	"We oversee all creation and uncreation.",
+	"But it takes much labor to maintain our all-encompassing kingdom.",
+	"It is our kingly duty to see that all our royal subjects are cared for,",
+	"And it is YOUR servantly duty to ensure our duty is carried out.",
+	"...Attentive Helper.",
+	"You will be our arms in this endeavor.",
+	"Venture forth across the universe and see to it that the needs of all are met.",
+	"No matter how grave. No matter how trivial.",
+	"We know you will succeed.",
+	"You have always made us happy. We created you specifically for this purpose.",
+	"It is in your nature to bring joy to others.",
+	"Allow us to give you some valuable advice.",
+	"Pay attention, now.",
+	"By royal decree, each citizen will divulge their problems as part of their introduction.",
+	"And any favor done for one citizen will allow you in some way to help another.",
+	"Remember who you've talked to as you travel, for yours will be a winding road.",
+	"We think that's about that gist of it.",
+	"No wait, we almost forgot!",
+	"After you have helped a citizen, you can talk to them once more for some extra chitchat.",
+	"Not TOO much chatchit, mind you. You have a mission to accomplish.",
+	"There. We have given you your charge.",
+	"Return to us once you have resolved the whims of TWENTY of our subjects.",
+	"Go now, and we will release you from your servitude upon your success.",
+]
+
+@export var give_lines: Array[String] = [
+	"You're back already? You finished that quickly?",
+	"That's kind of crazy, actually.",
+	"What? You need a key? Why?",
+	"Oh, uh... Right. The Gatekeeper. Yes, of course.",
+	"We... may have missplaced it...",	
+	"Or some lowly servent of ours lost it, we mean!",
+]
+
+@export var receive_lines: Array[String] = [
+	"Wait--Nevermind! It's right here.",
+	"Looks like they put it back just in time.",
+]
+
+@export var post_lines: Array[String] = [
+	"Hop along now, little buddy!",
+]
+
+@export var easter_lines: Array[String] = [
+#I assume there shouldn't be anything here?
+]
