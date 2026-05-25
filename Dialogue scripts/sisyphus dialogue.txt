@@ -1,0 +1,41 @@
+#sisyphus dialogue
+@export var initial_lines: Array[String] = [
+	"I used to live in bliss,",
+	"Rolling my boulder up a great hill",
+	"For it to roll down again.",
+	"Every reset the renewal of a goal.",
+	"My work never done.",
+	"My purpose always clear.",
+	"Hark, hark!",
+	"Behold my tragic tale:",
+	"For every roll my boulder did collect that which it tread.",
+	"Its mass becoming hungrier each triumph of the mount",
+	"And as it grew then so did too the things 'pon which it fed."
+	"First dust and mites, then sticks and stones, eventually a town.",
+	"And finally the gravity of everything condensced",
+	"Into this lonely planetoid devoid both good and crappy",
+	"And so, my friend, it surely is by now at which you've sensed",
+	"To put it quite simply, one must imagine I'm not happy.",
+]
+
+@export var give_lines: Array[String] = [
+	"What's that?",
+	"Is that a wheel???",
+	"Aw hell yeah! I betcha I can roll that!",
+	"This is gonna be siiiiiiiiiiiiiick, dude.",
+]
+
+@export var receive_lines: Array[String] = [
+	"Frickin' BITCHIN'!",
+	"I'm so psyched, I could make a whole door open up!",
+]
+
+@export var post_lines: Array[String] = [
+	"As soon as I get the hang of rolling this thing it'll be so tight.",
+]
+
+@export var easter_lines: Array[String] = [
+	"I gave up on trying to roll the wheel.",
+	"It keep falling down on its sides when I push.",
+	"Me sad again. :  (",
+]

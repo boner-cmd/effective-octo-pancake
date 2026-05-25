@@ -1,0 +1,37 @@
+#bodhisattva dialogue
+@export var initial_lines: Array[String] = [
+	"Namaste, Attentive Helper.",
+	"Through a life's work of ascetic discipline, I have achieved enlightenment.",
+	"But it is not enough that I alone should reap such heavenly rewards.",
+	"I wish for all living things to escape samsara.",
+	"You and I are alike in this way. We both seek to alleviate the suffering of others.",
+	"How about a little "you rub my belly, I rub your belly," hmm?",
+	"There are three individuals who you must assist",
+	"The first has studied under a Western corruption of the dharma",
+	"And come to falsely believe that nirvana has been achieved,",
+	"Without understanding light cannot exist without shadow.",
+	"The other two must be brought together into harmony from extreme existences.",
+	"One lives in excess, the other in lack.",
+	"Take from one and give to the other.",
+	"Go now, and help bring balance to this world.",
+	"In doing so you may prove yourself as a fellow Bodhisattva.",
+]
+
+@export var give_lines: Array[String] = [
+	"Well done, samaneri.",
+]
+
+@export var receive_lines: Array[String] = [
+	"The path of enlightenment can only be travelled by the wheel of dharma,",
+	"Inertia into which the Buddha himself breathed with his teachings.",
+	"Take the dharmachakra, "the wheel of dharma,"",
+	"And help others break the karmic cycle of desiring and suffering.",
+]
+
+@export var post_lines: Array[String] = [
+	"Om mani padme hum.",
+]
+
+@export var easter_lines: Array[String] = [
+	"Hey, what'd you do with my wheel?!",
+]
