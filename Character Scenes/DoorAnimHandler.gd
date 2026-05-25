@@ -129,7 +129,7 @@ func exit_sound_player():
 	exit_player.queue_free()
 	
 func interact():
-	request_music_change.emit()
+	#request_music_change.emit()
 	player.exit_check = true
 	var rig = player.get_child(2)
 	var clone = rig.duplicate()

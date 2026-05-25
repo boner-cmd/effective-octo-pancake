@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var stickerbook : NinePatchRect = $StickerbookBackground
 @onready var pause_menu : NinePatchRect = $PauseBackground
 @onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
+@onready var transition_color: ColorRect = $ColorRect
 
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
@@ -11,6 +12,7 @@ func set_initial_visibility() -> void:
 	stickerbook.visible = false
 	pause_menu.visible = false
 	complete_stamp.visible = false
+	transition_color.visible = false
 	
 func toggle_pausing_and_mouse() -> void:
 	get_tree().paused = !get_tree().paused
@@ -32,6 +34,7 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	set_initial_visibility()
 	QuestManager.main_quest_complete.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
+	transition_hard_in()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
@@ -45,3 +48,18 @@ func _on_continue_button_pressed() -> void:
 
 func _on_main_quest_completion() -> void:
 	complete_stamp.visible = true
+	
+func transition_hard_in():
+	transition_color.visible = true
+	await get_tree().create_timer(.5 + randf()).timeout
+	transition_color.visible = false
+	
+func transition_soft_in():
+	transition_color.visible = true
+	transition_color.color = Color.BLACK
+	var tween = get_tree().create_tween()
+	tween.tween_property(transition_color, "modulate:a", 0.0, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.play()
+	await tween.finished
+	transition_color.visible = false
+	transition_color.modulate.a = 1.0

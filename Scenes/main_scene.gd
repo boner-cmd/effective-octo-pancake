@@ -5,6 +5,8 @@ var new_bgm_stream : AudioStreamPlayer
 @onready var bgm_stream: AudioStreamPlayer = $BGM_controller
 @onready var current_planet : Node3D = planet_nodes[1] # default assignment used to remove first planet
 @onready var current_music : AudioStream = BGM_nodes[1] # is default assignment required?
+@onready var hud_overlay: CanvasLayer = $HUDOverlay
+
 
 # planet_nodes and BGM_nodes could be const if their members were just resource paths [int, String]
 # but an additional one-time function would be required to actually preload and/or instantiate them
@@ -88,7 +90,8 @@ func on_planet_change_requested(planet_ID : int):
 	var requested_planet = planet_nodes[planet_ID]
 	var requested_bgm = BGM_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
-
+	
+	hud_overlay.transition_hard_in()
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
 	
