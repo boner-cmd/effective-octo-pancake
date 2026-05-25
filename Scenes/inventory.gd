@@ -71,6 +71,7 @@ const origin_by_desiring_npc :  Dictionary[String, String] = { # given y = x, x 
 
 func add_item(npc_name : String) -> void:
 	update_slots() # move items out of the third slot, just in case
+	print("SLOT 3 = ", inventory_slots.Slot3)
 	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
 	assert(item_texts.has(npc_name), "Tried to add an unknown item, check npc_name")
 	inventory_slots.Slot3 = npc_name
@@ -83,6 +84,7 @@ func remove_item(npc_name : String) -> void:
 	update_slots()
 
 func update_slots() -> void:
+	print("SLOT STATE: ", slot_state)
 	match (slot_state):
 		0b001:
 			inventory_slots.Slot1 = inventory_slots.Slot3
@@ -131,4 +133,5 @@ func _on_item_add_requested(giver_name : String) -> void:
 	add_item(giver_name)
 
 func _on_item_remove_requested(receiver_name : String) -> void:
+	var name : String = receiver_name
 	remove_item(origin_by_desiring_npc[name])
