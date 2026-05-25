@@ -1,12 +1,12 @@
 extends Node3D
 
 var new_bgm_stream : AudioStreamPlayer
+var public_planet_id : int = 1
 
 @onready var bgm_stream: AudioStreamPlayer = $BGM_controller
 @onready var current_planet : Node3D = planet_nodes[1] # default assignment used to remove first planet
 @onready var current_music : AudioStream = BGM_nodes[1] # is default assignment required?
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
-
 
 # planet_nodes and BGM_nodes could be const if their members were just resource paths [int, String]
 # but an additional one-time function would be required to actually preload and/or instantiate them
@@ -31,6 +31,7 @@ var planet_nodes : Dictionary[int, Node] = {
 	18 : preload("res://planets/Scenes/18_Mass_Planet.tscn").instantiate(),
 	19 : preload("res://planets/Scenes/19_Michaelwave_Planet.tscn").instantiate(),
 	20 : preload("res://planets/Scenes/20_Slime_Planet.tscn").instantiate(),
+	21 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
 }
 
 var BGM_nodes : Dictionary[int, AudioStream] = {
@@ -54,6 +55,7 @@ var BGM_nodes : Dictionary[int, AudioStream] = {
 	18 : preload("res://music exports/festering mass2026-05-2220_52_41.wav"),
 	19 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
 	20 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
+	21 : preload("res://music exports/king2026-05-2113_23_05.wav"),
 }
 
 func _ready() -> void:
@@ -87,6 +89,7 @@ func on_playerExit_anim_start():
 	pass
 
 func on_planet_change_requested(planet_ID : int):
+	public_planet_id = planet_ID
 	var requested_planet = planet_nodes[planet_ID]
 	var requested_bgm = BGM_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet

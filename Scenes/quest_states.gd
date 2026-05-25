@@ -64,6 +64,30 @@ const state_rows_by_short_name = {
 	King2 		= 20,
 }
 
+const planet_id_by_npc_name : Dictionary[String, int] = {
+	King 		= 1,
+	Horse 		= 2,
+	Astronaut 	= 3,
+	Snowman 	= 4,
+	Sisyphus 	= 17,
+	Grease 		= 7,
+	Deer 		= 10,
+	Gate 		= 5,
+	O 			= 9,
+	Organs 		= 15,
+	Mass 		= 18,
+	Lamp 		= 12,
+	Norgans 	= 14,
+	Michaelwave = 19,
+	Robot 		= 6,
+	Individual 	= 13,
+	Gibberish 	= 8,
+	Idea 		= 11,
+	Bodhi 		= 16,
+	Slime 		= 20,
+	King2 		= 21
+}
+
 const npc_ids_by_name = {
 	King 		= 0b1,
 	Horse 		= 0b10,
@@ -101,6 +125,14 @@ func is_complete(npc_name : String) -> bool:
 	var row : int = state_rows_by_short_name.npc_name
 	return states[row] & 0b00000100000000000000000000000000000000000000000000
 
+#func receives(npc_name : String) -> bool:
+	#var row : int = state_rows_by_short_name.npc_name
+	#return states[row] & 0b01000000000000000000000000000000000000000000000000
+#
+#func gives(npc_name : String) -> bool:
+	#var row : int = state_rows_by_short_name.npc_name
+	#return states[row] & 0b00010000000000000000000000000000000000000000000000
+
 func player_already_received_from(npc_name : String) -> bool:
 	var row : int = state_rows_by_short_name.npc_name
 	return states[row] & 0b00100000000000000000000000000000000000000000000000
@@ -113,7 +145,7 @@ func depends_on_meeting(npc_name : String) -> bool:
 	var row : int = state_rows_by_short_name.npc_name
 	return states[row] & 0b00001000000000000000000000000000000000000000000000	
 
-func depends_on_completion(npc_name : String) -> bool:
+func depends_on_completion(npc_name : String) -> bool: # implicitly, npc_name receives an item
 	var row : int = state_rows_by_short_name.npc_name
 	return states[row] & 0b00000100000000000000000000000000000000000000000000	
 
@@ -133,7 +165,7 @@ func set_complete(npc_name : String) -> void:
 	var row : int = state_rows_by_short_name.npc_name
 	states[row] = states[row] | 0b00000100000000000000000000000000000000000000000000
 
-func completion_satisfied(npc_name : String) -> bool:
+func completion_satisfied(npc_name : String) -> bool: # this is a proxy for "player has what NPC needs"
 	if depends_on_completion(npc_name):
 		var temp_row : int = state_rows_by_short_name.npc_name
 		var found_id : int
@@ -147,7 +179,7 @@ func completion_satisfied(npc_name : String) -> bool:
 					return false
 	return true
 
-func meeting_satisfied(npc_name : String) -> bool:
+func meeting_satisfied(npc_name : String) -> bool: # this is a proxy for "player has met correct prior NPCs"
 	if depends_on_meeting(npc_name):
 		var temp_row : int = state_rows_by_short_name.npc_name
 		var found_id : int

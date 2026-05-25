@@ -1,32 +1,12 @@
 extends Node3D
 
 @onready var interact_ui : MarginContainer = %interact
-@onready var CanvasLayer_in: CanvasLayer = %CanvasLayer
+@onready var CanvasLayer_in : CanvasLayer = %CanvasLayer
+@onready var main_planet_id : int = get_tree().root.get_child(2).public_planet_id
 @onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
 
 #change to group check also
 var current_NPC : Node3D
-
-
-#meet horse
-#get planet ID, map to NPC name
-# current_npc = whatever we pull out
-#main node 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #irrelevant based on quest system but needs implementation
 var NPC_Normal_Template_Check : bool
@@ -84,10 +64,8 @@ func interact() -> void:
 	current_NPC.current_state = current_status
 	
 	if current_status != DialogueManager.CONV_STATE.COMPLETE:
-		DialogueManager.start_dialogue(CanvasLayer_in, lines, lines_2, lines_3, speech_sound)
-		lines = []
-		lines_2 = []
-		lines_3 = []
+		main_planet_id = get_tree().root.get_child(2).public_planet_id
+		DialogueManager.start_dialogue(CanvasLayer_in, main_planet_id, speech_sound)
 
 #this needs to change to check group and pull lines from global dialogue
 func _ready() -> void:

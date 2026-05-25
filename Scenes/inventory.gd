@@ -12,7 +12,7 @@ var slot_state : int = 0b000
 @onready var item_slot3  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot3
 @onready var label_slot1 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot1/ItemSlot1Label
 @onready var label_slot2 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot2/ItemSlot2Label
-@onready var label_slot3 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot3/ItemSlot2Label
+@onready var label_slot3 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot3/ItemSlot3Label
 
 # each item is the one GIVEN by that NPC
 const item_resources : Dictionary[String, Resource] = {

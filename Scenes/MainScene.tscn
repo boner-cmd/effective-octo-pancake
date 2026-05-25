@@ -13,10 +13,10 @@ script = ExtResource("1_7rqgy")
 [node name="HUDOverlay" parent="." unique_id=1314492231 instance=ExtResource("2_y4jh7")]
 follow_viewport_enabled = true
 
-[node name="InventoryMargin" parent="HUDOverlay" index="0" unique_id=706599872]
+[node name="InventoryBackgroundMargin" parent="HUDOverlay" index="0" unique_id=706599872]
 visible = false
 
-[node name="StickerbookBackground" parent="HUDOverlay" index="2" unique_id=878957700]
+[node name="StickerbookBackground" parent="HUDOverlay" index="2" unique_id=432696859]
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="HUDOverlay" unique_id=632454181]
@@ -31,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
 collision_mask = 6
 planet = NodePath("../DefaultLoadingPlanet")
 
-[node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1346645065) index="0" unique_id=1334537233]
+[node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1057419232) index="0" unique_id=2121263908]
 bones/2/position = Vector3(0, 0.002500003, 0)
 bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
