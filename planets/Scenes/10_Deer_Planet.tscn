@@ -62,6 +62,12 @@ surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_36we4")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=728603670]
+visible = true
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_5tpbv")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
@@ -80,6 +86,7 @@ destination_planet_ID = 18
 [editable path="CubedSkybox"]
 [editable path="CubedSkybox2"]
 [editable path="Cubed_Planet"]
+[editable path="InteractionArea"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]

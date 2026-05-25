@@ -86,6 +86,12 @@ destination_planet_ID = 14
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("10_fvbbk")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="15" unique_id=454906086]
+visible = true
+
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
 [editable path="CubedSkybox2"]
@@ -99,3 +105,4 @@ destination_planet_ID = 14
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="InteractionArea"]

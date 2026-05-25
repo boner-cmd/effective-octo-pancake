@@ -55,7 +55,14 @@ destination_planet_ID = 11
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_3w53k")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="body with organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="5" unique_id=500840685]
+visible = true
+
 [editable path="CubedSkybox"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="InteractionArea"]

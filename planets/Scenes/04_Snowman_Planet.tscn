@@ -69,6 +69,12 @@ destination_planet_ID = 9
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_gwu52")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="snowman" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="21" unique_id=832919613]
+visible = true
+
 [editable path="CubedSkybox"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
@@ -79,3 +85,4 @@ destination_planet_ID = 9
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="InteractionArea"]

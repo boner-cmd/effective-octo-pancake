@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://dhoblfx2msmhp" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Gatekeeper_Dialogue.gd" id="11_k8mm5"]
 [ext_resource type="PackedScene" uid="uid://ouu7ac5fbhbc" path="res://Character Scenes/NPCs/idea_guy.tscn" id="11_pfi2n"]
 [ext_resource type="PackedScene" uid="uid://b5dfwoc7pqgqn" path="res://Character Scenes/NPCs/individuated_individual.tscn" id="12_03vyx"]
-[ext_resource type="Script" uid="uid://ncgutpgqu33j" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Gibberish_Dialogue.gd" id="13_6b0et"]
 [ext_resource type="PackedScene" uid="uid://b105sq8ybihs2" path="res://Character Scenes/NPCs/king.tscn" id="13_s6xia"]
 [ext_resource type="PackedScene" uid="uid://p4oooooq7s2d" path="res://Character Scenes/NPCs/lamp.tscn" id="14_js1ou"]
 [ext_resource type="PackedScene" uid="uid://bhmfj5xhfjrmg" path="res://Character Scenes/NPCs/michaelwave.tscn" id="15_iblb7"]
@@ -125,11 +124,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
 visible = false
 script = ExtResource("11_k8mm5")
 
-[node name="digfhtaiopwgfh;edj" parent="Area3D" unique_id=1320364681 instance=ExtResource("9_rxrm2")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.7270001, -1.1280003, 0)
-visible = false
-script = ExtResource("13_6b0et")
-
 [node name="horse" parent="Area3D" unique_id=1429058884 instance=ExtResource("10_0ltci")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
 visible = false
@@ -199,6 +193,10 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93801594, 0)
 visible = false
 script = ExtResource("38_lspox")
+
+[node name="gibberish" parent="Area3D" unique_id=1320364681 instance=ExtResource("9_rxrm2")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.284604, -0.91557693, 0.2671622)
+visible = false
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Area3D/CanvasLayer" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]

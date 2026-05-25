@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://2f37epmgchvw"]
 
 [ext_resource type="PackedScene" uid="uid://nbt36xcx1kud" path="res://Character Export Files/digfhtaiopwgfh;edj/digfhtaiopwgfh;edj.gltf" id="1_0asbb"]
+[ext_resource type="Script" uid="uid://ncgutpgqu33j" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Gibberish_Dialogue.gd" id="2_oc1lf"]
 
-[node name="digfhtaiopwgfh;edj" unique_id=1320364681 instance=ExtResource("1_0asbb")]
+[node name="gibberish" unique_id=1320364681 instance=ExtResource("1_0asbb")]
+script = ExtResource("2_oc1lf")

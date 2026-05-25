@@ -2,6 +2,12 @@ extends Node
 
 #enums for passing between NPCs and dialogue interaction
 enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, COMPLETE, EASTER}
+
+#check talking to
+#is requisite previous state met or not
+#set that you talked to this person once
+
+
 var dialogue_state : CONV_STATE = CONV_STATE.COMPLETE
 
 var text_box_scene = preload("res://Scenes/DialogueManager/text_box.tscn")
@@ -19,7 +25,7 @@ var set_animation_at_2 : bool = false
 var set_animation_at_3 : bool = false
 
 var animation_point : int
-var complex : bool = false
+var complex : bool = true
 var append_once : bool = false
 
 var dialogue_length : int

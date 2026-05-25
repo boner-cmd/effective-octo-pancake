@@ -45,12 +45,19 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_a54x6")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="body without organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="14" unique_id=265873924]
+visible = true
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_ax27o")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 9
 
 [editable path="CubedSkybox"]
+[editable path="InteractionArea"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]

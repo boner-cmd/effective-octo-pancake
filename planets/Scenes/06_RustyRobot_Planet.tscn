@@ -69,6 +69,12 @@ destination_planet_ID = 8
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_kw8ol")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="robot" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="19" unique_id=1916101213]
+visible = true
+
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
 [editable path="Door"]
@@ -80,3 +86,4 @@ destination_planet_ID = 8
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="InteractionArea"]

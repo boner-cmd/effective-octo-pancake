@@ -57,8 +57,15 @@ destination_planet_ID = 12
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_vm1ek")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="michaelwave" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="13" unique_id=1980506230]
+visible = true
+
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="InteractionArea"]

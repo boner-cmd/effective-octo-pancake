@@ -54,11 +54,18 @@ mesh = SubResource("SphereMesh_6rb65")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("4_v005d")]
 
+[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
+visible = false
+
+[node name="festering mass" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="6" unique_id=1082976903]
+visible = true
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_501ac")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 10
 
+[editable path="InteractionArea"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
