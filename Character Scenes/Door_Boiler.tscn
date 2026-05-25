@@ -14,12 +14,6 @@ radius = 3.0
 [node name="DoorBaseModel" parent="." unique_id=1012687003 groups=["Door_Base"] instance=ExtResource("2_coq8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
 
-[node name="Skeleton3D" parent="DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(1012687003, 1938978798) index="0" unique_id=1563939115]
-bones/1/position = Vector3(1.3280718, 8.3063635e-16, 0)
-bones/1/scale = Vector3(1, 0.7444445, 1)
-bones/3/position = Vector3(1.1175799, 0.47247896, -4.318813e-16)
-bones/3/scale = Vector3(1, 0.7444445, 1)
-
 [node name="DoorCollider" parent="DoorBaseModel" index="2" unique_id=1935212185]
 collision_mask = 1
 
@@ -80,8 +74,8 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBaseModel/DoorSpawnRadius" unique_id=1845192206]
 shape = SubResource("CylinderShape3D_ua6hq")
 
-[node name="PlayerAnimationPosition" type="Node3D" parent="." unique_id=1635482596]
-transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 5.1129584, 0.60419047)
+[node name="PlayerAnimationPosition" type="Node3D" parent="DoorBaseModel" unique_id=1635482596]
+transform = Transform3D(1, 0, 0, 0, 0.99862945, -0.052335955, 0, 0.052335955, 0.99862945, 0, 0.213, -0.604)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941331369]
 

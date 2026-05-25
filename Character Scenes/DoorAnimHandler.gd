@@ -39,7 +39,7 @@ var door_mats : Dictionary[int, Material] = {
 @onready var door_mesh: MeshInstance3D = $DoorAnims/Skeleton3D/Door
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 @onready var anim_tree: AnimationTree = $AnimationTree
-@onready var player_exit_position: Node3D = $"../PlayerAnimationPosition"
+@onready var player_exit_position: Node3D = $PlayerAnimationPosition
 
 signal exit_anim_finished()
 signal exit_anim_started()
