@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://yuj2sdn8i08i"]
+
+[ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="1_lgkf0"]
+
+[node name="slime_mould" type="Node3D" unique_id=1114862664]
+
+[node name="Decal" type="Decal" parent="." unique_id=733051989]
+size = Vector3(1.5, 1.5, 1.5)
+texture_albedo = ExtResource("1_lgkf0")

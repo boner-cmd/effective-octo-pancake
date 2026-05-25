@@ -35,6 +35,9 @@
 [ext_resource type="Script" uid="uid://bnfixs1jncyhi" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Deer_Dialogue.gd" id="29_ksyt5"]
 [ext_resource type="Script" uid="uid://b1875k186m3dc" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Robot_Dialogue.gd" id="32_fi1vw"]
 [ext_resource type="Script" uid="uid://bggvvitf2iuxi" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Snowman_Dialogue.gd" id="35_maxp5"]
+[ext_resource type="PackedScene" uid="uid://yuj2sdn8i08i" path="res://Character Scenes/NPCs/slime_mould.tscn" id="36_6b0et"]
+[ext_resource type="PackedScene" uid="uid://b1p31ofqvqdrn" path="res://Character Scenes/NPCs/grease_puddle.tscn" id="37_ub32n"]
+[ext_resource type="Script" uid="uid://bnojgqb3pv5q1" path="res://Scenes/DialogueManager/DialogueScripts/NPC_Grease_Dialogue.gd" id="38_lspox"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
 radius = 1.0
@@ -188,6 +191,15 @@ visible = false
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
 visible = false
 script = ExtResource("35_maxp5")
+
+[node name="slime_mould" parent="Area3D" unique_id=1114862664 instance=ExtResource("36_6b0et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93801594, 0)
+visible = false
+
+[node name="grease_puddle" parent="Area3D" unique_id=513399140 instance=ExtResource("37_ub32n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93801594, 0)
+visible = false
+script = ExtResource("38_lspox")
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Area3D/CanvasLayer" to="Area3D" method="_on_canvas_layer_child_exiting_tree"]

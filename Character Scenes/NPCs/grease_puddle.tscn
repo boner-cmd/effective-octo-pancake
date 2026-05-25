@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b1p31ofqvqdrn"]
+
+[ext_resource type="Texture2D" uid="uid://cby0udoonejpg" path="res://Character Export Files/oil/slime mould.png" id="1_utsgg"]
+
+[node name="grease_puddle" type="Node3D" unique_id=513399140]
+
+[node name="Decal" type="Decal" parent="." unique_id=1821868636]
+size = Vector3(1.5, 1.5, 1.5)
+texture_albedo = ExtResource("1_utsgg")
