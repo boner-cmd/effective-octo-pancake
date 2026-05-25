@@ -57,7 +57,6 @@ surface_material_override/0 = ExtResource("3_2nyx6")
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_d0l1o")]
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_06bkn")]
-visible = false
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 3
