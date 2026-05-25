@@ -6,6 +6,10 @@ const sfx_despawn = preload("uid://7banle6yv2gq")
 const sfx_spawn = preload("uid://t6h5ww03rkm7")
 const sfx_exit = preload("uid://dklltp1vyr8pp")
 
+var sisyphus_lock = DialogueManager.sisyphus_lock
+var gate_lock = DialogueManager.gate_lock
+var king_lock = DialogueManager.king_lock
+
 var player: CharacterBody3D
 var door_locked : bool = false
 var current_anim := AnimStates.STASIS
@@ -46,8 +50,16 @@ signal exit_anim_started()
 signal request_planet_change(planet_ID : int)
 signal request_music_change()
 
+func lock_check():
+	if destination_planet_ID == 5:
+		door_locked = gate_lock
+	if destination_planet_ID == 17:
+		door_locked = sisyphus_lock
+#	if destination_planet_ID == 1 #this is for king's second lock at end of game
+
 func _set_door_anim(anim : AnimStates):
 	current_anim = anim
+	lock_check()
 	if !door_locked:
 		match current_anim:
 			AnimStates.STASIS:
@@ -81,7 +93,9 @@ func _set_door_anim(anim : AnimStates):
 				exit_anim_finished.emit()
 				_set_door_anim(AnimStates.STASIS)
 	else:
-		#maybe need some weird animation state for polish
+		#AnimStates.STASIS:
+		anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
+		anim_tree.set("parameters/DoorExit/blend_amount", 0.0)
 		pass
 
 func _ready() -> void:
@@ -89,6 +103,7 @@ func _ready() -> void:
 	_set_door_anim(AnimStates.STASIS)
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
+	
 
 func spawn():
 	_set_door_anim(AnimStates.SPAWN)
@@ -130,20 +145,22 @@ func exit_sound_player():
 	
 func interact():
 	#request_music_change.emit()
-	player.exit_check = true
-	var rig = player.get_child(2)
-	var clone = rig.duplicate()
-	get_tree().root.add_child(clone)
-	rig.visible = false
-	rig._set_player_anim(rig.AnimStates.IDLE)
-	clone.global_position = player_exit_position.global_position
-	clone.global_rotation = player_exit_position.global_rotation
-	clone._set_player_anim(clone.AnimStates.EXIT)
-	await _set_door_anim(AnimStates.EXIT)
-	rig.visible = true
-	clone.queue_free()
-	request_planet_change.emit(destination_planet_ID)
-	_set_door_anim(AnimStates.STASIS)
+	lock_check()
+	if !door_locked:
+		player.exit_check = true
+		var rig = player.get_child(2)
+		var clone = rig.duplicate()
+		get_tree().root.add_child(clone)
+		rig.visible = false
+		rig._set_player_anim(rig.AnimStates.IDLE)
+		clone.global_position = player_exit_position.global_position
+		clone.global_rotation = player_exit_position.global_rotation
+		clone._set_player_anim(clone.AnimStates.EXIT)
+		await _set_door_anim(AnimStates.EXIT)
+		rig.visible = true
+		clone.queue_free()
+		request_planet_change.emit(destination_planet_ID)
+		_set_door_anim(AnimStates.STASIS)
 
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:
