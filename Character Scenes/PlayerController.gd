@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	if !ray_cast_3d.is_colliding():
 		current_raycast = reset_raycast
 	
-	if DialogueManager.is_dialogue_active == true:
+	if !DialogueManager.CONV_STATE.COMPLETE:
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
 				if convo_flip_1:
