@@ -67,6 +67,7 @@ func _input(event: InputEvent) -> void:
 
 	if is_on_floor() and event.is_action_pressed("jump"):
 		clown._set_player_anim(clown.AnimStates.JUMP)
+		print(DialogueManager.CONV_STATE)
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
@@ -80,23 +81,25 @@ func _physics_process(delta: float) -> void:
 	if !ray_cast_3d.is_colliding():
 		current_raycast = reset_raycast
 	
-	if !DialogueManager.CONV_STATE.COMPLETE:
+	if !DialogueManager.dialogue_state == DialogueManager.CONV_STATE.COMPLETE:
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
+				movement_frozen = true
 				if convo_flip_1:
 					clown._set_player_anim(clown.AnimStates.TALK)
 					convo_flip_1 = false
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
+				movement_frozen = true
 				if convo_flip_2:
 					clown._set_player_anim(clown.AnimStates.GIVE)
 					convo_flip_2 = false
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
+				movement_frozen = true
 				if convo_flip_3:
 					clown._set_player_anim(clown.AnimStates.GET)
 					convo_flip_3 = false
-			DialogueManager.CONV_STATE.COMPLETE:
-				clown._set_player_anim(clown.AnimStates.IDLE)
 		movement_frozen = true
+		
 	elif exit_check:
 		movement_frozen = true
 		velocity = Vector3(0,0,0)
