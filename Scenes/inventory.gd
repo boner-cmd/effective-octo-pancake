@@ -51,6 +51,24 @@ const item_texts : Dictionary[String, String] = {
 	Bodhi 		= "Dharmachakra",
 }
 
+const origin_by_desiring_npc :  Dictionary[String, String] = { # given y = x, x has what y needs
+	Gate = "King",
+	Horse = "Snowman",
+	Astronaut = "Robot",
+	Robot = "Grease",
+	Deer = "O",
+	Idea = "Deer",
+	Norgans = "Organs",
+	Lamp = "Idea",
+	Individual = "Lamp",
+	Michaelwave = "Mass",
+	Gibberish = "Horse",
+	Sisyphus = "Bodhi",
+	Slime = "Michaelwave",
+	King2 = "Slime",
+	O = "Gibberish",
+}
+
 func add_item(npc_name : String) -> void:
 	update_slots() # move items out of the third slot, just in case
 	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
@@ -106,3 +124,11 @@ func update_slots() -> void:
 func _ready() -> void:
 	visible = true
 	update_slots()
+	DialogueManager.request_item_add.connect(_on_item_add_requested)
+	DialogueManager.request_item_remove.connect(_on_item_remove_requested)
+
+func _on_item_add_requested(giver_name : String) -> void:
+	add_item(name)
+
+func _on_item_remove_requested(receiver_name : String) -> void:
+	remove_item(origin_by_desiring_npc[name])

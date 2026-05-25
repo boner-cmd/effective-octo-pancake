@@ -17,6 +17,7 @@ var animation_point : int
 var animation_point2 : int
 var pending_animation_1 : CONV_STATE
 var pending_animation_2 : CONV_STATE
+var npc_name : String
 
 var sfx: AudioStream
 var dialogue_finished_sfx: AudioStream
@@ -632,13 +633,16 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 					]],
 }
 
+signal request_item_add(npc : String) # sends the NPC who gives the item
+signal request_item_remove(npc : String) # sends the NPC who consumes the time
+
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
 	if !is_dialogue_active:
 		is_dialogue_active = true
 		canvas_layer = CanvasLayer_in
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
-		var npc_name : String = QuestManager.planet_id_by_npc_name.find_key(planet_id)
+		npc_name = QuestManager.planet_id_by_npc_name.find_key(planet_id)
 		var first_meeting : bool = !QuestManager.has_met(npc_name)
 		if QuestManager.is_complete(npc_name):
 			dialogue_lines = all_lines[npc_name][3]
@@ -671,6 +675,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 						if QuestManager.requirements_met(npc_name):
 							QuestManager.set_player_gave_npc(npc_name)
 							QuestManager.set_complete(npc_name)
+							request_item_remove.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							dialogue_lines = all_lines[npc_name][1]
 
@@ -688,6 +693,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 						if QuestManager.requirements_met(npc_name):
 							QuestManager.set_npc_gave_player(npc_name)
 							QuestManager.set_complete(npc_name)
+							request_item_add.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines = all_lines[npc_name][2]
 						
@@ -701,6 +707,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
 							pending_animation_1 = CONV_STATE.PLAYER_GIVE
 						else:
+							request_item_remove.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							dialogue_lines = all_lines[npc_name][1]
 						match (npc_name):
@@ -725,6 +732,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet, player give, player receive
 						else:
+							request_item_add.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							dialogue_lines = all_lines[npc_name][1]
 							animation_point = dialogue_lines.size() # transition to player receive
@@ -733,6 +741,13 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 						if npc_name == "Slime":
 							king_lock = false
 		_show_text_box(CanvasLayer_in)
+
+func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
+	match pending_animation:
+		CONV_STATE.PLAYER_RECEIVE:
+			request_item_add.emit(npc_name)
+		CONV_STATE.PLAYER_GIVE:
+			request_item_remove.emit(npc_name)
 
 func _show_text_box(CanvasLayer_in):
 	text_box = text_box_scene.instantiate()
@@ -757,20 +772,20 @@ func _unhandled_input(event):
 			if animation_point2 > -1: # there is a set second animation point
 				if current_line_index >= animation_point && current_line_index < animation_point2:
 					dialogue_state = pending_animation_1
+					emit_inventory_signal_by_conv_state(pending_animation_1)
 				elif current_line_index >= animation_point2:
 					dialogue_state = pending_animation_2
+					emit_inventory_signal_by_conv_state(pending_animation_2)
 			else:
 				if current_line_index >= animation_point:
 					dialogue_state = pending_animation_1
+					emit_inventory_signal_by_conv_state(pending_animation_1)
 
-		if current_line_index >= dialogue_lines.size():
 		#reset happense here
+		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			complex = false
 			current_line_index = 0
-			#set_animation_at_2 = false
-			#set_animation_at_3 = false
-			#append_once = false
 			animation_point = -1
 			animation_point2 = -1
 			dialogue_state = CONV_STATE.COMPLETE
