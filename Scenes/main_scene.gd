@@ -59,7 +59,6 @@ func _ready() -> void:
 	new_bgm_stream = bgm_stream.duplicate()
 	new_bgm_stream.stream = BGM_nodes[1]
 	get_tree().root.add_child(new_bgm_stream)
-	new_bgm_stream.volume_db = -10
 	new_bgm_stream.play()
 	
 	# initial setup for first planet, door, and bgm
@@ -68,9 +67,16 @@ func _ready() -> void:
 	initial_door.request_planet_change.connect(on_planet_change_requested)
 	initial_door.request_music_change.connect(_bgm_track_cycle)
 
-func _bgm_track_cycle():
+func _bgm_track_cycle(planetID : int):
 #	fade out old stream
-	new_bgm_stream.volume_linear = lerp(new_bgm_stream.volume_linear, 0.0, .2)
+	var tween_old = get_tree().create_tween()
+	tween_old.tween_property(new_bgm_stream, "volume_linear", 0.0, .5) 
+	print("BGM fade out")
+	await tween_old.finished
+	new_bgm_stream = bgm_stream.duplicate()
+	new_bgm_stream.stream = BGM_nodes[planetID]
+	get_tree().root.add_child(new_bgm_stream)
+	new_bgm_stream.play()
 	
 func _new_track_start():
 	pass
@@ -89,6 +95,8 @@ func on_planet_change_requested(planet_ID : int):
 	# swap over planet and music
 	current_planet = requested_planet
 	current_music = requested_bgm
+	
+	_bgm_track_cycle(planet_ID)
 	
 	# try to connect new door and bgm signals, whether required or not
 	for door in get_tree().get_nodes_in_group("Door_Base"):
