@@ -84,7 +84,11 @@ func update_slots() -> void:
 			slot_state = 0b110
 		_: 
 			pass
-	$VBoxContainer.visible = false
+			
+	item_slot1.visible = false
+	item_slot2.visible = false
+	item_slot3.visible = false
+	
 	if slot_state & 0b100:
 		item_slot1.texture = item_resources[inventory_slots.Slot1]
 		label_slot1.text = item_texts[inventory_slots.Slot1]
@@ -100,3 +104,4 @@ func update_slots() -> void:
 
 func _ready() -> void:
 	visible = true
+	update_slots()

@@ -61,7 +61,6 @@ func reset_array() -> void:
 	obj_pos_4 = obj_pos_4_const.duplicate(true)
 	obj_pos_5 = obj_pos_5_const.duplicate(true)
 
-
 #pick an array
 func placement():
 	reset_array()

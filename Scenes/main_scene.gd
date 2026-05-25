@@ -81,6 +81,7 @@ func on_playerExit_anim_start():
 func on_planet_change_requested(planet_ID : int):
 	var requested_planet = planet_nodes[planet_ID]
 	var requested_bgm = BGM_nodes[planet_ID]
+	requested_planet.request_ready() # required to re-roll object locations on planet
 
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)

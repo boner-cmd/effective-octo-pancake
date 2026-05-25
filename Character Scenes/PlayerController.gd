@@ -41,14 +41,12 @@ var grav_strength : float = 10.0
 var grav_vector : Vector3 = Vector3(0,0,0)
 var xform : Transform3D
 
-
 func reset_player():
 	position = respawn_pos
 	rotation = respawn_rot
-	
+
 	#some stuff needs to happen with waits maybe
 	exit_check = false
-	
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
@@ -63,10 +61,7 @@ func align_with_floor(floor_normal : Vector3):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	#if event.is_action_pressed("ui_cancel"):
-		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		#clown._set_player_anim(clown.AnimStates.VICTORY)
-	
+
 	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -80,9 +75,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	)
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
-
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	if !ray_cast_3d.is_colliding():
@@ -135,12 +127,10 @@ func _physics_process(delta: float) -> void:
 
 			if clown.current_anim != clown.AnimStates.WALK:
 				clown._set_player_anim(clown.AnimStates.WALK)
-				
 
 		elif Idle_Check:
 			clown._set_player_anim(clown.AnimStates.IDLE)
 			Idle_Check = false
-
 
 		grav_calc()
 
