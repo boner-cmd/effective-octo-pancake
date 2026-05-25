@@ -29,6 +29,9 @@ material = ExtResource("5_wv5cx")
 radius = 5.0
 height = 10.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d6cxk"]
+radius = 0.4
+
 [node name="05_Gatekeeper_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
 script = ExtResource("1_d6cxk")
 InteractionArea = NodePath("InteractionArea")
@@ -59,6 +62,13 @@ visible = false
 
 [node name="gatekeeper unlocked" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="7" unique_id=1866931042]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1323657896]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1333643567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
+shape = SubResource("CylinderShape3D_d6cxk")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_lq66j")]
 

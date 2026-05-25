@@ -23,6 +23,9 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gwpq8"]
+radius = 0.4
+
 [node name="14_Norgans_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
 script = ExtResource("1_gwpq8")
 InteractionArea = NodePath("InteractionArea")
@@ -50,6 +53,13 @@ visible = false
 
 [node name="body without organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="14" unique_id=265873924]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1386157990]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=487175394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
+shape = SubResource("CylinderShape3D_gwpq8")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_ax27o")]
 

@@ -25,6 +25,9 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2508a"]
+radius = 0.3
+
 [node name="11_Idea_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
 script = ExtResource("1_2508a")
 InteractionArea = NodePath("InteractionArea")
@@ -62,6 +65,13 @@ visible = false
 
 [node name="idea guy" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="9" unique_id=1608837145]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=857719675]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=2068355635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, -0.057549685)
+shape = SubResource("CylinderShape3D_2508a")
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]

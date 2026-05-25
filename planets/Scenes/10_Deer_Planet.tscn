@@ -26,6 +26,9 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_txy1j"]
+size = Vector3(0.5, 2, 1.5)
+
 [node name="10_Deer_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
 script = ExtResource("1_txy1j")
 InteractionArea = NodePath("InteractionArea")
@@ -66,7 +69,15 @@ surface_material_override/0 = ExtResource("3_kfqw7")
 visible = false
 
 [node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=728603670]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.230259, 0)
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1046663889]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=2081589961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0.062656224)
+shape = SubResource("BoxShape3D_txy1j")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_5tpbv")]
 

@@ -28,6 +28,10 @@ glow_enabled = true
 radius = 5.0
 height = 10.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6e6r8"]
+height = 1.0
+radius = 0.3
+
 [node name="04_Snowman_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
 script = ExtResource("1_6e6r8")
 InteractionArea = NodePath("InteractionArea")
@@ -72,8 +76,15 @@ destination_planet_ID = 9
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
-[node name="snowman" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="21" unique_id=832919613]
+[node name="snowman" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="20" unique_id=832919613]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=116790964]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1036887213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4943275, 0)
+shape = SubResource("CylinderShape3D_6e6r8")
 
 [editable path="CubedSkybox"]
 [editable path="Door"]

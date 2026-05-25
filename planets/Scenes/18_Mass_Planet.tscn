@@ -31,6 +31,9 @@ flip_faces = true
 radius = 5.0
 height = 10.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_yab18"]
+radius = 1.0
+
 [node name="18_Mass_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
 script = ExtResource("1_yab18")
 InteractionArea = NodePath("InteractionArea")
@@ -54,11 +57,21 @@ mesh = SubResource("SphereMesh_6rb65")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("4_v005d")]
 
+[node name="CollisionShape3D" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="0" unique_id=1777274432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45211267, 0)
+
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
 [node name="festering mass" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="6" unique_id=1082976903]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1962741861]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1770539092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.11054, 0)
+shape = SubResource("SphereShape3D_yab18")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_501ac")]
 

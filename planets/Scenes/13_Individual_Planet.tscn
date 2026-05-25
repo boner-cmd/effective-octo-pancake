@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_jqsyd"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_wxs3e"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wxs3e"]
+radius = 0.3
+
 [node name="13_Individual_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
 script = ExtResource("1_0s5uc")
 InteractionArea = NodePath("InteractionArea")
@@ -29,6 +32,13 @@ visible = false
 
 [node name="individuated individual" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="10" unique_id=1840200528]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1441861947]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1890240844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
+shape = SubResource("CylinderShape3D_wxs3e")
 
 [editable path="Cubed_Planet"]
 [editable path="Door"]

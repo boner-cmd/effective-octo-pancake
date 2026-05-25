@@ -25,6 +25,9 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8hxeg"]
+size = Vector3(1, 2, 0.5)
+
 [node name="06_Rusty_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
 script = ExtResource("1_8hxeg")
 InteractionArea = NodePath("InteractionArea")
@@ -72,8 +75,15 @@ destination_planet_ID = 8
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
-[node name="robot" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="19" unique_id=1916101213]
+[node name="robot" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="18" unique_id=1916101213]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=7053957]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=862920507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
+shape = SubResource("BoxShape3D_8hxeg")
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]

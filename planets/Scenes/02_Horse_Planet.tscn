@@ -31,6 +31,9 @@ flip_faces = true
 radius = 5.0
 height = 10.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t51te"]
+size = Vector3(0.5, 1, 2)
+
 [node name="02_Horse_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4", "Obj_5")]
 script = ExtResource("1_0yh3f")
 InteractionArea = NodePath("InteractionArea")
@@ -57,8 +60,15 @@ surface_material_override/0 = ExtResource("2_ga5oq")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("4_t51te")]
 
-[node name="horse" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="9" unique_id=1429058884]
+[node name="horse" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="8" unique_id=1429058884]
 visible = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1366252616]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=904572050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.455943, 0)
+shape = SubResource("BoxShape3D_t51te")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_t51te")]
 
