@@ -51,9 +51,11 @@ signal request_planet_change(planet_ID : int)
 signal request_music_change()
 
 func lock_check():
-	if destination_planet_ID == 5:
+	if destination_planet_ID == 6:
 		door_locked = gate_lock
-	if destination_planet_ID == 17:
+	if destination_planet_ID == 13:
+		door_locked = gate_lock
+	if destination_planet_ID == 20:
 		door_locked = sisyphus_lock
 #	if destination_planet_ID == 1 #this is for king's second lock at end of game
 
