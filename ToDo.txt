@@ -15,8 +15,9 @@ MAIN
 			Note, other trades (grease -> robot, Organs -> Norgans) seemingly work fine, Inventory seems to only get messed up at Astro
 			putting in prints shows that if the conversation is not complex, we never send signals based on conv state
 			RESOLVED
-		NORGANS still broken, most assuredly quest state
-		
+		NORGANS still broken, most assuredly quest state - fixed
+		IDEA broken quest state - fixed
+		BODHI broken quest state
 		
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door in front of him, maybe next to the player?
