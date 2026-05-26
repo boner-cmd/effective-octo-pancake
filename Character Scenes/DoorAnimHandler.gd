@@ -156,20 +156,21 @@ func interact():
 	#request_music_change.emit()
 	lock_check()
 	if !door_locked:
-		player.exit_check = true
-		var rig = player.get_child(2)
-		var clone = rig.duplicate()
-		get_tree().root.add_child(clone)
-		rig.visible = false
-		rig._set_player_anim(rig.AnimStates.IDLE)
-		clone.global_position = player_exit_position.global_position
-		clone.global_rotation = player_exit_position.global_rotation
-		clone._set_player_anim(clone.AnimStates.EXIT)
-		await _set_door_anim(AnimStates.EXIT)
-		rig.visible = true
-		clone.queue_free()
-		request_planet_change.emit(destination_planet_ID)
-		_set_door_anim(AnimStates.STASIS)
+		if player.exit_check == false:
+			player.exit_check = true
+			var rig = player.get_child(2)
+			var clone = rig.duplicate()
+			get_tree().root.add_child(clone)
+			rig.visible = false
+			rig._set_player_anim(rig.AnimStates.IDLE)
+			clone.global_position = player_exit_position.global_position
+			clone.global_rotation = player_exit_position.global_rotation
+			clone._set_player_anim(clone.AnimStates.EXIT)
+			await _set_door_anim(AnimStates.EXIT)
+			rig.visible = true
+			clone.queue_free()
+			request_planet_change.emit(destination_planet_ID)
+			_set_door_anim(AnimStates.STASIS)
 
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:

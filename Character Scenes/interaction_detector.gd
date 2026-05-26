@@ -14,10 +14,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && !interacted:
 		interacted = true
 		if current_exit:
-#			player = self.get_parent() # what is this for?
+#			player = self.get_parent().get_parent() # what is this for? something with exit debouncing?
 			if interact_ui:
 				interact_ui.visible = false
 			await current_exit.get_parent().interact()
+			
 		elif current_npc:
 			interact_ui.visible = false
 			await current_npc.interact()
