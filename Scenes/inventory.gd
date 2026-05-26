@@ -65,6 +65,7 @@ const origin_by_desiring_npc :  Dictionary[String, String] = { # given y = x, x 
 	Gibberish = "Horse",
 	Sisyphus = "Bodhi",
 	Slime = "Michaelwave",
+	Snowman = "Astronaut",
 	King2 = "Slime",
 	O = "Gibberish",
 }
@@ -76,7 +77,7 @@ func add_item(npc_name : String) -> void:
 	assert(item_texts.has(npc_name), "Tried to add an unknown item, check npc_name")
 	inventory_slots.Slot3 = npc_name
 	slot_state |= 0b001
-	
+	update_slots()
 	update_slots()
 	
 func remove_item(npc_name : String) -> void:
@@ -86,11 +87,15 @@ func remove_item(npc_name : String) -> void:
 	match found_key:
 		"Slot1":
 			slot_state &= 0b011
+			print("REMOVE ITEM IN SLOT 1")
 		"Slot2":
 			slot_state &= 0b101
+			print("REMOVE ITEM IN SLOT 2")
 		"Slot3":
 			slot_state &= 0b110
+			print("REMOVE ITEM IN SLOT 3")
 	update_slots()
+	
 
 func update_slots() -> void:
 	print("SLOT STATE: ", slot_state)
@@ -102,6 +107,7 @@ func update_slots() -> void:
 		0b010:
 			inventory_slots.Slot1 = inventory_slots.Slot2
 			inventory_slots.Slot2 = false
+			
 			slot_state = 0b100
 		0b011:
 			inventory_slots.Slot1 = inventory_slots.Slot2

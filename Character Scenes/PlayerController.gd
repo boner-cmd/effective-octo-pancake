@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 
 	if is_on_floor() and event.is_action_pressed("jump"):
 		clown._set_player_anim(clown.AnimStates.JUMP)
-		print(DialogueManager.CONV_STATE)
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (

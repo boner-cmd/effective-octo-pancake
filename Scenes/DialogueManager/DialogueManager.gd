@@ -634,13 +634,18 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 					]],
 }
 
-var debug_bool : bool = true
+var debug_bool : bool = false
 var debug_lines : Array = [
-		["initial",],
-		["give",],
-		["receive",],
-		["post",],
-		["easter",],
+		["initial 1",
+		"initial 2",],
+		["give 1",
+		"give 2",],
+		["receive 1",
+		"receive 2",],
+		["post 1",
+		"post 2",],
+		["easter 1",
+		"easter 2",],
 	]
 var debug : Dictionary[String, Array] = {
 	King		= debug_lines,
@@ -714,8 +719,8 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 						if QuestManager.requirements_met(npc_name):
 							QuestManager.set_player_gave_npc(npc_name)
 							QuestManager.set_complete(npc_name)
-							request_item_remove.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
+							emit_inventory_signal_by_conv_state(dialogue_state)
 							dialogue_lines = all_lines[npc_name][1]
 
 				"King", "Mass": # only require meetings, then will give
@@ -732,8 +737,8 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 						if QuestManager.requirements_met(npc_name):
 							QuestManager.set_npc_gave_player(npc_name)
 							QuestManager.set_complete(npc_name)
-							request_item_add.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_RECEIVE
+							emit_inventory_signal_by_conv_state(dialogue_state)
 							dialogue_lines = all_lines[npc_name][2]
 						
 				"Sisyphus", "Gate": # receive only, unlocks door
@@ -746,8 +751,8 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
 							pending_animation_1 = CONV_STATE.PLAYER_GIVE
 						else:
-							request_item_remove.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
+							emit_inventory_signal_by_conv_state(dialogue_state)
 							dialogue_lines = all_lines[npc_name][1]
 						match (npc_name):
 							"Sisyphus":
@@ -771,8 +776,8 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet, player give, player receive
 						else:
-							request_item_add.emit(npc_name)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
+							emit_inventory_signal_by_conv_state(dialogue_state)
 							dialogue_lines = all_lines[npc_name][1]
 							animation_point = dialogue_lines.size() # transition to player receive
 							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
@@ -811,22 +816,21 @@ func _unhandled_input(event):
 	):
 		text_box.queue_free()
 		current_line_index += 1
-		print("IS COMPLEX =", complex)
 		if complex:
-			print("ANIMATION POINT 1 = ", animation_point, ". CURRENT LINE INDEX = ", current_line_index)
-			print("ANIMATION POINT 2 = ", animation_point2, ". CURRENT LINE INDEX = ", current_line_index)
 			if animation_point2 > 0: # there is a set second animation point
 				if current_line_index == animation_point: #&& current_line_index < animation_point2:
+					print("TRANSITION TO ", pending_animation_1)
 					dialogue_state = pending_animation_1
 					emit_inventory_signal_by_conv_state(pending_animation_1)
 				elif current_line_index == animation_point2:
 					dialogue_state = pending_animation_2
+					print("TRANSITION TO ", pending_animation_2)
 					emit_inventory_signal_by_conv_state(pending_animation_2)
 			else:
 				if current_line_index == animation_point:
 					dialogue_state = pending_animation_1
 					emit_inventory_signal_by_conv_state(pending_animation_1)
-					print("CONVERSATION PROGRESSED PAST ANIMATION POINT")
+					print("TRANSITION TO ", pending_animation_1)
 
 		#reset happense here
 		if current_line_index >= dialogue_lines.size():

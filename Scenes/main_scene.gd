@@ -75,7 +75,6 @@ func _bgm_track_cycle(planetID : int):
 #	fade out old stream
 	var tween_old = get_tree().create_tween()
 	tween_old.tween_property(new_bgm_stream, "volume_linear", 0.0, .5) 
-	print("BGM fade out")
 	await tween_old.finished
 	new_bgm_stream = bgm_stream.duplicate()
 	new_bgm_stream.stream = BGM_nodes[planetID]
