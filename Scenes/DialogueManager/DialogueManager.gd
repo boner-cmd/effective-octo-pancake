@@ -707,7 +707,24 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 					dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
 					pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
 					
-				"Norgans", "Individual", "King2", "Bodhi": # node receives and has no give
+				"Bodhi": # node gives but does not receive, conditions
+					if first_meeting:
+						if QuestManager.requirements_met(npc_name):
+							complex = true
+							QuestManager.set_npc_gave_player(npc_name)
+							QuestManager.set_complete(npc_name)
+							animation_point = dialogue_lines.size() # transition to receive
+							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
+							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
+					else:
+						if QuestManager.requirements_met(npc_name):
+							QuestManager.set_player_gave_npc(npc_name)
+							QuestManager.set_complete(npc_name)
+							dialogue_state = CONV_STATE.PLAYER_RECEIVE
+							emit_inventory_signal_by_conv_state(dialogue_state)
+							dialogue_lines = all_lines[npc_name][1]
+							
+				"Norgans", "Individual", "King2": # node receives and has no give
 					if first_meeting:
 						if QuestManager.requirements_met(npc_name):
 							complex = true
