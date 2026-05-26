@@ -6,9 +6,7 @@ MAIN
 			- Map
 		Music to continue on PAUSE state
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
-		FIX DOOR EXIT ANIMATION POSITION
-		DOOR COLLISION DOES NOT MOVE WITH DOOR
-		
+		SPAM F ON DOOR BREAKS TRANSFER OF PLANETS
 		
 		Talking in debug lines results in receive playing twice? probably nothing
 		
@@ -17,6 +15,7 @@ MAIN
 			Note, other trades (grease -> robot, Organs -> Norgans) seemingly work fine, Inventory seems to only get messed up at Astro
 			putting in prints shows that if the conversation is not complex, we never send signals based on conv state
 			RESOLVED
+		NORGANS still broken, most assuredly quest state
 		
 		
 	Victory Scene + Credits Implementation
