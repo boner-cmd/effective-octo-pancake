@@ -8,7 +8,7 @@
 
 
 "CREDITS:",
-"Michael Brissie - Programming, Animation, Asset Implementation",
+"Michael Brissie - Programming, Animation, Asset Implementation, Tech Art",
 
 "Allie Burch - 2D Asset Creation",
 

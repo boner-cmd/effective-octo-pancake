@@ -5,14 +5,17 @@ MAIN
 			- Pause Menu probably, if positions change
 			- Map
 		Music to continue on PAUSE state
+		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
 		
 	Victory Scene + Credits Implementation
-		-Requires King to spawn door in front of him
+		-Requires King to spawn door in front of him, maybe next to the player?
 	Michaelwave assets/dialogue
 	Easter states for post
 	Re-calculate node spawns, either manually or otherwise, for best-fit 5
 	Explore Saving feature
 		Will need to include Current Planet ID and initialization
+	Web Build?
+	
 
 MAP
 	Current Position indicator
@@ -32,10 +35,15 @@ DIALOGUES
 
 SHADER PASS
 	[Identify]
+	Maybe a proper toon shader
 	
 
 VFX PASS
 	[Identify]
+	Door Exit particles
+	Receive Item particles
+	
+	
 	
 
 UI PASS
@@ -43,4 +51,14 @@ UI PASS
 	Interact UI for Doors
 	Door UI for "Locked State"
 	Inventory textures
+	
+
+POLISH IDEAS
+	Exe Icon
+	STEAM Integration + Listing
+	Revisit all NPC models + animations, then a VFX/Shader pass post
+	Additional assets/set-dressing for planets
+	Planet size variations?
+	Speed-run timers?
+	Side-quests? (lol)
 	
