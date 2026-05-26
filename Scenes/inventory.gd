@@ -80,7 +80,7 @@ func add_item(npc_name : String) -> void:
 	update_slots()
 	
 func remove_item(npc_name : String) -> void:
-	var found_key : String = inventory_slots.find_key(npc_name)
+	var found_key : String = inventory_slots.find_key(npc_name) #FLAG - have wrong item for NPC, tries to assign Nil to String
 	assert(found_key, "Tried to remove a non-existent item from inventory, check npc_name")
 	inventory_slots[found_key] = false
 	match found_key:

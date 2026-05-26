@@ -111,7 +111,6 @@ func _ready() -> void:
 	_set_door_anim(AnimStates.STASIS)
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
-	DialogueManager.lock_changed.connect(lock_check)
 	DialogueManager.change_king.connect(change_king_door)
 	
 

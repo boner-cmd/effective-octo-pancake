@@ -634,12 +634,46 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 					]],
 }
 
+var debug_bool : bool = true
+var debug_lines : Array = [
+		["initial",],
+		["give",],
+		["receive",],
+		["post",],
+		["easter",],
+	]
+var debug : Dictionary[String, Array] = {
+	King		= debug_lines,
+	Horse		= debug_lines,
+	Astronaut	= debug_lines,
+	Snowman		= debug_lines,
+	Sisyphus	= debug_lines,
+	Grease		= debug_lines,
+	Deer		= debug_lines,
+	Gate		= debug_lines,
+	O			= debug_lines,
+	Organs		= debug_lines,
+	Mass		= debug_lines,
+	Lamp		= debug_lines,
+	Norgans		= debug_lines,
+	Michaelwave = debug_lines,
+	Robot		= debug_lines,
+	Individual	= debug_lines,
+	Gibberish	= debug_lines,
+	Idea		= debug_lines,
+	Bodhi		= debug_lines,
+	Slime		= debug_lines,
+	King2		= debug_lines,
+}
+
 signal request_item_add(npc : String) # sends the NPC who gives the item
 signal request_item_remove(npc : String) # sends the NPC who consumes the time
 signal change_king()
 
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
 	if !is_dialogue_active:
+		if debug_bool:	
+			all_lines = debug
 		
 		is_dialogue_active = true
 		canvas_layer = CanvasLayer_in
