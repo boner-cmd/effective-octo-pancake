@@ -13,6 +13,7 @@ radius = 1.25
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1611932631]
 collision_mask = 2
 script = ExtResource("1_0vv0x")
+move_speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1831739463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

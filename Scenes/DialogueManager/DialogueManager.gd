@@ -499,9 +499,10 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"I think I'm-",
 		"I'm gonna-",
 		"Oh God!",
-		"EEEEEEEEEUUUUUUUURRREEEEEEEEEEEEEEEEEEEKAAAAAAAAAA!!!!!!!!!",
+		"EEEEEEEEEEEEUUUUUUUUUUUUUUURRRRRRRRRRR
+		 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+		 KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
 					],[
-		"*Pant* *pant* *pant*",
 		"Wheeeeeeeew",
 		"That was a BIG one.",
 		"I ideated soooo haaard.",
@@ -775,6 +776,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: Au
 							animation_point2 = dialogue_lines.size()
 							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet, player give, player receive
+							print(dialogue_lines)
 						else:
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)
