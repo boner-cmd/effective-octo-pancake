@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj363unhfokc8"
-path.s3tc="res://.godot/imported/moon planet texture expore png.png-c9d90a0cb1cf314babfffb2ad2591c65.s3tc.ctex"
+path.s3tc="res://.godot/imported/astronaut planet texture expore png.png-7e521cccd74c6dc2ae7a9e6763ddd371.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://planets/textures/Planet Textures/moon planet texture expore png.png"
-dest_files=["res://.godot/imported/moon planet texture expore png.png-c9d90a0cb1cf314babfffb2ad2591c65.s3tc.ctex"]
+source_file="res://planets/textures/Planet Textures/astronaut planet texture expore png.png"
+dest_files=["res://.godot/imported/astronaut planet texture expore png.png-7e521cccd74c6dc2ae7a9e6763ddd371.s3tc.ctex"]
 
 [params]
 

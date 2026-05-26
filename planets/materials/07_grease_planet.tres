@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bvwryv2va8maw" path="res://planets/textures/Planet Textures/grease puddle.png" id="1_2cuaa"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_2cuaa")
 uv1_scale = Vector3(2, 2, 2)

@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://t3hposi1axpf" path="res://planets/textures/Planet Textures/boddhisatva lotus texture.png" id="1_s4kgs"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_s4kgs")
 uv1_scale = Vector3(3, 3, 3)

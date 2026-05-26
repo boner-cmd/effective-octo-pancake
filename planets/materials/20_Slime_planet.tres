@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cff6h2i4xm8fp" path="res://planets/textures/Planet Textures/slime planet texture.png" id="1_07aof"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_07aof")
 uv1_scale = Vector3(3, 3, 3)

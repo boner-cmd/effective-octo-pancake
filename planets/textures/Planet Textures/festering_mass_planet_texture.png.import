@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://be1jk7tu1hpre"
-path.s3tc="res://.godot/imported/festering_mass_planet_texture.png-bf233fbee898017224a113c5d84cc6d2.s3tc.ctex"
+path.s3tc="res://.godot/imported/festering_mass_planet_texture.png-330e0da543776d2cd3bbc4a139d37ca7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://planets/textures/festering mass/festering_mass_planet_texture.png"
-dest_files=["res://.godot/imported/festering_mass_planet_texture.png-bf233fbee898017224a113c5d84cc6d2.s3tc.ctex"]
+source_file="res://planets/textures/Planet Textures/festering_mass_planet_texture.png"
+dest_files=["res://.godot/imported/festering_mass_planet_texture.png-330e0da543776d2cd3bbc4a139d37ca7.s3tc.ctex"]
 
 [params]
 

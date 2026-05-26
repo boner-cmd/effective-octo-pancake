@@ -3,4 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://btl7poig1d1nq" path="res://planets/models/idea guy planet model/idea guy.png" id="1_vgy1p"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_vgy1p")

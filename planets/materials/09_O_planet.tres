@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b6qrbcgljnyf8" path="res://planets/textures/Planet Textures/o planet.png" id="1_jy1jf"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_jy1jf")
 uv1_scale = Vector3(2, 2, 2)

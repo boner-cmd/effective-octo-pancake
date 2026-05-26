@@ -1,4 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dxqd4svm8048y"]
 
 [resource]
+diffuse_mode = 1
 uv1_scale = Vector3(2, 2, 2)
+disable_receive_shadows = true

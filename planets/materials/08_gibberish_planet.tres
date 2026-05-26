@@ -4,5 +4,7 @@
 
 [resource]
 shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_4jtci")
 uv1_scale = Vector3(2, 2, 2)

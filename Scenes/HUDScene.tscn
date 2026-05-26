@@ -6,16 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://Placeholder Assets (UI)/icon.svg" id="3_yw1hr"]
 [ext_resource type="Texture2D" uid="uid://c2nc44jkx5n62" path="res://Placeholder Assets (UI)/stickerbook_bg.png" id="5_jqj6d"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
-[ext_resource type="Texture2D" uid="uid://bsdu6ttvqnss" path="res://planets/textures/Skybox Textures/king skybox.png" id="7_d34sf"]
+[ext_resource type="Texture2D" uid="uid://cj363unhfokc8" path="res://planets/textures/Planet Textures/astronaut planet texture expore png.png" id="7_d34sf"]
 [ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="8_jqj6d"]
-[ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="9_rv5bf"]
 [ext_resource type="Texture2D" uid="uid://corpj8fathg78" path="res://planets/textures/Skybox Textures/snowman skybox.png" id="10_7h3cr"]
 [ext_resource type="Texture2D" uid="uid://d3tdvvpspeima" path="res://planets/textures/Skybox Textures/sisyphus skybox.png" id="11_ynwxi"]
 [ext_resource type="Texture2D" uid="uid://bvwryv2va8maw" path="res://planets/textures/Planet Textures/grease puddle.png" id="12_cm65r"]
 [ext_resource type="Texture2D" uid="uid://cbi3wyweyd87d" path="res://planets/textures/Planet Textures/no i dear planet texture.png" id="13_2wn8p"]
 [ext_resource type="Texture2D" uid="uid://dww0krcd78arx" path="res://planets/textures/Skybox Textures/o skybox.png" id="14_40r1x"]
-[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/body with organs/body_with_organs_planet_texture.png" id="15_rv8fl"]
-[ext_resource type="Texture2D" uid="uid://be1jk7tu1hpre" path="res://planets/textures/festering mass/festering_mass_planet_texture.png" id="16_sqpbf"]
+[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/Planet Textures/body_with_organs_planet_texture.png" id="15_rv8fl"]
+[ext_resource type="Texture2D" uid="uid://be1jk7tu1hpre" path="res://planets/textures/Planet Textures/festering_mass_planet_texture.png" id="16_sqpbf"]
 [ext_resource type="Texture2D" uid="uid://bgde8b03yqx1" path="res://planets/textures/Skybox Textures/lamp skybox.png" id="17_bphkb"]
 [ext_resource type="Texture2D" uid="uid://c8as2ukr6ikov" path="res://Character Export Files/body with organs/bwo body.png" id="18_00uqi"]
 [ext_resource type="Texture2D" uid="uid://bl7k88u5tn017" path="res://planets/textures/Planet Textures/circuit planet texture.png" id="19_iqywv"]
@@ -29,6 +28,12 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
+
+[sub_resource type="Gradient" id="Gradient_jqj6d"]
+colors = PackedColorArray(0.98039216, 0.77254903, 0, 1, 0.98039216, 0.77254903, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rv5bf"]
+gradient = SubResource("Gradient_jqj6d")
 
 [sub_resource type="Gradient" id="Gradient_rv5bf"]
 offsets = PackedFloat32Array(0)
@@ -219,7 +224,7 @@ offset_left = 265.0
 offset_top = 137.0
 offset_right = 329.0
 offset_bottom = 201.0
-texture = ExtResource("7_d34sf")
+texture = SubResource("GradientTexture1D_rv5bf")
 expand_mode = 1
 
 [node name="HorseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=616505084]
@@ -241,7 +246,7 @@ offset_left = 577.0
 offset_top = 76.0
 offset_right = 641.0
 offset_bottom = 140.0
-texture = ExtResource("9_rv5bf")
+texture = ExtResource("7_d34sf")
 expand_mode = 1
 
 [node name="SnowmanSticker" type="TextureRect" parent="StickerbookBackground" unique_id=752233729]

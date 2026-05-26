@@ -1,0 +1,46 @@
+MAIN
+	BUGS
+		Inventory
+		Interact text rendered over UI elements
+			- Pause Menu probably, if positions change
+			- Map
+		Music to continue on PAUSE state
+		
+	Victory Scene + Credits Implementation
+		-Requires King to spawn door in front of him
+	Michaelwave assets/dialogue
+	Easter states for post
+	Re-calculate node spawns, either manually or otherwise, for best-fit 5
+	Explore Saving feature
+		Will need to include Current Planet ID and initialization
+
+MAP
+	Current Position indicator
+	Completion State implementation
+	Update Textures
+	
+
+DIALOGUES
+	Camera angles
+	Brief pause in convo for Zelda-style receive item
+	Unique boxes per NPCs
+	Unique type
+	Unique sounds
+	"Skip Dialogue" option for Has-Met state
+	Better text area sizing + placement
+	
+
+SHADER PASS
+	[Identify]
+	
+
+VFX PASS
+	[Identify]
+	
+
+UI PASS
+	"Map Icon" on the HUD for clarity
+	Interact UI for Doors
+	Door UI for "Locked State"
+	Inventory textures
+	

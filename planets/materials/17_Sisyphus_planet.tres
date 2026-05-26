@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://o4isw7p000s8" path="res://planets/textures/Planet Textures/rock planet texture.png" id="1_f6lvn"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_f6lvn")
 uv1_scale = Vector3(2, 2, 2)

@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbi3wyweyd87d" path="res://planets/textures/Planet Textures/no i dear planet texture.png" id="1_k0rel"]
 
 [resource]
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_k0rel")
 uv1_scale = Vector3(2, 2, 2)

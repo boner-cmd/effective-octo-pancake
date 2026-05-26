@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fqmf8oe6krvp"
-path.s3tc="res://.godot/imported/body_with_organs_planet_texture.png-52e8840bf98c851260567ded45e01da4.s3tc.ctex"
+path.s3tc="res://.godot/imported/body_with_organs_planet_texture.png-f5394bcfb2f61beea42eb2b7eaf27b0d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://planets/textures/body with organs/body_with_organs_planet_texture.png"
-dest_files=["res://.godot/imported/body_with_organs_planet_texture.png-52e8840bf98c851260567ded45e01da4.s3tc.ctex"]
+source_file="res://planets/textures/Planet Textures/body_with_organs_planet_texture.png"
+dest_files=["res://.godot/imported/body_with_organs_planet_texture.png-f5394bcfb2f61beea42eb2b7eaf27b0d.s3tc.ctex"]
 
 [params]
 
