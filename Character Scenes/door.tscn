@@ -92,20 +92,20 @@ parameters/DoorIdle_Reset/seek_request = -1.0
 
 [node name="DoorAnims" parent="." unique_id=1938978798 instance=ExtResource("2_op1q4")]
 
-[node name="Skeleton3D" parent="DoorAnims" index="0" unique_id=1563939115]
+[node name="Skeleton3D" parent="DoorAnims" index="0" unique_id=1115533347]
 bones/1/position = Vector3(1.3280718, 8.3063635e-16, 0)
 bones/1/scale = Vector3(1, 0.7444445, 1)
 bones/3/position = Vector3(1.1175799, 0.47247896, -4.318813e-16)
 bones/3/scale = Vector3(1, 0.7444445, 1)
 
-[node name="Viewport" parent="DoorAnims/Skeleton3D" index="1" unique_id=126978771]
+[node name="Viewport" parent="DoorAnims/Skeleton3D" index="1" unique_id=2090780855]
 surface_material_override/0 = ExtResource("3_63ed3")
 
-[node name="DoorCollider" type="StaticBody3D" parent="." unique_id=1935212185]
+[node name="DoorCollider" type="StaticBody3D" parent="DoorAnims" unique_id=1935212185]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorCollider" unique_id=1775488323]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorAnims/DoorCollider" unique_id=1775488323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6566018, 0)
 shape = SubResource("BoxShape3D_op1q4")
 

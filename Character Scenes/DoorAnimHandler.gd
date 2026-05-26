@@ -13,7 +13,7 @@ var door_mats : Dictionary[int, Material] = {
 	1 : preload("res://planets/materials/01_kings_planet_mat.tres"),
 	2 : preload("res://planets/materials/02_horse_planet.tres"),
 	3 : preload("res://planets/materials/03_astronaut_planet.tres"),
-	4 : preload("res://planets/materials/04_snowman_planet.tres"),
+	4 : preload("res://planets/materials/04_snowman_door.tres"),
 	5 : preload("res://planets/materials/05_gatekeeper_planet.tres"),
 	6 : preload("res://planets/materials/06_rusty_planet.tres"),
 	7 : preload("res://planets/materials/07_grease_planet.tres"),
@@ -23,7 +23,7 @@ var door_mats : Dictionary[int, Material] = {
 	11 : preload("res://planets/materials/11_Idea_planet.tres"),
 	12 : preload("res://planets/materials/12_Lamp_planet.tres"),
 	13 : preload("res://planets/materials/13_Individual_planet.tres"),
-	14 : null, # please replace this with just a blank texture or something
+	14 : preload("res://planets/materials/14_Norgans_door.tres"),
 	15 : preload("res://planets/materials/15_Organs_planet.tres"),
 	16 : preload("res://planets/materials/16_Bodhi_planet.tres"),
 	17 : preload("res://planets/materials/17_Sisyphus_planet.tres"),
@@ -40,7 +40,7 @@ var door_mats : Dictionary[int, Material] = {
 @onready var door_mesh: MeshInstance3D = $DoorAnims/Skeleton3D/Door
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 @onready var anim_tree: AnimationTree = $AnimationTree
-@onready var player_exit_position: Node3D = $PlayerAnimationPosition
+@onready var player_exit_position: Node3D = $DoorAnims/PlayerAnimationPosition
 
 signal exit_anim_finished()
 signal exit_anim_started()
