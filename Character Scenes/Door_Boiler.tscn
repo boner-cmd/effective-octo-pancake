@@ -78,6 +78,7 @@ collision_mask = 0
 shape = SubResource("CylinderShape3D_ua6hq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941331369]
+bus = &"Sfx"
 
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]
