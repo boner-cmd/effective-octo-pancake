@@ -60,7 +60,7 @@ surface_material_override/0 = ExtResource("3_2nyx6")
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
-[node name="grease_puddle" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=513399140]
+[node name="grease_puddle" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=513399140 groups=["Completion_Change"]]
 visible = true
 script = ExtResource("6_d0l1o")
 

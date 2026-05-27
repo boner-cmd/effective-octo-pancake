@@ -69,7 +69,7 @@ surface_material_override/0 = ExtResource("3_kfqw7")
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
-[node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=728603670]
+[node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=728603670 groups=["Completion_Change"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.230259, 0)
 visible = true
 script = ExtResource("9_36we4")

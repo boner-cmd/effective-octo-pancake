@@ -12,6 +12,6 @@ func interact() -> void:
 		main_planet_id = get_tree().root.get_child(2).public_planet_id
 		DialogueManager.start_dialogue(CanvasLayer_in, main_planet_id, speech_sound)
 		
-		for npc in get_children():
-			if npc.is_in_group("Completion_Change"):
-				DialogueManager.npc_state_change.connect(npc.on_completion())
+		for NPC in get_children():
+			if NPC.is_in_group("Completion_Change"):
+				DialogueManager.planet_state_change.connect(NPC.on_completion)

@@ -93,7 +93,7 @@ destination_planet_ID = 14
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
-[node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="15" unique_id=454906086]
+[node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="15" unique_id=454906086 groups=["Completion_Change"]]
 visible = true
 script = ExtResource("11_k3bn4")
 

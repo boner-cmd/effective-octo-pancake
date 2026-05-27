@@ -674,7 +674,7 @@ var debug : Dictionary[String, Array] = {
 
 signal request_item_add(npc : String) # sends the NPC who gives the item
 signal request_item_remove(npc : String) # sends the NPC who consumes the time
-signal npc_state_change
+signal planet_state_change
 signal change_king()
 
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
@@ -817,7 +817,7 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 			print("SIGNAL TO GIVE ITEM TO: ", npc_name)
 			npc_name = current_npc
 			request_item_remove.emit(npc_name)
-			npc_state_change.emit()
+			planet_state_change.emit()
 
 func _show_text_box(CanvasLayer_in):
 	text_box = text_box_scene.instantiate()

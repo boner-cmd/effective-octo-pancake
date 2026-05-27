@@ -34,7 +34,7 @@ destination_planet_ID = 5
 [node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
 visible = false
 
-[node name="individuated individual" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="10" unique_id=1840200528]
+[node name="individuated individual" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="10" unique_id=1840200528 groups=["Completion_Change"]]
 visible = true
 script = ExtResource("5_dkal1")
 
