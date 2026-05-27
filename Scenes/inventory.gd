@@ -31,6 +31,7 @@ const item_resources : Dictionary[String, Resource] = {
 	Gibberish 	= preload("res://item sprites/diagonal line.png"),
 	Idea 		= preload("res://item sprites/light_bulb.png"),
 	Bodhi 		= preload("res://item sprites/dharmachaka.png"),
+	Slime		= preload("res://item sprites/slime_mold_game.png")
 }
 
 const item_texts : Dictionary[String, String] = {
@@ -49,6 +50,7 @@ const item_texts : Dictionary[String, String] = {
 	Gibberish 	= "Diagonal Line",
 	Idea 		= "Lightbulb",
 	Bodhi 		= "Dharmachakra",
+	Slime		="Slime Mould Game",
 }
 
 const origin_by_desiring_npc :  Dictionary[String, String] = { # given y = x, x has what y needs
