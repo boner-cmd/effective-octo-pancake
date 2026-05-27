@@ -19,6 +19,9 @@ MAIN
 		IDEA broken quest state - fixed
 		BODHI broken quest state
 		
+		grease needs post completion fix
+		honk counter
+		
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door in front of him, maybe next to the player?
 	Michaelwave assets/dialogue
