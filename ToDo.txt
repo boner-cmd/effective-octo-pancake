@@ -7,12 +7,10 @@ MAIN
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
 		grease needs post completion fix
 		
-		
 	Victory Scene + Credits Implementation
-		-Requires King to spawn door in front of him, maybe next to the player?
+		-Requires King to spawn door next to him as a completion state
+		
 	Michaelwave assets/dialogue
-	Easter states for post
-	Re-calculate node spawns, either manually or otherwise, for best-fit 5
 	Explore Saving feature
 		Will need to include Current Planet ID and initialization
 	Web Build?

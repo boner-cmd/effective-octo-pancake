@@ -727,7 +727,9 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		# DEBUG alias for clarity 
 		current_npc = planet_id
 		var first_meeting : bool = not QuestManager.has_met(current_npc)
-		if QuestManager.has_completed(current_npc):
+		if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
+			dialogue_lines.append_array(used_lines[current_npc][4])
+		elif QuestManager.has_completed(current_npc):
 			dialogue_lines.append_array(used_lines[current_npc][3])
 		elif not first_meeting and not QuestManager.requirements_met(current_npc) :
 			dialogue_lines.append_array(used_lines[current_npc][0])
