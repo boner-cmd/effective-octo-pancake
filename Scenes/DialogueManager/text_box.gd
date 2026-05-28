@@ -4,7 +4,6 @@ extends MarginContainer
 @onready var timer = $LetterDisplayTimer
 @onready var audio_player = $AudioStreamPlayer
 @onready var next_indicator = $NinePatchRect/Control/NextIndicator
-var conf_sound : AudioStream = preload("res://sound fx exports/typewriter slide2026-05-2014_01_48.wav")
 
 const  MAX_WIDTH = 256
 
@@ -44,12 +43,7 @@ func _display_letter():
 	if letter_index >= text.length():
 		finished_displaying.emit()
 		next_indicator.visible = true
-		var conf_audio_player = audio_player.duplicate()
-		get_tree().root.add_child(conf_audio_player)
-		conf_audio_player.stream = conf_sound
-		conf_audio_player.play()
-		await conf_audio_player.finished
-		conf_audio_player.queue_free()
+		AudioManager.sfx_play(AudioManager.conf_sound, 0.0)
 		return
 		
 	match text[letter_index]:
@@ -60,14 +54,9 @@ func _display_letter():
 		_:
 			timer.start(letter_time)
 			
-			var new_audio_player = audio_player.duplicate()
-			new_audio_player.pitch_scale += randf_range(-0.1, 0.1)
 			if text[letter_index] in ["a", "e", "i", "o", "u"]:
-				new_audio_player.pitch_scale += 0.2
-			get_tree().root.add_child(new_audio_player)
-			new_audio_player.play()
-			await new_audio_player.finished
-			new_audio_player.queue_free()
+				AudioManager.sfx_play(AudioManager.speech_sound, .2)
+			AudioManager.sfx_play(AudioManager.speech_sound, randf_range(-0.1, 0.1))
 
 func _on_letter_display_timer_timeout() -> void:
 	_display_letter()

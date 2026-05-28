@@ -29,9 +29,14 @@ color = Color(0, 0, 0, 1)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
 collision_mask = 6
+move_speed = 7.0
 planet = NodePath("../DefaultLoadingPlanet")
 
-[node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1057419232) index="0" unique_id=2121263908]
+[node name="ClownRigFBX" parent="PlayerCharacter" index="2" unique_id=77601808 node_paths=PackedStringArray("walk_cycle_time", "honk_delay")]
+walk_cycle_time = NodePath("../walk_cycle_time")
+honk_delay = NodePath("../honk_delay")
+
+[node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1346645065) index="0" unique_id=1334537233]
 bones/2/position = Vector3(0, 0.002500003, 0)
 bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
