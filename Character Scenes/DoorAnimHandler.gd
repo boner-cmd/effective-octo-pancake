@@ -10,27 +10,27 @@ var player: CharacterBody3D
 var door_locked : bool = false
 var current_anim := AnimStates.STASIS
 var door_mats : Dictionary[int, Material] = {
-	1 : preload("res://planets/materials/01_kings_planet_mat.tres"),
-	2 : preload("res://planets/materials/02_horse_planet.tres"),
-	3 : preload("res://planets/materials/03_astronaut_planet.tres"),
-	4 : preload("res://planets/materials/04_snowman_door.tres"),
-	5 : preload("res://planets/materials/05_gatekeeper_planet.tres"),
-	6 : preload("res://planets/materials/06_rusty_planet.tres"),
-	7 : preload("res://planets/materials/07_grease_planet.tres"),
-	8 : preload("res://planets/materials/08_gibberish_planet.tres"),
-	9 : preload("res://planets/materials/09_O_planet.tres"),
-	10 : preload("res://planets/materials/10_Deer_planet.tres"),
-	11 : preload("res://planets/materials/11_Idea_planet.tres"),
-	12 : preload("res://planets/materials/12_Lamp_planet.tres"),
-	13 : preload("res://planets/materials/13_Individual_planet.tres"),
-	14 : preload("res://planets/materials/14_Norgans_door.tres"),
-	15 : preload("res://planets/materials/15_Organs_planet.tres"),
-	16 : preload("res://planets/materials/16_Bodhi_planet.tres"),
-	17 : preload("res://planets/materials/17_Sisyphus_planet.tres"),
-	18 : preload("res://planets/materials/18_Mass_planet.tres"),
-	19 : preload("res://planets/materials/19_Michaelwave_planet.tres"),
-	20 : preload("res://planets/materials/20_Slime_planet.tres"),
-	21 : preload("res://planets/materials/01_kings_planet_mat.tres"),
+	0 : preload("res://planets/materials/01_kings_planet_mat.tres"),
+	1 : preload("res://planets/materials/02_horse_planet.tres"),
+	2 : preload("res://planets/materials/03_astronaut_planet.tres"),
+	3 : preload("res://planets/materials/04_snowman_door.tres"),
+	4 : preload("res://planets/materials/17_Sisyphus_planet.tres"),
+	5 : preload("res://planets/materials/07_grease_planet.tres"),
+	6 : preload("res://planets/materials/10_Deer_planet.tres"),
+	7 : preload("res://planets/materials/05_gatekeeper_planet.tres"),
+	8 : preload("res://planets/materials/09_O_planet.tres"),
+	9 : preload("res://planets/materials/15_Organs_planet.tres"),
+	10 : preload("res://planets/materials/18_Mass_planet.tres"),
+	11 : preload("res://planets/materials/12_Lamp_planet.tres"),
+	12 : preload("res://planets/materials/14_Norgans_door.tres"),
+	13 : preload("res://planets/materials/19_Michaelwave_planet.tres"),
+	14 : preload("res://planets/materials/06_rusty_planet.tres"),
+	15 : preload("res://planets/materials/13_Individual_planet.tres"),
+	16 : preload("res://planets/materials/08_gibberish_planet.tres"),
+	17 : preload("res://planets/materials/11_Idea_planet.tres"),
+	18 : preload("res://planets/materials/16_Bodhi_planet.tres"),
+	19 : preload("res://planets/materials/20_Slime_planet.tres"),
+	20 : preload("res://planets/materials/01_kings_planet_mat.tres"),
 }
 
 @export var destination_planet_ID : int
@@ -48,21 +48,21 @@ signal request_planet_change(planet_ID : int)
 signal request_music_change()
 
 func change_king_door():
-	if destination_planet_ID == 1:
-		destination_planet_ID = 21 
+	if destination_planet_ID == QuestManager.CharacterName.KING_1:
+		destination_planet_ID = QuestManager.CharacterName.KING_2 
 
 func lock_check():
 	var sisyphus_lock = DialogueManager.sisyphus_lock
 	var gate_lock = DialogueManager.gate_lock
 	var king2_lock = DialogueManager.king2_lock
 
-	if destination_planet_ID == 6:
+	if destination_planet_ID == QuestManager.CharacterName.ROBOT:
 		door_locked = gate_lock
-	if destination_planet_ID == 13:
+	if destination_planet_ID == QuestManager.CharacterName.INDIVIDUAL:
 		door_locked = gate_lock
-	if destination_planet_ID == 20:
+	if destination_planet_ID == QuestManager.CharacterName.SLIME:
 		door_locked = sisyphus_lock
-	if destination_planet_ID == 21:
+	if destination_planet_ID == QuestManager.CharacterName.KING_2:
 		door_locked = king2_lock
 
 func _set_door_anim(anim : AnimStates):

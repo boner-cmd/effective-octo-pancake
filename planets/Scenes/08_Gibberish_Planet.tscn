@@ -23,14 +23,14 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_u12uo")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
 material_override = ExtResource("2_idm3u")
 surface_material_override/0 = ExtResource("3_i5phk")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_v25ah")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
 material_override = ExtResource("5_an3im")
 surface_material_override/0 = ExtResource("3_i5phk")
 
@@ -52,12 +52,12 @@ shape = SubResource("CylinderShape3D_b4dn5")
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("8_myhd6")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
-destination_planet_ID = 16
+destination_planet_ID = 18
 
 [node name="Door2" parent="." unique_id=790013676 instance=ExtResource("8_myhd6")]
 
 [node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
-destination_planet_ID = 6
+destination_planet_ID = 14
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]

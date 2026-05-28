@@ -47,21 +47,21 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_aejfo")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
 material_override = ExtResource("2_pkas1")
 surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_xtds4")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
 material_override = ExtResource("5_31abu")
 surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="CubedSkybox2" parent="." unique_id=1521302041 instance=ExtResource("1_aejfo")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=250762747]
 material_override = ExtResource("6_oegdf")
 surface_material_override/0 = ExtResource("3_q6mny")
 
@@ -69,24 +69,24 @@ surface_material_override/0 = ExtResource("3_q6mny")
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 visible = false
 
-[node name="Cubed_Planet" parent="Cubed_Planet2" index="0" unique_id=1134823557]
+[node name="Cubed_Planet" parent="Cubed_Planet2" index="0" unique_id=1272935855]
 material_override = ExtResource("7_7nae5")
 surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_k3bn4")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
-destination_planet_ID = 4
+destination_planet_ID = 3
 
 [node name="Door2" parent="." unique_id=1200420774 instance=ExtResource("9_k3bn4")]
 
 [node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
-destination_planet_ID = 12
+destination_planet_ID = 11
 
 [node name="Door3" parent="." unique_id=1015547334 instance=ExtResource("9_k3bn4")]
 
 [node name="DoorBaseModel" parent="Door3" index="0" unique_id=1012687003]
-destination_planet_ID = 14
+destination_planet_ID = 12
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("10_fvbbk")]
 

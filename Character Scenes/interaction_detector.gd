@@ -4,14 +4,14 @@ var player: CharacterBody3D
 var interact_ui : MarginContainer
 
 # Tracks the current object the player is overlapping with
-var current_npc: Area3D = null
-var current_door: Area3D = null
-var current_exit: Area3D = null
+var current_npc : Area3D = null
+var current_door : Area3D = null
+var current_exit : Area3D = null
 
 var interacted : bool = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") && !interacted:
+	if event.is_action_pressed("interact") and not interacted:
 		interacted = true
 		if current_exit:
 #			player = self.get_parent().get_parent() # what is this for? something with exit debouncing?

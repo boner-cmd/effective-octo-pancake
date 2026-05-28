@@ -46,21 +46,21 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_hb5q0")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
 material_override = ExtResource("2_swx71")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="CubedSkybox2" parent="." unique_id=991346088 instance=ExtResource("1_hb5q0")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=250762747]
 material_override = ExtResource("4_3pjkr")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_m2m7x")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
 material_override = ExtResource("6_vlnvu")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
@@ -74,10 +74,10 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.230259, 0)
 visible = true
 script = ExtResource("9_36we4")
 
-[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=450652402]
+[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=1495719072]
 visible = false
 
-[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=1043451508]
+[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=672897289]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1046663889]
@@ -90,17 +90,17 @@ shape = SubResource("BoxShape3D_txy1j")
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_5tpbv")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
-destination_planet_ID = 3
+destination_planet_ID = 2
 
 [node name="Door2" parent="." unique_id=367153842 instance=ExtResource("9_5tpbv")]
 
 [node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
-destination_planet_ID = 15
+destination_planet_ID = 9
 
 [node name="Door3" parent="." unique_id=877364393 instance=ExtResource("9_5tpbv")]
 
 [node name="DoorBaseModel" parent="Door3" index="0" unique_id=1012687003]
-destination_planet_ID = 18
+destination_planet_ID = 10
 
 [editable path="CubedSkybox"]
 [editable path="CubedSkybox2"]

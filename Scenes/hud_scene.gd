@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 # set initial visibility states
 func _ready() -> void:
 	set_initial_visibility()
-	QuestManager.main_quest_complete.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
+	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
 	transition_hard_in()
 
 func _on_quit_button_pressed() -> void:

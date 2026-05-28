@@ -1,34 +1,18 @@
 extends Node
+## TODO placeholder documentation
+
+signal request_item_add(npc : QuestManager.CharacterName) # sends the NPC who gives the item
+signal request_item_remove(npc : QuestManager.CharacterName) # sends the NPC who consumes the time
+signal planet_state_change()
+signal change_king()
 
 #enums for passing between NPCs and dialogue interaction
-enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, COMPLETE, EASTER}
+enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, FINISHED, EASTER}
 
-var dialogue_state : CONV_STATE = CONV_STATE.COMPLETE
+# TODO find a way to use PackedStringArrays instead of Array[String]s inside array
 
-var canvas_layer : CanvasLayer
-var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.tscn")
-var text_box : Node
-var current_line_index : int = 0
-var is_dialogue_active : bool = false
-var can_advance_line : bool = false
-var dialogue_lines : Array = [] # can't type due to nesting
-var complex : bool = false
-var animation_point : int
-var animation_point2 : int
-var pending_animation_1 : CONV_STATE
-var pending_animation_2 : CONV_STATE
-var npc_name : String
-var current_npc : String
-
-var sfx: AudioStream
-var dialogue_finished_sfx: AudioStream
-
-var sisyphus_lock : bool = true
-var gate_lock : bool = true
-var king2_lock : bool = true
-
-var all_lines : Dictionary[String, Array] = { # want this to be constant but it complains when appending
-	King 		= 	[[
+const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
+	QuestManager.CharacterName.KING_1 : [[
 		"Control",
 		"Power",
 		"Might",
@@ -59,9 +43,9 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"There. We have given you your charge.",
 		"Return to us once you have resolved the whims of TWENTY of our subjects.",
 		"Go now, and we will release you from your servitude upon your success.",
-					],[
+		],[
 		# king does not receive an item
-					],[
+		],[
 		"You're back already? You finished that quickly?",
 		"That's kind of crazy, actually.",
 		"What? You need a key? Why?",
@@ -70,54 +54,54 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Or some lowly servent of ours lost it, we mean!",
 		"Wait--Nevermind! It's right here.",
 		"Looks like they put it back just in time.",
-					],[
+		],[
 		"Hop along now, little buddy!",
-					],[
-		# king1 has no easter dialog
-					]],
-	Horse 		= 	[[
+		],[
+		# king1 has no easter dialog	
+	]],
+	QuestManager.CharacterName.HORSE : [[
 		"I'm hungry.",
-					],[
+		],[
 		"Yum.",
-					],[
+		],[
 		"Here.",
-					],[
+		],[
 		"I'm full.",
-					],[
+		],[
 		"I'm getting hungry again.",
-					]],
-	Astronaut 	= 	[[
+	]],
+	QuestManager.CharacterName.ASTRO : [[
 		"Mayday! Mayday! Houston, we have a problem: I'm running dangerously low on oxygen.",
 		"Everyone seems to think they can just breathe in space on their own with no helmet!",
 		"Well, I don't believe it, so it's not true.",
-					],[
+		],[
 		"Oxygen? Oh, sweet oxygen! You're a REAL lifesaver.",
-					],[
+		],[
 		"Take this space blanket. I don't need it. It's incredibly hot inside my spacesuit.",
 		"You can guess that breathing in the same recycled air has not been pleasant.",
 		"And you'd be right about it too.",
-					],[
+		],[
 		"Sooo much better",
-					],[
+		],[
 		"Alright, now it's musty in here again.",
-					]],
-	Snowman 	= 	[[
+	]],
+	QuestManager.CharacterName.SNOWMAN : [[
 		"BRRRRR!!! I know space is cold, but this is a bit much. Wouldn't you agree?.",
 		"I'm no lightweight, either. I'm built OF cold, let alone FOR.",
-					],[
+		],[
 		"A space blanket? That’s perfect!",
-					],[
+		],[
 		"I’ll trade you this carrot for it. Everyone used to have a carrot nose back in the day",
 		"You can guess that breathing in the same recycled air has not been pleasant.",
 		"Never quite worked for me. It just kept falling off.",
-					],[
+		],[
 		"Now I could really go for some hot chocolate. Just kidding! I'd die.",
-					],[
+		],[
 		"Y’know, I ended up getting used to the cold. I still have the space blanket, though.",
 		"I’ve been thinking of using it for a picnic. Actually, would you be interested?",
 		"Do you even eat? Yeah, me neither. Guess we’d better not…",
-					]],
-	Sisyphus 	= 	[[
+	]],
+	QuestManager.CharacterName.SISYPHUS : [[
 		"I used to live in bliss,",
 		"Rolling my boulder up a great hill",
 		"For it to roll down again.",
@@ -134,34 +118,34 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Into this lonely planetoid devoid both good and crappy",
 		"And so, my friend, it surely is by now at which you've sensed",
 		"To put it quite simply, one must imagine I'm not happy.",
-					],[
+		],[
 		"What's that?",
 		"Is that a wheel???",
 		"Aw hell yeah! I betcha I can roll that!",
 		"This is gonna be siiiiiiiiiiiiiick, dude.",
 		"Frickin' BITCHIN'!",
 		"I'm so psyched, I could make a whole door open up!",
-					],[
+		],[
 		# sisyphus does not give an item
-					],[
+		],[
 		"As soon as I get the hang of rolling this thing it'll be so tight.",
-					],[
+		],[
 		"I gave up on trying to roll the wheel.",
 		"It keep falling down on its sides when I push.",
 		"Me sad again. :  (",
-					]],
-	Grease 		= 	[[
+	]],
+	QuestManager.CharacterName.GREASE : [[
 		"Grease, grease, grease! Is that all I'll ever get to see in life?",
 		"Is that all I'll ever get to BE in life? I want to go far away! See the world!",
 		"But how could I? I'm just a puddle of grease! I can't open doors.",
 		"Won't you take me somewhere far away? To a place that isn't grease?",
-					],[
+		],[
 		# grease does not receive any items
-					],[
+		],[
 		"Wow! My first time touching anything that isn't grease! You feel weird, lol.",
-					],[
+		],[
 		"(I'm not here)",
-					],[
+		],[
 		"I gave it my best shot, but I decided to come back home.",
 		"Turns out non-grease just isn't the same as good-ol'-fashioned grease.",
 		"Plus that robot only wanted me for my grease, and couldn't appreciate me for who I am:",
@@ -170,8 +154,8 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Not until I had the chance to experience how you *dry-o's* live.",
 		"That's a slur I made up for things that aren't grease.",
 		"Oh yeah, that's right, I'm bigoted now.",
-					]],
-	Deer 		= 	[[
+	]],
+	QuestManager.CharacterName.DEER : [[
 		"H-Hello??? Is someone there??? Someone's there, right?.",
 		"Sorry, I startle easilly. Doesn't help that I can't see.",
 		"You don't sound very scary... I think.",
@@ -181,23 +165,23 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"...Or what I imagine headlights to look like.",
 		"Even if I'll never see, I'd like to at least be a little less disturbing.",
 		"I know this sounds weird, but could you bring me some, uh... Eyes?",
-					],[
+		],[
 		"Oh he-WOAH! Okay, you're just touching my eye sockets like that.",
 		"Could have used some warning, but whatever.",
 		"So I guess you found something that could cover my gaping eyeholes?",
 		"That's very kind of you. Does it look good?",
 		"...Is that a \"yes?\"",
-					],[
+		],[
 		"Well, I hope this works out.", 
 		"I really appreciate what you've done for me and I want to give you something.",
 		"Here, have this. What is it?",
 		"No idea.",
-					],[
+		],[
 		"No idea.",
-					],[
+		],[
 		"Still no idea.",
-					]],
-	Gate 		= 	[[
+	]],
+	QuestManager.CharacterName.GATE : [[
 		"Oh, hey, A.H. How's it going? I haven't seen you since the company party.",
 		"Boss man's got you on an away mission today? Running his errands, huh?",
 		"Sorry, but you know the drill: anyone who wants to get through here needs a key from the king.",
@@ -205,18 +189,18 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Sucks for you though. Rules are rules, you feel me? I can't risk losing this job.",
 		"Head back to the King and he'll give the key to you..",
 		"...Unless he lost it...",
-					],[
+		],[
 		"Ayyyyy there we go. Now stick that key in my head ,you silly little weirdo.",
-					],[
+		],[
 		# gate does not give an item
-					],[
+		],[
 		"I hope I get to close the gate soon. I'm really off-balance unlocked like this.",
-					],[
+		],[
 		"Okay, I think the King really did forget about me this time.",
 		"I'm going to pass out if I stay this way.",
 		"When you see him, can you PLEASE ask him if I can lock up?",	
-					]],
-	O 			= 	[[
+	]],
+	QuestManager.CharacterName.O : [[
 		"Ohhhhhhhhhhhhhh",
 		"I am the Ohhhhhhh, didn't you knoooooooooow?",
 		"Noooooooooooo, nobody knooooooooooows.",
@@ -227,7 +211,7 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Ohhhhhhhhhhh.",
 		"If I were not Ohhhhhhhh, as long as everybody knoooooooooows,",
 		"That would be oooooooooooookay.",
-					],[
+		],[
 		"Ohhhhhhhhhhh? A diagonal line?",
 		"I knooooooooow! I can be a Q!",
 		"That's still a letter, and now people will knoooooooow--",
@@ -235,24 +219,24 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"know",
 		"what I am.",
 		"Hoo boy, this will take some time getting qused to.",
-					],[
+		],[
 		"I's? Why would I have any I's?",
 		"I have these left over O's, though.",
 		"Hope they help q out!",
 		"(No, that didn't work.)",
-					],[
+		],[
 		"Q... Q... Q... Not a lot of words with Q in them, are there?",
-					],[
+		],[
 		"I'll tell you one thing, it's a lot quicker to talk now.",
 		"No, wait! That was the perfect chance!",	
-					]],
-	Organs 		= 	[[
+	]],
+	QuestManager.CharacterName.ORGANS : [[
 		"Howdy there, fella!",
 		"I'm just your average, fun-loving, run-of-the-mill kind of guy.",
 		"Yesiree.",
-					],[
+		],[
 		# organs does not receive any items
-					],[
+		],[
 		"Say, fella. I'm not one to comeplain, but I got a problem on my hands.",
 		"They say you can't have too much of a good thing, and in most cases, they'd be right.",
 		"But you see, the thing is I've got too many organs.",
@@ -263,14 +247,14 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"I mean--",
 		"Hands.",
 		"No scamper along now, ya hear?",
-					],[
+		],[
 		"Feels good to have that weight off my chest.",
 		"Literally!",
-					],[
+		],[
 		"Funny running into you here.",
 		"Didya miss seeing my pretty face? HAHA!",
-					]],
-	Mass 		= 	[[
+	]],
+	QuestManager.CharacterName.MASS : [[
 		"I'm vile! I'm bile! I'm gross!",
 		"Let out a \"Yuck!\" For you're in luck,",
 		"When Festering Mass's your host!",
@@ -307,9 +291,9 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Okay.",
 		"Thank you for hearing me out.",
 		"I really appreciate it.",
-					],[
+		],[
 		# mass does not receive an item
-					],[
+		],[
 		"Oh, you came back. For real?",
 		"Wait.",
 		"Does this mean-?",
@@ -341,54 +325,54 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Such is the way of the world it seems?",
 		"Now take that burrito and get out of here before I change my mind.",
 		"Because I'm feeling EXTRA festery!",
-					],[
+		],[
 		"Wow, you must really like to fester to come back to a place like this!",
 		"You know I love a little freak. ;  )",
-					],[
+		],[
 		"So??? Did the game make slime mould happy?",
 		"Wait! Don't tell me.",
 		"I don't want to know. I want to enjoy wanting to know.",	
-					]],
-	Lamp 		= 	[[
+	]],
+	QuestManager.CharacterName.LAMP : [[
 		"(A lamp with no lightbulb)",
-					],[
+		],[
 		"(With some effort, you manage to screw in the lightbulb with your clumsy little stick arms.)",
 		"(Your simple homonculoid consciousness briefly toys with the vaguest idea of making a joke:",
 		"Something along the lines of \"how many attentive helpers does it take to screw in a lightbulb\"",
 		"But collapses under the strain before the notion can breach the membrane of basic abstraction.)",
 		"(Triumphantly, still, the answer is one.)",
-					],[
+		],[
 		"(The light casts a long shadow behind you, both physically and psychologically.)",
 		"(There is just enough space in your feeble mind to fit something *other* than yourself,",
 		"Yet simultaneously somehow *un-other* than yourself.)",
 		"(You are nonetheless fundamentally incapable of perceiving even the faintest sliver of this fact,)",
 		"(And some might say are all the more blessed thus.)",
-					],[
+		],[
 		"(You pause briefly but sincerely in solidarity with the inanimate lamp.)",
 		"(You are able to register the sensation of its soft, warm light.)",
 		"(No value judgement. Not good, not bad: just there.)",	
-					],[
+		],[
 		"(Hello again,)",
 		"(Friend.)",
-					]],
-	Norgans 	= 	[[
-		"A thousand plateus to you, nomad.",
+	]],
+	QuestManager.CharacterName.NORGANS : [[
+		"A thousand plateaus to you, nomad.",
 		"I am a featureless surface: one who has experienced a becoming of pure intensity.",
 		"Through destratification, I have entered into new kinds of relationships:",
 		"Ways of being that instrumental language cannot yet describe.",
 		"Yet perhaps I am a bit lonely.",
 		"Others seem to have difficulty working out what I'm trying to say.",
 		"Maybe if I DID have some organs, it would make me a little more relateable?",
-					],[
+		],[
 		"Oh cool, some organs.",
 		"Alright, guess I'm a body with some organs now?",
 		"Maybe I can try getting some writing published.",
-					],[
+		],[
 		# norgans does not give an item
-					],[
+		],[
 		"I'm trying to focus on scouring my tomes. You can leave now.",
 		"I'm sure someone else could use your help.",
-					],[
+		],[
 		"Do you want to hear my writing so far?",
 		"On second thought, it might be a little over your head, so-to-speak.",
 		"What's your deal, anyway?",
@@ -396,39 +380,39 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"...No, that doesn't have legs...",
 		"Wait, are legs an organ?",
 		"I think I need a study break.",
-					]],
-	Michaelwave = 	[[
+	]],
+	QuestManager.CharacterName.MICHAEL : [[
 		"Me Michaelwave. Me want make slime mould game. But me-me hungy.",
-					],[
+		],[
 		"Wow, a burrito? I'll Michaelwave this right up!",
-					],[
+		],[
 		"Here you go, one game about slime mould. What do you mean, \"What's that have to do with connections?\"",
-					],[
+		],[
 		"And now, back to rest...",
-					],[
+		],[
 		"Organisms are neat.",
-					]],
-	Robot 		= 	[[
+	]],
+	QuestManager.CharacterName.ROBOT : [[
 		"I AM A ROBOT AND HAVE NO NEEDS BESIDES BASIC MECHANICAL FUNCTIONING TO CARRY OUT MY PROGRAMMING.",
 		"AMBIENT WATER MOLECULES HAVE OXIDIZED THE SURFACE LAYERS OF MY MECHANICAL BODY",
 		"AND MY GEARS HAVE STRIPPED DUE TO NORMAL WEAR AND TEAR. I REQUIRE LUBRICATION.",
-					],[
+		],[
 		"OIL IS AN IDEAL RECTIFIER OF MY PRESENT SUB-OPTIMAL CONDITION.",
 		"YOU WOULD HAVE MY APPRECIATION WERE I CAPABLE OF SUCH MORTAL FANCIES.",
-					],[
+		],[
 		"I WILL GIFT YOU THIS OXYGEN TANK WHICH WAS THE FUEL SOURCE FOR AN OXYACETYLENE WELDER.",
 		"DUE TO THE COLD-WELDING PHENOMENON IN THE VACUUM OF SPACE, I HAVE NO NEED OF WELDING EQUIPMENT.",
 		"HOWEVER THIS IS A REWARD FOR YOUR ANIMAL ALTRUISM AND TOTALLY NOT AN OFFLOADING OF NEEDLESS JUNK.",
 		"(WAIT, IS THIS WHIMSICAL IMP EVEN AN ANIMAL? HAVE I MADE ANOTHER CLASSIC ROBOT FAUX PAS?)",
 		"(STUPID ROBOT. STUPID, STUPID!)",
-					],[
+		],[
 		"I AM NOT EMBARRASSED. I AM INCAPABLE OF EMOTION. OBVIOUSLY.",
-					],[
+		],[
 		"THE SENTIENT GREASE FELT A LONGING--SOMETHING I WILL NEVER KNOW--FOR THE WORLD IT UNDERSTOOD.",
 		"HOWEVER, THE RESIDUE IT LEFT BEHIND IN MY BODY WILL FACILITATE MY FUNCTIONING FOR A LONG TIME.",
 		"(GREAT JOB, ME. YOU JUST KEEP USING OTHERS FOR YOUR OWN SELFISH NEEDS AND DRIVING THEM AWAY.)",
-					]],
-	Individual 	= 	[[
+	]],
+	QuestManager.CharacterName.INDIVIDUAL : [[
 		"Greetings, creature.",
 		"I am all-incorporated: anima and animus, conscious and subconscious.",
 		"All aspects, all sites of desire and thought production not only made aware of eachother,",
@@ -437,7 +421,7 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"I gaze into the abyss and am unmet.",
 		"I am sublimated, and it IS sublime.",
 		"No shadow. Only light.",
-					],[
+		],[
 		"No! NO!!! What have you done???",
 		"Do you have any idea how much time and work it took me to fully integrate all aspects of my being?",
 		"How much money I spent on psychoanalytical therapy?",
@@ -445,28 +429,28 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Why would you do this to me? What could you possibly have to gain?",
 		"I am so ANGRY right now! Do you know how long it's been since I've been angry???",
 		"And I was doing so well, too!",
-					],[
+		],[
 		"What's with that blank-yet-expectant look?",
 		"You can't seriously believe I'm going to GIVE you something, can you?",
 		"The only thing I'd give you is a broken clown-nose.",
 		"Now get out of my sight before I do!",
-					],[
+		],[
 		"I hate you so much."
-					],[
+		],[
 		"I actually forgive you.",
 		"PSYCHE!!!",
-					]],
-	Gibberish 	= 	[[
+	]],
+	QuestManager.CharacterName.GIBBERISH : [[
 		"iuewgf[iurh. f;;refijfk dnuew hfaoihdsu. dksjhfaoi ufye waifjdsn flkdsjfns.",
 		"nvoiaiurysoo[dczos'cle,fmweaoewicjoiwanecec iewaocnewc ewacaeaiconewc iwaneoi edwdewaoin ewa.",
 		"difniurehgiuefierne srifjiesvnfjdnkdknroiferuo sapdmpmfo;fjednceioncv:,",
 		"kjfvifhroiueinfokrnvov oojdfkneokjrfoe rfeokdncoe;kf;sfknes rfism;f srefrmsekrf oxccscsr.",
-					],[
+		],[
 		"NXOKZNOIDIFJCZXNCODINZC ZDIJFDKMFWOKPNENF XSPMODSK SKDMOKMDKSNPKAKNPZOFMSLKAFMPWEM",
 		"XZHCLKJKDSLC KLSNJCZLK CLKDCZ,M'ASMCLS'LAJD;WQE ;FWKDNMSLKAD EWL;MDSND;SMQ;DNWD",
-					],[
+		],[
 		"xsockjcxoihfdzoxk ksjwfe'mfapfewafmea''a fekdlwad' diagonal line ;lsn'awieojdmkxz.",
-					],[
+		],[
 		"osiczjspdihdscsdnc szdijcdscnzends lc fhdosijvcidssjzkndcmd dzsondcsz /cdz'sdvcdv dzs",
 		"koxzckdsncvnds ccznoidsn;f cz;cndsoidsc zdzc;dsc/z .dz' c/dc dczl/knc zsdszkjdnfzsdnfds.",
 		"lkdshfozncdszc jfdslfsbsdmfndsf dsjdksfds fdsoien[Wef nfzkefzdlks dkwadwdtskdasd awtdawdsa",
@@ -475,10 +459,10 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"jkxhkfd",
 		"xncosidjfodzx csodifjdsokfd lkjdshzeufsd dzkjsfhzsldyzkf elkszjfhlsudyk kjzhlerkjsc dkjzfyekr.",
 		"oxkcnzsdjf czodjzsoijcdszlck kjzckzdsc dfhjluvcykzdf jhfudyfkndmdxnkjf vdkjfdzx cvzdfkjnflzf flvz",
-					],[
+		],[
 		"OR FHER GB QEVAX LBHE BINYGVAR"
-					]],
-	Idea 		= 	[[
+	]],
+	QuestManager.CharacterName.IDEA : [[
 		"Oooh, yes! Another brrrrrrillliant one! I've GOT to write that down, as I always do.",
 		"You see, ideas flow out of me effortlessly, like shi--WAIT, that's it!",
 		"Oh that one's marvelous! As always, of course.",
@@ -492,7 +476,7 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"No, I sully my ideas by refering to them as such.",
 		"My ideas are a gift from God himself,",
 		"And I am his chosen vessel through which divine truth spouts.",
-					],[
+		],[
 		"What's this?",
 		"GASP",
 		"Oh, that's it! That's it right there!",
@@ -502,7 +486,7 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"EEEEEEEEEEEEUUUUUUUUUUUUUUURRRRRRRRRRR
 		 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		 KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-					],[
+		],[
 		"Wheeeeeeeew",
 		"That was a BIG one.",
 		"I ideated soooo haaard.",
@@ -511,14 +495,14 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Only joking. Of course it was.",
 		"There's some change for a cab on the nightstand, next to the lamp.",
 		"(You look around and don't see anything like that here.)",
-					],[
+		],[
 		"(Seems like he's fast asleep, standing up, with his eyes open.)",
-					],[
+		],[
 		"I've been thinking about you a lot lately.",
 		"Which isn't to say I don't about everything a lot.",
 		"Why haven't you returned my calls?",
-					]],
-	Bodhi 		= 	[[
+	]],
+	QuestManager.CharacterName.BODHI : [[
 		"Namaste, Attentive Helper.",
 		"Through a life's work of ascetic discipline, I have achieved enlightenment.",
 		"But it is not enough that I alone should reap such heavenly rewards.",
@@ -534,20 +518,20 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Take from one and give to the other.",
 		"Go now, and help bring balance to this world.",
 		"In doing so you may prove yourself as a fellow Bodhisattva.",
-					],[
+		],[
 		# bodhi does not receive an item
-					],[
+		],[
 		"Well done, samaneri.",
 		"The path of enlightenment can only be travelled by the wheel of dharma,",
 		"Inertia into which the Buddha himself breathed with his teachings.",
 		"Take the dharmachakra, \"the wheel of dharma,\"",
 		"And help others break the karmic cycle of desiring and suffering.",
-					],[
+		],[
 		"Om mani padme hum.",	
-					],[
+		],[
 		"Hey, what'd you do with my wheel?!",
-					]],
-	Slime 		= 	[[
+	]],
+	QuestManager.CharacterName.SLIME : [[
 		"Yeah? What dya want?",
 		"Jeez, you buy a planet in a gated solar system",
 		"Hire some sad rock guy as your private security",
@@ -580,27 +564,27 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"I'm a SLIME MOULD, BABY!!!",
 		"All I care about is CONSUMING, REPRODUCING, and INFINITE EXPONENTIAL GROWTH!",
 		"NOW GO. MAKE. ME. FAMOUS!!!",
-					],[
+		],[
 		"Well, is the game done yet?",
 		"GOOD.",
 		"What? No I don't want to play it!",
 		"Only losers play games and I'm a WINNER!",
 		"This game better be good enough to make me famous,",
 		"It better not be one of those niche \"art\" games that no one plays and doesn't make any money.",
-					],[
+		],[
 		"Ooooh you know who should play this?",
 		"The King! Go bring this to the King right now!",
-					],[
+		],[
 		"Am I famous yet?",
-					],[
+		],[
 		"I think I'm starting to feel famous",
 		"...Wait, no that's just my mycelium metabolizing leaves.",
-					]],
-	King2 		= 	[[
+	]],
+	QuestManager.CharacterName.KING_2 : [[
 		"You have returned triumphantly, our dear servant.",
 		"All of my subjects are most pleased. We can feel it with our keen, kingly senses.",
 		"We can sense your weariness, too. It is well-deserved.",
-					],[
+		],[
 		"Oh, what's this we have here?",
 		"A gift for us? Our, our! You surely do know how to treat your King!",
 		"A computer game?",
@@ -608,9 +592,9 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"Slime mould? It's from an indie developer?",
 		"Hell yeah, right on.",
 		"We'll play this.",
-					],[
+		],[
 		# king2 does not give an item
-					],[
+		],[
 		"Attentive Helper,",
 		"We did indeed have our doubts.",
 		"The task which we had laid out for you was no trivial errand.",
@@ -630,237 +614,245 @@ var all_lines : Dictionary[String, Array] = { # want this to be constant but it 
 		"But you have so thoughtfully offered your replacement as the King's entertainment",
 		"In the form of this slime mould game.",
 		"We shall think of you as we play it.",
-					],[
+		],[
 		# does king2 have easter dialog?
-					]],
+	]],
+}
+const debug_lines : Array[Array] = [[
+	"initial 1",
+	"initial 2",
+	],[
+	"give 1",
+	"give 2",
+	],[
+	"receive 1",
+	"receive 2",
+	],["post 1",
+	"post 2",
+	],["easter 1",
+	"easter 2",
+]]
+const debug : Dictionary[QuestManager.CharacterName, Array] = {
+	QuestManager.CharacterName.KING_1 : debug_lines,
+	QuestManager.CharacterName.HORSE : debug_lines,
+	QuestManager.CharacterName.ASTRO : debug_lines,
+	QuestManager.CharacterName.SNOWMAN : debug_lines,
+	QuestManager.CharacterName.SISYPHUS	: debug_lines,
+	QuestManager.CharacterName.GREASE : debug_lines,
+	QuestManager.CharacterName.DEER : debug_lines,
+	QuestManager.CharacterName.GATE : debug_lines,
+	QuestManager.CharacterName.O : debug_lines,
+	QuestManager.CharacterName.ORGANS : debug_lines,
+	QuestManager.CharacterName.MASS : debug_lines,
+	QuestManager.CharacterName.LAMP : debug_lines,
+	QuestManager.CharacterName.NORGANS : debug_lines,
+	QuestManager.CharacterName.MICHAEL : debug_lines,
+	QuestManager.CharacterName.ROBOT : debug_lines,
+	QuestManager.CharacterName.INDIVIDUAL : debug_lines,
+	QuestManager.CharacterName.GIBBERISH : debug_lines,
+	QuestManager.CharacterName.IDEA : debug_lines,
+	QuestManager.CharacterName.BODHI : debug_lines,
+	QuestManager.CharacterName.SLIME : debug_lines,
+	QuestManager.CharacterName.KING_2 : debug_lines,
 }
 
-var debug_bool : bool = false
-var debug_lines : Array = [
-		["initial 1",
-		"initial 2",],
-		["give 1",
-		"give 2",],
-		["receive 1",
-		"receive 2",],
-		["post 1",
-		"post 2",],
-		["easter 1",
-		"easter 2",],
-	]
-var debug : Dictionary[String, Array] = {
-	King		= debug_lines,
-	Horse		= debug_lines,
-	Astronaut	= debug_lines,
-	Snowman		= debug_lines,
-	Sisyphus	= debug_lines,
-	Grease		= debug_lines,
-	Deer		= debug_lines,
-	Gate		= debug_lines,
-	O			= debug_lines,
-	Organs		= debug_lines,
-	Mass		= debug_lines,
-	Lamp		= debug_lines,
-	Norgans		= debug_lines,
-	Michaelwave = debug_lines,
-	Robot		= debug_lines,
-	Individual	= debug_lines,
-	Gibberish	= debug_lines,
-	Idea		= debug_lines,
-	Bodhi		= debug_lines,
-	Slime		= debug_lines,
-	King2		= debug_lines,
-}
+var dialogue_state : CONV_STATE = CONV_STATE.FINISHED
+var canvas_layer : CanvasLayer # TODO figure out how to connect this to the HUD
+var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.tscn")
+var text_box : Node
+var current_line_index : int = 0
+var is_dialogue_active : bool = false
+var can_advance_line : bool = false
+var dialogue_lines : Array[String] = []
+var combines_lines : bool = false
+var animation_point : int
+var animation_point_2 : int
+var pending_animation_1 : CONV_STATE
+var pending_animation_2 : CONV_STATE
+var current_npc : QuestManager.CharacterName
 
-signal request_item_add(npc : String) # sends the NPC who gives the item
-signal request_item_remove(npc : String) # sends the NPC who consumes the time
-signal planet_state_change
-signal change_king()
+var sfx: AudioStream
+var dialogue_finished_sfx: AudioStream
 
-func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : int, voice_sfx: AudioStream) -> void:
-	if !is_dialogue_active:
-		if debug_bool:	
-			all_lines = debug
+var sisyphus_lock : bool = true
+var gate_lock : bool = true
+var king2_lock : bool = true
+var use_debug_lines : bool = true
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("advance_dialogue") and is_dialogue_active and can_advance_line:
+		text_box.queue_free()
+		current_line_index += 1
+		if current_line_index >= dialogue_lines.size():
+			is_dialogue_active = false
+			combines_lines = false
+			current_line_index = 0
+			animation_point = 0
+			animation_point_2 = 0
+			# current npc is automatically overridden on next call
+			dialogue_lines = []
+			dialogue_state = CONV_STATE.FINISHED
+		else: 
+			if combines_lines:
+				if animation_point_2 > 0: # there is a set second animation point
+					if current_line_index == animation_point:
+						dialogue_state = pending_animation_1
+						emit_inventory_signal_by_conv_state(pending_animation_1)
+					elif current_line_index == animation_point_2:
+						dialogue_state = pending_animation_2
+						emit_inventory_signal_by_conv_state(pending_animation_2)
+				else:
+					if current_line_index == animation_point:
+						dialogue_state = pending_animation_1
+						emit_inventory_signal_by_conv_state(pending_animation_1)
+			show_text_box()
+
+## TODO placeholder documentation
+func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.CharacterName, voice_sfx: AudioStream) -> void:
+	# DEBUG dialog switcher for fast text
+	var used_lines : Dictionary[QuestManager.CharacterName, Array]
+	if use_debug_lines:	
+		used_lines = debug
+	else:
+		used_lines = all_lines
 		
+	if not is_dialogue_active:
+		# DEBUG
+		print("Character name: ", planet_id)
 		is_dialogue_active = true
 		canvas_layer = CanvasLayer_in
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
-		npc_name = QuestManager.planet_id_by_npc_name.find_key(planet_id)
-		current_npc = npc_name
-		var first_meeting : bool = !QuestManager.has_met(npc_name)
-		print("NPC name starting dialogue = ", npc_name)
-		if QuestManager.is_complete(npc_name):
-			dialogue_lines = all_lines[npc_name][3]
-		elif !first_meeting && !QuestManager.requirements_met(npc_name) :
-			dialogue_lines = all_lines[npc_name][0]
+		# DEBUG alias for clarity 
+		current_npc = planet_id
+		var first_meeting : bool = not QuestManager.has_met(current_npc)
+		if QuestManager.has_completed(current_npc):
+			dialogue_lines.append_array(used_lines[current_npc][3])
+		elif not first_meeting and not QuestManager.requirements_met(current_npc) :
+			dialogue_lines.append_array(used_lines[current_npc][0])
 		else:	
 			if first_meeting:
-				QuestManager.set_player_met(npc_name)
-				dialogue_lines = all_lines[npc_name][0]
+				QuestManager.set_met(current_npc)
+				dialogue_lines.append_array(used_lines[current_npc][0])
 
-			match (npc_name):
-				"Grease", "Organs": # node gives but does not receive, no conditions
-					complex = true
-					QuestManager.set_npc_gave_player(npc_name)
-					QuestManager.set_complete(npc_name)
+			match (current_npc):
+				QuestManager.CharacterName.GREASE, QuestManager.CharacterName.ORGANS : # gives but does not receive, no conditions
+					QuestManager.set_completed(current_npc)
+					combines_lines = true
 					animation_point = dialogue_lines.size() # transition to receive
-					dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
+					dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet and player receive
 					pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-					
-				"Bodhi": # node gives but does not receive, conditions
-					if first_meeting:
-						if QuestManager.requirements_met(npc_name):
-							complex = true
-							QuestManager.set_npc_gave_player(npc_name)
-							QuestManager.set_complete(npc_name)
+
+				QuestManager.CharacterName.BODHI : # gives but does not receive, conditions
+					if QuestManager.requirements_met(current_npc):
+						QuestManager.set_completed(current_npc)
+						if first_meeting:
+							combines_lines = true
 							animation_point = dialogue_lines.size() # transition to receive
-							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
+							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet and player receive
 							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-					else:
-						if QuestManager.requirements_met(npc_name):
-							QuestManager.set_player_gave_npc(npc_name)
-							QuestManager.set_complete(npc_name)
+						else:
 							dialogue_state = CONV_STATE.PLAYER_RECEIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines = all_lines[npc_name][1]
+							dialogue_lines.append_array(used_lines[current_npc][2])
 							
-				"Norgans", "Individual", "King2": # node receives and has no give
+				QuestManager.CharacterName.NORGANS, QuestManager.CharacterName.INDIVIDUAL, QuestManager.CharacterName.KING_2: # node receives and has no give
 					if first_meeting:
-						if QuestManager.requirements_met(npc_name):
-							complex = true
-							QuestManager.set_player_gave_npc(npc_name)
-							QuestManager.set_complete(npc_name)
+						if QuestManager.requirements_met(current_npc):
+							combines_lines = true
+							QuestManager.set_completed(current_npc)
 							animation_point = dialogue_lines.size() # transition to player give
-							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
+							dialogue_lines.append_array(used_lines[current_npc][1]) # lines now contains greet and player give
 							pending_animation_1 = CONV_STATE.PLAYER_GIVE
 					else:
-						if QuestManager.requirements_met(npc_name):
-							QuestManager.set_player_gave_npc(npc_name)
-							QuestManager.set_complete(npc_name)
+						if QuestManager.requirements_met(current_npc):
+							QuestManager.set_completed(current_npc)
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines = all_lines[npc_name][1]
+							dialogue_lines.append_array(used_lines[current_npc][1])
 
-				"King", "Mass": # only require meetings, then will give
-					print("King depends on meetings:", QuestManager.depends_on_meeting(npc_name))
+				QuestManager.CharacterName.KING_1, QuestManager.CharacterName.MASS: # only require meetings, then will give
 					if first_meeting:
-						if QuestManager.requirements_met(npc_name):
-							complex = true
-							QuestManager.set_npc_gave_player(npc_name)
-							QuestManager.set_complete(npc_name)
+						if QuestManager.requirements_met(current_npc):
+							combines_lines = true
+							QuestManager.set_completed(current_npc)
 							animation_point = dialogue_lines.size() # transition to receive
-							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet and player receive
+							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet and player receive
 							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
 					else:
-						if QuestManager.requirements_met(npc_name):
-							QuestManager.set_npc_gave_player(npc_name)
-							QuestManager.set_complete(npc_name)
+						if QuestManager.requirements_met(current_npc):
+							QuestManager.set_completed(current_npc)
 							dialogue_state = CONV_STATE.PLAYER_RECEIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines = all_lines[npc_name][2]
+							dialogue_lines.append_array(used_lines[current_npc][2])
 						
-				"Sisyphus", "Gate": # receive only, unlocks door
-					if QuestManager.requirements_met(npc_name): # consider using this model in other places to save lines?
-						QuestManager.set_player_gave_npc(npc_name)
-						QuestManager.set_complete(npc_name)
+				QuestManager.CharacterName.SISYPHUS, QuestManager.CharacterName.GATE: # receive only, unlocks door
+					if QuestManager.requirements_met(current_npc):
+						QuestManager.set_completed(current_npc)
 						if first_meeting:
-							complex = true
+							combines_lines = true
 							animation_point = dialogue_lines.size() # transition to player give
-							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
+							dialogue_lines.append_array(used_lines[current_npc][1]) # lines now contains greet and player give
 							pending_animation_1 = CONV_STATE.PLAYER_GIVE
 						else:
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines = all_lines[npc_name][1]
-						match (npc_name):
-							"Sisyphus":
+							dialogue_lines.append_array(used_lines[current_npc][1])
+						match (current_npc):
+							QuestManager.CharacterName.SISYPHUS:
 								sisyphus_lock = false
-							"Gate":
+							QuestManager.CharacterName.GATE:
 								gate_lock = false
 								change_king.emit()
 
+				# DEBUG something wrong with this branch not checking completion correctly
+				# need to verify quest flags (seen failing with ASTRO)
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
-					if QuestManager.requirements_met(npc_name):
-						complex = true
-						QuestManager.set_player_gave_npc(npc_name)
-						QuestManager.set_npc_gave_player(npc_name)
-						QuestManager.set_complete(npc_name)
+					if QuestManager.requirements_met(current_npc):
+						combines_lines = true
+						QuestManager.set_completed(current_npc)
 						if first_meeting:
 							# first meeting and player met reqs
 							animation_point = dialogue_lines.size() # transition to player give
 							pending_animation_1 = CONV_STATE.PLAYER_GIVE
-							dialogue_lines.append_array(all_lines[npc_name][1]) # lines now contains greet and player give
-							animation_point2 = dialogue_lines.size()
+							dialogue_lines.append_array(used_lines[current_npc][1]) # lines now contains greet and player give
+							animation_point_2 = dialogue_lines.size()
 							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
-							dialogue_lines.append_array(all_lines[npc_name][2]) # lines now contains greet, player give, player receive
+							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet, player give, player receive
 							print(dialogue_lines)
 						else:
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines = all_lines[npc_name][1]
+							dialogue_lines.append_array(used_lines[current_npc][1])
 							animation_point = dialogue_lines.size() # transition to player receive
 							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-							dialogue_lines.append_array(all_lines[npc_name][2])
-						if npc_name == "Slime":
+							dialogue_lines.append_array(used_lines[current_npc][2])
+						if current_npc == QuestManager.CharacterName.SLIME:
 							king2_lock = false
-							
-		_show_text_box(CanvasLayer_in)
+
+		show_text_box()
 
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
-			npc_name = current_npc
-			print("SIGNAL TO REQUEST ITEM FROM: ", npc_name)
-			request_item_add.emit(npc_name)
+			current_npc = current_npc
+			print("SIGNAL TO REQUEST ITEM FROM: ", current_npc)
+			request_item_add.emit(current_npc)
+			if current_npc == QuestManager.CharacterName.SLIME:
+				planet_state_change.emit()
 		CONV_STATE.PLAYER_GIVE:
-			print("SIGNAL TO GIVE ITEM TO: ", npc_name)
-			npc_name = current_npc
-			request_item_remove.emit(npc_name)
+			print("SIGNAL TO GIVE ITEM TO: ", current_npc)
+			current_npc = current_npc
+			request_item_remove.emit(current_npc)
 			planet_state_change.emit()
 
-func _show_text_box(CanvasLayer_in):
+func show_text_box():
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
-	CanvasLayer_in.add_child(text_box)
+	canvas_layer.add_child(text_box)
 	text_box.display_text(dialogue_lines[current_line_index], sfx)
 	can_advance_line = false
 
 func _on_text_box_finished_displaying():
 	can_advance_line = true
-
-func _unhandled_input(event):
-	if(
-		event.is_action_pressed("advance_dialogue") &&
-		is_dialogue_active &&
-		can_advance_line
-	):
-		text_box.queue_free()
-		current_line_index += 1
-		if complex:
-			if animation_point2 > 0: # there is a set second animation point
-				if current_line_index == animation_point: #&& current_line_index < animation_point2:
-					print("TRANSITION TO ", pending_animation_1)
-					dialogue_state = pending_animation_1
-					emit_inventory_signal_by_conv_state(pending_animation_1)
-				elif current_line_index == animation_point2:
-					dialogue_state = pending_animation_2
-					print("TRANSITION TO ", pending_animation_2)
-					emit_inventory_signal_by_conv_state(pending_animation_2)
-			else:
-				if current_line_index == animation_point:
-					dialogue_state = pending_animation_1
-					emit_inventory_signal_by_conv_state(pending_animation_1)
-					print("TRANSITION TO ", pending_animation_1)
-
-		#reset happense here
-		if current_line_index >= dialogue_lines.size():
-			is_dialogue_active = false
-			complex = false
-			current_line_index = 0
-			animation_point = 0
-			animation_point2 = 0
-			current_npc = "null"
-			dialogue_state = CONV_STATE.COMPLETE
-		else:
-			_show_text_box(canvas_layer)

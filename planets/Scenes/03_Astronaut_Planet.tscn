@@ -47,7 +47,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_eoa84")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
 material_override = ExtResource("2_76dvl")
 surface_material_override/0 = ExtResource("3_pxfi8")
 
@@ -73,17 +73,17 @@ shape = SubResource("CylinderShape3D_37638")
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_ws3m3")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
-destination_planet_ID = 7
+destination_planet_ID = 5
 
 [node name="Door3" parent="." unique_id=230389982 instance=ExtResource("7_ws3m3")]
 
 [node name="DoorBaseModel" parent="Door3" index="0" unique_id=1012687003]
-destination_planet_ID = 10
+destination_planet_ID = 6
 
 [node name="Door2" parent="." unique_id=1797760818 instance=ExtResource("7_ws3m3")]
 
 [node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
-destination_planet_ID = 2
+destination_planet_ID = 1
 
 [editable path="CubedSkybox"]
 [editable path="InteractionArea"]

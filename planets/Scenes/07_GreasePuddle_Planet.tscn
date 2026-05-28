@@ -67,7 +67,7 @@ script = ExtResource("6_d0l1o")
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_06bkn")]
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
-destination_planet_ID = 3
+destination_planet_ID = 2
 
 [editable path="InteractionArea"]
 [editable path="Door"]
