@@ -15,64 +15,64 @@ var slot_state : int = 0b000
 @onready var label_slot3 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot3/ItemSlot3Label
 
 # each item is the one GIVEN by that NPC
-const item_resources : Dictionary[String, Resource] = {
-	King 		= preload("res://item sprites/kings_key.png"),
-	Horse 		= preload("res://item sprites/gibberish.png"),
-	Astronaut 	= preload("res://item sprites/space_blanket.png"),
-	Snowman 	= preload("res://item sprites/carrot.png"),
-	Grease 		= preload("res://item sprites/oil_drop.png"),
-	Deer 		= preload("res://item sprites/idea.png"),
-	O 			= preload("res://item sprites/two_small_Os.png"),
-	Organs 		= preload("res://item sprites/organs.png"),
-	Mass 		= preload("res://item sprites/burrito.png"),
-	Lamp 		= preload("res://item sprites/jungian_shadow.png"),
-	Michaelwave = preload("res://item sprites/slime_mold_game.png"),
-	Robot 		= preload("res://item sprites/oxygen_tank_item.png"),
-	Gibberish 	= preload("res://item sprites/diagonal line.png"),
-	Idea 		= preload("res://item sprites/light_bulb.png"),
-	Bodhi 		= preload("res://item sprites/dharmachaka.png"),
-	Slime		= preload("res://item sprites/slime_mold_game.png")
+const item_resources : Dictionary[QuestManager.CharacterName, Resource] = {
+	QuestManager.CharacterName.KING_1 : preload("res://item sprites/kings_key.png"),
+	QuestManager.CharacterName.HORSE : preload("res://item sprites/gibberish.png"),
+	QuestManager.CharacterName.ASTRO : preload("res://item sprites/space_blanket.png"),
+	QuestManager.CharacterName.SNOWMAN : preload("res://item sprites/carrot.png"),
+	QuestManager.CharacterName.GREASE : preload("res://item sprites/oil_drop.png"),
+	QuestManager.CharacterName.DEER : preload("res://item sprites/idea.png"),
+	QuestManager.CharacterName.O : preload("res://item sprites/two_small_Os.png"),
+	QuestManager.CharacterName.ORGANS : preload("res://item sprites/organs.png"),
+	QuestManager.CharacterName.MASS : preload("res://item sprites/burrito.png"),
+	QuestManager.CharacterName.LAMP : preload("res://item sprites/jungian_shadow.png"),
+	QuestManager.CharacterName.MICHAEL : preload("res://item sprites/slime_mold_game.png"),
+	QuestManager.CharacterName.ROBOT : preload("res://item sprites/oxygen_tank_item.png"),
+	QuestManager.CharacterName.GIBBERISH : preload("res://item sprites/diagonal line.png"),
+	QuestManager.CharacterName.IDEA : preload("res://item sprites/light_bulb.png"),
+	QuestManager.CharacterName.BODHI : preload("res://item sprites/dharmachaka.png"),
+	QuestManager.CharacterName.SLIME : preload("res://item sprites/slime_mold_game.png")
 }
 
-const item_texts : Dictionary[String, String] = {
-	King 		= "Key",
-	Horse 		= "sagfuiasgfuiasgfasuig",
-	Astronaut 	= "Space Blanket",
-	Snowman 	= "Carrot",
-	Grease 		= "Oil",
-	Deer 		= "Idea",
-	O 			= "Two small 'o's",
-	Organs 		= "Organs",
-	Mass 		= "Burrito",
-	Lamp 		= "Jungian Shadow",
-	Michaelwave = "Slime Mould Game",
-	Robot 		= "Oxygen Tank",
-	Gibberish 	= "Diagonal Line",
-	Idea 		= "Lightbulb",
-	Bodhi 		= "Dharmachakra",
-	Slime		="Slime Mould Game",
+const item_texts : Dictionary[QuestManager.CharacterName, String] = {
+	QuestManager.CharacterName.KING_1 : "Key",
+	QuestManager.CharacterName.HORSE : "sagfuiasgfuiasgfasuig",
+	QuestManager.CharacterName.ASTRO : "Space Blanket",
+	QuestManager.CharacterName.SNOWMAN : "Carrot",
+	QuestManager.CharacterName.GREASE : "Oil",
+	QuestManager.CharacterName.DEER : "Idea",
+	QuestManager.CharacterName.O : "Two small 'o's",
+	QuestManager.CharacterName.ORGANS : "Organs",
+	QuestManager.CharacterName.MASS : "Burrito",
+	QuestManager.CharacterName.LAMP : "Jungian Shadow",
+	QuestManager.CharacterName.MICHAEL : "Slime Mould Game",
+	QuestManager.CharacterName.ROBOT : "Oxygen Tank",
+	QuestManager.CharacterName.GIBBERISH : "Diagonal Line",
+	QuestManager.CharacterName.IDEA : "Lightbulb",
+	QuestManager.CharacterName.BODHI : "Dharmachakra",
+	QuestManager.CharacterName.SLIME : "Slime Mould Game",
 }
 
-const origin_by_desiring_npc :  Dictionary[String, String] = { # given y = x, x has what y needs
-	Gate = "King",
-	Horse = "Snowman",
-	Astronaut = "Robot",
-	Robot = "Grease",
-	Deer = "O",
-	Idea = "Deer",
-	Norgans = "Organs",
-	Lamp = "Idea",
-	Individual = "Lamp",
-	Michaelwave = "Mass",
-	Gibberish = "Horse",
-	Sisyphus = "Bodhi",
-	Slime = "Michaelwave",
-	Snowman = "Astronaut",
-	King2 = "Slime",
-	O = "Gibberish",
+const origin_by_desiring_npc :  Dictionary[QuestManager.CharacterName, QuestManager.CharacterName] = { # given y = x, x has what y needs
+	QuestManager.CharacterName.GATE : QuestManager.CharacterName.KING_1,
+	QuestManager.CharacterName.HORSE : QuestManager.CharacterName.SNOWMAN,
+	QuestManager.CharacterName.ASTRO : QuestManager.CharacterName.ROBOT,
+	QuestManager.CharacterName.ROBOT : QuestManager.CharacterName.GREASE,
+	QuestManager.CharacterName.DEER : QuestManager.CharacterName.O,
+	QuestManager.CharacterName.IDEA : QuestManager.CharacterName.DEER,
+	QuestManager.CharacterName.NORGANS : QuestManager.CharacterName.ORGANS,
+	QuestManager.CharacterName.LAMP : QuestManager.CharacterName.IDEA,
+	QuestManager.CharacterName.INDIVIDUAL : QuestManager.CharacterName.LAMP,
+	QuestManager.CharacterName.MICHAEL : QuestManager.CharacterName.MASS,
+	QuestManager.CharacterName.GIBBERISH : QuestManager.CharacterName.HORSE,
+	QuestManager.CharacterName.SISYPHUS : QuestManager.CharacterName.BODHI,
+	QuestManager.CharacterName.SLIME : QuestManager.CharacterName.MICHAEL,
+	QuestManager.CharacterName.SNOWMAN : QuestManager.CharacterName.ASTRO,
+	QuestManager.CharacterName.KING_2 : QuestManager.CharacterName.SLIME,
+	QuestManager.CharacterName.O : QuestManager.CharacterName.GIBBERISH,
 }
 
-func add_item(npc_name : String) -> void:
+func add_item(npc_name : QuestManager.CharacterName) -> void:
 	update_slots() # move items out of the third slot, just in case
 	print("SLOT 3 = ", inventory_slots.Slot3)
 	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
@@ -82,7 +82,7 @@ func add_item(npc_name : String) -> void:
 	update_slots()
 	update_slots()
 	
-func remove_item(npc_name : String) -> void:
+func remove_item(npc_name : QuestManager.CharacterName) -> void:
 	var found_key : String = inventory_slots.find_key(npc_name) #FLAG - have wrong item for NPC, tries to assign Nil to String
 	assert(found_key, "Tried to remove a non-existent item from inventory, check npc_name")
 	inventory_slots[found_key] = false
@@ -146,8 +146,8 @@ func _ready() -> void:
 	DialogueManager.request_item_add.connect(_on_item_add_requested)
 	DialogueManager.request_item_remove.connect(_on_item_remove_requested)
 
-func _on_item_add_requested(giver_name : String) -> void:
+func _on_item_add_requested(giver_name : QuestManager.CharacterName) -> void:
 	add_item(giver_name)
 
-func _on_item_remove_requested(receiver_name : String) -> void:
+func _on_item_remove_requested(receiver_name : QuestManager.CharacterName) -> void: #needs to be typed from 
 	remove_item(origin_by_desiring_npc[receiver_name])

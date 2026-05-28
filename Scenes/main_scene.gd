@@ -49,7 +49,7 @@ func _ready() -> void:
 	
 
 func on_planet_change_requested(planet_ID : int):
-	#current_planet_id = planet_ID
+	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
 	hud_overlay.transition()

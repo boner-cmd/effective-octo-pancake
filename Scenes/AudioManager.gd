@@ -59,7 +59,7 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 	await Temp_SFX_Player.tree_entered
 	if sfx == sfx_explode:
 			Temp_SFX_Player.volume_db -= 12.0
-	Temp_SFX_Player.pitch_scale = pitch_range
+	Temp_SFX_Player.pitch_scale += pitch_range
 	Temp_SFX_Player.play()
 	await Temp_SFX_Player.finished
 	Temp_SFX_Player.queue_free()

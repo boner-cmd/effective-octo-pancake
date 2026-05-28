@@ -734,6 +734,8 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		else:	
 			if first_meeting:
 				QuestManager.set_met(current_npc)
+				print("SET MET ", current_npc)
+				print("HAS MET ", QuestManager.has_met(current_npc))
 				dialogue_lines.append_array(used_lines[current_npc][0])
 
 			match (current_npc):

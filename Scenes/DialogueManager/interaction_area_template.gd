@@ -11,6 +11,7 @@ func interact() -> void:
 	var current_status : DialogueManager.CONV_STATE = DialogueManager.dialogue_state
 	if current_status == DialogueManager.CONV_STATE.FINISHED:
 		main_planet_id = get_tree().root.get_child(5).current_planet_id
+		print("main_planet_ID = ",	main_planet_id)
 		DialogueManager.start_dialogue(CanvasLayer_in, main_planet_id, speech_sound)
 		
 		for NPC in get_children():
