@@ -11,9 +11,6 @@ var current_planet_id : int = 0
 ## ensure that the initial planet is removed after transition.
 @onready var current_planet : Node3D = planet_nodes[0]
 
-## TODO is default assignment required to play first planet BGM?
-@onready var current_music : AudioStream = bgm_nodes[0]
-
 ## TODO convert planet_nodes to use the ResourceLoader with sub-threads
 var planet_nodes : Dictionary[int, Node3D] = {
 	0 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
@@ -39,50 +36,24 @@ var planet_nodes : Dictionary[int, Node3D] = {
 	20 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
 }
 
-## TODO convert BGM_nodes to use the ResourceLoader with sub-threads
-var bgm_nodes : Dictionary[int, AudioStream] = {
-	0 : preload("res://music exports/king2026-05-2113_23_05.wav"),
-	1 : preload("res://music exports/horse2026-05-2217_28_31.wav"),
-	2 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
-	3 : preload("res://music exports/snowman2026-05-2116_16_58.wav"),
-	4 : preload("res://music exports/sisyphus2026-05-2217_25_08.wav"),
-	5 : preload("res://music exports/grease2026-05-2323_27_38.wav"),
-	6 : preload("res://music exports/no-eye'd deer2026-05-2121_27_03.wav"),
-	7 : preload("res://music exports/gatekeeper2026-05-2217_34_46.wav"),
-	8 : preload("res://music exports/o2026-05-2322_20_48.wav"),
-	9 : preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
-	10 : preload("res://music exports/festering mass2026-05-2220_52_41.wav"),
-	11 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
-	12 : preload("res://music exports/body without organs2026-05-2323_48_46.wav"),
-	13 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"), # TODO Michaelwave placeholder
-	14 : preload("res://music exports/robot2026-05-2119_52_12.wav"),
-	15 : preload("res://music exports/individuated individual2026-05-2121_51_23.wav"),
-	16 : preload("res://music exports/gibberish2026-05-2121_42_44.wav"),
-	17 : preload("res://music exports/idea guy2026-05-2122_27_19.wav"),
-	18 : preload("res://music exports/boddhisattva2026-05-2221_27_06.wav"),
-	19 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
-	20 : preload("res://music exports/king2026-05-2113_23_05.wav"),
-}
-
 ## TODO switch to a Dictionary to have different voices per character
 #@onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
 
 ## TODO placeholder documentation
 func _ready() -> void:
-	
 	# initial setup for first planet, door, and bgm
 	get_tree().root.add_child(planet_nodes[0]) 
 	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
 	initial_door.request_planet_change.connect(on_planet_change_requested)
-	AudioManager.bgm_cycle(1)
+	AudioManager.bgm_cycle(0)
 	
 
 func on_planet_change_requested(planet_ID : int):
-	public_planet_id = planet_ID
+	#current_planet_id = planet_ID
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
 	hud_overlay.transition()
-	AudioManager.bgm_cycle(public_planet_id)
+	AudioManager.bgm_cycle(planet_ID)
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
 	current_planet = requested_planet

@@ -23,14 +23,14 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_u12uo")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_idm3u")
 surface_material_override/0 = ExtResource("3_i5phk")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_v25ah")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
 material_override = ExtResource("5_an3im")
 surface_material_override/0 = ExtResource("3_i5phk")
 
