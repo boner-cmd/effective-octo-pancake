@@ -33,7 +33,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	19 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
 	20 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
 	21 : preload("res://music exports/king2026-05-2113_23_05.wav"),
-	22 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"), #title
+	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
 }
 
 #SFX player
