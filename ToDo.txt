@@ -1,26 +1,12 @@
 MAIN
 	BUGS
-		Inventory
 		Interact text rendered over UI elements
 			- Pause Menu probably, if positions change
 			- Map
 		Music to continue on PAUSE state
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
-		SPAM F ON DOOR BREAKS TRANSFER OF PLANETS
-		
-		Talking in debug lines results in receive playing twice? probably nothing
-		
-		Grease -> Astro -> Snowman
-			Astro gives twice compared to other trades that can happen, or isn't pulled out of inv slot
-			Note, other trades (grease -> robot, Organs -> Norgans) seemingly work fine, Inventory seems to only get messed up at Astro
-			putting in prints shows that if the conversation is not complex, we never send signals based on conv state
-			RESOLVED
-		NORGANS still broken, most assuredly quest state - fixed
-		IDEA broken quest state - fixed
-		BODHI broken quest state
-		
 		grease needs post completion fix
-		honk counter
+		
 		
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door in front of him, maybe next to the player?
@@ -41,8 +27,6 @@ MAP
 DIALOGUES
 	Camera angles
 	Brief pause in convo for Zelda-style receive item
-	Unique boxes per NPCs
-	Unique type
 	Unique sounds
 	"Skip Dialogue" option for Has-Met state
 	Better text area sizing + placement
@@ -74,6 +58,8 @@ POLISH IDEAS
 	Revisit all NPC models + animations, then a VFX/Shader pass post
 	Additional assets/set-dressing for planets
 	Planet size variations?
-	Speed-run timers?
+	Speed-run timers
 	Side-quests? (lol)
-	
+	honk counter
+	Unique boxes per NPCs (?)
+	Unique type

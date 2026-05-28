@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cfk5rf7wpbnvy"]
 
-[ext_resource type="Script" uid="uid://dvms5302pkt8b" path="res://Scenes/test_animation_reload.gd" id="1_s7k4l"]
-[ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="2_s7k4l"]
+[ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_qremu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qremu"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,8 +25,13 @@ radius = 3.0
 radius = 5.0
 height = 10.0
 
-[node name="Node3D" type="Node3D" unique_id=892902949]
-script = ExtResource("1_s7k4l")
+[node name="Node3D" type="Node3D" unique_id=892902949 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4", "Obj_5")]
+script = ExtResource("1_qremu")
+InteractionArea = NodePath("Object1")
+Obj_2 = NodePath("Object2")
+Obj_3 = NodePath("Object3")
+Obj_4 = NodePath("Object4")
+Obj_5 = NodePath("Object5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=151151210]
 environment = SubResource("Environment_1cgnl")
@@ -37,6 +41,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Object1" type="Node3D" parent="." unique_id=1800304392]
+transform = Transform3D(-0.8987941, 0.43837106, 0, 0.21252647, 0.43574396, -0.8746197, -0.38340798, -0.78610307, -0.48480955, 0, 0, 0)
 
 [node name="Mesh1" type="MeshInstance3D" parent="Object1" unique_id=314951412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -50,6 +55,7 @@ collision_mask = 2048
 shape = SubResource("CylinderShape3D_s7k4l")
 
 [node name="Object2" type="Node3D" parent="." unique_id=1160605189]
+transform = Transform3D(-0.9063078, 0.42261827, 0, -0.37984675, -0.814584, 0.43837124, 0.1852637, 0.3972993, 0.898794, 0, 0, 0)
 
 [node name="Mesh2" type="MeshInstance3D" parent="Object2" unique_id=761640656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -70,6 +76,7 @@ mesh = SubResource("SphereMesh_1cgnl")
 transform = Transform3D(1, 0, 0, 0, 0.8776151, 0.47936594, 0, -0.47936594, 0.8776151, 0, 10.262829, 10.80874)
 
 [node name="Object3" type="Node3D" parent="." unique_id=1292844063]
+transform = Transform3D(0.99026805, 0.13917309, 0, -0.12714094, 0.90465486, -0.40673664, -0.056606796, 0.4027783, 0.9135454, 0, 0, 0)
 
 [node name="Mesh3" type="MeshInstance3D" parent="Object3" unique_id=2111247052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -84,6 +91,7 @@ collision_mask = 2048
 shape = SubResource("CylinderShape3D_s7k4l")
 
 [node name="Object4" type="Node3D" parent="." unique_id=1938295517]
+transform = Transform3D(-0.5877852, -0.809017, 0, 0.77366686, -0.5621018, -0.2923717, 0.23653367, -0.17185175, 0.9563048, 0, 0, 0)
 
 [node name="Mesh4" type="MeshInstance3D" parent="Object4" unique_id=136808121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -97,8 +105,17 @@ collision_mask = 2048
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object4/Area3D" unique_id=1056990919]
 shape = SubResource("CylinderShape3D_s7k4l")
 
-[node name="Door" parent="." unique_id=683049571 instance=ExtResource("2_s7k4l")]
-transform = Transform3D(0.9223224, -0.38642123, 0, 0.38642123, 0.9223224, 0, 0, 0, 1, 0, 0, 0)
+[node name="Object5" type="Node3D" parent="." unique_id=1899581254]
+transform = Transform3D(0.80393976, -0.5947105, 0, 0.12617415, 0.17056438, -0.9772347, 0.58117175, 0.7856379, 0.21216063, 0, 0, 0)
 
-[node name="Door2" parent="." unique_id=173612060 instance=ExtResource("2_s7k4l")]
-transform = Transform3D(0.8865025, 0.4627236, 0, -0.4627236, 0.8865025, 0, 0, 0, 1, 0, 0, 0)
+[node name="Mesh4" type="MeshInstance3D" parent="Object5" unique_id=292169916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("SphereMesh_s7k4l")
+
+[node name="Area3D" type="Area3D" parent="Object5" unique_id=1095018067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object5/Area3D" unique_id=1038580022]
+shape = SubResource("CylinderShape3D_s7k4l")
