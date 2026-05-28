@@ -36,7 +36,7 @@ func _ready() -> void:
 	get_tree().root.add_child(planet_nodes[1]) 
 	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
 	initial_door.request_planet_change.connect(on_planet_change_requested)
-	
+	AudioManager.bgm_cycle(1)
 
 func on_planet_change_requested(planet_ID : int):
 	public_planet_id = planet_ID
