@@ -55,7 +55,8 @@ const conf_sound : AudioStream = preload("res://sound fx exports/typewriter slid
 func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 	var Temp_SFX_Player = SFX_Player.duplicate()
 	Temp_SFX_Player.stream = sfx
-	get_tree().root.add_child(Temp_SFX_Player)
+	get_tree().root.add_child.call_deferred(Temp_SFX_Player)
+	await Temp_SFX_Player.tree_entered
 	if sfx == sfx_explode:
 			Temp_SFX_Player.volume_db -= 12.0
 	Temp_SFX_Player.pitch_scale == pitch_range

@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var walk_cycle_time: Timer = $"../walk_cycle_time"
-@onready var honk_delay: Timer = $"../honk_delay"
+@export var walk_cycle_time: Timer 
+@export var honk_delay: Timer
 
 func honk_sound_player():
 	var honk_time = honk_delay.duplicate()
