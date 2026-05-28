@@ -136,7 +136,6 @@ func interact():
 			await _set_door_anim(AnimStates.EXIT)
 			rig.visible = true
 			clone.queue_free()
-			AudioManager.bgm_cycle(destination_planet_ID)
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
 

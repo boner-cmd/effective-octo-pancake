@@ -42,11 +42,10 @@ func on_planet_change_requested(planet_ID : int):
 	public_planet_id = planet_ID
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
-	
 	hud_overlay.transition()
+	AudioManager.bgm_cycle(public_planet_id)
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
-	
 	current_planet = requested_planet
 	
 	# try to connect new door signal, whether required or not
