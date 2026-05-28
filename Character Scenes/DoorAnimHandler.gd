@@ -138,6 +138,8 @@ func interact():
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
+	else:
+		AudioManager.sfx_play(AudioManager.sfx_honk, -.5)
 
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:
