@@ -70,62 +70,26 @@ var bgm_nodes : Dictionary[int, AudioStream] = {
 ## TODO placeholder documentation
 func _ready() -> void:
 	
-	
-	# TODO verify the below comment
-	# music code doesn't work yet
-	new_bgm_stream = base_bgm_stream.duplicate()
-	new_bgm_stream.stream = bgm_nodes[0]
-	get_tree().root.add_child(new_bgm_stream)
-	new_bgm_stream.play()
-	
 	# initial setup for first planet, door, and bgm
 	get_tree().root.add_child(planet_nodes[0]) 
 	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
 	initial_door.request_planet_change.connect(on_planet_change_requested)
-	initial_door.request_music_change.connect(_bgm_track_cycle)
-
-func _bgm_track_cycle(planet : QuestManager.CharacterName):
-#	fade out old stream
-	var tween_old = get_tree().create_tween()
-	tween_old.tween_property(new_bgm_stream, "volume_linear", 0.0, .5) 
-	await tween_old.finished
-	new_bgm_stream = base_bgm_stream.duplicate()
-	new_bgm_stream.stream = bgm_nodes[planet]
-	get_tree().root.add_child(new_bgm_stream)
-	new_bgm_stream.play()
-
-## TODO delete this function if unused
-func _new_track_start():
-	pass
-
-
-## TODO delete this function if unused
-func on_playerExit_anim_start():
-	pass
-
-
-## TODO placeholder documentation
-func on_planet_change_requested(character : QuestManager.CharacterName):
-	current_planet_id = character
-	var requested_planet = planet_nodes[character]
-	var requested_bgm = bgm_nodes[character]
-	requested_planet.request_ready() # required to re-roll object locations on planet
+	AudioManager.bgm_cycle(1)
 	
-	hud_overlay.transition_hard_in()
+
+func on_planet_change_requested(planet_ID : int):
+	public_planet_id = planet_ID
+	var requested_planet = planet_nodes[planet_ID]
+	requested_planet.request_ready() # required to re-roll object locations on planet
+	hud_overlay.transition()
+	AudioManager.bgm_cycle(public_planet_id)
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
-	
-	# swap over planet and music
 	current_planet = requested_planet
-	current_music = requested_bgm
 	
-	_bgm_track_cycle(character)
-	
-	# try to connect new door and bgm signals, whether required or not
+	# try to connect new door signal, whether required or not
 	for door in get_tree().get_nodes_in_group("Door_Base"):
 		if !door.request_planet_change.is_connected(on_planet_change_requested):
 			door.request_planet_change.connect(on_planet_change_requested)
-		if !door.request_music_change.is_connected(_bgm_track_cycle):	
-			door.request_music_change.connect(_bgm_track_cycle)
 	
 	$PlayerCharacter.reset_player()
