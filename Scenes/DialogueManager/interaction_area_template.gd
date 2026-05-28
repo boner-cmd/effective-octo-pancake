@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var interact_ui : MarginContainer = %interact
 @onready var CanvasLayer_in : CanvasLayer = %CanvasLayer
-@onready var main_planet_id : int = get_tree().root.get_child(3).public_planet_id
+@onready var main_planet_id : int = 1
 @onready var speech_sound = AudioManager.speech_sound
 
 #this should only run if child is an NPC

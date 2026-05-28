@@ -8,6 +8,7 @@ var walk_cycle_timer : Timer
 #AudioStreamPlayers
 var SFX_Player : AudioStreamPlayer
 var BGM_Player : AudioStreamPlayer
+var temp_BGM_Player : AudioStreamPlayer
 
 #BGM
 const BGM_nodes : Dictionary[int, AudioStream] = {
@@ -62,6 +63,16 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 	Temp_SFX_Player.queue_free()
 
 #BGM cycle
+func bgm_cycle(planetID: int):
+	var tween_old = get_tree().create_tween()
+	tween_old.tween_property(temp_BGM_Player, "volume_linear", 0.0, .5)
+	await tween_old.finished
+	temp_BGM_Player.queue_free()
+	
+	temp_BGM_Player = BGM_Player.duplicate()
+	temp_BGM_Player.stream = BGM_nodes[planetID]
+	get_tree().root.add_child(temp_BGM_Player)
+	temp_BGM_Player.play()
 
 
 func _ready() -> void:
@@ -70,13 +81,17 @@ func _ready() -> void:
 	SFX_Player = AudioStreamPlayer.new()
 	SFX_Player.bus = "Sfx"
 	SFX_Player.autoplay = true
-	tree.add_child(SFX_Player)
+	tree.add_child.call_deferred(SFX_Player)
 	
 	BGM_Player = AudioStreamPlayer.new()
 	BGM_Player.bus = "Music"
 	BGM_Player.autoplay = true
-	tree.add_child(BGM_Player)
+	tree.add_child.call_deferred(BGM_Player)
 	
+	temp_BGM_Player = BGM_Player.duplicate()
+	temp_BGM_Player.stream = BGM_nodes[1]
+	get_tree().root.add_child.call_deferred(temp_BGM_Player)
+	temp_BGM_Player.play()
 	
 	
 	

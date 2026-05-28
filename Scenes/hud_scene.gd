@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	set_initial_visibility()
 	QuestManager.main_quest_complete.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
-	transition_hard_in()
+	transition()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
@@ -49,10 +49,15 @@ func _on_continue_button_pressed() -> void:
 func _on_main_quest_completion() -> void:
 	complete_stamp.visible = true
 	
-func transition_hard_in():
+func transition():
 	transition_color.visible = true
-	await get_tree().create_timer(.5 + randf()).timeout
+	await get_tree().create_timer(.1).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(transition_color, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.play()
+	await tween.finished
 	transition_color.visible = false
+	transition_color.modulate.a = 1.0
 	
 func transition_soft_in():
 	transition_color.visible = true

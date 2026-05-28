@@ -40,7 +40,6 @@ var door_mats : Dictionary[int, Material] = {
 signal exit_anim_finished()
 signal exit_anim_started()
 signal request_planet_change(planet_ID : int)
-signal request_music_change()
 
 func change_king_door():
 	if destination_planet_ID == 1:
@@ -121,9 +120,7 @@ func _on_door_spawn_radius_area_entered(_area: Area3D) -> void:
 func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
 	_set_door_anim(AnimStates.DESPAWN)
 
-	
 func interact():
-	#request_music_change.emit()
 	lock_check()
 	if !door_locked:
 		if player.exit_check == false:
@@ -139,6 +136,7 @@ func interact():
 			await _set_door_anim(AnimStates.EXIT)
 			rig.visible = true
 			clone.queue_free()
+			AudioManager.bgm_cycle(destination_planet_ID)
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
 
