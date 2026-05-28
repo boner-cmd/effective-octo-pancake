@@ -12,7 +12,6 @@ var temp_BGM_Player : AudioStreamPlayer
 
 #BGM
 const BGM_nodes : Dictionary[int, AudioStream] = {
-	0 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"), #temporary
 	1 : preload("res://music exports/king2026-05-2113_23_05.wav"),
 	2 : preload("res://music exports/horse2026-05-2217_28_31.wav"),
 	3 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
@@ -34,6 +33,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	19 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
 	20 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
 	21 : preload("res://music exports/king2026-05-2113_23_05.wav"),
+	22 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"), #title
 }
 
 #SFX player
@@ -91,7 +91,7 @@ func _ready() -> void:
 	tree.add_child.call_deferred(BGM_Player)
 	
 	temp_BGM_Player = BGM_Player.duplicate()
-	temp_BGM_Player.stream = BGM_nodes[0]
+	temp_BGM_Player.stream = BGM_nodes[22]
 	get_tree().root.add_child.call_deferred(temp_BGM_Player)
 	await temp_BGM_Player.tree_entered
 	temp_BGM_Player.play()
