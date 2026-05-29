@@ -1,10 +1,8 @@
 extends Node3D
 
-var new_bgm_stream : AudioStreamPlayer
 var current_planet_id : int = 0
 # CanvasLayer is $HUDOverlay
 
-@onready var base_bgm_stream: AudioStreamPlayer = $BGM_controller
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
 
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to

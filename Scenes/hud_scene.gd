@@ -8,11 +8,12 @@ extends CanvasLayer
 @onready var interact: MarginContainer = $Interact
 @onready var exit_label: Label = $Interact/MarginContainer/ExitLabel
 @onready var locked_label: Label = $Interact/MarginContainer/LockedLabel
-@onready var npc_label: Label = $Interact/MarginContainer/NPC
+@onready var npc_label: Label = $Interact/MarginContainer/NPC 
 
 @onready var player : CharacterBody3D
 @onready var interaction_detector
 var lock : bool = false
+var temp_interact : bool = false
 
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
@@ -27,6 +28,7 @@ func toggle_pausing_and_mouse() -> void:
 	get_tree().paused = !get_tree().paused
 	# using set_mouse_mode resolves a warning about using enums like ints
 	Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
@@ -34,6 +36,12 @@ func _input(event: InputEvent) -> void:
 			toggle_pausing_and_mouse()
 		stickerbook.visible = false
 		pause_menu.visible = !pause_menu.visible
+		if DialogueManager.is_dialogue_active == true:
+			var TextBox = get_child(5)
+			TextBox.visible = !TextBox.visible
+		if interact.visible == true:
+			interact.visible = !interact.visible
+			temp_interact = true
 	if event.is_action_pressed("toggle_stickerbook"):
 		if !pause_menu.visible: # don't allow showing the stickerbook while paused
 			toggle_pausing_and_mouse()
@@ -64,8 +72,14 @@ func _on_quit_button_pressed() -> void:
 
 func _on_continue_button_pressed() -> void:
 	get_tree().paused = false
+	AudioManager.sfx_play(AudioManager.sfx_blip)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pause_menu.visible = false
+	if DialogueManager.is_dialogue_active == true:
+		var TextBox = get_child(5)
+		TextBox.visible = true
+	if temp_interact == true:
+		interact.visible = true
 
 func _on_main_quest_completion() -> void:
 	complete_stamp.visible = true

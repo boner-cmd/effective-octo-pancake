@@ -63,6 +63,8 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 	await Temp_SFX_Player.tree_entered
 	if sfx == sfx_explode:
 			Temp_SFX_Player.volume_db -= 12.0
+	if sfx == sfx_blip:
+			Temp_SFX_Player.volume_db += 20
 	Temp_SFX_Player.pitch_scale += pitch_range
 	Temp_SFX_Player.play()
 	await Temp_SFX_Player.finished
@@ -92,13 +94,16 @@ func _ready() -> void:
 	BGM_Player = AudioStreamPlayer.new()
 	BGM_Player.bus = "Music"
 	BGM_Player.autoplay = true
+	BGM_Player.process_mode = PROCESS_MODE_ALWAYS
 	tree.add_child.call_deferred(BGM_Player)
 	
 	temp_BGM_Player = BGM_Player.duplicate()
 	temp_BGM_Player.stream = BGM_nodes[21]
 	get_tree().root.add_child.call_deferred(temp_BGM_Player)
+	temp_BGM_Player.process_mode = PROCESS_MODE_ALWAYS
 	await temp_BGM_Player.tree_entered
 	temp_BGM_Player.play()
+	
 	
 	
 	
