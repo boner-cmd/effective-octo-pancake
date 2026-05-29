@@ -3,6 +3,9 @@ extends Node3D
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
 var player: CharacterBody3D
+var temp_rotation : Vector3
+var towards_rotation : float
+
 var door_locked : bool = false
 var current_anim := AnimStates.STASIS
 var door_mats : Dictionary[int, Material] = {
@@ -143,7 +146,8 @@ func interact():
 
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:
-		var sphere_center = Vector3(0.0,0.0,0.0)
-		var toDoor = global_position - sphere_center
-		var surface_normal = toDoor.normalized()
-		door_skele.look_at(player.global_position, surface_normal)
+		temp_rotation = self.rotation
+		self.look_at(player.global_position)
+		towards_rotation = self.rotation.y
+		self.rotation = temp_rotation
+		self.rotation.y = lerp_angle(temp_rotation.y, towards_rotation, 1)
