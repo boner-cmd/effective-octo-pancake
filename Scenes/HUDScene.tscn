@@ -458,12 +458,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -96.0
+offset_left = -128.0
 offset_top = -170.0
-offset_right = 96.0
-offset_bottom = -130.0
+offset_right = 128.0
+offset_bottom = -118.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Interact" unique_id=1453118693]
 texture_filter = 1
@@ -476,15 +477,17 @@ patch_margin_bottom = 16
 
 [node name="MarginContainer" type="MarginContainer" parent="Interact" unique_id=423976122]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
 [node name="ExitLabel" type="Label" parent="Interact/MarginContainer" unique_id=603604430]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 text = "travel through the void"
 vertical_alignment = 1
 
@@ -492,6 +495,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 text = "void locked"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -500,6 +504,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 text = "press F to pay respects"
 vertical_alignment = 1
 

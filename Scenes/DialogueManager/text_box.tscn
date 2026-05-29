@@ -37,6 +37,7 @@ animations = [{
 }]
 
 [node name="TextBox" type="MarginContainer" unique_id=1198593662]
+z_index = -5
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -83,10 +84,10 @@ centered = false
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=874844112]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 18
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=277974344]
 layout_mode = 2

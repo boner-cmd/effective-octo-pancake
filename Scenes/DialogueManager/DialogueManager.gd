@@ -694,6 +694,8 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 			request_item_add.emit(current_npc)
 			if current_npc == QuestManager.CharacterName.SLIME:
 				planet_state_change.emit()
+			if current_npc == QuestManager.CharacterName.GREASE:
+				planet_state_change.emit()
 		CONV_STATE.PLAYER_GIVE:
 			print("SIGNAL TO GIVE ITEM TO: ", current_npc)
 			current_npc = current_npc
