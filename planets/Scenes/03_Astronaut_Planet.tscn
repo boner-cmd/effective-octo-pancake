@@ -47,7 +47,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_eoa84")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_76dvl")
 surface_material_override/0 = ExtResource("3_pxfi8")
 
@@ -57,10 +57,7 @@ mesh = SubResource("SphereMesh_biw4r")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_73e37")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="astronaut" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="3" unique_id=297081268]
+[node name="astronaut" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="1" unique_id=297081268]
 visible = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1500770957]

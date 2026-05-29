@@ -43,14 +43,14 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_kiytl")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_jbkmu")
 surface_material_override/0 = ExtResource("3_s8fxi")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_qrq4l")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
 material_override = ExtResource("5_0dw7n")
 surface_material_override/0 = ExtResource("3_s8fxi")
 
@@ -66,10 +66,7 @@ destination_planet_ID = 19
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_c2lp6")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="19" unique_id=403637881]
+[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
 visible = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1586051049]

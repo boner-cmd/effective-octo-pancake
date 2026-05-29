@@ -1,6 +1,5 @@
 MAIN
 	BUGS
-		Music to continue on PAUSE state
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
 
 	Victory Scene + Credits Implementation
@@ -13,7 +12,6 @@ MAIN
 
 MAP
 	Current Position indicator
-	Completion State implementation
 	Update Textures
 	
 
@@ -21,7 +19,6 @@ DIALOGUES
 	Camera angles
 	Brief pause in convo for Zelda-style receive item
 	Unique sounds
-	"Skip Dialogue" option for Has-Met state
 	Better text area sizing + placement
 	
 
@@ -34,8 +31,6 @@ VFX PASS
 	[Identify]
 	Door Exit particles
 	Receive Item particles
-	
-	
 	
 
 UI PASS
@@ -56,3 +51,4 @@ POLISH IDEAS
 	honk counter
 	Unique boxes per NPCs (?)
 	Unique type
+	

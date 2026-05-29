@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dd1q0dg8wn1nx"]
 
 [ext_resource type="Script" uid="uid://cfrvqrfsuonyf" path="res://Scenes/DialogueManager/interaction_area_template.gd" id="1_5i06m"]
-[ext_resource type="Script" uid="uid://nhug5lxcqucn" path="res://Scenes/DialogueManager/DialogueScripts/NPC_TemplateScript.gd" id="3_ihs6g"]
 [ext_resource type="PackedScene" uid="uid://4vq3mwkin4tn" path="res://Character Scenes/NPCs/astronaut.tscn" id="4_rmjit"]
 [ext_resource type="PackedScene" uid="uid://b2caujdauh4hq" path="res://Character Scenes/NPCs/bodhisattva.tscn" id="5_wgsat"]
 [ext_resource type="PackedScene" uid="uid://dl64ndaxlgl11" path="res://Character Scenes/NPCs/Body_Organs.tscn" id="6_uypxe"]
@@ -27,107 +26,100 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
 radius = 1.0
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_y5h15"]
-height = 1.0
-
 [node name="InteractionArea" type="Node3D" unique_id=1441746603]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1533181775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 6, 0)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_5i06m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1777274432]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_ihs6g")
 
-[node name="PlaceholderMesh" type="MeshInstance3D" parent="Area3D" unique_id=1970345478]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1275613, 0)
-mesh = SubResource("CapsuleMesh_y5h15")
-script = ExtResource("3_ihs6g")
-
 [node name="astronaut" parent="Area3D" unique_id=297081268 instance=ExtResource("4_rmjit")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="bodhisattva" parent="Area3D" unique_id=1700854843 instance=ExtResource("5_wgsat")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="body with organs" parent="Area3D" unique_id=500840685 instance=ExtResource("6_uypxe")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="festering mass" parent="Area3D" unique_id=1082976903 instance=ExtResource("7_tnrcw")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="gatekeeper unlocked" parent="Area3D" unique_id=1866931042 instance=ExtResource("8_1nt4o")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="horse" parent="Area3D" unique_id=1429058884 instance=ExtResource("10_0ltci")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="idea guy" parent="Area3D" unique_id=1608837145 instance=ExtResource("11_pfi2n")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="individuated individual" parent="Area3D" unique_id=1840200528 instance=ExtResource("12_03vyx")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="king" parent="Area3D" unique_id=1530485904 instance=ExtResource("13_s6xia")]
-transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, -1.128, 0)
+transform = Transform3D(2.1855694e-08, 0.5, 4.371139e-08, 0.5, -2.1855694e-08, 0, 1.9106855e-15, 4.371139e-08, -0.5, 0, -1.1280003, 0)
 visible = false
 
 [node name="lamp" parent="Area3D" unique_id=162153067 instance=ExtResource("14_js1ou")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -1.128, 0)
+transform = Transform3D(-0.15, 0, 1.3113417e-08, 0, 0.15, 0, -1.3113417e-08, 0, -0.15, 0, -1.1280003, 0)
 visible = false
 
 [node name="michaelwave" parent="Area3D" unique_id=1980506230 instance=ExtResource("15_iblb7")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="body without organs" parent="Area3D" unique_id=265873924 instance=ExtResource("16_50gmm")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="o" parent="Area3D" unique_id=454906086 instance=ExtResource("17_rltig")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="o-eye\'d deer" parent="Area3D" unique_id=728603670 instance=ExtResource("18_ey1ty")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="q" parent="Area3D" unique_id=292895040 instance=ExtResource("19_k8mm5")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="robot" parent="Area3D" unique_id=1916101213 instance=ExtResource("20_6b0et")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="sisyphus" parent="Area3D" unique_id=403637881 instance=ExtResource("21_ub32n")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="snowman" parent="Area3D" unique_id=832919613 instance=ExtResource("22_lspox")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
+transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
 [node name="slime_mould" parent="Area3D" unique_id=1114862664 instance=ExtResource("36_6b0et")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93801594, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.93801594, 0)
 visible = false
 
 [node name="grease_puddle" parent="Area3D" unique_id=513399140 instance=ExtResource("37_ub32n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93801594, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.93801594, 0)
 visible = false
 
 [node name="gibberish" parent="Area3D" unique_id=1320364681 instance=ExtResource("9_rxrm2")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.284604, -0.91557693, 0.2671622)
+transform = Transform3D(-0.15, 0, 1.3113417e-08, 0, 0.15, 0, -1.3113417e-08, 0, -0.15, 0.28460404, -0.91557693, -0.26716217)
 visible = false
 script = null
 

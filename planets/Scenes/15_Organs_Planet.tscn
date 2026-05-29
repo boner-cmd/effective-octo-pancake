@@ -44,7 +44,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_23ujk")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 surface_material_override/0 = ExtResource("2_0dh2h")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1213588319]
@@ -58,10 +58,7 @@ destination_planet_ID = 6
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_3w53k")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="body with organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="5" unique_id=500840685]
+[node name="body with organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="3" unique_id=500840685]
 visible = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=189983169]

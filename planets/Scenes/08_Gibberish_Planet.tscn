@@ -36,10 +36,7 @@ surface_material_override/0 = ExtResource("3_i5phk")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_660us")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="gibberish" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1320364681]
+[node name="gibberish" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="21" unique_id=1320364681]
 visible = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1489584397]

@@ -46,38 +46,35 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_hb5q0")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_swx71")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="CubedSkybox2" parent="." unique_id=991346088 instance=ExtResource("1_hb5q0")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
 material_override = ExtResource("4_3pjkr")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_m2m7x")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
 material_override = ExtResource("6_vlnvu")
 surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_36we4")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=728603670 groups=["Completion_Change"]]
+[node name="o-eye\'d deer" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="14" unique_id=728603670 groups=["Completion_Change"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.230259, 0)
 visible = true
 script = ExtResource("9_36we4")
 
-[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=1495719072]
+[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=450652402]
 visible = false
 
-[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=672897289]
+[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=1043451508]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1046663889]

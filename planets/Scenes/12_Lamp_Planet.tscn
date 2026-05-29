@@ -47,7 +47,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_v5l73")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 surface_material_override/0 = ExtResource("2_mr5si")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1953236752]
@@ -56,10 +56,7 @@ surface_material_override/0 = ExtResource("3_d7g5m")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_5xo3p")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="lamp" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="12" unique_id=162153067 groups=["Completion_Change"]]
+[node name="lamp" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="10" unique_id=162153067 groups=["Completion_Change"]]
 visible = true
 script = ExtResource("6_5xo3p")
 

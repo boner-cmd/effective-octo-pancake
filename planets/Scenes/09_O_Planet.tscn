@@ -47,21 +47,21 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_aejfo")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_pkas1")
 surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_xtds4")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1272935855]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
 material_override = ExtResource("5_31abu")
 surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="CubedSkybox2" parent="." unique_id=1521302041 instance=ExtResource("1_aejfo")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
 material_override = ExtResource("6_oegdf")
 surface_material_override/0 = ExtResource("3_q6mny")
 
@@ -69,7 +69,7 @@ surface_material_override/0 = ExtResource("3_q6mny")
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 visible = false
 
-[node name="Cubed_Planet" parent="Cubed_Planet2" index="0" unique_id=1272935855]
+[node name="Cubed_Planet" parent="Cubed_Planet2" index="0" unique_id=1134823557]
 material_override = ExtResource("7_7nae5")
 surface_material_override/0 = ExtResource("3_q6mny")
 
@@ -90,10 +90,7 @@ destination_planet_ID = 12
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("10_fvbbk")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="15" unique_id=454906086 groups=["Completion_Change"]]
+[node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="13" unique_id=454906086 groups=["Completion_Change"]]
 visible = true
 script = ExtResource("11_k3bn4")
 

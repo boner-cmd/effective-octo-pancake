@@ -42,7 +42,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_77aw3")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=250762747]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_c3pda")
 surface_material_override/0 = ExtResource("3_dq6qn")
 
@@ -52,10 +52,7 @@ mesh = SubResource("SphereMesh_adu81")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_57yoy")]
 
-[node name="PlaceholderMesh" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1970345478]
-visible = false
-
-[node name="slime_mould" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="21" unique_id=1114862664]
+[node name="slime_mould" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="19" unique_id=1114862664]
 visible = true
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_itxan")]
