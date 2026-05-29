@@ -1,7 +1,9 @@
 MAIN
 	BUGS
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
-
+		doors sometimes remain active after 
+		deer backwards? completion change mesh 
+		NPC colliders
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state
 	Michaelwave assets/dialogue

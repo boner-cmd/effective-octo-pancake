@@ -7,6 +7,8 @@ var use_temp_camera_door : bool = false
 var temp_camera : Camera3D
 var make_camera	: bool = true
 var npc_camera_locator = Node3D
+var temp_look : bool = true
+
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
@@ -98,10 +100,14 @@ func _process(delta: float) -> void:
 			temp_camera.global_rotation = _camera.global_rotation
 			temp_camera.current = true
 		if DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
-			temp_camera.global_position = npc_camera_locator.global_position
-			temp_camera.look_at(collision_shape_3d.global_position, up_direction)
+			
+			if temp_look:
+				temp_camera.global_position = npc_camera_locator.global_position
+				temp_camera.look_at(collision_shape_3d.global_position, up_direction)
+				temp_look = false
+			
 		if use_temp_camera_door:
-			var weight : float = .15
+			var weight : float = .02
 			temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
 			temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
 			temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
@@ -109,6 +115,7 @@ func _process(delta: float) -> void:
 	elif temp_camera:
 		temp_camera.queue_free()
 		make_camera = true
+		temp_look = true
 
 func _physics_process(delta: float) -> void:
 	if !ray_cast_3d.is_colliding():
