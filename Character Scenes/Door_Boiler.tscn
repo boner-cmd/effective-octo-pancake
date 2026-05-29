@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cea4qqppfgm2"]
 
 [ext_resource type="PackedScene" uid="uid://df67w758w3f4v" path="res://Character Scenes/door.tscn" id="2_coq8p"]
-[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_cyo0d"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cyo0d"]
 radius = 0.2
@@ -24,47 +23,6 @@ transform = Transform3D(-1, -4.5753543e-09, -8.730296e-08, 0, 0.99862945, -0.052
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999999, 0)
 collision_layer = 16
 collision_mask = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="DoorBaseModel/DoorInteractRadius" unique_id=260731792]
-unique_name_in_owner = true
-follow_viewport_enabled = true
-
-[node name="interact" type="MarginContainer" parent="DoorBaseModel/DoorInteractRadius/CanvasLayer" unique_id=6819583]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -170.0
-offset_right = 96.0
-offset_bottom = -130.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="DoorBaseModel/DoorInteractRadius/CanvasLayer/interact" unique_id=1479198824]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("2_cyo0d")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="MarginContainer" type="MarginContainer" parent="DoorBaseModel/DoorInteractRadius/CanvasLayer/interact" unique_id=228315921]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Label" type="Label" parent="DoorBaseModel/DoorInteractRadius/CanvasLayer/interact/MarginContainer" unique_id=328678636]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "press F to pay respects"
-vertical_alignment = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBaseModel/DoorInteractRadius" unique_id=1748855025]
 shape = SubResource("CylinderShape3D_cyo0d")

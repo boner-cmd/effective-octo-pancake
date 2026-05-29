@@ -657,7 +657,7 @@ const debug : Dictionary[QuestManager.CharacterName, Array] = {
 }
 
 var dialogue_state : CONV_STATE = CONV_STATE.FINISHED
-var canvas_layer : CanvasLayer # TODO figure out how to connect this to the HUD
+var hud_overlay : CanvasLayer
 var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.tscn")
 var text_box : Node
 var current_line_index : int = 0
@@ -678,6 +678,7 @@ var sisyphus_lock : bool = true
 var gate_lock : bool = true
 var king2_lock : bool = true
 var use_debug_lines : bool = true
+
 
 
 func _unhandled_input(event):
@@ -721,7 +722,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		# DEBUG
 		print("Character name: ", planet_id)
 		is_dialogue_active = true
-		canvas_layer = CanvasLayer_in
+		hud_overlay = CanvasLayer_in
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
 		# DEBUG alias for clarity 
@@ -852,9 +853,10 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 			planet_state_change.emit()
 
 func show_text_box():
+	hud_overlay = $/root/MainScene/HUDOverlay
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
-	canvas_layer.add_child(text_box)
+	hud_overlay.add_child(text_box) #need to connect this to HUD?
 	text_box.display_text(dialogue_lines[current_line_index], sfx)
 	can_advance_line = false
 

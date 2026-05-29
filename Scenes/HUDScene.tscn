@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bfkcyyc7h443b" path="res://planets/textures/Skybox Textures/bodhisattva skybox.png" id="22_4u7pl"]
 [ext_resource type="Texture2D" uid="uid://cqi468vylubn5" path="res://Placeholder Assets (UI)/completed-stamp/cropped_complete.svg" id="23_d34sf"]
 [ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="23_ppan7"]
+[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="24_jqj6d"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d34sf"]
 
@@ -48,6 +49,7 @@ script = ExtResource("1_1m71x")
 
 [node name="InventoryBackgroundMargin" type="MarginContainer" parent="." unique_id=706599872]
 process_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -208,6 +210,7 @@ text = "Quit
 "
 
 [node name="StickerbookBackground" type="TextureRect" parent="." unique_id=432696859]
+visible = false
 z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
@@ -447,6 +450,58 @@ rotation = -0.3159046
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("23_d34sf")
 expand_mode = 5
+
+[node name="Interact" type="MarginContainer" parent="." unique_id=128376500]
+z_index = -4
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -170.0
+offset_right = 96.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Interact" unique_id=1453118693]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("24_jqj6d")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Interact" unique_id=423976122]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ExitLabel" type="Label" parent="Interact/MarginContainer" unique_id=603604430]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "travel through the void"
+vertical_alignment = 1
+
+[node name="LockedLabel" type="Label" parent="Interact/MarginContainer" unique_id=503821312]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "void locked"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NPC" type="Label" parent="Interact/MarginContainer" unique_id=845987720]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "press F to pay respects"
+vertical_alignment = 1
 
 [connection signal="pressed" from="PauseBackground/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseBackground/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
