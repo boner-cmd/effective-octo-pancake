@@ -123,4 +123,7 @@ transform = Transform3D(-0.15, 0, 1.3113417e-08, 0, 0.15, 0, -1.3113417e-08, 0, 
 visible = false
 script = null
 
+[node name="NPC_Camera_Locator" type="Node3D" parent="Area3D" unique_id=1552002703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9434373, 0, -2.0386915)
+
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]

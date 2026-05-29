@@ -3,9 +3,11 @@ extends CharacterBody3D
 
 var temp_camera_position : Vector3
 var temp_camera_rotation : Vector3
-var use_temp_camera : bool = false
+var use_temp_camera_door : bool = false
 var temp_camera : Camera3D
 var make_camera	: bool = true
+var npc_camera_locator = Node3D
+@onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
 @export var tilt_upper_limit := PI / 3.0
@@ -77,7 +79,6 @@ func _input(event: InputEvent) -> void:
 	if is_on_floor() and event.is_action_pressed("jump"):
 		clown._set_player_anim(clown.AnimStates.JUMP)
 		
-
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
 		event is InputEventMouseMotion and
@@ -86,24 +87,30 @@ func _unhandled_input(event: InputEvent) -> void:
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
-func _physics_process(delta: float) -> void:
-	if use_temp_camera:
-		if make_camera:
+func _process(delta: float) -> void:
+	#camera transition control
+	if use_temp_camera_door or DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
+		if make_camera: #makes duplicate camera
 			make_camera = false
 			temp_camera = _camera.duplicate()
 			get_tree().root.add_child(temp_camera)
 			temp_camera.global_position = _camera.global_position
 			temp_camera.global_rotation = _camera.global_rotation
 			temp_camera.current = true
-		var weight : float = .3
-		temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
-		temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
-		temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
-		temp_camera.global_rotation.z = lerp_angle(temp_camera.global_rotation.z, temp_camera_rotation.z, weight * delta)
+		if DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
+			temp_camera.global_position = npc_camera_locator.global_position
+			temp_camera.look_at(collision_shape_3d.global_position, up_direction)
+		if use_temp_camera_door:
+			var weight : float = .15
+			temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
+			temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
+			temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
+			temp_camera.global_rotation.z = lerp_angle(temp_camera.global_rotation.z, temp_camera_rotation.z, weight * delta)
 	elif temp_camera:
 		temp_camera.queue_free()
 		make_camera = true
-	
+
+func _physics_process(delta: float) -> void:
 	if !ray_cast_3d.is_colliding():
 		current_raycast = reset_raycast
 	

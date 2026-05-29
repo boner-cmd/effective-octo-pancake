@@ -6,6 +6,7 @@ extends Node3D
 var player : CharacterBody3D
 var temp_rotation : Vector3
 var towards_rotation : float
+@onready var npc_camera_locator: Node3D = $NPC_Camera_Locator
 
 
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _process(delta: float) -> void:
 	towards_rotation = self.rotation.y
 	self.rotation = temp_rotation
 	self.rotation.y = lerp_angle(temp_rotation.y, towards_rotation, 2 * delta)
-
+	player.npc_camera_locator = npc_camera_locator
 
 #this should only run if child is an NPC
 func interact() -> void:
