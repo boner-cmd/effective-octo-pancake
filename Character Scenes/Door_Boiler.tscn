@@ -19,6 +19,9 @@ collision_mask = 1
 [node name="PlayerAnimationPosition" type="Node3D" parent="DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(1012687003, 1938978798) index="3" unique_id=1635482596]
 transform = Transform3D(-1, -4.5753543e-09, -8.730296e-08, 0, 0.99862945, -0.052335955, 8.742278e-08, -0.052335955, -0.99862945, 0, 0.21699762, -0.604)
 
+[node name="DoorCameraPosition" type="Node3D" parent="DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(1012687003, 1938978798) index="4" unique_id=619506464]
+transform = Transform3D(-1, 6.1820167e-09, -8.720393e-08, 0, 0.99749666, 0.07071403, 8.742278e-08, 0.07071403, -0.99749666, 9.0423086e-08, 3.4369879, -4.9290457)
+
 [node name="DoorInteractRadius" type="Area3D" parent="DoorBaseModel" unique_id=1921781608 groups=["Exit_Door"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999999, 0)
 collision_layer = 16

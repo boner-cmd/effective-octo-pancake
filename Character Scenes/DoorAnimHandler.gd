@@ -2,7 +2,11 @@ extends Node3D
 
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
-var player: CharacterBody3D
+var player : CharacterBody3D
+
+@onready var temp_camera_location : Node3D = $DoorAnims/DoorCameraPosition
+var door_camera_position : Vector3
+var door_camera_rotation : Vector3
 var temp_rotation : Vector3
 var towards_rotation : float
 
@@ -126,6 +130,9 @@ func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
 func interact():
 	lock_check()
 	if !door_locked:
+		player.use_temp_camera = true
+		player.temp_camera_position = temp_camera_location.global_position
+		player.temp_camera_rotation = temp_camera_location.global_rotation
 		if player.exit_check == false:
 			player.exit_check = true
 			var rig = player.get_child(2)
@@ -141,6 +148,7 @@ func interact():
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
+			player.use_temp_camera = false
 	else:
 		AudioManager.sfx_play(AudioManager.sfx_honk, -.5)
 

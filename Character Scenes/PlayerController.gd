@@ -1,5 +1,12 @@
 extends CharacterBody3D
 #camera tweaks
+
+var temp_camera_position : Vector3
+var temp_camera_rotation : Vector3
+var use_temp_camera : bool = false
+var temp_camera : Camera3D
+var make_camera	: bool = true
+
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 5.0
@@ -45,6 +52,10 @@ func reset_player():
 	position = respawn_pos
 	rotation = respawn_rot
 	exit_check = false
+	
+func camera_change_door() -> void:
+	pass
+	
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
@@ -76,6 +87,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
+	if use_temp_camera:
+		if make_camera:
+			make_camera = false
+			temp_camera = _camera.duplicate()
+			get_tree().root.add_child(temp_camera)
+			temp_camera.global_position = _camera.global_position
+			temp_camera.global_rotation = _camera.global_rotation
+			temp_camera.current = true
+		var weight : float = .3
+		temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
+		temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
+		temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
+		temp_camera.global_rotation.z = lerp_angle(temp_camera.global_rotation.z, temp_camera_rotation.z, weight * delta)
+	elif temp_camera:
+		temp_camera.queue_free()
+		make_camera = true
+	
 	if !ray_cast_3d.is_colliding():
 		current_raycast = reset_raycast
 	
