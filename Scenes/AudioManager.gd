@@ -47,6 +47,10 @@ const sfx_honk : AudioStream = preload("uid://eqfmf8j0l8u2")
 const sfx_despawn : AudioStream = preload("uid://7banle6yv2gq")
 const sfx_spawn : AudioStream = preload("uid://t6h5ww03rkm7")
 const sfx_exit : AudioStream = preload("uid://dklltp1vyr8pp")
+#Misc SFX
+const sfx_blip : AudioStream = preload("res://sound fx exports/menu choice blip2026-05-2222_33_19.wav")
+
+
 
 #speech sounds
 const speech_sound : AudioStream = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")

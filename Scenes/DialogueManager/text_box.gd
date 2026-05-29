@@ -5,14 +5,14 @@ extends MarginContainer
 @onready var audio_player = $AudioStreamPlayer
 @onready var next_indicator = $NinePatchRect/Control/NextIndicator
 
-const  MAX_WIDTH = 256
+const  MAX_WIDTH = 512
 
 var text : String = ""
 var letter_index : int = 0
-
-var letter_time : float = 0.00000001 #0.05
-var space_time : float = 0.00000001 #0.08
-var punctuation_time : float = 0.00000001 #0.2
+var default_letter_time : float = .02
+var letter_time : float = 0.05
+var space_time : float = 0.01
+var punctuation_time : float = 0.0000001
 
 signal finished_displaying()
 
@@ -31,19 +31,28 @@ func display_text(text_to_display: String, speech_sfx: AudioStream):
 		custom_minimum_size.y = size.y
 	
 	#global_position.x -= size.x / 2
-	global_position.y -= size.y - 200
+	#global_position.y -= size.y - 200
 	
 	label.text = ""
+	
+	
 	_display_letter()
 	
 func _display_letter():
 	label.text += text[letter_index]
 	
+	#this is to skip dialogue windows
+	if Input.is_action_pressed("advance_dialogue") and letter_index > 2:
+		for Letters in letter_index:
+			text.erase(Letters)
+		label.text = text
+		letter_index = text.length() -1
+
 	letter_index += 1
 	if letter_index >= text.length():
 		finished_displaying.emit()
 		next_indicator.visible = true
-		AudioManager.sfx_play(AudioManager.conf_sound, 0.0)
+		AudioManager.sfx_play(AudioManager.sfx_blip, 1.0)
 		return
 		
 	match text[letter_index]:
