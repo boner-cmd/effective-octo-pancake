@@ -102,9 +102,9 @@ func _process(delta: float) -> void:
 			temp_camera.current = true
 		if DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
 			if temp_look:
-				self.look_at(temp_npc.global_position)
-				self.rotation.x = 0
-				self.rotation.z = 0
+				#self.look_at(temp_npc.global_position)
+				#self.rotation.x = 0
+				#self.rotation.z = 0
 				camera_point_interaction()
 				temp_camera.global_position = npc_camera_locator.global_position
 				temp_camera.look_at(camera_target, up_direction)
