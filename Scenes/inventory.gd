@@ -74,7 +74,6 @@ const origin_by_desiring_npc :  Dictionary[QuestManager.CharacterName, QuestMana
 
 func add_item(npc_name : QuestManager.CharacterName) -> void:
 	update_slots() # move items out of the third slot, just in case
-	print("SLOT 3 = ", inventory_slots.Slot3)
 	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
 	assert(item_texts.has(npc_name), "Tried to add an unknown item, check npc_name")
 	inventory_slots.Slot3 = npc_name
@@ -83,7 +82,7 @@ func add_item(npc_name : QuestManager.CharacterName) -> void:
 	update_slots()
 	
 func remove_item(npc_name : QuestManager.CharacterName) -> void:
-	var found_key : String = inventory_slots.find_key(npc_name) #FLAG - have wrong item for NPC, tries to assign Nil to String
+	var found_key : String = inventory_slots.find_key(npc_name)
 	assert(found_key, "Tried to remove a non-existent item from inventory, check npc_name")
 	inventory_slots[found_key] = false
 	match found_key:
@@ -136,7 +135,7 @@ func update_slots() -> void:
 		label_slot2.text = item_texts[inventory_slots.Slot2]
 		item_slot2.visible = true
 	if slot_state & 0b001:
-		item_slot3.texture = item_resources[inventory_slots.Slot3] #FLAG
+		item_slot3.texture = item_resources[inventory_slots.Slot3]
 		label_slot3.text = item_texts[inventory_slots.Slot3]
 		item_slot3.visible = true
 
@@ -149,5 +148,5 @@ func _ready() -> void:
 func _on_item_add_requested(giver_name : QuestManager.CharacterName) -> void:
 	add_item(giver_name)
 
-func _on_item_remove_requested(receiver_name : QuestManager.CharacterName) -> void: #needs to be typed from 
+func _on_item_remove_requested(receiver_name : QuestManager.CharacterName) -> void:
 	remove_item(origin_by_desiring_npc[receiver_name])
