@@ -39,8 +39,14 @@ func _on_area_entered(area: Area3D) -> void:
 		var door = area.get_parent().door_locked
 		exit_area_entered.emit(door)
 	else:
+		var npc_camera_locator: Node3D
+		for node in area.get_children():
+			if node.name == "NPC_Camera_Locator":
+				npc_camera_locator = node
 		current_npc = area
 		npc_entered.emit()
+		player.npc_camera_locator = npc_camera_locator
+		player.temp_npc = area
 
 func _on_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Door_Spawn"):

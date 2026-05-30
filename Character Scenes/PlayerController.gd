@@ -8,6 +8,8 @@ var temp_camera : Camera3D
 var make_camera	: bool = true
 var npc_camera_locator = Node3D
 var temp_look : bool = true
+var camera_target : Vector3
+var temp_npc = Node3D
 
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
@@ -57,9 +59,8 @@ func reset_player():
 	rotation = respawn_rot
 	exit_check = false
 	
-func camera_change_door() -> void:
-	pass
-	
+func camera_point_interaction() -> void:
+	camera_target = lerp(self.global_position, temp_npc.global_position, .5)
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
@@ -100,18 +101,21 @@ func _process(delta: float) -> void:
 			temp_camera.global_rotation = _camera.global_rotation
 			temp_camera.current = true
 		if DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
-			
 			if temp_look:
+				self.look_at(temp_npc.global_position)
+				self.rotation.x = 0
+				self.rotation.z = 0
+				camera_point_interaction()
 				temp_camera.global_position = npc_camera_locator.global_position
-				temp_camera.look_at(collision_shape_3d.global_position, up_direction)
+				temp_camera.look_at(camera_target, up_direction)
 				temp_look = false
 			
-		if use_temp_camera_door:
-			var weight : float = .02
-			temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
-			temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
-			temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
-			temp_camera.global_rotation.z = lerp_angle(temp_camera.global_rotation.z, temp_camera_rotation.z, weight * delta)
+		#if use_temp_camera_door:
+			#var weight : float = .02
+			#temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
+			#temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
+			#temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
+			#temp_camera.global_rotation.z = lerp_angle(temp_camera.global_rotation.z, temp_camera_rotation.z, weight * delta)
 	elif temp_camera:
 		temp_camera.queue_free()
 		make_camera = true
