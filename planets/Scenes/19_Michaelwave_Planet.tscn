@@ -54,6 +54,7 @@ material_override = ExtResource("5_bve7j")
 surface_material_override/0 = ExtResource("3_uagmr")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_vm1ek")]
+transform = Transform3D(0.46944076, 0.88296396, 0, -0.88296396, 0.46944076, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 11

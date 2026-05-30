@@ -8,7 +8,7 @@ radius = 0.2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ua6hq"]
 radius = 3.0
 
-[node name="Door" type="Node3D" unique_id=683049571]
+[node name="Door_Offset" type="Node3D" unique_id=683049571]
 
 [node name="DoorBaseModel" parent="." unique_id=1012687003 groups=["Door_Base"] instance=ExtResource("2_coq8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
@@ -37,9 +37,6 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBaseModel/DoorSpawnRadius" unique_id=1845192206]
 shape = SubResource("CylinderShape3D_ua6hq")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=941331369]
-bus = &"Sfx"
 
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]

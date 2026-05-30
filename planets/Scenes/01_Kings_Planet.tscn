@@ -71,6 +71,8 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("CylinderShape3D_ndrcc")
 
+[connection signal="tree_exiting" from="Door/DoorBaseModel" to="Door/DoorBaseModel" method="_on_tree_exiting"]
+
 [editable path="CubedSkybox"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]

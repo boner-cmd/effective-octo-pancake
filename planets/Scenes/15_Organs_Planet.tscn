@@ -52,6 +52,7 @@ material_overlay = ExtResource("3_0dh2h")
 mesh = SubResource("SphereMesh_2vppk")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_y4idk")]
+transform = Transform3D(1, 0, 0, 0, 0.46627858, 0.88463795, 0, -0.88463795, 0.46627858, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 6

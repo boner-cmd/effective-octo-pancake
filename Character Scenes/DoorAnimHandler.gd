@@ -127,12 +127,12 @@ func _on_door_spawn_radius_area_entered(_area: Area3D) -> void:
 func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
 	_set_door_anim(AnimStates.DESPAWN)
 
+func stasis():
+	_set_door_anim(AnimStates.STASIS)
+
 func interact():
 	lock_check()
 	if !door_locked:
-		player.use_temp_camera_door = true
-		player.temp_camera_position = temp_camera_location.global_position
-		player.temp_camera_rotation = temp_camera_location.global_rotation
 		if player.exit_check == false:
 			player.exit_check = true
 			var rig = player.get_child(2)
@@ -148,14 +148,11 @@ func interact():
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
-			player.use_temp_camera_door = false
 	else:
 		AudioManager.sfx_play(AudioManager.sfx_honk, -.5)
 
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:
-		temp_rotation = self.rotation
 		self.look_at(player.global_position)
-		towards_rotation = self.rotation.y
-		self.rotation = temp_rotation
-		self.rotation.y = lerp_angle(temp_rotation.y, towards_rotation, 1)
+		rotation.x = 0
+		rotation.z = 0

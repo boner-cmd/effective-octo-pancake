@@ -55,11 +55,13 @@ material_override = ExtResource("5_0dw7n")
 surface_material_override/0 = ExtResource("3_s8fxi")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_x2x1x")]
+transform = Transform3D(1, 0, 0, 0, -0.088372715, 0.9960875, 0, -0.9960875, -0.088372715, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 1
 
 [node name="Door2" parent="." unique_id=445924259 instance=ExtResource("7_x2x1x")]
+transform = Transform3D(1, 0, 0, 0, -0.088372715, 0.9960875, 0, -0.9960875, -0.088372715, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
 destination_planet_ID = 19

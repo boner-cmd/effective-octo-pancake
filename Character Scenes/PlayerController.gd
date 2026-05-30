@@ -1,15 +1,15 @@
 extends CharacterBody3D
 #camera tweaks
+var player_cutscene_locator: Node3D
+var _cam_frame_both: Camera3D
+var _cam_player_give: Camera3D
+var _cam_frame_both_puddles: Camera3D
+var _cam_player_receive: Camera3D
 
-var temp_camera_position : Vector3
-var temp_camera_rotation : Vector3
-var use_temp_camera_door : bool = false
-var temp_camera : Camera3D
-var make_camera	: bool = true
 var npc_camera_locator = Node3D
-var temp_look : bool = true
-var camera_target : Vector3
+var interaction_flip : bool = false
 var temp_npc = Node3D
+var clone : Node3D
 
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
@@ -59,8 +59,31 @@ func reset_player():
 	rotation = respawn_rot
 	exit_check = false
 	
-func camera_point_interaction() -> void:
-	camera_target = lerp(self.global_position, temp_npc.global_position, .5)
+
+#camera nonsense and can probably just be put into physics process but didn't want to do that because of compute
+func player_interaction_camera() -> void:
+	if DialogueManager.is_dialogue_active:
+		if !clone: #makes clone for interaction
+			clone = clown.duplicate()
+			get_tree().root.add_child(clone)
+			clown.visible = false
+			clone.global_position = player_cutscene_locator.global_position
+			clone.global_rotation = player_cutscene_locator.global_rotation
+			clone._set_player_anim(clone.AnimStates.TALK)
+		match DialogueManager.dialogue_state:
+			DialogueManager.CONV_STATE.PLAYER_LISTEN:
+				clone._set_player_anim(clone.AnimStates.TALK)
+				if DialogueManager.current_npc == QuestManager.CharacterName.SLIME || DialogueManager.current_npc == QuestManager.CharacterName.GREASE:
+					_cam_frame_both_puddles.make_current()
+				else:
+					_cam_frame_both.make_current()
+			DialogueManager.CONV_STATE.PLAYER_GIVE:
+				_cam_player_give.make_current()
+				clone._set_player_anim(clone.AnimStates.GIVE)
+			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
+				_cam_player_receive.make_current()
+				clone._set_player_anim(clone.AnimStates.GET)
+					
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
@@ -90,40 +113,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
-func _process(delta: float) -> void:
-	#camera transition control
-	if use_temp_camera_door or DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
-		if make_camera: #makes duplicate camera
-			make_camera = false
-			temp_camera = _camera.duplicate()
-			get_tree().root.add_child(temp_camera)
-			temp_camera.global_position = _camera.global_position
-			temp_camera.global_rotation = _camera.global_rotation
-			temp_camera.current = true
-		if DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
-			if temp_look:
-				#self.look_at(temp_npc.global_position)
-				#self.rotation.x = 0
-				#self.rotation.z = 0
-				camera_point_interaction()
-				temp_camera.global_position = npc_camera_locator.global_position
-				temp_camera.look_at(camera_target, up_direction)
-				temp_look = false
-			
-		#if use_temp_camera_door:
-			#var weight : float = .02
-			#temp_camera.global_position = temp_camera.global_position.lerp(temp_camera_position, weight * delta)
-			#temp_camera.global_rotation.x = lerp_angle(temp_camera.global_rotation.x, temp_camera_rotation.x, weight * delta)
-			#temp_camera.global_rotation.y = lerp_angle(temp_camera.global_rotation.y, temp_camera_rotation.y, weight * delta)
-			#temp_camera.global_rotation.z = lerp_angle(temp_camera.global_rotation.z, temp_camera_rotation.z, weight * delta)
-	elif temp_camera:
-		temp_camera.queue_free()
-		make_camera = true
-		temp_look = true
+func _process(_delta: float) -> void:
+	player_interaction_camera()
 
 func _physics_process(delta: float) -> void:
-	if !ray_cast_3d.is_colliding():
+	if !ray_cast_3d.is_colliding(): #never gets reset to ray_cast_3d if it ever gets set
 		current_raycast = reset_raycast
+	
 	
 	if !DialogueManager.dialogue_state == DialogueManager.CONV_STATE.FINISHED:
 		match DialogueManager.dialogue_state:
@@ -141,14 +137,20 @@ func _physics_process(delta: float) -> void:
 					convo_flip_3 = false
 		movement_frozen = true
 		
+		
 	elif exit_check:
 		movement_frozen = true
 		velocity = Vector3(0,0,0)
 	else:
+		_camera.make_current()
 		movement_frozen = false
 		convo_flip_1 = true
 		convo_flip_2 = true
 		convo_flip_3 = true
+		if clone:
+			clone.queue_free()
+			clown.visible = true
+			clown._set_player_anim(clown.AnimStates.IDLE)
 
 	if !movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
@@ -156,7 +158,7 @@ func _physics_process(delta: float) -> void:
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 
 		_camera_input_direction = Vector2.ZERO
-
+		
 		var raw_input := Input.get_vector("left", "right", "up", "down")
 		var forward := _camera.global_basis.z
 		var right := _camera.global_basis.x

@@ -373,9 +373,9 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		"I think I'm-",
 		"I'm gonna-",
 		"Oh God!",
-		"EEEEEEEEEEEEUUUUUUUUUUUUUUURRRRRRRRRRR
-		EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-		KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+		"EEEEEEEEEEEEUUUUUUUUUUUUUUURRRRRRRRR
+		EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+		KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
 		],[
 		"Wheeeeeeeew, that was a BIG one. I ideated soooooo haaard. I haven't thought like that in ages.",
 		"Was it as good for you as it was for me? Only joking. Of course it was. There's some change for a cab on the nightstand, next to the lamp.",
@@ -660,7 +660,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 								change_king.emit()
 
 				# DEBUG something wrong with this branch not checking completion correctly
-				# need to verify quest flags (seen failing with ASTRO)
+				# need to verify quest flags (seen failing with IDEA)
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
 					if QuestManager.requirements_met(current_npc):
 						combines_lines = true

@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://qbqsvnfpu1v6" path="res://Character Export Files/o-eye'd deer/o-eye'd deer.gltf" id="1_53w0x"]
 
 [node name="o-eye\'d deer" unique_id=728603670 instance=ExtResource("1_53w0x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

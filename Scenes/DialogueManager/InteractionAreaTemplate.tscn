@@ -123,7 +123,29 @@ transform = Transform3D(-0.15, 0, 1.3113417e-08, 0, 0.15, 0, -1.3113417e-08, 0, 
 visible = false
 script = null
 
-[node name="NPC_Camera_Locator" type="Node3D" parent="Area3D" unique_id=1552002703]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9434373, 0, -2.0386915)
+[node name="Player_Cutscene_Locator" type="Node3D" parent="Area3D" unique_id=1659489742]
+unique_name_in_owner = true
+transform = Transform3D(-0.9999579, -0.0030137077, -0.008663905, -0.00028201943, 0.9541447, -0.29934603, 0.009168757, -0.29933098, -0.95410544, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" type="Camera3D" parent="Area3D" unique_id=1500776819]
+unique_name_in_owner = true
+transform = Transform3D(-0.37176424, -0.29631037, 0.8797679, -0.19020815, 0.9518988, 0.24022804, -0.9086321, -0.07803083, -0.4102426, 1.808, 0.396, -1.593)
+visible = false
+fov = 77.2
+
+[node name="player_give" type="Camera3D" parent="Area3D" unique_id=1211501517]
+unique_name_in_owner = true
+transform = Transform3D(0.067905836, -0.21419731, 0.97442716, -0.1843229, 0.9571752, 0.2232501, -0.98051715, -0.19476923, 0.025516318, 1.365, 0.308, -0.565)
+fov = 77.2
+
+[node name="frame_both_puddles" type="Camera3D" parent="Area3D" unique_id=362255160]
+unique_name_in_owner = true
+transform = Transform3D(0.1548096, -0.23423123, 0.95977587, -0.018928465, 0.97060627, 0.23992747, -0.98776305, -0.055310152, 0.14582552, 1.6646322, -0.19971323, -0.385714)
+fov = 77.2
+
+[node name="player_receive" type="Camera3D" parent="Area3D" unique_id=275622376]
+unique_name_in_owner = true
+transform = Transform3D(0.8915987, -0.22266579, 0.39429897, -0.065610744, 0.79803884, 0.5990235, -0.448048, -0.5599589, 0.696921, 0.678, 1.397, -0.408)
+fov = 40.0
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]

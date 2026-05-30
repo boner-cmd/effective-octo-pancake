@@ -85,16 +85,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0.062656224)
 shape = SubResource("BoxShape3D_txy1j")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_5tpbv")]
+transform = Transform3D(1, 0, 0, 0, -0.33123907, -0.94354683, 0, 0.94354683, -0.33123907, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 2
 
 [node name="Door2" parent="." unique_id=367153842 instance=ExtResource("9_5tpbv")]
+transform = Transform3D(1, 0, 0, 0, -0.33123907, -0.94354683, 0, 0.94354683, -0.33123907, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door2" index="0" unique_id=1012687003]
 destination_planet_ID = 9
 
 [node name="Door3" parent="." unique_id=877364393 instance=ExtResource("9_5tpbv")]
+transform = Transform3D(1, 0, 0, 0, -0.33123907, -0.94354683, 0, 0.94354683, -0.33123907, 0, 0, 0)
 
 [node name="DoorBaseModel" parent="Door3" index="0" unique_id=1012687003]
 destination_planet_ID = 10

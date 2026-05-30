@@ -110,6 +110,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6566018, 0)
 shape = SubResource("BoxShape3D_op1q4")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
-[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 
 [editable path="DoorAnims"]

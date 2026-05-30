@@ -93,5 +93,16 @@ func placement():
 	if Obj_5:
 		Obj_5.rotation_degrees = order.pop_back()
 
+
 func _ready() -> void:
 	placement()
+	await Obj_2.ready
+	if Obj_2:
+		Obj_2.request_ready()
+	if Obj_3:
+		Obj_3.request_ready()
+	if Obj_4:
+		Obj_4.request_ready()
+	if Obj_5:
+		Obj_5.request_ready()
+		
