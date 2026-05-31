@@ -23,20 +23,19 @@
 [ext_resource type="Texture2D" uid="uid://bfkcyyc7h443b" path="res://planets/textures/Skybox Textures/bodhisattva skybox.png" id="22_4u7pl"]
 [ext_resource type="Texture2D" uid="uid://cqi468vylubn5" path="res://Placeholder Assets (UI)/completed-stamp/cropped_complete.svg" id="23_d34sf"]
 [ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="23_ppan7"]
-[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="24_jqj6d"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d34sf"]
+[ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="24_jqj6d"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv5bf"]
-bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.12156863, 0.12941177, 0.14509805, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqj6d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color(0, 0, 0, 0.16862746)
+border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -54,6 +53,19 @@ texture = ExtResource("4_jqj6d")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv5bf"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_left = 150
+border_width_top = 150
+border_width_right = 150
+border_width_bottom = 150
+border_color = Color(0, 0, 0, 0.46666667)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="Gradient" id="Gradient_jqj6d"]
 colors = PackedColorArray(0.98039216, 0.77254903, 0, 1, 0.98039216, 0.77254903, 0, 1)
 
@@ -67,13 +79,58 @@ colors = PackedColorArray(0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7h3cr"]
 gradient = SubResource("Gradient_rv5bf")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ravpb"]
+atlas = ExtResource("24_jqj6d")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55dj6"]
+atlas = ExtResource("24_jqj6d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knbji"]
+atlas = ExtResource("24_jqj6d")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rv5bf"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ravpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55dj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knbji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55dj6")
+}],
+"loop": true,
+"name": &"dialogue_conf",
+"speed": 3.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d34sf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.11, 0.11, 0.11, 0.47058824)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
 process_mode = 3
 script = ExtResource("1_1m71x")
 
 [node name="InventoryBackgroundMargin" type="MarginContainer" parent="." unique_id=706599872]
 process_mode = 1
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -82,23 +139,19 @@ grow_vertical = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 1140
-theme_override_constants/margin_bottom = 400
+theme_override_constants/margin_bottom = 350
 script = ExtResource("6_ivp0t")
-
-[node name="InventoryBackground" type="NinePatchRect" parent="InventoryBackgroundMargin" unique_id=2120334583]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_d34sf")
 
 [node name="InventoryItemMargin" type="MarginContainer" parent="InventoryBackgroundMargin" unique_id=2099371917]
 z_index = -1
 layout_mode = 2
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 21
 theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryBackgroundMargin/InventoryItemMargin" unique_id=180218825]
 texture_filter = 1
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 50
 
 [node name="ItemSlot1" type="TextureRect" parent="InventoryBackgroundMargin/InventoryItemMargin/VBoxContainer" unique_id=308854507]
 z_index = 1
@@ -163,6 +216,29 @@ grow_vertical = 0
 text = "Item 3"
 horizontal_alignment = 1
 
+[node name="Panel" type="Panel" parent="InventoryBackgroundMargin" unique_id=530571343]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqj6d")
+
+[node name="Mask" type="Panel" parent="InventoryBackgroundMargin/Panel" unique_id=1378500812]
+clip_children = 1
+z_index = -1
+clip_contents = true
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 340.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7h3cr")
+
+[node name="Tiled Texture" type="Panel" parent="InventoryBackgroundMargin/Panel/Mask" unique_id=1929334598]
+self_modulate = Color(0.34, 0.34, 0.34, 0.36862746)
+texture_filter = 2
+layout_mode = 0
+offset_left = -67.0
+offset_top = -49.0
+offset_right = 965.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ynwxi")
+
 [node name="PauseContainer" type="MarginContainer" parent="." unique_id=2106662033]
 custom_minimum_size = Vector2(504, 366)
 anchors_preset = 8
@@ -199,7 +275,7 @@ layout_mode = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7h3cr")
 
 [node name="Tiled Texture" type="Panel" parent="PauseContainer/PanelBackground/Mask" unique_id=1035816461]
-self_modulate = Color(0.14406255, 0.14406255, 0.14406249, 1)
+self_modulate = Color(0.14, 0.14, 0.14, 0.6862745)
 texture_filter = 2
 layout_mode = 0
 offset_left = -67.0
@@ -498,15 +574,6 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Interact" unique_id=1453118693]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("24_jqj6d")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
 [node name="MarginContainer" type="MarginContainer" parent="Interact" unique_id=423976122]
 layout_mode = 2
 size_flags_vertical = 4
@@ -516,6 +583,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
 [node name="ExitLabel" type="Label" parent="Interact/MarginContainer" unique_id=603604430]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
@@ -539,15 +607,31 @@ theme_override_font_sizes/font_size = 20
 text = "press F to pay respects"
 vertical_alignment = 1
 
-[node name="Mask" type="Panel" parent="Interact" unique_id=701721646]
+[node name="NextIndicator" type="AnimatedSprite2D" parent="Interact/MarginContainer" unique_id=846061931]
+z_index = 1
+position = Vector2(4.5, 23.5)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rv5bf")
+animation = &"dialogue_conf"
+autoplay = "dialogue_conf"
+centered = false
+offset = Vector2(53.005, 9)
+
+[node name="PanelBorder" type="Panel" parent="Interact" unique_id=2073981211]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d34sf")
+
+[node name="Mask" type="Panel" parent="Interact/PanelBorder" unique_id=701721646]
 clip_children = 1
 z_index = -1
 clip_contents = true
-layout_mode = 2
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 52.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7h3cr")
 
-[node name="Tiled Texture" type="Panel" parent="Interact/Mask" unique_id=365838492]
-self_modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
+[node name="Tiled Texture" type="Panel" parent="Interact/PanelBorder/Mask" unique_id=365838492]
+self_modulate = Color(0.34, 0.34, 0.34, 0.32156864)
 texture_filter = 2
 layout_mode = 0
 offset_left = -67.0

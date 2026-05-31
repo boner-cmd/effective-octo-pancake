@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var exit_label: Label = $Interact/MarginContainer/ExitLabel
 @onready var locked_label: Label = $Interact/MarginContainer/LockedLabel
 @onready var npc_label: Label = $Interact/MarginContainer/NPC 
+@onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
 
 @onready var player : CharacterBody3D
 @onready var interaction_detector
@@ -110,22 +111,27 @@ func on_exit_door_entered(lock_on_door) -> void:
 	if lock_on_door:
 		locked_label.visible = true
 		exit_label.visible = false
+		next_indicator.visible = false
 	else:
 		locked_label.visible = false
 		exit_label.visible = true
+		next_indicator.visible = true
 		
 func on_door_exited() -> void:
 	interact.visible = false
 	exit_label.visible = false
 	locked_label.visible = false
+	next_indicator.visible = false
 		
 func on_npc_entered() -> void:
 	interact.visible = true
 	exit_label.visible = false
 	locked_label.visible = false
 	npc_label.visible = true
+	next_indicator.visible = true
 	
 func on_npc_exited() -> void:
 	interact.visible = false
 	npc_label.visible = false
+	next_indicator.visible = false
 	

@@ -5,7 +5,7 @@ extends MarginContainer
 @onready var audio_player = $AudioStreamPlayer
 @onready var next_indicator = $NinePatchRect/Control/NextIndicator
 
-const  MAX_WIDTH = 512
+const  MAX_WIDTH = 640
 
 var text : String = ""
 var letter_index : int = 0
