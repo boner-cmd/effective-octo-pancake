@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cdk73hgo210qs"]
+
+[ext_resource type="PackedScene" uid="uid://ba62dkbhpepkg" path="res://UI assets/title screen letters.gltf" id="1_gy0uc"]
+
+[node name="title_screen_letters" unique_id=841955191 instance=ExtResource("1_gy0uc")]

@@ -43,6 +43,7 @@ const sfx_walk : AudioStream = preload("uid://c02mhuc0dk48x")
 const sfx_jump : AudioStream = preload("uid://cduu2q6v1l1yk")
 const sfx_explode : AudioStream = preload("uid://conpnqqcjln5n")
 const sfx_honk : AudioStream = preload("uid://eqfmf8j0l8u2")
+const sfx_sadhonk : AudioStream = preload("res://sound fx exports/sadhonk.wav")
 #SFX door
 const sfx_despawn : AudioStream = preload("uid://7banle6yv2gq")
 const sfx_spawn : AudioStream = preload("uid://t6h5ww03rkm7")

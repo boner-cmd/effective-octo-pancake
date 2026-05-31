@@ -15,6 +15,7 @@ extends CanvasLayer
 @onready var interaction_detector
 var lock : bool = false
 var temp_interact : bool = false
+@onready var timer: Timer = $Timer
 
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
@@ -22,7 +23,7 @@ func set_initial_visibility() -> void:
 	stickerbook.visible = false
 	pause_menu.visible = false
 	complete_stamp.visible = false
-	transition_color.visible = false
+	transition_color.visible = true
 	interact.visible = false
 	
 func toggle_pausing_and_mouse() -> void:
@@ -56,15 +57,18 @@ func _input(event: InputEvent) -> void:
 
 # set initial visibility states
 func _ready() -> void:
+	transition_color.visible = true
 	set_initial_visibility()
 	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
-	transition()
 	player = get_parent().get_child(1)
 	interaction_detector = player.get_child(2).get_child(4)
 	interaction_detector.exit_area_entered.connect(on_exit_door_entered)
 	interaction_detector.exit_area_exited.connect(on_door_exited)
 	interaction_detector.npc_entered.connect(on_npc_entered)
 	interaction_detector.npc_exited.connect(on_npc_exited)
+	timer.start()
+	await timer.timeout
+	transition()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
@@ -89,7 +93,7 @@ func transition() -> void:
 	transition_color.visible = true
 	await get_tree().create_timer(.1).timeout
 	var tween = get_tree().create_tween()
-	tween.tween_property(transition_color, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(transition_color, "modulate:a", 0.0, .3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.play()
 	await tween.finished
 	transition_color.visible = false
