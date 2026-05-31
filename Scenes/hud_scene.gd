@@ -2,7 +2,7 @@
 extends CanvasLayer
 
 @onready var stickerbook : TextureRect = $StickerbookBackground
-@onready var pause_menu : NinePatchRect = $PauseBackground
+@onready var pause_menu : MarginContainer = $PauseContainer
 @onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
 @onready var transition_color: ColorRect = $ColorRect
 @onready var interact: MarginContainer = $Interact

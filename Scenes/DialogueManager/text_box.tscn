@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://6wsb833gjgyj" path="res://Scenes/DialogueManager/text_box.gd" id="1_0kxgl"]
 [ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_ot2p7"]
 [ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="3_mg6cl"]
+[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_ravpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ravpb"]
 atlas = ExtResource("3_mg6cl")
@@ -36,6 +37,18 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ravpb"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55dj6"]
+texture = ExtResource("4_ravpb")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="TextBox" type="MarginContainer" unique_id=1198593662]
 z_index = -5
 anchors_preset = 5
@@ -50,6 +63,7 @@ pivot_offset = Vector2(20, 0)
 script = ExtResource("1_0kxgl")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=477419255]
+self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("2_ot2p7")
@@ -100,5 +114,22 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=656195157]
 bus = &"Sfx"
+
+[node name="Mask" type="Panel" parent="." unique_id=145214229]
+clip_children = 1
+z_index = -1
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ravpb")
+
+[node name="Tiled Texture" type="Panel" parent="Mask" unique_id=1129628314]
+self_modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
+texture_filter = 2
+layout_mode = 0
+offset_left = -67.0
+offset_top = -49.0
+offset_right = 965.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_55dj6")
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
 [ext_resource type="Texture2D" uid="uid://dmow47blyrxxn" path="res://planets/textures/Planet Textures/gatekeeper texture.png" id="2_30jjv"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
-[ext_resource type="Texture2D" uid="uid://167246o6ridi" path="res://Placeholder Assets (UI)/icon.svg" id="3_yw1hr"]
+[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://c2nc44jkx5n62" path="res://Placeholder Assets (UI)/stickerbook_bg.png" id="5_jqj6d"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 [ext_resource type="Texture2D" uid="uid://cj363unhfokc8" path="res://planets/textures/Planet Textures/astronaut planet texture expore png.png" id="7_d34sf"]
@@ -29,6 +29,30 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv5bf"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.12156863, 0.12941177, 0.14509805, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h3cr"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynwxi"]
+texture = ExtResource("4_jqj6d")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="Gradient" id="Gradient_jqj6d"]
 colors = PackedColorArray(0.98039216, 0.77254903, 0, 1, 0.98039216, 0.77254903, 0, 1)
@@ -139,71 +163,79 @@ grow_vertical = 0
 text = "Item 3"
 horizontal_alignment = 1
 
-[node name="PauseBackground" type="NinePatchRect" parent="." unique_id=1506672344]
-visible = false
+[node name="PauseContainer" type="MarginContainer" parent="." unique_id=2106662033]
+custom_minimum_size = Vector2(504, 366)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -252.0
-offset_top = -183.0
-offset_right = 252.0
-offset_bottom = 183.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_yw1hr")
-patch_margin_left = 52
-patch_margin_top = 56
-patch_margin_right = 52
-patch_margin_bottom = 53
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
+theme_override_constants/margin_bottom = 0
 
-[node name="PauseLabel" type="Label" parent="PauseBackground" unique_id=404488287]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
+[node name="PauseLabel" type="Label" parent="PauseContainer" unique_id=404488287]
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 56
-text = "~P~A~U~S~E~"
+text = "pause"
 horizontal_alignment = 1
 
-[node name="AudioControlVBox" type="VBoxContainer" parent="PauseBackground" unique_id=1394599374]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -79.0
-offset_right = 150.0
-offset_bottom = 79.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PanelBackground" type="Panel" parent="PauseContainer" unique_id=476431283]
+z_index = -10
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv5bf")
+
+[node name="Mask" type="Panel" parent="PauseContainer/PanelBackground" unique_id=346170253]
+clip_children = 1
+z_index = -1
+clip_contents = true
+custom_minimum_size = Vector2(504, 366)
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7h3cr")
+
+[node name="Tiled Texture" type="Panel" parent="PauseContainer/PanelBackground/Mask" unique_id=1035816461]
+self_modulate = Color(0.14406255, 0.14406255, 0.14406249, 1)
+texture_filter = 2
+layout_mode = 0
+offset_left = -67.0
+offset_top = -49.0
+offset_right = 965.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ynwxi")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseContainer" unique_id=1198872430]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="AudioControlVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1394599374]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 script = ExtResource("2_yw1hr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseBackground" unique_id=1250342233]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -61.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 8
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1250342233]
+z_index = 100
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ContinueButton" type="Button" parent="PauseBackground/HBoxContainer" unique_id=197499035]
+[node name="ContinueButton" type="Button" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=197499035]
+z_index = 100
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Continue"
 
-[node name="QuitButton" type="Button" parent="PauseBackground/HBoxContainer" unique_id=1755189773]
+[node name="QuitButton" type="Button" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=1755189773]
+z_index = 100
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Quit
@@ -507,5 +539,22 @@ theme_override_font_sizes/font_size = 20
 text = "press F to pay respects"
 vertical_alignment = 1
 
-[connection signal="pressed" from="PauseBackground/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PauseBackground/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="Mask" type="Panel" parent="Interact" unique_id=701721646]
+clip_children = 1
+z_index = -1
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7h3cr")
+
+[node name="Tiled Texture" type="Panel" parent="Interact/Mask" unique_id=365838492]
+self_modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
+texture_filter = 2
+layout_mode = 0
+offset_left = -67.0
+offset_top = -49.0
+offset_right = 965.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ynwxi")
+
+[connection signal="pressed" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

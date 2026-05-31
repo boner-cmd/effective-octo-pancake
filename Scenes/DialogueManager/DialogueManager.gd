@@ -673,7 +673,6 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 							animation_point_2 = dialogue_lines.size()
 							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
 							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet, player give, player receive
-							print(dialogue_lines)
 						else:
 							dialogue_state = CONV_STATE.PLAYER_GIVE
 							emit_inventory_signal_by_conv_state(dialogue_state)

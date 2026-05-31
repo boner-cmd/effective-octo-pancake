@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c3mjt801bh1e3"]
+
+[ext_resource type="Shader" uid="uid://llioedoe604y" path="res://UI assets/TextBoxShader.gdshader" id="1_vt57o"]
+
+[resource]
+shader = ExtResource("1_vt57o")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/radius = 0.322000015295
+shader_parameter/size = Vector2(1, 1)
