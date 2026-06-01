@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cp7gqhw36uvnx"]
+
+[ext_resource type="Shader" uid="uid://crq2s0042naus" path="res://planets/materials/gold_toon_shader.gdshader" id="1_kmeoy"]
+
+[sub_resource type="Gradient" id="Gradient_kmeoy"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.7444852, 0.45904356, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5stjd"]
+gradient = SubResource("Gradient_kmeoy")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_kmeoy")
+shader_parameter/ToonRampOffset = 0.3810000180975
+shader_parameter/ToonRampSmoothness = 1.0
+shader_parameter/ToonRampTinting = Color(0.46061122, 0.33624065, 0.024789358, 1)
+shader_parameter/UV_Scaling_U = 1.0
+shader_parameter/UV_Scaling_V = 1.0
+shader_parameter/RimPower = 1.47200006992
+shader_parameter/RimCutOff = 0.0
+shader_parameter/RimSmoothness = 0.0450000021375
+shader_parameter/RimLightBrightness = 2.48800011818
+shader_parameter/Texture = SubResource("GradientTexture1D_5stjd")

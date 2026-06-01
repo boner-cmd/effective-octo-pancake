@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dqnd52xxqm1di"]
+
+[ext_resource type="PackedScene" uid="uid://clr5ostwu7ndd" path="res://planets/models/king planet model/king planet.gltf" id="1_kp510"]
+[ext_resource type="Material" uid="uid://cp7gqhw36uvnx" path="res://planets/materials/gold_toon_shader.tres" id="2_hktp3"]
+
+[node name="king planet" unique_id=1396690115 instance=ExtResource("1_kp510")]
+
+[node name="Sphere" parent="." index="0" unique_id=932911600]
+material_override = ExtResource("2_hktp3")

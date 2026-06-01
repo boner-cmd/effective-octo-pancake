@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b6n2xwgfekxdl"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_8cnhj"]
+[ext_resource type="Texture2D" uid="uid://3hpu0g1npue" path="res://Character Export Files/Materials/Texture_Palette.png" id="2_ns8bm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8cnhj")
+shader_parameter/ToonRampOffset = 0.50000002375
+shader_parameter/ToonRampSmoothness = 0.50000002375
+shader_parameter/ToonRampTinting = Color(0.5248856, 0.5205659, 0.46958554, 1)
+shader_parameter/UV_Scaling_U = 1.0
+shader_parameter/UV_Scaling_V = 1.0
+shader_parameter/Texture = ExtResource("2_ns8bm")
