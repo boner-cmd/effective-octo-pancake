@@ -5,7 +5,9 @@
 [ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="3_pie25"]
 [ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="4_bawyk"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
+[ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="5_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="5_qfyqv"]
+[ext_resource type="Texture2D" uid="uid://cqm2e7obmwgw5" path="res://planets/textures/Skybox Textures/horse skybox.png" id="6_awp6w"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://c8pwuraxgwshx" path="res://UI assets/credits unselected.png" id="8_awp6w"]
@@ -23,8 +25,33 @@ ambient_light_energy = 7.4
 radius = 5.0
 height = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awp6w"]
+border_width_left = 400
+border_width_top = 100
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 4000
+corner_detail = 20
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qu6cc"]
+viewport_path = NodePath("SubViewport")
+
 [node name="TitleScreen" type="Node" unique_id=998052152]
 script = ExtResource("1_n15yj")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1367721345]
+transparent_bg = true
+vrs_mode = 1
+vrs_update_mode = 2
+canvas_item_default_texture_filter = 0
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=230064021]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.04865873, 1.0996027, -0.033041)
+projection = 1
+current = true
+size = 2.878
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1466614410]
 
@@ -70,11 +97,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84878784, 0.07671435, -0.29
 [node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=83373218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81776464, 0.07718342, -0.20627923)
 
-[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=230064021]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.04865873, 1.0996027, -0.033041)
-projection = 1
-size = 2.878
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=895404575]
 environment = SubResource("Environment_emot1")
 
@@ -110,13 +132,36 @@ spot_angle = 48.36
 [node name="ClownRigFBX" parent="Node3D" unique_id=77601808 instance=ExtResource("4_pie25")]
 transform = Transform3D(-0.12128098, -4.6596003e-09, 0.1590312, -0.1590312, -2.5909472e-08, -0.12128098, 2.3427678e-08, -0.2, 1.2006523e-08, 0.60955745, -7.846285, 0.6989892)
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1367721345]
-own_world_3d = true
-transparent_bg = true
-size = Vector2i(1280, 720)
-render_target_update_mode = 4
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=246891302]
+
+[node name="BG_Container 2" type="MarginContainer" parent="CanvasLayer" unique_id=149984329]
+z_index = -10
+custom_minimum_size = Vector2(1280, 1000)
+offset_top = -24.52
+offset_right = 1280.0
+offset_bottom = 975.48
+
+[node name="Space" type="TextureRect" parent="CanvasLayer/BG_Container 2" unique_id=625852770]
+layout_mode = 2
+texture = ExtResource("5_2jiiu")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
+clip_children = 1
+clip_contents = true
+offset_left = 276.0
+offset_top = 47.0
+offset_right = 1556.0
+offset_bottom = 767.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_awp6w")
+
+[node name="Sky" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1363266076]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("6_awp6w")
+stretch_mode = 1
 
 [node name="BG_Container" type="MarginContainer" parent="CanvasLayer" unique_id=255953588]
 custom_minimum_size = Vector2(1280, 720)
@@ -127,13 +172,19 @@ anchor_bottom = 1.0
 offset_left = -1520.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/margin_right = 550
+theme_override_constants/margin_right = 650
 
-[node name="Background" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1201064109]
+[node name="AH" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1201064109]
 layout_mode = 2
 texture = ExtResource("10_qfyqv")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="SubviewportRender" type="TextureRect" parent="CanvasLayer" unique_id=1237389070]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_qu6cc")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=827505374]
 clip_contents = true
