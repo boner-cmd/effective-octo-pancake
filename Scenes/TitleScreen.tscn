@@ -203,7 +203,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [connection signal="timeout" from="Node3D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_focus_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_new_game_button_focus_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_new_game_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_new_game_button_focus_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_new_game_button_mouse_entered"]
 
 [editable path="Node3D/title_screen_letters"]

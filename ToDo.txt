@@ -1,11 +1,12 @@
 MAIN
 	BUGS
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
-		doors sometimes remain active after 
+		doors sometimes remain active after - not sure what more steps to take
 		deer backwards? completion change mesh 
-		NPC colliders
+		NPC colliders need to move with NPCs, not sure why they dont, need to investigate
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state
+		-will need a ready function to call dialogue manager with the credits dialogue
 	Michaelwave assets/dialogue
 	Explore Saving feature
 		Will need to include Current Planet ID and initialization
@@ -14,43 +15,40 @@ MAIN
 
 MAP
 	Current Position indicator
-	Update Textures
+	Update Map Textures
 	
 
-DIALOGUES
-	Camera angles
-	Brief pause in convo for Zelda-style receive item
-	Unique sounds
-	Better text area sizing + placement
+DIALOGUES 
+	Unique speech sound per NPC (?)
 	
 
 SHADER PASS
 	[Identify]
-	Maybe a proper toon shader
+	Maybe a proper toon shader for materials
+	Door textures + sprite shader?
 	
 
 VFX PASS
 	[Identify]
 	Door Exit particles
 	Receive Item particles
-	
+	Start Menu sparkles
+	spinning items on give anim
+	items present for receive anim
 
 UI PASS
 	"Map Icon" on the HUD for clarity
-	Interact UI for Doors
-	Door UI for "Locked State"
-	Inventory textures
 	
 
 POLISH IDEAS
+	honk counter
 	Exe Icon
-	STEAM Integration + Listing
+	STEAM Integration + Listing (?)
 	Revisit all NPC models + animations, then a VFX/Shader pass post
-	Additional assets/set-dressing for planets
-	Planet size variations?
+	Additional assets/set-dressing for planets (?)
+	Planet size variations? - probably fucking not tbh
 	Speed-run timers
 	Side-quests? (lol)
-	honk counter
 	Unique boxes per NPCs (?)
-	Unique type
+	Unique type per NPCs (?)
 	

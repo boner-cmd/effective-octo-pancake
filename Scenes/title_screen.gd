@@ -37,3 +37,11 @@ func _on_quit_button_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	tween_letters()
+
+
+func _on_new_game_button_focus_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_honk)
+
+
+func _on_new_game_button_mouse_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
