@@ -2,9 +2,10 @@
 
 [resource]
 cull_mode = 2
-albedo_color = Color(0.44, 0.39306667, 0.1584, 1)
-metallic = 0.42
+diffuse_mode = 3
+albedo_color = Color(0.8092781, 0.7368919, 0.3812616, 1)
+metallic = 1.0
 metallic_specular = 1.0
-roughness = 0.56
+roughness = 0.47
 emission = Color(0.77, 0.64064, 0.21559997, 1)
 emission_energy_multiplier = 0.1

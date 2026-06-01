@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://buubpdem5wqyi" path="res://Scenes/title_screen.gd" id="1_n15yj"]
 [ext_resource type="PackedScene" uid="uid://cdk73hgo210qs" path="res://UI assets/title_screen_letters.tscn" id="2_7whhf"]
 [ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="3_pie25"]
+[ext_resource type="Material" uid="uid://bojwl3m1uni8m" path="res://UI assets/TitleLetters.tres" id="3_qu6cc"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
 [ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="5_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://cqm2e7obmwgw5" path="res://planets/textures/Skybox Textures/horse skybox.png" id="6_awp6w"]
@@ -16,18 +17,17 @@
 
 [sub_resource type="Environment" id="Environment_emot1"]
 background_color = Color(1, 1, 1, 1)
-background_energy_multiplier = 0.0
-ambient_light_source = 2
-ambient_light_color = Color(0.5251013, 0.5251013, 0.5251013, 1)
-ambient_light_energy = 7.4
+glow_enabled = true
+glow_intensity = 0.76
+glow_bloom = 0.17
 
 [sub_resource type="SphereMesh" id="SphereMesh_7whhf"]
 radius = 5.0
 height = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awp6w"]
-border_width_left = 400
-border_width_top = 100
+border_width_left = 222
+border_width_top = 77
 border_color = Color(0.8, 0.8, 0.8, 0)
 border_blend = true
 corner_radius_top_left = 4000
@@ -56,46 +56,65 @@ size = 2.878
 [node name="Node3D" type="Node3D" parent="." unique_id=1466614410]
 
 [node name="title_screen_letters" parent="Node3D" unique_id=841955191 instance=ExtResource("2_7whhf")]
-transform = Transform3D(0.97032773, -0.23307186, -0.064353906, 0.24170993, 0.9280237, 0.28345773, -0.0063440665, -0.2906019, 0.95682317, 0, 0, 0)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0)
 
 [node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1708180983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98902524, 0.07640395, -0.82382506)
+material_override = ExtResource("3_qu6cc")
 
 [node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=1101734211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59269315, 0.0746371, -0.9845756)
+material_override = ExtResource("3_qu6cc")
 
 [node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=649626419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17679003, 0.074198715, -0.9534256)
+material_override = ExtResource("3_qu6cc")
 
 [node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=141749152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25843668, 0.07419868, -0.9238143)
+material_override = ExtResource("3_qu6cc")
 
 [node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=1575611344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60433537, 0.07387316, -0.88987577)
+material_override = ExtResource("3_qu6cc")
 
 [node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=322371230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.071776, 0.0754394, -0.9920961)
+material_override = ExtResource("3_qu6cc")
+
+[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=245440984]
+material_override = ExtResource("3_qu6cc")
 
 [node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=999350554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8045428, 0.073930226, -1.0123352)
+material_override = ExtResource("3_qu6cc")
 
 [node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=69001312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2629106, 0.07419868, -0.9238143)
+material_override = ExtResource("3_qu6cc")
 
 [node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=808913432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17387244, 0.08711618, -0.27306348)
+material_override = ExtResource("3_qu6cc")
 
 [node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=1449709585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4741895, 0.07419868, -0.2368352)
+material_override = ExtResource("3_qu6cc")
 
 [node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=233796594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31507543, 0.07488507, -0.16352063)
+material_override = ExtResource("3_qu6cc")
 
 [node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=1622759300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84878784, 0.07671435, -0.29228708)
+material_override = ExtResource("3_qu6cc")
+
+[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=899199309]
+material_override = ExtResource("3_qu6cc")
 
 [node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=83373218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81776464, 0.07718342, -0.20627923)
+material_override = ExtResource("3_qu6cc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=895404575]
 environment = SubResource("Environment_emot1")
@@ -106,31 +125,50 @@ material_override = ExtResource("3_pie25")
 mesh = SubResource("SphereMesh_7whhf")
 
 [node name="Timer" type="Timer" parent="Node3D" unique_id=1742850589]
-wait_time = 0.505
+wait_time = 2.0
 autostart = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Node3D" unique_id=483725813]
 transform = Transform3D(0.8197024, 0.30021903, 0.48780817, 0, 0.8516355, -0.5241347, -0.5727899, 0.42963436, 0.6980876, 3.2376518, -1.4363945, 2.2473047)
+visible = false
 light_color = Color(0.72156864, 0.5764706, 0.30588236, 1)
-light_energy = 1.284
-light_indirect_energy = 15.804
-light_specular = 16.49
+light_indirect_energy = 0.0
+light_specular = 0.374
 spot_range = 243.531
 spot_attenuation = -2.36
 spot_angle = 48.36
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Node3D" unique_id=1001387427]
-transform = Transform3D(-0.7469694, -0.14655967, -0.6485035, -0.35420907, 0.913174, 0.2016162, 0.5626478, 0.38030702, -0.7340257, -1.5155156, 1.4975326, -3.221008)
+transform = Transform3D(-0.8191796, -0.12225086, -0.5603567, -0.50299704, 0.6225675, 0.599503, 0.2755701, 0.7729583, -0.57148635, -1.4879224, 1.9822197, -1.9626954)
+visible = false
 light_color = Color(0.72156864, 0.5764706, 0.30588236, 1)
-light_energy = 0.162
-light_indirect_energy = 15.804
-light_specular = 16.49
-spot_range = 7.497433
+light_energy = 0.439
+light_indirect_energy = 0.0
+light_specular = 0.524
+spot_range = 5.897786
 spot_attenuation = -2.36
 spot_angle = 48.36
 
 [node name="ClownRigFBX" parent="Node3D" unique_id=77601808 instance=ExtResource("4_pie25")]
 transform = Transform3D(-0.12128098, -4.6596003e-09, 0.1590312, -0.1590312, -2.5909472e-08, -0.12128098, 2.3427678e-08, -0.2, 1.2006523e-08, 0.60955745, -7.846285, 0.6989892)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=1991360123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6188245, 1.5487471, -0.4971826)
+light_color = Color(0.99110335, 0.80987924, 0.5641716, 1)
+light_energy = 1.5
+omni_range = 8.287
+omni_shadow_mode = 0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Node3D" unique_id=2015454633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4642396, 1.4607825, -0.4971826)
+light_color = Color(0.99110335, 0.80987924, 0.5641716, 1)
+light_energy = 1.5
+omni_range = 8.287
+omni_shadow_mode = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1814208153]
+transform = Transform3D(0.9909364, -2.7854878e-08, 0.13433212, -0.12544762, -0.35763472, 0.9253974, 0.04804181, -0.93386155, -0.35439327, 1.9530581, 2.0183163, -0.83271074)
+light_color = Color(1, 0.8448333, 0.51, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=246891302]
 
@@ -174,10 +212,10 @@ stretch_mode = 5
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
 clip_children = 1
 clip_contents = true
-offset_left = 276.0
-offset_top = 47.0
-offset_right = 1556.0
-offset_bottom = 767.0
+offset_left = 202.81
+offset_top = 301.525
+offset_right = 1482.81
+offset_bottom = 1021.5239
 theme_override_styles/panel = SubResource("StyleBoxFlat_awp6w")
 
 [node name="Sky" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1363266076]
