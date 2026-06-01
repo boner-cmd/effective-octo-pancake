@@ -85,7 +85,7 @@ func _on_continue_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pause_menu.visible = false
 	if DialogueManager.is_dialogue_active == true:
-		var TextBox = get_child(5)
+		var TextBox = get_child(6)
 		TextBox.visible = true
 	if temp_interact == true:
 		interact.visible = true

@@ -112,7 +112,7 @@ autostart = true
 [node name="SpotLight3D" type="SpotLight3D" parent="Node3D" unique_id=483725813]
 transform = Transform3D(0.8197024, 0.30021903, 0.48780817, 0, 0.8516355, -0.5241347, -0.5727899, 0.42963436, 0.6980876, 3.2376518, -1.4363945, 2.2473047)
 light_color = Color(0.72156864, 0.5764706, 0.30588236, 1)
-light_energy = 1.508
+light_energy = 1.284
 light_indirect_energy = 15.804
 light_specular = 16.49
 spot_range = 243.531
@@ -120,9 +120,9 @@ spot_attenuation = -2.36
 spot_angle = 48.36
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Node3D" unique_id=1001387427]
-transform = Transform3D(-0.2897032, 0.09783881, -0.9521028, -0.3542091, 0.9131742, 0.20161636, 0.88916135, 0.39565238, -0.22989416, -2.6850097, 1.4975326, -3.221008)
+transform = Transform3D(-0.7469694, -0.14655967, -0.6485035, -0.35420907, 0.913174, 0.2016162, 0.5626478, 0.38030702, -0.7340257, -1.5155156, 1.4975326, -3.221008)
 light_color = Color(0.72156864, 0.5764706, 0.30588236, 1)
-light_energy = 1.508
+light_energy = 0.162
 light_indirect_energy = 15.804
 light_specular = 16.49
 spot_range = 7.497433
