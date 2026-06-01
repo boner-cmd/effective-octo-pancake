@@ -10,6 +10,9 @@ var npc_camera_locator = Node3D
 var interaction_flip : bool = false
 var temp_npc = Node3D
 var clone : Node3D
+var clone_item_get : Sprite3D
+
+@onready var item_get_sprite: Sprite3D = $ClownRigFBX/ItemLocator/Item_Get_Sprite
 
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
@@ -70,6 +73,8 @@ func player_interaction_camera() -> void:
 			clone.global_position = player_cutscene_locator.global_position
 			clone.global_rotation = player_cutscene_locator.global_rotation
 			clone._set_player_anim(clone.AnimStates.TALK)
+			clone_item_get = clone.get_child(5).get_child(0)
+			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
 				clone._set_player_anim(clone.AnimStates.TALK)
@@ -81,6 +86,7 @@ func player_interaction_camera() -> void:
 				_cam_player_give.make_current()
 				clone._set_player_anim(clone.AnimStates.GIVE)
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
+				clone_item_get.texture = item_get_sprite.texture
 				_cam_player_receive.make_current()
 				clone._set_player_anim(clone.AnimStates.GET)
 					
@@ -133,6 +139,7 @@ func _physics_process(delta: float) -> void:
 					convo_flip_2 = false
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 				if convo_flip_3:
+					
 					clown._set_player_anim(clown.AnimStates.GET)
 					convo_flip_3 = false
 		movement_frozen = true

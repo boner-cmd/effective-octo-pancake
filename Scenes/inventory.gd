@@ -1,5 +1,8 @@
 extends MarginContainer
 
+@onready var item_get_sprite: Sprite3D = $"../../PlayerCharacter/ClownRigFBX/ItemLocator/Item_Get_Sprite"
+
+
 var inventory_slots = {
 	Slot1 = false,
 	Slot2 = false,
@@ -77,6 +80,7 @@ func add_item(npc_name : QuestManager.CharacterName) -> void:
 	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
 	assert(item_texts.has(npc_name), "Tried to add an unknown item, check npc_name")
 	inventory_slots.Slot3 = npc_name
+	item_get_sprite.texture = item_resources[npc_name]
 	slot_state |= 0b001
 	update_slots()
 	update_slots()

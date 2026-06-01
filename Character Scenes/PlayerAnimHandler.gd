@@ -2,6 +2,7 @@ extends Node3D
 
 @export var walk_cycle_time: Timer 
 @export var honk_delay: Timer
+@onready var item_get_sprite: Sprite3D = $ItemLocator/Item_Get_Sprite
 
 func honk_sound_player():
 	var honk_time = honk_delay.duplicate()
@@ -26,6 +27,7 @@ func _get_current_anim() -> AnimStates:
 func _set_player_anim(anim : AnimStates):
 	if anim != current_anim:
 		current_anim = anim
+		item_get_sprite.visible = false
 		match current_anim:
 			AnimStates.IDLE:
 				anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
@@ -62,6 +64,7 @@ func _set_player_anim(anim : AnimStates):
 					
 			AnimStates.GET:
 				AudioManager.sfx_play(AudioManager.sfx_get_item)
+				item_get_sprite.visible = true
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)
 				anim_tree.set("parameters/Exit/blend_amount", 0.0)
 				anim_tree.set("parameters/Victory/blend_amount", 0.0)
