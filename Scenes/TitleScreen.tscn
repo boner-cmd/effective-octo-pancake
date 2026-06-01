@@ -146,23 +146,6 @@ layout_mode = 2
 texture = ExtResource("5_2jiiu")
 stretch_mode = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
-clip_children = 1
-clip_contents = true
-offset_left = 276.0
-offset_top = 47.0
-offset_right = 1556.0
-offset_bottom = 767.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_awp6w")
-
-[node name="Sky" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1363266076]
-custom_minimum_size = Vector2(1280, 720)
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-texture = ExtResource("6_awp6w")
-stretch_mode = 1
-
 [node name="BG_Container" type="MarginContainer" parent="CanvasLayer" unique_id=255953588]
 custom_minimum_size = Vector2(1280, 720)
 anchors_preset = 11
@@ -187,6 +170,23 @@ layout_mode = 2
 texture = ExtResource("10_qfyqv")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
+clip_children = 1
+clip_contents = true
+offset_left = 276.0
+offset_top = 47.0
+offset_right = 1556.0
+offset_bottom = 767.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_awp6w")
+
+[node name="Sky" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1363266076]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("6_awp6w")
+stretch_mode = 1
 
 [node name="SubviewportRender" type="TextureRect" parent="CanvasLayer" unique_id=1237389070]
 custom_minimum_size = Vector2(1280, 720)
