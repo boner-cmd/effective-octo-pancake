@@ -1,6 +1,7 @@
 MAIN
 	BUGS
 		Player visible beneath Norgans in Exit Anim (possibly resolved by creating an Exit Camera)
+		
 		doors sometimes remain active after - not sure what more steps to take
 		deer backwards? completion change mesh 
 		NPC colliders need to move with NPCs, not sure why they dont, need to investigate
@@ -24,6 +25,7 @@ DIALOGUES
 
 SHADER PASS
 	[Identify]
+	add shadow falloff for materials
 	initial shader pass done, need to spend some time for a gold shader for king/title etc
 	Door textures + sprite shader?
 	

@@ -41,7 +41,7 @@ func _input(event: InputEvent) -> void:
 		stickerbook.visible = false
 		pause_menu.visible = !pause_menu.visible
 		if DialogueManager.is_dialogue_active == true:
-			var TextBox = get_child(5)
+			var TextBox = get_child(6)
 			TextBox.visible = !TextBox.visible
 		if interact.visible == true:
 			interact.visible = !interact.visible

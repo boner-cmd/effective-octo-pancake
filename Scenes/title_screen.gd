@@ -13,7 +13,8 @@ var tween_letter : Tween
 func tween_letters() -> void:
 	for letter in letter_array:
 		letter.rotation.y = randf_range(deg_to_rad(-5.0), deg_to_rad(5.0))
-
+		letter.rotation.x = randf_range(deg_to_rad(-5.0), deg_to_rad(5.0))
+		letter.rotation.z = randf_range(deg_to_rad(-5.0), deg_to_rad(5.0))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
