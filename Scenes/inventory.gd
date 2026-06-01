@@ -1,7 +1,7 @@
 extends MarginContainer
 
-@onready var item_get_sprite: Sprite3D = $"../../PlayerCharacter/ClownRigFBX/ItemLocator/Item_Get_Sprite"
-
+@onready var item_get_sprite: Sprite3D = $"../../PlayerCharacter/ClownRigFBX/ItemGetLocator/Item_Get_Sprite"
+@onready var item_give_sprite: Sprite3D = $"../../PlayerCharacter/ClownRigFBX/ItemGiveLocator/Item_Give_Sprite"
 
 var inventory_slots = {
 	Slot1 = false,
@@ -87,6 +87,7 @@ func add_item(npc_name : QuestManager.CharacterName) -> void:
 	
 func remove_item(npc_name : QuestManager.CharacterName) -> void:
 	var found_key : String = inventory_slots.find_key(npc_name)
+	item_give_sprite.texture = item_resources[npc_name]
 	assert(found_key, "Tried to remove a non-existent item from inventory, check npc_name")
 	inventory_slots[found_key] = false
 	match found_key:

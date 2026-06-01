@@ -48,10 +48,17 @@ script = ExtResource("3_ee4y8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.6638414)
 shape = SubResource("CylinderShape3D_4chgf")
 
-[node name="ItemLocator" type="Node3D" parent="ClownRigFBX" unique_id=1374952081]
+[node name="ItemGetLocator" type="Node3D" parent="ClownRigFBX" unique_id=1374952081]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238, 1.9, -0.204)
 
-[node name="Item_Get_Sprite" type="Sprite3D" parent="ClownRigFBX/ItemLocator" unique_id=1273379059]
+[node name="Item_Get_Sprite" type="Sprite3D" parent="ClownRigFBX/ItemGetLocator" unique_id=1273379059]
+billboard = 1
+texture_filter = 0
+
+[node name="ItemGiveLocator" type="Node3D" parent="ClownRigFBX" unique_id=555695359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122, 1.185, -0.764)
+
+[node name="Item_Give_Sprite" type="Sprite3D" parent="ClownRigFBX/ItemGiveLocator" unique_id=2016765321]
 billboard = 1
 texture_filter = 0
 
