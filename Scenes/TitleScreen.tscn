@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cdk73hgo210qs" path="res://UI assets/title_screen_letters.tscn" id="2_7whhf"]
 [ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="2_i5sur"]
 [ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="4_bawyk"]
+[ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
 [ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="5_qfyqv"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
@@ -78,12 +79,12 @@ size = 2.878
 environment = SubResource("Environment_emot1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=134751511]
-transform = Transform3D(0.96740305, 0.120547496, 0.22270955, -0.16570538, -0.36370814, 0.9166559, 0.19150187, -0.92368007, -0.331877, 2.2268767, -7.9185677, 5.2548213)
+transform = Transform3D(0.96740305, 0.120547496, 0.22270955, -0.16570538, -0.36370814, 0.9166559, 0.19150187, -0.92368007, -0.331877, 2.2268767, -11.058647, 5.2548213)
 material_override = ExtResource("2_i5sur")
 mesh = SubResource("SphereMesh_7whhf")
 
 [node name="Timer" type="Timer" parent="Node3D" unique_id=1742850589]
-wait_time = 5.0
+wait_time = 0.505
 autostart = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Node3D" unique_id=483725813]
@@ -105,6 +106,9 @@ light_specular = 16.49
 spot_range = 7.497433
 spot_attenuation = -2.36
 spot_angle = 48.36
+
+[node name="ClownRigFBX" parent="Node3D" unique_id=77601808 instance=ExtResource("4_pie25")]
+transform = Transform3D(-0.12128098, -4.6596003e-09, 0.1590312, -0.1590312, -2.5909472e-08, -0.12128098, 2.3427678e-08, -0.2, 1.2006523e-08, 0.60955745, -7.846285, 0.6989892)
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1367721345]
 own_world_3d = true
@@ -138,6 +142,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -205,11 +210,14 @@ layout_mode = 2
 [connection signal="timeout" from="Node3D/Timer" to="." method="_on_timer_timeout"]
 [connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_focus_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_new_game_button_focus_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_new_game_button_mouse_entered"]
+[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_focus_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_new_game_button_focus_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_new_game_button_mouse_entered"]
+[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_credits_focus_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_credits_mouse_exited"]
 
 [editable path="Node3D/title_screen_letters"]

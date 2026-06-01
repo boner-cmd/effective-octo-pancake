@@ -38,7 +38,7 @@ VFX PASS
 
 UI PASS
 	"Map Icon" on the HUD for clarity
-	
+	pause buttons pass
 
 POLISH IDEAS
 	honk counter
