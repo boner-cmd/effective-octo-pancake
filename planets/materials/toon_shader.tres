@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://csyvxak3kq1sv"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_4ktds"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4ktds")
+shader_parameter/ToonRampOffset = 0.7010000332975
+shader_parameter/ToonRampSmoothness = 0.36400001729
+shader_parameter/ToonRampTinting = Color(0.5248856, 0.5205659, 0.46958554, 1)
+shader_parameter/UV_Scaling_U = 1.0
+shader_parameter/UV_Scaling_V = 1.0

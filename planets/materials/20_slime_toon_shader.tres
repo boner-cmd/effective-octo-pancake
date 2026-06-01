@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cmml8go7kgcp4"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_l6wlf"]
+[ext_resource type="Texture2D" uid="uid://cff6h2i4xm8fp" path="res://planets/textures/Planet Textures/slime planet texture.png" id="2_l6wlf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_l6wlf")
+shader_parameter/ToonRampOffset = 0.50000002375
+shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampTinting = Color(0, 0, 0, 1)
+shader_parameter/UV_Scaling_U = 3.0000001425
+shader_parameter/UV_Scaling_V = 3.0000001425
+shader_parameter/Texture = ExtResource("2_l6wlf")

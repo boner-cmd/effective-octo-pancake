@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://5skj82rwpnms"]
 
-[ext_resource type="Material" uid="uid://la1b523mxj4" path="res://planets/materials/07_grease_planet.tres" id="1_ctb4u"]
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_wwmx7"]
 [ext_resource type="Material" uid="uid://cb2m2isclve0i" path="res://planets/materials/07_grease_skybox.tres" id="2_6h86k"]
+[ext_resource type="Material" uid="uid://dfnaqu7jjc5l" path="res://planets/materials/07_grease_toon_shader.tres" id="2_d0l1o"]
 [ext_resource type="Material" uid="uid://7dyo7kkm0s0d" path="res://planets/materials/02_horse_skybox.tres" id="3_2nyx6"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="5_d0l1o"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_06bkn"]
@@ -46,7 +46,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1223939684]
-material_override = ExtResource("1_ctb4u")
+material_override = ExtResource("2_d0l1o")
 mesh = SubResource("SphereMesh_wwmx7")
 
 [node name="SkySphere" type="MeshInstance3D" parent="." unique_id=1890027866]

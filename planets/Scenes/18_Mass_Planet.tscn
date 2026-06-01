@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c2jatitnj3qcd"]
 
-[ext_resource type="Material" uid="uid://cbh20jpl4u641" path="res://planets/materials/18_Mass_planet.tres" id="1_wsw8c"]
 [ext_resource type="Material" uid="uid://eyfitw40ikot" path="res://planets/materials/18_Mass_skybox.tres" id="1_xbi7y"]
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_yab18"]
+[ext_resource type="Material" uid="uid://c8vt37dcw1hr" path="res://planets/materials/18_mass_toon_shader.tres" id="2_yab18"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_v005d"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="5_501ac"]
 
@@ -47,7 +47,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=651313934]
-material_override = ExtResource("1_wsw8c")
+material_override = ExtResource("2_yab18")
 mesh = SubResource("SphereMesh_wsw8c")
 
 [node name="SkySphere" type="MeshInstance3D" parent="." unique_id=1139091591]

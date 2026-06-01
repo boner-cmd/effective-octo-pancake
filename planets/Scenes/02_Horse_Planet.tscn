@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_0yh3f"]
 [ext_resource type="Material" uid="uid://7dyo7kkm0s0d" path="res://planets/materials/02_horse_skybox.tres" id="2_ga5oq"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_w6qek"]
+[ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="2_t51te"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_t51te"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="5_t51te"]
 
@@ -23,6 +23,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_js2l7"]
+material = ExtResource("2_t51te")
 radius = 5.0
 height = 10.0
 
@@ -50,7 +51,6 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1429395574]
-material_override = ExtResource("3_w6qek")
 mesh = SubResource("SphereMesh_js2l7")
 
 [node name="SkySphere" type="MeshInstance3D" parent="." unique_id=372337409]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_1e5ij"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_v5l73"]
 [ext_resource type="Material" uid="uid://n1vy5mk0olje" path="res://planets/materials/12_Lamp_skybox.tres" id="2_mr5si"]
-[ext_resource type="Material" uid="uid://d156wbmijit5p" path="res://planets/materials/12_Lamp_planet.tres" id="3_d7g5m"]
+[ext_resource type="Material" uid="uid://dyucfnyefll8a" path="res://planets/materials/12_Lamp_toon_shader.tres" id="4_5xo3p"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="5_5xo3p"]
 [ext_resource type="Script" uid="uid://dixvh14054u1o" path="res://Character Scenes/NPCs/lamp_completion.gd" id="6_5xo3p"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_x06r3"]
@@ -52,7 +52,7 @@ surface_material_override/0 = ExtResource("2_mr5si")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1953236752]
 mesh = SubResource("SphereMesh_tnp6f")
-surface_material_override/0 = ExtResource("3_d7g5m")
+surface_material_override/0 = ExtResource("4_5xo3p")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_5xo3p")]
 

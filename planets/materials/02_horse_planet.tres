@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://tgq2ga34amkb"]
-
-[ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="1_iyd6h"]
-
-[resource]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("1_iyd6h")
-uv1_scale = Vector3(10, 10, 10)

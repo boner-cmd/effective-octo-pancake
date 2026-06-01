@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctf8rj1gusj36"
-path.s3tc="res://.godot/imported/idea guy.png-b8bbfef489788901f17e84ae499d6bf1.s3tc.ctex"
+path.s3tc="res://.godot/imported/idea guy.png-dcd4fe0eb9391f90d1687842ae75feda.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Character Export Files/idea guy/idea guy.png"
-dest_files=["res://.godot/imported/idea guy.png-b8bbfef489788901f17e84ae499d6bf1.s3tc.ctex"]
+source_file="res://planets/textures/Planet Textures/idea guy.png"
+dest_files=["res://.godot/imported/idea guy.png-dcd4fe0eb9391f90d1687842ae75feda.s3tc.ctex"]
 
 [params]
 

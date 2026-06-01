@@ -24,7 +24,7 @@ DIALOGUES
 
 SHADER PASS
 	[Identify]
-	Maybe a proper toon shader for materials
+	initial shader pass done, need to spend some time for a gold shader for king/title etc
 	Door textures + sprite shader?
 	
 
@@ -38,7 +38,6 @@ VFX PASS
 
 UI PASS
 	"Map Icon" on the HUD for clarity
-	pause buttons pass
 
 POLISH IDEAS
 	honk counter

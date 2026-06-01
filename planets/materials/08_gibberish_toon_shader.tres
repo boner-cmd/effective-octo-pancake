@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dxgrumds886el"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_uys0o"]
+[ext_resource type="Texture2D" uid="uid://d16r8ei2no08y" path="res://planets/textures/Skybox Textures/gibberish skybox.png" id="2_uys0o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uys0o")
+shader_parameter/ToonRampOffset = 1.0
+shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampTinting = Color(1, 1, 1, 1)
+shader_parameter/UV_Scaling_U = 1.0000000475
+shader_parameter/UV_Scaling_V = 1.0000000475
+shader_parameter/Texture = ExtResource("2_uys0o")

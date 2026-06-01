@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d2p7uhwoag3xd"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_5uc1g"]
+[ext_resource type="Texture2D" uid="uid://dmow47blyrxxn" path="res://planets/textures/Planet Textures/gatekeeper texture.png" id="2_5uc1g"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5uc1g")
+shader_parameter/ToonRampOffset = 0.50000002375
+shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampTinting = Color(0, 0, 0, 1)
+shader_parameter/UV_Scaling_U = 5.0000002375
+shader_parameter/UV_Scaling_V = 3.0000001425
+shader_parameter/Texture = ExtResource("2_5uc1g")

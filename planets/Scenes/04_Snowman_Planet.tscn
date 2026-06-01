@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_x2kwg"]
 [ext_resource type="Material" uid="uid://c4dc8tgvesidv" path="res://planets/materials/04_snowman_skybox.tres" id="2_x2kwg"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_jgtud"]
-[ext_resource type="Material" uid="uid://c5usvlt0yyy2p" path="res://planets/materials/04_snowman_planet.tres" id="5_ubpkv"]
+[ext_resource type="Material" uid="uid://dj7s7820eoffe" path="res://planets/materials/04_snowman_toon_shader.tres" id="5_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_grmqm"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_gwu52"]
 
@@ -50,10 +49,9 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_x2kwg")
-surface_material_override/0 = ExtResource("3_jgtud")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=145002734]
-material_override = ExtResource("5_ubpkv")
+material_override = ExtResource("5_6e6r8")
 mesh = SubResource("SphereMesh_xx24n")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_grmqm")]

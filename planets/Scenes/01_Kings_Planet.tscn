@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://clr5ostwu7ndd" path="res://planets/models/king planet model/king planet.gltf" id="2_rtanu"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="2_tsosp"]
 [ext_resource type="Material" uid="uid://csvyqxvwtg5u0" path="res://planets/materials/01_kings_skybox.tres" id="3_ctuby"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="4_tsosp"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_53jkq"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_b0uid"]
 
@@ -45,7 +44,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("3_ctuby")
-surface_material_override/0 = ExtResource("4_tsosp")
 
 [node name="SphereSkybox" type="MeshInstance3D" parent="." unique_id=1537566391]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)

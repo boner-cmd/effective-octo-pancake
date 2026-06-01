@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_77aw3"]
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_adu81"]
 [ext_resource type="Material" uid="uid://d2xv5hnl6t07t" path="res://planets/materials/20_Slime_skybox.tres" id="2_c3pda"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_dq6qn"]
-[ext_resource type="Material" uid="uid://c6cbsx5i5cdxo" path="res://planets/materials/20_Slime_planet.tres" id="5_jpmp2"]
+[ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="4_adu81"]
+[ext_resource type="Material" uid="uid://cmml8go7kgcp4" path="res://planets/materials/20_slime_toon_shader.tres" id="5_adu81"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="6_57yoy"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_itxan"]
 
@@ -23,6 +23,12 @@ background_mode = 2
 sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57yoy"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("4_adu81")
+uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="SphereMesh" id="SphereMesh_adu81"]
 radius = 5.0
@@ -44,10 +50,10 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_c3pda")
-surface_material_override/0 = ExtResource("3_dq6qn")
+surface_material_override/0 = SubResource("StandardMaterial3D_57yoy")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1535128486]
-material_override = ExtResource("5_jpmp2")
+material_override = ExtResource("5_adu81")
 mesh = SubResource("SphereMesh_adu81")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_57yoy")]

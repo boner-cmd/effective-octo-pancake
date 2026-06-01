@@ -99,10 +99,17 @@ func _ready() -> void:
 	await Obj_2.ready
 	if Obj_2:
 		Obj_2.request_ready()
+		Obj_2.stasis()
 	if Obj_3:
 		Obj_3.request_ready()
+		Obj_3.stasis()
 	if Obj_4:
 		Obj_4.request_ready()
+		Obj_4.stasis()
 	if Obj_5:
 		Obj_5.request_ready()
-		
+		Obj_5.stasis()
+	
+	
+	
+	

@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c8as2ukr6ikov" path="res://Character Export Files/body with organs/bwo body.png" id="18_00uqi"]
 [ext_resource type="Texture2D" uid="uid://bl7k88u5tn017" path="res://planets/textures/Planet Textures/circuit planet texture.png" id="19_iqywv"]
 [ext_resource type="Texture2D" uid="uid://bk1fwi0omtaj7" path="res://planets/models/gibberish/gibberish_skybox.png" id="20_yo8np"]
-[ext_resource type="Texture2D" uid="uid://ctf8rj1gusj36" path="res://Character Export Files/idea guy/idea guy.png" id="21_ftghg"]
+[ext_resource type="Texture2D" uid="uid://ctf8rj1gusj36" path="res://planets/textures/Planet Textures/idea guy.png" id="21_ftghg"]
 [ext_resource type="Texture2D" uid="uid://bfkcyyc7h443b" path="res://planets/textures/Skybox Textures/bodhisattva skybox.png" id="22_4u7pl"]
 [ext_resource type="Texture2D" uid="uid://cqi468vylubn5" path="res://Placeholder Assets (UI)/completed-stamp/cropped_complete.svg" id="23_d34sf"]
 [ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="23_ppan7"]

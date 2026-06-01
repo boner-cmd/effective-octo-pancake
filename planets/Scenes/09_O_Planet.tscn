@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_7nae5"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_aejfo"]
 [ext_resource type="Material" uid="uid://caxblyc54d0uj" path="res://planets/materials/09_O_skybox.tres" id="2_pkas1"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_q6mny"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_xtds4"]
-[ext_resource type="Material" uid="uid://cyljn6siq2i16" path="res://planets/materials/09_O_planet.tres" id="5_31abu"]
+[ext_resource type="Material" uid="uid://cd6hn631nxvh5" path="res://planets/materials/09_O_toon_shader.tres" id="6_k3bn4"]
 [ext_resource type="Material" uid="uid://qgwupr3ubecg" path="res://planets/materials/09_Q_skybox.tres" id="6_oegdf"]
-[ext_resource type="Material" uid="uid://dk8lja3wpiagu" path="res://planets/materials/09_Q_planet.tres" id="7_7nae5"]
+[ext_resource type="Material" uid="uid://c24ot3jfc6fse" path="res://planets/materials/09_Q_toon_shader.tres" id="8_k3bn4"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="9_k3bn4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="10_fvbbk"]
 [ext_resource type="Script" uid="uid://d82ju163pjib" path="res://Character Scenes/NPCs/o_completion.gd" id="11_k3bn4"]
@@ -49,29 +48,25 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_pkas1")
-surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_xtds4")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
 [node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
-material_override = ExtResource("5_31abu")
-surface_material_override/0 = ExtResource("3_q6mny")
+material_override = ExtResource("6_k3bn4")
 
 [node name="CubedSkybox2" parent="." unique_id=1521302041 instance=ExtResource("1_aejfo")]
 visible = false
 
 [node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
 material_override = ExtResource("6_oegdf")
-surface_material_override/0 = ExtResource("3_q6mny")
 
 [node name="Cubed_Planet2" parent="." unique_id=1226520102 instance=ExtResource("4_xtds4")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 visible = false
 
 [node name="Cubed_Planet" parent="Cubed_Planet2" index="0" unique_id=1134823557]
-material_override = ExtResource("7_7nae5")
-surface_material_override/0 = ExtResource("3_q6mny")
+material_override = ExtResource("8_k3bn4")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_k3bn4")]
 transform = Transform3D(1, 0, 0, 0, 0.13894846, -0.99029964, 0, 0.99029964, 0.13894846, 0, 0, 0)

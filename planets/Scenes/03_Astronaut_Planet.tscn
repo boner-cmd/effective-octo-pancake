@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_37638"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_eoa84"]
 [ext_resource type="Material" uid="uid://bnb0pjdjojyn2" path="res://planets/materials/03_astronaut_skybox.tres" id="2_76dvl"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_pxfi8"]
-[ext_resource type="Material" uid="uid://34cgvgmstxdi" path="res://planets/materials/03_astronaut_planet.tres" id="5_pxfi8"]
+[ext_resource type="Material" uid="uid://blm5dlgilm0td" path="res://planets/materials/03_astro_toon_shader.tres" id="5_37638"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="6_73e37"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_ws3m3"]
 
@@ -49,10 +48,9 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_76dvl")
-surface_material_override/0 = ExtResource("3_pxfi8")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=521891855]
-material_override = ExtResource("5_pxfi8")
+material_override = ExtResource("5_37638")
 mesh = SubResource("SphereMesh_biw4r")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_73e37")]

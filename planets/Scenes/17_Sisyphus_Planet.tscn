@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_ekkq8"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_kiytl"]
 [ext_resource type="Material" uid="uid://115rl1p1xj1q" path="res://planets/materials/17_Sisyphus_skybox.tres" id="2_jbkmu"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_s8fxi"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_qrq4l"]
-[ext_resource type="Material" uid="uid://cdorni8e2etb" path="res://planets/materials/17_Sisyphus_planet.tres" id="5_0dw7n"]
+[ext_resource type="Material" uid="uid://dit88qyf8fw24" path="res://planets/materials/17_sisyphusi_toon_shader.tres" id="6_ekkq8"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_x2x1x"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_c2lp6"]
 
@@ -45,14 +44,12 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_jbkmu")
-surface_material_override/0 = ExtResource("3_s8fxi")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_qrq4l")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
 [node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
-material_override = ExtResource("5_0dw7n")
-surface_material_override/0 = ExtResource("3_s8fxi")
+material_override = ExtResource("6_ekkq8")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_x2x1x")]
 transform = Transform3D(1, 0, 0, 0, -0.088372715, 0.9960875, 0, -0.9960875, -0.088372715, 0, 0, 0)

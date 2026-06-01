@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c85a87oajdg3v"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_nwnd3"]
+[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/Planet Textures/body_with_organs_planet_texture.png" id="2_nwnd3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nwnd3")
+shader_parameter/ToonRampOffset = 0.50000002375
+shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampTinting = Color(0, 0, 0, 1)
+shader_parameter/UV_Scaling_U = 3.0000001425
+shader_parameter/UV_Scaling_V = 3.0000001425
+shader_parameter/Texture = ExtResource("2_nwnd3")

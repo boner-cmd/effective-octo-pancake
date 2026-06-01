@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cbh20jpl4u641"]
-
-[ext_resource type="Texture2D" uid="uid://be1jk7tu1hpre" path="res://planets/textures/Planet Textures/festering_mass_planet_texture.png" id="1_6b86h"]
-
-[resource]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("1_6b86h")
-uv1_scale = Vector3(3, 3, 3)

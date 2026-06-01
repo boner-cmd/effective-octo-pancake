@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c4u6qyrco428l"]
-
-[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/Planet Textures/body_with_organs_planet_texture.png" id="1_p7st1"]
-
-[resource]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("1_p7st1")
-uv1_scale = Vector3(2, 2, 2)

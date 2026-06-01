@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_d6cxk"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_wv5cx"]
 [ext_resource type="Material" uid="uid://bou4i2icbyjic" path="res://planets/materials/05_gatekeeper_skybox.tres" id="2_wv5cx"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_tcjvb"]
-[ext_resource type="Material" uid="uid://bgcx1s6nrqyny" path="res://planets/materials/05_gatekeeper_planet.tres" id="5_wv5cx"]
+[ext_resource type="Material" uid="uid://d2p7uhwoag3xd" path="res://planets/materials/05_gate_toon_shader.tres" id="5_n7ksx"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="6_n7ksx"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_lq66j"]
 [ext_resource type="Script" uid="uid://bs4akh70mag2n" path="res://Character Scenes/NPCs/gatekeeper_completion.gd" id="7_n7ksx"]
@@ -26,7 +25,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_84pt0"]
-material = ExtResource("5_wv5cx")
+material = ExtResource("5_n7ksx")
 radius = 5.0
 height = 10.0
 
@@ -51,7 +50,6 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_wv5cx")
-surface_material_override/0 = ExtResource("3_tcjvb")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1189905620]
 mesh = SubResource("SphereMesh_84pt0")

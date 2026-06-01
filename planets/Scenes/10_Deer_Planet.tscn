@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_hb5q0"]
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_txy1j"]
 [ext_resource type="Material" uid="uid://chrf665sj6kbi" path="res://planets/materials/10_Deer_skybox.tres" id="2_swx71"]
-[ext_resource type="Material" uid="uid://tgq2ga34amkb" path="res://planets/materials/02_horse_planet.tres" id="3_kfqw7"]
 [ext_resource type="Material" uid="uid://ekgtxdnawfrf" path="res://planets/materials/10_O_Deer_skybox.tres" id="4_3pjkr"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_m2m7x"]
-[ext_resource type="Material" uid="uid://c74pmtds6alo8" path="res://planets/materials/10_Deer_planet.tres" id="6_vlnvu"]
+[ext_resource type="Material" uid="uid://ko5cwwv6vhts" path="res://planets/materials/10_deer_toon_shader.tres" id="7_36we4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_36we4"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="9_5tpbv"]
 [ext_resource type="Script" uid="uid://ckvcl8m1n4tpl" path="res://Character Scenes/NPCs/deer_completion.gd" id="9_36we4"]
@@ -48,21 +47,18 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_swx71")
-surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="CubedSkybox2" parent="." unique_id=991346088 instance=ExtResource("1_hb5q0")]
 visible = false
 
 [node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
 material_override = ExtResource("4_3pjkr")
-surface_material_override/0 = ExtResource("3_kfqw7")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_m2m7x")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
 [node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
-material_override = ExtResource("6_vlnvu")
-surface_material_override/0 = ExtResource("3_kfqw7")
+material_override = ExtResource("7_36we4")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_36we4")]
 
