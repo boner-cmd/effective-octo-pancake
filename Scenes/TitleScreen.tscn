@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://buubpdem5wqyi" path="res://Scenes/title_screen.gd" id="1_n15yj"]
 [ext_resource type="PackedScene" uid="uid://cdk73hgo210qs" path="res://UI assets/title_screen_letters.tscn" id="2_7whhf"]
 [ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="3_pie25"]
-[ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="4_bawyk"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
 [ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="5_2jiiu"]
-[ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="5_qfyqv"]
 [ext_resource type="Texture2D" uid="uid://cqm2e7obmwgw5" path="res://planets/textures/Skybox Textures/horse skybox.png" id="6_awp6w"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://c8pwuraxgwshx" path="res://UI assets/credits unselected.png" id="8_awp6w"]
+[ext_resource type="Texture2D" uid="uid://ruda2duna01l" path="res://UI assets/new unselected.png" id="8_qu6cc"]
+[ext_resource type="Texture2D" uid="uid://bomjbruvphyau" path="res://UI assets/new selected.png" id="9_4hokt"]
 [ext_resource type="Texture2D" uid="uid://dqmpr0ojjqgq5" path="res://UI assets/credits selected.png" id="9_qu6cc"]
 [ext_resource type="Texture2D" uid="uid://c53fc3d0tl4fd" path="res://UI assets/title screen ah render.png" id="10_qfyqv"]
 
@@ -228,8 +228,8 @@ custom_minimum_size = Vector2(170, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_bawyk")
-texture_hover = ExtResource("5_qfyqv")
+texture_normal = ExtResource("8_qu6cc")
+texture_hover = ExtResource("9_4hokt")
 stretch_mode = 5
 
 [node name="QuitButton" type="TextureButton" parent="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn" unique_id=951586802]
