@@ -21,7 +21,8 @@ MAP
 
 DIALOGUES 
 	Unique speech sound per NPC (?)
-	
+	Character name boxes
+	Lock king door before dialogue with him
 
 SHADER PASS
 	[Identify]
@@ -52,4 +53,9 @@ POLISH IDEAS
 	Side-quests? (lol)
 	Unique boxes per NPCs (?)
 	Unique type per NPCs (?)
-	
+TITLE SCREEN
+	Finish Background
+	Atmospheric fade
+	Title Screen Music
+Music
+	Remaster tracks
