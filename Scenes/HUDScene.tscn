@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dqjar201xnc71" path="res://UI assets/128 AH itchio background.png" id="3_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://b60w6v7nby0qs" path="res://Placeholder Assets (UI)/text_rect_blue.png" id="3_rv5bf"]
 [ext_resource type="Texture2D" uid="uid://c2nc44jkx5n62" path="res://Placeholder Assets (UI)/stickerbook_bg.png" id="5_jqj6d"]
+[ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="6_2wn8p"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
+[ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="7_40r1x"]
 [ext_resource type="Texture2D" uid="uid://cj363unhfokc8" path="res://planets/textures/Planet Textures/astronaut planet texture expore png.png" id="7_d34sf"]
 [ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="8_jqj6d"]
+[ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="8_rv8fl"]
+[ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="9_sqpbf"]
 [ext_resource type="Texture2D" uid="uid://corpj8fathg78" path="res://planets/textures/Skybox Textures/snowman skybox.png" id="10_7h3cr"]
 [ext_resource type="Texture2D" uid="uid://d3tdvvpspeima" path="res://planets/textures/Skybox Textures/sisyphus skybox.png" id="11_ynwxi"]
 [ext_resource type="Texture2D" uid="uid://bvwryv2va8maw" path="res://planets/textures/Planet Textures/grease puddle.png" id="12_cm65r"]
@@ -271,21 +275,28 @@ script = ExtResource("2_yw1hr")
 z_index = 100
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 20
+theme_override_constants/separation = 56
 alignment = 1
 
-[node name="ContinueButton" type="Button" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=197499035]
-z_index = 100
+[node name="ContinueButton" type="TextureButton" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=1164040387]
+texture_filter = 1
+custom_minimum_size = Vector2(170, 80)
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Continue"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_2wn8p")
+texture_hover = ExtResource("7_40r1x")
+stretch_mode = 5
 
-[node name="QuitButton" type="Button" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=1755189773]
-z_index = 100
+[node name="QuitButton" type="TextureButton" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=54585596]
+texture_filter = 1
+custom_minimum_size = Vector2(170, 80)
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Quit
-"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_rv8fl")
+texture_hover = ExtResource("9_sqpbf")
+stretch_mode = 5
 
 [node name="StickerbookBackground" type="TextureRect" parent="." unique_id=432696859]
 visible = false
@@ -616,5 +627,9 @@ autoplay = "dialogue_conf"
 centered = false
 offset = Vector2(53.005, 9)
 
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

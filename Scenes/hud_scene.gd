@@ -10,6 +10,8 @@ extends CanvasLayer
 @onready var locked_label: Label = $Interact/MarginContainer/LockedLabel
 @onready var npc_label: Label = $Interact/MarginContainer/NPC 
 @onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
+@onready var continue_button: TextureButton = $PauseContainer/MarginContainer/HBoxContainer/ContinueButton
+@onready var quit_button: TextureButton = $PauseContainer/MarginContainer/HBoxContainer/QuitButton
 
 @onready var player : CharacterBody3D
 @onready var interaction_detector
@@ -57,6 +59,8 @@ func _input(event: InputEvent) -> void:
 
 # set initial visibility states
 func _ready() -> void:
+	quit_button.pivot_offset = quit_button.size / 2.0
+	continue_button.pivot_offset = continue_button.size / 2.0
 	transition_color.visible = true
 	set_initial_visibility()
 	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
@@ -139,3 +143,17 @@ func on_npc_exited() -> void:
 	npc_label.visible = false
 	next_indicator.visible = false
 	
+
+func _on_continue_button_mouse_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	continue_button.scale = Vector2(1.2, 1.2)
+
+func _on_continue_button_mouse_exited() -> void:
+	continue_button.scale = Vector2(1.0, 1.0)
+
+func _on_quit_button_mouse_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	quit_button.scale = Vector2(1.2, 1.2)
+
+func _on_quit_button_mouse_exited() -> void:
+	quit_button.scale = Vector2(1.0, 1.0)

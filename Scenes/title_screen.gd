@@ -17,9 +17,9 @@ func tween_letters() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	quit_button.pivot_offset = new_game_button.size / 2.0
+	quit_button.pivot_offset = quit_button.size / 2.0
 	new_game_button.pivot_offset = new_game_button.size / 2.0
-	credits.pivot_offset = new_game_button.size / 2.0
+	credits.pivot_offset = credits.size / 2.0
 	
 	
 	letter_array = title_screen_letters.get_children()
@@ -59,7 +59,6 @@ func _on_quit_button_mouse_entered() -> void:
 
 
 func _on_quit_button_mouse_exited() -> void:
-	quit_button.pivot_offset = new_game_button.size / 2.0
 	quit_button.scale = Vector2(1.0, 1.0)
 
 func _on_credits_focus_entered() -> void:
