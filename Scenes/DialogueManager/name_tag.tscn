@@ -17,14 +17,10 @@ axis_stretch_vertical = 1
 
 [node name="NameTag" type="MarginContainer" unique_id=1198593662]
 z_index = -5
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -305.0
+offset_left = 324.0
 offset_top = 385.0
-offset_right = -272.0
+offset_right = 357.0
 offset_bottom = 451.0
-grow_horizontal = 2
 size_flags_vertical = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=477419255]

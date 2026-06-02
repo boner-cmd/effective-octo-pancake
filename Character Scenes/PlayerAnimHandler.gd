@@ -30,6 +30,10 @@ func _set_player_anim(anim : AnimStates):
 		current_anim = anim
 		item_get_sprite.visible = false
 		item_give_sprite.visible = false
+		item_get_sprite.timer.stop()
+		item_get_sprite.timer.wait_time = 0.1
+		item_give_sprite.timer.stop()
+		item_give_sprite.timer.wait_time = 0.1
 		match current_anim:
 			AnimStates.IDLE:
 				anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)
@@ -67,6 +71,7 @@ func _set_player_anim(anim : AnimStates):
 			AnimStates.GET:
 				AudioManager.sfx_play(AudioManager.sfx_get_item)
 				item_get_sprite.visible = true
+				item_get_sprite.timer.start()
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)
 				anim_tree.set("parameters/Exit/blend_amount", 0.0)
 				anim_tree.set("parameters/Victory/blend_amount", 0.0)
@@ -78,6 +83,7 @@ func _set_player_anim(anim : AnimStates):
 			AnimStates.GIVE:
 				AudioManager.sfx_play(AudioManager.sfx_give_item)
 				item_give_sprite.visible = true
+				item_give_sprite.timer.start()
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)
 				anim_tree.set("parameters/Exit/blend_amount", 0.0)
 				anim_tree.set("parameters/Victory/blend_amount", 0.0)
