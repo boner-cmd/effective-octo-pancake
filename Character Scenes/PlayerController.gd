@@ -4,6 +4,7 @@ var player_cutscene_locator: Node3D
 var _cam_frame_both: Camera3D
 var _cam_player_give: Camera3D
 var _cam_frame_both_puddles: Camera3D
+var _cam_frame_animals: Camera3D
 var _cam_player_receive: Camera3D
 
 var npc_camera_locator = Node3D
@@ -81,8 +82,10 @@ func player_interaction_camera() -> void:
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
 				clone._set_player_anim(clone.AnimStates.TALK)
-				if DialogueManager.current_npc == QuestManager.CharacterName.SLIME || DialogueManager.current_npc == QuestManager.CharacterName.GREASE:
+				if DialogueManager.current_npc == QuestManager.CharacterName.SLIME||DialogueManager.current_npc == QuestManager.CharacterName.GREASE||DialogueManager.current_npc == QuestManager.CharacterName.MASS:
 					_cam_frame_both_puddles.make_current()
+				elif DialogueManager.current_npc == QuestManager.CharacterName.DEER||DialogueManager.current_npc == QuestManager.CharacterName.HORSE:
+					_cam_frame_animals.make_current()
 				else:
 					_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:

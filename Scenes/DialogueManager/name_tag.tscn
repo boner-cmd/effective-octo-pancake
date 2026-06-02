@@ -19,9 +19,9 @@ axis_stretch_vertical = 1
 [node name="NameTag" type="MarginContainer" unique_id=1198593662]
 z_index = -5
 offset_left = 320.0
-offset_top = 385.0
+offset_top = 435.0
 offset_right = 353.0
-offset_bottom = 451.0
+offset_bottom = 501.0
 scale = Vector2(1, 1e-05)
 pivot_offset = Vector2(0, 66)
 size_flags_vertical = 0

@@ -140,12 +140,17 @@ fov = 77.2
 
 [node name="frame_both_puddles" type="Camera3D" parent="Area3D" unique_id=362255160]
 unique_name_in_owner = true
-transform = Transform3D(0.1548096, -0.23423123, 0.95977587, -0.018928465, 0.97060627, 0.23992747, -0.98776305, -0.055310152, 0.14582552, 1.6646322, -0.19971323, -0.385714)
+transform = Transform3D(-0.061760575, -0.8039157, 0.5915279, -0.030300986, 0.59389627, 0.8039707, -0.997631, 0.031729788, -0.06103878, 1.8825531, 1.4234362, -0.54731256)
 fov = 77.2
 
 [node name="player_receive" type="Camera3D" parent="Area3D" unique_id=275622376]
 unique_name_in_owner = true
 transform = Transform3D(0.8915987, -0.22266579, 0.39429897, -0.065610744, 0.79803884, 0.5990235, -0.448048, -0.5599589, 0.696921, 0.678, 1.397, -0.408)
 fov = 40.0
+
+[node name="frame_both_animals" type="Camera3D" parent="Area3D" unique_id=216661980]
+unique_name_in_owner = true
+transform = Transform3D(-0.32614645, -0.15957054, 0.9317541, -0.2699335, 0.96033263, 0.06997864, -0.90596044, -0.22868836, -0.35628253, 1.605858, -0.086925626, -1.6314615)
+fov = 77.2
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
