@@ -53,10 +53,13 @@ func change_king_door():
 		destination_planet_ID = QuestManager.CharacterName.KING_2 
 
 func lock_check():
+	var horse_lock = DialogueManager.horse_lock
 	var sisyphus_lock = DialogueManager.sisyphus_lock
 	var gate_lock = DialogueManager.gate_lock
 	var king2_lock = DialogueManager.king2_lock
-
+	
+	if destination_planet_ID == QuestManager.CharacterName.HORSE:
+		door_locked = horse_lock
 	if destination_planet_ID == QuestManager.CharacterName.ROBOT:
 		door_locked = gate_lock
 	if destination_planet_ID == QuestManager.CharacterName.INDIVIDUAL:

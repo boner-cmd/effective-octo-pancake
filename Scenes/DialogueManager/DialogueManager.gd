@@ -550,6 +550,7 @@ var current_npc : QuestManager.CharacterName
 var sfx: AudioStream
 var dialogue_finished_sfx: AudioStream
 
+var horse_lock : bool = true
 var sisyphus_lock : bool = true
 var gate_lock : bool = true
 var king2_lock : bool = true
@@ -664,6 +665,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 
 				QuestManager.CharacterName.KING_1, QuestManager.CharacterName.MASS: # only require meetings, then will give
 					if first_meeting:
+						horse_lock = false
 						if QuestManager.requirements_met(current_npc):
 							combines_lines = true
 							QuestManager.set_completed(current_npc)
