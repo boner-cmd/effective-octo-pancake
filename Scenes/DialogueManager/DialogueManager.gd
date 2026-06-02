@@ -11,6 +11,32 @@ enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, FINISHED, EAS
 
 # TODO find a way to use PackedStringArrays instead of Array[String]s inside array
 
+const Character_Names : Dictionary[QuestManager.CharacterName, String] = {
+	QuestManager.CharacterName.KING_1 : "King",
+	QuestManager.CharacterName.HORSE : "Hungry Horse",
+	QuestManager.CharacterName.ASTRO : "Astronaut",
+	QuestManager.CharacterName.SNOWMAN : "Snowman",
+	QuestManager.CharacterName.GREASE : "Grease Puddle",
+	QuestManager.CharacterName.DEER : "No-Eye'd Deer",
+	QuestManager.CharacterName.O : "O",
+	QuestManager.CharacterName.ORGANS : "Body With Organs",
+	QuestManager.CharacterName.MASS : "Festering Mass",
+	QuestManager.CharacterName.LAMP : "Lamp",
+	QuestManager.CharacterName.MICHAEL : "Michaelwave",
+	QuestManager.CharacterName.ROBOT : "Rusty Robot",
+	QuestManager.CharacterName.GIBBERISH : "djgo;iupiashjkjhion",
+	QuestManager.CharacterName.IDEA : "Idea Guy",
+	QuestManager.CharacterName.BODHI : "Boddhisatva",
+	QuestManager.CharacterName.SLIME : "Slime Mould",
+	QuestManager.CharacterName.GATE : "Gatekeeper",
+	QuestManager.CharacterName.KING_2 : "King",
+	QuestManager.CharacterName.INDIVIDUAL : "Individuated Individual",
+	QuestManager.CharacterName.NORGANS : "Body Without Organs",
+	QuestManager.CharacterName.SISYPHUS : "Sisyphus",
+}
+
+
+
 const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 	QuestManager.CharacterName.KING_1 : [[
 		"Control. Power. Might. Domination.",
@@ -507,6 +533,8 @@ const debug : Dictionary[QuestManager.CharacterName, Array] = {
 var dialogue_state : CONV_STATE = CONV_STATE.FINISHED
 var hud_overlay : CanvasLayer
 var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.tscn")
+var name_tag_scene : Resource = preload("uid://og3tn8fq3m0u")
+var name_tag : Node
 var text_box : Node
 var current_line_index : int = 0
 var is_dialogue_active : bool = false
@@ -540,6 +568,7 @@ func _unhandled_input(event):
 			animation_point = 0
 			animation_point_2 = 0
 			# current npc is automatically overridden on next call
+			name_tag.queue_free()
 			dialogue_lines = []
 			dialogue_state = CONV_STATE.FINISHED
 		else: 
@@ -571,6 +600,14 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		print("Character name: ", planet_id)
 		is_dialogue_active = true
 		hud_overlay = CanvasLayer_in
+		hud_overlay = $/root/MainScene/HUDOverlay
+		
+		print(hud_overlay)
+		name_tag = name_tag_scene.instantiate()
+		hud_overlay.add_child(name_tag)
+		name_tag.get_child(1).get_child(0).text = Character_Names[planet_id]
+		
+		
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
 		# DEBUG alias for clarity 
@@ -705,7 +742,7 @@ func show_text_box():
 	hud_overlay = $/root/MainScene/HUDOverlay
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
-	hud_overlay.add_child(text_box) #need to connect this to HUD?
+	hud_overlay.add_child(text_box)
 	text_box.display_text(dialogue_lines[current_line_index], sfx)
 	can_advance_line = false
 

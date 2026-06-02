@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://og3tn8fq3m0u"]
+
+[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_54odx"]
+[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_00dxa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ravpb"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55dj6"]
+texture = ExtResource("4_00dxa")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NameTag" type="MarginContainer" unique_id=1198593662]
+z_index = -5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -305.0
+offset_top = 385.0
+offset_right = -272.0
+offset_bottom = 451.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=477419255]
+self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_54odx")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=874844112]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=277974344]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Mask" type="Panel" parent="." unique_id=145214229]
+clip_children = 1
+z_index = -1
+clip_contents = true
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ravpb")
+
+[node name="Tiled Texture" type="Panel" parent="Mask" unique_id=1129628314]
+self_modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
+texture_filter = 2
+layout_mode = 0
+offset_left = -67.0
+offset_top = -49.0
+offset_right = 965.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_55dj6")
