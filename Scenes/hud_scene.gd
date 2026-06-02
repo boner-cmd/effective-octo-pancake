@@ -12,6 +12,8 @@ extends CanvasLayer
 @onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
 @onready var continue_button: TextureButton = $PauseContainer/MarginContainer/HBoxContainer/ContinueButton
 @onready var quit_button: TextureButton = $PauseContainer/MarginContainer/HBoxContainer/QuitButton
+var current_npc
+@onready var main_scene: Node3D = $".."
 
 @onready var player : CharacterBody3D
 @onready var interaction_detector
@@ -149,6 +151,7 @@ func on_npc_entered() -> void:
 	exit_label.visible = false
 	locked_label.visible = false
 	npc_label.visible = true
+	npc_label.text = "Listen to " + DialogueManager.Character_Names[main_scene.current_planet_id]
 	next_indicator.visible = true
 
 func on_npc_exited() -> void:

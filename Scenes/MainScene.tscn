@@ -20,6 +20,10 @@ visible = false
 [node name="Interact" parent="HUDOverlay" index="3" unique_id=128376500]
 visible = false
 
+[node name="NPC" parent="HUDOverlay/Interact/MarginContainer" parent_id_path=PackedInt32Array(1314492231, 423976122) index="2" unique_id=845987720]
+text = "Listen to "
+horizontal_alignment = 1
+
 [node name="ColorRect" type="ColorRect" parent="HUDOverlay" unique_id=632454181]
 texture_repeat = 2
 offset_right = 1280.0

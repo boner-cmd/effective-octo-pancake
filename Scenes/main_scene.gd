@@ -55,6 +55,7 @@ func on_planet_change_requested(planet_ID : int):
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
 	current_planet = requested_planet
+	DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 	
 	# try to connect new door signal, whether required or not
 	for door in get_tree().get_nodes_in_group("Door_Base"):

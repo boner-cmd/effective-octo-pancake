@@ -729,7 +729,6 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
-			current_npc = current_npc
 			print("SIGNAL TO REQUEST ITEM FROM: ", current_npc)
 			request_item_add.emit(current_npc)
 			if current_npc == QuestManager.CharacterName.SLIME:

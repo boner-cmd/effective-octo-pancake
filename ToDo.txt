@@ -19,7 +19,6 @@ MAP
 	
 
 DIALOGUES 
-	Unique speech sound per NPC (?)
 	explore interact to be "talk to [character name]"
 
 SHADER PASS
@@ -52,3 +51,4 @@ TITLE SCREEN
 	Title Screen Music
 Music
 	Remaster tracks
+	Unique speech sound per NPC (?)
