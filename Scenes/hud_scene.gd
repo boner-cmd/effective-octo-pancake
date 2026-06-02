@@ -19,6 +19,9 @@ var lock : bool = false
 var temp_interact : bool = false
 @onready var timer: Timer = $Timer
 
+
+
+
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
 	visible = true
@@ -97,23 +100,31 @@ func _on_main_quest_completion() -> void:
 	
 func transition() -> void:
 	transition_color.visible = true
+	var tween_transition = get_tree().create_tween()
+	tween_transition.tween_property(transition_color, "modulate:a", 0.0, .3)
+	tween_transition.set_trans(Tween.TRANS_SINE)
+	tween_transition.set_ease(Tween.EASE_IN_OUT)
 	await get_tree().create_timer(.1).timeout
-	var tween = get_tree().create_tween()
-	tween.tween_property(transition_color, "modulate:a", 0.0, .3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.play()
-	await tween.finished
+	tween_transition.play()
+	await tween_transition.finished
 	transition_color.visible = false
 	transition_color.modulate.a = 1.0
+	if tween_transition and tween_transition.is_valid():
+		tween_transition.kill()
 	
 func transition_soft_in() -> void:
+	var tween_soft_in = get_tree().create_tween()
 	transition_color.visible = true
 	transition_color.color = Color.BLACK
-	var tween = get_tree().create_tween()
-	tween.tween_property(transition_color, "modulate:a", 0.0, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.play()
-	await tween.finished
+	tween_soft_in.tween_property(transition_color, "modulate:a", 0.0, 1.5)
+	tween_soft_in.set_trans(Tween.TRANS_SINE)
+	tween_soft_in.set_ease(Tween.EASE_IN_OUT)
+	tween_soft_in.play()
+	await tween_soft_in.finished
 	transition_color.visible = false
 	transition_color.modulate.a = 1.0
+	if tween_soft_in and tween_soft_in.is_valid():
+		tween_soft_in.kill()
 
 func on_exit_door_entered(lock_on_door) -> void:
 	interact.visible = true
@@ -126,25 +137,24 @@ func on_exit_door_entered(lock_on_door) -> void:
 		locked_label.visible = false
 		exit_label.visible = true
 		next_indicator.visible = true
-		
+
 func on_door_exited() -> void:
 	interact.visible = false
 	exit_label.visible = false
 	locked_label.visible = false
 	next_indicator.visible = false
-		
+
 func on_npc_entered() -> void:
 	interact.visible = true
 	exit_label.visible = false
 	locked_label.visible = false
 	npc_label.visible = true
 	next_indicator.visible = true
-	
+
 func on_npc_exited() -> void:
 	interact.visible = false
 	npc_label.visible = false
 	next_indicator.visible = false
-	
 
 func _on_continue_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)

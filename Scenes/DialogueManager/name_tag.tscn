@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://og3tn8fq3m0u"]
 
+[ext_resource type="Script" uid="uid://cencbmtsfb7lb" path="res://Scenes/DialogueManager/name_tag.gd" id="1_4l8nk"]
 [ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_54odx"]
 [ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_00dxa"]
 
@@ -17,11 +18,14 @@ axis_stretch_vertical = 1
 
 [node name="NameTag" type="MarginContainer" unique_id=1198593662]
 z_index = -5
-offset_left = 324.0
+offset_left = 320.0
 offset_top = 385.0
-offset_right = 357.0
+offset_right = 353.0
 offset_bottom = 451.0
+scale = Vector2(1, 1e-05)
+pivot_offset = Vector2(0, 66)
 size_flags_vertical = 0
+script = ExtResource("1_4l8nk")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=477419255]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)

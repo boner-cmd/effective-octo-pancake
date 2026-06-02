@@ -536,6 +536,7 @@ var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.t
 var name_tag_scene : Resource = preload("uid://og3tn8fq3m0u")
 var name_tag : Node
 var text_box : Node
+var already_tweened : bool = false
 var current_line_index : int = 0
 var is_dialogue_active : bool = false
 var can_advance_line : bool = false
@@ -565,6 +566,7 @@ func _unhandled_input(event):
 		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			combines_lines = false
+			already_tweened = false
 			current_line_index = 0
 			animation_point = 0
 			animation_point_2 = 0

@@ -2,9 +2,7 @@ MAIN
 	BUGS
 		RESOLVED - doors sometimes remain active after - not sure what more steps to take
 		I LIKE IT - deer backwards? completion change mesh 
-		
 		NPC colliders need to move with NPCs, not sure why they dont, need to investigate
-		
 		
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state
@@ -22,6 +20,7 @@ MAP
 
 DIALOGUES 
 	Unique speech sound per NPC (?)
+	explore interact to be "talk to [character name]"
 
 SHADER PASS
 	[Identify]

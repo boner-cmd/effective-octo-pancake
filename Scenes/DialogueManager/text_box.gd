@@ -1,45 +1,76 @@
 extends MarginContainer
 
-@onready var label = $MarginContainer/Label
-@onready var timer = $LetterDisplayTimer
-@onready var audio_player = $AudioStreamPlayer
-@onready var next_indicator = $NinePatchRect/Control/NextIndicator
+@onready var margin_label : MarginContainer = $MarginContainer
+@onready var label : Label = $MarginContainer/Label
+@onready var timer : Timer = $LetterDisplayTimer
+@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
+@onready var next_indicator : AnimatedSprite2D = $NinePatchRect/Control/NextIndicator
 
-const  MAX_WIDTH = 640
+const  MAX_WIDTH : float = 640.0
+const MAX_HEIGHT : float = 170.0
 
 var text : String = ""
 var letter_index : int = 0
 var default_letter_time : float = .02
-var letter_time : float = 0.05
+var letter_time : float = 0.03
 var space_time : float = 0.01
 var punctuation_time : float = 0.0000001
 
 signal finished_displaying()
 
+func tween_text_box():
+	if !DialogueManager.already_tweened:
+		DialogueManager.already_tweened = true
+		var tween_x = get_tree().create_tween()
+		var tween_y = get_tree().create_tween()
+		var tween_pos_x = get_tree().create_tween()
+		
+		tween_x.tween_property(self, "size:x",  MAX_WIDTH, .2)
+		tween_x.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+		tween_x.play()
+		
+		tween_pos_x.tween_property(self, "position:x", 320.0, .2)
+		tween_pos_x.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+		tween_pos_x.play()
+		
+		tween_y.tween_property(self, "size:y",  MAX_HEIGHT, .2).set_delay(.1)
+		tween_y.set_trans(Tween.TRANS_LINEAR)
+		tween_y.set_ease(Tween.EASE_IN)
+		tween_y.play()
+		await tween_y.finished
+		if tween_x and tween_x.is_valid():
+			tween_x.kill()
+		if tween_y and tween_y.is_valid():
+			tween_y.kill()
+		if tween_pos_x and tween_pos_x.is_valid():
+			tween_pos_x.kill()
+	else:
+		size.x = MAX_WIDTH
+		size.y = MAX_HEIGHT
+		position.x = 320.0
+
 func display_text(text_to_display: String, speech_sfx: AudioStream):
 	text = text_to_display
 	label.text = text_to_display
 	audio_player.stream = speech_sfx
-	
-	await resized
-	custom_minimum_size.x = min(size.x, MAX_WIDTH)
-	
-	if size.x > MAX_WIDTH:
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		await resized # wait for x to size
-		await resized # wait for y to size
-		custom_minimum_size.y = size.y
-	
-	#global_position.x -= size.x / 2
-	#global_position.y -= size.y - 200
-	
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	custom_minimum_size.y = size.y
 	label.text = ""
-	
+	await tween_text_box()
 	
 	_display_letter()
-	
+
+
 func _display_letter():
 	label.text += text[letter_index]
+	if text.length() < 50:
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		margin_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	else:
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+		margin_label.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	
 	#this is to skip dialogue windows
 	if Input.is_action_pressed("advance_dialogue") and letter_index > 2:

@@ -1,30 +1,27 @@
 extends Node
 
 @onready var title_screen_letters: Node3D = $"Node3D/title_screen_letters"
-
+@onready var timer: Timer = $Node3D/Timer
 var letter_array : Array = []
 var tween_letter : Tween
 var rot_change : float = deg_to_rad(-20.0)
-@onready var timer: Timer = $Node3D/Timer
-
+var tween_letter_z : Tween
+var tween_letter_x : Tween
 var timer_time : float = 2.0
 
 @onready var new_game_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton
 @onready var quit_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton
 @onready var credits: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits
 
-
 func tween_letters() -> void:
 	for letter in letter_array:
-		
 		letter.rotation.z = rot_change
-		var tween = get_tree().create_tween()
-		tween.tween_property(letter, "rotation:z", rot_change * -1, timer_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		var tween2 = get_tree().create_tween()
-		tween2.tween_property(letter, "rotation:x", rot_change * -1, timer_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_delay(timer_time/2.0)
-		
-		tween.play()
-		tween2.play()
+		tween_letter_z = get_tree().create_tween()
+		tween_letter_z.tween_property(letter, "rotation:z", rot_change * -1, timer_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween_letter_x = get_tree().create_tween()
+		tween_letter_x.tween_property(letter, "rotation:x", rot_change * -1, timer_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_delay(timer_time/2.0)
+		tween_letter_z.play()
+		tween_letter_x.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,12 +29,8 @@ func _ready() -> void:
 	quit_button.pivot_offset = quit_button.size / 2.0
 	new_game_button.pivot_offset = new_game_button.size / 2.0
 	credits.pivot_offset = credits.size / 2.0
-	
-	
 	letter_array = title_screen_letters.get_children()
 	tween_letters()
-
-
 
 func _on_new_game_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -51,9 +44,10 @@ func _on_timer_timeout() -> void:
 	rot_change = rot_change * -1
 	tween_letters()
 
-
 func _on_new_game_button_focus_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_honk)
+	tween_letter_x.kill()
+	tween_letter_z.kill()
 
 func _on_new_game_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
@@ -62,15 +56,12 @@ func _on_new_game_button_mouse_entered() -> void:
 func _on_new_game_button_mouse_exited() -> void:
 	new_game_button.scale = Vector2(1.0, 1.0)
 
-
 func _on_quit_button_focus_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_honk)
-
 
 func _on_quit_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	quit_button.scale = Vector2(1.2, 1.2)
-
 
 func _on_quit_button_mouse_exited() -> void:
 	quit_button.scale = Vector2(1.0, 1.0)
