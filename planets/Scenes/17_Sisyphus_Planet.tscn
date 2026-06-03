@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_kiytl"]
 [ext_resource type="Material" uid="uid://115rl1p1xj1q" path="res://planets/materials/17_Sisyphus_skybox.tres" id="2_jbkmu"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_qrq4l"]
-[ext_resource type="Material" uid="uid://dit88qyf8fw24" path="res://planets/materials/17_sisyphusi_toon_shader.tres" id="6_ekkq8"]
+[ext_resource type="Material" uid="uid://dit88qyf8fw24" path="res://planets/materials/17_sisyphus_toon_shader.tres" id="6_ekkq8"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_x2x1x"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_c2lp6"]
 

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b2r0sgb6ndewn"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_feit3"]
+[ext_resource type="Texture2D" uid="uid://cyvw2cpy4ndnm" path="res://door UVs/sisyphus door uv.png" id="2_feit3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_feit3")
+shader_parameter/ToonRampOffset = 0.50000002375
+shader_parameter/ToonRampSmoothness = 0.0050000002375
+shader_parameter/ToonRampTinting = Color(0, 0, 0, 1)
+shader_parameter/UV_Scaling_U = 1.0
+shader_parameter/UV_Scaling_V = 1.0
+shader_parameter/Texture = ExtResource("2_feit3")

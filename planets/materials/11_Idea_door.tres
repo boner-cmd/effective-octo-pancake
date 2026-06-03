@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1dn0w23ph5mu"]
+
+[ext_resource type="Shader" uid="uid://cea7b7hhyspxe" path="res://planets/materials/toon_shader.gdshader" id="1_05eto"]
+[ext_resource type="Texture2D" uid="uid://cr7fc5e1l4onv" path="res://door UVs/idea guy door uv.png" id="2_y2ypd"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_05eto")
+shader_parameter/ToonRampOffset = 0.50000002375
+shader_parameter/ToonRampSmoothness = 0.0050000002375
+shader_parameter/ToonRampTinting = Color(0, 0, 0, 1)
+shader_parameter/UV_Scaling_U = 1.0
+shader_parameter/UV_Scaling_V = 1.0
+shader_parameter/Texture = ExtResource("2_y2ypd")
