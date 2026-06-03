@@ -15,5 +15,8 @@ bones/3/scale = Vector3(1, 1, 1)
 [node name="Door" parent="Skeleton3D" index="0" unique_id=1374544708]
 surface_material_override/1 = ExtResource("2_tlx66")
 
+[node name="Viewport" parent="Skeleton3D" index="1" unique_id=2090780855]
+visible = false
+
 [node name="Frame" parent="Skeleton3D" index="2" unique_id=211299161]
 surface_material_override/0 = ExtResource("3_qn03r")
