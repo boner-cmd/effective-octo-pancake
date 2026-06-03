@@ -10,6 +10,10 @@ MAIN
 	Michaelwave assets/dialogue
 	Explore Saving feature
 		Will need to include Current Planet ID and initialization
+		Will need to include quest states
+		Will need to include inventory states (???)
+		Will need to include door lock states
+		Will need to include map states
 	Web Build?
 	
 
@@ -24,7 +28,6 @@ DIALOGUES
 SHADER PASS
 	[Identify]
 	add shadow falloff for materials for specific planets
-	Door textures + sprite shader?
 	
 
 VFX PASS
