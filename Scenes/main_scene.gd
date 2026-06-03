@@ -55,11 +55,13 @@ func on_planet_change_requested(planet_ID : int):
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)
 	current_planet = requested_planet
+	current_planet.door_anim_reset()
 	DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 	current_npc = DialogueManager.current_npc
 	# try to connect new door signal, whether required or not
 	for door in get_tree().get_nodes_in_group("Door_Base"):
 		if !door.request_planet_change.is_connected(on_planet_change_requested):
 			door.request_planet_change.connect(on_planet_change_requested)
+	
 	
 	$PlayerCharacter.reset_player()

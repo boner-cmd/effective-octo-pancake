@@ -77,6 +77,7 @@ func _set_door_anim(anim : AnimStates):
 			AnimStates.STASIS:
 				anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
 				anim_tree.set("parameters/DoorExit/blend_amount", 0.0)
+				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				
 			AnimStates.SPAWN:
 				AudioManager.sfx_play(AudioManager.sfx_spawn)
@@ -116,7 +117,7 @@ func _ready() -> void:
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
 	DialogueManager.change_king.connect(change_king_door)
-	
+
 
 func spawn():
 	_set_door_anim(AnimStates.SPAWN)
