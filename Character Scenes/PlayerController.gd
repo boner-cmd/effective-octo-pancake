@@ -14,9 +14,6 @@ var clone : Node3D
 var clone_item_get : Sprite3D
 var clone_item_give : Sprite3D
 
-@onready var item_get_sprite: Sprite3D = $ClownRigFBX/ItemGetLocator/Item_Get_Sprite
-@onready var item_give_sprite: Sprite3D = $ClownRigFBX/ItemGiveLocator/Item_Give_Sprite
-
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
@@ -89,11 +86,9 @@ func player_interaction_camera() -> void:
 				else:
 					_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
-				clone_item_give.texture = item_give_sprite.texture
 				_cam_player_give.make_current()
 				clone._set_player_anim(clone.AnimStates.GIVE)
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
-				clone_item_get.texture = item_get_sprite.texture
 				_cam_player_receive.make_current()
 				clone._set_player_anim(clone.AnimStates.GET)
 					

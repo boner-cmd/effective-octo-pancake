@@ -69,6 +69,7 @@ func _set_player_anim(anim : AnimStates):
 					anim_tree.set("parameters/Talk/blend_amount", 1.0)
 					
 			AnimStates.GET:
+				item_get_sprite.update_icon()
 				AudioManager.sfx_play(AudioManager.sfx_get_item)
 				item_get_sprite.visible = true
 				item_get_sprite.timer.start()
@@ -81,6 +82,7 @@ func _set_player_anim(anim : AnimStates):
 				anim_tree.set("parameters/Give/blend_amount", 0.0)
 				
 			AnimStates.GIVE:
+				item_give_sprite.update_icon()
 				AudioManager.sfx_play(AudioManager.sfx_give_item)
 				item_give_sprite.visible = true
 				item_give_sprite.timer.start()

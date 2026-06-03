@@ -1,8 +1,8 @@
 extends Node3D
 
 var current_planet_id : int = 0
+var current_npc
 # CanvasLayer is $HUDOverlay
-
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
 
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
@@ -56,7 +56,7 @@ func on_planet_change_requested(planet_ID : int):
 	get_tree().root.remove_child(current_planet)
 	current_planet = requested_planet
 	DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
-	
+	current_npc = DialogueManager.current_npc
 	# try to connect new door signal, whether required or not
 	for door in get_tree().get_nodes_in_group("Door_Base"):
 		if !door.request_planet_change.is_connected(on_planet_change_requested):

@@ -737,7 +737,6 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 				planet_state_change.emit()
 		CONV_STATE.PLAYER_GIVE:
 			print("SIGNAL TO GIVE ITEM TO: ", current_npc)
-			current_npc = current_npc
 			request_item_remove.emit(current_npc)
 			planet_state_change.emit()
 
