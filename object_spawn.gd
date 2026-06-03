@@ -98,15 +98,19 @@ func _ready() -> void:
 	placement()
 	await Obj_2.ready
 	if Obj_2:
+		await Obj_2.tree_entered
 		Obj_2.request_ready()
 		Obj_2.stasis()
 	if Obj_3:
+		await Obj_3.tree_entered
 		Obj_3.request_ready()
 		Obj_3.stasis()
 	if Obj_4:
+		await Obj_4.tree_entered
 		Obj_4.request_ready()
 		Obj_4.stasis()
 	if Obj_5:
+		await Obj_5.tree_entered
 		Obj_5.request_ready()
 		Obj_5.stasis()
 	

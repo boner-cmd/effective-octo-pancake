@@ -2,8 +2,13 @@ extends Node3D
 
 @export var walk_cycle_time: Timer 
 @export var honk_delay: Timer
-@onready var item_get_sprite: Sprite3D = $ItemGetLocator/Item_Get_Sprite
-@onready var item_give_sprite: Sprite3D = $ItemGiveLocator/Item_Give_Sprite
+var item_get_sprite: Sprite3D
+var item_give_sprite: Sprite3D
+
+func _ready() -> void:
+	if !get_parent().name == "Node3D":
+		item_get_sprite = $ItemGetLocator/Item_Get_Sprite
+		item_give_sprite = $ItemGiveLocator/Item_Give_Sprite
 
 func honk_sound_player():
 	var honk_time = honk_delay.duplicate()

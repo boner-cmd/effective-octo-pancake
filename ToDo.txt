@@ -1,6 +1,6 @@
 MAIN
 	BUGS
-		RESOLVED - doors sometimes remain active after - not sure what more steps to take
+		NOT RESOLVED - doors sometimes remain active after - not sure what more steps to take
 		I LIKE IT - deer backwards? completion change mesh 
 		
 		

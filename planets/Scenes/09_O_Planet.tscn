@@ -104,7 +104,7 @@ shape = SubResource("BoxShape3D_7nae5")
 transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, -16.239998, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" parent="InteractionArea/Area3D/q/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/Area3D/q/StaticBody3D" unique_id=1714565276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_7nae5")
 
