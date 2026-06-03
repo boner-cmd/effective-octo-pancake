@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dangkqao0qhri"]
+
+[ext_resource type="Script" uid="uid://d3mfg4h07sl60" path="res://Debug/UID_Checker.gd" id="1_wt6ej"]
+
+[node name="Node3D" type="Node3D" unique_id=790975898]
+script = ExtResource("1_wt6ej")
+uid_string = "uid://rwtu2ij74m0i"

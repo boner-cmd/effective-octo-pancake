@@ -7,13 +7,16 @@ MAIN
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state
 		-will need a ready function to call dialogue manager with the credits dialogue
+		
 	Michaelwave assets/dialogue
+	
 	Explore Saving feature
 		Will need to include Current Planet ID and initialization
 		Will need to include quest states
 		Will need to include inventory states (???)
 		Will need to include door lock states
 		Will need to include map states
+		
 	Web Build?
 	
 
@@ -48,6 +51,7 @@ POLISH IDEAS
 	Side-quests? (lol)
 	Unique boxes per NPCs (?)
 	Unique type per NPCs (?)
+	
 TITLE SCREEN
 	Finish Background
 	Atmospheric fade
