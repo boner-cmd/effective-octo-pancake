@@ -63,10 +63,11 @@ surface_material_override/0 = ExtResource("2_ga5oq")
 [node name="horse" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="6" unique_id=1429058884]
 visible = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1366252616]
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/horse" index="1" unique_id=1366252616]
+transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, -16.239998, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=904572050]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/Area3D/horse/StaticBody3D" unique_id=904572050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.455943, 0)
 shape = SubResource("BoxShape3D_t51te")
 

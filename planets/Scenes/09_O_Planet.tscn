@@ -92,10 +92,19 @@ destination_planet_ID = 12
 visible = true
 script = ExtResource("11_k3bn4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=474991968]
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/o" index="1" unique_id=474991968]
+transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, -16.239998, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1103019690]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/Area3D/o/StaticBody3D" unique_id=1103019690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
+shape = SubResource("BoxShape3D_7nae5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/q" parent_id_path=PackedInt32Array(1441746603, 292895040) index="2" unique_id=1306592615]
+transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, -16.239998, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" parent="InteractionArea/Area3D/q/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_7nae5")
 

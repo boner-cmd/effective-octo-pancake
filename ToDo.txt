@@ -2,7 +2,9 @@ MAIN
 	BUGS
 		RESOLVED - doors sometimes remain active after - not sure what more steps to take
 		I LIKE IT - deer backwards? completion change mesh 
-		NPC colliders need to move with NPCs, not sure why they dont, need to investigate
+		
+		
+		Unrecognized UID: uid://rwtu2ij74m0i
 		
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state

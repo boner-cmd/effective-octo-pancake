@@ -73,10 +73,11 @@ visible = false
 [node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=1043451508]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1046663889]
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/o-eye\'d deer" index="5" unique_id=1046663889]
+transform = Transform3D(-3.333333, 0, 2.9140924e-07, 0, 3.333333, 0, -2.9140924e-07, 0, -3.333333, 0, -15.899136, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=2081589961]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/Area3D/o-eye\'d deer/StaticBody3D" unique_id=2081589961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0.062656224)
 shape = SubResource("BoxShape3D_txy1j")
 
