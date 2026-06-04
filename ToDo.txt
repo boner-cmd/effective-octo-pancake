@@ -21,8 +21,7 @@ MAIN
 	
 
 MAP
-	Current Position indicator
-	Update Map Textures
+	Completion Sticker
 	
 
 DIALOGUES 

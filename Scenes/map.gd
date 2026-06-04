@@ -1,5 +1,29 @@
 extends TextureRect
 #planets should be set visible = true, first child is completion sticker vis = false set true on completion
+@onready var position_marker: TextureRect = $PositionMarker
+@onready var Position_by_Int : Array = [
+	Vector2(588.0, 270.0),	#king_sticker,
+	Vector2(446.0, 371.0),	#horse_sticker,
+	Vector2(421.0, 186.0),	#astro_sticker,
+	Vector2(697.0, 388.0),	#snow_sticker,
+	Vector2(255.0, 428.0),	#sisyphus_sticker,
+	Vector2(518.0, 65.0),	#grease_sticker,
+	Vector2(243.0, 100.0),	#deer_sticker,
+	Vector2(761.0, 205.0),	#gate_sticker,
+	Vector2(676.0, 547.0),	#o_sticker,
+	Vector2(253.0, 253.0),	#organs_sticker,
+	Vector2(100.0, 185.0),	#mass_sticker,
+	Vector2(817.0, 600.0),	#lamp_sticker,
+	Vector2(469.0, 561.0),	#norgans_sticker,
+	Vector2(866.0, 424.0),	#michaelwave_sticker,
+	Vector2(892.0, 283.0),	#robot_sticker,
+	Vector2(847.0, 76.0),	#individual_sticker,
+	Vector2(1079.0, 247.0),	#gibberish_sticker,
+	Vector2(1053.0, 430.0),	#idea_sticker,
+	Vector2(1080.0, 102.0),	#bodhi_sticker,
+	Vector2(140.0, 533.0),	#slime_sticker,
+	Vector2(588.0, 270.0),	#king_sticker,
+]
 @onready var king_sticker: TextureRect = $KingSticker
 @onready var horse_sticker: TextureRect = $HorseDarkPlanet/HorseSticker
 @onready var astro_sticker: TextureRect = $AstroDarkPlanet/AstroSticker
@@ -244,9 +268,15 @@ func unhide_elements(key):
 		for elements in array:
 			elements.visible = true
 	var current_dark : TextureRect = get_dark_planet(key)
-	current_dark.texture = null
+	if current_dark:
+		current_dark.texture = null
 	var planet : TextureRect = get_planet_sticker(key)
 	planet.visible = true
+	var marker_loc : Vector2 = get_marker_loc(key)
+	position_marker.position = marker_loc
+	
+func get_marker_loc(key) -> Vector2:
+	return Position_by_Int[key]
 	
 func get_planet_sticker(key) -> TextureRect:
 	return Stickers_By_Int[key]
@@ -258,6 +288,8 @@ func get_dark_planet(key) -> TextureRect:
 func _ready() -> void:
 	horse_dark_planet.visible = true
 	texture_rect.visible = true
+	position_marker.position = get_marker_loc(0)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

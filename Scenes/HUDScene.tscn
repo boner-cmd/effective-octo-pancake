@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://7o05b5gujl66" path="res://Map assets/map background.png" id="10_bphkb"]
 [ext_resource type="Texture2D" uid="uid://c103t14rqj3yn" path="res://Map assets/king.png" id="11_00uqi"]
 [ext_resource type="Script" uid="uid://cqo2casw5tr72" path="res://Scenes/map.gd" id="11_iqywv"]
+[ext_resource type="Texture2D" uid="uid://dqjyf8t6do6m1" path="res://Map assets/position marker.png" id="12_ftghg"]
 [ext_resource type="Texture2D" uid="uid://c70nmk267dkta" path="res://Map assets/star sticker.png" id="12_iqywv"]
 [ext_resource type="Texture2D" uid="uid://ci7bdiy136mm3" path="res://Map assets/Line example.png" id="12_yo8np"]
 [ext_resource type="Texture2D" uid="uid://dpvw058sxww2v" path="res://Map assets/dark planet.png" id="13_yo8np"]
@@ -305,6 +306,18 @@ grow_vertical = 2
 texture = ExtResource("10_bphkb")
 script = ExtResource("11_iqywv")
 
+[node name="PositionMarker" type="TextureRect" parent="Map" unique_id=774177229]
+z_index = 5
+texture_filter = 1
+layout_mode = 0
+offset_left = 140.0
+offset_top = 533.0
+offset_right = 224.0
+offset_bottom = 628.0
+scale = Vector2(0.75, 0.75)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("12_ftghg")
+
 [node name="KingSticker" type="TextureRect" parent="Map" unique_id=1416114579]
 z_index = 1
 texture_filter = 1
@@ -328,7 +341,6 @@ texture = ExtResource("12_iqywv")
 expand_mode = 5
 
 [node name="HorseDarkPlanet" type="TextureRect" parent="Map" unique_id=2115619113]
-visible = false
 z_index = 2
 texture_filter = 1
 layout_mode = 0
