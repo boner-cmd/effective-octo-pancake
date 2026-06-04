@@ -205,6 +205,8 @@ horizontal_alignment = 1
 
 [node name="PauseContainer" type="MarginContainer" parent="." unique_id=2106662033]
 visible = false
+top_level = true
+z_index = 15
 custom_minimum_size = Vector2(504, 366)
 anchors_preset = 8
 anchor_left = 0.5

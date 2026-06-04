@@ -44,9 +44,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if !stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing_and_mouse()
-		stickerbook.visible = false
+		#stickerbook.visible = false
 		pause_menu.visible = !pause_menu.visible
-		inventory.visible = !inventory.visible
+		#inventory.visible = trueS
 		if DialogueManager.is_dialogue_active == true:
 			var Nametag = get_child(6)
 			var TextBox = get_child(7)
