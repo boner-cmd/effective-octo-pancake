@@ -11,7 +11,7 @@ const MAX_HEIGHT : float = 170.0
 
 var text : String = ""
 var letter_index : int = 0
-var default_letter_time : float = .02
+var default_letter_time : float = 0.03
 var letter_time : float = 0.03
 var space_time : float = 0.01
 var punctuation_time : float = 0.0000001
@@ -78,6 +78,8 @@ func _display_letter():
 			text.erase(Letters)
 		label.text = text
 		letter_index = text.length() -1
+		
+		
 
 	letter_index += 1
 	if letter_index >= text.length():

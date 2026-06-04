@@ -65,6 +65,7 @@ func reset_player():
 
 #camera nonsense and can probably just be put into physics process but didn't want to do that because of compute
 func player_interaction_camera() -> void:
+	
 	if DialogueManager.is_dialogue_active:
 		if !clone: #makes clone for interaction
 			clone = clown.duplicate()
@@ -78,7 +79,11 @@ func player_interaction_camera() -> void:
 			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
-				clone._set_player_anim(clone.AnimStates.TALK)
+				if Input.is_action_just_pressed("jump"):
+					if clone.current_anim != clown.AnimStates.JUMP:
+						clone._set_player_anim(clown.AnimStates.JUMP)
+					else:
+						clone._set_player_anim(clone.AnimStates.TALK)
 				if DialogueManager.current_npc == QuestManager.CharacterName.SLIME||DialogueManager.current_npc == QuestManager.CharacterName.GREASE||DialogueManager.current_npc == QuestManager.CharacterName.MASS:
 					_cam_frame_both_puddles.make_current()
 				elif DialogueManager.current_npc == QuestManager.CharacterName.DEER||DialogueManager.current_npc == QuestManager.CharacterName.HORSE:
@@ -111,7 +116,8 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	if is_on_floor() and event.is_action_pressed("jump"):
-		clown._set_player_anim(clown.AnimStates.JUMP)
+		if !DialogueManager.is_dialogue_active:
+			clown._set_player_anim(clown.AnimStates.JUMP)
 		
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (

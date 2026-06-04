@@ -1,6 +1,5 @@
 MAIN
 	BUGS
-		NOT RESOLVED - doors sometimes remain active after - not sure what more steps to take
 		I LIKE IT - deer backwards? completion change mesh 
 		
 		Unrecognized UID: uid://rwtu2ij74m0i
@@ -27,7 +26,7 @@ MAP
 	
 
 DIALOGUES 
-	explore interact to be "talk to [character name]"
+	
 
 SHADER PASS
 	[Identify]
@@ -52,11 +51,13 @@ POLISH IDEAS
 	Side-quests? (lol)
 	Unique boxes per NPCs (?)
 	Unique type per NPCs (?)
+	Interact visibility tween?
 	
 TITLE SCREEN
 	Finish Background
 	Atmospheric fade
 	Title Screen Music
+	
 Music
 	Remaster tracks
 	Unique speech sound per NPC (?)

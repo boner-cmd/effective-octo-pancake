@@ -4,6 +4,7 @@ var current_planet_id : int = 0
 var current_npc
 # CanvasLayer is $HUDOverlay
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
+@onready var map : TextureRect = $HUDOverlay/Map
 
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
@@ -51,6 +52,7 @@ func on_planet_change_requested(planet_ID : int):
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
 	hud_overlay.transition()
+	map.unhide_elements(planet_ID)
 	AudioManager.bgm_cycle(planet_ID)
 	get_tree().root.add_child(requested_planet)
 	get_tree().root.remove_child(current_planet)

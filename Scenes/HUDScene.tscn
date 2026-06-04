@@ -1,34 +1,40 @@
 [gd_scene format=3 uid="uid://b58oygg7njg67"]
 
 [ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
-[ext_resource type="Texture2D" uid="uid://dmow47blyrxxn" path="res://planets/textures/Planet Textures/gatekeeper texture.png" id="2_30jjv"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
 [ext_resource type="Texture2D" uid="uid://dqjar201xnc71" path="res://UI assets/128 AH itchio background.png" id="3_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://b60w6v7nby0qs" path="res://Placeholder Assets (UI)/text_rect_blue.png" id="3_rv5bf"]
-[ext_resource type="Texture2D" uid="uid://c2nc44jkx5n62" path="res://Placeholder Assets (UI)/stickerbook_bg.png" id="5_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="6_2wn8p"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 [ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="7_40r1x"]
-[ext_resource type="Texture2D" uid="uid://cj363unhfokc8" path="res://planets/textures/Planet Textures/astronaut planet texture expore png.png" id="7_d34sf"]
-[ext_resource type="Texture2D" uid="uid://cyv1fa3xjjer3" path="res://planets/textures/Planet Textures/hungry horse planet texture export.png" id="8_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="8_rv8fl"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="9_sqpbf"]
-[ext_resource type="Texture2D" uid="uid://corpj8fathg78" path="res://planets/textures/Skybox Textures/snowman skybox.png" id="10_7h3cr"]
-[ext_resource type="Texture2D" uid="uid://d3tdvvpspeima" path="res://planets/textures/Skybox Textures/sisyphus skybox.png" id="11_ynwxi"]
-[ext_resource type="Texture2D" uid="uid://bvwryv2va8maw" path="res://planets/textures/Planet Textures/grease puddle.png" id="12_cm65r"]
-[ext_resource type="Texture2D" uid="uid://cbi3wyweyd87d" path="res://planets/textures/Planet Textures/no i dear planet texture.png" id="13_2wn8p"]
-[ext_resource type="Texture2D" uid="uid://dww0krcd78arx" path="res://planets/textures/Skybox Textures/o skybox.png" id="14_40r1x"]
-[ext_resource type="Texture2D" uid="uid://fqmf8oe6krvp" path="res://planets/textures/Planet Textures/body_with_organs_planet_texture.png" id="15_rv8fl"]
-[ext_resource type="Texture2D" uid="uid://be1jk7tu1hpre" path="res://planets/textures/Planet Textures/festering_mass_planet_texture.png" id="16_sqpbf"]
-[ext_resource type="Texture2D" uid="uid://bgde8b03yqx1" path="res://planets/textures/Skybox Textures/lamp skybox.png" id="17_bphkb"]
-[ext_resource type="Texture2D" uid="uid://c8as2ukr6ikov" path="res://Character Export Files/body with organs/bwo body.png" id="18_00uqi"]
-[ext_resource type="Texture2D" uid="uid://bl7k88u5tn017" path="res://planets/textures/Planet Textures/circuit planet texture.png" id="19_iqywv"]
-[ext_resource type="Texture2D" uid="uid://bk1fwi0omtaj7" path="res://planets/models/gibberish/gibberish_skybox.png" id="20_yo8np"]
-[ext_resource type="Texture2D" uid="uid://ctf8rj1gusj36" path="res://planets/textures/Planet Textures/idea guy.png" id="21_ftghg"]
-[ext_resource type="Texture2D" uid="uid://bfkcyyc7h443b" path="res://planets/textures/Skybox Textures/bodhisattva skybox.png" id="22_4u7pl"]
-[ext_resource type="Texture2D" uid="uid://cqi468vylubn5" path="res://Placeholder Assets (UI)/completed-stamp/cropped_complete.svg" id="23_d34sf"]
-[ext_resource type="Texture2D" uid="uid://btp8dw8bs1i05" path="res://Character Export Files/slime mould/slime mould.png" id="23_ppan7"]
+[ext_resource type="Texture2D" uid="uid://7o05b5gujl66" path="res://Map assets/map background.png" id="10_bphkb"]
+[ext_resource type="Texture2D" uid="uid://c103t14rqj3yn" path="res://Map assets/king.png" id="11_00uqi"]
+[ext_resource type="Script" uid="uid://cqo2casw5tr72" path="res://Scenes/map.gd" id="11_iqywv"]
+[ext_resource type="Texture2D" uid="uid://c70nmk267dkta" path="res://Map assets/star sticker.png" id="12_iqywv"]
+[ext_resource type="Texture2D" uid="uid://ci7bdiy136mm3" path="res://Map assets/Line example.png" id="12_yo8np"]
+[ext_resource type="Texture2D" uid="uid://dpvw058sxww2v" path="res://Map assets/dark planet.png" id="13_yo8np"]
+[ext_resource type="Texture2D" uid="uid://4ka2y18fsjw" path="res://Map assets/horse.png" id="14_ftghg"]
+[ext_resource type="Texture2D" uid="uid://d6xdk0p4s3iy" path="res://Map assets/astronaut.png" id="15_4u7pl"]
+[ext_resource type="Texture2D" uid="uid://b47eindwcgtid" path="res://Map assets/snowman.png" id="16_ppan7"]
+[ext_resource type="Texture2D" uid="uid://cxkw523xw1am2" path="res://Map assets/sisyphus.png" id="17_s4svx"]
+[ext_resource type="Texture2D" uid="uid://cgc8xtrc7rude" path="res://Map assets/grease.png" id="18_a6sf7"]
+[ext_resource type="Texture2D" uid="uid://xce008uj80go" path="res://Map assets/no-eye'd deer.png" id="19_oc4d8"]
+[ext_resource type="Texture2D" uid="uid://xmp1iw05xryg" path="res://Map assets/gatekeeper.png" id="20_74rbg"]
+[ext_resource type="Texture2D" uid="uid://dvacasapt6w4q" path="res://Map assets/O.png" id="21_npi88"]
+[ext_resource type="Texture2D" uid="uid://yqshpd36nbpt" path="res://Map assets/organs.png" id="22_xq43d"]
+[ext_resource type="Texture2D" uid="uid://c02q5l60af8un" path="res://Map assets/festering mass.png" id="23_82vjh"]
 [ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="24_jqj6d"]
+[ext_resource type="Texture2D" uid="uid://bhymmwbixjw6w" path="res://Map assets/lamp.png" id="24_r4epv"]
+[ext_resource type="Texture2D" uid="uid://cfv7nplg8c0sk" path="res://Map assets/norgans.png" id="25_751k0"]
+[ext_resource type="Texture2D" uid="uid://b7ujbhmwat8co" path="res://Map assets/michaelwave.png" id="26_qsvm7"]
+[ext_resource type="Texture2D" uid="uid://dneqvj4oqs1mc" path="res://Map assets/robot.png" id="27_82xaf"]
+[ext_resource type="Texture2D" uid="uid://buew0hbngb10i" path="res://Map assets/gibberish.png" id="28_c6udc"]
+[ext_resource type="Texture2D" uid="uid://djh86dx3r5sat" path="res://Map assets/Individual.png" id="29_006ca"]
+[ext_resource type="Texture2D" uid="uid://bdi6rv546k8id" path="res://Map assets/idea guy.png" id="30_5rjlw"]
+[ext_resource type="Texture2D" uid="uid://dl3jnq3di2esu" path="res://Map assets/bodhisattva.png" id="31_7jlp0"]
+[ext_resource type="Texture2D" uid="uid://0emjyvd8173y" path="res://Map assets/slime mould.png" id="32_muo8p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h3cr"]
 bg_color = Color(0, 0, 0, 1)
@@ -44,19 +50,6 @@ axis_stretch_vertical = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
-
-[sub_resource type="Gradient" id="Gradient_jqj6d"]
-colors = PackedColorArray(0.98039216, 0.77254903, 0, 1, 0.98039216, 0.77254903, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rv5bf"]
-gradient = SubResource("Gradient_jqj6d")
-
-[sub_resource type="Gradient" id="Gradient_rv5bf"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7h3cr"]
-gradient = SubResource("Gradient_rv5bf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynwxi"]
 atlas = ExtResource("24_jqj6d")
@@ -96,6 +89,7 @@ script = ExtResource("1_1m71x")
 
 [node name="InventoryBackgroundMargin" type="MarginContainer" parent="." unique_id=706599872]
 process_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -209,6 +203,7 @@ text = "Item 3"
 horizontal_alignment = 1
 
 [node name="PauseContainer" type="MarginContainer" parent="." unique_id=2106662033]
+visible = false
 custom_minimum_size = Vector2(504, 366)
 anchors_preset = 8
 anchor_left = 0.5
@@ -298,249 +293,900 @@ texture_normal = ExtResource("8_rv8fl")
 texture_hover = ExtResource("9_sqpbf")
 stretch_mode = 5
 
-[node name="StickerbookBackground" type="TextureRect" parent="." unique_id=432696859]
-visible = false
+[node name="Map" type="TextureRect" parent="." unique_id=432696859]
+unique_name_in_owner = true
 z_index = -2
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_jqj6d")
+texture = ExtResource("10_bphkb")
+script = ExtResource("11_iqywv")
 
-[node name="KingSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1416114579]
+[node name="KingSticker" type="TextureRect" parent="Map" unique_id=1416114579]
 z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 265.0
-offset_top = 137.0
-offset_right = 329.0
-offset_bottom = 201.0
-texture = SubResource("GradientTexture1D_rv5bf")
+offset_left = 578.0
+offset_top = 242.0
+offset_right = 650.0
+offset_bottom = 331.0
+texture = ExtResource("11_00uqi")
 expand_mode = 1
 
-[node name="HorseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=616505084]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 452.0
-offset_top = 266.0
-offset_right = 516.0
-offset_bottom = 330.0
-texture = ExtResource("8_jqj6d")
-expand_mode = 1
-
-[node name="AstronautSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1002752034]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 577.0
-offset_top = 76.0
-offset_right = 641.0
-offset_bottom = 140.0
-texture = ExtResource("7_d34sf")
-expand_mode = 1
-
-[node name="SnowmanSticker" type="TextureRect" parent="StickerbookBackground" unique_id=752233729]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 414.0
-offset_top = 427.0
-offset_right = 478.0
-offset_bottom = 491.0
-texture = ExtResource("10_7h3cr")
-expand_mode = 1
-
-[node name="SisyphusSticker" type="TextureRect" parent="StickerbookBackground" unique_id=784344791]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 194.0
-offset_top = 389.0
-offset_right = 258.0
-offset_bottom = 453.0
-texture = ExtResource("11_ynwxi")
-expand_mode = 1
-
-[node name="GreaseSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1648624159]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 370.0
-offset_top = 37.0
-offset_right = 434.0
-offset_bottom = 101.0
-texture = ExtResource("12_cm65r")
-expand_mode = 1
-
-[node name="DeerSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1724011015]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 860.0
-offset_top = 184.0
-offset_right = 924.0
-offset_bottom = 248.0
-texture = ExtResource("13_2wn8p")
-expand_mode = 1
-
-[node name="GateSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1480087912]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 640.0
-offset_top = 359.0
-offset_right = 704.0
-offset_bottom = 423.0
-texture = ExtResource("2_30jjv")
-expand_mode = 1
-
-[node name="OSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1142725549]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 317.0
-offset_top = 594.0
-offset_right = 381.0
-offset_bottom = 658.0
-texture = ExtResource("14_40r1x")
-expand_mode = 1
-
-[node name="OrgansSticker" type="TextureRect" parent="StickerbookBackground" unique_id=530485664]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 812.0
-offset_top = 85.0
-offset_right = 876.0
-offset_bottom = 149.0
-texture = ExtResource("15_rv8fl")
-expand_mode = 1
-
-[node name="MassSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1949142771]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 934.0
-offset_top = 34.0
-offset_right = 998.0
-offset_bottom = 98.0
-texture = ExtResource("16_sqpbf")
-expand_mode = 1
-
-[node name="LampSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1586886347]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 487.0
-offset_top = 648.0
-offset_right = 551.0
-offset_bottom = 712.0
-texture = ExtResource("17_bphkb")
-expand_mode = 1
-
-[node name="NorgansSticker" type="TextureRect" parent="StickerbookBackground" unique_id=823099394]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 523.0
-offset_top = 500.0
-offset_right = 587.0
-offset_bottom = 564.0
-texture = ExtResource("18_00uqi")
-expand_mode = 1
-
-[node name="MichaelwaveSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1783725147]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 674.0
-offset_top = 657.0
-offset_right = 738.0
-offset_bottom = 721.0
-texture = ExtResource("19_iqywv")
-expand_mode = 1
-
-[node name="RobotSticker" type="TextureRect" parent="StickerbookBackground" unique_id=59128618]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 1111.0
-offset_top = 110.0
-offset_right = 1175.0
-offset_bottom = 174.0
-texture = ExtResource("19_iqywv")
-expand_mode = 1
-
-[node name="GibberishSticker" type="TextureRect" parent="StickerbookBackground" unique_id=714743182]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 1173.0
-offset_top = 336.0
-offset_right = 1237.0
-offset_bottom = 400.0
-texture = ExtResource("20_yo8np")
-expand_mode = 1
-
-[node name="IndividualSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1316062858]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 772.0
-offset_top = 494.0
-offset_right = 836.0
-offset_bottom = 558.0
-texture = SubResource("GradientTexture2D_7h3cr")
-expand_mode = 1
-
-[node name="IdeaSticker" type="TextureRect" parent="StickerbookBackground" unique_id=434983327]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 1007.0
-offset_top = 281.0
-offset_right = 1071.0
-offset_bottom = 345.0
-texture = ExtResource("21_ftghg")
-expand_mode = 1
-
-[node name="BodhiSticker" type="TextureRect" parent="StickerbookBackground" unique_id=1228603223]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 935.0
-offset_top = 524.0
-offset_right = 999.0
-offset_bottom = 588.0
-texture = ExtResource("22_4u7pl")
-expand_mode = 1
-
-[node name="SlimeSticker" type="TextureRect" parent="StickerbookBackground" unique_id=448576117]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 73.0
-offset_top = 521.0
-offset_right = 137.0
-offset_bottom = 585.0
-texture = ExtResource("23_ppan7")
-expand_mode = 1
-
-[node name="CompleteStamp" type="TextureRect" parent="StickerbookBackground" unique_id=859565293]
+[node name="CompleteStamp" type="TextureRect" parent="Map/KingSticker" unique_id=859565293]
+visible = false
 top_level = true
 layout_mode = 0
-offset_left = 1023.0
-offset_top = 591.0
-offset_right = 1959.8308
-offset_bottom = 1221.3154
-rotation = -0.3159046
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("23_d34sf")
+offset_left = 595.0
+offset_top = 266.0
+offset_right = 644.0
+offset_bottom = 318.0
+texture = ExtResource("12_iqywv")
 expand_mode = 5
 
+[node name="HorseDarkPlanet" type="TextureRect" parent="Map" unique_id=2115619113]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 449.0
+offset_top = 363.0
+offset_right = 512.0
+offset_bottom = 428.0
+texture = ExtResource("13_yo8np")
+
+[node name="HorseSticker" type="TextureRect" parent="Map/HorseDarkPlanet" unique_id=616505084]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 63.0
+offset_bottom = 63.0
+texture = ExtResource("14_ftghg")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/HorseDarkPlanet/HorseSticker" unique_id=1308648810]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 448.0
+offset_top = 364.0
+offset_right = 497.0
+offset_bottom = 416.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="AstroDarkPlanet" type="TextureRect" parent="Map" unique_id=1513037413]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 423.0
+offset_top = 190.0
+offset_right = 486.0
+offset_bottom = 255.0
+texture = ExtResource("13_yo8np")
+
+[node name="AstroSticker" type="TextureRect" parent="Map/AstroDarkPlanet" unique_id=1002752034]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -27.0
+offset_right = 65.0
+offset_bottom = 65.0
+texture = ExtResource("15_4u7pl")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/AstroDarkPlanet/AstroSticker" unique_id=1985255675]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 425.0
+offset_top = 185.0
+offset_right = 474.0
+offset_bottom = 237.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="SnowDarkPlanet" type="TextureRect" parent="Map" unique_id=786787715]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 699.0
+offset_top = 394.0
+offset_right = 762.0
+offset_bottom = 459.0
+texture = ExtResource("13_yo8np")
+
+[node name="SnowSticker" type="TextureRect" parent="Map/SnowDarkPlanet" unique_id=752233729]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -1.0
+offset_top = -30.0
+offset_right = 63.0
+offset_bottom = 65.0
+texture = ExtResource("16_ppan7")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/SnowDarkPlanet/SnowSticker" unique_id=391427389]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 709.0
+offset_top = 395.0
+offset_right = 758.0
+offset_bottom = 447.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="SisyphusDarkPlanet" type="TextureRect" parent="Map" unique_id=487761080]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 256.0
+offset_top = 421.0
+offset_right = 319.0
+offset_bottom = 486.0
+texture = ExtResource("13_yo8np")
+
+[node name="SisyphusSticker" type="TextureRect" parent="Map/SisyphusDarkPlanet" unique_id=784344791]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -25.0
+offset_right = 65.0
+offset_bottom = 64.0
+texture = ExtResource("17_s4svx")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/SisyphusDarkPlanet/SisyphusSticker" unique_id=500358005]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 263.0
+offset_top = 426.0
+offset_right = 312.0
+offset_bottom = 478.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="GreaseDarkPlanet" type="TextureRect" parent="Map" unique_id=2134932461]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 518.0
+offset_top = 67.0
+offset_right = 581.0
+offset_bottom = 132.0
+texture = ExtResource("13_yo8np")
+
+[node name="GreaseSticker" type="TextureRect" parent="Map/GreaseDarkPlanet" unique_id=1648624159]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 66.0
+texture = ExtResource("18_a6sf7")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/GreaseDarkPlanet/GreaseSticker" unique_id=1082113751]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 524.0
+offset_top = 67.0
+offset_right = 573.0
+offset_bottom = 119.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="DeerDarkPlanet" type="TextureRect" parent="Map" unique_id=687345806]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 243.0
+offset_top = 102.0
+offset_right = 306.0
+offset_bottom = 167.0
+texture = ExtResource("13_yo8np")
+
+[node name="DeerSticker" type="TextureRect" parent="Map/DeerDarkPlanet" unique_id=1724011015]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -19.0
+offset_right = 66.0
+offset_bottom = 67.0
+texture = ExtResource("19_oc4d8")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/DeerDarkPlanet/DeerSticker" unique_id=2053545768]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 251.0
+offset_top = 109.0
+offset_right = 300.0
+offset_bottom = 161.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="GateDarkPlanet" type="TextureRect" parent="Map" unique_id=1820776948]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 762.0
+offset_top = 195.0
+offset_right = 825.0
+offset_bottom = 260.0
+texture = ExtResource("13_yo8np")
+
+[node name="GateSticker" type="TextureRect" parent="Map/GateDarkPlanet" unique_id=1480087912]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -34.0
+offset_right = 63.0
+offset_bottom = 66.0
+texture = ExtResource("20_74rbg")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/GateDarkPlanet/GateSticker" unique_id=593454003]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 767.0
+offset_top = 194.0
+offset_right = 816.0
+offset_bottom = 246.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="ODarkPlanet" type="TextureRect" parent="Map" unique_id=1510612612]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 671.0
+offset_top = 548.0
+offset_right = 734.0
+offset_bottom = 613.0
+texture = ExtResource("13_yo8np")
+
+[node name="OSticker" type="TextureRect" parent="Map/ODarkPlanet" unique_id=1142725549]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -1.0
+offset_top = -22.0
+offset_right = 64.0
+offset_bottom = 65.0
+texture = ExtResource("21_npi88")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/ODarkPlanet/OSticker" unique_id=840087744]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 681.0
+offset_top = 553.0
+offset_right = 730.0
+offset_bottom = 605.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="OrgansDarkPlanet" type="TextureRect" parent="Map" unique_id=1540096737]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 251.0
+offset_top = 250.0
+offset_right = 314.0
+offset_bottom = 315.0
+texture = ExtResource("13_yo8np")
+
+[node name="OrgansSticker" type="TextureRect" parent="Map/OrgansDarkPlanet" unique_id=530485664]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -21.0
+offset_right = 64.0
+offset_bottom = 66.0
+texture = ExtResource("22_xq43d")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/OrgansDarkPlanet/OrgansSticker" unique_id=486703812]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 254.0
+offset_top = 251.0
+offset_right = 303.0
+offset_bottom = 303.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="MassDarkPlanet" type="TextureRect" parent="Map" unique_id=1773874650]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 178.0
+offset_right = 159.0
+offset_bottom = 243.0
+texture = ExtResource("13_yo8np")
+
+[node name="MassSticker" type="TextureRect" parent="Map/MassDarkPlanet" unique_id=1949142771]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 65.0
+offset_bottom = 66.0
+texture = ExtResource("23_82vjh")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/MassDarkPlanet/MassSticker" unique_id=1688048375]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 99.0
+offset_top = 177.0
+offset_right = 148.0
+offset_bottom = 229.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="LampDarkPlanet" type="TextureRect" parent="Map" unique_id=2120797857]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 813.0
+offset_top = 599.0
+offset_right = 876.0
+offset_bottom = 664.0
+texture = ExtResource("13_yo8np")
+
+[node name="LampSticker" type="TextureRect" parent="Map/LampDarkPlanet" unique_id=1586886347]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -3.0
+offset_top = -30.0
+offset_right = 62.0
+offset_bottom = 66.0
+texture = ExtResource("24_r4epv")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/LampDarkPlanet/LampSticker" unique_id=1717797188]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 818.0
+offset_top = 604.0
+offset_right = 867.0
+offset_bottom = 656.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="NorgansDarkPlanet" type="TextureRect" parent="Map" unique_id=1971469067]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 470.0
+offset_top = 560.0
+offset_right = 533.0
+offset_bottom = 625.0
+texture = ExtResource("13_yo8np")
+
+[node name="NorgansSticker" type="TextureRect" parent="Map/NorgansDarkPlanet" unique_id=823099394]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -25.0
+offset_right = 65.0
+offset_bottom = 67.0
+texture = ExtResource("25_751k0")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/NorgansDarkPlanet/NorgansSticker" unique_id=710538880]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 479.0
+offset_top = 569.0
+offset_right = 528.0
+offset_bottom = 621.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="MichaelwaveDarkPlanet" type="TextureRect" parent="Map" unique_id=1651497456]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 865.0
+offset_top = 425.0
+offset_right = 928.0
+offset_bottom = 490.0
+texture = ExtResource("13_yo8np")
+
+[node name="MichaelwaveSticker" type="TextureRect" parent="Map/MichaelwaveDarkPlanet" unique_id=1783725147]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -14.0
+offset_right = 65.0
+offset_bottom = 66.0
+texture = ExtResource("26_qsvm7")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/MichaelwaveDarkPlanet/MichaelwaveSticker" unique_id=547392601]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 869.0
+offset_top = 431.0
+offset_right = 918.0
+offset_bottom = 483.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="RobotDarkPlanet" type="TextureRect" parent="Map" unique_id=1678476683]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 888.0
+offset_top = 280.0
+offset_right = 951.0
+offset_bottom = 345.0
+texture = ExtResource("13_yo8np")
+
+[node name="RobotSticker" type="TextureRect" parent="Map/RobotDarkPlanet" unique_id=59128618]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -9.0
+offset_top = -26.0
+offset_right = 64.0
+offset_bottom = 65.0
+texture = ExtResource("27_82xaf")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/RobotDarkPlanet/RobotSticker" unique_id=265166485]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 896.0
+offset_top = 277.0
+offset_right = 945.0
+offset_bottom = 329.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="GibberishDarkPlanet" type="TextureRect" parent="Map" unique_id=56957052]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 1077.0
+offset_top = 243.0
+offset_right = 1140.0
+offset_bottom = 308.0
+texture = ExtResource("13_yo8np")
+
+[node name="GibberishSticker" type="TextureRect" parent="Map/GibberishDarkPlanet" unique_id=714743182]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -9.0
+offset_top = -21.0
+offset_right = 62.0
+offset_bottom = 63.0
+texture = ExtResource("28_c6udc")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/GibberishDarkPlanet/GibberishSticker" unique_id=1703559354]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 1084.0
+offset_top = 244.0
+offset_right = 1133.0
+offset_bottom = 296.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="IndividualDarkPlanet" type="TextureRect" parent="Map" unique_id=1368423449]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 844.0
+offset_top = 72.0
+offset_right = 907.0
+offset_bottom = 137.0
+texture = ExtResource("13_yo8np")
+
+[node name="IndividualSticker" type="TextureRect" parent="Map/IndividualDarkPlanet" unique_id=1316062858]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -21.0
+offset_right = 63.0
+offset_bottom = 66.0
+texture = ExtResource("29_006ca")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/IndividualDarkPlanet/IndividualSticker" unique_id=892738760]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 846.0
+offset_top = 80.0
+offset_right = 895.0
+offset_bottom = 132.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="IdeaDarkPlanet" type="TextureRect" parent="Map" unique_id=1156328218]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 427.0
+offset_right = 1115.0
+offset_bottom = 492.0
+texture = ExtResource("13_yo8np")
+
+[node name="IdeaSticker" type="TextureRect" parent="Map/IdeaDarkPlanet" unique_id=434983327]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -25.0
+offset_right = 62.0
+offset_bottom = 63.0
+texture = ExtResource("30_5rjlw")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/IdeaDarkPlanet/IdeaSticker" unique_id=1656748552]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 1058.0
+offset_top = 427.0
+offset_right = 1107.0
+offset_bottom = 479.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="BodhiDarkPlanet" type="TextureRect" parent="Map" unique_id=2089500911]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 96.0
+offset_right = 1143.0
+offset_bottom = 161.0
+texture = ExtResource("13_yo8np")
+
+[node name="BodhiSticker" type="TextureRect" parent="Map/BodhiDarkPlanet" unique_id=1228603223]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -23.0
+offset_right = 62.0
+offset_bottom = 65.0
+texture = ExtResource("31_7jlp0")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/BodhiDarkPlanet/BodhiSticker" unique_id=954082382]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 1087.0
+offset_top = 101.0
+offset_right = 1136.0
+offset_bottom = 153.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="SlimeDarkPlanet" type="TextureRect" parent="Map" unique_id=433289761]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 136.0
+offset_top = 534.0
+offset_right = 199.0
+offset_bottom = 599.0
+texture = ExtResource("13_yo8np")
+
+[node name="SlimeSticker" type="TextureRect" parent="Map/SlimeDarkPlanet" unique_id=448576117]
+visible = false
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -3.0
+offset_top = -15.0
+offset_right = 64.0
+offset_bottom = 66.0
+texture = ExtResource("32_muo8p")
+expand_mode = 1
+
+[node name="CompleteStamp" type="TextureRect" parent="Map/SlimeDarkPlanet/SlimeSticker" unique_id=700218159]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 139.0
+offset_top = 535.0
+offset_right = 188.0
+offset_bottom = 587.0
+texture = ExtResource("12_iqywv")
+expand_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Map" unique_id=1806059079]
+visible = false
+layout_mode = 0
+offset_left = 587.0
+offset_top = 327.0
+offset_right = 647.0
+offset_bottom = 385.0
+rotation = 1.829105
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect2" type="TextureRect" parent="Map" unique_id=1667193791]
+visible = false
+layout_mode = 0
+offset_left = 516.0
+offset_top = 406.00003
+offset_right = 576.0
+offset_bottom = 464.00003
+rotation = -0.6981317
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect3" type="TextureRect" parent="Map" unique_id=264878669]
+visible = false
+layout_mode = 0
+offset_left = 613.99994
+offset_top = 412.99997
+offset_right = 673.99994
+offset_bottom = 470.99997
+rotation = -0.6981317
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect4" type="TextureRect" parent="Map" unique_id=2104907904]
+visible = false
+layout_mode = 0
+offset_left = 438.0
+offset_top = 406.0
+offset_right = 498.0
+offset_bottom = 464.0
+rotation = 2.0874138
+scale = Vector2(1.26, 1.26)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect5" type="TextureRect" parent="Map" unique_id=1804110090]
+visible = false
+layout_mode = 0
+offset_left = 475.99997
+offset_top = 349.0
+offset_right = 536.0
+offset_bottom = 407.0
+rotation = 3.7716565
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect6" type="TextureRect" parent="Map" unique_id=802366047]
+visible = false
+layout_mode = 0
+offset_left = 483.0
+offset_top = 185.99998
+offset_right = 543.0
+offset_bottom = 243.99998
+rotation = 4.679228
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect7" type="TextureRect" parent="Map" unique_id=572763915]
+visible = false
+layout_mode = 0
+offset_left = 402.0
+offset_top = 196.00002
+offset_right = 462.0
+offset_bottom = 254.00003
+rotation = 2.8658307
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect8" type="TextureRect" parent="Map" unique_id=1439585381]
+visible = false
+layout_mode = 0
+offset_left = 288.0
+offset_top = 240.0
+offset_right = 348.0
+offset_bottom = 298.0
+rotation = 3.9025562
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect9" type="TextureRect" parent="Map" unique_id=1063992812]
+visible = false
+layout_mode = 0
+offset_left = 244.00002
+offset_top = 160.0
+offset_right = 304.0
+offset_bottom = 218.00002
+rotation = 1.829105
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect10" type="TextureRect" parent="Map" unique_id=697850218]
+visible = false
+layout_mode = 0
+offset_left = 256.99997
+offset_top = 492.0
+offset_right = 316.99997
+offset_bottom = 550.0
+rotation = 1.6982054
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect11" type="TextureRect" parent="Map" unique_id=76902029]
+visible = false
+layout_mode = 0
+offset_left = 724.0
+offset_top = 464.00006
+offset_right = 784.0
+offset_bottom = 522.00006
+rotation = 0.98611104
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect12" type="TextureRect" parent="Map" unique_id=61547181]
+visible = false
+layout_mode = 0
+offset_left = 653.0
+offset_top = 586.0
+offset_right = 713.0
+offset_bottom = 644.0
+rotation = 2.2811453
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect13" type="TextureRect" parent="Map" unique_id=2649782]
+visible = false
+layout_mode = 0
+offset_left = 803.0
+offset_top = 620.0
+offset_right = 863.0
+offset_bottom = 678.0
+rotation = 2.6703537
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect17" type="TextureRect" parent="Map" unique_id=1798054059]
+visible = false
+layout_mode = 0
+offset_left = 885.99994
+offset_top = 505.99994
+offset_right = 945.99994
+offset_bottom = 563.99994
+rotation = 1.1152654
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect14" type="TextureRect" parent="Map" unique_id=992628077]
+visible = false
+layout_mode = 0
+offset_left = 778.99994
+offset_top = 282.0
+offset_right = 838.99994
+offset_bottom = 340.0
+rotation = 1.1152654
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect15" type="TextureRect" parent="Map" unique_id=416602136]
+visible = false
+layout_mode = 0
+offset_left = 851.0
+offset_top = 137.0
+offset_right = 911.0
+offset_bottom = 195.0
+rotation = 1.3753195
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect16" type="TextureRect" parent="Map" unique_id=1286383618]
+visible = false
+layout_mode = 0
+offset_left = 828.00006
+offset_top = 250.0
+offset_right = 888.00006
+offset_bottom = 308.0
+rotation = -0.17976892
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect18" type="TextureRect" parent="Map" unique_id=1172781042]
+visible = false
+layout_mode = 0
+offset_left = 965.0
+offset_top = 304.0
+offset_right = 1025.0
+offset_bottom = 362.0
+rotation = -0.95644045
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect19" type="TextureRect" parent="Map" unique_id=379326965]
+visible = false
+layout_mode = 0
+offset_left = 961.00006
+offset_top = 341.0
+offset_right = 1021.00006
+offset_bottom = 399.0
+rotation = -0.04886922
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_yo8np")
+
+[node name="TextureRect20" type="TextureRect" parent="Map" unique_id=513213319]
+visible = false
+layout_mode = 0
+offset_left = 1111.0001
+offset_top = 172.00005
+offset_right = 1171.0001
+offset_bottom = 230.00005
+rotation = 0.858702
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_yo8np")
+
 [node name="Interact" type="MarginContainer" parent="." unique_id=128376500]
+visible = false
 z_index = -4
 anchors_preset = 7
 anchor_left = 0.5

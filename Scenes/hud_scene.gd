@@ -1,9 +1,10 @@
 # TODO put the interaction prompt handling in this script
 extends CanvasLayer
 
-@onready var stickerbook : TextureRect = $StickerbookBackground
+@onready var stickerbook : TextureRect = %Map
 @onready var pause_menu : MarginContainer = $PauseContainer
-@onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
+@onready var inventory : MarginContainer = $InventoryBackgroundMargin
+#@onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
 @onready var transition_color: ColorRect = $ColorRect
 @onready var interact: MarginContainer = $Interact
 @onready var exit_label: Label = $Interact/MarginContainer/ExitLabel
@@ -29,7 +30,7 @@ func set_initial_visibility() -> void:
 	visible = true
 	stickerbook.visible = false
 	pause_menu.visible = false
-	complete_stamp.visible = false
+#	complete_stamp.visible = false
 	transition_color.visible = true
 	interact.visible = false
 	
@@ -45,6 +46,7 @@ func _input(event: InputEvent) -> void:
 			toggle_pausing_and_mouse()
 		stickerbook.visible = false
 		pause_menu.visible = !pause_menu.visible
+		inventory.visible = !inventory.visible
 		if DialogueManager.is_dialogue_active == true:
 			var Nametag = get_child(6)
 			var TextBox = get_child(7)
@@ -57,6 +59,7 @@ func _input(event: InputEvent) -> void:
 		if !pause_menu.visible: # don't allow showing the stickerbook while paused
 			toggle_pausing_and_mouse()
 			stickerbook.visible = !stickerbook.visible
+			inventory.visible = !inventory.visible
 	if event.is_action_pressed("advance_dialogue"):
 		if interact.visible:
 			if DialogueManager.is_dialogue_active == true:
@@ -98,7 +101,8 @@ func _on_continue_button_pressed() -> void:
 		interact.visible = true
 
 func _on_main_quest_completion() -> void:
-	complete_stamp.visible = true
+#	complete_stamp.visible = true
+	pass
 	
 func transition() -> void:
 	transition_color.visible = true
