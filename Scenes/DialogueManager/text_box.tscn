@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6wsb833gjgyj" path="res://Scenes/DialogueManager/text_box.gd" id="1_0kxgl"]
 [ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_ot2p7"]
 [ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="3_mg6cl"]
-[ext_resource type="FontFile" uid="uid://b10w3x2qwpwrd" path="res://UI assets/Ah1-Regular.otf" id="4_55dj6"]
+[ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="4_55dj6"]
 [ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_ravpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ravpb"]
