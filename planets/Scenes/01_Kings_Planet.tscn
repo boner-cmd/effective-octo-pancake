@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://csvyqxvwtg5u0" path="res://planets/materials/01_kings_skybox.tres" id="3_ctuby"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_53jkq"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_b0uid"]
+[ext_resource type="Script" uid="uid://6vyc5t4os17l" path="res://Character Scenes/NPCs/king2_completion.gd" id="8_ndrcc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_53jkq"]
 panorama = ExtResource("1_vkkia")
@@ -57,10 +58,20 @@ transform = Transform3D(1, 0, 0, 0, 0.17323565, 0.9848803, 0, -0.9848803, 0.1732
 [node name="DoorBaseModel" parent="Door" index="0" unique_id=1012687003]
 destination_planet_ID = 1
 
+[node name="Door_Credits" parent="." unique_id=828472774 instance=ExtResource("6_53jkq")]
+transform = Transform3D(1, 0, 0, 0, 0.8109208, -0.5851558, 0, 0.5851558, 0.8109208, 0, 34.144413, 0)
+
+[node name="DoorBaseModel" parent="Door_Credits" index="0" unique_id=1012687003]
+destination_planet_ID = 21
+
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_b0uid")]
 
-[node name="king" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="9" unique_id=1530485904]
+[node name="king" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="9" unique_id=1530485904 groups=["Completion_Change"]]
 visible = true
+script = ExtResource("8_ndrcc")
+
+[node name="Credits_Door_Locator" type="Node3D" parent="InteractionArea/Area3D/king" index="1" unique_id=1053453054]
+transform = Transform3D(-1.2837323, 1.497703, -0.33002633, -1.5185199, -1.301575, 2.2351742e-08, -0.214777, 0.25057578, 1.9725827, -9.7439995, 4.2592376e-07, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=946432046]
 collision_layer = 2
@@ -75,4 +86,8 @@ shape = SubResource("CylinderShape3D_ndrcc")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door_Credits"]
+[editable path="Door_Credits/DoorBaseModel"]
+[editable path="Door_Credits/DoorBaseModel/DoorAnims"]
 [editable path="InteractionArea"]
+[editable path="InteractionArea/Area3D/king"]

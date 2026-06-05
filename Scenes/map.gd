@@ -67,7 +67,7 @@ extends TextureRect
 @onready var texture_rect_20: TextureRect = $TextureRect20
 
 @onready var Stickers_By_Character_Names : Dictionary[QuestManager.CharacterName, TextureRect] = {
-	QuestManager.CharacterName.KING_1 : null,
+	QuestManager.CharacterName.KING_1 : king_sticker,
 	QuestManager.CharacterName.HORSE : horse_sticker,
 	QuestManager.CharacterName.ASTRO : astro_sticker,
 	QuestManager.CharacterName.SNOWMAN : snow_sticker,
@@ -268,11 +268,12 @@ func unhide_elements(key):
 	position_marker.position = marker_loc
 
 func set_completion_sticker(key):
-	var completion_sticker : TextureRect = Stickers_By_Character_Names[key].get_child(0)
-	if completion_sticker:
-		completion_sticker.visible = true
-		completion_sticker.position = Vector2(completion_sticker.position.x + randf_range(-10.0, 10.0), completion_sticker.position.y + randf_range(-10.0, 10.0))
-		completion_sticker.rotation_degrees = randf_range(0.0, 360.0)
+	if key != QuestManager.CharacterName.KING_1:
+		var completion_sticker : TextureRect = Stickers_By_Character_Names[key].get_child(0)
+		if completion_sticker:
+			completion_sticker.visible = true
+			completion_sticker.position = Vector2(completion_sticker.position.x + randf_range(-10.0, 10.0), completion_sticker.position.y + randf_range(-10.0, 10.0))
+			completion_sticker.rotation_degrees = randf_range(0.0, 360.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

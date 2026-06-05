@@ -34,6 +34,7 @@ var door_mats : Dictionary[int, Material] = {
 	18 : preload("res://planets/materials/16_Bodhi_door.tres"),
 	19 : preload("res://planets/materials/20_Slime_door.tres"),
 	20 : preload("res://planets/materials/01_kings_door.tres"),
+	21 : null
 }
 
 @export var destination_planet_ID : int
@@ -152,6 +153,7 @@ func interact():
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
+				
 	else:
 		AudioManager.sfx_play(AudioManager.sfx_sadhonk)
 

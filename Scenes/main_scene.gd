@@ -6,6 +6,8 @@ var current_npc
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
 @onready var map : TextureRect = $HUDOverlay/Map
 
+@onready var Player = %PlayerCharacter
+
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
 @onready var current_planet : Node3D = planet_nodes[0]
@@ -34,6 +36,7 @@ var planet_nodes : Dictionary[int, Node3D] = {
 	19 : preload("res://planets/Scenes/20_Slime_Planet.tscn").instantiate(),
 	20 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
 }
+var VICTORY_SCENE = preload("res://Scenes/victory_scene.tscn").instantiate()
 
 ## TODO switch to a Dictionary to have different voices per character
 #@onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
@@ -49,21 +52,33 @@ func _ready() -> void:
 
 func on_planet_change_requested(planet_ID : int):
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
-	var requested_planet = planet_nodes[planet_ID]
-	requested_planet.request_ready() # required to re-roll object locations on planet
-	hud_overlay.transition()
-	map.unhide_elements(planet_ID)
-	AudioManager.bgm_cycle(planet_ID)
-	get_tree().root.add_child(requested_planet)
-	get_tree().root.remove_child(current_planet)
-	current_planet = requested_planet
-	current_planet.door_anim_reset()
-	DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
-	current_npc = DialogueManager.current_npc
-	# try to connect new door signal, whether required or not
-	for door in get_tree().get_nodes_in_group("Door_Base"):
-		if !door.request_planet_change.is_connected(on_planet_change_requested):
-			door.request_planet_change.connect(on_planet_change_requested)
+	if planet_ID < 21:
+		var requested_planet = planet_nodes[planet_ID]
+		requested_planet.request_ready() # required to re-roll object locations on planet
+		hud_overlay.transition()
+		map.unhide_elements(planet_ID)
+		AudioManager.bgm_cycle(planet_ID)
+		get_tree().root.add_child(requested_planet)
+		get_tree().root.remove_child(current_planet)
+		current_planet = requested_planet
+		current_planet.door_anim_reset()
+		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
+		current_npc = DialogueManager.current_npc
+		# try to connect new door signal, whether required or not
+		for door in get_tree().get_nodes_in_group("Door_Base"):
+			if !door.request_planet_change.is_connected(on_planet_change_requested):
+				door.request_planet_change.connect(on_planet_change_requested)
+	elif planet_ID == 21:
+		hud_overlay.transition()
+		get_tree().root.add_child(VICTORY_SCENE)
+		get_tree().root.remove_child(current_planet)
+		Player.set_process_mode(Node.PROCESS_MODE_DISABLED)
+		Player.hide()
+		Player._camera.current = false
+		hud_overlay.set_process_mode(Node.PROCESS_MODE_DISABLED)
+		hud_overlay.hide()
 	
 	
-	$PlayerCharacter.reset_player()
+	
+	
+	Player.reset_player()

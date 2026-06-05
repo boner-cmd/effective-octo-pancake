@@ -5,7 +5,10 @@ MAIN
 	
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state
-		-will need a ready function to call dialogue manager with the credits dialogue
+			on completion, instantiate a door to the right (within camera view)
+		
+		
+		-will need a ready function to call dialogue manager with the credits dialogue (?)
 	Michaelwave assets/dialogue
 	
 	Explore Saving feature
@@ -13,17 +16,13 @@ MAIN
 		Will need to include quest states
 		Will need to include inventory states (???)
 		Will need to include door lock states
-		Will need to include map states
+		Will need to include map visibility states
 	Web Build?
-
 MAP
-
 DIALOGUES 
 
 SHADER PASS
-	[Identify]
 	add shadow falloff for materials for specific planets
-	
 
 VFX PASS
 	[Identify]
@@ -33,13 +32,13 @@ VFX PASS
 
 UI PASS
 	"Map Icon" on the HUD for clarity
+	Speed-run timer
+	honk counter
 
 POLISH IDEAS
-	honk counter
 	Exe Icon
 	STEAM Integration + Listing (?)
 	Revisit all NPC models + animations, then a VFX/Shader pass post
-	Speed-run timer
 	Unique boxes per NPCs (?)
 	Unique type per NPCs (?)
 	Interact visibility tween

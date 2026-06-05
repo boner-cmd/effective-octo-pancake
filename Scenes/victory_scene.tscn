@@ -31,3 +31,4 @@ environment = SubResource("Environment_i8qnh")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=557931101]
 transform = Transform3D(-1, -1.7763568e-15, -8.742278e-08, -2.7696242e-08, 0.94848967, 0.31680807, 8.29196e-08, 0.31680807, -0.94848967, 0, 1.908205, -2.6767209)
+current = true

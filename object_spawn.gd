@@ -6,7 +6,6 @@ extends Node3D
 @export var Obj_4 : Node3D
 @export var Obj_5 : Node3D
 
-
 var obj_determine_placement : Array = [
 	0,
 	1,
@@ -84,6 +83,9 @@ func placement():
 	
 	if InteractionArea:
 		InteractionArea.rotation_degrees = order.pop_back()
+		var king = InteractionArea.get_child(0).get_child(9)
+		if king.visible:
+			king.request_ready()
 	if Obj_2:
 		Obj_2.rotation_degrees = order.pop_back()
 	if Obj_3:

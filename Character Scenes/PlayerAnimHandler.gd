@@ -6,7 +6,7 @@ var item_get_sprite: Sprite3D
 var item_give_sprite: Sprite3D
 
 func _ready() -> void:
-	if !get_parent().name == "Node3D":
+	if !get_parent().name == "Node3D"||!get_parent().name == "Victory Scene":
 		item_get_sprite = $ItemGetLocator/Item_Get_Sprite
 		item_give_sprite = $ItemGiveLocator/Item_Give_Sprite
 

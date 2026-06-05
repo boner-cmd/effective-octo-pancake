@@ -610,8 +610,6 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		name_tag = name_tag_scene.instantiate()
 		hud_overlay.add_child(name_tag)
 		name_tag.get_child(1).get_child(0).text = Character_Names[planet_id]
-		
-		
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
 		# DEBUG alias for clarity 
@@ -701,8 +699,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 								gate_lock = false
 								change_king.emit()
 
-				# DEBUG something wrong with this branch not checking completion correctly
-				# need to verify quest flags (seen failing with IDEA)
+				
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
 					if QuestManager.requirements_met(current_npc):
 						combines_lines = true
@@ -732,10 +729,6 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 		CONV_STATE.PLAYER_RECEIVE:
 			print("SIGNAL TO REQUEST ITEM FROM: ", current_npc)
 			request_item_add.emit(current_npc)
-			#if current_npc == QuestManager.CharacterName.SLIME:
-				#planet_state_change.emit()
-			#if current_npc == QuestManager.CharacterName.GREASE:
-				#planet_state_change.emit()
 			if QuestManager.has_completed(current_npc):
 				Map.set_completion_sticker(current_npc)
 				planet_state_change.emit()

@@ -1249,7 +1249,6 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("12_yo8np")
 
 [node name="Interact" type="MarginContainer" parent="." unique_id=128376500]
-visible = false
 z_index = -4
 anchors_preset = 7
 anchor_left = 0.5
@@ -1320,7 +1319,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NPC" type="Label" parent="Interact/MarginContainer" unique_id=845987720]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_ftghg")
@@ -1338,7 +1336,7 @@ sprite_frames = SubResource("SpriteFrames_rv5bf")
 animation = &"dialogue_conf"
 autoplay = "dialogue_conf"
 centered = false
-offset = Vector2(53.005, 9)
+offset = Vector2(90, 13.275)
 
 [connection signal="mouse_entered" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
