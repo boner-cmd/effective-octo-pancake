@@ -254,12 +254,14 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 
 [node name="PauseLabel" type="Label" parent="PauseContainer" unique_id=404488287]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 70
 text = "pause"
 horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseContainer" unique_id=1198872430]
 layout_mode = 2

@@ -3,6 +3,8 @@ extends VBoxContainer
 var audio_bus_indicies : Dictionary[String, int] = {
 }
 
+const AH_2_REGULAR = preload("uid://bnyf5t008eyns")
+
 const bus_name_overrides : Array[String]= [] 	# override internal bus names here in bus order, but will break if total buses changes during runtime
 const min_slider_size : Vector2 = Vector2(300.0,50.0)
 
@@ -25,6 +27,7 @@ func bus_setup() -> void:
 		slider_name = bus_name + "AudioSlider"
 		temp_slider = HSlider.new()
 		temp_slider_label = Label.new()
+		
 		set_base_slider_attributes(temp_slider)
 		
 		# add the bus to the bus index dictionary
@@ -43,10 +46,13 @@ func bus_setup() -> void:
 			temp_slider_label.set_name(bus_name_overrides[bus] + "AudioLabel")
 			temp_slider_label.text = bus_name_overrides[bus]
 			
+			
 		# add nodes to tree
 		add_child(temp_slider)
 		temp_slider.add_child(temp_slider_label)
-		
+		temp_slider_label.add_theme_font_override("font", AH_2_REGULAR)
+		temp_slider_label.add_theme_font_size_override("font_size", 40)
+		temp_slider_label.position.y -= 10
 		# connect signals
 		temp_slider.value_changed.connect(_on_any_value_changed, CONNECT_APPEND_SOURCE_OBJECT )
 

@@ -1,13 +1,11 @@
 MAIN
 	BUGS
 		I LIKE IT - deer backwards? completion change mesh 
-		
 		Unrecognized UID: uid://rwtu2ij74m0i
-		
+	
 	Victory Scene + Credits Implementation
 		-Requires King to spawn door next to him as a completion state
 		-will need a ready function to call dialogue manager with the credits dialogue
-		
 	Michaelwave assets/dialogue
 	
 	Explore Saving feature
@@ -16,16 +14,11 @@ MAIN
 		Will need to include inventory states (???)
 		Will need to include door lock states
 		Will need to include map states
-		
 	Web Build?
-	
 
 MAP
-	Completion Sticker
-	
 
 DIALOGUES 
-	
 
 SHADER PASS
 	[Identify]
@@ -46,17 +39,16 @@ POLISH IDEAS
 	Exe Icon
 	STEAM Integration + Listing (?)
 	Revisit all NPC models + animations, then a VFX/Shader pass post
-	Speed-run timers
-	Side-quests? (lol)
+	Speed-run timer
 	Unique boxes per NPCs (?)
 	Unique type per NPCs (?)
-	Interact visibility tween?
-	
+	Interact visibility tween
+
 TITLE SCREEN
 	Finish Background
 	Atmospheric fade
 	Title Screen Music
-	
+
 Music
 	Remaster tracks
 	Unique speech sound per NPC (?)
