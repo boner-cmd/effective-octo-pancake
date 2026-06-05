@@ -532,6 +532,7 @@ const debug : Dictionary[QuestManager.CharacterName, Array] = {
 
 var dialogue_state : CONV_STATE = CONV_STATE.FINISHED
 var hud_overlay : CanvasLayer
+var Map : TextureRect
 var text_box_scene : Resource = preload("res://Scenes/DialogueManager/text_box.tscn")
 var name_tag_scene : Resource = preload("uid://og3tn8fq3m0u")
 var name_tag : Node
@@ -574,6 +575,7 @@ func _unhandled_input(event):
 			name_tag.queue_free()
 			dialogue_lines = []
 			dialogue_state = CONV_STATE.FINISHED
+			
 		else: 
 			if combines_lines:
 				if animation_point_2 > 0: # there is a set second animation point
@@ -604,8 +606,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		is_dialogue_active = true
 		hud_overlay = CanvasLayer_in
 		hud_overlay = $/root/MainScene/HUDOverlay
-		
-		print(hud_overlay)
+		Map = $/root/MainScene/HUDOverlay/Map
 		name_tag = name_tag_scene.instantiate()
 		hud_overlay.add_child(name_tag)
 		name_tag.get_child(1).get_child(0).text = Character_Names[planet_id]
@@ -731,14 +732,21 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 		CONV_STATE.PLAYER_RECEIVE:
 			print("SIGNAL TO REQUEST ITEM FROM: ", current_npc)
 			request_item_add.emit(current_npc)
-			if current_npc == QuestManager.CharacterName.SLIME:
+			#if current_npc == QuestManager.CharacterName.SLIME:
+				#planet_state_change.emit()
+			#if current_npc == QuestManager.CharacterName.GREASE:
+				#planet_state_change.emit()
+			if QuestManager.has_completed(current_npc):
+				Map.set_completion_sticker(current_npc)
 				planet_state_change.emit()
-			if current_npc == QuestManager.CharacterName.GREASE:
-				planet_state_change.emit()
+				print("QuestManager Completion and Sticker Set on PLAYER RECEIVE")
 		CONV_STATE.PLAYER_GIVE:
 			print("SIGNAL TO GIVE ITEM TO: ", current_npc)
 			request_item_remove.emit(current_npc)
-			planet_state_change.emit()
+			if QuestManager.has_completed(current_npc):
+				Map.set_completion_sticker(current_npc)
+				planet_state_change.emit()
+				print("QuestManager Completion and Sticker Set on PLAYER GIVE")
 
 func show_text_box():
 	hud_overlay = $/root/MainScene/HUDOverlay

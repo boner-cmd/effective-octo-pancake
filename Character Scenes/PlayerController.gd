@@ -84,7 +84,7 @@ func player_interaction_camera() -> void:
 						clone._set_player_anim(clown.AnimStates.JUMP)
 					else:
 						clone._set_player_anim(clone.AnimStates.TALK)
-				if DialogueManager.current_npc == QuestManager.CharacterName.SLIME||DialogueManager.current_npc == QuestManager.CharacterName.GREASE||DialogueManager.current_npc == QuestManager.CharacterName.MASS:
+				if DialogueManager.current_npc == QuestManager.CharacterName.LAMP||DialogueManager.current_npc == QuestManager.CharacterName.SLIME||DialogueManager.current_npc == QuestManager.CharacterName.GREASE||DialogueManager.current_npc == QuestManager.CharacterName.MASS:
 					_cam_frame_both_puddles.make_current()
 				elif DialogueManager.current_npc == QuestManager.CharacterName.DEER||DialogueManager.current_npc == QuestManager.CharacterName.HORSE:
 					_cam_frame_animals.make_current()

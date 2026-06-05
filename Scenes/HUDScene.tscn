@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
 [ext_resource type="Texture2D" uid="uid://dqjar201xnc71" path="res://UI assets/128 AH itchio background.png" id="3_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://b60w6v7nby0qs" path="res://Placeholder Assets (UI)/text_rect_blue.png" id="3_rv5bf"]
+[ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="5_ftghg"]
 [ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="6_2wn8p"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 [ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="7_40r1x"]
@@ -158,6 +159,7 @@ offset_right = 70.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_ftghg")
 text = "Item 1"
 horizontal_alignment = 1
 
@@ -179,6 +181,7 @@ offset_right = 70.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_ftghg")
 text = "Item 2"
 horizontal_alignment = 1
 
@@ -200,13 +203,14 @@ offset_right = 70.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_ftghg")
 text = "Item 3"
 horizontal_alignment = 1
 
 [node name="PauseContainer" type="MarginContainer" parent="." unique_id=2106662033]
 visible = false
 top_level = true
-z_index = 15
+z_index = 30
 custom_minimum_size = Vector2(504, 366)
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,6 +256,7 @@ patch_margin_bottom = 16
 [node name="PauseLabel" type="Label" parent="PauseContainer" unique_id=404488287]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 56
 text = "pause"
 horizontal_alignment = 1
@@ -298,6 +303,7 @@ stretch_mode = 5
 
 [node name="Map" type="TextureRect" parent="." unique_id=432696859]
 unique_name_in_owner = true
+visible = false
 z_index = -2
 texture_filter = 1
 anchors_preset = 15
@@ -334,15 +340,18 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/KingSticker" unique_id=859565293]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 595.0
 offset_top = 266.0
 offset_right = 644.0
 offset_bottom = 318.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
 [node name="HorseDarkPlanet" type="TextureRect" parent="Map" unique_id=2115619113]
+visible = false
 z_index = 2
 texture_filter = 1
 layout_mode = 0
@@ -367,11 +376,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/HorseDarkPlanet/HorseSticker" unique_id=1308648810]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 448.0
 offset_top = 364.0
 offset_right = 497.0
 offset_bottom = 416.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -401,11 +412,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/AstroDarkPlanet/AstroSticker" unique_id=1985255675]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 425.0
 offset_top = 185.0
 offset_right = 474.0
 offset_bottom = 237.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -435,11 +448,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/SnowDarkPlanet/SnowSticker" unique_id=391427389]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 709.0
 offset_top = 395.0
 offset_right = 758.0
 offset_bottom = 447.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -469,11 +484,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/SisyphusDarkPlanet/SisyphusSticker" unique_id=500358005]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 263.0
 offset_top = 426.0
 offset_right = 312.0
 offset_bottom = 478.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -503,11 +520,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/GreaseDarkPlanet/GreaseSticker" unique_id=1082113751]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 524.0
 offset_top = 67.0
 offset_right = 573.0
 offset_bottom = 119.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -537,11 +556,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/DeerDarkPlanet/DeerSticker" unique_id=2053545768]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 251.0
 offset_top = 109.0
 offset_right = 300.0
 offset_bottom = 161.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -571,11 +592,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/GateDarkPlanet/GateSticker" unique_id=593454003]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 767.0
 offset_top = 194.0
 offset_right = 816.0
 offset_bottom = 246.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -605,11 +628,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/ODarkPlanet/OSticker" unique_id=840087744]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 681.0
 offset_top = 553.0
 offset_right = 730.0
 offset_bottom = 605.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -639,11 +664,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/OrgansDarkPlanet/OrgansSticker" unique_id=486703812]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 254.0
 offset_top = 251.0
 offset_right = 303.0
 offset_bottom = 303.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -673,11 +700,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/MassDarkPlanet/MassSticker" unique_id=1688048375]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 99.0
 offset_top = 177.0
 offset_right = 148.0
 offset_bottom = 229.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -707,11 +736,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/LampDarkPlanet/LampSticker" unique_id=1717797188]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 818.0
 offset_top = 604.0
 offset_right = 867.0
 offset_bottom = 656.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -741,11 +772,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/NorgansDarkPlanet/NorgansSticker" unique_id=710538880]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 479.0
 offset_top = 569.0
 offset_right = 528.0
 offset_bottom = 621.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -775,11 +808,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/MichaelwaveDarkPlanet/MichaelwaveSticker" unique_id=547392601]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 869.0
 offset_top = 431.0
 offset_right = 918.0
 offset_bottom = 483.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -809,11 +844,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/RobotDarkPlanet/RobotSticker" unique_id=265166485]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 896.0
 offset_top = 277.0
 offset_right = 945.0
 offset_bottom = 329.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -843,11 +880,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/GibberishDarkPlanet/GibberishSticker" unique_id=1703559354]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 1084.0
 offset_top = 244.0
 offset_right = 1133.0
 offset_bottom = 296.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -877,11 +916,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/IndividualDarkPlanet/IndividualSticker" unique_id=892738760]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 846.0
 offset_top = 80.0
 offset_right = 895.0
 offset_bottom = 132.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -911,11 +952,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/IdeaDarkPlanet/IdeaSticker" unique_id=1656748552]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 1058.0
 offset_top = 427.0
 offset_right = 1107.0
 offset_bottom = 479.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -945,11 +988,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/BodhiDarkPlanet/BodhiSticker" unique_id=954082382]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 1087.0
 offset_top = 101.0
 offset_right = 1136.0
 offset_bottom = 153.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -979,11 +1024,13 @@ expand_mode = 1
 [node name="CompleteStamp" type="TextureRect" parent="Map/SlimeDarkPlanet/SlimeSticker" unique_id=700218159]
 visible = false
 top_level = true
+z_index = 2
 layout_mode = 0
 offset_left = 139.0
 offset_top = 535.0
 offset_right = 188.0
 offset_bottom = 587.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
@@ -1235,6 +1282,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ynwxi")
 [node name="NinePatchRect" type="NinePatchRect" parent="Interact" unique_id=1657040176]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 texture = ExtResource("3_rv5bf")
 patch_margin_left = 16
@@ -1254,7 +1302,8 @@ theme_override_constants/margin_bottom = 12
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
 text = "travel through the void"
 vertical_alignment = 1
 
@@ -1262,7 +1311,8 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
 text = "void locked"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1271,7 +1321,8 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
 text = "press F to pay respects"
 vertical_alignment = 1
 

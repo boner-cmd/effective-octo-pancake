@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cencbmtsfb7lb" path="res://Scenes/DialogueManager/name_tag.gd" id="1_4l8nk"]
 [ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_54odx"]
+[ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="3_81rih"]
 [ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_00dxa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ravpb"]
@@ -51,7 +52,8 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("3_81rih")
+theme_override_font_sizes/font_size = 50
 
 [node name="Mask" type="Panel" parent="." unique_id=145214229]
 clip_children = 1

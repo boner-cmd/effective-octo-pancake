@@ -4,7 +4,6 @@ extends CanvasLayer
 @onready var stickerbook : TextureRect = %Map
 @onready var pause_menu : MarginContainer = $PauseContainer
 @onready var inventory : MarginContainer = $InventoryBackgroundMargin
-#@onready var complete_stamp : TextureRect = $StickerbookBackground/CompleteStamp
 @onready var transition_color: ColorRect = $ColorRect
 @onready var interact: MarginContainer = $Interact
 @onready var exit_label: Label = $Interact/MarginContainer/ExitLabel
@@ -30,13 +29,11 @@ func set_initial_visibility() -> void:
 	visible = true
 	stickerbook.visible = false
 	pause_menu.visible = false
-#	complete_stamp.visible = false
 	transition_color.visible = true
 	interact.visible = false
 	
 func toggle_pausing_and_mouse() -> void:
 	get_tree().paused = !get_tree().paused
-	# using set_mouse_mode resolves a warning about using enums like ints
 	Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
 	
 
@@ -44,9 +41,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if !stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing_and_mouse()
-		#stickerbook.visible = false
 		pause_menu.visible = !pause_menu.visible
-		#inventory.visible = trueS
 		if DialogueManager.is_dialogue_active == true:
 			var Nametag = get_child(6)
 			var TextBox = get_child(7)
@@ -150,6 +145,7 @@ func on_door_exited() -> void:
 	locked_label.visible = false
 	next_indicator.visible = false
 
+#TO-DO set tweens for intract visibility
 func on_npc_entered() -> void:
 	interact.visible = true
 	exit_label.visible = false

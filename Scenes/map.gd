@@ -67,7 +67,7 @@ extends TextureRect
 @onready var texture_rect_20: TextureRect = $TextureRect20
 
 @onready var Stickers_By_Character_Names : Dictionary[QuestManager.CharacterName, TextureRect] = {
-	QuestManager.CharacterName.KING_1 : king_sticker,
+	QuestManager.CharacterName.KING_1 : null,
 	QuestManager.CharacterName.HORSE : horse_sticker,
 	QuestManager.CharacterName.ASTRO : astro_sticker,
 	QuestManager.CharacterName.SNOWMAN : snow_sticker,
@@ -156,15 +156,7 @@ extends TextureRect
 	slime_dark_planet,
 	null,
 	]
-var planet_nodes : Dictionary[int, Node3D] = {
-	14 : preload("res://planets/Scenes/06_RustyRobot_Planet.tscn").instantiate(),
-	15 : preload("res://planets/Scenes/13_Individual_Planet.tscn").instantiate(),
-	16 : preload("res://planets/Scenes/08_Gibberish_Planet.tscn").instantiate(),
-	17 : preload("res://planets/Scenes/11_Idea_Planet.tscn").instantiate(),
-	18 : preload("res://planets/Scenes/16_Bodhi_Planet.tscn").instantiate(),
-	19 : preload("res://planets/Scenes/20_Slime_Planet.tscn").instantiate(),
-	20 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
-}
+
 #connection arrays by QuestManager.CharacterName?
 @onready var king_connection_array : Array = [
 	horse_dark_planet,
@@ -267,30 +259,23 @@ func unhide_elements(key):
 	if array:
 		for elements in array:
 			elements.visible = true
-	var current_dark : TextureRect = get_dark_planet(key)
+	var current_dark : TextureRect = DarkPlanets[key]
 	if current_dark:
 		current_dark.texture = null
-	var planet : TextureRect = get_planet_sticker(key)
+	var planet : TextureRect = Stickers_By_Int[key]
 	planet.visible = true
-	var marker_loc : Vector2 = get_marker_loc(key)
+	var marker_loc : Vector2 = Position_by_Int[key]
 	position_marker.position = marker_loc
-	
-func get_marker_loc(key) -> Vector2:
-	return Position_by_Int[key]
-	
-func get_planet_sticker(key) -> TextureRect:
-	return Stickers_By_Int[key]
 
-func get_dark_planet(key) -> TextureRect:
-	return DarkPlanets[key]
+func set_completion_sticker(key):
+	var completion_sticker : TextureRect = Stickers_By_Character_Names[key].get_child(0)
+	if completion_sticker:
+		completion_sticker.visible = true
+		completion_sticker.position = Vector2(completion_sticker.position.x + randf_range(-10.0, 10.0), completion_sticker.position.y + randf_range(-10.0, 10.0))
+		completion_sticker.rotation_degrees = randf_range(0.0, 360.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	horse_dark_planet.visible = true
 	texture_rect.visible = true
-	position_marker.position = get_marker_loc(0)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	position_marker.position = Position_by_Int[0]
