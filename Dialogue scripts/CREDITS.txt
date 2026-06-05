@@ -1,3 +1,11 @@
+#Void dialogue
+"(True lack belies the cacophony of internal noise ever tuned out through somatic satiation.)",
+"(Still, caught on the ganglionic strings of your peripheral nervous system something vocal echoes:)",
+"You who are as yet to un-be Attentive Helper are welcomed back.",
+"Returned now to the womb of primoridal nothingness from which were you plucked and given form.",
+"Rest your head once more and forever against the bussom of oblivion.",
+
+
 "Truly",
 "Deeply",
 "From the bottom of our hearts:",
@@ -12,9 +20,8 @@
 
 "Allie Burch - 2D Asset Creation",
 
-"Markcy Hilbert - Scenario, Dialogue, Music, Sound, 2D & 3D Asset Creation",
+"Markcy Hilbert - Scenario, Dialogue, Music & Sound, 2D & 3D Asset Creation",
 
-"Dimelo Waterson: Systems Design, UI, Data Entry",
+"Dimelo Waterson: Systems Design, UI Programming, Data Entry",
 
 "A full list of credited sources, references, and borrowed assets can be found on our itch.io page",
-"Including the link to a texture created by Jamespodesta91 on DeviantArt.",
