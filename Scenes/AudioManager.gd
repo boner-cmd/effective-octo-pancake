@@ -33,7 +33,8 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	18 : preload("res://music exports/boddhisattva2026-05-2221_27_06.wav"),
 	19 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
 	20 : preload("res://music exports/king2026-05-2113_23_05.wav"),
-	21 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
+	21 : preload("res://music exports/void.wav"),
+	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
 }
 
 #SFX player
@@ -81,6 +82,9 @@ func bgm_cycle(planetID: int):
 	temp_BGM_Player = BGM_Player.duplicate()
 	temp_BGM_Player.stream = BGM_nodes[planetID]
 	get_tree().root.add_child(temp_BGM_Player)
+	if planetID == 21:
+		temp_BGM_Player.volume_db += 4.0
+		pass
 	temp_BGM_Player.play()
 
 
@@ -99,7 +103,7 @@ func _ready() -> void:
 	tree.add_child.call_deferred(BGM_Player)
 	
 	temp_BGM_Player = BGM_Player.duplicate()
-	temp_BGM_Player.stream = BGM_nodes[21]
+	temp_BGM_Player.stream = BGM_nodes[22]
 	get_tree().root.add_child.call_deferred(temp_BGM_Player)
 	temp_BGM_Player.process_mode = PROCESS_MODE_ALWAYS
 	await temp_BGM_Player.tree_entered

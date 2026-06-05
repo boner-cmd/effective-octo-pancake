@@ -1,17 +1,13 @@
 extends Node3D
-
 var current_planet_id : int = 0
 var current_npc
 # CanvasLayer is $HUDOverlay
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
 @onready var map : TextureRect = $HUDOverlay/Map
-
 @onready var Player = %PlayerCharacter
-
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
 @onready var current_planet : Node3D = planet_nodes[0]
-
 ## TODO convert planet_nodes to use the ResourceLoader with sub-threads
 var planet_nodes : Dictionary[int, Node3D] = {
 	0 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
@@ -35,8 +31,9 @@ var planet_nodes : Dictionary[int, Node3D] = {
 	18 : preload("res://planets/Scenes/16_Bodhi_Planet.tscn").instantiate(),
 	19 : preload("res://planets/Scenes/20_Slime_Planet.tscn").instantiate(),
 	20 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
+	21 : preload("res://Scenes/victory_scene.tscn").instantiate()
 }
-var VICTORY_SCENE = preload("res://Scenes/victory_scene.tscn").instantiate()
+
 
 ## TODO switch to a Dictionary to have different voices per character
 #@onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
@@ -69,16 +66,17 @@ func on_planet_change_requested(planet_ID : int):
 			if !door.request_planet_change.is_connected(on_planet_change_requested):
 				door.request_planet_change.connect(on_planet_change_requested)
 	elif planet_ID == 21:
+		planet_nodes[planet_ID].request_ready()
 		hud_overlay.transition()
-		get_tree().root.add_child(VICTORY_SCENE)
+		AudioManager.bgm_cycle(planet_ID)
+		get_tree().root.add_child(planet_nodes[planet_ID])
 		get_tree().root.remove_child(current_planet)
 		Player.set_process_mode(Node.PROCESS_MODE_DISABLED)
 		Player.hide()
 		Player._camera.current = false
 		hud_overlay.set_process_mode(Node.PROCESS_MODE_DISABLED)
 		hud_overlay.hide()
-	
-	
-	
+		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
+		current_npc = DialogueManager.current_npc
 	
 	Player.reset_player()

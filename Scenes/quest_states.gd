@@ -88,6 +88,7 @@ enum CharacterName {
 	BODHI,
 	SLIME,
 	KING_2,
+	CREDITS,
 }
 
 ## MEETING_REQS stores the combined character bit IDs of each meeting dependency, indexed

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d0617qjmbv6r8"]
 
+[ext_resource type="Script" uid="uid://cxldq8oxs2nla" path="res://Scenes/victory_scene.gd" id="1_3j7m6"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="1_w3pyd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3j7m6"]
@@ -17,8 +18,16 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Victory Scene" type="Node3D" unique_id=23836051]
+script = ExtResource("1_3j7m6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=824389704]
+
+[node name="TransitionScreen" type="ColorRect" parent="CanvasLayer" unique_id=1019475930]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1010044836]
 transform = Transform3D(-0.91938156, -0.37583366, 0.1161316, -0.28253388, 0.83632296, 0.469828, -0.27370068, 0.39914012, -0.8750858, 0, 0, 0)
