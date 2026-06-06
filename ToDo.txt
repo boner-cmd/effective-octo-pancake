@@ -2,13 +2,7 @@ MAIN
 	BUGS
 		I LIKE IT - deer backwards? completion change mesh 
 		Unrecognized UID: uid://rwtu2ij74m0i
-	
-	Victory Scene + Credits Implementation
-		-Requires King to spawn door next to him as a completion state
-			on completion, instantiate a door to the right (within camera view)
 		
-		
-		-will need a ready function to call dialogue manager with the credits dialogue (?)
 	Michaelwave assets/dialogue
 	
 	Explore Saving feature

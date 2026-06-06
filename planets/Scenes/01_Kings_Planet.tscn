@@ -21,9 +21,6 @@ sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_lyt48"]
-flip_faces = true
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ndrcc"]
 
 [node name="01_Kings_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2")]
@@ -46,12 +43,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("3_ctuby")
 
-[node name="SphereSkybox" type="MeshInstance3D" parent="." unique_id=1537566391]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
-visible = false
-material_override = ExtResource("3_ctuby")
-mesh = SubResource("SphereMesh_lyt48")
-
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_53jkq")]
 transform = Transform3D(1, 0, 0, 0, 0.17323565, 0.9848803, 0, -0.9848803, 0.17323565, 0, 0, 0)
 
@@ -59,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 0.17323565, 0.9848803, 0, -0.9848803, 0.1732
 destination_planet_ID = 1
 
 [node name="Door_Credits" parent="." unique_id=828472774 instance=ExtResource("6_53jkq")]
-transform = Transform3D(1, 0, 0, 0, 0.8109208, -0.5851558, 0, 0.5851558, 0.8109208, 0, 34.144413, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8109208, -0.5851558, 0, 0.5851558, 0.8109208, 0, 135.58662, 73.20012)
 
 [node name="DoorBaseModel" parent="Door_Credits" index="0" unique_id=1012687003]
 destination_planet_ID = 21
@@ -71,7 +62,7 @@ visible = true
 script = ExtResource("8_ndrcc")
 
 [node name="Credits_Door_Locator" type="Node3D" parent="InteractionArea/Area3D/king" index="1" unique_id=1053453054]
-transform = Transform3D(-1.2837323, 1.497703, -0.33002633, -1.5185199, -1.301575, 2.2351742e-08, -0.214777, 0.25057578, 1.9725827, -9.7439995, 4.2592376e-07, 0)
+transform = Transform3D(-0.9074155, 1.7514791, -0.33002633, -1.7758235, -0.92002773, 1.4901161e-08, -0.15181667, 0.29303426, 1.9725827, -9.7439995, 4.2592376e-07, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=946432046]
 collision_layer = 2

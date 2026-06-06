@@ -492,20 +492,30 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		# does king2 have easter dialog?
 	]],
 	QuestManager.CharacterName.CREDITS : [[
-		"(True lack belies the cacophony of internal noise ever tuned out through somatic satiation.)",
-		"(Still, caught on the ganglionic strings of your peripheral nervous system something vocal echoes:)",
+		"True lack belies the cacophony of internal noise ever tuned out through somatic satiation.",
+		"Still, caught on the ganglionic strings of your peripheral nervous system something vocal echoes:",
 		"You who are as yet to un-be Attentive Helper are welcomed back.",
 		"Returned now to the womb of primoridal nothingness from which were you plucked and given form.",
-		"Rest your head once more and forever against the bussom of oblivion.",
+		"Rest your head once more and forever against the bosom of oblivion.",
 		
 		"CREDITS:",
-		"Michael Brissie - Animation, Asset Implementation, Programming, Tech Art, UI",
+		"Michael Brissie:
+		Animation, Modeling,
+		Asset Implementation,
+		Programming, Tech Art, UI",
 		
-		"Allie Burch - 2D Asset Creation",
+		"Allie Burch:
+		2D Asset Creation",
 		
-		"Markcy Hilbert - Scenario, Dialogue, Music & Sound, 2D & 3D Asset Creation",
+		"Markcy Hilbert:
+		Scenario, Dialogue,
+		Music & Sound,
+		2D & 3D Assets",
 		
-		"Dimelo Waterson: Systems Design, UI Programming, Data Entry",
+		"Dimelo Waterson:
+		Systems Design,
+		UI Programming,
+		Data Entry",
 		
 		"Truly",
 		"Deeply",
@@ -622,8 +632,15 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		used_lines = debug
 	else:
 		used_lines = all_lines
+	if not is_dialogue_active and planet_id == QuestManager.CharacterName.CREDITS:
+		current_npc = planet_id
+		dialogue_lines.append_array(used_lines[current_npc][0])
+		is_dialogue_active = true
+		dialogue_state = CONV_STATE.PLAYER_LISTEN
+		sfx = voice_sfx
+		show_text_box()
 		
-	if not is_dialogue_active and planet_id != QuestManager.CharacterName.CREDITS:
+	if not is_dialogue_active:
 		# DEBUG
 		print("Character name: ", planet_id)
 		is_dialogue_active = true
@@ -746,14 +763,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 							king2_lock = false
 
 		show_text_box()
-	elif not is_dialogue_active and planet_id == QuestManager.CharacterName.CREDITS:
-		
-		dialogue_lines.append_array(used_lines[current_npc][0])
-		is_dialogue_active = true
-		hud_overlay = CanvasLayer_in
-		dialogue_state = CONV_STATE.PLAYER_LISTEN
-		sfx = voice_sfx
-		show_text_box()
+	
 
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
 	match pending_animation:
@@ -773,7 +783,6 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 				print("QuestManager Completion and Sticker Set on PLAYER GIVE")
 
 func show_text_box():
-	hud_overlay = $/root/MainScene/HUDOverlay
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	hud_overlay.add_child(text_box)

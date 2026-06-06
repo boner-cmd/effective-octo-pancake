@@ -6,9 +6,10 @@ var item_get_sprite: Sprite3D
 var item_give_sprite: Sprite3D
 
 func _ready() -> void:
-	if !get_parent().name == "Node3D"||!get_parent().name == "Victory Scene":
+	if !get_parent().name == "Node3D":
 		item_get_sprite = $ItemGetLocator/Item_Get_Sprite
 		item_give_sprite = $ItemGiveLocator/Item_Give_Sprite
+	
 
 func honk_sound_player():
 	var honk_time = honk_delay.duplicate()
@@ -33,12 +34,14 @@ func _get_current_anim() -> AnimStates:
 func _set_player_anim(anim : AnimStates):
 	if anim != current_anim:
 		current_anim = anim
-		item_get_sprite.visible = false
-		item_give_sprite.visible = false
-		item_get_sprite.timer.stop()
-		item_get_sprite.timer.wait_time = 0.1
-		item_give_sprite.timer.stop()
-		item_give_sprite.timer.wait_time = 0.1
+		if item_get_sprite:
+			item_get_sprite.visible = false
+			item_get_sprite.timer.stop()
+			item_get_sprite.timer.wait_time = 0.1
+		if item_give_sprite:
+			item_give_sprite.visible = false
+			item_give_sprite.timer.stop()
+			item_give_sprite.timer.wait_time = 0.1
 		match current_anim:
 			AnimStates.IDLE:
 				anim_tree.set("parameters/Reset_Idle/seek_request", 0.0)

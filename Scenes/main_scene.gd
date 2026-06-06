@@ -3,7 +3,10 @@ var current_planet_id : int = 0
 var current_npc
 # CanvasLayer is $HUDOverlay
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
+var inventory : MarginContainer
+
 @onready var map : TextureRect = $HUDOverlay/Map
+
 @onready var Player = %PlayerCharacter
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
@@ -41,41 +44,45 @@ var planet_nodes : Dictionary[int, Node3D] = {
 ## TODO placeholder documentation
 func _ready() -> void:
 	# initial setup for first planet, door, and bgm
-	get_tree().root.add_child(planet_nodes[0]) 
+	get_tree().root.add_child(planet_nodes[0])
 	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
 	initial_door.request_planet_change.connect(on_planet_change_requested)
 	AudioManager.bgm_cycle(0)
+	inventory = hud_overlay.get_child(0)
 	
 
 func on_planet_change_requested(planet_ID : int):
+	Player.visible = true
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
+	hud_overlay.get_child(0).visible = true
+	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
+	Player._camera.current = true
+	inventory.visible = true
+	var requested_planet = planet_nodes[planet_ID]
+	requested_planet.request_ready() # required to re-roll object locations on planet
+	hud_overlay.transition()
+	map.unhide_elements(planet_ID)
+	AudioManager.bgm_cycle(planet_ID)
+	get_tree().root.add_child(requested_planet)
+	get_tree().root.remove_child(current_planet)
+	current_planet = requested_planet
 	if planet_ID < 21:
-		var requested_planet = planet_nodes[planet_ID]
-		requested_planet.request_ready() # required to re-roll object locations on planet
-		hud_overlay.transition()
-		map.unhide_elements(planet_ID)
-		AudioManager.bgm_cycle(planet_ID)
-		get_tree().root.add_child(requested_planet)
-		get_tree().root.remove_child(current_planet)
-		current_planet = requested_planet
 		current_planet.door_anim_reset()
-		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
-		current_npc = DialogueManager.current_npc
-		# try to connect new door signal, whether required or not
-		for door in get_tree().get_nodes_in_group("Door_Base"):
-			if !door.request_planet_change.is_connected(on_planet_change_requested):
-				door.request_planet_change.connect(on_planet_change_requested)
-	elif planet_ID == 21:
+	DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
+	current_npc = DialogueManager.current_npc
+	# try to connect new door signal, whether required or not
+	for door in get_tree().get_nodes_in_group("Door_Base"):
+		if !door.request_planet_change.is_connected(on_planet_change_requested):
+			door.request_planet_change.connect(on_planet_change_requested)
+	if planet_ID == 21:
+		inventory.visible = false
 		planet_nodes[planet_ID].request_ready()
 		hud_overlay.transition()
 		AudioManager.bgm_cycle(planet_ID)
-		get_tree().root.add_child(planet_nodes[planet_ID])
-		get_tree().root.remove_child(current_planet)
 		Player.set_process_mode(Node.PROCESS_MODE_DISABLED)
-		Player.hide()
+		Player.visible = false
 		Player._camera.current = false
-		hud_overlay.set_process_mode(Node.PROCESS_MODE_DISABLED)
-		hud_overlay.hide()
+		hud_overlay.get_child(0).visible = false
 		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 		current_npc = DialogueManager.current_npc
 	

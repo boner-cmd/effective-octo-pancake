@@ -255,17 +255,18 @@ extends TextureRect
 ]
 
 func unhide_elements(key):
-	var array = hidden_arrays[key]
-	if array:
-		for elements in array:
-			elements.visible = true
-	var current_dark : TextureRect = DarkPlanets[key]
-	if current_dark:
-		current_dark.texture = null
-	var planet : TextureRect = Stickers_By_Int[key]
-	planet.visible = true
-	var marker_loc : Vector2 = Position_by_Int[key]
-	position_marker.position = marker_loc
+	if key < 21:
+		var array = hidden_arrays[key]
+		if array:
+			for elements in array:
+				elements.visible = true
+		var current_dark : TextureRect = DarkPlanets[key]
+		if current_dark:
+			current_dark.texture = null
+		var planet : TextureRect = Stickers_By_Int[key]
+		planet.visible = true
+		var marker_loc : Vector2 = Position_by_Int[key]
+		position_marker.position = marker_loc
 
 func set_completion_sticker(key):
 	if key != QuestManager.CharacterName.KING_1:

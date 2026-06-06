@@ -83,7 +83,7 @@ func bgm_cycle(planetID: int):
 	temp_BGM_Player.stream = BGM_nodes[planetID]
 	get_tree().root.add_child(temp_BGM_Player)
 	if planetID == 21:
-		temp_BGM_Player.volume_db += 4.0
+		temp_BGM_Player.volume_db = 15.0
 		pass
 	temp_BGM_Player.play()
 

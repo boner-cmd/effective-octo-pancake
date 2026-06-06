@@ -20,8 +20,8 @@ var current_npc
 var lock : bool = false
 var temp_interact : bool = false
 @onready var timer: Timer = $Timer
-
-
+var Nametag : MarginContainer
+var TextBox : MarginContainer
 
 
 # separated out in case more needs to go in _ready
@@ -43,10 +43,16 @@ func _input(event: InputEvent) -> void:
 			toggle_pausing_and_mouse()
 		pause_menu.visible = !pause_menu.visible
 		if DialogueManager.is_dialogue_active == true:
-			var Nametag = get_child(6)
-			var TextBox = get_child(7)
-			TextBox.visible = !TextBox.visible
-			Nametag.visible = !Nametag.visible
+			for node in get_children():
+				if node.name == "NameTag":
+					Nametag = node
+			for node in get_children():
+				if node.name == "TextBox":
+					TextBox = node
+			if TextBox:
+				TextBox.visible = !TextBox.visible
+			if Nametag:
+				Nametag.visible = !Nametag.visible
 		if interact.visible == true:
 			interact.visible = !interact.visible
 			temp_interact = true
@@ -90,8 +96,10 @@ func _on_continue_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pause_menu.visible = false
 	if DialogueManager.is_dialogue_active == true:
-		var TextBox = get_child(6)
-		TextBox.visible = true
+		for node in get_children():
+				if node.name == "TextBox":
+					TextBox = node
+					TextBox.visible = true
 	if temp_interact == true:
 		interact.visible = true
 
@@ -100,6 +108,7 @@ func _on_main_quest_completion() -> void:
 	pass
 	
 func transition() -> void:
+	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
 	transition_color.visible = true
 	var tween_transition = get_tree().create_tween()
 	tween_transition.tween_property(transition_color, "modulate:a", 0.0, .3)
@@ -112,20 +121,6 @@ func transition() -> void:
 	transition_color.modulate.a = 1.0
 	if tween_transition and tween_transition.is_valid():
 		tween_transition.kill()
-	
-func transition_soft_in() -> void:
-	var tween_soft_in = get_tree().create_tween()
-	transition_color.visible = true
-	transition_color.color = Color.BLACK
-	tween_soft_in.tween_property(transition_color, "modulate:a", 0.0, 1.5)
-	tween_soft_in.set_trans(Tween.TRANS_SINE)
-	tween_soft_in.set_ease(Tween.EASE_IN_OUT)
-	tween_soft_in.play()
-	await tween_soft_in.finished
-	transition_color.visible = false
-	transition_color.modulate.a = 1.0
-	if tween_soft_in and tween_soft_in.is_valid():
-		tween_soft_in.kill()
 
 func on_exit_door_entered(lock_on_door) -> void:
 	interact.visible = true
