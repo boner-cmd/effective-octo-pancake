@@ -493,33 +493,45 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 	]],
 	QuestManager.CharacterName.CREDITS : [[
 		"True lack belies the cacophony of internal noise ever tuned out through somatic satiation.",
-		"Still, caught on the ganglionic strings of your peripheral nervous system something vocal echoes:",
-		"You who are as yet to un-be Attentive Helper are welcomed back.",
-		"Returned now to the womb of primoridal nothingness from which were you plucked and given form.",
-		"Rest your head once more and forever against the bosom of oblivion.",
+		
+		"Still, caught on the ganglionic strings of your peripheral nervous system, something vocal echoes:",
+		
+		"\"You who are as yet to un-be, Attentive Helper, are welcomed back.",
+		
+		"Returned now to the womb of primoridal nothingness from which were you plucked and given form;",
+		
+		"Rest your head once more, and forever against the bosom of oblivion.\"",
+		
+		],[
 		
 		"CREDITS:",
-		"Michael Brissie:
-		Animation, Modeling,
+		
+		"Michael Brissie:",
+		
+		"Animation, Modeling, Game & Level Design,
 		Asset Implementation,
 		Programming, Tech Art, UI",
 		
-		"Allie Burch:
-		2D Asset Creation",
+		"Allie Burch:",
+		"2D Assets",
 		
-		"Markcy Hilbert:
-		Scenario, Dialogue,
+		"Markcy Hilbert:",
+		"Scenario, Dialogue,
 		Music & Sound,
 		2D & 3D Assets",
 		
-		"Dimelo Waterson:
-		Systems Design,
+		"Dimelo Waterson:",
+		
+		"Systems Design,
 		UI Programming,
 		Data Entry",
 		
 		"Truly",
+		
 		"Deeply",
+		
 		"From the bottom of our hearts:",
+		
 		"THANK YOU FOR PLAYING",
 	]]
 }
@@ -635,6 +647,9 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 	if not is_dialogue_active and planet_id == QuestManager.CharacterName.CREDITS:
 		current_npc = planet_id
 		dialogue_lines.append_array(used_lines[current_npc][0])
+		# append strings for honk count and play time here
+		dialogue_lines.append_array(used_lines[current_npc][1])
+		
 		is_dialogue_active = true
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx
