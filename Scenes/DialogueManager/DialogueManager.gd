@@ -446,12 +446,13 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		MEDIA!",
 		"I want what shooters did for the war machine done for ME! Make me a video game! And it better be SUPER addicting! Bursting at the seams with microtransactions and needless tittilation!",
 		"I'm a SLIME MOULD, BABY!!! All I care about is CONSUMING, REPRODUCING, and INFINITE EXPONENTIAL GROWTH!",
-		"NOW GO.
-		MAKE.
-		ME.
-		FAMOUS!!!",
+		"NOW GO.",
+		"MAKE.",
+		"ME.",
+		"FAMOUS!!!",
 		],[
-		"Well, is the game done yet? GOOD.",
+		"Well, is the game done yet?",
+		"GOOD.",
 		"What? No I don't want to play it! Only losers play games and I'm a WINNER!",
 		"This game better be good enough to make me famous! It better not be one of those niche \"art\" games that no one plays and doesn't make any money.",
 		],[
