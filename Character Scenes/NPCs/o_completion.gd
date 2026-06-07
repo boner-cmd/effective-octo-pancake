@@ -6,9 +6,10 @@ extends Node3D
 @onready var cubed_planet_2: Node3D = $"../../../Cubed_Planet2"
 
 func on_completion():
-	visible = false
-	q.visible = true
-	cubed_planet.visible = false
-	cubed_skybox.visible = false
-	cubed_planet_2.visible = true
-	cubed_skybox_2.visible = true
+	if QuestManager.has_completed(QuestManager.CharacterName.O):
+		visible = false
+		q.visible = true
+		cubed_planet.visible = false
+		cubed_skybox.visible = false
+		cubed_planet_2.visible = true
+		cubed_skybox_2.visible = true

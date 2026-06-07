@@ -4,5 +4,6 @@ const LAMP_MATERIAL = preload("uid://ue5ddmq273u8")
 @onready var torus: MeshInstance3D = $Torus
 
 func on_completion():
-	spot_light_3d.visible = true
-	torus.material_override = LAMP_MATERIAL
+	if QuestManager.has_completed(QuestManager.CharacterName.LAMP):
+		spot_light_3d.visible = true
+		torus.material_override = LAMP_MATERIAL

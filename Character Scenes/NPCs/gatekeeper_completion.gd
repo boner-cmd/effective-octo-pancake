@@ -3,5 +3,6 @@ extends Node3D
 @onready var torus: MeshInstance3D = $Torus
 #swap visible on lock for gatekeeper
 func on_completion():
-	cylinder.visible = true
-	torus.visible = false
+	if QuestManager.has_completed(QuestManager.CharacterName.GATE):
+		cylinder.visible = true
+		torus.visible = false

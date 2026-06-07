@@ -1,5 +1,5 @@
 extends Sprite3D
-var scale_goal : float = 0.0
+@export var scale_goal : float = 0.1
 @onready var timer: Timer = $Timer
 var current_npc
 var npcs_item
