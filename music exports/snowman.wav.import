@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxa4mlygpk6g8"
+path="res://.godot/imported/snowman.wav-a4e9f1930c44012c2994ca2fe75c341f.sample"
+
+[deps]
+
+source_file="res://music exports/snowman.wav"
+dest_files=["res://.godot/imported/snowman.wav-a4e9f1930c44012c2994ca2fe75c341f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

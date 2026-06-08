@@ -41,6 +41,7 @@ TITLE SCREEN
 	Finish Background
 	Atmospheric fade
 	Title Screen Music
+	Controls, game loop card
 
 Music
 	Remaster tracks
