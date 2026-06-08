@@ -33,7 +33,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	18 : preload("res://music exports/boddhisattva2026-05-2221_27_06.wav"),
 	19 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
 	20 : preload("res://music exports/king2026-05-2113_23_05.wav"),
-	21 : preload("res://music exports/void.wav"),
+	21 : preload("res://music exports/void2.wav"),
 	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
 }
 
@@ -82,9 +82,9 @@ func bgm_cycle(planetID: int):
 	temp_BGM_Player = BGM_Player.duplicate()
 	temp_BGM_Player.stream = BGM_nodes[planetID]
 	get_tree().root.add_child(temp_BGM_Player)
-	if planetID == 21:
-		temp_BGM_Player.volume_db = 15.0
-		pass
+	#if planetID == 21:
+		#temp_BGM_Player.volume_db = 15.0
+		#
 	temp_BGM_Player.play()
 
 
