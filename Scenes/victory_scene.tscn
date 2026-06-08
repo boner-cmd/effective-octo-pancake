@@ -30,5 +30,5 @@ environment = SubResource("Environment_i8qnh")
 [node name="ClownRigFBX" parent="." unique_id=77601808 instance=ExtResource("1_w3pyd")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=557931101]
-transform = Transform3D(-1, -1.7763568e-15, -8.742278e-08, -2.7696242e-08, 0.94848967, 0.31680807, 8.29196e-08, 0.31680807, -0.94848967, 0, 1.908205, -2.6767209)
+transform = Transform3D(-1, -1.7763568e-15, -8.742278e-08, -2.7696242e-08, 0.94848967, 0.31680807, 8.29196e-08, 0.31680807, -0.94848967, 0, 2.461619, -4.838498)
 current = true
