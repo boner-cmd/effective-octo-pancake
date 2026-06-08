@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://comafvxbn074i" path="res://Character Scenes/NPCs/sisyphus.tscn" id="21_ub32n"]
 [ext_resource type="PackedScene" uid="uid://ds0s8jav4pti3" path="res://Character Scenes/NPCs/snowman.tscn" id="22_lspox"]
 [ext_resource type="Texture2D" uid="uid://bnl0ab42g4dci" path="res://VFX assets/item get splash yellow.png" id="23_wgsat"]
+[ext_resource type="Script" uid="uid://diq1sshxt6twm" path="res://Scenes/DialogueManager/item_give_bg.gd" id="24_uypxe"]
+[ext_resource type="Script" uid="uid://d0as2fl4y0ikj" path="res://Scenes/DialogueManager/item_get_bg.gd" id="25_tnrcw"]
 [ext_resource type="PackedScene" uid="uid://yuj2sdn8i08i" path="res://Character Scenes/NPCs/slime_mould.tscn" id="36_6b0et"]
 [ext_resource type="PackedScene" uid="uid://b1p31ofqvqdrn" path="res://Character Scenes/NPCs/grease_puddle.tscn" id="37_ub32n"]
 
@@ -140,11 +142,17 @@ transform = Transform3D(0.067905836, -0.21419731, 0.97442716, -0.1843229, 0.9571
 fov = 77.2
 
 [node name="ItemGive_BG" type="Sprite3D" parent="Area3D/player_give" unique_id=2049328065]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5970155, -2.1944288e-08, -2.3453436)
 visible = false
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("23_wgsat")
+script = ExtResource("24_uypxe")
+
+[node name="Timer" type="Timer" parent="Area3D/player_give" unique_id=470744648]
+wait_time = 0.5
+one_shot = true
 
 [node name="frame_both_puddles" type="Camera3D" parent="Area3D" unique_id=362255160]
 unique_name_in_owner = true
@@ -157,11 +165,17 @@ transform = Transform3D(0.8915987, -0.22266579, 0.39429897, -0.065610744, 0.7980
 fov = 40.0
 
 [node name="ItemGet_BG" type="Sprite3D" parent="Area3D/player_receive" unique_id=170582796]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 1.2665987e-07, -2.5855794)
 visible = false
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("23_wgsat")
+script = ExtResource("25_tnrcw")
+
+[node name="Timer" type="Timer" parent="Area3D/player_receive" unique_id=69038880]
+wait_time = 0.5
+one_shot = true
 
 [node name="frame_both_animals" type="Camera3D" parent="Area3D" unique_id=216661980]
 unique_name_in_owner = true
@@ -169,3 +183,5 @@ transform = Transform3D(-0.32614645, -0.15957054, 0.9317541, -0.2699335, 0.96033
 fov = 77.2
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
+[connection signal="timeout" from="Area3D/player_give/Timer" to="Area3D/player_give/ItemGive_BG" method="animate"]
+[connection signal="timeout" from="Area3D/player_receive/Timer" to="Area3D/player_receive/ItemGet_BG" method="animate"]
