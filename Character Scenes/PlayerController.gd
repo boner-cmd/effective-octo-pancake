@@ -92,11 +92,17 @@ func player_interaction_camera() -> void:
 					_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
 				_cam_player_give.make_current()
+				_cam_player_give.get_child(0).animate()
 				clone._set_player_anim(clone.AnimStates.GIVE)
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 				_cam_player_receive.make_current()
+				_cam_player_receive.get_child(0).animate()
 				clone._set_player_anim(clone.AnimStates.GET)
-					
+	else:
+		if _cam_player_give:
+			_cam_player_give.get_child(0).reset()
+		if _cam_player_receive:
+			_cam_player_receive.get_child(0).reset()
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
