@@ -49,10 +49,12 @@ func _ready() -> void:
 	initial_door.request_planet_change.connect(on_planet_change_requested)
 	AudioManager.bgm_cycle(0)
 	inventory = hud_overlay.get_child(0)
-	
+	QuestManager.track_time = true
+
 
 func on_planet_change_requested(planet_ID : int):
 	Player.visible = true
+	QuestManager.time_conversion()
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
 	hud_overlay.get_child(0).visible = true
 	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
@@ -76,6 +78,8 @@ func on_planet_change_requested(planet_ID : int):
 			door.request_planet_change.connect(on_planet_change_requested)
 	if planet_ID == 21:
 		inventory.visible = false
+		QuestManager.track_time = false
+		QuestManager.time_conversion()
 		planet_nodes[planet_ID].request_ready()
 		hud_overlay.transition()
 		AudioManager.bgm_cycle(planet_ID)

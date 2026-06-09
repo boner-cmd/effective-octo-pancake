@@ -46,6 +46,7 @@ func _input(event: InputEvent) -> void:
 		for node in get_children():
 			if node.is_in_group("UI_on_pause"):
 				if pause_menu.visible: 				#paused
+					QuestManager.track_time = false
 					if node.name == "Interact":
 						if node.visible == true:	#if interact is visible
 							node.visible = false	#set to false
@@ -53,6 +54,7 @@ func _input(event: InputEvent) -> void:
 					else:
 						node.visible = false		#set everything else to false
 				else:								#unpause
+					QuestManager.track_time = true
 					if node.name == "Interact":		
 						if temp_interact_pause == true:	#if the flag for temp interact is true
 							if DialogueManager.is_dialogue_active == true:
@@ -69,6 +71,10 @@ func _input(event: InputEvent) -> void:
 			toggle_pausing_and_mouse()
 			stickerbook.visible = !stickerbook.visible
 			inventory.visible = !inventory.visible
+		if stickerbook.visible:
+			QuestManager.track_time = false
+		else:
+			QuestManager.track_time = true
 	if event.is_action_pressed("advance_dialogue"):
 		if interact.visible:
 			if DialogueManager.is_dialogue_active == true:

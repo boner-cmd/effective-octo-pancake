@@ -497,11 +497,11 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		
 		"Still, caught on the ganglionic strings of your peripheral nervous system, something vocal echoes:",
 		
-		"\"You who are as yet to un-be, Attentive Helper, are welcomed back.",
+		"\"You who are as yet to un-be, Attentive Helper, are welcomed back.\"",
 		
-		"Returned now to the womb of primoridal nothingness from which were you plucked and given form;",
+		"\"Returned now to the womb of primoridal nothingness from which were you plucked and given form;\"",
 		
-		"Rest your head once more, and forever against the bosom of oblivion.\"",
+		"\"Rest your head once more, and forever against the bosom of oblivion.\"",
 		
 		],[
 		
@@ -510,15 +510,15 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		"Michael Brissie:",
 		
 		"Animation, Modeling, Game & Level Design,
-		Asset Implementation,
+		Asset Implementation, VFX,
 		Programming, Tech Art, UI",
 		
 		"Allie Burch:",
 		"2D Assets",
 		
 		"Markcy Hilbert:",
-		"Scenario, Dialogue,
-		Music & Sound,
+		"Scenario, Dialogue, Creative Direction,
+		Music & Sound, Game Design,
 		2D & 3D Assets",
 		
 		"Dimelo Waterson:",
@@ -527,14 +527,24 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		UI Programming,
 		Data Entry",
 		
-		"Truly",
+		"Truly...",
 		
-		"Deeply",
+		"...Deeply...",
 		
-		"From the bottom of our hearts:",
+		"...From the bottom of our hearts:",
 		
 		"THANK YOU FOR PLAYING",
+		],[
+		"Attentive Helper...",
+		
+	
+	
 	]]
+	
+	
+	
+	
+	
 }
 const debug_lines : Array[Array] = [[
 	"initial 1",
@@ -600,6 +610,7 @@ var horse_lock : bool = true
 var sisyphus_lock : bool = true
 var gate_lock : bool = true
 var king2_lock : bool = true
+
 var use_debug_lines : bool = false
 
 func _unhandled_input(event):
@@ -648,9 +659,14 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 	if not is_dialogue_active and planet_id == QuestManager.CharacterName.CREDITS:
 		current_npc = planet_id
 		dialogue_lines.append_array(used_lines[current_npc][0])
-		# append strings for honk count and play time here
+		#time count
+		dialogue_lines.append_array(used_lines[current_npc][2])
+		var time_res : String = "You've helped everyone in " + QuestManager.time_string + "!!"
+		dialogue_lines.append(time_res)
+		#honk count
+		var honk_count : String = "You've honked " + str(QuestManager.honk_counter) + " times!"
+		dialogue_lines.append(honk_count)
 		dialogue_lines.append_array(used_lines[current_npc][1])
-		
 		is_dialogue_active = true
 		dialogue_state = CONV_STATE.PLAYER_LISTEN
 		sfx = voice_sfx

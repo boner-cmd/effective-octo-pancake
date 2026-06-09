@@ -296,3 +296,29 @@ func requirements_met(character : CharacterName) -> bool:
 func stamp_completion() -> void:
 	assert(has_completed(CharacterName.SLIME), "stamp_completion should not be called until Slime Mould's quest is complete.")
 	main_quest_completed.emit()
+
+
+
+var honk_counter : int = 0
+
+var track_time : bool = false
+var time_elapsed : float
+var time_string : String
+var h : int
+var m : int
+var s : int
+
+
+func time_conversion():
+	var time_int = int(time_elapsed)
+	@warning_ignore_start("integer_division")
+	h = int(time_int/3600)
+	m = int((time_int-h)/60)
+	@warning_ignore_restore("integer_division")
+	s = time_int-(h*3600)-(m*60)
+	time_string = '%02d:%02d:%02d' % [h, m, s]
+	print(time_string)
+
+func _process(delta: float) -> void:
+	if track_time:
+		time_elapsed += delta
