@@ -11,23 +11,24 @@ MAIN
 		Will need to include inventory states (???)
 		Will need to include door lock states
 		Will need to include map visibility states
+		Will need to save audio settings
+		Will need to save honk counter from QuestManager
+		Will need to save time counter from QuestManager
+		
 	Web Build?
+	
 MAP
 DIALOGUES 
-
 SHADER PASS
 	add shadow falloff for materials for specific planets
 
 VFX PASS
 	[Identify]
 	Door Exit particles
-	Receive Item particles
 	Start Menu sparkles
 
 UI PASS
-	"Map Icon" on the HUD for clarity
-	Speed-run timer
-	honk counter
+	Control layout diagram in pause menu/on new game start
 
 POLISH IDEAS
 	Exe Icon
@@ -42,6 +43,7 @@ TITLE SCREEN
 	Atmospheric fade
 	Title Screen Music
 	Controls, game loop card
+	Credits overlay for titlescreen button
 
 Music
 	Remaster tracks

@@ -82,7 +82,7 @@ func _set_player_anim(anim : AnimStates):
 					anim_tree.set("parameters/Talk/blend_amount", 1.0)
 					
 			AnimStates.GET:
-				item_get_sprite.scale.x = .01
+				item_get_sprite.scale.x = .5
 				item_get_sprite.scale_goal = .01
 				item_get_sprite.update_icon()
 				AudioManager.sfx_play(AudioManager.sfx_get_item)
@@ -99,7 +99,7 @@ func _set_player_anim(anim : AnimStates):
 				
 			AnimStates.GIVE:
 				item_give_sprite.update_icon()
-				item_give_sprite.scale.x = .01
+				item_give_sprite.scale.x = .5
 				item_give_sprite.scale_goal = .01
 				AudioManager.sfx_play(AudioManager.sfx_give_item)
 				item_give_sprite.visible = true
