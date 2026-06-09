@@ -19,6 +19,7 @@ var current_npc
 @onready var interaction_detector
 var lock : bool = false
 var temp_interact : bool = false
+var temp_interact_pause : bool = false
 @onready var timer: Timer = $Timer
 var Nametag : MarginContainer
 var TextBox : MarginContainer
@@ -42,20 +43,27 @@ func _input(event: InputEvent) -> void:
 		if !stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing_and_mouse()
 		pause_menu.visible = !pause_menu.visible
-		if DialogueManager.is_dialogue_active == true:
-			for node in get_children():
-				if node.name == "NameTag":
-					Nametag = node
-			for node in get_children():
-				if node.name == "TextBox":
-					TextBox = node
-			if TextBox:
-				TextBox.visible = !TextBox.visible
-			if Nametag:
-				Nametag.visible = !Nametag.visible
-		if interact.visible == true:
-			interact.visible = !interact.visible
-			temp_interact = true
+		for node in get_children():
+			if node.is_in_group("UI_on_pause"):
+				if pause_menu.visible: 				#paused
+					if node.name == "Interact":
+						if node.visible == true:	#if interact is visible
+							node.visible = false	#set to false
+							temp_interact_pause = true	#set flag to turn back on to true
+					else:
+						node.visible = false		#set everything else to false
+				else:								#unpause
+					if node.name == "Interact":		
+						if temp_interact_pause == true:	#if the flag for temp interact is true
+							if DialogueManager.is_dialogue_active == true:
+								node.visible = false
+								temp_interact_pause = true
+							else:
+								node.visible = true
+								temp_interact_pause = false
+					else:
+						node.visible = true
+			
 	if event.is_action_pressed("toggle_stickerbook"):
 		if !pause_menu.visible: # don't allow showing the stickerbook while paused
 			toggle_pausing_and_mouse()
@@ -65,8 +73,12 @@ func _input(event: InputEvent) -> void:
 		if interact.visible:
 			if DialogueManager.is_dialogue_active == true:
 				interact.visible = false
-			else:
+				temp_interact = true
+		elif temp_interact:
+			await get_tree().create_timer(.01).timeout
+			if DialogueManager.is_dialogue_active == false:
 				interact.visible = true
+				temp_interact = false
 
 # set initial visibility states
 func _ready() -> void:

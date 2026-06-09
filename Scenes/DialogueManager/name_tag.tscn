@@ -17,7 +17,7 @@ texture = ExtResource("4_00dxa")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="NameTag" type="MarginContainer" unique_id=1198593662]
+[node name="NameTag" type="MarginContainer" unique_id=1198593662 groups=["UI_on_pause"]]
 z_index = -5
 offset_left = 320.0
 offset_top = 435.0

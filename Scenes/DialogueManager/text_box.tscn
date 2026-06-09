@@ -50,7 +50,7 @@ texture = ExtResource("4_ravpb")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="TextBox" type="MarginContainer" unique_id=1198593662]
+[node name="TextBox" type="MarginContainer" unique_id=1198593662 groups=["UI_on_pause"]]
 z_index = -5
 anchors_preset = 5
 anchor_left = 0.5
