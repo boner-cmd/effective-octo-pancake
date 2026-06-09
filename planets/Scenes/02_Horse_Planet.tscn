@@ -71,6 +71,9 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.455943, 0)
 shape = SubResource("BoxShape3D_t51te")
 
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(0.067905836, -0.21419732, 0.97442716, -0.1843229, 0.95717525, 0.2232501, -0.98051715, -0.19476922, 0.025516313, 1.5211321, 0.3080001, -1.5496935)
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("5_t51te")]
 transform = Transform3D(1, 0, 0, 0, 0.21817726, 0.9759092, 0, -0.9759092, 0.21817726, 0, 0, 0)
 

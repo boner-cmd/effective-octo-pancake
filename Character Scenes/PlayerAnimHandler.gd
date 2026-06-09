@@ -4,12 +4,15 @@ extends Node3D
 @export var honk_delay: Timer
 var item_get_sprite: Sprite3D
 var item_give_sprite: Sprite3D
+var item_give_bg : AnimatedSprite3D
+var item_get_bg : AnimatedSprite3D
 
 func _ready() -> void:
 	if !get_parent().name == "Node3D":
 		item_get_sprite = $ItemGetLocator/Item_Get_Sprite
+		item_get_bg = $ItemGetLocator/Item_Get_Sprite_BG
 		item_give_sprite = $ItemGiveLocator/Item_Give_Sprite
-	
+		item_give_bg = $ItemGiveLocator/Item_Give_Sprite_BG
 
 func honk_sound_player():
 	var honk_time = honk_delay.duplicate()
@@ -35,10 +38,12 @@ func _set_player_anim(anim : AnimStates):
 	if anim != current_anim:
 		current_anim = anim
 		if item_get_sprite:
+			item_get_bg.visible = false
 			item_get_sprite.visible = false
 			item_get_sprite.timer.stop()
 			item_get_sprite.timer.wait_time = 0.1
 		if item_give_sprite:
+			item_give_bg.visible = false
 			item_give_sprite.visible = false
 			item_give_sprite.timer.stop()
 			item_give_sprite.timer.wait_time = 0.1
@@ -82,6 +87,7 @@ func _set_player_anim(anim : AnimStates):
 				item_get_sprite.update_icon()
 				AudioManager.sfx_play(AudioManager.sfx_get_item)
 				item_get_sprite.visible = true
+				item_get_bg.visible = true
 				item_get_sprite.timer.start()
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)
 				anim_tree.set("parameters/Exit/blend_amount", 0.0)
@@ -97,6 +103,7 @@ func _set_player_anim(anim : AnimStates):
 				item_give_sprite.scale_goal = .01
 				AudioManager.sfx_play(AudioManager.sfx_give_item)
 				item_give_sprite.visible = true
+				item_give_bg.visible = true
 				item_give_sprite.timer.start()
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)
 				anim_tree.set("parameters/Exit/blend_amount", 0.0)

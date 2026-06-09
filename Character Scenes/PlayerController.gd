@@ -12,7 +12,9 @@ var interaction_flip : bool = false
 var temp_npc = Node3D
 var clone : Node3D
 var clone_item_get : Sprite3D
+var clone_item_get_bg : AnimatedSprite3D
 var clone_item_give : Sprite3D
+var clone_item_give_bg : AnimatedSprite3D
 
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
@@ -75,7 +77,9 @@ func player_interaction_camera() -> void:
 			clone.global_rotation = player_cutscene_locator.global_rotation
 			clone._set_player_anim(clone.AnimStates.TALK)
 			clone_item_get = clone.get_child(5).get_child(0)
+			clone_item_get_bg = clone.get_child(5).get_child(1)
 			clone_item_give = clone.get_child(6).get_child(0)
+			clone_item_give_bg = clone.get_child(6).get_child(1)
 			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
@@ -84,7 +88,7 @@ func player_interaction_camera() -> void:
 						clone._set_player_anim(clown.AnimStates.JUMP)
 					else:
 						clone._set_player_anim(clone.AnimStates.TALK)
-				if DialogueManager.current_npc == QuestManager.CharacterName.LAMP||DialogueManager.current_npc == QuestManager.CharacterName.SLIME||DialogueManager.current_npc == QuestManager.CharacterName.GREASE||DialogueManager.current_npc == QuestManager.CharacterName.MASS:
+				if DialogueManager.current_npc == QuestManager.CharacterName.O||DialogueManager.current_npc == QuestManager.CharacterName.LAMP||DialogueManager.current_npc == QuestManager.CharacterName.SLIME||DialogueManager.current_npc == QuestManager.CharacterName.GREASE||DialogueManager.current_npc == QuestManager.CharacterName.MASS:
 					_cam_frame_both_puddles.make_current()
 				elif DialogueManager.current_npc == QuestManager.CharacterName.DEER||DialogueManager.current_npc == QuestManager.CharacterName.HORSE:
 					_cam_frame_animals.make_current()
@@ -92,17 +96,17 @@ func player_interaction_camera() -> void:
 					_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
 				_cam_player_give.make_current()
-				_cam_player_give.get_child(0).animate()
+				#vfx point
 				clone._set_player_anim(clone.AnimStates.GIVE)
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 				_cam_player_receive.make_current()
-				_cam_player_receive.get_child(0).animate()
+				#vfx point
 				clone._set_player_anim(clone.AnimStates.GET)
 	else:
 		if _cam_player_give:
-			_cam_player_give.get_child(0).reset()
+			pass #vfx point
 		if _cam_player_receive:
-			_cam_player_receive.get_child(0).reset()
+			pass #vfx point
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
