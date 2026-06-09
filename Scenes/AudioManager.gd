@@ -82,9 +82,8 @@ func bgm_cycle(planetID: int):
 	temp_BGM_Player = BGM_Player.duplicate()
 	temp_BGM_Player.stream = BGM_nodes[planetID]
 	get_tree().root.add_child(temp_BGM_Player)
-	#if planetID == 21:
-		#temp_BGM_Player.volume_db = 15.0
-		#
+	if planetID == 21:
+		temp_BGM_Player.volume_db = 5.0
 	temp_BGM_Player.play()
 
 
