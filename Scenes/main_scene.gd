@@ -7,6 +7,7 @@ var inventory : MarginContainer
 
 @onready var map : TextureRect = $HUDOverlay/Map
 
+
 @onready var Player = %PlayerCharacter
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
@@ -50,7 +51,7 @@ func _ready() -> void:
 	AudioManager.bgm_cycle(0)
 	inventory = hud_overlay.get_child(0)
 	QuestManager.track_time = true
-
+	
 
 func on_planet_change_requested(planet_ID : int):
 	Player.visible = true

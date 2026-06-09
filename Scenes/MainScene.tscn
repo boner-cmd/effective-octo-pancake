@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b2krcvl2csd6x" path="res://Scenes/main_scene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://b58oygg7njg67" path="res://Scenes/HUDScene.tscn" id="2_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://bpvfp05icadyq" path="res://Scenes/control_schematic_full.tscn" id="3_7rqgy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
 radius = 5.0
@@ -30,6 +31,9 @@ offset_bottom = 720.0
 wait_time = 0.5
 one_shot = true
 
+[node name="ControlSchematicFull" parent="HUDOverlay" unique_id=700114868 instance=ExtResource("3_7rqgy")]
+visible = false
+
 [node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") groups=["Player"] instance=ExtResource("1_hpc76")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.645, 0)
@@ -40,6 +44,19 @@ planet = NodePath("../DefaultLoadingPlanet")
 [node name="ClownRigFBX" parent="PlayerCharacter" index="2" unique_id=77601808 node_paths=PackedStringArray("walk_cycle_time", "honk_delay")]
 walk_cycle_time = NodePath("../walk_cycle_time")
 honk_delay = NodePath("../honk_delay")
+
+[node name="Skeleton3D" parent="PlayerCharacter/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(700328766, 77601808, 1346645065) index="0" unique_id=1334537233]
+bones/2/position = Vector3(0, 0.002500003, 0)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
+bones/4/rotation = Quaternion(-0.9890514, -4.309209e-08, 1.16018036e-07, 0.14757188)
+bones/6/rotation = Quaternion(7.69735e-08, 0.16749677, 0.9858726, -1.30775675e-08)
+bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574765, -0.013666067)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/10/rotation = Quaternion(0.99952626, 0.00037702578, 0.02757483, 0.013666067)
+bones/11/rotation = Quaternion(0, 0, 0, 1)
+bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201042, 0.991851)
+bones/13/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="Item_Get_Sprite_BG" parent="PlayerCharacter/ClownRigFBX/ItemGetLocator" parent_id_path=PackedInt32Array(700328766, 1374952081) index="1" unique_id=1573315167]
 autoplay = "default"

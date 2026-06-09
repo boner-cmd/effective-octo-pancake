@@ -1,6 +1,8 @@
 # TODO put the interaction prompt handling in this script
 extends CanvasLayer
 
+@onready var control_schematic_full: Control = $ControlSchematicFull
+
 @onready var stickerbook : TextureRect = %Map
 @onready var pause_menu : MarginContainer = $PauseContainer
 @onready var inventory : MarginContainer = $InventoryBackgroundMargin
@@ -24,6 +26,7 @@ var temp_interact_pause : bool = false
 var Nametag : MarginContainer
 var TextBox : MarginContainer
 
+var control_acknowledge : bool = true
 
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
@@ -32,6 +35,9 @@ func set_initial_visibility() -> void:
 	pause_menu.visible = false
 	transition_color.visible = true
 	interact.visible = false
+	control_schematic_full.visible = true
+	control_schematic_full.modulate.a = 0.0
+	
 	
 func toggle_pausing_and_mouse() -> void:
 	get_tree().paused = !get_tree().paused
@@ -85,7 +91,22 @@ func _input(event: InputEvent) -> void:
 			if DialogueManager.is_dialogue_active == false:
 				interact.visible = true
 				temp_interact = false
-
+		#control_schematic
+		if !control_acknowledge:
+			control_acknowledge = true
+			var tween_control_off = get_tree().create_tween()
+			tween_control_off.tween_property(control_schematic_full, "modulate:a", 0.0, .3)
+			tween_control_off.set_trans(Tween.TRANS_SINE)
+			tween_control_off.set_ease(Tween.EASE_IN_OUT)
+			await get_tree().create_timer(.1).timeout
+			tween_control_off.play()
+			await tween_control_off.finished
+			if tween_control_off and tween_control_off.is_valid():
+				tween_control_off.kill()
+			control_schematic_full.queue_free()
+			transition()
+			
+		
 # set initial visibility states
 func _ready() -> void:
 	quit_button.pivot_offset = quit_button.size / 2.0
@@ -101,7 +122,21 @@ func _ready() -> void:
 	interaction_detector.npc_exited.connect(on_npc_exited)
 	timer.start()
 	await timer.timeout
-	transition()
+	#transition stuff
+	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
+	transition_color.visible = true
+	#control schematic stuff here
+	var tween_control_on = get_tree().create_tween()
+	tween_control_on.tween_property(control_schematic_full, "modulate:a", 1.0, .3)
+	tween_control_on.set_trans(Tween.TRANS_SINE)
+	tween_control_on.set_ease(Tween.EASE_IN_OUT)
+	await get_tree().create_timer(.1).timeout
+	tween_control_on.play()
+	await tween_control_on.finished
+	if tween_control_on and tween_control_on.is_valid():
+		tween_control_on.kill()
+	control_acknowledge = false
+	#transition()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().paused = false
