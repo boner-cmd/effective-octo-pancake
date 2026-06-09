@@ -1,0 +1,341 @@
+[gd_scene format=3 uid="uid://bpvfp05icadyq"]
+
+[ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="1_ye0xu"]
+[ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="2_kjg0l"]
+[ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="3_reeyl"]
+[ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="4_s15kf"]
+[ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="5_1bibw"]
+
+[node name="ControlSchematicFull" type="Control" unique_id=700114868]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MouseImage" type="TextureRect" parent="." unique_id=614692523]
+texture_filter = 1
+layout_mode = 0
+offset_left = 875.0
+offset_top = 128.0
+offset_right = 1131.0
+offset_bottom = 384.0
+scale = Vector2(1.25, 1.25)
+size_flags_vertical = 0
+texture = ExtResource("1_ye0xu")
+expand_mode = 1
+
+[node name="KeyF" type="TextureRect" parent="." unique_id=1297354600]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -60.0
+offset_right = 34.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.08726646
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kjg0l")
+stretch_mode = 3
+
+[node name="Label4" type="Label" parent="KeyF" unique_id=713036947]
+texture_filter = 1
+layout_mode = 0
+offset_left = 58.89199
+offset_top = 30.582499
+offset_right = 100.89198
+offset_bottom = 55.582497
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "F"
+
+[node name="Tab" type="TextureRect" parent="." unique_id=561295447]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -449.0
+offset_top = -121.00003
+offset_right = -193.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+size_flags_vertical = 8
+texture = ExtResource("4_s15kf")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Tab" unique_id=2126516475]
+texture_filter = 1
+layout_mode = 0
+offset_left = 102.66667
+offset_top = 30.66666
+offset_right = 144.66666
+offset_bottom = 55.66666
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "tab"
+
+[node name="Key1" type="TextureRect" parent="." unique_id=1524927217]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -124.00008
+offset_right = -112.0
+offset_bottom = 3.999939
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.017453292
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kjg0l")
+stretch_mode = 3
+
+[node name="Label4" type="Label" parent="Key1" unique_id=1425489761]
+texture_filter = 1
+layout_mode = 0
+offset_left = 52.550575
+offset_top = 31.087637
+offset_right = 94.55058
+offset_bottom = 56.08764
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "W"
+
+[node name="Key2" type="TextureRect" parent="." unique_id=1063130079]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -57.00006
+offset_right = -114.0
+offset_bottom = 70.99997
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.10471976
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kjg0l")
+stretch_mode = 3
+
+[node name="Label4" type="Label" parent="Key2" unique_id=1275155945]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.883892
+offset_top = 32.792282
+offset_right = 98.883896
+offset_bottom = 57.792282
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "S"
+
+[node name="Key3" type="TextureRect" parent="." unique_id=1091958545]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -64.0
+offset_right = -179.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.05235988
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kjg0l")
+stretch_mode = 3
+
+[node name="Label4" type="Label" parent="Key3" unique_id=868392297]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.406063
+offset_top = 31.758148
+offset_right = 98.40607
+offset_bottom = 56.75815
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "A"
+
+[node name="Key4" type="TextureRect" parent="." unique_id=1794707984]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -64.0
+offset_right = -37.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kjg0l")
+stretch_mode = 3
+flip_h = true
+
+[node name="Label4" type="Label" parent="Key4" unique_id=188533739]
+texture_filter = 1
+layout_mode = 0
+offset_left = 53.333336
+offset_top = 29.333313
+offset_right = 95.33334
+offset_bottom = 54.333313
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "D"
+
+[node name="Esc" type="TextureRect" parent="." unique_id=2087249008]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -202.00002
+offset_right = -289.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kjg0l")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Esc" unique_id=823175579]
+texture_filter = 1
+layout_mode = 0
+offset_left = 38.666668
+offset_top = 30.666645
+offset_right = 80.66667
+offset_bottom = 55.666645
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "esc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="TextureRect" parent="." unique_id=1955849026]
+texture_filter = 1
+layout_mode = 0
+offset_left = 430.0
+offset_top = 472.0
+offset_right = 942.0
+offset_bottom = 600.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_1bibw")
+
+[node name="Label3" type="Label" parent="Space" unique_id=1895933830]
+texture_filter = 1
+layout_mode = 0
+offset_left = 209.33336
+offset_top = 29.33329
+offset_right = 273.33337
+offset_bottom = 54.33329
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 30
+text = "space"
+
+[node name="pause" type="Label" parent="." unique_id=1861889215]
+texture_filter = 1
+layout_mode = 0
+offset_left = 121.0
+offset_top = 188.99998
+offset_right = 225.0
+offset_bottom = 228.99998
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 48
+text = "pause"
+
+[node name="map" type="Label" parent="." unique_id=2016569667]
+texture_filter = 1
+layout_mode = 0
+offset_left = 144.0
+offset_top = 264.0
+offset_right = 230.0
+offset_bottom = 304.0
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 48
+text = "map"
+
+[node name="move" type="Label" parent="." unique_id=1711279950]
+texture_filter = 1
+layout_mode = 0
+offset_left = 406.0
+offset_top = 385.0
+offset_right = 503.0
+offset_bottom = 425.0
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 48
+text = "move"
+
+[node name="interact" type="Label" parent="." unique_id=1258254125]
+texture_filter = 1
+layout_mode = 0
+offset_left = 645.0
+offset_top = 320.0
+offset_right = 796.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 48
+text = "interact"
+
+[node name="honk" type="Label" parent="." unique_id=1849823594]
+texture_filter = 1
+layout_mode = 0
+offset_left = 577.0
+offset_top = 538.0
+offset_right = 703.0
+offset_bottom = 578.0
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 48
+text = "honk"
+
+[node name="look" type="Label" parent="." unique_id=1529538845]
+texture_filter = 1
+layout_mode = 0
+offset_left = 999.0
+offset_top = 410.0
+offset_right = 1125.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("3_reeyl")
+theme_override_font_sizes/font_size = 48
+text = "look"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1832764653]
+z_index = -10
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
