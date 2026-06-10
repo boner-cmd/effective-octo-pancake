@@ -30,13 +30,13 @@ var quit_bool : bool = false
 var sound_bool : bool = false
 var controls_bool : bool = false
 var menu_bool : bool = false
-var pause_bool : bool = false
 
 
 var current_npc
 @onready var main_scene: Node3D = $".."
 
 @onready var player : CharacterBody3D
+@onready var player_rig : Node3D
 @onready var interaction_detector
 
 #var lock : bool = false
@@ -60,68 +60,69 @@ func set_initial_visibility() -> void:
 	control_schematic_full.modulate.a = 0.0
 	
 	
-func toggle_pausing_and_mouse() -> void:
+func toggle_pausing() -> void:
 	get_tree().paused = !get_tree().paused
-	Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
 	
+
+func pause_tween() -> void:
+	if pause_menu.visible: #hiding menu now
+		show_buttons() #enforce reset of buttons and menus
+		QuestManager.track_time = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		for node in get_tree().get_nodes_in_group("UI_on_pause"):
+			if node.name == "Interact":		
+				if temp_interact_pause == true:	#if the flag for temp interact is true
+					if DialogueManager.is_dialogue_active == true:
+						node.visible = false
+						temp_interact_pause = true
+					else:
+						node.visible = true
+						temp_interact_pause = false
+			else:
+				node.visible = true
+		var tween_hide = get_tree().create_tween()
+		var scale_down = tween_hide.tween_property(pause_menu, "modulate:a", 0.0, .2)
+		scale_down.set_trans(Tween.TRANS_SINE)
+		scale_down.set_ease(Tween.EASE_IN)
+		tween_hide.play()
+		await tween_hide.finished
+		pause_menu.visible = false
+		
+	else:#showing menu now
+		pause_menu.modulate.a = 0.0 #tween this instead
+		pause_menu.visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		var tween_unhide = create_tween()
+		var scale_up = tween_unhide.tween_property(pause_menu, "modulate:a", 1.0, .2)
+		scale_up.set_trans(Tween.TRANS_SINE)
+		scale_up.set_ease(Tween.EASE_IN)
+		tween_unhide.play()
+		await tween_unhide.finished
+		QuestManager.track_time = false #stop game timer
+		
+		for button in get_tree().get_nodes_in_group("Pause_Buttons"):
+			button.visible = true
+			button.modulate.a = 1.0
+		for node in get_tree().get_nodes_in_group("UI_on_pause"):	#all this bullshit is for the interact visibility on pause reset
+			if node.name == "Interact":
+				if node.visible == true:	#if interact is visible
+					node.visible = false	#set to false
+					temp_interact_pause = true	#set flag to turn back on to true
+			else:
+				node.visible = false
+
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if !stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
-			toggle_pausing_and_mouse()
-			
-			
-		#turn this into a function so we can call it from continue button pressed
-		if pause_menu.visible: #hiding menu now
-			show_buttons() #enforce reset of buttons
-			#if event.is_action_pressed("toggle_pause"):
-			var tween_hide = get_tree().create_tween()
-			var scale_down = tween_hide.tween_property(pause_menu, "scale", Vector2(0.01,0.01), .2)
-			scale_down.set_trans(Tween.TRANS_SINE)
-			scale_down.set_ease(Tween.EASE_IN)
-			tween_hide.play()
-			await tween_hide.finished
-			pause_menu.visible = false
-			pause_bool = false
-			
-		else:#showing menu now
-			pause_menu.scale = Vector2(1.0,1.0) #tween this instead
-			pause_menu.visible = true
-			QuestManager.track_time = false #stop game timer
-			for button in get_tree().get_nodes_in_group("Pause_Buttons"):
-				button.visible = true
-				button.modulate.a = 1.0
-			pause_bool = true
-			
-			
-			
-			
-			
-		for node in get_children():					#all this bullshit is for the interact visibility on pause reset
-			if node.is_in_group("UI_on_pause"):
-				if pause_menu.visible: 				#paused
-					if node.name == "Interact":
-						if node.visible == true:	#if interact is visible
-							node.visible = false	#set to false
-							temp_interact_pause = true	#set flag to turn back on to true
-					else:
-						node.visible = false		#set everything else to false
-				else:								#unpause
-					QuestManager.track_time = true
-					if node.name == "Interact":		
-						if temp_interact_pause == true:	#if the flag for temp interact is true
-							if DialogueManager.is_dialogue_active == true:
-								node.visible = false
-								temp_interact_pause = true
-							else:
-								node.visible = true
-								temp_interact_pause = false
-					else:
-						node.visible = true
-			
+			toggle_pausing()
+		pause_tween()
+		
 	if event.is_action_pressed("toggle_stickerbook"):
 		if !pause_menu.visible: # don't allow showing the stickerbook while paused
-			toggle_pausing_and_mouse()
+			toggle_pausing()
 			stickerbook.visible = !stickerbook.visible
 			inventory.visible = !inventory.visible
 		if stickerbook.visible:
@@ -167,7 +168,12 @@ func _ready() -> void:
 	set_initial_visibility()
 	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
 	player = get_tree().get_first_node_in_group("Player")
-	interaction_detector = player.get_child(2).get_child(4)
+	for node in player.get_children():
+		if node.name == "ClownRigFBX":
+			player_rig = node
+	for node in player_rig.get_children():
+		if node.name == "InteractionDetector":
+			interaction_detector = node
 	#connect signals for interact
 	interaction_detector.exit_area_entered.connect(on_exit_door_entered)
 	interaction_detector.exit_area_exited.connect(on_door_exited)
@@ -191,10 +197,15 @@ func _ready() -> void:
 		tween_control_on.kill()
 	control_acknowledge = false
 	audio_control.modulate.a = 0.0
-	#transition()
 
 func _on_quit_button_pressed() -> void:
-	get_tree().paused = false
+	toggle_pausing()
+	pause_tween()
+	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
+	#TODO auto save here probably
+	
+	await get_tree().create_timer(3).timeout
+	transition()
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
 
@@ -202,7 +213,7 @@ func _on_continue_button_pressed() -> void:
 	get_tree().paused = false
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	pause_menu.visible = false
+	pause_tween()
 	if DialogueManager.is_dialogue_active == true:
 		for node in get_children():
 				if node.name == "TextBox":
@@ -234,7 +245,6 @@ func _on_controls_button_pressed() -> void:
 		await tween.finished
 		keyboard_controls_menu.visible = false
 		show_buttons()
-		
 
 func _on_sound_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
@@ -261,7 +271,17 @@ func _on_sound_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
+	toggle_pausing()
+	pause_tween()
+	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
+	#TODO auto save here probably
 	
+	await get_tree().create_timer(3).timeout
+	transition()
+	get_tree().root.remove_child(get_parent().current_planet)
+	AudioManager.bgm_cycle(22)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file('res://Scenes/TitleScreen.tscn')
 
 func tween_button(selected_button) -> void:
 	var goal : float = 0.0
