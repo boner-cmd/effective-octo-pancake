@@ -68,7 +68,7 @@ func toggle_pausing() -> void:
 func pause_tween() -> void:
 	if pause_menu.visible: #hiding menu now
 		show_buttons() #enforce reset of buttons and menus
-		QuestManager.track_time = true
+		StatTracker.track_time = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		for node in get_tree().get_nodes_in_group("UI_on_pause"):
 			if node.name == "Interact":		
@@ -99,7 +99,7 @@ func pause_tween() -> void:
 		scale_up.set_ease(Tween.EASE_IN)
 		tween_unhide.play()
 		await tween_unhide.finished
-		QuestManager.track_time = false #stop game timer
+		StatTracker.track_time = false #stop game timer
 		
 		for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 			button.visible = true
@@ -126,9 +126,9 @@ func _input(event: InputEvent) -> void:
 			stickerbook.visible = !stickerbook.visible
 			inventory.visible = !inventory.visible
 		if stickerbook.visible:
-			QuestManager.track_time = false
+			StatTracker.track_time = false
 		else:
-			QuestManager.track_time = true
+			StatTracker.track_time = true
 	if event.is_action_pressed("advance_dialogue"):
 		if interact.visible:
 			if DialogueManager.is_dialogue_active == true:
