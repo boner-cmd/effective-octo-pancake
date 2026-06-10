@@ -29,12 +29,17 @@ func update_icon():
 func item_tween():
 	timer.wait_time = 1.0
 	var tween_item_get = get_tree().create_tween()
+	var tweener_item_get
 	if scale_goal == 0.01:
 		scale_goal = 1.0
-		tween_item_get.tween_property(self, "scale:x",  scale_goal, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tweener_item_get = tween_item_get.tween_property(self, "scale:x",  scale_goal, 1.0)
+		tweener_item_get.set_trans(Tween.TRANS_SINE)
+		tweener_item_get.set_ease(Tween.EASE_OUT)
 	else:
 		scale_goal = 0.01
-		tween_item_get.tween_property(self, "scale:x",  scale_goal, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		tweener_item_get = tween_item_get.tween_property(self, "scale:x",  scale_goal, 1.0)
+		tweener_item_get.set_trans(Tween.TRANS_SINE)
+		tweener_item_get.set_ease(Tween.EASE_IN)
 	tween_item_get.play()
 	await tween_item_get.finished
 	if tween_item_get and tween_item_get.is_valid():

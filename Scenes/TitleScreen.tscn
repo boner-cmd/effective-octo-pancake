@@ -346,7 +346,7 @@ grow_vertical = 2
 theme_override_constants/margin_right = 650
 
 [node name="AH2" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1767075821]
-self_modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0.07450981, 1)
 layout_mode = 2
 texture = ExtResource("10_qfyqv")
 expand_mode = 2

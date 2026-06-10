@@ -25,17 +25,19 @@ func tween_text_box():
 		var tween_y = get_tree().create_tween()
 		var tween_pos_x = get_tree().create_tween()
 		
-		tween_x.tween_property(self, "size:x",  MAX_WIDTH, .2)
-		tween_x.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+		var tween_x_tweener = tween_x.tween_property(self, "size:x",  MAX_WIDTH, .2)
+		tween_x_tweener.set_trans(Tween.TRANS_SINE)
+		tween_x_tweener.set_ease(Tween.EASE_OUT)
 		tween_x.play()
 		
-		tween_pos_x.tween_property(self, "position:x", 320.0, .2)
-		tween_pos_x.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+		var tween_pos_x_tweener = tween_pos_x.tween_property(self, "position:x", 320.0, .2)
+		tween_pos_x_tweener.set_trans(Tween.TRANS_SINE)
+		tween_pos_x_tweener.set_ease(Tween.EASE_OUT)
 		tween_pos_x.play()
 		
-		tween_y.tween_property(self, "size:y",  MAX_HEIGHT, .2).set_delay(.1)
-		tween_y.set_trans(Tween.TRANS_LINEAR)
-		tween_y.set_ease(Tween.EASE_IN)
+		var tween_y_tweener = tween_y.tween_property(self, "size:y",  MAX_HEIGHT, .2).set_delay(.2)
+		tween_y_tweener.set_trans(Tween.TRANS_SINE)
+		tween_y_tweener.set_ease(Tween.EASE_OUT)
 		tween_y.play()
 		await tween_y.finished
 		if tween_x and tween_x.is_valid():
