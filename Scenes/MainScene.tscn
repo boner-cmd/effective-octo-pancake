@@ -15,11 +15,7 @@ script = ExtResource("1_7rqgy")
 unique_name_in_owner = true
 follow_viewport_enabled = true
 
-[node name="PauseContainer" parent="HUDOverlay" index="1" unique_id=2106662033]
-visible = true
-
 [node name="Interact" parent="HUDOverlay" index="3" unique_id=128376500 groups=["UI_on_pause"]]
-visible = false
 
 [node name="NPC" parent="HUDOverlay/Interact/MarginContainer" parent_id_path=PackedInt32Array(1314492231, 423976122) index="2" unique_id=845987720]
 text = "Listen to "

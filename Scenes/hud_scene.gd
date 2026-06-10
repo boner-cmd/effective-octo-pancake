@@ -2,24 +2,45 @@
 extends CanvasLayer
 
 @onready var control_schematic_full: Control = $ControlSchematicFull
+@onready var keyboard_controls_menu: Control = $PauseContainer/KeyboardControlsMenu
+@onready var audio_control: VBoxContainer = $PauseContainer/MarginContainer/AudioControlVBox
 
-@onready var stickerbook : TextureRect = %Map
-@onready var pause_menu : MarginContainer = $PauseContainer
-@onready var inventory : MarginContainer = $InventoryBackgroundMargin
+@onready var stickerbook : TextureRect = %Map #map
+
+@onready var pause_menu : MarginContainer = $PauseContainer #pause menu
+
+@onready var inventory : MarginContainer = $InventoryBackgroundMargin # inventory
+
 @onready var transition_color: ColorRect = $ColorRect
+#interact
 @onready var interact: MarginContainer = $Interact
+#labels
 @onready var exit_label: Label = $Interact/MarginContainer/ExitLabel
 @onready var locked_label: Label = $Interact/MarginContainer/LockedLabel
 @onready var npc_label: Label = $Interact/MarginContainer/NPC 
 @onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
-@onready var continue_button: TextureButton = $PauseContainer/MarginContainer/HBoxContainer/ContinueButton
-@onready var quit_button: TextureButton = $PauseContainer/MarginContainer/HBoxContainer/QuitButton
+#buttons
+@onready var continue_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton
+@onready var quit_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton
+@onready var sound_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton
+@onready var controls_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton
+@onready var menu_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton
+var continue_bool : bool = false
+var quit_bool : bool = false
+var sound_bool : bool = false
+var controls_bool : bool = false
+var menu_bool : bool = false
+var pause_bool : bool = false
+
+
 var current_npc
 @onready var main_scene: Node3D = $".."
 
 @onready var player : CharacterBody3D
 @onready var interaction_detector
-var lock : bool = false
+
+#var lock : bool = false
+
 var temp_interact : bool = false
 var temp_interact_pause : bool = false
 @onready var timer: Timer = $Timer
@@ -48,11 +69,37 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if !stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing_and_mouse()
-		pause_menu.visible = !pause_menu.visible
-		for node in get_children():
+			
+			
+		#turn this into a function so we can call it from continue button pressed
+		if pause_menu.visible: #hiding menu now
+			show_buttons() #enforce reset of buttons
+			#if event.is_action_pressed("toggle_pause"):
+			var tween_hide = get_tree().create_tween()
+			var scale_down = tween_hide.tween_property(pause_menu, "scale", Vector2(0.01,0.01), .2)
+			scale_down.set_trans(Tween.TRANS_SINE)
+			scale_down.set_ease(Tween.EASE_IN)
+			tween_hide.play()
+			await tween_hide.finished
+			pause_menu.visible = false
+			pause_bool = false
+			
+		else:#showing menu now
+			pause_menu.scale = Vector2(1.0,1.0) #tween this instead
+			pause_menu.visible = true
+			QuestManager.track_time = false #stop game timer
+			for button in get_tree().get_nodes_in_group("Pause_Buttons"):
+				button.visible = true
+				button.modulate.a = 1.0
+			pause_bool = true
+			
+			
+			
+			
+			
+		for node in get_children():					#all this bullshit is for the interact visibility on pause reset
 			if node.is_in_group("UI_on_pause"):
 				if pause_menu.visible: 				#paused
-					QuestManager.track_time = false
 					if node.name == "Interact":
 						if node.visible == true:	#if interact is visible
 							node.visible = false	#set to false
@@ -109,23 +156,30 @@ func _input(event: InputEvent) -> void:
 		
 # set initial visibility states
 func _ready() -> void:
-	quit_button.pivot_offset = quit_button.size / 2.0
-	continue_button.pivot_offset = continue_button.size / 2.0
+	#change pivots for buttons
+	quit_button.pivot_offset_ratio = Vector2(0.5, 0.5)
+	continue_button.pivot_offset_ratio = Vector2(0.5, 0.5)
+	menu_button.pivot_offset_ratio = Vector2(0.5, 0.5)
+	keyboard_controls_menu.modulate.a = 0.0
+	pause_menu.pivot_offset_ratio = Vector2(0.5, 0.5)
+	#start initialization - transition into main scene from title
 	transition_color.visible = true
 	set_initial_visibility()
 	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
-	player = get_parent().get_child(1)
+	player = get_tree().get_first_node_in_group("Player")
 	interaction_detector = player.get_child(2).get_child(4)
+	#connect signals for interact
 	interaction_detector.exit_area_entered.connect(on_exit_door_entered)
 	interaction_detector.exit_area_exited.connect(on_door_exited)
 	interaction_detector.npc_entered.connect(on_npc_entered)
 	interaction_detector.npc_exited.connect(on_npc_exited)
+	#timer for transition start
 	timer.start()
 	await timer.timeout
 	#transition stuff
 	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
 	transition_color.visible = true
-	#control schematic stuff here
+	#control schematics UI stuff here
 	var tween_control_on = get_tree().create_tween()
 	tween_control_on.tween_property(control_schematic_full, "modulate:a", 1.0, .3)
 	tween_control_on.set_trans(Tween.TRANS_SINE)
@@ -136,6 +190,7 @@ func _ready() -> void:
 	if tween_control_on and tween_control_on.is_valid():
 		tween_control_on.kill()
 	control_acknowledge = false
+	audio_control.modulate.a = 0.0
 	#transition()
 
 func _on_quit_button_pressed() -> void:
@@ -155,6 +210,111 @@ func _on_continue_button_pressed() -> void:
 					TextBox.visible = true
 	if temp_interact == true:
 		interact.visible = true
+
+func _on_controls_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	if !controls_bool:
+		controls_bool = true
+		tween_button(controls_button)
+		hide_other_buttons(controls_button)
+		keyboard_controls_menu.visible = true
+		var tween = create_tween()
+		var show_controls = tween.tween_property(keyboard_controls_menu, "modulate:a", 1.0, .5)
+		show_controls.set_trans(Tween.TRANS_SINE)
+		show_controls.set_ease(Tween.EASE_IN)
+		tween.play()
+	else:
+		controls_bool = false
+		var tween = create_tween()
+		var hide_controls = tween.tween_property(keyboard_controls_menu, "modulate:a", 0.0, .5)
+		hide_controls.set_trans(Tween.TRANS_SINE)
+		hide_controls.set_ease(Tween.EASE_IN)
+		tween.play()
+		tween_button(controls_button)
+		await tween.finished
+		keyboard_controls_menu.visible = false
+		show_buttons()
+		
+
+func _on_sound_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	if !sound_bool:
+		sound_bool = true
+		tween_button(sound_button)
+		hide_other_buttons(sound_button)
+		audio_control.visible = true
+		var tween = create_tween()
+		var show_controls = tween.tween_property(audio_control, "modulate:a", 1.0, .5)
+		show_controls.set_trans(Tween.TRANS_SINE)
+		show_controls.set_ease(Tween.EASE_IN)
+		tween.play()
+	else:
+		sound_bool = false
+		var tween = create_tween()
+		var hide_controls = tween.tween_property(audio_control, "modulate:a", 0.0, .5)
+		hide_controls.set_trans(Tween.TRANS_SINE)
+		hide_controls.set_ease(Tween.EASE_IN)
+		tween.play()
+		tween_button(sound_button)
+		await  tween.finished
+		show_buttons()
+
+func _on_menu_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	
+
+func tween_button(selected_button) -> void:
+	var goal : float = 0.0
+	if selected_button.name == "ControlsButton":
+		if controls_bool:
+			goal = 194.0
+		else:
+			goal = 0.0
+	if selected_button.name == "SoundButton":
+		if sound_bool:
+			goal = 292.0
+		else:
+			goal = 0.0
+	var tween = create_tween()
+	var tween_btn = tween.tween_property(selected_button, "position:y", goal, 1)
+	tween_btn.set_trans(Tween.TRANS_BOUNCE)
+	tween_btn.set_ease(Tween.EASE_OUT)
+	
+	
+	tween.play()
+	await tween.finished
+	if tween and tween.is_valid():
+		tween.kill()
+
+
+func hide_other_buttons(selected_button) -> void:
+	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
+		if button.name != selected_button.name:
+			var tween = create_tween()
+			var button_tween = tween.tween_property(button, "modulate:a", 0.0, .5)
+			button_tween.set_trans(Tween.TRANS_SINE)
+			button_tween.set_ease(Tween.EASE_OUT)
+			tween.play()
+			button.disabled = true
+			button.mouse_filter = 2
+
+func show_buttons() -> void:
+	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
+		var tween = create_tween()
+		var button_tween = tween.tween_property(button, "modulate:a", 1.0, .25)
+		button_tween.set_trans(Tween.TRANS_SINE)
+		button_tween.set_ease(Tween.EASE_OUT)
+		tween.play()
+		button.disabled = false
+		button.mouse_filter = 0
+	controls_button.position.y = 0.0
+	sound_button.position.y = 0.0
+	keyboard_controls_menu.visible = false
+	keyboard_controls_menu.modulate.a = 0.0
+	controls_bool = false
+	audio_control.visible = false
+	audio_control.modulate.a = 0.0
+	sound_bool = false
 
 func _on_main_quest_completion() -> void:
 #	complete_stamp.visible = true
@@ -193,7 +353,7 @@ func on_door_exited() -> void:
 	locked_label.visible = false
 	next_indicator.visible = false
 
-#TO-DO set tweens for intract visibility
+#TODO set tweens for intract visibility
 func on_npc_entered() -> void:
 	interact.visible = true
 	exit_label.visible = false
@@ -207,16 +367,39 @@ func on_npc_exited() -> void:
 	npc_label.visible = false
 	next_indicator.visible = false
 
+
+#button anims and sounds
 func _on_continue_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	continue_button.scale = Vector2(1.2, 1.2)
+	continue_button.scale = Vector2(1.25, 1.25)
 
 func _on_continue_button_mouse_exited() -> void:
 	continue_button.scale = Vector2(1.0, 1.0)
 
 func _on_quit_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	quit_button.scale = Vector2(1.2, 1.2)
+	quit_button.scale = Vector2(1.25, 1.25)
 
 func _on_quit_button_mouse_exited() -> void:
 	quit_button.scale = Vector2(1.0, 1.0)
+
+func _on_sound_button_mouse_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	sound_button.scale = Vector2(1.25, 1.25)
+
+func _on_sound_button_mouse_exited() -> void:
+	sound_button.scale = Vector2(1.0, 1.0)
+
+func _on_controls_button_mouse_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	controls_button.scale = Vector2(1.25, 1.25)
+
+func _on_controls_button_mouse_exited() -> void:
+	controls_button.scale = Vector2(1.0, 1.0)
+
+func _on_menu_button_mouse_entered() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_blip)
+	menu_button.scale = Vector2(1.25, 1.25)
+
+func _on_menu_button_mouse_exited() -> void:
+	menu_button.scale = Vector2(1.0, 1.0)

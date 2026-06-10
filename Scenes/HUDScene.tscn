@@ -8,16 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://rmb70bkspx0i" path="res://UI assets/continue unselected.png" id="6_2wn8p"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 [ext_resource type="Texture2D" uid="uid://tw6g8rafvibi" path="res://UI assets/continue selected.png" id="7_40r1x"]
+[ext_resource type="Texture2D" uid="uid://davo1ox8ogs6x" path="res://UI assets/sound unselected.png" id="8_r4epv"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="8_rv8fl"]
+[ext_resource type="Texture2D" uid="uid://dxvrxeesxcia4" path="res://UI assets/sound selected.png" id="9_751k0"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="9_sqpbf"]
 [ext_resource type="Texture2D" uid="uid://7o05b5gujl66" path="res://Map assets/map background.png" id="10_bphkb"]
+[ext_resource type="Texture2D" uid="uid://djy7kvn6rhytm" path="res://UI assets/controls unselected.png" id="10_qsvm7"]
 [ext_resource type="Texture2D" uid="uid://c103t14rqj3yn" path="res://Map assets/king.png" id="11_00uqi"]
+[ext_resource type="Texture2D" uid="uid://qh5lvayrggip" path="res://UI assets/controls selected.png" id="11_82xaf"]
 [ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="11_a6sf7"]
 [ext_resource type="Script" uid="uid://cqo2casw5tr72" path="res://Scenes/map.gd" id="11_iqywv"]
+[ext_resource type="Texture2D" uid="uid://d1dt1rvt44ana" path="res://UI assets/main menu unselected.png" id="12_c6udc"]
 [ext_resource type="Texture2D" uid="uid://dqjyf8t6do6m1" path="res://Map assets/position marker.png" id="12_ftghg"]
 [ext_resource type="Texture2D" uid="uid://c70nmk267dkta" path="res://Map assets/star sticker.png" id="12_iqywv"]
 [ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="12_oc4d8"]
 [ext_resource type="Texture2D" uid="uid://ci7bdiy136mm3" path="res://Map assets/Line example.png" id="12_yo8np"]
+[ext_resource type="Texture2D" uid="uid://dxrtefph22n4" path="res://UI assets/main menu selected.png" id="13_006ca"]
 [ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="13_74rbg"]
 [ext_resource type="Texture2D" uid="uid://dpvw058sxww2v" path="res://Map assets/dark planet.png" id="13_yo8np"]
 [ext_resource type="Texture2D" uid="uid://4ka2y18fsjw" path="res://Map assets/horse.png" id="14_ftghg"]
@@ -215,7 +221,8 @@ horizontal_alignment = 1
 visible = false
 top_level = true
 z_index = 30
-custom_minimum_size = Vector2(504, 366)
+texture_filter = 1
+custom_minimum_size = Vector2(504, 500)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -227,6 +234,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Mask" type="Panel" parent="PauseContainer" unique_id=346170253]
@@ -258,13 +266,13 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 
 [node name="PauseLabel" type="Label" parent="PauseContainer" unique_id=404488287]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(180, 75)
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 70
 text = "pause"
-horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseContainer" unique_id=1198872430]
@@ -274,22 +282,18 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="AudioControlVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1394599374]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-script = ExtResource("2_yw1hr")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1250342233]
+[node name="ButtonContainerVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1454804139]
 z_index = 100
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 56
-alignment = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 27
 
-[node name="ContinueButton" type="TextureButton" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=1164040387]
+[node name="ContinueButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1164040387 groups=["Pause_Buttons"]]
+process_mode = 3
+z_index = 100
 texture_filter = 1
-custom_minimum_size = Vector2(170, 80)
+custom_minimum_size = Vector2(170, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -297,9 +301,61 @@ texture_normal = ExtResource("6_2wn8p")
 texture_hover = ExtResource("7_40r1x")
 stretch_mode = 5
 
-[node name="QuitButton" type="TextureButton" parent="PauseContainer/MarginContainer/HBoxContainer" unique_id=54585596]
+[node name="Sound_Wrap" type="Control" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=211452266]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="SoundButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap" unique_id=1016245134 groups=["Pause_Buttons"]]
+process_mode = 3
+z_index = 100
 texture_filter = 1
-custom_minimum_size = Vector2(170, 80)
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 70.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_r4epv")
+texture_hover = ExtResource("9_751k0")
+stretch_mode = 5
+
+[node name="Controls_Wrap" type="Control" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1443427918]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="ControlsButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap" unique_id=2043455945 groups=["Pause_Buttons"]]
+process_mode = 3
+z_index = 100
+texture_filter = 1
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 70.00006
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_qsvm7")
+texture_hover = ExtResource("11_82xaf")
+stretch_mode = 5
+
+[node name="MenuButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1067800296 groups=["Pause_Buttons"]]
+process_mode = 3
+z_index = 100
+texture_filter = 1
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("12_c6udc")
+texture_hover = ExtResource("13_006ca")
+stretch_mode = 5
+
+[node name="QuitButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=54585596 groups=["Pause_Buttons"]]
+process_mode = 3
+z_index = 100
+texture_filter = 1
+custom_minimum_size = Vector2(170, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -307,127 +363,143 @@ texture_normal = ExtResource("8_rv8fl")
 texture_hover = ExtResource("9_sqpbf")
 stretch_mode = 5
 
-[node name="Control" type="Control" parent="PauseContainer" unique_id=1577898628]
+[node name="AudioControlVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1394599374]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 40
+alignment = 1
+script = ExtResource("2_yw1hr")
 
-[node name="MouseImage" type="TextureRect" parent="PauseContainer/Control" unique_id=1269893906]
+[node name="KeyboardControlsMenu" type="Control" parent="PauseContainer" unique_id=1577898628]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MouseImage" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=1269893906]
 texture_filter = 1
 layout_mode = 0
-offset_left = 334.0
-offset_top = 5.0
-offset_right = 590.0
-offset_bottom = 261.0
-scale = Vector2(0.5, 0.5)
+offset_left = 335.0
+offset_top = 67.0
+offset_right = 591.0
+offset_bottom = 323.0
+scale = Vector2(0.6, 0.6)
 size_flags_vertical = 0
+mouse_filter = 2
 texture = ExtResource("11_a6sf7")
 stretch_mode = 2
 
-[node name="KeyF" type="TextureRect" parent="PauseContainer/Control" unique_id=137579548]
+[node name="KeyF" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=137579548]
 texture_filter = 1
 layout_mode = 0
-offset_left = 38.0
-offset_top = 107.0
-offset_right = 166.0
-offset_bottom = 235.0
-scale = Vector2(0.5, 0.5)
+offset_left = 23.0
+offset_top = 164.0
+offset_right = 151.0
+offset_bottom = 292.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("12_oc4d8")
 stretch_mode = 2
 
-[node name="Label4" type="Label" parent="PauseContainer/Control/KeyF" unique_id=654917638]
+[node name="Label4" type="Label" parent="PauseContainer/KeyboardControlsMenu/KeyF" unique_id=654917638]
 texture_filter = 1
 layout_mode = 0
-offset_left = 58.89199
-offset_top = 30.582499
-offset_right = 100.89198
-offset_bottom = 55.582497
+offset_left = 54.99998
+offset_top = 30.00002
+offset_right = 96.99997
+offset_bottom = 59.00002
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "F"
 
-[node name="Tab" type="TextureRect" parent="PauseContainer/Control" unique_id=1040808939]
+[node name="Tab" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=1040808939]
 texture_filter = 1
 layout_mode = 0
-offset_left = 20.0
-offset_top = 59.0
-offset_right = 276.0
-offset_bottom = 187.0
-scale = Vector2(0.5, 0.5)
+offset_left = 5.0
+offset_top = 94.0
+offset_right = 261.0
+offset_bottom = 222.0
+scale = Vector2(0.6, 0.6)
 size_flags_vertical = 8
+mouse_filter = 2
 texture = ExtResource("13_74rbg")
 stretch_mode = 2
 
-[node name="Label2" type="Label" parent="PauseContainer/Control/Tab" unique_id=134164811]
+[node name="Label2" type="Label" parent="PauseContainer/KeyboardControlsMenu/Tab" unique_id=134164811]
 texture_filter = 1
 layout_mode = 0
-offset_left = 102.66667
-offset_top = 30.66666
+offset_left = 101.666664
+offset_top = 28.333338
 offset_right = 144.66666
-offset_bottom = 55.66666
+offset_bottom = 57.333336
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "tab"
 
-[node name="Key1" type="TextureRect" parent="PauseContainer/Control" unique_id=644253792]
+[node name="Key1" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=644253792]
 texture_filter = 1
 layout_mode = 0
-offset_left = 35.0
-offset_top = 158.0
-offset_right = 163.0
-offset_bottom = 286.0
-scale = Vector2(0.5, 0.5)
+offset_left = 20.0
+offset_top = 236.0
+offset_right = 148.0
+offset_bottom = 364.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("12_oc4d8")
 stretch_mode = 2
 
-[node name="Label4" type="Label" parent="PauseContainer/Control/Key1" unique_id=970553394]
+[node name="Label4" type="Label" parent="PauseContainer/KeyboardControlsMenu/Key1" unique_id=970553394]
 texture_filter = 1
 layout_mode = 0
-offset_left = 52.550575
-offset_top = 31.087637
-offset_right = 94.55058
-offset_bottom = 56.08764
+offset_left = 50.00002
+offset_top = 29.99999
+offset_right = 92.00003
+offset_bottom = 58.999992
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "W"
 
-[node name="Key2" type="TextureRect" parent="PauseContainer/Control" unique_id=1788702002]
+[node name="Key2" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=1788702002]
 texture_filter = 1
 layout_mode = 0
-offset_left = 133.0
-offset_top = 157.0
-offset_right = 261.0
-offset_bottom = 285.0
-scale = Vector2(0.5, 0.5)
+offset_left = 142.0
+offset_top = 235.0
+offset_right = 270.0
+offset_bottom = 363.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("12_oc4d8")
 stretch_mode = 2
 
-[node name="Label4" type="Label" parent="PauseContainer/Control/Key2" unique_id=253237815]
+[node name="Label4" type="Label" parent="PauseContainer/KeyboardControlsMenu/Key2" unique_id=253237815]
 texture_filter = 1
 layout_mode = 0
-offset_left = 56.883892
-offset_top = 32.792282
-offset_right = 98.883896
-offset_bottom = 57.792282
+offset_left = 55.000042
+offset_top = 30.000025
+offset_right = 97.000046
+offset_bottom = 59.000023
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "S"
 
-[node name="Key3" type="TextureRect" parent="PauseContainer/Control" unique_id=605922578]
+[node name="Key3" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=605922578]
 texture_filter = 1
 layout_mode = 0
-offset_left = 85.0
-offset_top = 158.0
-offset_right = 213.0
-offset_bottom = 286.0
-scale = Vector2(0.5, 0.5)
+offset_left = 82.0
+offset_top = 236.0
+offset_right = 210.0
+offset_bottom = 364.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("12_oc4d8")
 stretch_mode = 2
 
-[node name="Label4" type="Label" parent="PauseContainer/Control/Key3" unique_id=815045061]
+[node name="Label4" type="Label" parent="PauseContainer/KeyboardControlsMenu/Key3" unique_id=815045061]
 texture_filter = 1
 layout_mode = 0
 offset_left = 56.406063
@@ -436,22 +508,23 @@ offset_right = 98.40607
 offset_bottom = 56.75815
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "A"
 
-[node name="Key4" type="TextureRect" parent="PauseContainer/Control" unique_id=1873798143]
+[node name="Key4" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=1873798143]
 texture_filter = 1
 layout_mode = 0
-offset_left = 183.0
-offset_top = 157.0
-offset_right = 311.0
-offset_bottom = 285.0
-scale = Vector2(0.5, 0.5)
+offset_left = 199.0
+offset_top = 235.0
+offset_right = 327.0
+offset_bottom = 363.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("12_oc4d8")
 stretch_mode = 2
 flip_h = true
 
-[node name="Label4" type="Label" parent="PauseContainer/Control/Key4" unique_id=1008162267]
+[node name="Label4" type="Label" parent="PauseContainer/KeyboardControlsMenu/Key4" unique_id=1008162267]
 texture_filter = 1
 layout_mode = 0
 offset_left = 53.333336
@@ -460,121 +533,123 @@ offset_right = 95.33334
 offset_bottom = 54.333313
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "D"
 
-[node name="Esc" type="TextureRect" parent="PauseContainer/Control" unique_id=460570965]
+[node name="Esc" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=460570965]
 texture_filter = 1
 layout_mode = 0
-offset_left = 39.0
-offset_top = 11.0
-offset_right = 167.0
-offset_bottom = 139.0
-scale = Vector2(0.5, 0.5)
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 152.0
+offset_bottom = 150.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("12_oc4d8")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="PauseContainer/Control/Esc" unique_id=2128977521]
+[node name="Label" type="Label" parent="PauseContainer/KeyboardControlsMenu/Esc" unique_id=2128977521]
 texture_filter = 1
 layout_mode = 0
 offset_left = 38.666668
-offset_top = 30.666645
+offset_top = 28.333323
 offset_right = 80.66667
-offset_bottom = 55.666645
+offset_bottom = 57.33332
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "esc"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Space" type="TextureRect" parent="PauseContainer/Control" unique_id=1314710541]
+[node name="Space" type="TextureRect" parent="PauseContainer/KeyboardControlsMenu" unique_id=1314710541]
 texture_filter = 1
 layout_mode = 0
-offset_left = 35.0
-offset_top = 209.0
-offset_right = 547.0
-offset_bottom = 337.0
-scale = Vector2(0.5, 0.5)
+offset_left = 20.0
+offset_top = 312.0
+offset_right = 532.0
+offset_bottom = 440.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
 texture = ExtResource("14_npi88")
 stretch_mode = 2
 
-[node name="Label3" type="Label" parent="PauseContainer/Control/Space" unique_id=961030391]
+[node name="Label3" type="Label" parent="PauseContainer/KeyboardControlsMenu/Space" unique_id=961030391]
 texture_filter = 1
 layout_mode = 0
-offset_left = 209.33336
-offset_top = 29.33329
-offset_right = 273.33337
-offset_bottom = 54.33329
+offset_left = 204.99997
+offset_top = 26.666664
+offset_right = 273.99997
+offset_bottom = 53.666664
 scale = Vector2(1.25, 1.25)
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "space"
 
-[node name="pause" type="Label" parent="PauseContainer/Control" unique_id=944598507]
+[node name="pause" type="Label" parent="PauseContainer/KeyboardControlsMenu" unique_id=944598507]
 texture_filter = 1
 layout_mode = 0
-offset_left = 143.0
-offset_top = 19.0
-offset_right = 247.0
-offset_bottom = 59.0
+offset_left = 138.0
+offset_top = 30.0
+offset_right = 242.0
+offset_bottom = 70.0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "pause"
 
-[node name="map" type="Label" parent="PauseContainer/Control" unique_id=1304490936]
+[node name="map" type="Label" parent="PauseContainer/KeyboardControlsMenu" unique_id=1304490936]
 texture_filter = 1
 layout_mode = 0
-offset_left = 142.0
-offset_top = 69.0
-offset_right = 218.0
-offset_bottom = 109.0
+offset_left = 137.0
+offset_top = 104.0
+offset_right = 213.0
+offset_bottom = 144.0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "map"
 
-[node name="move" type="Label" parent="PauseContainer/Control" unique_id=923979258]
+[node name="move" type="Label" parent="PauseContainer/KeyboardControlsMenu" unique_id=923979258]
 texture_filter = 1
 layout_mode = 0
-offset_left = 287.0
-offset_top = 171.0
-offset_right = 384.0
-offset_bottom = 211.0
+offset_left = 328.0
+offset_top = 257.0
+offset_right = 425.0
+offset_bottom = 297.0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "move"
 
-[node name="interact" type="Label" parent="PauseContainer/Control" unique_id=1417579823]
+[node name="interact" type="Label" parent="PauseContainer/KeyboardControlsMenu" unique_id=1417579823]
 texture_filter = 1
 layout_mode = 0
-offset_left = 141.0
-offset_top = 121.0
-offset_right = 292.0
-offset_bottom = 161.0
+offset_left = 136.0
+offset_top = 178.0
+offset_right = 287.0
+offset_bottom = 218.0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "interact"
 
-[node name="honk" type="Label" parent="PauseContainer/Control" unique_id=1940876128]
+[node name="honk" type="Label" parent="PauseContainer/KeyboardControlsMenu" unique_id=1940876128]
 texture_filter = 1
 layout_mode = 0
-offset_left = 289.0
-offset_top = 222.0
-offset_right = 375.0
-offset_bottom = 262.0
+offset_left = 330.0
+offset_top = 325.0
+offset_right = 416.0
+offset_bottom = 365.0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "honk"
 
-[node name="look" type="Label" parent="PauseContainer/Control" unique_id=1846273256]
+[node name="look" type="Label" parent="PauseContainer/KeyboardControlsMenu" unique_id=1846273256]
 texture_filter = 1
 layout_mode = 0
-offset_left = 376.0
-offset_top = 126.0
-offset_right = 457.0
-offset_bottom = 166.0
+offset_left = 301.0
+offset_top = 159.0
+offset_right = 382.0
+offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("5_ftghg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "look"
 
 [node name="Map" type="TextureRect" parent="." unique_id=432696859]
@@ -1613,9 +1688,18 @@ autoplay = "dialogue_conf"
 centered = false
 offset = Vector2(90, 13.275)
 
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
-[connection signal="pressed" from="PauseContainer/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
-[connection signal="pressed" from="PauseContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
+[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_mouse_exited"]
+[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_pressed"]
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_mouse_exited"]
+[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_mouse_exited"]
+[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_pressed"]
