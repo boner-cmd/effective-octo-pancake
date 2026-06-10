@@ -5,14 +5,18 @@
 [ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="3_pie25"]
 [ext_resource type="Material" uid="uid://bojwl3m1uni8m" path="res://UI assets/TitleLetters.tres" id="3_qu6cc"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
-[ext_resource type="Texture2D" uid="uid://c8xe60en34jkc" path="res://planets/textures/Skybox Textures/astronaut.png" id="5_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://10iou6fqfaoq" path="res://VFX assets/sparkle.png" id="6_4hokt"]
 [ext_resource type="Texture2D" uid="uid://cqm2e7obmwgw5" path="res://planets/textures/Skybox Textures/horse skybox.png" id="6_awp6w"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
+[ext_resource type="Texture2D" uid="uid://cofv1s1vfrc2w" path="res://UI assets/tsbg4.png" id="7_3ah5x"]
+[ext_resource type="Texture2D" uid="uid://d4c43yiyd04so" path="res://UI assets/tsbg3.png" id="7_75epk"]
+[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="7_jhb10"]
+[ext_resource type="Texture2D" uid="uid://boswrct5xnm4s" path="res://UI assets/tsbg2.png" id="8_3ah5x"]
 [ext_resource type="Texture2D" uid="uid://c8pwuraxgwshx" path="res://UI assets/credits unselected.png" id="8_awp6w"]
 [ext_resource type="Texture2D" uid="uid://ruda2duna01l" path="res://UI assets/new unselected.png" id="8_qu6cc"]
 [ext_resource type="Texture2D" uid="uid://bomjbruvphyau" path="res://UI assets/new selected.png" id="9_4hokt"]
+[ext_resource type="Texture2D" uid="uid://c81c88gmqxlj4" path="res://UI assets/tsbg1.png" id="9_jhb10"]
 [ext_resource type="Texture2D" uid="uid://dqmpr0ojjqgq5" path="res://UI assets/credits selected.png" id="9_qu6cc"]
 [ext_resource type="Texture2D" uid="uid://c53fc3d0tl4fd" path="res://UI assets/title screen ah render.png" id="10_qfyqv"]
 
@@ -229,6 +233,86 @@ sprite_frames = SubResource("SpriteFrames_fvr0n")
 autoplay = "default"
 frame_progress = 0.68323344
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1719301613]
+z_index = -10
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0.07450981, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1800898588]
+self_modulate = Color(1, 1, 1, 0.0627451)
+z_index = -10
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_jhb10")
+stretch_mode = 1
+
+[node name="BG_Container 5" type="MarginContainer" parent="CanvasLayer" unique_id=1350429468]
+z_index = -10
+custom_minimum_size = Vector2(1280, 1000)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2240.0
+offset_top = -1560.0
+offset_right = 3760.0
+offset_bottom = 4440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Stars Small Shadow" type="TextureRect" parent="CanvasLayer/BG_Container 5" unique_id=1896526634]
+layout_mode = 2
+texture = ExtResource("7_3ah5x")
+stretch_mode = 1
+
+[node name="BG_Container 4" type="MarginContainer" parent="CanvasLayer" unique_id=1131804000]
+z_index = -10
+custom_minimum_size = Vector2(1280, 1000)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2240.0
+offset_top = -1560.0
+offset_right = 3760.0
+offset_bottom = 4440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Stars Large Shadow" type="TextureRect" parent="CanvasLayer/BG_Container 4" unique_id=1993113820]
+layout_mode = 2
+texture = ExtResource("7_75epk")
+stretch_mode = 1
+
+[node name="BG_Container 3" type="MarginContainer" parent="CanvasLayer" unique_id=1355380405]
+z_index = -10
+custom_minimum_size = Vector2(1280, 1000)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2240.0
+offset_top = -1560.0
+offset_right = 3760.0
+offset_bottom = 4440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Stars Small" type="TextureRect" parent="CanvasLayer/BG_Container 3" unique_id=1250172904]
+self_modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
+layout_mode = 2
+texture = ExtResource("8_3ah5x")
+stretch_mode = 1
+
 [node name="BG_Container 2" type="MarginContainer" parent="CanvasLayer" unique_id=149984329]
 z_index = -10
 custom_minimum_size = Vector2(1280, 1000)
@@ -245,9 +329,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="Space" type="TextureRect" parent="CanvasLayer/BG_Container 2" unique_id=625852770]
+[node name="Stars Large" type="TextureRect" parent="CanvasLayer/BG_Container 2" unique_id=625852770]
 layout_mode = 2
-texture = ExtResource("5_2jiiu")
+texture = ExtResource("9_jhb10")
 stretch_mode = 1
 
 [node name="BG_Container" type="MarginContainer" parent="CanvasLayer" unique_id=255953588]

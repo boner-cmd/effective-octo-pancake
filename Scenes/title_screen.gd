@@ -8,7 +8,10 @@ var rot_change : float = deg_to_rad(-20.0)
 var tween_letter_z : Tween
 var tween_letter_x : Tween
 var timer_time : float = 2.0
-@onready var bg_container_space: MarginContainer = $"CanvasLayer/BG_Container 2"
+@onready var bg_container_largeStar: MarginContainer = $"CanvasLayer/BG_Container 2"
+@onready var bg_container_smallStar: MarginContainer = $"CanvasLayer/BG_Container 3"
+@onready var bg_container_largeShadow: MarginContainer = $"CanvasLayer/BG_Container 4"
+@onready var bg_container_smallShadow: MarginContainer = $"CanvasLayer/BG_Container 5"
 
 @onready var new_game_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton
 @onready var quit_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton
@@ -34,9 +37,16 @@ func _ready() -> void:
 	tween_letters()
 
 func _process(delta: float) -> void:
-	bg_container_space.rotation_degrees += delta*.3
-	if bg_container_space.rotation_degrees > 360.0:
-		bg_container_space.rotation_degrees = 0.0
+	bg_container_largeStar.rotation_degrees += delta * .3
+	bg_container_largeShadow.rotation_degrees = bg_container_largeStar.rotation_degrees
+	
+	bg_container_smallStar.rotation_degrees += delta * .1
+	bg_container_smallShadow.rotation_degrees = bg_container_smallStar.rotation_degrees
+	
+	if bg_container_largeStar.rotation_degrees > 360.0:
+		bg_container_largeStar.rotation_degrees = 0.0
+	if bg_container_smallStar.rotation_degrees > 360.0:
+		bg_container_smallStar.rotation_degrees = 0.0
 
 func _on_new_game_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

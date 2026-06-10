@@ -24,14 +24,14 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	9 : preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
 	10 : preload("res://music exports/festering mass.wav"),
 	11 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
-	12 : preload("res://music exports/body without organs2026-05-2323_48_46.wav"),
+	12 : preload("res://music exports/body without organs.wav"),
 	13 : preload("res://music exports/astronaut.wav"), # TODO Michaelwave placeholder
 	14 : preload("res://music exports/robot.wav"),
 	15 : preload("res://music exports/individuated individual.wav"),
 	16 : preload("res://music exports/gibberish.wav"),
 	17 : preload("res://music exports/idea guy2026-05-2122_27_19.wav"),
 	18 : preload("res://music exports/boddhisattva.wav"),
-	19 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
+	19 : preload("res://music exports/slime mould.wav"),
 	20 : preload("res://music exports/king.wav"),
 	21 : preload("res://music exports/void2.wav"),
 	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
