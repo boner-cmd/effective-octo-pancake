@@ -21,7 +21,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	6 : preload("res://music exports/no-eye'd deer2026-05-2121_27_03.wav"), #good
 	7 : preload("res://music exports/gatekeeper.wav"),
 	8 : preload("res://music exports/o.wav"),
-	9 : preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
+	9 : null,#preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
 	10 : preload("res://music exports/festering mass.wav"),
 	11 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
 	12 : preload("res://music exports/body without organs.wav"),
@@ -36,6 +36,24 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	21 : preload("res://music exports/void2.wav"),
 	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
 }
+
+const BORGANS_A = preload("uid://ckbl50xceswh4")
+const BORGANS_B = preload("uid://0g3q3xrr6h8i")
+const BORGANS_C = preload("uid://bv1cruevybdiu")
+const BORGANS_D = preload("uid://cjxw8phi4jpe")
+const BORGANS_E = preload("uid://dvudjpilu4kkf")
+const BORGANS_F = preload("uid://cys3kix6r1d62")
+const BORGANS_G = preload("uid://dkelsetuy76ok")
+
+var BORGANS_BOOL : bool = false
+
+var BORGANS_PLAYER_A : AudioStreamPlayer
+var BORGANS_PLAYER_B : AudioStreamPlayer
+var BORGANS_PLAYER_C : AudioStreamPlayer
+var BORGANS_PLAYER_D : AudioStreamPlayer
+var BORGANS_PLAYER_E : AudioStreamPlayer
+var BORGANS_PLAYER_F : AudioStreamPlayer
+var BORGANS_PLAYER_G : AudioStreamPlayer
 
 #SFX player
 const sfx_get_item : AudioStream = preload("uid://cp17cger7bu5p")
@@ -75,18 +93,82 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 
 #BGM cycle
 func bgm_cycle(planetID: int):
-	var tween_old = get_tree().create_tween()
-	tween_old.tween_property(temp_BGM_Player, "volume_linear", 0.0, .5)
-	await tween_old.finished
-	temp_BGM_Player.queue_free()
-	
-	temp_BGM_Player = BGM_Player.duplicate()
-	temp_BGM_Player.stream = BGM_nodes[planetID]
-	get_tree().root.add_child(temp_BGM_Player)
+	if planetID != 9:
+		if BORGANS_BOOL:
+			var tween_A = get_tree().create_tween()
+			var tween_B = get_tree().create_tween()
+			var tween_C = get_tree().create_tween()
+			var tween_D = get_tree().create_tween()
+			var tween_E = get_tree().create_tween()
+			var tween_F = get_tree().create_tween()
+			var tween_G = get_tree().create_tween()
+			tween_A.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_B.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_C.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_D.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_E.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_F.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_G.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_A.play()
+			tween_B.play()
+			tween_C.play()
+			tween_D.play()
+			tween_E.play()
+			tween_F.play()
+			tween_G.play()
+			await tween_G.finished
+			BORGANS_PLAYER_A.queue_free()
+			BORGANS_PLAYER_B.queue_free()
+			BORGANS_PLAYER_C.queue_free()
+			BORGANS_PLAYER_D.queue_free()
+			BORGANS_PLAYER_E.queue_free()
+			BORGANS_PLAYER_F.queue_free()
+			BORGANS_PLAYER_G.queue_free()
+			BORGANS_BOOL = false
+		else:
+			var tween_old = get_tree().create_tween()
+			tween_old.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_old.play()
+			await tween_old.finished
+			temp_BGM_Player.queue_free()
+		temp_BGM_Player = BGM_Player.duplicate()
+		temp_BGM_Player.stream = BGM_nodes[planetID]
+		get_tree().root.add_child(temp_BGM_Player)
 	if planetID == 21:
 		temp_BGM_Player.volume_db = 5.0
-	temp_BGM_Player.play()
-
+	if temp_BGM_Player:
+		temp_BGM_Player.play()
+	if planetID == 9:
+		BORGANS_BOOL = true
+		temp_BGM_Player.queue_free()
+		BORGANS_PLAYER_A = BGM_Player.duplicate()
+		BORGANS_PLAYER_B = BGM_Player.duplicate()
+		BORGANS_PLAYER_C = BGM_Player.duplicate()
+		BORGANS_PLAYER_D = BGM_Player.duplicate()
+		BORGANS_PLAYER_E = BGM_Player.duplicate()
+		BORGANS_PLAYER_F = BGM_Player.duplicate()
+		BORGANS_PLAYER_G = BGM_Player.duplicate()
+		BORGANS_PLAYER_A.stream = BORGANS_A
+		BORGANS_PLAYER_B.stream = BORGANS_B
+		BORGANS_PLAYER_C.stream = BORGANS_C
+		BORGANS_PLAYER_D.stream = BORGANS_D
+		BORGANS_PLAYER_E.stream = BORGANS_E
+		BORGANS_PLAYER_F.stream = BORGANS_F
+		BORGANS_PLAYER_G.stream = BORGANS_G
+		get_tree().root.add_child(BORGANS_PLAYER_A)
+		get_tree().root.add_child(BORGANS_PLAYER_B)
+		get_tree().root.add_child(BORGANS_PLAYER_C)
+		get_tree().root.add_child(BORGANS_PLAYER_D)
+		get_tree().root.add_child(BORGANS_PLAYER_E)
+		get_tree().root.add_child(BORGANS_PLAYER_F)
+		get_tree().root.add_child(BORGANS_PLAYER_G)
+		BORGANS_PLAYER_A.play()
+		BORGANS_PLAYER_B.play()
+		BORGANS_PLAYER_C.play()
+		BORGANS_PLAYER_D.play()
+		BORGANS_PLAYER_E.play()
+		BORGANS_PLAYER_F.play()
+		BORGANS_PLAYER_G.play()
 
 func _ready() -> void:
 	var tree = get_tree().get_root()
