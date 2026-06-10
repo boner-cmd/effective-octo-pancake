@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnfnjh74k2bjh"
+path="res://.godot/imported/boddhisattva.wav-bb9260047a02d329a21d5d036e31d2f0.sample"
+
+[deps]
+
+source_file="res://music exports/boddhisattva.wav"
+dest_files=["res://.godot/imported/boddhisattva.wav-bb9260047a02d329a21d5d036e31d2f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
