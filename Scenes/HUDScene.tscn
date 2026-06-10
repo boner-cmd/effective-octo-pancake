@@ -12,12 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="9_sqpbf"]
 [ext_resource type="Texture2D" uid="uid://7o05b5gujl66" path="res://Map assets/map background.png" id="10_bphkb"]
 [ext_resource type="Texture2D" uid="uid://c103t14rqj3yn" path="res://Map assets/king.png" id="11_00uqi"]
+[ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="11_a6sf7"]
 [ext_resource type="Script" uid="uid://cqo2casw5tr72" path="res://Scenes/map.gd" id="11_iqywv"]
 [ext_resource type="Texture2D" uid="uid://dqjyf8t6do6m1" path="res://Map assets/position marker.png" id="12_ftghg"]
 [ext_resource type="Texture2D" uid="uid://c70nmk267dkta" path="res://Map assets/star sticker.png" id="12_iqywv"]
+[ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="12_oc4d8"]
 [ext_resource type="Texture2D" uid="uid://ci7bdiy136mm3" path="res://Map assets/Line example.png" id="12_yo8np"]
+[ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="13_74rbg"]
 [ext_resource type="Texture2D" uid="uid://dpvw058sxww2v" path="res://Map assets/dark planet.png" id="13_yo8np"]
 [ext_resource type="Texture2D" uid="uid://4ka2y18fsjw" path="res://Map assets/horse.png" id="14_ftghg"]
+[ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="14_npi88"]
 [ext_resource type="Texture2D" uid="uid://d6xdk0p4s3iy" path="res://Map assets/astronaut.png" id="15_4u7pl"]
 [ext_resource type="Texture2D" uid="uid://b47eindwcgtid" path="res://Map assets/snowman.png" id="16_ppan7"]
 [ext_resource type="Texture2D" uid="uid://cxkw523xw1am2" path="res://Map assets/sisyphus.png" id="17_s4svx"]
@@ -302,6 +306,276 @@ size_flags_vertical = 4
 texture_normal = ExtResource("8_rv8fl")
 texture_hover = ExtResource("9_sqpbf")
 stretch_mode = 5
+
+[node name="Control" type="Control" parent="PauseContainer" unique_id=1577898628]
+visible = false
+layout_mode = 2
+
+[node name="MouseImage" type="TextureRect" parent="PauseContainer/Control" unique_id=1269893906]
+texture_filter = 1
+layout_mode = 0
+offset_left = 334.0
+offset_top = 5.0
+offset_right = 590.0
+offset_bottom = 261.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 0
+texture = ExtResource("11_a6sf7")
+stretch_mode = 2
+
+[node name="KeyF" type="TextureRect" parent="PauseContainer/Control" unique_id=137579548]
+texture_filter = 1
+layout_mode = 0
+offset_left = 38.0
+offset_top = 107.0
+offset_right = 166.0
+offset_bottom = 235.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_oc4d8")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="PauseContainer/Control/KeyF" unique_id=654917638]
+texture_filter = 1
+layout_mode = 0
+offset_left = 58.89199
+offset_top = 30.582499
+offset_right = 100.89198
+offset_bottom = 55.582497
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "F"
+
+[node name="Tab" type="TextureRect" parent="PauseContainer/Control" unique_id=1040808939]
+texture_filter = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 59.0
+offset_right = 276.0
+offset_bottom = 187.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 8
+texture = ExtResource("13_74rbg")
+stretch_mode = 2
+
+[node name="Label2" type="Label" parent="PauseContainer/Control/Tab" unique_id=134164811]
+texture_filter = 1
+layout_mode = 0
+offset_left = 102.66667
+offset_top = 30.66666
+offset_right = 144.66666
+offset_bottom = 55.66666
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "tab"
+
+[node name="Key1" type="TextureRect" parent="PauseContainer/Control" unique_id=644253792]
+texture_filter = 1
+layout_mode = 0
+offset_left = 35.0
+offset_top = 158.0
+offset_right = 163.0
+offset_bottom = 286.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_oc4d8")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="PauseContainer/Control/Key1" unique_id=970553394]
+texture_filter = 1
+layout_mode = 0
+offset_left = 52.550575
+offset_top = 31.087637
+offset_right = 94.55058
+offset_bottom = 56.08764
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "W"
+
+[node name="Key2" type="TextureRect" parent="PauseContainer/Control" unique_id=1788702002]
+texture_filter = 1
+layout_mode = 0
+offset_left = 133.0
+offset_top = 157.0
+offset_right = 261.0
+offset_bottom = 285.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_oc4d8")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="PauseContainer/Control/Key2" unique_id=253237815]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.883892
+offset_top = 32.792282
+offset_right = 98.883896
+offset_bottom = 57.792282
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "S"
+
+[node name="Key3" type="TextureRect" parent="PauseContainer/Control" unique_id=605922578]
+texture_filter = 1
+layout_mode = 0
+offset_left = 85.0
+offset_top = 158.0
+offset_right = 213.0
+offset_bottom = 286.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_oc4d8")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="PauseContainer/Control/Key3" unique_id=815045061]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.406063
+offset_top = 31.758148
+offset_right = 98.40607
+offset_bottom = 56.75815
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "A"
+
+[node name="Key4" type="TextureRect" parent="PauseContainer/Control" unique_id=1873798143]
+texture_filter = 1
+layout_mode = 0
+offset_left = 183.0
+offset_top = 157.0
+offset_right = 311.0
+offset_bottom = 285.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_oc4d8")
+stretch_mode = 2
+flip_h = true
+
+[node name="Label4" type="Label" parent="PauseContainer/Control/Key4" unique_id=1008162267]
+texture_filter = 1
+layout_mode = 0
+offset_left = 53.333336
+offset_top = 29.333313
+offset_right = 95.33334
+offset_bottom = 54.333313
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "D"
+
+[node name="Esc" type="TextureRect" parent="PauseContainer/Control" unique_id=460570965]
+texture_filter = 1
+layout_mode = 0
+offset_left = 39.0
+offset_top = 11.0
+offset_right = 167.0
+offset_bottom = 139.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_oc4d8")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PauseContainer/Control/Esc" unique_id=2128977521]
+texture_filter = 1
+layout_mode = 0
+offset_left = 38.666668
+offset_top = 30.666645
+offset_right = 80.66667
+offset_bottom = 55.666645
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "esc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="TextureRect" parent="PauseContainer/Control" unique_id=1314710541]
+texture_filter = 1
+layout_mode = 0
+offset_left = 35.0
+offset_top = 209.0
+offset_right = 547.0
+offset_bottom = 337.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_npi88")
+stretch_mode = 2
+
+[node name="Label3" type="Label" parent="PauseContainer/Control/Space" unique_id=961030391]
+texture_filter = 1
+layout_mode = 0
+offset_left = 209.33336
+offset_top = 29.33329
+offset_right = 273.33337
+offset_bottom = 54.33329
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 30
+text = "space"
+
+[node name="pause" type="Label" parent="PauseContainer/Control" unique_id=944598507]
+texture_filter = 1
+layout_mode = 0
+offset_left = 143.0
+offset_top = 19.0
+offset_right = 247.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 32
+text = "pause"
+
+[node name="map" type="Label" parent="PauseContainer/Control" unique_id=1304490936]
+texture_filter = 1
+layout_mode = 0
+offset_left = 142.0
+offset_top = 69.0
+offset_right = 218.0
+offset_bottom = 109.0
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 32
+text = "map"
+
+[node name="move" type="Label" parent="PauseContainer/Control" unique_id=923979258]
+texture_filter = 1
+layout_mode = 0
+offset_left = 287.0
+offset_top = 171.0
+offset_right = 384.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 32
+text = "move"
+
+[node name="interact" type="Label" parent="PauseContainer/Control" unique_id=1417579823]
+texture_filter = 1
+layout_mode = 0
+offset_left = 141.0
+offset_top = 121.0
+offset_right = 292.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 32
+text = "interact"
+
+[node name="honk" type="Label" parent="PauseContainer/Control" unique_id=1940876128]
+texture_filter = 1
+layout_mode = 0
+offset_left = 289.0
+offset_top = 222.0
+offset_right = 375.0
+offset_bottom = 262.0
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 32
+text = "honk"
+
+[node name="look" type="Label" parent="PauseContainer/Control" unique_id=1846273256]
+texture_filter = 1
+layout_mode = 0
+offset_left = 376.0
+offset_top = 126.0
+offset_right = 457.0
+offset_bottom = 166.0
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 32
+text = "look"
 
 [node name="Map" type="TextureRect" parent="." unique_id=432696859]
 unique_name_in_owner = true
@@ -1249,6 +1523,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("12_yo8np")
 
 [node name="Interact" type="MarginContainer" parent="." unique_id=128376500]
+visible = false
 z_index = -4
 anchors_preset = 7
 anchor_left = 0.5
