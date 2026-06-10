@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bv1cruevybdiu"
+path="res://.godot/imported/borgans C.wav-d918dc33a93375636b9c2fe6385bcbf8.sample"
+
+[deps]
+
+source_file="res://music exports/borgans C.wav"
+dest_files=["res://.godot/imported/borgans C.wav-d918dc33a93375636b9c2fe6385bcbf8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
