@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dh3s7w5gpd7u2"
+path="res://.godot/imported/slime mould.wav-e187d59a2c7c336f9c4c4458591f198d.sample"
+
+[deps]
+
+source_file="res://music exports/slime mould.wav"
+dest_files=["res://.godot/imported/slime mould.wav-e187d59a2c7c336f9c4c4458591f198d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
