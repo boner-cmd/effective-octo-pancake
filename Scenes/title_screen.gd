@@ -13,6 +13,8 @@ var timer_time : float = 2.0
 @onready var bg_container_largeShadow: MarginContainer = $"CanvasLayer/BG_Container 4"
 @onready var bg_container_smallShadow: MarginContainer = $"CanvasLayer/BG_Container 5"
 
+@onready var sky: TextureRect = $CanvasLayer/Panel/Sky
+
 @onready var new_game_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton
 @onready var quit_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton
 @onready var credits: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits
@@ -37,6 +39,7 @@ func _ready() -> void:
 	tween_letters()
 
 func _process(delta: float) -> void:
+	sky.rotation_degrees += delta 
 	bg_container_largeStar.rotation_degrees += delta * .3
 	bg_container_largeShadow.rotation_degrees = bg_container_largeStar.rotation_degrees
 	
@@ -47,6 +50,8 @@ func _process(delta: float) -> void:
 		bg_container_largeStar.rotation_degrees = 0.0
 	if bg_container_smallStar.rotation_degrees > 360.0:
 		bg_container_smallStar.rotation_degrees = 0.0
+	if sky.rotation_degrees > 360.0:
+		sky.rotation_degrees = 0.0
 
 func _on_new_game_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

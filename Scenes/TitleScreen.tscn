@@ -2,16 +2,15 @@
 
 [ext_resource type="Script" uid="uid://buubpdem5wqyi" path="res://Scenes/title_screen.gd" id="1_n15yj"]
 [ext_resource type="PackedScene" uid="uid://cdk73hgo210qs" path="res://UI assets/title_screen_letters.tscn" id="2_7whhf"]
-[ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="3_pie25"]
 [ext_resource type="Material" uid="uid://bojwl3m1uni8m" path="res://UI assets/TitleLetters.tres" id="3_qu6cc"]
+[ext_resource type="Material" uid="uid://bfc2invtr3bgv" path="res://UI assets/title_planet.tres" id="4_3ah5x"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
 [ext_resource type="Texture2D" uid="uid://10iou6fqfaoq" path="res://VFX assets/sparkle.png" id="6_4hokt"]
-[ext_resource type="Texture2D" uid="uid://cqm2e7obmwgw5" path="res://planets/textures/Skybox Textures/horse skybox.png" id="6_awp6w"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://cofv1s1vfrc2w" path="res://UI assets/tsbg4.png" id="7_3ah5x"]
 [ext_resource type="Texture2D" uid="uid://d4c43yiyd04so" path="res://UI assets/tsbg3.png" id="7_75epk"]
-[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="7_jhb10"]
+[ext_resource type="Texture2D" uid="uid://b1n6ktxlrsojx" path="res://UI assets/AH itchio background trans.png" id="7_jhb10"]
 [ext_resource type="Texture2D" uid="uid://boswrct5xnm4s" path="res://UI assets/tsbg2.png" id="8_3ah5x"]
 [ext_resource type="Texture2D" uid="uid://c8pwuraxgwshx" path="res://UI assets/credits unselected.png" id="8_awp6w"]
 [ext_resource type="Texture2D" uid="uid://ruda2duna01l" path="res://UI assets/new unselected.png" id="8_qu6cc"]
@@ -30,25 +29,29 @@ glow_bloom = 0.17
 radius = 5.0
 height = 10.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_swiah"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhb10"]
 atlas = ExtResource("6_4hokt")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_75epk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_deutk"]
 atlas = ExtResource("6_4hokt")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ah5x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvr0n"]
 atlas = ExtResource("6_4hokt")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhb10"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6bmn"]
 atlas = ExtResource("6_4hokt")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_deutk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1y2r"]
 atlas = ExtResource("6_4hokt")
 region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj6xs"]
+atlas = ExtResource("6_4hokt")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvr0n"]
 animations = [{
@@ -57,19 +60,22 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_swiah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_75epk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ah5x")
-}, {
-"duration": 2.0,
 "texture": SubResource("AtlasTexture_jhb10")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_deutk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvr0n")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_o6bmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1y2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj6xs")
 }, {
 "duration": 50.0,
 "texture": null
@@ -175,7 +181,7 @@ environment = SubResource("Environment_emot1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=134751511]
 transform = Transform3D(0.96740305, 0.120547496, 0.22270955, -0.16570538, -0.36370814, 0.9166559, 0.19150187, -0.92368007, -0.331877, 2.2268767, -11.058647, 5.2548213)
-material_override = ExtResource("3_pie25")
+material_override = ExtResource("4_3ah5x")
 mesh = SubResource("SphereMesh_7whhf")
 
 [node name="Timer" type="Timer" parent="Node3D" unique_id=1742850589]
@@ -208,21 +214,18 @@ transform = Transform3D(-0.12128098, -4.6596003e-09, 0.1590312, -0.1590312, -2.5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=1991360123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6188245, 1.5487471, -0.4971826)
-light_color = Color(0.99110335, 0.80987924, 0.5641716, 1)
-light_energy = 1.5
+light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Node3D" unique_id=2015454633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4642396, 1.4607825, -0.4971826)
-light_color = Color(0.99110335, 0.80987924, 0.5641716, 1)
-light_energy = 1.5
+light_energy = 0.658
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1814208153]
 transform = Transform3D(0.9909364, -2.7854878e-08, 0.13433212, -0.12544762, -0.35763472, 0.9253974, 0.04804181, -0.93386155, -0.35439327, 1.9530581, 2.0183163, -0.83271074)
-light_color = Color(1, 0.8448333, 0.51, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=246891302]
 
@@ -231,7 +234,7 @@ z_index = 10
 position = Vector2(262, 449)
 sprite_frames = SubResource("SpriteFrames_fvr0n")
 autoplay = "default"
-frame_progress = 0.68323344
+frame_progress = 0.3348266
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1719301613]
 z_index = -10
@@ -241,7 +244,7 @@ offset_bottom = 40.0
 color = Color(0, 0, 0.07450981, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1800898588]
-self_modulate = Color(1, 1, 1, 0.0627451)
+self_modulate = Color(1, 1, 1, 0.10980392)
 z_index = -10
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 40.0
@@ -362,18 +365,22 @@ stretch_mode = 5
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
 clip_children = 1
 clip_contents = true
-offset_left = 202.81
-offset_top = 301.525
-offset_right = 1482.81
-offset_bottom = 1021.5239
+offset_left = 181.305
+offset_top = 274.74
+offset_right = 1461.3049
+offset_bottom = 994.7389
 theme_override_styles/panel = SubResource("StyleBoxFlat_awp6w")
 
 [node name="Sky" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1363266076]
-custom_minimum_size = Vector2(1280, 720)
+self_modulate = Color(1, 1, 1, 0.5921569)
+custom_minimum_size = Vector2(3000, 3000)
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-texture = ExtResource("6_awp6w")
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 2500.0
+offset_bottom = 2700.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("7_jhb10")
 stretch_mode = 1
 
 [node name="SubviewportRender" type="TextureRect" parent="CanvasLayer" unique_id=1237389070]

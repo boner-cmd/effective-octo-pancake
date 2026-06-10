@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bfc2invtr3bgv"]
+
+[ext_resource type="Texture2D" uid="uid://cj363unhfokc8" path="res://planets/textures/Planet Textures/astronaut planet texture expore png.png" id="1_mxhm5"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_mxhm5")
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 0
+stencil_flags = 2
