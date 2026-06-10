@@ -12,27 +12,27 @@ var temp_BGM_Player : AudioStreamPlayer
 
 #BGM
 const BGM_nodes : Dictionary[int, AudioStream] = {
-	0 : preload("res://music exports/king2026-05-2113_23_05.wav"),
-	1 : preload("res://music exports/horse2026-05-2217_28_31.wav"),
-	2 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"),
-	3 : preload("res://music exports/snowman2026-05-2116_16_58.wav"),
-	4 : preload("res://music exports/sisyphus2026-05-2217_25_08.wav"),
-	5 : preload("res://music exports/grease2026-05-2323_27_38.wav"),
-	6 : preload("res://music exports/no-eye'd deer2026-05-2121_27_03.wav"),
-	7 : preload("res://music exports/gatekeeper2026-05-2217_34_46.wav"),
-	8 : preload("res://music exports/o2026-05-2322_20_48.wav"),
+	0 : preload("res://music exports/king.wav"),
+	1 : preload("res://music exports/horse.wav"),
+	2 : preload("res://music exports/astronaut.wav"),
+	3 : preload("res://music exports/snowman.wav"),
+	4 : preload("res://music exports/sisyphus.wav"),
+	5 : preload("res://music exports/grease.wav"),
+	6 : preload("res://music exports/no-eye'd deer2026-05-2121_27_03.wav"), #good
+	7 : preload("res://music exports/gatekeeper.wav"),
+	8 : preload("res://music exports/o.wav"),
 	9 : preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
-	10 : preload("res://music exports/festering mass2026-05-2220_52_41.wav"),
+	10 : preload("res://music exports/festering mass.wav"),
 	11 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
 	12 : preload("res://music exports/body without organs2026-05-2323_48_46.wav"),
-	13 : preload("res://music exports/astronaut2026-05-2115_37_01.wav"), # TODO Michaelwave placeholder
-	14 : preload("res://music exports/robot2026-05-2119_52_12.wav"),
-	15 : preload("res://music exports/individuated individual2026-05-2121_51_23.wav"),
-	16 : preload("res://music exports/gibberish2026-05-2121_42_44.wav"),
+	13 : preload("res://music exports/astronaut.wav"), # TODO Michaelwave placeholder
+	14 : preload("res://music exports/robot.wav"),
+	15 : preload("res://music exports/individuated individual.wav"),
+	16 : preload("res://music exports/gibberish.wav"),
 	17 : preload("res://music exports/idea guy2026-05-2122_27_19.wav"),
-	18 : preload("res://music exports/boddhisattva2026-05-2221_27_06.wav"),
+	18 : preload("res://music exports/boddhisattva.wav"),
 	19 : preload("res://music exports/slime mould2026-05-2219_04_13.wav"),
-	20 : preload("res://music exports/king2026-05-2113_23_05.wav"),
+	20 : preload("res://music exports/king.wav"),
 	21 : preload("res://music exports/void2.wav"),
 	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
 }
