@@ -55,7 +55,7 @@ func _ready() -> void:
 
 func on_planet_change_requested(planet_ID : int):
 	Player.visible = true
-	QuestManager.time_conversion()
+	StatTracker.time_conversion()
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
 	hud_overlay.get_child(0).visible = true
 	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
