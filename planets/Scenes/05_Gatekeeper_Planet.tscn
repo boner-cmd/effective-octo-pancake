@@ -48,7 +48,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_wv5cx")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
 material_override = ExtResource("2_wv5cx")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1189905620]
@@ -60,7 +60,7 @@ mesh = SubResource("SphereMesh_84pt0")
 visible = true
 script = ExtResource("7_n7ksx")
 
-[node name="Cylinder" parent="InteractionArea/Area3D/gatekeeper unlocked" index="2" unique_id=825791210]
+[node name="Cylinder" parent="InteractionArea/Area3D/gatekeeper unlocked" index="2" unique_id=926887980]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1323657896]

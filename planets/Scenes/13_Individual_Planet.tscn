@@ -36,46 +36,46 @@ destination_planet_ID = 7
 visible = true
 script = ExtResource("5_dkal1")
 
-[node name="head" parent="InteractionArea/Area3D/individuated individual" index="0" unique_id=423503737]
+[node name="head" parent="InteractionArea/Area3D/individuated individual" index="0" unique_id=1808132387]
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="body" parent="InteractionArea/Area3D/individuated individual" index="1" unique_id=1475139839]
+[node name="body" parent="InteractionArea/Area3D/individuated individual" index="1" unique_id=1751058952]
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="left arm" parent="InteractionArea/Area3D/individuated individual" index="2" unique_id=956956932]
+[node name="left arm" parent="InteractionArea/Area3D/individuated individual" index="2" unique_id=286963912]
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="right arm" parent="InteractionArea/Area3D/individuated individual" index="3" unique_id=1725218058]
+[node name="right arm" parent="InteractionArea/Area3D/individuated individual" index="3" unique_id=1867238260]
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="left leg" parent="InteractionArea/Area3D/individuated individual" index="4" unique_id=1296097962]
+[node name="left leg" parent="InteractionArea/Area3D/individuated individual" index="4" unique_id=948640204]
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="right leg" parent="InteractionArea/Area3D/individuated individual" index="5" unique_id=1803999577]
+[node name="right leg" parent="InteractionArea/Area3D/individuated individual" index="5" unique_id=430201069]
 surface_material_override/0 = ExtResource("5_rp6ui")
 
 [node name="individuated individual2" parent="InteractionArea/Area3D/individuated individual" index="6" unique_id=1322525116 instance=ExtResource("6_emtk8")]
 transform = Transform3D(0.9999998, 0, 0, 0, -0.06568182, 0.9978406, 0, -0.9978406, -0.06568182, 0, 0.5147095, 0)
 visible = false
 
-[node name="head" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="0" unique_id=423503737]
+[node name="head" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="0" unique_id=1808132387]
 transform = Transform3D(1, 0, 0, 0, 0.9999997, -7.450581e-09, 0, 7.450581e-09, 0.9999997, 0, -0.37197793, -0.8191099)
 surface_material_override/0 = ExtResource("7_dkal1")
 
-[node name="body" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="1" unique_id=1475139839]
+[node name="body" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="1" unique_id=1751058952]
 transform = Transform3D(1, 0, 0, 0, 0.99854225, 0.05397424, 0, -0.05397424, 0.99854225, 0, 0, 0)
 surface_material_override/0 = ExtResource("7_dkal1")
 
-[node name="left arm" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="2" unique_id=956956932]
+[node name="left arm" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="2" unique_id=286963912]
 surface_material_override/0 = ExtResource("7_dkal1")
 
-[node name="right arm" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="3" unique_id=1725218058]
+[node name="right arm" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="3" unique_id=1867238260]
 surface_material_override/0 = ExtResource("7_dkal1")
 
-[node name="left leg" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="4" unique_id=1296097962]
+[node name="left leg" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="4" unique_id=948640204]
 surface_material_override/0 = ExtResource("7_dkal1")
 
-[node name="right leg" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="5" unique_id=1803999577]
+[node name="right leg" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="5" unique_id=430201069]
 surface_material_override/0 = ExtResource("7_dkal1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1441861947]

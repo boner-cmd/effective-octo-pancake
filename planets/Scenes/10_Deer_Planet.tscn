@@ -45,19 +45,19 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_hb5q0")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
 material_override = ExtResource("2_swx71")
 
 [node name="CubedSkybox2" parent="." unique_id=991346088 instance=ExtResource("1_hb5q0")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=172727627]
 material_override = ExtResource("4_3pjkr")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_m2m7x")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1371780892]
 material_override = ExtResource("7_36we4")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_36we4")]
@@ -67,10 +67,10 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.230259, 0)
 visible = true
 script = ExtResource("9_36we4")
 
-[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=450652402]
+[node name="Cylinder" parent="InteractionArea/Area3D/o-eye\'d deer" index="3" unique_id=2040449585]
 visible = false
 
-[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=1043451508]
+[node name="Cylinder_001" parent="InteractionArea/Area3D/o-eye\'d deer" index="4" unique_id=718180297]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/o-eye\'d deer" index="5" unique_id=1046663889]

@@ -6,17 +6,17 @@
 
 [node name="DoorAnims" unique_id=1938978798 instance=ExtResource("1_uhueb")]
 
-[node name="Skeleton3D" parent="." index="0" unique_id=1115533347]
+[node name="Skeleton3D" parent="." index="0" unique_id=1035214101]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 bones/2/rotation = Quaternion(0.9996079, 0.0280008, -6.120631e-17, 1.7144901e-18)
 bones/3/rotation = Quaternion(0.9996079, 0.02800081, -1.2070214e-16, 5.7777216e-17)
 bones/3/scale = Vector3(1, 1, 1)
 
-[node name="Door" parent="Skeleton3D" index="0" unique_id=1374544708]
+[node name="Door" parent="Skeleton3D" index="0" unique_id=1663338942]
 surface_material_override/1 = ExtResource("2_tlx66")
 
-[node name="Viewport" parent="Skeleton3D" index="1" unique_id=2090780855]
+[node name="Viewport" parent="Skeleton3D" index="1" unique_id=1478683560]
 visible = false
 
-[node name="Frame" parent="Skeleton3D" index="2" unique_id=211299161]
+[node name="Frame" parent="Skeleton3D" index="2" unique_id=968693137]
 surface_material_override/0 = ExtResource("3_qn03r")

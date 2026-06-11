@@ -44,7 +44,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_x7cbi")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
 material_override = ExtResource("2_t23sy")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=485743204]

@@ -40,7 +40,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("2_tsosp")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
 material_override = ExtResource("3_ctuby")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_53jkq")]

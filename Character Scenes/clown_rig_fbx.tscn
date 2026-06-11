@@ -225,7 +225,7 @@ node_connections = [&"output", 0, &"Victory", &"Walk", 0, &"Reset_Idle", &"Walk"
 [node name="ClownRigFBX" unique_id=77601808 instance=ExtResource("1_ygjs2")]
 script = ExtResource("2_tpj65")
 
-[node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(1346645065) index="0" unique_id=1334537233]
+[node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(127532234) index="0" unique_id=1225939560]
 bones/2/position = Vector3(0, 0.002500003, 0)
 bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/position = Vector3(-1.6885689e-10, 0.0029941183, -8.050192e-11)
@@ -239,35 +239,35 @@ bones/12/position = Vector3(9.199295e-06, 0.0051881243, 0.00019031962)
 bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201042, 0.991851)
 bones/13/position = Vector3(-0.00030511033, 0.003186539, -4.5399648e-10)
 
-[node name="Collar_mesh" parent="Rig/Skeleton3D" index="0" unique_id=931603580]
+[node name="Collar_mesh" parent="Rig/Skeleton3D" index="0" unique_id=557374518]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Left_Foot_mesh" parent="Rig/Skeleton3D" index="1" unique_id=1149919671]
+[node name="Left_Foot_mesh" parent="Rig/Skeleton3D" index="1" unique_id=890447070]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0, 0, 0)
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Left_Leg_mesh" parent="Rig/Skeleton3D" index="2" unique_id=574669261]
+[node name="Left_Leg_mesh" parent="Rig/Skeleton3D" index="2" unique_id=1026786780]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Right_Foot_mesh" parent="Rig/Skeleton3D" index="3" unique_id=916816345]
+[node name="Right_Foot_mesh" parent="Rig/Skeleton3D" index="3" unique_id=895938586]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="RIght_Leg_mesh" parent="Rig/Skeleton3D" index="4" unique_id=413178778]
+[node name="RIght_Leg_mesh" parent="Rig/Skeleton3D" index="4" unique_id=1178277793]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Head_mesh" parent="Rig/Skeleton3D" index="5" unique_id=227877010]
+[node name="Head_mesh" parent="Rig/Skeleton3D" index="5" unique_id=613927549]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Body_mesh" parent="Rig/Skeleton3D" index="6" unique_id=1344136245]
+[node name="Body_mesh" parent="Rig/Skeleton3D" index="6" unique_id=1074591708]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Hat_mesh" parent="Rig/Skeleton3D" index="7" unique_id=1132423453]
+[node name="Hat_mesh" parent="Rig/Skeleton3D" index="7" unique_id=863724665]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="RIght_Arm_mesh" parent="Rig/Skeleton3D" index="8" unique_id=423287518]
+[node name="RIght_Arm_mesh" parent="Rig/Skeleton3D" index="8" unique_id=1469232076]
 surface_material_override/0 = ExtResource("3_tpj65")
 
-[node name="Left_Arm_mesh" parent="Rig/Skeleton3D" index="9" unique_id=2047447264]
+[node name="Left_Arm_mesh" parent="Rig/Skeleton3D" index="9" unique_id=1667018368]
 surface_material_override/0 = ExtResource("3_tpj65")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=426341925]
