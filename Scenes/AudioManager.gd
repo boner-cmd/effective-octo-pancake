@@ -29,7 +29,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	14 : preload("res://music exports/robot.wav"),
 	15 : preload("res://music exports/individuated individual.wav"),
 	16 : preload("res://music exports/gibberish.wav"),
-	17 : preload("res://music exports/idea guy2026-05-2122_27_19.wav"),
+	17 : preload("res://music exports/idea guy.wav"),
 	18 : preload("res://music exports/boddhisattva.wav"),
 	19 : preload("res://music exports/slime mould.wav"),
 	20 : preload("res://music exports/king.wav"),
