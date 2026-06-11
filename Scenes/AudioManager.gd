@@ -102,13 +102,13 @@ func bgm_cycle(planetID: int):
 			var tween_E = get_tree().create_tween()
 			var tween_F = get_tree().create_tween()
 			var tween_G = get_tree().create_tween()
-			tween_A.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
-			tween_B.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
-			tween_C.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
-			tween_D.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
-			tween_E.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
-			tween_F.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
-			tween_G.tween_property(temp_BGM_Player, "volume_linear", 0.0, .7)
+			tween_A.tween_property(BORGANS_PLAYER_A, "volume_linear", 0.0, .7)
+			tween_B.tween_property(BORGANS_PLAYER_B, "volume_linear", 0.0, .7)
+			tween_C.tween_property(BORGANS_PLAYER_C, "volume_linear", 0.0, .7)
+			tween_D.tween_property(BORGANS_PLAYER_D, "volume_linear", 0.0, .7)
+			tween_E.tween_property(BORGANS_PLAYER_E, "volume_linear", 0.0, .7)
+			tween_F.tween_property(BORGANS_PLAYER_F, "volume_linear", 0.0, .7)
+			tween_G.tween_property(BORGANS_PLAYER_G, "volume_linear", 0.0, .7)
 			tween_A.play()
 			tween_B.play()
 			tween_C.play()
@@ -117,13 +117,13 @@ func bgm_cycle(planetID: int):
 			tween_F.play()
 			tween_G.play()
 			await tween_G.finished
-			BORGANS_PLAYER_A.queue_free()
-			BORGANS_PLAYER_B.queue_free()
-			BORGANS_PLAYER_C.queue_free()
-			BORGANS_PLAYER_D.queue_free()
-			BORGANS_PLAYER_E.queue_free()
-			BORGANS_PLAYER_F.queue_free()
-			BORGANS_PLAYER_G.queue_free()
+			BORGANS_PLAYER_A.stream = null
+			BORGANS_PLAYER_B.stream = null
+			BORGANS_PLAYER_C.stream = null
+			BORGANS_PLAYER_D.stream = null
+			BORGANS_PLAYER_E.stream = null
+			BORGANS_PLAYER_F.stream = null
+			BORGANS_PLAYER_G.stream = null
 			BORGANS_BOOL = false
 		else:
 			var tween_old = get_tree().create_tween()
