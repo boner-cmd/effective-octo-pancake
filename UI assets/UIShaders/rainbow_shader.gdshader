@@ -21,12 +21,8 @@ void fragment()
 	vec2 center = vec2(0.5, 0.5);
 	float angle = 0.45;
 	vec2 rotatedUV = rotateUV(SCREEN_UV, center, angle);
-	
-	
-	vec4 object_for_alpha = texture(TEXTURE, UV);
 	vec4 gradient_scroll = texture(gradient, rotatedUV + offset * TIME);
 	vec4 combined;
 	combined.rgb = gradient_scroll.rgb;
-	combined.a = object_for_alpha.a;
-	COLOR = combined;
+	COLOR = vec4(combined.rgb, COLOR.a);
 }
