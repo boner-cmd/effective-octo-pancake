@@ -55,7 +55,7 @@ const KING_1_RECEIVE_LINES : PackedStringArray = [
 	"You're back already? You finished that quickly? That's kind of crazy, actually.",
 	"What? You need a key? Why?",
 	"Oh, uh... Right. The Gatekeeper. Yes, of course. We... may have missplaced it... Or some lowly servant of ours lost it, we mean!",
-	"Wait--Nevermind! It's right here. Looks like they put it back just in time.",
+	"Wait--Nevermind! It's right here. Looks like they put it back just in time.", #desired animation switch point
 	]
 const KING_1_POST_LINES : PackedStringArray = ["Hop along now, little buddy!"]
 const HORSE_MEET_LINES : PackedStringArray = ["I'm hungry."]
