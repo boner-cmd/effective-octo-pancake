@@ -2,10 +2,57 @@
 
 [ext_resource type="Script" uid="uid://gc3quo4tak7t" path="res://Scenes/control_schematic_full.gd" id="1_01q4o"]
 [ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="2_n6npy"]
+[ext_resource type="Shader" uid="uid://cadude7o1do3j" path="res://UI assets/UIShaders/rainbow_shader.gdshader" id="2_x2725"]
+[ext_resource type="Texture2D" uid="uid://oorvexlpdtjw" path="res://UI assets/dialogue box outline gradient.png" id="3_0n0u2"]
 [ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="3_x2725"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="4_0n0u2"]
 [ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="5_sguyi"]
 [ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="6_pkqj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sguyi"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkqj0"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r8ue"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6g8qa"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nx05"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pntag"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edhj3"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkacu"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpiwf"]
+shader = ExtResource("2_x2725")
+shader_parameter/gradient = ExtResource("3_0n0u2")
+shader_parameter/offset = Vector2(0.1, 0.1)
 
 [node name="ControlSchematicFull" type="Control" unique_id=700114868]
 layout_mode = 3
@@ -19,6 +66,7 @@ script = ExtResource("1_01q4o")
 
 [node name="MouseImage" type="TextureRect" parent="." unique_id=614692523]
 texture_filter = 1
+material = SubResource("ShaderMaterial_sguyi")
 layout_mode = 0
 offset_left = 875.0
 offset_top = 128.0
@@ -31,6 +79,7 @@ expand_mode = 1
 
 [node name="KeyF" type="TextureRect" parent="." unique_id=1297354600]
 texture_filter = 1
+material = SubResource("ShaderMaterial_pkqj0")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,6 +111,7 @@ text = "F"
 
 [node name="Tab" type="TextureRect" parent="." unique_id=561295447]
 texture_filter = 1
+material = SubResource("ShaderMaterial_1r8ue")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,6 +143,7 @@ text = "tab"
 
 [node name="Key1" type="TextureRect" parent="." unique_id=1524927217]
 texture_filter = 1
+material = SubResource("ShaderMaterial_6g8qa")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,6 +175,7 @@ text = "W"
 
 [node name="Key2" type="TextureRect" parent="." unique_id=1063130079]
 texture_filter = 1
+material = SubResource("ShaderMaterial_8nx05")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,6 +207,7 @@ text = "S"
 
 [node name="Key3" type="TextureRect" parent="." unique_id=1091958545]
 texture_filter = 1
+material = SubResource("ShaderMaterial_pntag")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -186,6 +239,7 @@ text = "A"
 
 [node name="Key4" type="TextureRect" parent="." unique_id=1794707984]
 texture_filter = 1
+material = SubResource("ShaderMaterial_edhj3")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -217,6 +271,7 @@ text = "D"
 
 [node name="Esc" type="TextureRect" parent="." unique_id=2087249008]
 texture_filter = 1
+material = SubResource("ShaderMaterial_pkacu")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -249,6 +304,7 @@ vertical_alignment = 1
 
 [node name="Space" type="TextureRect" parent="." unique_id=1955849026]
 texture_filter = 1
+material = SubResource("ShaderMaterial_wpiwf")
 layout_mode = 0
 offset_left = 430.0
 offset_top = 472.0

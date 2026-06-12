@@ -1,50 +1,74 @@
 MAIN
 	BUGS
-		I LIKE IT - deer backwards? completion change mesh 
-		Unrecognized UID: uid://rwtu2ij74m0i
-		
-	Michaelwave assets/dialogue
-	
-	Explore Saving feature
-		Will need to include Current Planet ID and initialization
-		Will need to include quest states
-		Will need to include inventory states (???)
-		Will need to include door lock states
-		Will need to include map visibility states
-		Will need to save audio settings
-		Will need to save honk counter from QuestManager
-		Will need to save time counter from QuestManager
-		
-	Web Build?
+		bugs list is currently clear?
+	ASSETS
+		Michaelwave assets/dialogue
+		May need to consider changing Festering Mass' planet texture if it wasn't created by us
+			(feels weird to use a singular art asset not created by us)
+	FEATURES
+		SAVING
+			Will need to include Current Planet ID and initialization
+			Will need to include quest states
+			Will need to include inventory states (???)
+			Will need to include door lock states
+			Will need to include map visibility states
+			Will need to save audio settings
+			Will need to save honk counter from QuestManager
+			Will need to save time counter from QuestManager
+
 	
 MAP
-DIALOGUES 
+	completed, unless we want to revist the "Map" label on the map?
+
+DIALOGUES (DialogueManager, NPC lines)
+	Dialogue needs a thorough pass.
+	
+	NICE TO HAVE:
+		Notate where in the dialogues swapping from LISTEN state to GIVE and RECEIVE states
+		Pipe-in a calculation for offsetting the current Animation Points to the respective conversation points.
+
+MODELS
+	Make higher-fidelity models for the NPCs
+		- Requires Textures
+	NICE TO HAVE:
+		Rigs (most can be reused at least once)
+		Animations (At least an IDLE and a TALK, but if we're going this far we should have NPC RECEIVE and NPC GIVE)
+
 SHADER PASS
-	add shadow falloff for materials for specific planets
+	adjust shadow falloff for materials for specific planets
+	UI shader for rainbow gradient scroll
+	NPC shader if we want something more than just a toon shader?
 
 VFX PASS
-	[Identify]
-	Door Exit particles
+	Door particles -
+		Spawn	Ideas?
+		Idle	Generic whooshing lines
+		Despawn	
+		Stasis	ZzZzZzZzzz....
+		Exit	whooshing lines for open, poofing lines for slam
+	
 	Start Menu sparkles
+	NPC related shaders
+	Confetti explosion for VICTORY animation
+
 
 UI PASS
-	Control layout diagram in pause menu/on new game start
+	Holistically approach the game's UI and design.
+	Decision flow is in Figma for the Title Screen, Pause Menu flow is already implemented.
+	
+	Interact visibility tween
+	Unique boxes per NPCs (?) - can be related to shader colors if desired
 
-POLISH IDEAS
+POST
 	Exe Icon
 	STEAM Integration + Listing (?)
-	Revisit all NPC models + animations, then a VFX/Shader pass post
-	Unique boxes per NPCs (?)
-	Unique type per NPCs (?)
-	Interact visibility tween
+	
 
 TITLE SCREEN
-	Finish Background
-	Atmospheric fade
+	Reaffirm design direction/menu
 	Title Screen Music
-	Controls, game loop card
 	Credits overlay for titlescreen button
+	Intro screen before the TITLE screen with the GODOT logo, transition into our "studio" logo
 
 Music
-	Remaster tracks
 	Unique speech sound per NPC (?)
