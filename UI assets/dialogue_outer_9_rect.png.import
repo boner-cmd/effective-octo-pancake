@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lmspqbcy4hub"
-path="res://.godot/imported/michaelwave door UV.png-7c0f5358532fca9f9a60e98fc4e97822.ctex"
+uid="uid://cvud7tk7pjkoi"
+path="res://.godot/imported/dialogue_outer_9_rect.png-b8b9bca2af34a2c2b29b3fa12877dd17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://michaelwave door UV.png"
-dest_files=["res://.godot/imported/michaelwave door UV.png-7c0f5358532fca9f9a60e98fc4e97822.ctex"]
+source_file="res://UI assets/dialogue_outer_9_rect.png"
+dest_files=["res://.godot/imported/dialogue_outer_9_rect.png-b8b9bca2af34a2c2b29b3fa12877dd17.ctex"]
 
 [params]
 
