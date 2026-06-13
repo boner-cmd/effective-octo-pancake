@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbwelol3eui3f"
-path="res://.godot/imported/dialogue_tail_mask.png-dfba8d359fe7df0e6d94a5419abaac05.ctex"
+uid="uid://b8fibxcsct6k1"
+path="res://.godot/imported/dialogue_bauble_right.png-5995fa77b18c2c12b0a7aaf91b672b05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI assets/dialogue_tail_mask.png"
-dest_files=["res://.godot/imported/dialogue_tail_mask.png-dfba8d359fe7df0e6d94a5419abaac05.ctex"]
+source_file="res://UI assets/DialogueBoxAssets/dialogue_bauble_right.png"
+dest_files=["res://.godot/imported/dialogue_bauble_right.png-5995fa77b18c2c12b0a7aaf91b672b05.ctex"]
 
 [params]
 

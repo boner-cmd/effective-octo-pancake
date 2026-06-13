@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvud7tk7pjkoi"
-path="res://.godot/imported/dialogue_outer_9_rect.png-b8b9bca2af34a2c2b29b3fa12877dd17.ctex"
+uid="uid://bd60t1t6wqrex"
+path="res://.godot/imported/Indicator_01.png-df60914f8cf4bde5ffa26c19b92e6660.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI assets/dialogue_outer_9_rect.png"
-dest_files=["res://.godot/imported/dialogue_outer_9_rect.png-b8b9bca2af34a2c2b29b3fa12877dd17.ctex"]
+source_file="res://UI assets/DialogueBoxAssets/Indicator_01.png"
+dest_files=["res://.godot/imported/Indicator_01.png-df60914f8cf4bde5ffa26c19b92e6660.ctex"]
 
 [params]
 

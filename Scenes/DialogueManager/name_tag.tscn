@@ -1,75 +1,50 @@
 [gd_scene format=3 uid="uid://og3tn8fq3m0u"]
 
 [ext_resource type="Script" uid="uid://cencbmtsfb7lb" path="res://Scenes/DialogueManager/name_tag.gd" id="1_4l8nk"]
-[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_54odx"]
+[ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="2_54odx"]
+[ext_resource type="Texture2D" uid="uid://ddfx5xg3kan0p" path="res://UI assets/dialogue nametag.png" id="2_81rih"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="3_81rih"]
-[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_00dxa"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ravpb"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55dj6"]
-texture = ExtResource("4_00dxa")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+[ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="4_54odx"]
 
 [node name="NameTag" type="MarginContainer" unique_id=1198593662 groups=["UI_on_pause"]]
 z_index = -5
-offset_left = 320.0
-offset_top = 435.0
-offset_right = 353.0
-offset_bottom = 501.0
+offset_left = 280.0
+offset_top = 387.0
+offset_right = 411.0
+offset_bottom = 453.0
 scale = Vector2(1, 1e-05)
 pivot_offset = Vector2(0, 66)
 size_flags_vertical = 0
+theme_override_constants/margin_right = 32
 script = ExtResource("1_4l8nk")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=477419255]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
+material = ExtResource("2_54odx")
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("2_54odx")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+texture = ExtResource("2_81rih")
+region_rect = Rect2(0, 0, 137, 61)
+patch_margin_left = 36
+patch_margin_right = 63
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=874844112]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 52
 theme_override_constants/margin_bottom = 12
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=277974344]
+material = ExtResource("4_54odx")
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3_81rih")
 theme_override_font_sizes/font_size = 50
-
-[node name="Mask" type="Panel" parent="." unique_id=145214229]
-clip_children = 1
-z_index = -1
-clip_contents = true
-custom_minimum_size = Vector2(0, 58)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ravpb")
-
-[node name="Tiled Texture" type="Panel" parent="Mask" unique_id=1129628314]
-self_modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
-texture_filter = 2
-layout_mode = 0
-offset_left = -67.0
-offset_top = -49.0
-offset_right = 965.0
-offset_bottom = 516.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_55dj6")

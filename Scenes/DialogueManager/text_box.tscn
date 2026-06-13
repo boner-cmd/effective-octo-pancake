@@ -1,113 +1,161 @@
 [gd_scene format=3 uid="uid://tjn40dq20om0"]
 
 [ext_resource type="Script" uid="uid://6wsb833gjgyj" path="res://Scenes/DialogueManager/text_box.gd" id="1_0kxgl"]
-[ext_resource type="Texture2D" uid="uid://dvcd40p0klyl1" path="res://Placeholder Assets (UI)/text_rect_placeholder.png" id="2_ot2p7"]
-[ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="3_mg6cl"]
+[ext_resource type="Texture2D" uid="uid://bd60t1t6wqrex" path="res://UI assets/DialogueBoxAssets/Indicator_01.png" id="3_bg0oq"]
+[ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="3_knbji"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="4_55dj6"]
-[ext_resource type="Texture2D" uid="uid://bm10002lhje3h" path="res://UI assets/128 title screen background.png" id="4_ravpb"]
+[ext_resource type="Texture2D" uid="uid://clfp8o0aum4v8" path="res://UI assets/DialogueBoxAssets/dialogue box 4.png" id="6_400be"]
+[ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="7_elf2e"]
+[ext_resource type="Texture2D" uid="uid://bk70ev110usn3" path="res://UI assets/DialogueBoxAssets/dialogue box upper flourish.png" id="7_qlgo5"]
+[ext_resource type="Texture2D" uid="uid://bkqs0iotybusg" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_left.png" id="8_elf2e"]
+[ext_resource type="Texture2D" uid="uid://d22vimc6jng7h" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_middle.png" id="9_hn7mv"]
+[ext_resource type="Texture2D" uid="uid://b8fibxcsct6k1" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_right.png" id="10_v6itg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ravpb"]
-atlas = ExtResource("3_mg6cl")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uh5u"]
+atlas = ExtResource("3_bg0oq")
+region = Rect2(0, 0, 90, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_55dj6"]
-atlas = ExtResource("3_mg6cl")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdml3"]
+atlas = ExtResource("3_bg0oq")
+region = Rect2(90, 0, 90, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_knbji"]
-atlas = ExtResource("3_mg6cl")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_400be"]
+atlas = ExtResource("3_bg0oq")
+region = Rect2(180, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlgo5"]
+atlas = ExtResource("3_bg0oq")
+region = Rect2(270, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elf2e"]
+atlas = ExtResource("3_bg0oq")
+region = Rect2(360, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn7mv"]
+atlas = ExtResource("3_bg0oq")
+region = Rect2(450, 0, 90, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bg0oq"]
 animations = [{
 "frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_ravpb")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uh5u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_55dj6")
+"texture": SubResource("AtlasTexture_gdml3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_knbji")
+"texture": SubResource("AtlasTexture_400be")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_55dj6")
+"texture": SubResource("AtlasTexture_qlgo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elf2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn7mv")
 }],
-"loop": true,
-"name": &"dialogue_conf",
-"speed": 3.0
+"loop": false,
+"name": &"dialogue_conf_spawn",
+"speed": 12.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ravpb"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55dj6"]
-texture = ExtResource("4_ravpb")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 
 [node name="TextBox" type="MarginContainer" unique_id=1198593662 groups=["UI_on_pause"]]
 z_index = -5
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -17.0
 offset_top = 491.0
-offset_right = 17.0
-offset_bottom = 549.0
+offset_bottom = 491.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0)
 size_flags_horizontal = 4
 script = ExtResource("1_0kxgl")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=477419255]
-self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
-texture_filter = 1
+[node name="ControlIndicator" type="Control" parent="." unique_id=373519007]
+z_index = 10
 layout_mode = 2
-texture = ExtResource("2_ot2p7")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
 
-[node name="Control" type="Control" parent="NinePatchRect" unique_id=373519007]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -40.0
-offset_right = 18.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="NextIndicator" type="AnimatedSprite2D" parent="NinePatchRect/Control" unique_id=679104116]
+[node name="NextIndicator" type="AnimatedSprite2D" parent="ControlIndicator" unique_id=679104116]
 visible = false
-position = Vector2(4.5, 23.5)
-scale = Vector2(2, 2)
+texture_filter = 1
+material = ExtResource("3_knbji")
+position = Vector2(-45, 142)
 sprite_frames = SubResource("SpriteFrames_bg0oq")
-animation = &"dialogue_conf"
-autoplay = "dialogue_conf"
-frame_progress = 0.05235145
+animation = &"dialogue_conf_spawn"
+frame = 5
+frame_progress = 1.0
 centered = false
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=874844112]
+[node name="Label" type="Label" parent="ControlIndicator/NextIndicator" unique_id=2025413330]
+visible = false
+material = ExtResource("7_elf2e")
+offset_left = 36.0
+offset_top = 26.0
+offset_right = 76.0
+offset_bottom = 68.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_55dj6")
+theme_override_font_sizes/font_size = 50
+text = "F"
+
+[node name="NewDialogueBoxChromakey" type="Sprite2D" parent="." unique_id=909585960]
+texture_filter = 1
+material = ExtResource("3_knbji")
+position = Vector2(0, 53)
+texture = ExtResource("6_400be")
+
+[node name="DialogueBoxUpperFlourish" type="Sprite2D" parent="." unique_id=1721775638]
+texture_filter = 1
+material = ExtResource("3_knbji")
+position = Vector2(288, -79)
+texture = ExtResource("7_qlgo5")
+
+[node name="DialogueBaubleLeft" type="Sprite2D" parent="." unique_id=691100171]
+texture_filter = 1
+material = ExtResource("3_knbji")
+position = Vector2(-360, 56)
+texture = ExtResource("8_elf2e")
+
+[node name="DialogueBaubleMiddle" type="Sprite2D" parent="." unique_id=801911388]
+texture_filter = 1
+material = ExtResource("3_knbji")
+position = Vector2(1, 189)
+texture = ExtResource("9_hn7mv")
+
+[node name="DialogueBaubleRight" type="Sprite2D" parent="." unique_id=403532651]
+texture_filter = 1
+material = ExtResource("3_knbji")
+position = Vector2(361, 56)
+texture = ExtResource("10_v6itg")
+
+[node name="ControlMargin" type="Control" parent="." unique_id=1100010486]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlMargin" unique_id=874844112]
+custom_minimum_size = Vector2(600, 160)
+layout_mode = 0
+offset_left = -302.0
+offset_top = -22.0
+offset_right = 298.0
+offset_bottom = 138.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 0
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 18
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=277974344]
+[node name="Label" type="Label" parent="ControlMargin/MarginContainer" unique_id=277974344]
+material = ExtResource("7_elf2e")
 layout_mode = 2
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("4_55dj6")
 theme_override_font_sizes/font_size = 34
 
@@ -116,22 +164,5 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=656195157]
 bus = &"Sfx"
-
-[node name="Mask" type="Panel" parent="." unique_id=145214229]
-clip_children = 1
-z_index = -1
-clip_contents = true
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ravpb")
-
-[node name="Tiled Texture" type="Panel" parent="Mask" unique_id=1129628314]
-self_modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
-texture_filter = 2
-layout_mode = 0
-offset_left = -67.0
-offset_top = -49.0
-offset_right = 965.0
-offset_bottom = 516.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_55dj6")
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
