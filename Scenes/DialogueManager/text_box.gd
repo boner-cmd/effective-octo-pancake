@@ -19,7 +19,7 @@ var punctuation_time : float = 0.0000001
 signal finished_displaying()
 
 func tween_text_box():
-	if !DialogueManager.already_tweened:
+	if not DialogueManager.already_tweened:
 		DialogueManager.already_tweened = true
 		var tween_x = get_tree().create_tween()
 		var tween_y = get_tree().create_tween()

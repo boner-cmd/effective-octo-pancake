@@ -24,7 +24,8 @@ buses/default_bus_layout="uid://jcbaurjmgsyq"
 DialogueManager="*uid://cyc3o31l0qboh"
 QuestManager="*uid://bl4ppk63mybec"
 AudioManager="*uid://bw1x16iflyfrd"
-StatTracker="*uid://byuuqnb1gpgn4"
+Stopwatch="*uid://byuuqnb1gpgn4"
+HonkCounter="*uid://2adl28ou8pyu"
 
 [display]
 

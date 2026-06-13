@@ -35,7 +35,7 @@ func interact() -> void:
 		
 		for NPC in get_children():
 			if NPC.is_in_group("Completion_Change"):
-				if !DialogueManager.planet_state_change.is_connected(NPC.on_completion):
+				if not DialogueManager.planet_state_change.is_connected(NPC.on_completion):
 					DialogueManager.planet_state_change.connect(NPC.on_completion)
 				
 	player.player_cutscene_locator = player_cutscene_locator

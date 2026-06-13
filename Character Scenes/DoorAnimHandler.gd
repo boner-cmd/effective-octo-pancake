@@ -73,7 +73,7 @@ func lock_check():
 func _set_door_anim(anim : AnimStates):
 	current_anim = anim
 	lock_check()
-	if !door_locked:
+	if not door_locked:
 		match current_anim:
 			AnimStates.STASIS:
 				anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
@@ -137,7 +137,7 @@ func stasis():
 
 func interact():
 	lock_check()
-	if !door_locked:
+	if not door_locked:
 		if player.exit_check == false:
 			player.exit_check = true
 			var rig = player.get_child(2)

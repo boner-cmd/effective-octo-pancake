@@ -43,7 +43,7 @@ var current_npc
 
 var temp_interact : bool = false
 var temp_interact_pause : bool = false
-@onready var timer: Timer = $Timer
+@onready var transition_timer: Timer = $Timer
 var Nametag : MarginContainer
 var TextBox : MarginContainer
 
@@ -61,14 +61,15 @@ func set_initial_visibility() -> void:
 	
 	
 func toggle_pausing() -> void:
-	get_tree().paused = !get_tree().paused
+	get_tree().paused = not get_tree().paused
 	#Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
 	
-
+# DEBUG make sure node pause function is working
+# DEBUG possibly a more elegant way to handle pausing from inventory? review here
 func pause_tween() -> void:
 	if pause_menu.visible: #hiding menu now
 		show_buttons() #enforce reset of buttons and menus
-		StatTracker.track_time = true
+		# DEBUG check for incorrect stopwatch behavior here
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		for node in get_tree().get_nodes_in_group("UI_on_pause"):
 			if node.name == "Interact":		
@@ -99,7 +100,7 @@ func pause_tween() -> void:
 		scale_up.set_ease(Tween.EASE_IN)
 		tween_unhide.play()
 		await tween_unhide.finished
-		StatTracker.track_time = false #stop game timer
+		# DEBUG check for incorrect stopwatch behavior here
 		
 		for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 			button.visible = true
@@ -116,19 +117,21 @@ func pause_tween() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
-		if !stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
+		if not stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing()
 		pause_tween()
 		
 	if event.is_action_pressed("toggle_stickerbook"):
-		if !pause_menu.visible: # don't allow showing the stickerbook while paused
+		if not pause_menu.visible: # don't allow showing the stickerbook while paused
 			toggle_pausing()
-			stickerbook.visible = !stickerbook.visible
-			inventory.visible = !inventory.visible
+			stickerbook.visible = not stickerbook.visible
+			inventory.visible = not inventory.visible
 		if stickerbook.visible:
-			StatTracker.track_time = false
+			pass
+			# DEBUG check for incorrect stopwatch behavior here
 		else:
-			StatTracker.track_time = true
+			pass
+			# DEBUG check for incorrect stopwatch behavior here
 	if event.is_action_pressed("advance_dialogue"):
 		if interact.visible:
 			if DialogueManager.is_dialogue_active == true:
@@ -140,7 +143,7 @@ func _input(event: InputEvent) -> void:
 				interact.visible = true
 				temp_interact = false
 		#control_schematic
-		if !control_acknowledge:
+		if not control_acknowledge:
 			control_acknowledge = true
 			var tween_control_off = get_tree().create_tween()
 			tween_control_off.tween_property(control_schematic_full, "modulate:a", 0.0, .3)
@@ -153,8 +156,8 @@ func _input(event: InputEvent) -> void:
 				tween_control_off.kill()
 			control_schematic_full.queue_free()
 			transition()
-			
-		
+
+
 # set initial visibility states
 func _ready() -> void:
 	#change pivots for buttons
@@ -180,8 +183,8 @@ func _ready() -> void:
 	interaction_detector.npc_entered.connect(on_npc_entered)
 	interaction_detector.npc_exited.connect(on_npc_exited)
 	#timer for transition start
-	timer.start()
-	await timer.timeout
+	transition_timer.start()
+	await transition_timer.timeout
 	#transition stuff
 	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
 	transition_color.visible = true
@@ -216,15 +219,15 @@ func _on_continue_button_pressed() -> void:
 	pause_tween()
 	if DialogueManager.is_dialogue_active == true:
 		for node in get_children():
-				if node.name == "TextBox":
-					TextBox = node
-					TextBox.visible = true
+			if node.name == "TextBox":
+				TextBox = node
+				TextBox.visible = true
 	if temp_interact == true:
 		interact.visible = true
 
 func _on_controls_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	if !controls_bool:
+	if not controls_bool:
 		controls_bool = true
 		tween_button(controls_button)
 		hide_other_buttons(controls_button)
@@ -248,7 +251,7 @@ func _on_controls_button_pressed() -> void:
 
 func _on_sound_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	if !sound_bool:
+	if not sound_bool:
 		sound_bool = true
 		tween_button(sound_button)
 		hide_other_buttons(sound_button)
@@ -336,6 +339,7 @@ func show_buttons() -> void:
 	audio_control.modulate.a = 0.0
 	sound_bool = false
 
+# DEBUG is this still needed? implemented elsewhere?
 func _on_main_quest_completion() -> void:
 #	complete_stamp.visible = true
 	pass

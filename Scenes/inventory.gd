@@ -77,7 +77,7 @@ const origin_by_desiring_npc :  Dictionary[QuestManager.CharacterName, QuestMana
 
 func add_item(npc_name : QuestManager.CharacterName) -> void:
 	update_slots() # move items out of the third slot, just in case
-	assert(!inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
+	assert(not inventory_slots.Slot3, "Tried to add a fourth item, check inventory state")
 	assert(item_texts.has(npc_name), "Tried to add an unknown item, check npc_name")
 	inventory_slots.Slot3 = npc_name
 	item_get_sprite.texture = item_resources[npc_name]

@@ -8,7 +8,7 @@ var item_give_bg : AnimatedSprite3D
 var item_get_bg : AnimatedSprite3D
 
 func _ready() -> void:
-	if !get_parent().name == "Node3D" and !get_parent().name == "Victory Scene":
+	if not get_parent().name == "Node3D" and not get_parent().name == "Victory Scene":
 		item_get_sprite = $ItemGetLocator/Item_Get_Sprite
 		item_get_bg = $ItemGetLocator/Item_Get_Sprite_BG
 		item_give_sprite = $ItemGiveLocator/Item_Give_Sprite
@@ -76,7 +76,7 @@ func _set_player_anim(anim : AnimStates):
 				anim_tree.set("parameters/Give/blend_amount", 0.0)
 				
 				await anim_tree.animation_finished
-				if !DialogueManager.is_dialogue_active:
+				if not DialogueManager.is_dialogue_active:
 					_set_player_anim(AnimStates.IDLE)
 				else:
 					anim_tree.set("parameters/Talk/blend_amount", 1.0)

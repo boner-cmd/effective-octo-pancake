@@ -20,7 +20,7 @@ func set_base_slider_attributes(slider : HSlider) -> void:
 func bus_setup() -> void:
 	var bus_name : StringName
 	var slider_name : StringName
-	assert(bus_name_overrides.is_empty() || AudioServer.bus_count == bus_name_overrides.size(), 
+	assert(bus_name_overrides.is_empty()  or  AudioServer.bus_count == bus_name_overrides.size(), 
 		"Bus name overrides array is set, but number of overrides does not match total buses.")
 	for bus in AudioServer.bus_count:
 		bus_name = AudioServer.get_bus_name(bus)

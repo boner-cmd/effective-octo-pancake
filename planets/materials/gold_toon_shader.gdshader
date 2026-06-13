@@ -44,7 +44,7 @@ uniform float     UV_Scaling_V:         hint_range(0.0, 10.0) = 1.0;
 #endif
 
 group_uniforms Texture;
-#if (USE_SMOOTH_PIXELART || !USE_PIXELART)
+#if (USE_SMOOTH_PIXELART  or  not USE_PIXELART)
 	uniform sampler2D Texture:            source_color, filter_linear_mipmap_anisotropic;
 #else 
 	uniform sampler2D Texture:            source_color, filter_nearest;

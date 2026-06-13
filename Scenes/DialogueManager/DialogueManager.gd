@@ -791,10 +791,10 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		dialogue_lines.append_array(used_lines[current_npc][0])
 		#time count
 		dialogue_lines.append_array(used_lines[current_npc][2])
-		var time_res : String = "You've helped everyone in " + StatTracker.time_string + "!!"
+		var time_res : String = "You've helped everyone in " + Stopwatch.get_time() + "!!"
 		dialogue_lines.append(time_res)
 		#honk count
-		var honk_count : String = "You've honked " + str(StatTracker.honk_counter) + " times!"
+		var honk_count : String = "You've honked " + HonkCounter.get_honks() + " times!"
 		dialogue_lines.append(honk_count)
 		dialogue_lines.append_array(used_lines[current_npc][1])
 		is_dialogue_active = true

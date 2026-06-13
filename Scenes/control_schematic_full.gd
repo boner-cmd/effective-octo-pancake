@@ -54,7 +54,7 @@ func _ready() -> void:
 	look_position = look.position
 
 func shift():
-	if !flag:
+	if not flag:
 		mouse_image.position = Vector2(mouse_image.position.x + randf_range(-2.0,2.0), mouse_image.position.y + randf_range(-2.0,2.0))
 		key_f.position = Vector2(key_f.position.x + randf_range(-2.0,2.0), key_f.position.y + randf_range(-2.0,2.0))
 		tab.position = Vector2(tab.position.x + randf_range(-2.0,2.0), tab.position.y + randf_range(-2.0,2.0))
