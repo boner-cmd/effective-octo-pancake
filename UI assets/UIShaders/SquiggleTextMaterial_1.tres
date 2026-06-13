@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dlpo6o8wl5ol"]
+
+[ext_resource type="Shader" uid="uid://x8oy8v36v4e7" path="res://UI assets/UIShaders/squiggle_test.gdshader" id="1_kpbgs"]
+[ext_resource type="Texture2D" uid="uid://bhoprcypwpl6h" path="res://UI assets/UIShaders/noise1_texture_2d.tres" id="2_fr6ye"]
+
+[resource]
+shader = ExtResource("1_kpbgs")
+shader_parameter/scale = Vector2(2, 2)
+shader_parameter/strength = 0.3
+shader_parameter/fps = 4.0
+shader_parameter/noise = ExtResource("2_fr6ye")

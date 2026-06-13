@@ -1,58 +1,12 @@
 [gd_scene format=3 uid="uid://bpvfp05icadyq"]
 
-[ext_resource type="Script" uid="uid://gc3quo4tak7t" path="res://Scenes/control_schematic_full.gd" id="1_01q4o"]
 [ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="2_n6npy"]
-[ext_resource type="Shader" uid="uid://cadude7o1do3j" path="res://UI assets/UIShaders/rainbow_shader.gdshader" id="2_x2725"]
-[ext_resource type="Texture2D" uid="uid://oorvexlpdtjw" path="res://UI assets/dialogue box outline gradient.png" id="3_0n0u2"]
+[ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/GradientSquiggleMaterial_1.tres" id="2_x2725"]
 [ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="3_x2725"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="4_0n0u2"]
+[ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="4_n6npy"]
 [ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="5_sguyi"]
 [ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="6_pkqj0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sguyi"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkqj0"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r8ue"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6g8qa"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nx05"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pntag"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_edhj3"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkacu"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpiwf"]
-shader = ExtResource("2_x2725")
-shader_parameter/gradient = ExtResource("3_0n0u2")
-shader_parameter/offset = Vector2(0.1, 0.1)
 
 [node name="ControlSchematicFull" type="Control" unique_id=700114868]
 layout_mode = 3
@@ -62,11 +16,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-script = ExtResource("1_01q4o")
 
 [node name="MouseImage" type="TextureRect" parent="." unique_id=614692523]
 texture_filter = 1
-material = SubResource("ShaderMaterial_sguyi")
+material = ExtResource("2_x2725")
 layout_mode = 0
 offset_left = 875.0
 offset_top = 128.0
@@ -79,7 +32,7 @@ expand_mode = 1
 
 [node name="KeyF" type="TextureRect" parent="." unique_id=1297354600]
 texture_filter = 1
-material = SubResource("ShaderMaterial_pkqj0")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,6 +52,7 @@ stretch_mode = 3
 
 [node name="Label4" type="Label" parent="KeyF" unique_id=713036947]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 58.89199
 offset_top = 30.582499
@@ -111,7 +65,7 @@ text = "F"
 
 [node name="Tab" type="TextureRect" parent="." unique_id=561295447]
 texture_filter = 1
-material = SubResource("ShaderMaterial_1r8ue")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,6 +85,7 @@ stretch_mode = 5
 
 [node name="Label2" type="Label" parent="Tab" unique_id=2126516475]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 102.66667
 offset_top = 30.66666
@@ -143,7 +98,7 @@ text = "tab"
 
 [node name="Key1" type="TextureRect" parent="." unique_id=1524927217]
 texture_filter = 1
-material = SubResource("ShaderMaterial_6g8qa")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,6 +118,7 @@ stretch_mode = 3
 
 [node name="Label4" type="Label" parent="Key1" unique_id=1425489761]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 52.550575
 offset_top = 31.087637
@@ -175,7 +131,7 @@ text = "W"
 
 [node name="Key2" type="TextureRect" parent="." unique_id=1063130079]
 texture_filter = 1
-material = SubResource("ShaderMaterial_8nx05")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -195,6 +151,7 @@ stretch_mode = 3
 
 [node name="Label4" type="Label" parent="Key2" unique_id=1275155945]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 56.883892
 offset_top = 32.792282
@@ -207,7 +164,7 @@ text = "S"
 
 [node name="Key3" type="TextureRect" parent="." unique_id=1091958545]
 texture_filter = 1
-material = SubResource("ShaderMaterial_pntag")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -227,6 +184,7 @@ stretch_mode = 3
 
 [node name="Label4" type="Label" parent="Key3" unique_id=868392297]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 56.406063
 offset_top = 31.758148
@@ -239,7 +197,7 @@ text = "A"
 
 [node name="Key4" type="TextureRect" parent="." unique_id=1794707984]
 texture_filter = 1
-material = SubResource("ShaderMaterial_edhj3")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -259,6 +217,7 @@ flip_h = true
 
 [node name="Label4" type="Label" parent="Key4" unique_id=188533739]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 53.333336
 offset_top = 29.333313
@@ -271,7 +230,7 @@ text = "D"
 
 [node name="Esc" type="TextureRect" parent="." unique_id=2087249008]
 texture_filter = 1
-material = SubResource("ShaderMaterial_pkacu")
+material = ExtResource("2_x2725")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -290,6 +249,7 @@ stretch_mode = 3
 
 [node name="Label" type="Label" parent="Esc" unique_id=823175579]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 38.666668
 offset_top = 30.666645
@@ -304,7 +264,7 @@ vertical_alignment = 1
 
 [node name="Space" type="TextureRect" parent="." unique_id=1955849026]
 texture_filter = 1
-material = SubResource("ShaderMaterial_wpiwf")
+material = ExtResource("2_x2725")
 layout_mode = 0
 offset_left = 430.0
 offset_top = 472.0
@@ -315,6 +275,7 @@ texture = ExtResource("6_pkqj0")
 
 [node name="Label3" type="Label" parent="Space" unique_id=1895933830]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 209.33336
 offset_top = 29.33329
@@ -327,6 +288,7 @@ text = "space"
 
 [node name="pause" type="Label" parent="." unique_id=1861889215]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 121.0
 offset_top = 188.99998
@@ -338,6 +300,7 @@ text = "pause"
 
 [node name="map" type="Label" parent="." unique_id=2016569667]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 144.0
 offset_top = 264.0
@@ -349,6 +312,7 @@ text = "map"
 
 [node name="move" type="Label" parent="." unique_id=1711279950]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 406.0
 offset_top = 385.0
@@ -360,6 +324,7 @@ text = "move"
 
 [node name="interact" type="Label" parent="." unique_id=1258254125]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 645.0
 offset_top = 320.0
@@ -371,6 +336,7 @@ text = "interact"
 
 [node name="honk" type="Label" parent="." unique_id=1849823594]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 577.0
 offset_top = 538.0
@@ -382,6 +348,7 @@ text = "honk"
 
 [node name="look" type="Label" parent="." unique_id=1529538845]
 texture_filter = 1
+material = ExtResource("4_n6npy")
 layout_mode = 0
 offset_left = 999.0
 offset_top = 410.0

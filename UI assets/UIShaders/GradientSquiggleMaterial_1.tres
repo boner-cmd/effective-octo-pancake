@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ng1yjo18ohs0"]
+
+[ext_resource type="Shader" uid="uid://ccbybwl84dxr3" path="res://UI assets/UIShaders/gradient_squiggle.gdshader" id="1_0r4ti"]
+[ext_resource type="Texture2D" uid="uid://oorvexlpdtjw" path="res://UI assets/dialogue box outline gradient.png" id="2_ycugn"]
+[ext_resource type="Texture2D" uid="uid://bhoprcypwpl6h" path="res://UI assets/UIShaders/noise1_texture_2d.tres" id="3_o36pg"]
+
+[resource]
+shader = ExtResource("1_0r4ti")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.5
+shader_parameter/fps = 4.0
+shader_parameter/noise = ExtResource("3_o36pg")
+shader_parameter/gradient = ExtResource("2_ycugn")
+shader_parameter/gradient_offset = Vector2(0.025, 0.025)
+shader_parameter/replacement_color = Color(0, 0, 0, 1)
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/tolerance = 0.1
