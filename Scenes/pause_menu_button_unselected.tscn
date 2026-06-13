@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c6vpvatnubjvv"]
+
+[ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/GradientSquiggleMaterial_1.tres" id="1_750cj"]
+[ext_resource type="Texture2D" uid="uid://62yo4oa5rjca" path="res://UI assets/menu button unselected cromakey.png" id="2_acfm7"]
+
+[node name="Control" type="Control" unique_id=575979086]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButtonUnselectedCromakey" type="Sprite2D" parent="." unique_id=613019664]
+texture_filter = 1
+material = ExtResource("1_750cj")
+position = Vector2(644, 350)
+texture = ExtResource("2_acfm7")

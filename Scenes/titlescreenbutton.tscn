@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ghf5xvuxi8ds"]
+
+[ext_resource type="Shader" uid="uid://ccbybwl84dxr3" path="res://UI assets/UIShaders/gradient_squiggle.gdshader" id="1_llxk7"]
+[ext_resource type="Texture2D" uid="uid://oorvexlpdtjw" path="res://UI assets/dialogue box outline gradient.png" id="2_god35"]
+[ext_resource type="Texture2D" uid="uid://bhoprcypwpl6h" path="res://UI assets/UIShaders/noise1_texture_2d.tres" id="3_iwdmk"]
+[ext_resource type="Texture2D" uid="uid://676qnfs6tj86" path="res://UI assets/title screen button selected.png" id="4_l3qmn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqfxs"]
+shader = ExtResource("1_llxk7")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.7
+shader_parameter/fps = 4.0
+shader_parameter/noise = ExtResource("3_iwdmk")
+shader_parameter/gradient = ExtResource("2_god35")
+shader_parameter/gradient_offset = Vector2(0.05, 0.05)
+shader_parameter/replacement_color = Color(0, 0, 0, 1)
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/tolerance = 0.1
+
+[node name="Control" type="Control" unique_id=109546938]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleScreenButtonSelected" type="Sprite2D" parent="." unique_id=731354891]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hqfxs")
+position = Vector2(656, 365)
+texture = ExtResource("4_l3qmn")
