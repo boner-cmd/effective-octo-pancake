@@ -1,6 +1,6 @@
 MAIN
 	BUGS
-		bugs list is currently clear?
+		-pause broken if transition on screen
 		-possible bug with horse lock/king talk
 	ASSETS
 		Michaelwave assets
