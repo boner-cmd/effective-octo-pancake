@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D gradient: repeat_enable, filter_nearest;
-uniform vec2 offset = vec2(0.1, 0.1);
+uniform vec2 gradient_offset = vec2(0.1, 0.1);
 
 vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
     float s = sin(rotation);
@@ -16,13 +16,13 @@ vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
     return uv;
 }
 
+
 void fragment()
-{
+{	
 	vec2 center = vec2(0.5, 0.5);
 	float angle = 0.45;
 	vec2 rotatedUV = rotateUV(SCREEN_UV, center, angle);
-	vec4 gradient_scroll = texture(gradient, rotatedUV + offset * TIME);
-	vec4 combined;
-	combined.rgb = gradient_scroll.rgb;
-	COLOR = vec4(combined.rgb, COLOR.a);
+	vec4 gradient_scroll = texture(gradient, rotatedUV + gradient_offset * TIME);
+	
+	COLOR = vec4(gradient_scroll.rgb, COLOR.a);
 }
