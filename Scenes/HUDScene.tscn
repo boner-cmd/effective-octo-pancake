@@ -97,7 +97,7 @@ script = ExtResource("1_1m71x")
 [node name="InventoryBackgroundMargin" type="MarginContainer" parent="." unique_id=706599872]
 process_mode = 1
 visible = false
-z_index = 20
+z_index = 60
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -216,6 +216,7 @@ position = Vector2(284, 34)
 texture = ExtResource("6_xq43d")
 
 [node name="PauseContainer" type="Control" parent="." unique_id=1922139443]
+z_index = 50
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
