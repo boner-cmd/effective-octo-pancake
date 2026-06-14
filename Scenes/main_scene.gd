@@ -93,4 +93,8 @@ func on_planet_change_requested(planet_ID : int):
 		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 		current_npc = DialogueManager.current_npc
 	
+	if hud_overlay.interact_Door.visible:
+		hud_overlay.immediate_interact_false(hud_overlay.interact_Door)
+		
+	
 	Player.reset_player()

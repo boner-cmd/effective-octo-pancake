@@ -750,6 +750,8 @@ func _unhandled_input(event):
 			current_line_index += 1
 			if current_line_index >= dialogue_lines.size():
 				is_dialogue_active = false
+				if name_tag:
+					name_tag.exit_tween()
 				await text_box.close_text_box()
 				text_box.queue_free() 
 				

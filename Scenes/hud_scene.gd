@@ -49,7 +49,6 @@ var temp_interact : bool = false
 var temp_interact_pause : bool = false
 var temp_interact_node : MarginContainer
 @onready var transition_timer: Timer = $Timer
-var Nametag : MarginContainer
 var TextBox : MarginContainer
 
 var control_acknowledge : bool = true
@@ -161,10 +160,8 @@ func _input(event: InputEvent) -> void:
 			await get_tree().create_timer(.01).timeout
 			if DialogueManager.is_dialogue_active == false:
 				tween_vignette_switch(false)
+				await get_tree().create_timer(.29).timeout
 				tween_interact_true(interact_NPC)
-				next_indicator.visible = true
-				next_indicator_label.visible = true
-				next_indicator_label.modulate.a = 1.0
 				temp_interact = false
 		#control_schematic
 		if not control_acknowledge:
@@ -478,10 +475,10 @@ func tween_interact_false(interactparent) -> void:
 	interact_x_down_tweener.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween_interact_x_down.play()
 	
-	await tween_interact_x_down.finished
+	#await tween_interact_x_down.finished
 	
 	var tween_interact_mod = get_tree().create_tween()
-	var interact_mod_tweener = tween_interact_mod.tween_property(interactparent, "modulate:a", 0.0, .1)
+	var interact_mod_tweener = tween_interact_mod.tween_property(interactparent, "modulate:a", 0.0, .1).set_delay(.15)
 	interact_mod_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	tween_interact_mod.play()
 	await tween_interact_mod.finished
@@ -493,6 +490,13 @@ func tween_interact_false(interactparent) -> void:
 		tween_interact_x_down.kill()
 		
 
+func immediate_interact_false(interactparent) -> void:
+	var label_margin = interactparent.get_child(1)
+	var label = label_margin.get_child(0)
+	label_margin.custom_minimum_size.x = 0.0
+	next_indicator.visible = false
+	interactparent.visible = false
+	label.visible = false
 
 func tween_vignette_switch(flag : bool) -> void:
 	var alpha : float
