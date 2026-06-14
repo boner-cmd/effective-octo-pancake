@@ -715,7 +715,7 @@ var already_tweened : bool = false
 var is_dialogue_active : bool = false
 var can_advance_line : bool = false
 var combines_lines : bool = false
-var use_debug_lines : bool = false
+var use_debug_lines : bool = true
 
 # lock flags
 var horse_lock : bool = true
@@ -747,10 +747,12 @@ func _unhandled_input(event):
 	if event.is_action_pressed("advance_dialogue") and is_dialogue_active and can_advance_line:
 		var NextIndicator = text_box.next_indicator
 		if NextIndicator.get_child(0).visible:
-			text_box.queue_free()
 			current_line_index += 1
 			if current_line_index >= dialogue_lines.size():
 				is_dialogue_active = false
+				await text_box.close_text_box()
+				text_box.queue_free() 
+				
 				combines_lines = false
 				already_tweened = false
 				current_line_index = 0
@@ -778,7 +780,9 @@ func _unhandled_input(event):
 						if current_line_index == animation_point:
 							dialogue_state = pending_animation_1
 							emit_inventory_signal_by_conv_state(pending_animation_1)
+				text_box.queue_free()
 				show_text_box()
+			
 
 ## TODO placeholder documentation
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.CharacterName, voice_sfx: AudioStream) -> void:

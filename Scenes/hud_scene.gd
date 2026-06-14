@@ -474,10 +474,19 @@ func tween_interact_false(interactparent) -> void:
 	tween_interact_x_down.play()
 	
 	await tween_interact_x_down.finished
+	
+	var tween_interact_mod = get_tree().create_tween()
+	var interact_mod_tweener = tween_interact_mod.tween_property(interactparent, "modulate:a", 0.0, .1)
+	interact_mod_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween_interact_mod.play()
+	await tween_interact_mod.finished
 	interactparent.visible = false
 	
+	if tween_interact_mod and tween_interact_mod.is_valid():
+		tween_interact_mod.kill()
 	if tween_interact_x_down and tween_interact_x_down.is_valid():
 		tween_interact_x_down.kill()
+		
 
 
 func tween_vignette_switch(flag : bool) -> void:
