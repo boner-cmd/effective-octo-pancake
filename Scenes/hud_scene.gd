@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var interact_Door : MarginContainer = $MarginContainer/Interact_Door_Open
 @onready var interact_Lock : MarginContainer = $MarginContainer/Interact_Door_Locked
 @onready var interact_NPC : MarginContainer = $MarginContainer/Interact_NPC
+var temp_size : float
 #labels
 @onready var npc_label: Label = $MarginContainer/Interact_NPC/MarginContainer/NPC 
 
@@ -147,7 +148,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("advance_dialogue"):
 		if interact_NPC.visible:
 			if DialogueManager.is_dialogue_active == true:
-				interact_NPC.visible = false
+				tween_interact_false(interact_NPC)
 				next_indicator.visible = false
 				next_indicator_label.visible = false
 				next_indicator_label.modulate.a = 0.0
@@ -157,7 +158,7 @@ func _input(event: InputEvent) -> void:
 			await get_tree().create_timer(.01).timeout
 			if DialogueManager.is_dialogue_active == false:
 				tween_vignette_switch(false)
-				interact_NPC.visible = true
+				tween_interact_true(interact_NPC)
 				next_indicator.visible = true
 				next_indicator_label.visible = true
 				next_indicator_label.modulate.a = 1.0
@@ -392,8 +393,7 @@ func on_exit_door_entered(lock_on_door) -> void:
 
 func on_door_exited() -> void:
 	interact_NPC.visible = false
-	interact_Lock.visible = false
-	interact_Door.visible = false
+	tween_interact_false(temp_interact_node)
 	temp_interact_node = null
 	next_indicator.visible = false
 
@@ -405,23 +405,26 @@ func tween_interact_true(interactparent) -> void:
 	next_indicator_label.modulate.a = 0.0
 	var label_margin = interactparent.get_child(1)
 	var label = label_margin.get_child(0)
-	var temp_size : float
 	await get_tree().create_timer(.01).timeout
 	label_margin.custom_minimum_size.x = 0.0
 	label_margin.pivot_offset_ratio.x = .5
 	interactparent.modulate.a = 0.0
 	interactparent.visible = true
 	label.visible = true
+	await get_tree().create_timer(.01).timeout
 	temp_size = label_margin.size.x
+	await get_tree().create_timer(.01).timeout
 	label.modulate.a = 0.0
 	label.visible = false
+	
 	#tween modulate interactparent
 	var tween_interact = get_tree().create_tween()
 	var interact_tweener = tween_interact.tween_property(interactparent, "modulate:a", 1.0, .05)
 	interact_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	tween_interact.play()
 	await tween_interact.finished
-	
+	if tween_interact and tween_interact.is_valid():
+		tween_interact.kill()
 	#tween size:x
 	var tween_interact_x = get_tree().create_tween()
 	var interact_x_tweener = tween_interact_x.tween_property(label_margin, "custom_minimum_size:x", temp_size, .1)
@@ -429,6 +432,8 @@ func tween_interact_true(interactparent) -> void:
 	tween_interact_x.play()
 		
 	await tween_interact_x.finished
+	if tween_interact_x and tween_interact_x.is_valid():
+		tween_interact_x.kill()
 	
 	if interactparent.name == "Interact_Door_Locked":
 		pass
@@ -442,6 +447,7 @@ func tween_interact_true(interactparent) -> void:
 		var interactlabel_tweener = tween_interactlabel.tween_property(next_indicator_label, "modulate:a", 1.0, .1)
 		interactlabel_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 		tween_interactlabel.play()
+		
 	
 	label.visible = true
 	#tween modulate label
@@ -450,7 +456,29 @@ func tween_interact_true(interactparent) -> void:
 	label_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	tween_label.play()
 	await tween_label.finished
+	if tween_label and tween_label.is_valid():
+		tween_label.kill()
+
+func tween_interact_false(interactparent) -> void:
+	var label_margin = interactparent.get_child(1)
+	var label = label_margin.get_child(0)
+	next_indicator.visible = false
 	
+	label_margin.custom_minimum_size.x = temp_size
+	label.visible = false
+	
+	#tween size to 0
+	var tween_interact_x_down = get_tree().create_tween()
+	var interact_x_down_tweener = tween_interact_x_down.tween_property(label_margin, "custom_minimum_size:x", 0.0, .3)
+	interact_x_down_tweener.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween_interact_x_down.play()
+	
+	await tween_interact_x_down.finished
+	interactparent.visible = false
+	
+	if tween_interact_x_down and tween_interact_x_down.is_valid():
+		tween_interact_x_down.kill()
+
 
 func tween_vignette_switch(flag : bool) -> void:
 	var alpha : float
@@ -481,7 +509,7 @@ func on_npc_entered() -> void:
 
 
 func on_npc_exited() -> void:
-	interact_NPC.visible = false
+	tween_interact_false(interact_NPC)
 	interact_Lock.visible = false
 	interact_Door.visible = false
 	temp_interact_node = null
