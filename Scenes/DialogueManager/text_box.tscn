@@ -110,25 +110,25 @@ texture = ExtResource("6_400be")
 [node name="DialogueBoxUpperFlourish" type="Sprite2D" parent="." unique_id=1721775638]
 texture_filter = 1
 material = ExtResource("3_knbji")
-position = Vector2(288, -79)
+position = Vector2(288, -77)
 texture = ExtResource("7_qlgo5")
 
 [node name="DialogueBaubleLeft" type="Sprite2D" parent="." unique_id=691100171]
 texture_filter = 1
 material = ExtResource("3_knbji")
-position = Vector2(-360, 56)
+position = Vector2(-32, 56)
 texture = ExtResource("8_elf2e")
 
 [node name="DialogueBaubleMiddle" type="Sprite2D" parent="." unique_id=801911388]
 texture_filter = 1
 material = ExtResource("3_knbji")
-position = Vector2(1, 189)
+position = Vector2(1, 56)
 texture = ExtResource("9_hn7mv")
 
 [node name="DialogueBaubleRight" type="Sprite2D" parent="." unique_id=403532651]
 texture_filter = 1
 material = ExtResource("3_knbji")
-position = Vector2(361, 56)
+position = Vector2(32, 56)
 texture = ExtResource("10_v6itg")
 
 [node name="ControlMargin" type="Control" parent="." unique_id=1100010486]
