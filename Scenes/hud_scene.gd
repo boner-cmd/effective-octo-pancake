@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var inventory : MarginContainer = $InventoryBackgroundMargin # inventory
 
 @onready var transition_color: ColorRect = $ColorRect
+@onready var DialogueVingette : TextureRect = $DialogueVignette
 #interact
 @onready var interact_Door : MarginContainer = $MarginContainer/Interact_Door_Open
 @onready var interact_Lock : MarginContainer = $MarginContainer/Interact_Door_Locked
@@ -151,9 +152,11 @@ func _input(event: InputEvent) -> void:
 				next_indicator_label.visible = false
 				next_indicator_label.modulate.a = 0.0
 				temp_interact = true
+				tween_vignette_switch(true)
 		elif temp_interact:
 			await get_tree().create_timer(.01).timeout
 			if DialogueManager.is_dialogue_active == false:
+				tween_vignette_switch(false)
 				interact_NPC.visible = true
 				next_indicator.visible = true
 				next_indicator_label.visible = true
@@ -448,10 +451,26 @@ func tween_interact_true(interactparent) -> void:
 	tween_label.play()
 	await tween_label.finished
 	
-	
-	
 
-
+func tween_vignette_switch(flag : bool) -> void:
+	var alpha : float
+	if flag:
+		DialogueVingette.modulate.a = 0.0
+		DialogueVingette.visible = true
+		alpha = 1.0
+	else:
+		DialogueVingette.modulate.a = 1.0
+		alpha = 0.0
+		
+	var tween_vignette = get_tree().create_tween()
+	var vignette_tweener = tween_vignette.tween_property(DialogueVingette, "modulate:a", alpha, .5)
+	vignette_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween_vignette.play()
+	
+	await tween_vignette.finished
+	
+	if not flag:
+		DialogueVingette.visible = false
 
 func on_npc_entered() -> void:
 	tween_interact_true(interact_NPC)

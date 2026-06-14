@@ -100,6 +100,14 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_006ca"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 0.5, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5rjlw"]
+gradient = SubResource("Gradient_006ca")
+fill_from = Vector2(1, 1)
+
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
 process_mode = 3
 script = ExtResource("1_1m71x")
@@ -1778,6 +1786,15 @@ one_shot = true
 [node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("52_006ca")]
 visible = false
 mouse_filter = 2
+
+[node name="DialogueVignette" type="TextureRect" parent="." unique_id=1226659695]
+visible = false
+z_index = -100
+offset_top = 349.0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_5rjlw")
 
 [connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_exited"]

@@ -27,6 +27,7 @@ offset_right = 1131.0
 offset_bottom = 384.0
 scale = Vector2(1.25, 1.25)
 size_flags_vertical = 0
+mouse_filter = 2
 texture = ExtResource("2_n6npy")
 expand_mode = 1
 
@@ -47,6 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.08726646
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
@@ -80,6 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 size_flags_vertical = 8
+mouse_filter = 2
 texture = ExtResource("5_sguyi")
 stretch_mode = 5
 
@@ -113,6 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.017453292
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
@@ -146,6 +150,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.10471976
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
@@ -179,6 +184,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.05235988
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
@@ -211,6 +217,7 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 flip_h = true
@@ -244,6 +251,7 @@ offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
@@ -271,6 +279,7 @@ offset_top = 472.0
 offset_right = 942.0
 offset_bottom = 600.0
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 texture = ExtResource("6_pkqj0")
 
 [node name="Label3" type="Label" parent="Space" unique_id=1895933830]
@@ -363,6 +372,7 @@ z_index = -10
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=1010457779]
