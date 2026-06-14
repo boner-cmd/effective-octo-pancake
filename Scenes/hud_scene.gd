@@ -13,12 +13,14 @@ extends CanvasLayer
 
 @onready var transition_color: ColorRect = $ColorRect
 #interact
-@onready var interact_Door : MarginContainer = $Interact_Door_Open
-@onready var interact_Lock : MarginContainer = $Interact_Door_Locked
-@onready var interact_NPC : MarginContainer = $Interact_NPC
+@onready var interact_Door : MarginContainer = $MarginContainer/Interact_Door_Open
+@onready var interact_Lock : MarginContainer = $MarginContainer/Interact_Door_Locked
+@onready var interact_NPC : MarginContainer = $MarginContainer/Interact_NPC
 #labels
-@onready var npc_label: Label = $Interact_NPC/MarginContainer/NPC 
-#@onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
+@onready var npc_label: Label = $MarginContainer/Interact_NPC/MarginContainer/NPC 
+
+@onready var next_indicator: AnimatedSprite2D = $MarginContainer/Control/NextIndicator
+@onready var next_indicator_label: Label = $MarginContainer/Control/NextIndicator/Label
 #buttons
 @onready var continue_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton
 @onready var quit_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton
@@ -124,8 +126,6 @@ func pause_tween() -> void:
 				else:
 					node.visible = false
 
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if not stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
@@ -147,11 +147,17 @@ func _input(event: InputEvent) -> void:
 		if interact_NPC.visible:
 			if DialogueManager.is_dialogue_active == true:
 				interact_NPC.visible = false
+				next_indicator.visible = false
+				next_indicator_label.visible = false
+				next_indicator_label.modulate.a = 0.0
 				temp_interact = true
 		elif temp_interact:
 			await get_tree().create_timer(.01).timeout
 			if DialogueManager.is_dialogue_active == false:
 				interact_NPC.visible = true
+				next_indicator.visible = true
+				next_indicator_label.visible = true
+				next_indicator_label.modulate.a = 1.0
 				temp_interact = false
 		#control_schematic
 		if not control_acknowledge:
@@ -375,35 +381,92 @@ func on_exit_door_entered(lock_on_door) -> void:
 	interact_Lock.visible = false
 	interact_Door.visible = false
 	if lock_on_door:
-		interact_Lock.visible = true
+		tween_interact_true(interact_Lock)
 		temp_interact_node = interact_Lock
 	else:
-		interact_Door.visible = true
+		tween_interact_true(interact_Door)
 		temp_interact_node = interact_Door
-#		next_indicator.visible = true
 
 func on_door_exited() -> void:
 	interact_NPC.visible = false
 	interact_Lock.visible = false
 	interact_Door.visible = false
 	temp_interact_node = null
-#	next_indicator.visible = false
+	next_indicator.visible = false
 
 #TODO set tweens for intract visibility
+
+func tween_interact_true(interactparent) -> void:
+	next_indicator.visible = false
+	next_indicator_label.visible = false
+	next_indicator_label.modulate.a = 0.0
+	var label_margin = interactparent.get_child(1)
+	var label = label_margin.get_child(0)
+	var temp_size : float
+	await get_tree().create_timer(.01).timeout
+	label_margin.custom_minimum_size.x = 0.0
+	label_margin.pivot_offset_ratio.x = .5
+	interactparent.modulate.a = 0.0
+	interactparent.visible = true
+	label.visible = true
+	temp_size = label_margin.size.x
+	label.modulate.a = 0.0
+	label.visible = false
+	#tween modulate interactparent
+	var tween_interact = get_tree().create_tween()
+	var interact_tweener = tween_interact.tween_property(interactparent, "modulate:a", 1.0, .05)
+	interact_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween_interact.play()
+	await tween_interact.finished
+	
+	#tween size:x
+	var tween_interact_x = get_tree().create_tween()
+	var interact_x_tweener = tween_interact_x.tween_property(label_margin, "custom_minimum_size:x", temp_size, .1)
+	interact_x_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween_interact_x.play()
+		
+	await tween_interact_x.finished
+	
+	if interactparent.name == "Interact_Door_Locked":
+		pass
+	else:
+		next_indicator.stop()
+		next_indicator.frame = 0
+		next_indicator.visible = true
+		next_indicator.play()
+		next_indicator_label.visible = true
+		var tween_interactlabel = get_tree().create_tween()
+		var interactlabel_tweener = tween_interactlabel.tween_property(next_indicator_label, "modulate:a", 1.0, .1)
+		interactlabel_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+		tween_interactlabel.play()
+	
+	label.visible = true
+	#tween modulate label
+	var tween_label = get_tree().create_tween()
+	var label_tweener = tween_label.tween_property(label, "modulate:a", 1.0, .2)
+	label_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween_label.play()
+	await tween_label.finished
+	
+	
+	
+
+
+
 func on_npc_entered() -> void:
-	interact_NPC.visible = true
+	tween_interact_true(interact_NPC)
 	interact_Lock.visible = false
 	interact_Door.visible = false
 	temp_interact_node = interact_NPC
 	npc_label.text = "Listen to " + DialogueManager.Character_Names[main_scene.current_planet_id]
-#	next_indicator.visible = true
+
 
 func on_npc_exited() -> void:
 	interact_NPC.visible = false
 	interact_Lock.visible = false
 	interact_Door.visible = false
 	temp_interact_node = null
-#	next_indicator.visible = false
+	next_indicator.visible = false
 
 
 #button anims and sounds

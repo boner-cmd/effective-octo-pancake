@@ -49,6 +49,9 @@
 [ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/GradientSquiggleMaterial_1.tres" id="47_qsvm7"]
 [ext_resource type="Texture2D" uid="uid://nc5hmhehg8rn" path="res://UI assets/DialogueBoxAssets/Interact_9_Patch.png" id="48_82xaf"]
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="49_c6udc"]
+[ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="50_c6udc"]
+[ext_resource type="Texture2D" uid="uid://bd60t1t6wqrex" path="res://UI assets/DialogueBoxAssets/Indicator_01.png" id="51_006ca"]
+[ext_resource type="PackedScene" uid="uid://bpvfp05icadyq" path="res://Scenes/control_schematic_full.tscn" id="52_006ca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h3cr"]
 bg_color = Color(0, 0, 0, 1)
@@ -64,6 +67,38 @@ axis_stretch_vertical = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_400be"]
+atlas = ExtResource("51_006ca")
+region = Rect2(180, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlgo5"]
+atlas = ExtResource("51_006ca")
+region = Rect2(360, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elf2e"]
+atlas = ExtResource("51_006ca")
+region = Rect2(450, 0, 90, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rjlw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_400be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlgo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elf2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlgo5")
+}],
+"loop": false,
+"name": &"dialogue_conf_spawn",
+"speed": 12.0
+}]
 
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
 process_mode = 3
@@ -1567,23 +1602,60 @@ rotation = 0.858702
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("12_yo8np")
 
-[node name="Interact_Door_Open" type="MarginContainer" parent="." unique_id=128376500 groups=["UI_on_pause"]]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2078868357]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 154.0
+offset_right = 245.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=1527224117]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="MarginContainer/Control" unique_id=625676884]
+visible = false
+texture_filter = 1
+material = ExtResource("50_c6udc")
+position = Vector2(640, 43)
+sprite_frames = SubResource("SpriteFrames_5rjlw")
+animation = &"dialogue_conf_spawn"
+frame = 3
+frame_progress = 1.0
+centered = false
+offset = Vector2(-45, 0)
+
+[node name="Label" type="Label" parent="MarginContainer/Control/NextIndicator" unique_id=1247362194]
+visible = false
+material = ExtResource("49_c6udc")
+offset_left = -9.0
+offset_top = 26.0
+offset_right = 31.0
+offset_bottom = 68.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 50
+text = "F"
+
+[node name="Interact_Door_Open" type="MarginContainer" parent="MarginContainer" unique_id=128376500 groups=["UI_on_pause"]]
 visible = false
 z_index = -4
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -170.0
-offset_right = 128.0
-offset_bottom = -118.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Interact_Door_Open" unique_id=1657040176]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Interact_Door_Open" unique_id=1657040176]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
 material = ExtResource("47_qsvm7")
@@ -1593,15 +1665,16 @@ texture = ExtResource("48_82xaf")
 patch_margin_left = 70
 patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="Interact_Door_Open" unique_id=423976122]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Interact_Door_Open" unique_id=423976122]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 10
 
-[node name="ExitLabel" type="Label" parent="Interact_Door_Open/MarginContainer" unique_id=603604430]
+[node name="ExitLabel" type="Label" parent="MarginContainer/Interact_Door_Open/MarginContainer" unique_id=603604430]
 material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -1613,23 +1686,14 @@ theme_override_font_sizes/font_size = 40
 text = "travel through the void"
 vertical_alignment = 1
 
-[node name="Interact_Door_Locked" type="MarginContainer" parent="." unique_id=1176883756 groups=["UI_on_pause"]]
+[node name="Interact_Door_Locked" type="MarginContainer" parent="MarginContainer" unique_id=1176883756 groups=["UI_on_pause"]]
 visible = false
 z_index = -4
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -170.0
-offset_right = 128.0
-offset_bottom = -118.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Interact_Door_Locked" unique_id=323176135]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Interact_Door_Locked" unique_id=323176135]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
 material = ExtResource("47_qsvm7")
@@ -1639,15 +1703,16 @@ texture = ExtResource("48_82xaf")
 patch_margin_left = 70
 patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="Interact_Door_Locked" unique_id=439988986]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Interact_Door_Locked" unique_id=439988986]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 10
 
-[node name="LockedLabel" type="Label" parent="Interact_Door_Locked/MarginContainer" unique_id=1964867982]
+[node name="LockedLabel" type="Label" parent="MarginContainer/Interact_Door_Locked/MarginContainer" unique_id=1964867982]
 material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -1660,41 +1725,33 @@ text = "void locked"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Interact_NPC" type="MarginContainer" parent="." unique_id=1414159629 groups=["UI_on_pause"]]
-visible = false
+[node name="Interact_NPC" type="MarginContainer" parent="MarginContainer" unique_id=1414159629 groups=["UI_on_pause"]]
 z_index = -4
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -170.0
-offset_right = 128.0
-offset_bottom = -118.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Interact_NPC" unique_id=1501442672]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Interact_NPC" unique_id=1501442672]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
-material = ExtResource("47_qsvm7")
+material = ExtResource("50_c6udc")
 custom_minimum_size = Vector2(0, 61)
 layout_mode = 2
 texture = ExtResource("48_82xaf")
 patch_margin_left = 70
 patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="Interact_NPC" unique_id=2090593122]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Interact_NPC" unique_id=2090593122]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 10
 
-[node name="NPC" type="Label" parent="Interact_NPC/MarginContainer" unique_id=157795564]
+[node name="NPC" type="Label" parent="MarginContainer/Interact_NPC/MarginContainer" unique_id=157795564]
 material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -1705,6 +1762,22 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=789935560]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+texture_repeat = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1419469419]
+wait_time = 0.5
+one_shot = true
+
+[node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("52_006ca")]
+visible = false
+mouse_filter = 2
 
 [connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
