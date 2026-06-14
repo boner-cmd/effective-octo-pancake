@@ -111,8 +111,6 @@ func tween_text_box():
 			tween_bauble_R_pos.kill()
 		if tween_modulate_flourish and tween_modulate_flourish.is_valid():
 			tween_modulate_flourish.kill()
-		
-		
 	else:
 		DialogueBox.scale = Vector2(1.0, 1.0)
 		upper_flourish.modulate.a = 1.0

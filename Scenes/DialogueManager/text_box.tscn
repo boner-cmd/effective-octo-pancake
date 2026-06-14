@@ -11,39 +11,21 @@
 [ext_resource type="Texture2D" uid="uid://d22vimc6jng7h" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_middle.png" id="9_hn7mv"]
 [ext_resource type="Texture2D" uid="uid://b8fibxcsct6k1" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_right.png" id="10_v6itg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8uh5u"]
-atlas = ExtResource("3_bg0oq")
-region = Rect2(0, 0, 90, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdml3"]
-atlas = ExtResource("3_bg0oq")
-region = Rect2(90, 0, 90, 90)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_400be"]
 atlas = ExtResource("3_bg0oq")
 region = Rect2(180, 0, 90, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlgo5"]
 atlas = ExtResource("3_bg0oq")
-region = Rect2(270, 0, 90, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_elf2e"]
-atlas = ExtResource("3_bg0oq")
 region = Rect2(360, 0, 90, 90)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hn7mv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_elf2e"]
 atlas = ExtResource("3_bg0oq")
 region = Rect2(450, 0, 90, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bg0oq"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8uh5u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdml3")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_400be")
 }, {
@@ -54,7 +36,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_elf2e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hn7mv")
+"texture": SubResource("AtlasTexture_qlgo5")
 }],
 "loop": false,
 "name": &"dialogue_conf_spawn",
@@ -84,7 +66,7 @@ material = ExtResource("3_knbji")
 position = Vector2(-45, 142)
 sprite_frames = SubResource("SpriteFrames_bg0oq")
 animation = &"dialogue_conf_spawn"
-frame = 5
+frame = 3
 frame_progress = 1.0
 centered = false
 

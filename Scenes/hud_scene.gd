@@ -13,12 +13,12 @@ extends CanvasLayer
 
 @onready var transition_color: ColorRect = $ColorRect
 #interact
-@onready var interact: MarginContainer = $Interact
+@onready var interact_Door : MarginContainer = $Interact_Door_Open
+@onready var interact_Lock : MarginContainer = $Interact_Door_Locked
+@onready var interact_NPC : MarginContainer = $Interact_NPC
 #labels
-@onready var exit_label: Label = $Interact/MarginContainer/ExitLabel
-@onready var locked_label: Label = $Interact/MarginContainer/LockedLabel
-@onready var npc_label: Label = $Interact/MarginContainer/NPC 
-@onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
+@onready var npc_label: Label = $Interact_NPC/MarginContainer/NPC 
+#@onready var next_indicator: AnimatedSprite2D = $Interact/MarginContainer/NextIndicator
 #buttons
 @onready var continue_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton
 @onready var quit_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton
@@ -43,6 +43,7 @@ var current_npc
 
 var temp_interact : bool = false
 var temp_interact_pause : bool = false
+var temp_interact_node : MarginContainer
 @onready var transition_timer: Timer = $Timer
 var Nametag : MarginContainer
 var TextBox : MarginContainer
@@ -55,7 +56,9 @@ func set_initial_visibility() -> void:
 	stickerbook.visible = false
 	pause_menu.visible = false
 	transition_color.visible = true
-	interact.visible = false
+	interact_Door.visible = false
+	interact_Lock.visible = false
+	interact_NPC.visible = false
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
 	
@@ -67,21 +70,30 @@ func toggle_pausing() -> void:
 # DEBUG make sure node pause function is working
 # DEBUG possibly a more elegant way to handle pausing from inventory? review here
 func pause_tween() -> void:
-	if pause_menu.visible: #hiding menu now
+	if pause_menu.visible: #hiding pause menu now
 		show_buttons() #enforce reset of buttons and menus
 		# DEBUG check for incorrect stopwatch behavior here
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		for node in get_tree().get_nodes_in_group("UI_on_pause"):
-			if node.name == "Interact":		
-				if temp_interact_pause == true:	#if the flag for temp interact is true
-					if DialogueManager.is_dialogue_active == true:
-						node.visible = false
-						temp_interact_pause = true
-					else:
-						node.visible = true
-						temp_interact_pause = false
-			else:
-				node.visible = true
+			node.visible = true
+		interact_Door.visible = false
+		interact_Lock.visible = false
+		interact_NPC.visible = false
+		if temp_interact_node != null:
+			match temp_interact_node.name:
+				"Interact_Door_Locked":
+					interact_Lock.visible = true
+				"Interact_Door_Open":
+					interact_Door.visible = true
+				"Interact_NPC":
+					if temp_interact_pause == true:	#if the flag for temp interact is true
+							if DialogueManager.is_dialogue_active == true:
+								interact_NPC.visible = false
+								temp_interact_pause = true
+							else:
+								interact_NPC.visible = true
+								temp_interact_pause = false
+		
 		var tween_hide = get_tree().create_tween()
 		var scale_down = tween_hide.tween_property(pause_menu, "modulate:a", 0.0, .2)
 		scale_down.set_trans(Tween.TRANS_SINE)
@@ -101,17 +113,16 @@ func pause_tween() -> void:
 		tween_unhide.play()
 		await tween_unhide.finished
 		# DEBUG check for incorrect stopwatch behavior here
-		
 		for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 			button.visible = true
 			button.modulate.a = 1.0
 		for node in get_tree().get_nodes_in_group("UI_on_pause"):	#all this bullshit is for the interact visibility on pause reset
-			if node.name == "Interact":
-				if node.visible == true:	#if interact is visible
+			if temp_interact_node != null:
+				if node.name == temp_interact_node.name:
 					node.visible = false	#set to false
 					temp_interact_pause = true	#set flag to turn back on to true
-			else:
-				node.visible = false
+				else:
+					node.visible = false
 
 
 
@@ -133,14 +144,14 @@ func _input(event: InputEvent) -> void:
 			pass
 			# DEBUG check for incorrect stopwatch behavior here
 	if event.is_action_pressed("advance_dialogue"):
-		if interact.visible:
+		if interact_NPC.visible:
 			if DialogueManager.is_dialogue_active == true:
-				interact.visible = false
+				interact_NPC.visible = false
 				temp_interact = true
 		elif temp_interact:
 			await get_tree().create_timer(.01).timeout
 			if DialogueManager.is_dialogue_active == false:
-				interact.visible = true
+				interact_NPC.visible = true
 				temp_interact = false
 		#control_schematic
 		if not control_acknowledge:
@@ -222,8 +233,8 @@ func _on_continue_button_pressed() -> void:
 			if node.name == "TextBox":
 				TextBox = node
 				TextBox.visible = true
-	if temp_interact == true:
-		interact.visible = true
+#	if temp_interact == true:
+#		interact.visible = true
 
 func _on_controls_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
@@ -360,36 +371,39 @@ func transition() -> void:
 		tween_transition.kill()
 
 func on_exit_door_entered(lock_on_door) -> void:
-	interact.visible = true
-	npc_label.visible = false
+	interact_NPC.visible = false
+	interact_Lock.visible = false
+	interact_Door.visible = false
 	if lock_on_door:
-		locked_label.visible = true
-		exit_label.visible = false
-		next_indicator.visible = false
+		interact_Lock.visible = true
+		temp_interact_node = interact_Lock
 	else:
-		locked_label.visible = false
-		exit_label.visible = true
-		next_indicator.visible = true
+		interact_Door.visible = true
+		temp_interact_node = interact_Door
+#		next_indicator.visible = true
 
 func on_door_exited() -> void:
-	interact.visible = false
-	exit_label.visible = false
-	locked_label.visible = false
-	next_indicator.visible = false
+	interact_NPC.visible = false
+	interact_Lock.visible = false
+	interact_Door.visible = false
+	temp_interact_node = null
+#	next_indicator.visible = false
 
 #TODO set tweens for intract visibility
 func on_npc_entered() -> void:
-	interact.visible = true
-	exit_label.visible = false
-	locked_label.visible = false
-	npc_label.visible = true
+	interact_NPC.visible = true
+	interact_Lock.visible = false
+	interact_Door.visible = false
+	temp_interact_node = interact_NPC
 	npc_label.text = "Listen to " + DialogueManager.Character_Names[main_scene.current_planet_id]
-	next_indicator.visible = true
+#	next_indicator.visible = true
 
 func on_npc_exited() -> void:
-	interact.visible = false
-	npc_label.visible = false
-	next_indicator.visible = false
+	interact_NPC.visible = false
+	interact_Lock.visible = false
+	interact_Door.visible = false
+	temp_interact_node = null
+#	next_indicator.visible = false
 
 
 #button anims and sounds

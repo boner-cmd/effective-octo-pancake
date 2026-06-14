@@ -745,38 +745,40 @@ var dialogue_finished_sfx : AudioStream
 
 func _unhandled_input(event):
 	if event.is_action_pressed("advance_dialogue") and is_dialogue_active and can_advance_line:
-		text_box.queue_free()
-		current_line_index += 1
-		if current_line_index >= dialogue_lines.size():
-			is_dialogue_active = false
-			combines_lines = false
-			already_tweened = false
-			current_line_index = 0
-			animation_point = 0
-			animation_point_2 = 0
-			# current npc is automatically overridden on next call
-			if name_tag:
-				name_tag.queue_free()
-			dialogue_lines = []
-			dialogue_state = CONV_STATE.FINISHED
-			if current_npc == QuestManager.CharacterName.CREDITS:
-				for node in get_tree().root.get_children():
-					if node.name == "Victory Scene":
-						node.end_sequence()
-		else: 
-			if combines_lines:
-				if animation_point_2 > 0: # there is a set second animation point
-					if current_line_index == animation_point:
-						dialogue_state = pending_animation_1
-						emit_inventory_signal_by_conv_state(pending_animation_1)
-					elif current_line_index == animation_point_2:
-						dialogue_state = pending_animation_2
-						emit_inventory_signal_by_conv_state(pending_animation_2)
-				else:
-					if current_line_index == animation_point:
-						dialogue_state = pending_animation_1
-						emit_inventory_signal_by_conv_state(pending_animation_1)
-			show_text_box()
+		var NextIndicator = text_box.next_indicator
+		if NextIndicator.get_child(0).visible:
+			text_box.queue_free()
+			current_line_index += 1
+			if current_line_index >= dialogue_lines.size():
+				is_dialogue_active = false
+				combines_lines = false
+				already_tweened = false
+				current_line_index = 0
+				animation_point = 0
+				animation_point_2 = 0
+				# current npc is automatically overridden on next call
+				if name_tag:
+					name_tag.queue_free()
+				dialogue_lines = []
+				dialogue_state = CONV_STATE.FINISHED
+				if current_npc == QuestManager.CharacterName.CREDITS:
+					for node in get_tree().root.get_children():
+						if node.name == "Victory Scene":
+							node.end_sequence()
+			else: 
+				if combines_lines:
+					if animation_point_2 > 0: # there is a set second animation point
+						if current_line_index == animation_point:
+							dialogue_state = pending_animation_1
+							emit_inventory_signal_by_conv_state(pending_animation_1)
+						elif current_line_index == animation_point_2:
+							dialogue_state = pending_animation_2
+							emit_inventory_signal_by_conv_state(pending_animation_2)
+					else:
+						if current_line_index == animation_point:
+							dialogue_state = pending_animation_1
+							emit_inventory_signal_by_conv_state(pending_animation_1)
+				show_text_box()
 
 ## TODO placeholder documentation
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.CharacterName, voice_sfx: AudioStream) -> void:

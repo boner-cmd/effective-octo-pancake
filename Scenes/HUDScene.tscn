@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://dvacasapt6w4q" path="res://Map assets/O.png" id="21_npi88"]
 [ext_resource type="Texture2D" uid="uid://yqshpd36nbpt" path="res://Map assets/organs.png" id="22_xq43d"]
 [ext_resource type="Texture2D" uid="uid://c02q5l60af8un" path="res://Map assets/festering mass.png" id="23_82vjh"]
-[ext_resource type="Texture2D" uid="uid://sssmh2l58yot" path="res://Placeholder Assets (UI)/conf_dialogue_button.png" id="24_jqj6d"]
 [ext_resource type="Texture2D" uid="uid://bhymmwbixjw6w" path="res://Map assets/lamp.png" id="24_r4epv"]
 [ext_resource type="Texture2D" uid="uid://cfv7nplg8c0sk" path="res://Map assets/norgans.png" id="25_751k0"]
 [ext_resource type="Texture2D" uid="uid://b7ujbhmwat8co" path="res://Map assets/michaelwave.png" id="26_qsvm7"]
@@ -47,6 +46,9 @@
 [ext_resource type="Texture2D" uid="uid://bdi6rv546k8id" path="res://Map assets/idea guy.png" id="30_5rjlw"]
 [ext_resource type="Texture2D" uid="uid://dl3jnq3di2esu" path="res://Map assets/bodhisattva.png" id="31_7jlp0"]
 [ext_resource type="Texture2D" uid="uid://0emjyvd8173y" path="res://Map assets/slime mould.png" id="32_muo8p"]
+[ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/GradientSquiggleMaterial_1.tres" id="47_qsvm7"]
+[ext_resource type="Texture2D" uid="uid://nc5hmhehg8rn" path="res://UI assets/DialogueBoxAssets/Interact_9_Patch.png" id="48_82xaf"]
+[ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="49_c6udc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h3cr"]
 bg_color = Color(0, 0, 0, 1)
@@ -62,38 +64,6 @@ axis_stretch_vertical = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynwxi"]
-atlas = ExtResource("24_jqj6d")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cm65r"]
-atlas = ExtResource("24_jqj6d")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2wn8p"]
-atlas = ExtResource("24_jqj6d")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rv5bf"]
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_ynwxi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cm65r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2wn8p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cm65r")
-}],
-"loop": true,
-"name": &"dialogue_conf",
-"speed": 3.0
-}]
 
 [node name="HUDOverlay" type="CanvasLayer" unique_id=1314492231]
 process_mode = 3
@@ -1597,7 +1567,7 @@ rotation = 0.858702
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("12_yo8np")
 
-[node name="Interact" type="MarginContainer" parent="." unique_id=128376500]
+[node name="Interact_Door_Open" type="MarginContainer" parent="." unique_id=128376500 groups=["UI_on_pause"]]
 visible = false
 z_index = -4
 anchors_preset = 7
@@ -1613,80 +1583,128 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 
-[node name="Mask" type="Panel" parent="Interact" unique_id=701721646]
-clip_children = 1
-z_index = -1
-clip_contents = true
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7h3cr")
-
-[node name="Tiled Texture" type="Panel" parent="Interact/Mask" unique_id=365838492]
-self_modulate = Color(0.5208, 0.65720004, 0.93, 1)
-texture_filter = 2
-layout_mode = 0
-offset_left = -67.0
-offset_top = -49.0
-offset_right = 965.0
-offset_bottom = 516.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ynwxi")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Interact" unique_id=1657040176]
+[node name="NinePatchRect" type="NinePatchRect" parent="Interact_Door_Open" unique_id=1657040176]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
-custom_minimum_size = Vector2(400, 0)
+material = ExtResource("47_qsvm7")
+custom_minimum_size = Vector2(0, 61)
 layout_mode = 2
-texture = ExtResource("3_rv5bf")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+texture = ExtResource("48_82xaf")
+patch_margin_left = 70
+patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="Interact" unique_id=423976122]
+[node name="MarginContainer" type="MarginContainer" parent="Interact_Door_Open" unique_id=423976122]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 10
 
-[node name="ExitLabel" type="Label" parent="Interact/MarginContainer" unique_id=603604430]
-visible = false
+[node name="ExitLabel" type="Label" parent="Interact_Door_Open/MarginContainer" unique_id=603604430]
+material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
 text = "travel through the void"
 vertical_alignment = 1
 
-[node name="LockedLabel" type="Label" parent="Interact/MarginContainer" unique_id=503821312]
+[node name="Interact_Door_Locked" type="MarginContainer" parent="." unique_id=1176883756 groups=["UI_on_pause"]]
 visible = false
+z_index = -4
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -170.0
+offset_right = 128.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Interact_Door_Locked" unique_id=323176135]
+self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
+texture_filter = 1
+material = ExtResource("47_qsvm7")
+custom_minimum_size = Vector2(0, 61)
+layout_mode = 2
+texture = ExtResource("48_82xaf")
+patch_margin_left = 70
+patch_margin_right = 75
+
+[node name="MarginContainer" type="MarginContainer" parent="Interact_Door_Locked" unique_id=439988986]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 10
+
+[node name="LockedLabel" type="Label" parent="Interact_Door_Locked/MarginContainer" unique_id=1964867982]
+material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
 text = "void locked"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NPC" type="Label" parent="Interact/MarginContainer" unique_id=845987720]
+[node name="Interact_NPC" type="MarginContainer" parent="." unique_id=1414159629 groups=["UI_on_pause"]]
+visible = false
+z_index = -4
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -170.0
+offset_right = 128.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Interact_NPC" unique_id=1501442672]
+self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
+texture_filter = 1
+material = ExtResource("47_qsvm7")
+custom_minimum_size = Vector2(0, 61)
+layout_mode = 2
+texture = ExtResource("48_82xaf")
+patch_margin_left = 70
+patch_margin_right = 75
+
+[node name="MarginContainer" type="MarginContainer" parent="Interact_NPC" unique_id=2090593122]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 10
+
+[node name="NPC" type="Label" parent="Interact_NPC/MarginContainer" unique_id=157795564]
+material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
-text = "press F to pay respects"
+horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="NextIndicator" type="AnimatedSprite2D" parent="Interact/MarginContainer" unique_id=846061931]
-self_modulate = Color(0.408, 0.5321334, 0.8, 1)
-z_index = 1
-texture_filter = 1
-position = Vector2(4.5, 23.5)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_rv5bf")
-animation = &"dialogue_conf"
-autoplay = "dialogue_conf"
-centered = false
-offset = Vector2(90, 13.275)
 
 [connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
