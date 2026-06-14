@@ -62,7 +62,7 @@ func on_planet_change_requested(planet_ID : int):
 	hud_overlay.get_child(0).visible = true
 	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
 	Player._camera.current = true
-	inventory.visible = true
+	inventory.visible = false
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
 	hud_overlay.transition()

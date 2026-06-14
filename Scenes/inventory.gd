@@ -145,7 +145,6 @@ func update_slots() -> void:
 		item_slot3.visible = true
 
 func _ready() -> void:
-	visible = true
 	update_slots()
 	DialogueManager.request_item_add.connect(_on_item_add_requested)
 	DialogueManager.request_item_remove.connect(_on_item_remove_requested)

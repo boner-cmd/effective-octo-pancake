@@ -7,7 +7,7 @@
 [resource]
 shader = ExtResource("1_0r4ti")
 shader_parameter/scale = Vector2(1, 1)
-shader_parameter/strength = 1.0
+shader_parameter/strength = 0.3
 shader_parameter/fps = 4.0
 shader_parameter/noise = ExtResource("3_o36pg")
 shader_parameter/gradient = ExtResource("2_ycugn")

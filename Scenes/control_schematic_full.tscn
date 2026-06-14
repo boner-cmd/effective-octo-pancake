@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpvfp05icadyq"]
 
+[ext_resource type="Material" uid="uid://b06dqmcge1iro" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_2.tres" id="1_n6npy"]
 [ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="2_n6npy"]
-[ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/GradientSquiggleMaterial_1.tres" id="2_x2725"]
 [ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="3_x2725"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="4_0n0u2"]
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="4_n6npy"]
@@ -19,7 +19,7 @@ size_flags_vertical = 3
 
 [node name="MouseImage" type="TextureRect" parent="." unique_id=614692523]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 0
 offset_left = 875.0
 offset_top = 128.0
@@ -33,7 +33,7 @@ expand_mode = 1
 
 [node name="KeyF" type="TextureRect" parent="." unique_id=1297354600]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,7 +67,7 @@ text = "F"
 
 [node name="Tab" type="TextureRect" parent="." unique_id=561295447]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -101,7 +101,7 @@ text = "tab"
 
 [node name="Key1" type="TextureRect" parent="." unique_id=1524927217]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,7 +135,7 @@ text = "W"
 
 [node name="Key2" type="TextureRect" parent="." unique_id=1063130079]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,7 +169,7 @@ text = "S"
 
 [node name="Key3" type="TextureRect" parent="." unique_id=1091958545]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -203,7 +203,7 @@ text = "A"
 
 [node name="Key4" type="TextureRect" parent="." unique_id=1794707984]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -237,7 +237,7 @@ text = "D"
 
 [node name="Esc" type="TextureRect" parent="." unique_id=2087249008]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -272,7 +272,7 @@ vertical_alignment = 1
 
 [node name="Space" type="TextureRect" parent="." unique_id=1955849026]
 texture_filter = 1
-material = ExtResource("2_x2725")
+material = ExtResource("1_n6npy")
 layout_mode = 0
 offset_left = 430.0
 offset_top = 472.0

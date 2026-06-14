@@ -7,7 +7,7 @@ extends CanvasLayer
 
 @onready var stickerbook : TextureRect = %Map #map
 
-@onready var pause_menu : MarginContainer = $PauseContainer #pause menu
+@onready var pause_menu : Control = $PauseContainer #pause menu
 
 @onready var inventory : MarginContainer = $InventoryBackgroundMargin # inventory
 
@@ -65,7 +65,7 @@ func set_initial_visibility() -> void:
 	interact_NPC.visible = false
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
-	
+	inventory.visible = false
 	
 func toggle_pausing() -> void:
 	get_tree().paused = not get_tree().paused
@@ -75,6 +75,7 @@ func toggle_pausing() -> void:
 # DEBUG possibly a more elegant way to handle pausing from inventory? review here
 func pause_tween() -> void:
 	if pause_menu.visible: #hiding pause menu now
+		inventory.visible = false
 		show_buttons() #enforce reset of buttons and menus
 		# DEBUG check for incorrect stopwatch behavior here
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -98,7 +99,7 @@ func pause_tween() -> void:
 								interact_NPC.visible = true
 								temp_interact_pause = false
 		
-		var tween_hide = get_tree().create_tween()
+		var tween_hide = create_tween()
 		var scale_down = tween_hide.tween_property(pause_menu, "modulate:a", 0.0, .2)
 		scale_down.set_trans(Tween.TRANS_SINE)
 		scale_down.set_ease(Tween.EASE_IN)
@@ -107,6 +108,7 @@ func pause_tween() -> void:
 		pause_menu.visible = false
 		
 	else:#showing menu now
+		inventory.visible = true
 		pause_menu.modulate.a = 0.0 #tween this instead
 		pause_menu.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -132,6 +134,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if not stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing()
+			
 		pause_tween()
 		
 	if event.is_action_pressed("toggle_stickerbook"):
@@ -182,11 +185,13 @@ func _input(event: InputEvent) -> void:
 # set initial visibility states
 func _ready() -> void:
 	#change pivots for buttons
-	quit_button.pivot_offset_ratio = Vector2(0.5, 0.5)
-	continue_button.pivot_offset_ratio = Vector2(0.5, 0.5)
-	menu_button.pivot_offset_ratio = Vector2(0.5, 0.5)
+	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
+	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	keyboard_controls_menu.modulate.a = 0.0
-	pause_menu.pivot_offset_ratio = Vector2(0.5, 0.5)
+	
 	#start initialization - transition into main scene from title
 	transition_color.visible = true
 	set_initial_visibility()
@@ -243,8 +248,8 @@ func _on_continue_button_pressed() -> void:
 			if node.name == "TextBox":
 				TextBox = node
 				TextBox.visible = true
-#	if temp_interact == true:
-#		interact.visible = true
+	if temp_interact == true:
+		temp_interact_node.visible = true
 
 func _on_controls_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
@@ -528,35 +533,36 @@ func on_npc_exited() -> void:
 #button anims and sounds
 func _on_continue_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	continue_button.scale = Vector2(1.25, 1.25)
+	continue_button.scale = Vector2(1.1, 1.1)
 
 func _on_continue_button_mouse_exited() -> void:
 	continue_button.scale = Vector2(1.0, 1.0)
+	
 
 func _on_quit_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	quit_button.scale = Vector2(1.25, 1.25)
+	quit_button.scale = Vector2(1.1, 1.1)
 
 func _on_quit_button_mouse_exited() -> void:
 	quit_button.scale = Vector2(1.0, 1.0)
 
 func _on_sound_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	sound_button.scale = Vector2(1.25, 1.25)
+	sound_button.scale = Vector2(1.1, 1.1)
 
 func _on_sound_button_mouse_exited() -> void:
 	sound_button.scale = Vector2(1.0, 1.0)
 
 func _on_controls_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	controls_button.scale = Vector2(1.25, 1.25)
+	controls_button.scale = Vector2(1.1, 1.1)
 
 func _on_controls_button_mouse_exited() -> void:
 	controls_button.scale = Vector2(1.0, 1.0)
 
 func _on_menu_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	menu_button.scale = Vector2(1.25, 1.25)
+	menu_button.scale = Vector2(1.1, 1.1)
 
 func _on_menu_button_mouse_exited() -> void:
 	menu_button.scale = Vector2(1.0, 1.0)
