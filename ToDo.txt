@@ -1,7 +1,8 @@
 MAIN
 	BUGS
-		-pause broken if transition on screen
-		-possible bug with horse lock/king talk
+		- possible bug with horse lock/king talk?
+		- interact/next indicator F stays on screen if you fuck around in the area3Ds
+			-timer lockout?
 	ASSETS
 		Michaelwave assets
 			-planet/skybox texture - Markcy
@@ -13,7 +14,6 @@ MAIN
 		Sisyphus planet stuff - Markcy
 		Norgans skybox - Markcy
 		
-		
 	FEATURES
 		SAVING
 			Will need to include Current Planet ID and initialization
@@ -24,7 +24,6 @@ MAIN
 			Will need to save audio settings
 			Will need to save honk counter from QuestManager
 			Will need to save time counter from QuestManager
-
 
 
 DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markcy ~2.5 days rework/denoting
@@ -39,7 +38,6 @@ DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markc
 		Pipe-in a calculation for offsetting the current Animation Points to the respective conversation points.
 		Listen - Give Anim - Receive Anim - Listen
 		Listen - Give Anim - Listen Anim - Receive Anim - Listen
-		
 		
 
 MODELS - ~ 1 week
@@ -66,42 +64,55 @@ VFX PASS - Michael - ???
 		Stasis	ZzZzZzZzzz....
 		Exit	whooshing lines for open, poofing lines for slam
 	
-	Start Menu sparkles
-	NPC related shaders
+	any NPC related shaders
 	Confetti explosion for VICTORY animation
 
 
 UI PASS - ???
-	all text have shadow
-	
 	Holistically approach the game's UI and design.
-	Decision flow is in Figma for the Title Screen, Pause Menu flow is already implemented.
-	keep purple
 	
-	PAUSE vignette - dark blue gray
+	PAUSE vignette - dark blue gray - 
 	
-	INTERACT visibility tween
 	Unique boxes per NPCs (?) - can be related to shader colors if desired
-		
-	MAP
-	revist the "Map" label on the map
-	border that matches the menu UI
-	map fade in and out
 	
-	INVENTORY to move to PAUSE menu
+	MAP
+		revist the "Map" label on the map
+		border that matches the menu UI
 
 POST - minimal
 	Exe Icon - 64x64 - Honk counter - resize
 	STEAM Integration + Listing (?)
 		includes STEAM banner, screenshots
 		promotional materials / trailer
+		achievement tie-ins / achievement icons
 		
+		ACHIEVEMENTS LIST	(StoreStats() can be deferred until post-game close)
+			Complete whole quest
+			Embrace the Void
+			All dialogues (Yap Fetishist)
+			Speed Run
+			Honk 100 times (feel out the number if 100 is too low)
+			play the whole game with music set to full (Markcy's #1 Fan)
+			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
+			
 
 TITLE SCREEN - ???
+	stars revisit
+	buttons updated
+	big head half face may not work actually :'(
+	
 	Reaffirm design direction/menu
-	Title Screen Music
-	Credits overlay for titlescreen button
-	Intro screen before the TITLE screen with the GODOT logo, transition into our "studio" logo
+	
+	buttons on left with shader
+	on button hover have AH face different positions interrupting the screen
+	purple gradient sky pink clouds?
+	AH closer
+	letters 1/3rd screen
+	
+	Credits overlay for titlescreen credits button
+	
+	Intro screen before the TITLE screen with the GODOT logo, transition into our "studio" logo, transition into main menu
+	Sparkle VFX
 
 SOUND - 2.5 days ish
 	Different default speech noises
