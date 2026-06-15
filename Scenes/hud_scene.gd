@@ -125,6 +125,7 @@ func change_pause_state() -> void:
 	match current_PauseState:
 		PauseState.UNPAUSED:	#switching TO unpaused both
 			get_tree().paused = false
+			handle_temp_interact()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			for node in get_tree().get_nodes_in_group("UI_on_pause"):
 				node.visible = true
@@ -140,6 +141,7 @@ func change_pause_state() -> void:
 		PauseState.MAP:			#switching TO map
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			handle_temp_interact()
 			if map.visible == false: #coming from unpaused
 				for node in get_tree().get_nodes_in_group("UI_on_pause"):
 					node.visible = false
@@ -154,6 +156,7 @@ func change_pause_state() -> void:
 		_:		#switching TO paused, switching TO both - turning pause menu visible regardless
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			handle_temp_interact()
 			for node in get_tree().get_nodes_in_group("UI_on_pause"):
 				node.visible = false
 			show_buttons()
@@ -166,28 +169,36 @@ func change_pause_state() -> void:
 
 func handle_temp_interact() -> void:
 	if current_PauseState == PauseState.UNPAUSED:
-		match temp_interact_node.name:
-				"Interact_Door_Locked":
-					interact_Lock.visible = true
-				"Interact_Door_Open":
-					interact_Door.visible = true
-				"Interact_NPC":
-					if temp_interact_pause == true:	#if the flag for temp interact is true
-							if DialogueManager.is_dialogue_active == true:
-								interact_NPC.visible = false
-								temp_interact_pause = true
-							else:
-								interact_NPC.visible = true
-								next_indicator.visible = true
-								temp_interact_pause = false
-				_:
-					pass
+		if temp_interact_node:
+			match temp_interact_node.name:
+					"Interact_Door_Locked":
+						interact_Lock.visible = true
+					"Interact_Door_Open":
+						interact_Door.visible = true
+						next_indicator.visible = true
+					"Interact_NPC":
+						if temp_interact_pause == true:	#if the flag for temp interact is true
+								if DialogueManager.is_dialogue_active == true:
+									interact_NPC.visible = false
+									next_indicator.visible = false
+									temp_interact_pause = true
+								else:
+									interact_NPC.visible = true
+									next_indicator.visible = true
+									temp_interact_pause = false
+					_:
+						pass
 	else:
 		interact_Door.visible = false
 		interact_Lock.visible = false
 		interact_NPC.visible = false
-		if temp_interact_node.name == "Interact_NPC":
-			temp_interact_pause = true
+		next_indicator.visible = false
+		if temp_interact_node:
+			match temp_interact_node.name:
+				"Interact_NPC":
+					temp_interact_pause = true
+				_:
+					pass
 
 
 func tween_object(object, property : String, goal, time : float, transtype : Tween.TransitionType, easetype : Tween.EaseType, wait_finish : bool) -> void:
@@ -310,6 +321,8 @@ func _on_quit_button_pressed() -> void:
 	#toggle_pausing()
 	pause_tween()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
+	current_PauseState = PauseState.UNPAUSED
+	change_pause_state()
 	#TODO auto save here probably
 	
 	await get_tree().create_timer(3).timeout
