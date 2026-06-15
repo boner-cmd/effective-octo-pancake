@@ -8,7 +8,6 @@ extends CanvasLayer
 @onready var map : TextureRect = %Map #map
 
 @onready var pause_menu : Control = $PauseContainer #pause menu
-@onready var inventory : MarginContainer = $InventoryBackgroundMargin # inventory
 
 @onready var transition_color: ColorRect = $ColorRect
 @onready var DialogueVingette : TextureRect = $DialogueVignette
@@ -54,7 +53,7 @@ var TextBox : MarginContainer
 var control_acknowledge : bool = true
 
 enum PauseState {UNPAUSED, MAP, PAUSED, BOTH}
-var current_PauseState : PauseState
+var current_PauseState : PauseState = PauseState.UNPAUSED
 
 
 # set initial visibility states
@@ -64,13 +63,9 @@ func _ready() -> void:
 	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
-	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	keyboard_controls_menu.modulate.a = 0.0
-	
+	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)	
 	#start initialization - transition into main scene from title
-	transition_color.visible = true
 	set_initial_visibility()
-	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
 	player = get_tree().get_first_node_in_group("Player")
 	for node in player.get_children():
 		if node.name == "ClownRigFBX":
@@ -90,17 +85,10 @@ func _ready() -> void:
 	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
 	transition_color.visible = true
 	#control schematics UI stuff here
-	var tween_control_on = get_tree().create_tween()
-	tween_control_on.tween_property(control_schematic_full, "modulate:a", 1.0, .3)
-	tween_control_on.set_trans(Tween.TRANS_SINE)
-	tween_control_on.set_ease(Tween.EASE_IN_OUT)
 	await get_tree().create_timer(.1).timeout
-	tween_control_on.play()
-	await tween_control_on.finished
-	if tween_control_on and tween_control_on.is_valid():
-		tween_control_on.kill()
+	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT, true)
 	control_acknowledge = false
-	audio_control.modulate.a = 0.0
+	
 
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
@@ -111,13 +99,15 @@ func set_initial_visibility() -> void:
 	interact_Door.visible = false
 	interact_Lock.visible = false
 	interact_NPC.visible = false
+	transition_color.visible = true
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
-	inventory.visible = false
+	audio_control.modulate.a = 0.0
+	keyboard_controls_menu.modulate.a = 0.0
 
 
 #pause states
-func check_pause_state() -> void: #sets pause state
+func check_pause_state() -> void: #sets pause state probably unneccessary
 	if pause_menu.visible:
 		if map.visible:
 			current_PauseState = PauseState.BOTH
@@ -128,46 +118,50 @@ func check_pause_state() -> void: #sets pause state
 			current_PauseState = PauseState.MAP
 		else:
 			current_PauseState = PauseState.UNPAUSED
+			
 
 func change_pause_state() -> void:
 	#when switching from state to another state
-	
 	match current_PauseState:
-		PauseState.UNPAUSED:
-			pass
-		PauseState.MAP:
-			pass
-		PauseState.PAUSED:
-			pass
-		PauseState.BOTH:
-			pass
-		
-		pass
+		PauseState.UNPAUSED:	#switching TO unpaused both
+			get_tree().paused = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			for node in get_tree().get_nodes_in_group("UI_on_pause"):
+				node.visible = true
+			if pause_menu.visible == true:
+				show_buttons()
+				tween_object(pause_menu, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
+				pause_menu.visible = false
+			if map.visible == true:
+				map.modulate.a = 1.0
+				tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
+				map.visible = false
+			
+		PauseState.MAP:			#switching TO map
+			get_tree().paused = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			for node in get_tree().get_nodes_in_group("UI_on_pause"):
+				node.visible = false
+			map.modulate.a = 0.0
+			map.visible = true
+			tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT, true)
+			
+		_:		#switching TO paused, switching TO both - turning pause menu visible regardless
+			get_tree().paused = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			for node in get_tree().get_nodes_in_group("UI_on_pause"):
+				node.visible = false
+			show_buttons()
+			pause_menu.modulate.a = 0.0
+			pause_menu.visible = true
+			tween_object(pause_menu, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT, true)
 
 
 
 
-
-
-func toggle_pausing() -> void:
-	get_tree().paused = not get_tree().paused
-	#Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
-	
-# DEBUG make sure node pause function is working
-# DEBUG possibly a more elegant way to handle pausing from inventory? review here
-func pause_tween() -> void:
-	if pause_menu.visible: #hiding pause menu now
-		inventory.visible = false
-		show_buttons() #enforce reset of buttons and menus
-		# DEBUG check for incorrect stopwatch behavior here
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		for node in get_tree().get_nodes_in_group("UI_on_pause"):
-			node.visible = true
-		interact_Door.visible = false
-		interact_Lock.visible = false
-		interact_NPC.visible = false
-		if temp_interact_node != null:
-			match temp_interact_node.name:
+func handle_temp_interact() -> void:
+	if current_PauseState == PauseState.UNPAUSED:
+		match temp_interact_node.name:
 				"Interact_Door_Locked":
 					interact_Lock.visible = true
 				"Interact_Door_Open":
@@ -179,60 +173,100 @@ func pause_tween() -> void:
 								temp_interact_pause = true
 							else:
 								interact_NPC.visible = true
+								next_indicator.visible = true
 								temp_interact_pause = false
-		
-		var tween_hide = create_tween()
-		var scale_down = tween_hide.tween_property(pause_menu, "modulate:a", 0.0, .2)
-		scale_down.set_trans(Tween.TRANS_SINE)
-		scale_down.set_ease(Tween.EASE_IN)
-		tween_hide.play()
-		await tween_hide.finished
-		pause_menu.visible = false
-		
-	else:#showing menu now
-		inventory.visible = true
-		pause_menu.modulate.a = 0.0 #tween this instead
-		pause_menu.visible = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		var tween_unhide = create_tween()
-		var scale_up = tween_unhide.tween_property(pause_menu, "modulate:a", 1.0, .2)
-		scale_up.set_trans(Tween.TRANS_SINE)
-		scale_up.set_ease(Tween.EASE_IN)
-		tween_unhide.play()
-		await tween_unhide.finished
+				_:
+					pass
+	else:
+		interact_Door.visible = false
+		interact_Lock.visible = false
+		interact_NPC.visible = false
+		if temp_interact_node.name == "Interact_NPC":
+			temp_interact_pause = true
+
+
+func tween_object(object, property : String, goal, time : float, transtype : Tween.TransitionType, easetype : Tween.EaseType, wait_finish : bool) -> void:
+	var tweened_object = create_tween()
+	var tweener_object = tweened_object.tween_property(object, property, goal, time)
+	tweener_object.set_trans(transtype).set_ease(easetype)
+	tweened_object.play()
+	if wait_finish:
+		await tweened_object.finished
+		if tweened_object and tweened_object.is_valid():
+			tweened_object.kill()
+
+
+# DEBUG make sure node pause function is working
+# DEBUG possibly a more elegant way to handle pausing from inventory? review here
+func pause_tween() -> void:
+	if pause_menu.visible: #hiding pause menu now
+		#show_buttons() #enforce reset of buttons and menus
 		# DEBUG check for incorrect stopwatch behavior here
-		for button in get_tree().get_nodes_in_group("Pause_Buttons"):
-			button.visible = true
-			button.modulate.a = 1.0
-		for node in get_tree().get_nodes_in_group("UI_on_pause"):	#all this bullshit is for the interact visibility on pause reset
-			if temp_interact_node != null:
-				if node.name == temp_interact_node.name:
-					node.visible = false	#set to false
-					temp_interact_pause = true	#set flag to turn back on to true
-				else:
-					node.visible = false
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#for node in get_tree().get_nodes_in_group("UI_on_pause"):
+			#node.visible = true
+		#interact_Door.visible = false
+		#interact_Lock.visible = false
+		#interact_NPC.visible = false
+		
+		
+		#var tween_hide = create_tween()
+		#var scale_down = tween_hide.tween_property(pause_menu, "modulate:a", 0.0, .2)
+		#scale_down.set_trans(Tween.TRANS_SINE)
+		#scale_down.set_ease(Tween.EASE_IN)
+		#tween_hide.play()
+		#await tween_hide.finished
+		#pause_menu.visible = false
+		pass
+	else:#showing menu now
+		#pause_menu.modulate.a = 0.0 #tween this instead
+		#pause_menu.visible = true
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#var tween_unhide = create_tween()
+		#var scale_up = tween_unhide.tween_property(pause_menu, "modulate:a", 1.0, .2)
+		#scale_up.set_trans(Tween.TRANS_SINE)
+		#scale_up.set_ease(Tween.EASE_IN)
+		#tween_unhide.play()
+		#await tween_unhide.finished
+		# DEBUG check for incorrect stopwatch behavior here
+		#for button in get_tree().get_nodes_in_group("Pause_Buttons"):
+			#button.visible = true
+			#button.modulate.a = 1.0
+		#for node in get_tree().get_nodes_in_group("UI_on_pause"):	#all this bullshit is for the interact visibility on pause reset
+			#if temp_interact_node != null:
+				#if node.name == temp_interact_node.name:
+					#node.visible = false	#set to false
+					#temp_interact_pause = true	#set flag to turn back on to true
+				#else:
+					#node.visible = false
+		pass
 
 
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
-		if not map.visible: # relying on pause and mouse state already set if stickerbook visible
-			toggle_pausing()
-			
-		pause_tween()
+		match current_PauseState:
+			PauseState.UNPAUSED:
+				current_PauseState = PauseState.PAUSED
+			PauseState.PAUSED:
+				current_PauseState = PauseState.UNPAUSED
+			PauseState.MAP:
+				current_PauseState = PauseState.BOTH
+			PauseState.BOTH:
+				current_PauseState = PauseState.MAP
+		change_pause_state()
 		
 	if event.is_action_pressed("toggle_stickerbook"):
-		if not pause_menu.visible: # don't allow showing the stickerbook while paused
-			toggle_pausing()
-			map.visible = not map.visible
-			inventory.visible = not inventory.visible
-		if map.visible:
-			pass
-			# DEBUG check for incorrect stopwatch behavior here
-		else:
-			pass
-			# DEBUG check for incorrect stopwatch behavior here
+		match current_PauseState:
+			PauseState.UNPAUSED:
+				current_PauseState = PauseState.MAP
+			PauseState.MAP:
+				current_PauseState = PauseState.UNPAUSED
+			_:
+				pass
+		change_pause_state()
+	
 	if event.is_action_pressed("advance_dialogue"):
 		if interact_NPC.visible:
 			if DialogueManager.is_dialogue_active == true:
@@ -268,7 +302,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	toggle_pausing()
+	#toggle_pausing()
 	pause_tween()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
 	#TODO auto save here probably
@@ -340,7 +374,7 @@ func _on_sound_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	toggle_pausing()
+	#toggle_pausing()
 	pause_tween()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
 	#TODO auto save here probably
@@ -369,7 +403,6 @@ func tween_button(selected_button) -> void:
 	tween_btn.set_trans(Tween.TRANS_BOUNCE)
 	tween_btn.set_ease(Tween.EASE_OUT)
 	
-	
 	tween.play()
 	await tween.finished
 	if tween and tween.is_valid():
@@ -381,13 +414,12 @@ func hide_other_buttons(selected_button) -> void:
 		if button.name != selected_button.name:
 			var tween = create_tween()
 			var button_tween = tween.tween_property(button, "modulate:a", 0.0, .5)
-			button_tween.set_trans(Tween.TRANS_SINE)
-			button_tween.set_ease(Tween.EASE_OUT)
+			button_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 			tween.play()
 			button.disabled = true
 			button.mouse_filter = 2
 
-func show_buttons() -> void:
+func show_buttons() -> void: #for tweening buttons to be visible after returning to pause
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 		var tween = create_tween()
 		var button_tween = tween.tween_property(button, "modulate:a", 1.0, .25)
@@ -405,11 +437,8 @@ func show_buttons() -> void:
 	audio_control.modulate.a = 0.0
 	sound_bool = false
 
-# DEBUG is this still needed? implemented elsewhere?
-func _on_main_quest_completion() -> void:
-#	complete_stamp.visible = true
-	pass
-	
+
+
 func transition() -> void:
 	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
 	transition_color.visible = true

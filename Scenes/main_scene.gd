@@ -3,8 +3,7 @@ var current_planet_id : int = 0
 var current_npc
 # CanvasLayer is $HUDOverlay
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
-var inventory : MarginContainer
-
+@onready var inventory : Control = $HUDOverlay/PauseContainer/Inventory
 @onready var map : TextureRect = $HUDOverlay/Map
 
 
@@ -49,7 +48,6 @@ func _ready() -> void:
 	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
 	initial_door.request_planet_change.connect(on_planet_change_requested)
 	AudioManager.bgm_cycle(0)
-	inventory = hud_overlay.get_child(0)
 	Stopwatch.start()
 	
 

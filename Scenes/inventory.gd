@@ -1,7 +1,7 @@
-extends MarginContainer
+extends Control
 
-@onready var item_get_sprite: Sprite3D = $"../../PlayerCharacter/ClownRigFBX/ItemGetLocator/Item_Get_Sprite"
-@onready var item_give_sprite: Sprite3D = $"../../PlayerCharacter/ClownRigFBX/ItemGiveLocator/Item_Give_Sprite"
+@onready var item_get_sprite: Sprite3D = $"../../../PlayerCharacter/ClownRigFBX/ItemGetLocator/Item_Get_Sprite"
+@onready var item_give_sprite: Sprite3D = $"../../../PlayerCharacter/ClownRigFBX/ItemGiveLocator/Item_Give_Sprite"
 
 var inventory_slots = {
 	Slot1 = false,
@@ -10,12 +10,12 @@ var inventory_slots = {
 }
 
 var slot_state : int = 0b000
-@onready var item_slot1  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot1
-@onready var item_slot2  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot2
-@onready var item_slot3  : TextureRect = $InventoryItemMargin/VBoxContainer/ItemSlot3
-@onready var label_slot1 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot1/ItemSlot1Label
-@onready var label_slot2 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot2/ItemSlot2Label
-@onready var label_slot3 : Label = $InventoryItemMargin/VBoxContainer/ItemSlot3/ItemSlot3Label
+@onready var item_slot1  : TextureRect = $ItemSlot1
+@onready var item_slot2  : TextureRect = $ItemSlot2
+@onready var item_slot3  : TextureRect = $ItemSlot3
+@onready var label_slot1 : Label = $ItemSlot1/ItemSlot1Label
+@onready var label_slot2 : Label = $ItemSlot2/ItemSlot2Label
+@onready var label_slot3 : Label = $ItemSlot3/ItemSlot3Label
 
 # each item is the one GIVEN by that NPC
 const item_resources : Dictionary[QuestManager.CharacterName, Resource] = {
