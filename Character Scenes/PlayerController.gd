@@ -63,7 +63,8 @@ func reset_player():
 	position = respawn_pos
 	rotation = respawn_rot
 	exit_check = false
-	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 #camera nonsense and can probably just be put into physics process but didn't want to do that because of compute
 func player_interaction_camera() -> void:

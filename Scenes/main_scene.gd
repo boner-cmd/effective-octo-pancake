@@ -57,10 +57,8 @@ func on_planet_change_requested(planet_ID : int):
 	print(Stopwatch.get_time())
 	## TODO mention why this is relevant and where it is called from
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
-	hud_overlay.get_child(0).visible = true
 	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
 	Player._camera.current = true
-	inventory.visible = false
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
 	hud_overlay.transition()
@@ -94,5 +92,4 @@ func on_planet_change_requested(planet_ID : int):
 	if hud_overlay.interact_Door.visible:
 		hud_overlay.immediate_interact_false(hud_overlay.interact_Door)
 		
-	
 	Player.reset_player()

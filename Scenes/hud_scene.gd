@@ -130,22 +130,27 @@ func change_pause_state() -> void:
 				node.visible = true
 			if pause_menu.visible == true:
 				show_buttons()
-				tween_object(pause_menu, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
+				await tween_object(pause_menu, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
 				pause_menu.visible = false
 			if map.visible == true:
 				map.modulate.a = 1.0
-				tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
+				await tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
 				map.visible = false
 			
 		PauseState.MAP:			#switching TO map
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			for node in get_tree().get_nodes_in_group("UI_on_pause"):
-				node.visible = false
-			map.modulate.a = 0.0
-			map.visible = true
-			tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT, true)
-			
+			if map.visible == false: #coming from unpaused
+				for node in get_tree().get_nodes_in_group("UI_on_pause"):
+					node.visible = false
+				map.modulate.a = 0.0
+				map.visible = true
+				tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT, true)
+			elif pause_menu.visible == true: #coming from paused both
+				show_buttons()
+				await tween_object(pause_menu, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
+				pause_menu.visible = false
+				
 		_:		#switching TO paused, switching TO both - turning pause menu visible regardless
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -313,7 +318,15 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_continue_button_pressed() -> void:
-	get_tree().paused = false
+	match current_PauseState:
+		PauseState.PAUSED:
+			current_PauseState = PauseState.UNPAUSED
+			change_pause_state()
+		PauseState.BOTH:
+			current_PauseState = PauseState.MAP
+			change_pause_state()
+		_:
+			pass
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pause_tween()
