@@ -34,7 +34,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	19 : preload("res://music exports/slime mould.wav"),
 	20 : preload("res://music exports/king.wav"),
 	21 : preload("res://music exports/void2.wav"),
-	22 : preload("res://music exports/valhalla2026-05-2717_11_57.wav"), #title
+	22 : preload("res://music exports/title screen proper.wav"), #title
 }
 
 const BORGANS_A = preload("uid://ckbl50xceswh4")
