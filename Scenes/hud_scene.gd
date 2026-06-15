@@ -5,10 +5,9 @@ extends CanvasLayer
 @onready var keyboard_controls_menu: Control = $PauseContainer/KeyboardControlsMenu
 @onready var audio_control: VBoxContainer = $PauseContainer/MarginContainer/AudioControlVBox
 
-@onready var stickerbook : TextureRect = %Map #map
+@onready var map : TextureRect = %Map #map
 
 @onready var pause_menu : Control = $PauseContainer #pause menu
-
 @onready var inventory : MarginContainer = $InventoryBackgroundMargin # inventory
 
 @onready var transition_color: ColorRect = $ColorRect
@@ -23,12 +22,13 @@ var temp_size : float
 
 @onready var next_indicator: AnimatedSprite2D = $MarginContainer/Control/NextIndicator
 @onready var next_indicator_label: Label = $MarginContainer/Control/NextIndicator/Label
-#buttons
+#pause buttons
 @onready var continue_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton
 @onready var quit_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton
 @onready var sound_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton
 @onready var controls_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton
 @onready var menu_button: TextureButton = $PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton
+
 var continue_bool : bool = false
 var quit_bool : bool = false
 var sound_bool : bool = false
@@ -53,10 +53,59 @@ var TextBox : MarginContainer
 
 var control_acknowledge : bool = true
 
+enum PauseState {UNPAUSED, MAP, PAUSED, BOTH}
+var current_PauseState : PauseState
+
+
+# set initial visibility states
+func _ready() -> void:
+	#change pivots for buttons
+	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
+	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	keyboard_controls_menu.modulate.a = 0.0
+	
+	#start initialization - transition into main scene from title
+	transition_color.visible = true
+	set_initial_visibility()
+	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
+	player = get_tree().get_first_node_in_group("Player")
+	for node in player.get_children():
+		if node.name == "ClownRigFBX":
+			player_rig = node
+	for node in player_rig.get_children():
+		if node.name == "InteractionDetector":
+			interaction_detector = node
+	#connect signals for interact
+	interaction_detector.exit_area_entered.connect(on_exit_door_entered)
+	interaction_detector.exit_area_exited.connect(on_door_exited)
+	interaction_detector.npc_entered.connect(on_npc_entered)
+	interaction_detector.npc_exited.connect(on_npc_exited)
+	#timer for transition start
+	transition_timer.start()
+	await transition_timer.timeout
+	#transition stuff
+	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
+	transition_color.visible = true
+	#control schematics UI stuff here
+	var tween_control_on = get_tree().create_tween()
+	tween_control_on.tween_property(control_schematic_full, "modulate:a", 1.0, .3)
+	tween_control_on.set_trans(Tween.TRANS_SINE)
+	tween_control_on.set_ease(Tween.EASE_IN_OUT)
+	await get_tree().create_timer(.1).timeout
+	tween_control_on.play()
+	await tween_control_on.finished
+	if tween_control_on and tween_control_on.is_valid():
+		tween_control_on.kill()
+	control_acknowledge = false
+	audio_control.modulate.a = 0.0
+
 # separated out in case more needs to go in _ready
 func set_initial_visibility() -> void:
 	visible = true
-	stickerbook.visible = false
+	map.visible = false
 	pause_menu.visible = false
 	transition_color.visible = true
 	interact_Door.visible = false
@@ -65,7 +114,41 @@ func set_initial_visibility() -> void:
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
 	inventory.visible = false
+
+
+#pause states
+func check_pause_state() -> void: #sets pause state
+	if pause_menu.visible:
+		if map.visible:
+			current_PauseState = PauseState.BOTH
+		else:
+			current_PauseState = PauseState.PAUSED
+	else:
+		if map.visible:
+			current_PauseState = PauseState.MAP
+		else:
+			current_PauseState = PauseState.UNPAUSED
+
+func change_pause_state() -> void:
+	#when switching from state to another state
 	
+	match current_PauseState:
+		PauseState.UNPAUSED:
+			pass
+		PauseState.MAP:
+			pass
+		PauseState.PAUSED:
+			pass
+		PauseState.BOTH:
+			pass
+		
+		pass
+
+
+
+
+
+
 func toggle_pausing() -> void:
 	get_tree().paused = not get_tree().paused
 	#Input.set_mouse_mode(Input.mouse_mode ^ Input.MOUSE_MODE_VISIBLE ^ Input.MOUSE_MODE_CAPTURED)
@@ -129,9 +212,12 @@ func pause_tween() -> void:
 				else:
 					node.visible = false
 
+
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
-		if not stickerbook.visible: # relying on pause and mouse state already set if stickerbook visible
+		if not map.visible: # relying on pause and mouse state already set if stickerbook visible
 			toggle_pausing()
 			
 		pause_tween()
@@ -139,9 +225,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_stickerbook"):
 		if not pause_menu.visible: # don't allow showing the stickerbook while paused
 			toggle_pausing()
-			stickerbook.visible = not stickerbook.visible
+			map.visible = not map.visible
 			inventory.visible = not inventory.visible
-		if stickerbook.visible:
+		if map.visible:
 			pass
 			# DEBUG check for incorrect stopwatch behavior here
 		else:
@@ -179,50 +265,7 @@ func _input(event: InputEvent) -> void:
 			transition()
 
 
-# set initial visibility states
-func _ready() -> void:
-	#change pivots for buttons
-	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
-	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	keyboard_controls_menu.modulate.a = 0.0
-	
-	#start initialization - transition into main scene from title
-	transition_color.visible = true
-	set_initial_visibility()
-	QuestManager.main_quest_completed.connect(_on_main_quest_completion, CONNECT_ONE_SHOT)
-	player = get_tree().get_first_node_in_group("Player")
-	for node in player.get_children():
-		if node.name == "ClownRigFBX":
-			player_rig = node
-	for node in player_rig.get_children():
-		if node.name == "InteractionDetector":
-			interaction_detector = node
-	#connect signals for interact
-	interaction_detector.exit_area_entered.connect(on_exit_door_entered)
-	interaction_detector.exit_area_exited.connect(on_door_exited)
-	interaction_detector.npc_entered.connect(on_npc_entered)
-	interaction_detector.npc_exited.connect(on_npc_exited)
-	#timer for transition start
-	transition_timer.start()
-	await transition_timer.timeout
-	#transition stuff
-	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
-	transition_color.visible = true
-	#control schematics UI stuff here
-	var tween_control_on = get_tree().create_tween()
-	tween_control_on.tween_property(control_schematic_full, "modulate:a", 1.0, .3)
-	tween_control_on.set_trans(Tween.TRANS_SINE)
-	tween_control_on.set_ease(Tween.EASE_IN_OUT)
-	await get_tree().create_timer(.1).timeout
-	tween_control_on.play()
-	await tween_control_on.finished
-	if tween_control_on and tween_control_on.is_valid():
-		tween_control_on.kill()
-	control_acknowledge = false
-	audio_control.modulate.a = 0.0
+
 
 func _on_quit_button_pressed() -> void:
 	toggle_pausing()
