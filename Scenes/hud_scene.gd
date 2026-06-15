@@ -106,20 +106,6 @@ func set_initial_visibility() -> void:
 	keyboard_controls_menu.modulate.a = 0.0
 
 
-#pause states
-func check_pause_state() -> void: #sets pause state probably unneccessary
-	if pause_menu.visible:
-		if map.visible:
-			current_PauseState = PauseState.BOTH
-		else:
-			current_PauseState = PauseState.PAUSED
-	else:
-		if map.visible:
-			current_PauseState = PauseState.MAP
-		else:
-			current_PauseState = PauseState.UNPAUSED
-			
-
 func change_pause_state() -> void:
 	#when switching from state to another state
 	match current_PauseState:
@@ -163,8 +149,6 @@ func change_pause_state() -> void:
 			pause_menu.modulate.a = 0.0
 			pause_menu.visible = true
 			tween_object(pause_menu, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT, true)
-
-
 
 
 func handle_temp_interact() -> void:
@@ -213,49 +197,7 @@ func tween_object(object, property : String, goal, time : float, transtype : Twe
 
 
 # DEBUG make sure node pause function is working
-# DEBUG possibly a more elegant way to handle pausing from inventory? review here
-func pause_tween() -> void:
-	if pause_menu.visible: #hiding pause menu now
-		#show_buttons() #enforce reset of buttons and menus
-		# DEBUG check for incorrect stopwatch behavior here
-		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		#for node in get_tree().get_nodes_in_group("UI_on_pause"):
-			#node.visible = true
-		#interact_Door.visible = false
-		#interact_Lock.visible = false
-		#interact_NPC.visible = false
-		
-		
-		#var tween_hide = create_tween()
-		#var scale_down = tween_hide.tween_property(pause_menu, "modulate:a", 0.0, .2)
-		#scale_down.set_trans(Tween.TRANS_SINE)
-		#scale_down.set_ease(Tween.EASE_IN)
-		#tween_hide.play()
-		#await tween_hide.finished
-		#pause_menu.visible = false
-		pass
-	else:#showing menu now
-		#pause_menu.modulate.a = 0.0 #tween this instead
-		#pause_menu.visible = true
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		#var tween_unhide = create_tween()
-		#var scale_up = tween_unhide.tween_property(pause_menu, "modulate:a", 1.0, .2)
-		#scale_up.set_trans(Tween.TRANS_SINE)
-		#scale_up.set_ease(Tween.EASE_IN)
-		#tween_unhide.play()
-		#await tween_unhide.finished
-		# DEBUG check for incorrect stopwatch behavior here
-		#for button in get_tree().get_nodes_in_group("Pause_Buttons"):
-			#button.visible = true
-			#button.modulate.a = 1.0
-		#for node in get_tree().get_nodes_in_group("UI_on_pause"):	#all this bullshit is for the interact visibility on pause reset
-			#if temp_interact_node != null:
-				#if node.name == temp_interact_node.name:
-					#node.visible = false	#set to false
-					#temp_interact_pause = true	#set flag to turn back on to true
-				#else:
-					#node.visible = false
-		pass
+
 
 
 
@@ -318,8 +260,6 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	#toggle_pausing()
-	pause_tween()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
 	current_PauseState = PauseState.UNPAUSED
 	change_pause_state()
@@ -342,7 +282,6 @@ func _on_continue_button_pressed() -> void:
 			pass
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	pause_tween()
 	if DialogueManager.is_dialogue_active == true:
 		for node in get_children():
 			if node.name == "TextBox":
@@ -400,8 +339,8 @@ func _on_sound_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	#toggle_pausing()
-	pause_tween()
+	current_PauseState = PauseState.UNPAUSED
+	change_pause_state()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
 	#TODO auto save here probably
 	
@@ -428,12 +367,10 @@ func tween_button(selected_button) -> void:
 	var tween_btn = tween.tween_property(selected_button, "position:y", goal, 1)
 	tween_btn.set_trans(Tween.TRANS_BOUNCE)
 	tween_btn.set_ease(Tween.EASE_OUT)
-	
 	tween.play()
 	await tween.finished
 	if tween and tween.is_valid():
 		tween.kill()
-
 
 func hide_other_buttons(selected_button) -> void:
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
@@ -462,7 +399,6 @@ func show_buttons() -> void: #for tweening buttons to be visible after returning
 	audio_control.visible = false
 	audio_control.modulate.a = 0.0
 	sound_bool = false
-
 
 
 func transition() -> void:
@@ -497,7 +433,6 @@ func on_door_exited() -> void:
 	temp_interact_node = null
 	next_indicator.visible = false
 
-#TODO set tweens for intract visibility
 
 func tween_interact_true(interactparent) -> void:
 	next_indicator.visible = false
@@ -548,7 +483,6 @@ func tween_interact_true(interactparent) -> void:
 		interactlabel_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 		tween_interactlabel.play()
 		
-	
 	label.visible = true
 	#tween modulate label
 	var tween_label = get_tree().create_tween()
@@ -586,7 +520,6 @@ func tween_interact_false(interactparent) -> void:
 		tween_interact_mod.kill()
 	if tween_interact_x_down and tween_interact_x_down.is_valid():
 		tween_interact_x_down.kill()
-		
 
 func immediate_interact_false(interactparent) -> void:
 	var label_margin = interactparent.get_child(1)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="5_ftghg"]
+[ext_resource type="Material" uid="uid://boa6682rd5g03" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_3.tres" id="5_r4epv"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
 [ext_resource type="Texture2D" uid="uid://bwqyohe86y7x2" path="res://UI assets/item slot full.png" id="6_xq43d"]
 [ext_resource type="Texture2D" uid="uid://ix350hw0ny8b" path="res://UI assets/pause menu chromakey.png" id="7_5rjlw"]
@@ -101,26 +102,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ItemSlotFull" type="Sprite2D" parent="PauseContainer" unique_id=2141845565]
+[node name="ItemSlot1Label2" type="Label" parent="PauseContainer" unique_id=187956468]
 z_index = 1
-texture_filter = 1
-material = ExtResource("9_7jlp0")
-position = Vector2(325, 216)
-texture = ExtResource("6_xq43d")
-
-[node name="ItemSlotFull2" type="Sprite2D" parent="PauseContainer" unique_id=480771446]
-z_index = 1
-texture_filter = 1
-material = ExtResource("9_7jlp0")
-position = Vector2(325, 361)
-texture = ExtResource("6_xq43d")
-
-[node name="ItemSlotFull3" type="Sprite2D" parent="PauseContainer" unique_id=1921023327]
-z_index = 1
-texture_filter = 1
-material = ExtResource("9_7jlp0")
-position = Vector2(325, 502)
-texture = ExtResource("6_xq43d")
+material = ExtResource("49_c6udc")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 249.0
+offset_top = 126.0
+offset_right = 356.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 60
+text = "gifts"
+horizontal_alignment = 1
 
 [node name="Inventory" type="Control" parent="PauseContainer" unique_id=1618580870]
 anchors_preset = 0
@@ -130,16 +132,49 @@ offset_right = 355.0
 offset_bottom = 543.0
 script = ExtResource("6_ivp0t")
 
+[node name="ItemSlotEmpty" type="Sprite2D" parent="PauseContainer/Inventory" unique_id=344887346]
+z_index = 1
+texture_filter = 1
+material = ExtResource("5_r4epv")
+position = Vector2(30, 81)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xq43d")
+
+[node name="ItemSlotEmpty2" type="Sprite2D" parent="PauseContainer/Inventory" unique_id=2053427488]
+z_index = 1
+texture_filter = 1
+material = ExtResource("5_r4epv")
+position = Vector2(30, 216)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xq43d")
+
+[node name="ItemSlotEmpty3" type="Sprite2D" parent="PauseContainer/Inventory" unique_id=1034153593]
+z_index = 1
+texture_filter = 1
+material = ExtResource("5_r4epv")
+position = Vector2(30, 349)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xq43d")
+
 [node name="ItemSlot1" type="TextureRect" parent="PauseContainer/Inventory" unique_id=308854507]
+visible = false
 z_index = 50
 texture_filter = 1
 layout_mode = 0
-offset_top = 26.0
+offset_top = 52.399994
 offset_right = 60.0
-offset_bottom = 86.0
+offset_bottom = 112.399994
 size_flags_vertical = 0
 texture = SubResource("PlaceholderTexture2D_30jjv")
 stretch_mode = 5
+
+[node name="ItemSlotFull" type="Sprite2D" parent="PauseContainer/Inventory/ItemSlot1" unique_id=2141845565]
+z_index = -1
+texture_filter = 1
+material = ExtResource("9_7jlp0")
+position = Vector2(30, 29)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xq43d")
 
 [node name="ItemSlot1Label" type="Label" parent="PauseContainer/Inventory/ItemSlot1" unique_id=1911140951]
 material = ExtResource("49_c6udc")
@@ -150,9 +185,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -65.0
-offset_top = 28.0
+offset_top = 23.600006
 offset_right = 75.0
-offset_bottom = 57.0
+offset_bottom = 52.600006
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -163,15 +198,24 @@ text = "Item 1"
 horizontal_alignment = 1
 
 [node name="ItemSlot2" type="TextureRect" parent="PauseContainer/Inventory" unique_id=661199461]
+visible = false
 z_index = 50
 texture_filter = 1
 layout_mode = 0
-offset_top = 169.0
+offset_top = 185.4
 offset_right = 60.0
-offset_bottom = 229.0
+offset_bottom = 245.4
 size_flags_vertical = 4
 texture = SubResource("PlaceholderTexture2D_30jjv")
 stretch_mode = 3
+
+[node name="ItemSlotFull2" type="Sprite2D" parent="PauseContainer/Inventory/ItemSlot2" unique_id=480771446]
+z_index = -1
+texture_filter = 1
+material = ExtResource("9_7jlp0")
+position = Vector2(30, 31)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xq43d")
 
 [node name="ItemSlot2Label" type="Label" parent="PauseContainer/Inventory/ItemSlot2" unique_id=711442911]
 material = ExtResource("49_c6udc")
@@ -182,9 +226,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -65.0
-offset_top = 28.0
+offset_top = 23.600006
 offset_right = 75.0
-offset_bottom = 57.0
+offset_bottom = 52.600006
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -195,16 +239,25 @@ text = "Item 2"
 horizontal_alignment = 1
 
 [node name="ItemSlot3" type="TextureRect" parent="PauseContainer/Inventory" unique_id=947251293]
+visible = false
 z_index = 50
 texture_filter = 1
 layout_mode = 0
-offset_top = 311.0
+offset_top = 319.4
 offset_right = 60.0
-offset_bottom = 371.0
+offset_bottom = 379.4
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = SubResource("PlaceholderTexture2D_30jjv")
 stretch_mode = 5
+
+[node name="ItemSlotFull3" type="Sprite2D" parent="PauseContainer/Inventory/ItemSlot3" unique_id=1921023327]
+z_index = -1
+texture_filter = 1
+material = ExtResource("9_7jlp0")
+position = Vector2(30, 30)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xq43d")
 
 [node name="ItemSlot3Label" type="Label" parent="PauseContainer/Inventory/ItemSlot3" unique_id=1928373476]
 material = ExtResource("49_c6udc")
@@ -215,9 +268,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -65.0
-offset_top = 28.0
+offset_top = 23.600006
 offset_right = 75.0
-offset_bottom = 57.0
+offset_bottom = 52.600006
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -340,7 +393,7 @@ custom_minimum_size = Vector2(170, 70)
 layout_mode = 0
 offset_right = 170.0
 offset_bottom = 70.00006
-pivot_offset_ratio = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
