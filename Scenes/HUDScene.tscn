@@ -317,7 +317,6 @@ theme_override_constants/margin_bottom = 20
 [node name="ButtonContainerVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1454804139]
 z_index = 100
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_constants/separation = 13
 
 [node name="ContinueButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1164040387 groups=["Pause_Buttons"]]

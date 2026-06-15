@@ -375,20 +375,13 @@ func tween_button(selected_button) -> void:
 func hide_other_buttons(selected_button) -> void:
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 		if button.name != selected_button.name:
-			var tween = create_tween()
-			var button_tween = tween.tween_property(button, "modulate:a", 0.0, .5)
-			button_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-			tween.play()
+			tween_object(button, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_OUT, false)
 			button.disabled = true
 			button.mouse_filter = 2
 
 func show_buttons() -> void: #for tweening buttons to be visible after returning to pause
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
-		var tween = create_tween()
-		var button_tween = tween.tween_property(button, "modulate:a", 1.0, .25)
-		button_tween.set_trans(Tween.TRANS_SINE)
-		button_tween.set_ease(Tween.EASE_OUT)
-		tween.play()
+		tween_object(button, "modulate:a", 1.0, .25, Tween.TRANS_SINE, Tween.EASE_OUT, false)
 		button.disabled = false
 		button.mouse_filter = 0
 	controls_button.position.y = 0.0
@@ -400,21 +393,13 @@ func show_buttons() -> void: #for tweening buttons to be visible after returning
 	audio_control.modulate.a = 0.0
 	sound_bool = false
 
-
 func transition() -> void:
 	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
 	transition_color.visible = true
-	var tween_transition = get_tree().create_tween()
-	tween_transition.tween_property(transition_color, "modulate:a", 0.0, .3)
-	tween_transition.set_trans(Tween.TRANS_SINE)
-	tween_transition.set_ease(Tween.EASE_IN_OUT)
 	await get_tree().create_timer(.1).timeout
-	tween_transition.play()
-	await tween_transition.finished
+	await tween_object(transition_color, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT, true)
 	transition_color.visible = false
 	transition_color.modulate.a = 1.0
-	if tween_transition and tween_transition.is_valid():
-		tween_transition.kill()
 
 func on_exit_door_entered(lock_on_door) -> void:
 	interact_NPC.visible = false
@@ -433,7 +418,6 @@ func on_door_exited() -> void:
 	temp_interact_node = null
 	next_indicator.visible = false
 
-
 func tween_interact_true(interactparent) -> void:
 	next_indicator.visible = false
 	next_indicator_label.visible = false
@@ -451,24 +435,10 @@ func tween_interact_true(interactparent) -> void:
 	await get_tree().create_timer(.01).timeout
 	label.modulate.a = 0.0
 	label.visible = false
-	
 	#tween modulate interactparent
-	var tween_interact = get_tree().create_tween()
-	var interact_tweener = tween_interact.tween_property(interactparent, "modulate:a", 1.0, .05)
-	interact_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	tween_interact.play()
-	await tween_interact.finished
-	if tween_interact and tween_interact.is_valid():
-		tween_interact.kill()
+	await tween_object(interactparent, "modulate:a", 1.0, .05, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	#tween size:x
-	var tween_interact_x = get_tree().create_tween()
-	var interact_x_tweener = tween_interact_x.tween_property(label_margin, "custom_minimum_size:x", temp_size, .1)
-	interact_x_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	tween_interact_x.play()
-		
-	await tween_interact_x.finished
-	if tween_interact_x and tween_interact_x.is_valid():
-		tween_interact_x.kill()
+	await tween_object(label_margin, "custom_minimum_size:x", temp_size, .1, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	
 	if interactparent.name == "Interact_Door_Locked":
 		pass
@@ -478,48 +448,23 @@ func tween_interact_true(interactparent) -> void:
 		next_indicator.visible = true
 		next_indicator.play()
 		next_indicator_label.visible = true
-		var tween_interactlabel = get_tree().create_tween()
-		var interactlabel_tweener = tween_interactlabel.tween_property(next_indicator_label, "modulate:a", 1.0, .1)
-		interactlabel_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-		tween_interactlabel.play()
-		
+		tween_object(next_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN, false)
+	
 	label.visible = true
-	#tween modulate label
-	var tween_label = get_tree().create_tween()
-	var label_tweener = tween_label.tween_property(label, "modulate:a", 1.0, .2)
-	label_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	tween_label.play()
-	await tween_label.finished
-	if tween_label and tween_label.is_valid():
-		tween_label.kill()
+	tween_object(label, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
 
 func tween_interact_false(interactparent) -> void:
 	var label_margin = interactparent.get_child(1)
 	var label = label_margin.get_child(0)
 	next_indicator.visible = false
-	
 	label_margin.custom_minimum_size.x = temp_size
 	label.visible = false
-	
 	#tween size to 0
-	var tween_interact_x_down = get_tree().create_tween()
-	var interact_x_down_tweener = tween_interact_x_down.tween_property(label_margin, "custom_minimum_size:x", 0.0, .3)
-	interact_x_down_tweener.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween_interact_x_down.play()
-	
+	tween_object(label_margin, "custom_minimum_size:x", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT, false)
 	#await tween_interact_x_down.finished
-	
-	var tween_interact_mod = get_tree().create_tween()
-	var interact_mod_tweener = tween_interact_mod.tween_property(interactparent, "modulate:a", 0.0, .1).set_delay(.15)
-	interact_mod_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	tween_interact_mod.play()
-	await tween_interact_mod.finished
+	await get_tree().create_timer(.15).timeout
+	await tween_object(interactparent, "modulate:a", 0.0, .1, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	interactparent.visible = false
-	
-	if tween_interact_mod and tween_interact_mod.is_valid():
-		tween_interact_mod.kill()
-	if tween_interact_x_down and tween_interact_x_down.is_valid():
-		tween_interact_x_down.kill()
 
 func immediate_interact_false(interactparent) -> void:
 	var label_margin = interactparent.get_child(1)
@@ -538,14 +483,7 @@ func tween_vignette_switch(flag : bool) -> void:
 	else:
 		DialogueVingette.modulate.a = 1.0
 		alpha = 0.0
-		
-	var tween_vignette = get_tree().create_tween()
-	var vignette_tweener = tween_vignette.tween_property(DialogueVingette, "modulate:a", alpha, .5)
-	vignette_tweener.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	tween_vignette.play()
-	
-	await tween_vignette.finished
-	
+	await tween_object(DialogueVingette,"modulate:a", alpha, .5, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	if not flag:
 		DialogueVingette.visible = false
 
@@ -556,14 +494,12 @@ func on_npc_entered() -> void:
 	temp_interact_node = interact_NPC
 	npc_label.text = "Listen to " + DialogueManager.Character_Names[main_scene.current_planet_id]
 
-
 func on_npc_exited() -> void:
 	tween_interact_false(interact_NPC)
 	interact_Lock.visible = false
 	interact_Door.visible = false
 	temp_interact_node = null
 	next_indicator.visible = false
-
 
 #button anims and sounds
 func _on_continue_button_mouse_entered() -> void:
@@ -572,7 +508,6 @@ func _on_continue_button_mouse_entered() -> void:
 
 func _on_continue_button_mouse_exited() -> void:
 	continue_button.scale = Vector2(1.0, 1.0)
-	
 
 func _on_quit_button_mouse_entered() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
