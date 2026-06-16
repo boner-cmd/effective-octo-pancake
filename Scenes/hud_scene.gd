@@ -33,7 +33,9 @@ var quit_bool : bool = false
 var sound_bool : bool = false
 var controls_bool : bool = false
 var menu_bool : bool = false
+var assert_timer : bool = false
 
+var assert_interact_timer : Timer
 
 var current_npc
 @onready var main_scene: Node3D = $".."
@@ -409,6 +411,8 @@ func tween_interact_true(interactparent) -> void:
 	
 	label.visible = true
 	tween_object(label, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN, true)
+	
+	assert_interact() #auto checks every .5 to solve the weird godot Area3D bugs
 
 func tween_interact_false(interactparent) -> void:
 	var label_margin = interactparent.get_child(1)
@@ -443,6 +447,24 @@ func tween_vignette_switch(flag : bool) -> void:
 	await tween_object(DialogueVingette,"modulate:a", alpha, .5, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	if not flag:
 		DialogueVingette.visible = false
+
+func assert_interact() -> void:
+	if not assert_timer:
+		assert_timer = true
+		assert_interact_timer = Timer.new()
+		assert_interact_timer.wait_time = .5
+		assert_interact_timer.one_shot = false
+		assert_interact_timer.autostart = true
+		assert_interact_timer.timeout.connect(assert_interact)
+		get_tree().root.add_child(assert_interact_timer)
+		
+	if not temp_interact_node||DialogueManager.is_dialogue_active:
+		assert_interact_timer.timeout.disconnect(assert_interact)
+		assert_interact_timer.queue_free()
+		assert_timer = false
+		immediate_interact_false(interact_Door)
+		immediate_interact_false(interact_Lock)
+		immediate_interact_false(interact_NPC)
 
 func on_npc_entered() -> void:
 	tween_interact_true(interact_NPC)
