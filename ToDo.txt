@@ -1,8 +1,7 @@
 MAIN
 	BUGS
 		- possible bug with horse lock/king talk?
-		- interact/next indicator F stays on screen if you fuck around in the area3Ds
-			-timer lockout?
+		
 	ASSETS
 		Michaelwave assets
 			-planet/skybox texture - Markcy
@@ -41,10 +40,10 @@ DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markc
 		
 
 MODELS - ~ 1 week
-	Make higher-fidelity models for the NPCs - Michael
-		- Requires Textures - Michael
+	Make higher-fidelity models for the NPCs		- Michael
+		- Requires Textures 						- Michael
 	NICE TO HAVE:
-		Rigs (most can be reused at least once) - Michael
+		Rigs (most can be reused at least once) 	- Michael
 		Animations (At least an IDLE and a TALK, but if we're going this far we should have NPC RECEIVE and NPC GIVE)
 	CAMERAS
 		rework the camera system to use less cameras
