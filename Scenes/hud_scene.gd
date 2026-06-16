@@ -465,6 +465,10 @@ func assert_interact() -> void:
 		immediate_interact_false(interact_Door)
 		immediate_interact_false(interact_Lock)
 		immediate_interact_false(interact_NPC)
+		
+	if temp_interact_node and not DialogueManager.is_dialogue_active:
+		if temp_interact_node.visible == false:
+			tween_interact_true(temp_interact_node)
 
 func on_npc_entered() -> void:
 	tween_interact_true(interact_NPC)
