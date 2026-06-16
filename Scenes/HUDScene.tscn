@@ -104,8 +104,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ItemSlot1Label2" type="Label" parent="PauseContainer" unique_id=187956468]
+[node name="Gifts label" type="Label" parent="PauseContainer" unique_id=187956468]
 z_index = 1
+texture_filter = 1
 material = ExtResource("49_c6udc")
 layout_mode = 1
 anchors_preset = 8
@@ -1989,18 +1990,8 @@ offset_bottom = 720.0
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_5rjlw")
 
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_pressed"]
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="mouse_entered" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_mouse_exited"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_pressed"]

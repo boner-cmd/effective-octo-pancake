@@ -80,6 +80,10 @@ func _ready() -> void:
 	interaction_detector.exit_area_exited.connect(on_door_exited)
 	interaction_detector.npc_entered.connect(on_npc_entered)
 	interaction_detector.npc_exited.connect(on_npc_exited)
+	#connect mouse area blips and effects
+	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
+		button.mouse_entered.connect(_on_any_mouse_button_entered, CONNECT_APPEND_SOURCE_OBJECT)
+		button.mouse_exited.connect(_on_any_mouse_button_exited, CONNECT_APPEND_SOURCE_OBJECT)
 	#timer for transition start
 	transition_timer.start()
 	await transition_timer.timeout
@@ -106,7 +110,6 @@ func set_initial_visibility() -> void:
 	control_schematic_full.modulate.a = 0.0
 	audio_control.modulate.a = 0.0
 	keyboard_controls_menu.modulate.a = 0.0
-
 
 func change_pause_state() -> void:
 	#when switching from state to another state
@@ -152,7 +155,6 @@ func change_pause_state() -> void:
 			pause_menu.visible = true
 			tween_object(pause_menu, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT, true)
 
-
 func handle_temp_interact() -> void:
 	if current_PauseState == PauseState.UNPAUSED:
 		if temp_interact_node:
@@ -186,7 +188,6 @@ func handle_temp_interact() -> void:
 				_:
 					pass
 
-
 func tween_object(object, property : String, goal, time : float, transtype : Tween.TransitionType, easetype : Tween.EaseType, wait_finish : bool) -> void:
 	var tweened_object = create_tween()
 	var tweener_object = tweened_object.tween_property(object, property, goal, time)
@@ -197,13 +198,7 @@ func tween_object(object, property : String, goal, time : float, transtype : Twe
 		if tweened_object and tweened_object.is_valid():
 			tweened_object.kill()
 
-
 # DEBUG make sure node pause function is working
-
-
-
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		match current_PauseState:
@@ -226,7 +221,7 @@ func _input(event: InputEvent) -> void:
 			_:
 				pass
 		change_pause_state()
-	
+		
 	if event.is_action_pressed("advance_dialogue"):
 		if interact_NPC.visible:
 			if DialogueManager.is_dialogue_active == true:
@@ -257,9 +252,6 @@ func _input(event: InputEvent) -> void:
 				tween_control_off.kill()
 			control_schematic_full.queue_free()
 			transition()
-
-
-
 
 func _on_quit_button_pressed() -> void:
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
@@ -296,23 +288,15 @@ func _on_controls_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	if not controls_bool:
 		controls_bool = true
-		tween_button(controls_button)
+		tween_object(controls_button, "position:y", 194.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT, true)
 		hide_other_buttons(controls_button)
 		keyboard_controls_menu.visible = true
-		var tween = create_tween()
-		var show_controls = tween.tween_property(keyboard_controls_menu, "modulate:a", 1.0, .5)
-		show_controls.set_trans(Tween.TRANS_SINE)
-		show_controls.set_ease(Tween.EASE_IN)
-		tween.play()
+		tween_object(keyboard_controls_menu, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	else:
 		controls_bool = false
-		var tween = create_tween()
-		var hide_controls = tween.tween_property(keyboard_controls_menu, "modulate:a", 0.0, .5)
-		hide_controls.set_trans(Tween.TRANS_SINE)
-		hide_controls.set_ease(Tween.EASE_IN)
-		tween.play()
-		tween_button(controls_button)
-		await tween.finished
+		tween_object(controls_button, "position:y", 0.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT, true)
+		tween_object(keyboard_controls_menu, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN, true)
+		await get_tree().create_timer(.5).timeout
 		keyboard_controls_menu.visible = false
 		show_buttons()
 
@@ -320,23 +304,15 @@ func _on_sound_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	if not sound_bool:
 		sound_bool = true
-		tween_button(sound_button)
+		tween_object(sound_button, "position:y", 292.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT, true)
 		hide_other_buttons(sound_button)
 		audio_control.visible = true
-		var tween = create_tween()
-		var show_controls = tween.tween_property(audio_control, "modulate:a", 1.0, .5)
-		show_controls.set_trans(Tween.TRANS_SINE)
-		show_controls.set_ease(Tween.EASE_IN)
-		tween.play()
+		tween_object(audio_control, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN, true)
 	else:
 		sound_bool = false
-		var tween = create_tween()
-		var hide_controls = tween.tween_property(audio_control, "modulate:a", 0.0, .5)
-		hide_controls.set_trans(Tween.TRANS_SINE)
-		hide_controls.set_ease(Tween.EASE_IN)
-		tween.play()
-		tween_button(sound_button)
-		await  tween.finished
+		tween_object(audio_control, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN, true)
+		tween_object(sound_button, "position:y", 0.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT, true)
+		await get_tree().create_timer(.5).timeout
 		show_buttons()
 
 func _on_menu_button_pressed() -> void:
@@ -352,27 +328,6 @@ func _on_menu_button_pressed() -> void:
 	AudioManager.bgm_cycle(22)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file('res://Scenes/TitleScreen.tscn')
-
-func tween_button(selected_button) -> void:
-	var goal : float = 0.0
-	if selected_button.name == "ControlsButton":
-		if controls_bool:
-			goal = 194.0
-		else:
-			goal = 0.0
-	if selected_button.name == "SoundButton":
-		if sound_bool:
-			goal = 292.0
-		else:
-			goal = 0.0
-	var tween = create_tween()
-	var tween_btn = tween.tween_property(selected_button, "position:y", goal, 1)
-	tween_btn.set_trans(Tween.TRANS_BOUNCE)
-	tween_btn.set_ease(Tween.EASE_OUT)
-	tween.play()
-	await tween.finished
-	if tween and tween.is_valid():
-		tween.kill()
 
 func hide_other_buttons(selected_button) -> void:
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
@@ -503,38 +458,9 @@ func on_npc_exited() -> void:
 	temp_interact_node = null
 	next_indicator.visible = false
 
-#button anims and sounds
-func _on_continue_button_mouse_entered() -> void:
+func _on_any_mouse_button_entered(source : Object) -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	continue_button.scale = Vector2(1.1, 1.1)
+	source.scale = Vector2(1.1, 1.1)
 
-func _on_continue_button_mouse_exited() -> void:
-	continue_button.scale = Vector2(1.0, 1.0)
-
-func _on_quit_button_mouse_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	quit_button.scale = Vector2(1.1, 1.1)
-
-func _on_quit_button_mouse_exited() -> void:
-	quit_button.scale = Vector2(1.0, 1.0)
-
-func _on_sound_button_mouse_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	sound_button.scale = Vector2(1.1, 1.1)
-
-func _on_sound_button_mouse_exited() -> void:
-	sound_button.scale = Vector2(1.0, 1.0)
-
-func _on_controls_button_mouse_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	controls_button.scale = Vector2(1.1, 1.1)
-
-func _on_controls_button_mouse_exited() -> void:
-	controls_button.scale = Vector2(1.0, 1.0)
-
-func _on_menu_button_mouse_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	menu_button.scale = Vector2(1.1, 1.1)
-
-func _on_menu_button_mouse_exited() -> void:
-	menu_button.scale = Vector2(1.0, 1.0)
+func _on_any_mouse_button_exited(source : Object) -> void:
+	source.scale = Vector2(1.0, 1.0)
