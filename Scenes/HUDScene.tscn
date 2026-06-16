@@ -50,6 +50,25 @@
 [ext_resource type="Texture2D" uid="uid://bd60t1t6wqrex" path="res://UI assets/DialogueBoxAssets/Indicator_01.png" id="51_006ca"]
 [ext_resource type="PackedScene" uid="uid://bpvfp05icadyq" path="res://Scenes/control_schematic_full.tscn" id="52_006ca"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsvm7"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_width_left = 400
+border_width_top = 400
+border_width_right = 400
+border_width_bottom = 400
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 550
+corner_radius_top_right = 550
+corner_radius_bottom_right = 550
+corner_radius_bottom_left = 550
+corner_detail = 20
+expand_margin_left = 200.0
+expand_margin_top = 200.0
+expand_margin_right = 200.0
+expand_margin_bottom = 200.0
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_30jjv"]
 size = Vector2(60, 60)
 
@@ -103,6 +122,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Vignette" type="Panel" parent="PauseContainer" unique_id=1985175691]
+z_index = -100
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsvm7")
 
 [node name="Gifts label" type="Label" parent="PauseContainer" unique_id=187956468]
 z_index = 1
@@ -1989,6 +2016,15 @@ offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_5rjlw")
+
+[node name="Vignette" type="Panel" parent="DialogueVignette" unique_id=803784954]
+z_index = -100
+layout_mode = 0
+offset_top = -350.0
+offset_right = 1280.0
+offset_bottom = 370.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsvm7")
 
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_pressed"]
