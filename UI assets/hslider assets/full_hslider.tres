@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://3pq7404tbkd8"]
+
+[ext_resource type="Texture2D" uid="uid://m1m2qp60uvns" path="res://UI assets/hslider assets/hslider_full_1.png" id="1_mem8n"]
+
+[resource]
+content_margin_left = 10.0
+content_margin_top = 100.0
+content_margin_right = 100.0
+content_margin_bottom = 100.0
+texture = ExtResource("1_mem8n")
+expand_margin_left = 5.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+region_rect = Rect2(-10, 15, 307, 32)

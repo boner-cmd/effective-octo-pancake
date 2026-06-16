@@ -9,6 +9,17 @@ const bus_name_overrides : Array[String]= [] 	# override internal bus names here
 const min_slider_size : Vector2 = Vector2(300.0,50.0)
 
 var temp_slider : HSlider
+
+@onready var h_slider_1: HSlider = $HSlider1
+@onready var h_slider_2: HSlider = $HSlider2
+@onready var h_slider_3: HSlider = $HSlider3
+
+@onready var text_material: Resource = preload("res://UI assets/UIShaders/SquiggleTextMaterial_1.tres")
+@onready var hover_material: Resource = preload("res://UI assets/UIShaders/SMALL_UI_MATERIAL_5_HSLIDER_HOVER.tres")
+@onready var original_material: Resource = h_slider_1.material
+
+var SliderArray : Array = []
+
 var temp_slider_label : Label
 
 func set_base_slider_attributes(slider : HSlider) -> void:
@@ -25,7 +36,7 @@ func bus_setup() -> void:
 	for bus in AudioServer.bus_count:
 		bus_name = AudioServer.get_bus_name(bus)
 		slider_name = bus_name + "AudioSlider"
-		temp_slider = HSlider.new()
+		temp_slider = SliderArray[bus]
 		temp_slider_label = Label.new()
 		
 		set_base_slider_attributes(temp_slider)
@@ -48,15 +59,21 @@ func bus_setup() -> void:
 			
 			
 		# add nodes to tree
-		add_child(temp_slider)
+		# add_child(temp_slider)
 		temp_slider.add_child(temp_slider_label)
 		temp_slider_label.add_theme_font_override("font", AH_2_REGULAR)
 		temp_slider_label.add_theme_font_size_override("font_size", 40)
-		temp_slider_label.position.y -= 10
+		temp_slider_label.position.y -= 20
+		temp_slider_label.material = text_material
 		# connect signals
 		temp_slider.value_changed.connect(_on_any_value_changed, CONNECT_APPEND_SOURCE_OBJECT )
+		temp_slider.mouse_entered.connect(_set_hover_material, CONNECT_APPEND_SOURCE_OBJECT)
+		temp_slider.mouse_exited.connect(_unset_hover_material, CONNECT_APPEND_SOURCE_OBJECT)
 
 func _ready() -> void:
+	SliderArray.append(h_slider_1)
+	SliderArray.append(h_slider_2)
+	SliderArray.append(h_slider_3)
 	bus_setup() # sanity check
 
 func _on_any_value_changed(new_volume: float, source : Object):
@@ -65,3 +82,9 @@ func _on_any_value_changed(new_volume: float, source : Object):
 
 func _on_any_mouse_exited() -> void:
 	release_focus()
+
+func _set_hover_material(source : Object) -> void:
+	source.material = hover_material
+
+func _unset_hover_material(source:Object) -> void:
+	source.material = original_material

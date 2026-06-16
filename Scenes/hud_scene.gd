@@ -63,7 +63,9 @@ func _ready() -> void:
 	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
-	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)	
+	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
+	
+	audio_control.position.y = -50.0
 	#start initialization - transition into main scene from title
 	set_initial_visibility()
 	player = get_tree().get_first_node_in_group("Player")

@@ -19,7 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="12_oc4d8"]
 [ext_resource type="Texture2D" uid="uid://ci7bdiy136mm3" path="res://Map assets/Line example.png" id="12_yo8np"]
 [ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="13_74rbg"]
+[ext_resource type="Material" uid="uid://j7af50emycsi" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_4_HSLIDER.tres" id="13_qsvm7"]
 [ext_resource type="Texture2D" uid="uid://dpvw058sxww2v" path="res://Map assets/dark planet.png" id="13_yo8np"]
+[ext_resource type="Theme" uid="uid://duv00eumyyl7w" path="res://UI assets/hslider assets/hslider_theme.tres" id="14_82xaf"]
 [ext_resource type="Texture2D" uid="uid://4ka2y18fsjw" path="res://Map assets/horse.png" id="14_ftghg"]
 [ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="14_npi88"]
 [ext_resource type="Texture2D" uid="uid://d6xdk0p4s3iy" path="res://Map assets/astronaut.png" id="15_4u7pl"]
@@ -462,13 +464,34 @@ theme_override_font_sizes/font_size = 50
 text = "quit"
 
 [node name="AudioControlVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1394599374]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/separation = 40
 alignment = 1
 script = ExtResource("2_yw1hr")
+
+[node name="HSlider1" type="HSlider" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=1273405224]
+texture_filter = 1
+material = ExtResource("13_qsvm7")
+layout_mode = 2
+theme = ExtResource("14_82xaf")
+
+[node name="HSlider2" type="HSlider" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=1981283166]
+texture_filter = 1
+material = ExtResource("13_qsvm7")
+layout_mode = 2
+theme = ExtResource("14_82xaf")
+
+[node name="HSlider3" type="HSlider" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=1926658789]
+texture_filter = 1
+material = ExtResource("13_qsvm7")
+layout_mode = 2
+theme = ExtResource("14_82xaf")
+
+[node name="Control" type="Control" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=132929891]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 
 [node name="KeyboardControlsMenu" type="Control" parent="PauseContainer" unique_id=1577898628]
 visible = false
