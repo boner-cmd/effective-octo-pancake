@@ -10,6 +10,9 @@ var temp_size : float
 # TODO replace this with the INTERACT_TYPE enum
 var temp_interact_node : MarginContainer
 
+var current_tweens : Dictionary = {}
+var current_tween_index : int
+
 var continue_bool : bool = false
 var quit_bool : bool = false
 var sound_bool : bool = false
@@ -20,6 +23,7 @@ var control_acknowledge : bool = true
 
 #  TODO review these
 var interaction_latch : bool = false
+var debounce_interaction : bool = false
 
 # default states for state trackers
 var pause_state : PAUSESTATE = PAUSESTATE.UNPAUSED
@@ -68,6 +72,7 @@ func _ready() -> void:
 	control_schematic_full.modulate.a = 0.0
 	audio_control.modulate.a = 0.0
 	keyboard_controls_menu.modulate.a = 0.0
+	next_indicator.modulate.a = 0.0
 
 	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
@@ -102,11 +107,16 @@ func _ready() -> void:
 	control_acknowledge = false
 
 
+func debounce_timer() -> void :
+	await get_tree().create_timer(.2).timeout
+	debounce_interaction = false
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
 		if alpha_modulated(pause_menu):
 			change_pause_state()
-
+	
 	if event.is_action_pressed("toggle_map"):
 		if alpha_modulated(map):
 			match pause_state:
@@ -123,7 +133,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					interact_door_open.visible = false
 					interact_door_locked.visible = false
 					interact_npc_margin.visible = false
-					next_indicator.visible = false
+					next_indicator.modulate.a = 0.0
 					
 					map.visible = true
 					await tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
@@ -141,7 +151,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				_:
 					pass
 					# do nothing if the pause screen is up
-
+	
 	if event.is_action_pressed("advance_dialogue"):
 		## control schematic
 		## TODO Mike says there are updates to be made here
@@ -158,25 +168,26 @@ func _unhandled_input(event: InputEvent) -> void:
 				tween_control_off.kill()
 			control_schematic_full.queue_free()
 			transition()
-
-		if interact_npc_margin.visible:
+	
+	if event.is_action_pressed("interact"):
+		if not interaction_latch and interact_npc_margin.visible:
+			await deactivate_tween_interact(interact_npc_margin)
 			if DialogueManager.is_dialogue_active:
-				deactivate_tween_interact(interact_npc_margin)
-				next_indicator.visible = false
-				next_indicator_label.visible = false
-				next_indicator_label.modulate.a = 0.0
+				#deactivate_tween_interact(interact_npc_margin)
+				tween_vignette_switch(true)
+				#next_indicator.modulate.a = 0.0
+				#next_indicator_label.visible = false
+				#next_indicator_label.modulate.a = 0.0
+				#interact_npc_margin.visible = false
 				interaction_latch = true
-				tween_vignette_switch(true) # does this need an await?
-				interact_npc_margin.visible = false
 		elif interaction_latch:
-			print("entered latch ", next_indicator.visible)
-			await get_tree().create_timer(.05).timeout
 			if not DialogueManager.is_dialogue_active:
+				interaction_latch = false
 				interact_npc_margin.visible = true
 				tween_vignette_switch(false)
 				await get_tree().create_timer(.29).timeout
 				activate_tween_interact(interact_npc_margin)
-				interaction_latch = false
+				
 
 
 func _on_quit_button_pressed() -> void:
@@ -275,7 +286,7 @@ func _on_door_exited() -> void:
 		INTERACT_TYPE.DOOR_OPEN:
 			deactivate_tween_interact(interact_door_open)
 	interact_touched = INTERACT_TYPE.NONE
-	next_indicator.visible = false
+	next_indicator.modulate.a = 0.0
 
 
 func _on_exit_door_entered(lock_on_door : bool) -> void:
@@ -364,11 +375,22 @@ func show_minor_ui() -> void:
 
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
 			transtype : Tween.TransitionType, easetype : Tween.EaseType) -> void:
-	var tweened_object = create_tween()
-	var tweener_object = tweened_object.tween_property(object, property, goal, time)
+	
+	if object.is_in_group("Current_Tweened_Objects"):
+		current_tweens[object].kill()
+		current_tweens.erase(object)
+		object.remove_from_group("Current_Tweened_Objects")
+	
+	object.add_to_group("Current_Tweened_Objects")
+	var tweened_object = get_tree().create_tween()
+	tweened_object.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	current_tweens[object] = tweened_object
+	var tweener_object = tweened_object.tween_property(object, property, goal, time).from_current()
 	tweener_object.set_trans(transtype).set_ease(easetype)
 	tweened_object.play()
 	await tweened_object.finished
+	current_tweens.erase(object)
+	object.remove_from_group("Current_Tweened_Objects")
 	if tweened_object and tweened_object.is_valid():
 		tweened_object.kill()
 
@@ -402,7 +424,7 @@ func transition() -> void:
 
 
 func activate_tween_interact(interact_parent : MarginContainer) -> void:
-	next_indicator.visible = false
+	next_indicator.modulate.a = 0.0
 	next_indicator_label.visible = false
 	next_indicator_label.modulate.a = 0.0
 	var label_margin = interact_parent.get_child(1)
@@ -426,7 +448,7 @@ func activate_tween_interact(interact_parent : MarginContainer) -> void:
 	if not interact_parent.name == "InteractDoorLocked":
 		next_indicator.stop()
 		next_indicator.frame = 0
-		next_indicator.visible = true
+		next_indicator.modulate.a = 1.0
 		next_indicator.play()
 		next_indicator_label.visible = true
 		tween_object(next_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
@@ -438,14 +460,14 @@ func activate_tween_interact(interact_parent : MarginContainer) -> void:
 func deactivate_tween_interact(interact_parent : MarginContainer) -> void:
 	var label_margin = interact_parent.get_child(1)
 	var label = label_margin.get_child(0)
-	next_indicator.visible = false
+	next_indicator.modulate.a = 0.0
 	label_margin.custom_minimum_size.x = temp_size
 	label.visible = false
 	#tween size to 0
 	tween_object(label_margin, "custom_minimum_size:x", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
 	await get_tree().create_timer(.15).timeout
 	await tween_object(interact_parent, "modulate:a", 0.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
-	interact_parent.visible = false
+	#interact_parent.visible = false
 
 
 ## TODO suspect this needs a better name
@@ -453,7 +475,7 @@ func immediate_interact_false(interact_parent : MarginContainer) -> void:
 	var label_margin = interact_parent.get_child(1)
 	var label = label_margin.get_child(0)
 	label_margin.custom_minimum_size.x = 0.0
-	next_indicator.visible = false
+	next_indicator.modulate.a = 0.0
 	interact_parent.visible = false
 	label.visible = false
 

@@ -31,6 +31,9 @@ autoplay = "default"
 unique_name_in_owner = true
 follow_viewport_enabled = true
 
+[node name="NextIndicator" parent="HUDOverlay/InteractMargin/Control" parent_id_path=PackedInt32Array(1314492231, 1527224117) index="0" unique_id=625676884]
+visible = true
+
 [node name="DefaultLoadingPlanet" type="StaticBody3D" parent="." unique_id=7469528]
 collision_layer = 2
 

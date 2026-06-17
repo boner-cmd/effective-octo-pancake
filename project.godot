@@ -44,6 +44,7 @@ Player="global group for player"
 Completion_Change="this is a group for all characters that have scripts for completion"
 UI_on_pause="this group is for hiding on pause"
 Pause_Buttons="a group containing initial button stack in the pause menu"
+Current_Tweened_Objects="group for tweens to be added to"
 
 [input]
 
