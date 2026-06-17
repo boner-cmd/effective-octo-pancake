@@ -711,11 +711,12 @@ const debug : Dictionary[QuestManager.CharacterName, Array] = {
 	QuestManager.CharacterName.KING_2 : debug_lines,
 	}
 
+@export var use_debug_lines : bool = true
+
 var already_tweened : bool = false
 var is_dialogue_active : bool = false
 var can_advance_line : bool = false
 var combines_lines : bool = false
-var use_debug_lines : bool = true
 
 # lock flags
 var horse_lock : bool = true
@@ -743,7 +744,7 @@ var text_box : MarginContainer
 var sfx : AudioStream
 var dialogue_finished_sfx : AudioStream
 
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("advance_dialogue") and is_dialogue_active and can_advance_line:
 		var NextIndicator = text_box.next_indicator
 		if NextIndicator.get_child(0).visible:

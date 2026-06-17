@@ -333,7 +333,7 @@ theme_override_font_sizes/font_size = 70
 text = "pause"
 vertical_alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PauseContainer" unique_id=1198872430]
+[node name="PauseMargin" type="MarginContainer" parent="PauseContainer" unique_id=1198872430]
 layout_mode = 0
 offset_left = 493.0
 offset_top = 118.0
@@ -344,12 +344,13 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ButtonContainerVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1454804139]
+[node name="ButtonContainerVBox" type="VBoxContainer" parent="PauseContainer/PauseMargin" unique_id=1454804139]
 z_index = 100
 layout_mode = 2
 theme_override_constants/separation = 13
 
-[node name="ContinueButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1164040387 groups=["Pause_Buttons"]]
+[node name="ContinueButton" type="TextureButton" parent="PauseContainer/PauseMargin/ButtonContainerVBox" unique_id=1164040387 groups=["Pause_Buttons"]]
+unique_name_in_owner = true
 process_mode = 3
 z_index = 100
 texture_filter = 1
@@ -361,7 +362,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
 
-[node name="Label" type="Label" parent="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" unique_id=1276166054]
+[node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/ContinueButton" unique_id=1276166054]
 material = ExtResource("49_c6udc")
 layout_mode = 0
 offset_left = 19.0
@@ -374,12 +375,13 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 50
 text = "continue"
 
-[node name="Sound_Wrap" type="Control" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=211452266]
+[node name="Sound_Wrap" type="Control" parent="PauseContainer/PauseMargin/ButtonContainerVBox" unique_id=211452266]
 custom_minimum_size = Vector2(0, 89)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="SoundButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap" unique_id=1016245134 groups=["Pause_Buttons"]]
+[node name="SoundButton" type="TextureButton" parent="PauseContainer/PauseMargin/ButtonContainerVBox/Sound_Wrap" unique_id=1016245134 groups=["Pause_Buttons"]]
+unique_name_in_owner = true
 process_mode = 3
 z_index = 100
 texture_filter = 1
@@ -395,7 +397,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
 
-[node name="Label" type="Label" parent="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" unique_id=516837959]
+[node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/Sound_Wrap/SoundButton" unique_id=516837959]
 material = ExtResource("49_c6udc")
 layout_mode = 0
 offset_left = 45.47998
@@ -408,12 +410,13 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 50
 text = "sound"
 
-[node name="Controls_Wrap" type="Control" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1443427918]
+[node name="Controls_Wrap" type="Control" parent="PauseContainer/PauseMargin/ButtonContainerVBox" unique_id=1443427918]
 custom_minimum_size = Vector2(0, 89)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ControlsButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap" unique_id=2043455945 groups=["Pause_Buttons"]]
+[node name="ControlsButton" type="TextureButton" parent="PauseContainer/PauseMargin/ButtonContainerVBox/Controls_Wrap" unique_id=2043455945 groups=["Pause_Buttons"]]
+unique_name_in_owner = true
 process_mode = 3
 z_index = 100
 texture_filter = 1
@@ -428,7 +431,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
 
-[node name="Label" type="Label" parent="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" unique_id=943305220]
+[node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/Controls_Wrap/ControlsButton" unique_id=943305220]
 material = ExtResource("49_c6udc")
 layout_mode = 0
 offset_left = 17.0
@@ -441,7 +444,8 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 50
 text = "controls"
 
-[node name="MenuButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=1067800296 groups=["Pause_Buttons"]]
+[node name="MenuButton" type="TextureButton" parent="PauseContainer/PauseMargin/ButtonContainerVBox" unique_id=1067800296 groups=["Pause_Buttons"]]
+unique_name_in_owner = true
 process_mode = 3
 z_index = 100
 texture_filter = 1
@@ -453,7 +457,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
 
-[node name="Label" type="Label" parent="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" unique_id=1183872336]
+[node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/MenuButton" unique_id=1183872336]
 material = ExtResource("49_c6udc")
 layout_mode = 0
 offset_left = 20.0
@@ -466,7 +470,8 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
 text = "main menu"
 
-[node name="QuitButton" type="TextureButton" parent="PauseContainer/MarginContainer/ButtonContainerVBox" unique_id=54585596 groups=["Pause_Buttons"]]
+[node name="QuitButton" type="TextureButton" parent="PauseContainer/PauseMargin/ButtonContainerVBox" unique_id=54585596 groups=["Pause_Buttons"]]
+unique_name_in_owner = true
 process_mode = 3
 z_index = 100
 texture_filter = 1
@@ -478,7 +483,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
 
-[node name="Label" type="Label" parent="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" unique_id=147428945]
+[node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/QuitButton" unique_id=147428945]
 material = ExtResource("49_c6udc")
 layout_mode = 0
 offset_left = 57.0
@@ -491,7 +496,8 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 50
 text = "quit"
 
-[node name="AudioControlVBox" type="VBoxContainer" parent="PauseContainer/MarginContainer" unique_id=1394599374]
+[node name="AudioControlVBox" type="VBoxContainer" parent="PauseContainer/PauseMargin" unique_id=1394599374]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
@@ -499,29 +505,30 @@ theme_override_constants/separation = 40
 alignment = 1
 script = ExtResource("2_yw1hr")
 
-[node name="HSlider1" type="HSlider" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=1273405224]
+[node name="HSlider1" type="HSlider" parent="PauseContainer/PauseMargin/AudioControlVBox" unique_id=1273405224]
 texture_filter = 1
 material = ExtResource("13_qsvm7")
 layout_mode = 2
 theme = ExtResource("14_82xaf")
 
-[node name="HSlider2" type="HSlider" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=1981283166]
+[node name="HSlider2" type="HSlider" parent="PauseContainer/PauseMargin/AudioControlVBox" unique_id=1981283166]
 texture_filter = 1
 material = ExtResource("13_qsvm7")
 layout_mode = 2
 theme = ExtResource("14_82xaf")
 
-[node name="HSlider3" type="HSlider" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=1926658789]
+[node name="HSlider3" type="HSlider" parent="PauseContainer/PauseMargin/AudioControlVBox" unique_id=1926658789]
 texture_filter = 1
 material = ExtResource("13_qsvm7")
 layout_mode = 2
 theme = ExtResource("14_82xaf")
 
-[node name="Control" type="Control" parent="PauseContainer/MarginContainer/AudioControlVBox" unique_id=132929891]
+[node name="Control" type="Control" parent="PauseContainer/PauseMargin/AudioControlVBox" unique_id=132929891]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="KeyboardControlsMenu" type="Control" parent="PauseContainer" unique_id=1577898628]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 0
 offset_left = 496.0
@@ -1830,7 +1837,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2078868357]
+[node name="InteractMargin" type="MarginContainer" parent="." unique_id=2078868357 groups=["UI_on_pause"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1846,12 +1853,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="MarginContainer" unique_id=1527224117]
+[node name="Control" type="Control" parent="InteractMargin" unique_id=1527224117]
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="NextIndicator" type="AnimatedSprite2D" parent="MarginContainer/Control" unique_id=625676884]
+[node name="NextIndicator" type="AnimatedSprite2D" parent="InteractMargin/Control" unique_id=625676884]
+unique_name_in_owner = true
 visible = false
 texture_filter = 1
 material = ExtResource("50_c6udc")
@@ -1863,7 +1871,8 @@ frame_progress = 1.0
 centered = false
 offset = Vector2(-45, 0)
 
-[node name="Label" type="Label" parent="MarginContainer/Control/NextIndicator" unique_id=1247362194]
+[node name="NextIndicatorLabel" type="Label" parent="InteractMargin/Control/NextIndicator" unique_id=1247362194]
+unique_name_in_owner = true
 visible = false
 material = ExtResource("49_c6udc")
 offset_left = -9.0
@@ -1876,14 +1885,15 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 50
 text = "F"
 
-[node name="Interact_Door_Open" type="MarginContainer" parent="MarginContainer" unique_id=128376500]
+[node name="InteractDoorOpen" type="MarginContainer" parent="InteractMargin" unique_id=128376500]
+unique_name_in_owner = true
 visible = false
 z_index = -4
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Interact_Door_Open" unique_id=1657040176]
+[node name="NinePatchRect" type="NinePatchRect" parent="InteractMargin/InteractDoorOpen" unique_id=1657040176]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
 material = ExtResource("9_7jlp0")
@@ -1893,7 +1903,7 @@ texture = ExtResource("48_82xaf")
 patch_margin_left = 70
 patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Interact_Door_Open" unique_id=423976122]
+[node name="MarginContainer" type="MarginContainer" parent="InteractMargin/InteractDoorOpen" unique_id=423976122]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1902,7 +1912,7 @@ theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 10
 
-[node name="ExitLabel" type="Label" parent="MarginContainer/Interact_Door_Open/MarginContainer" unique_id=603604430]
+[node name="ExitLabel" type="Label" parent="InteractMargin/InteractDoorOpen/MarginContainer" unique_id=603604430]
 material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -1914,14 +1924,15 @@ theme_override_font_sizes/font_size = 40
 text = "travel through the void"
 vertical_alignment = 1
 
-[node name="Interact_Door_Locked" type="MarginContainer" parent="MarginContainer" unique_id=1176883756]
+[node name="InteractDoorLocked" type="MarginContainer" parent="InteractMargin" unique_id=1176883756]
+unique_name_in_owner = true
 visible = false
 z_index = -4
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Interact_Door_Locked" unique_id=323176135]
+[node name="NinePatchRect" type="NinePatchRect" parent="InteractMargin/InteractDoorLocked" unique_id=323176135]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
 material = ExtResource("9_7jlp0")
@@ -1931,7 +1942,7 @@ texture = ExtResource("48_82xaf")
 patch_margin_left = 70
 patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Interact_Door_Locked" unique_id=439988986]
+[node name="MarginContainer" type="MarginContainer" parent="InteractMargin/InteractDoorLocked" unique_id=439988986]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1940,7 +1951,7 @@ theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 10
 
-[node name="LockedLabel" type="Label" parent="MarginContainer/Interact_Door_Locked/MarginContainer" unique_id=1964867982]
+[node name="LockedLabel" type="Label" parent="InteractMargin/InteractDoorLocked/MarginContainer" unique_id=1964867982]
 material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -1953,14 +1964,15 @@ text = "void locked"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Interact_NPC" type="MarginContainer" parent="MarginContainer" unique_id=1414159629]
+[node name="InteractNPCMargin" type="MarginContainer" parent="InteractMargin" unique_id=1414159629]
+unique_name_in_owner = true
 visible = false
 z_index = -4
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Interact_NPC" unique_id=1501442672]
+[node name="NinePatchRect" type="NinePatchRect" parent="InteractMargin/InteractNPCMargin" unique_id=1501442672]
 self_modulate = Color(0.80049086, 0.80049074, 0.80049074, 1)
 texture_filter = 1
 material = ExtResource("45_82vjh")
@@ -1970,7 +1982,7 @@ texture = ExtResource("48_82xaf")
 patch_margin_left = 70
 patch_margin_right = 75
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Interact_NPC" unique_id=2090593122]
+[node name="NPCLabelMargin" type="MarginContainer" parent="InteractMargin/InteractNPCMargin" unique_id=2090593122]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1980,7 +1992,8 @@ theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 10
 
-[node name="NPC" type="Label" parent="MarginContainer/Interact_NPC/MarginContainer" unique_id=157795564]
+[node name="InteractNPCLabel" type="Label" parent="InteractMargin/InteractNPCMargin/NPCLabelMargin" unique_id=157795564]
+unique_name_in_owner = true
 material = ExtResource("49_c6udc")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -2026,8 +2039,8 @@ offset_bottom = 370.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qsvm7")
 
-[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_pressed"]
-[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="PauseContainer/MarginContainer/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseContainer/PauseMargin/ButtonContainerVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseContainer/PauseMargin/ButtonContainerVBox/Sound_Wrap/SoundButton" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="PauseContainer/PauseMargin/ButtonContainerVBox/Controls_Wrap/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="PauseContainer/PauseMargin/ButtonContainerVBox/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="PauseContainer/PauseMargin/ButtonContainerVBox/QuitButton" to="." method="_on_quit_button_pressed"]
