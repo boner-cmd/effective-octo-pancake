@@ -1,24 +1,31 @@
 extends Node
-@onready var cloud_parent: Control = $CanvasLayer/CloudParent
-@onready var cloud_tweens: Array = cloud_parent.tween_array
-@onready var title_screen_letters: Node3D = $"Node3D/title_screen_letters"
-@onready var timer: Timer = $Node3D/Timer
+
 var letter_array : Array = []
 var tween_letter : Tween
 var rot_change : float = deg_to_rad(-20.0)
 var tween_letter_z : Tween
 var tween_letter_x : Tween
 var timer_time : float = 2.0
+
 @onready var bg_container_largeStar: MarginContainer = $"CanvasLayer/BG_Container 2"
 @onready var bg_container_smallStar: MarginContainer = $"CanvasLayer/BG_Container 3"
 @onready var bg_container_largeShadow: MarginContainer = $"CanvasLayer/BG_Container 4"
 @onready var bg_container_smallShadow: MarginContainer = $"CanvasLayer/BG_Container 5"
+@onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
+@onready var title_screen_planet: MeshInstance3D = $Node3D/TitleScreenPlanet
+
+
+@onready var cloud_parent: Control = $CanvasLayer/CloudParent
+@onready var cloud_tweens: Array = cloud_parent.tween_array
+@onready var title_screen_letters: Node3D = $"Node3D/title_screen_letters"
+@onready var timer: Timer = $Node3D/Timer
 
 @onready var sky: TextureRect = $CanvasLayer/Panel/Sky
 
 @onready var new_game_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton
 @onready var quit_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton
 @onready var credits: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits
+
 
 func tween_letters() -> void:
 	for letter in letter_array:
@@ -38,6 +45,7 @@ func _ready() -> void:
 	credits.pivot_offset = credits.size / 2.0
 	letter_array = title_screen_letters.get_children()
 	tween_letters()
+	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
 
 func _process(delta: float) -> void:
 	sky.rotation_degrees += delta 
@@ -47,12 +55,18 @@ func _process(delta: float) -> void:
 	bg_container_smallStar.rotation_degrees += delta * .1
 	bg_container_smallShadow.rotation_degrees = bg_container_smallStar.rotation_degrees
 	
+	title_screen_planet.rotation_degrees.x -= delta * 15.0
+	
+	
 	if bg_container_largeStar.rotation_degrees > 360.0:
 		bg_container_largeStar.rotation_degrees = 0.0
 	if bg_container_smallStar.rotation_degrees > 360.0:
 		bg_container_smallStar.rotation_degrees = 0.0
 	if sky.rotation_degrees > 360.0:
 		sky.rotation_degrees = 0.0
+	if title_screen_planet.rotation_degrees.x < -360.0:
+		title_screen_planet.rotation_degrees.x = 0.0
+		
 
 func _on_new_game_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
