@@ -19,6 +19,6 @@ shader_parameter/fps = 4.0
 shader_parameter/noise = ExtResource("2_vy1ft")
 shader_parameter/gradient = SubResource("GradientTexture1D_wks6e")
 shader_parameter/gradient_offset = Vector2(0.05, 0.05)
-shader_parameter/replacement_color = Color(0.043137256, 0.08235294, 0.18039216, 1)
+shader_parameter/replacement_color = Color(0.23529412, 0, 0.43137255, 1)
 shader_parameter/key_color = Color(0, 1, 0, 1)
 shader_parameter/tolerance = 0.1
