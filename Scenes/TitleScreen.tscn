@@ -6,13 +6,16 @@
 [ext_resource type="Material" uid="uid://bfc2invtr3bgv" path="res://UI assets/title_planet.tres" id="4_3ah5x"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
 [ext_resource type="Texture2D" uid="uid://10iou6fqfaoq" path="res://VFX assets/sparkle.png" id="6_4hokt"]
+[ext_resource type="Texture2D" uid="uid://vste313bxffb" path="res://UI assets/NewTitleScreen/title screen background.png" id="6_jhb10"]
 [ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
 [ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
 [ext_resource type="Texture2D" uid="uid://cofv1s1vfrc2w" path="res://UI assets/tsbg4.png" id="7_3ah5x"]
 [ext_resource type="Texture2D" uid="uid://d4c43yiyd04so" path="res://UI assets/tsbg3.png" id="7_75epk"]
+[ext_resource type="Script" uid="uid://dwtpkemj41uqc" path="res://Scenes/cloud_parent.gd" id="7_fvr0n"]
 [ext_resource type="Texture2D" uid="uid://b1n6ktxlrsojx" path="res://UI assets/AH itchio background trans.png" id="7_jhb10"]
 [ext_resource type="Texture2D" uid="uid://boswrct5xnm4s" path="res://UI assets/tsbg2.png" id="8_3ah5x"]
 [ext_resource type="Texture2D" uid="uid://c8pwuraxgwshx" path="res://UI assets/credits unselected.png" id="8_awp6w"]
+[ext_resource type="Texture2D" uid="uid://gl2j0x06cg84" path="res://UI assets/NewTitleScreen/title screen cloud.png" id="8_o6bmn"]
 [ext_resource type="Texture2D" uid="uid://ruda2duna01l" path="res://UI assets/new unselected.png" id="8_qu6cc"]
 [ext_resource type="Texture2D" uid="uid://bomjbruvphyau" path="res://UI assets/new selected.png" id="9_4hokt"]
 [ext_resource type="Texture2D" uid="uid://c81c88gmqxlj4" path="res://UI assets/tsbg1.png" id="9_jhb10"]
@@ -116,7 +119,7 @@ size = 2.878
 [node name="Node3D" type="Node3D" parent="." unique_id=1466614410]
 
 [node name="title_screen_letters" parent="Node3D" unique_id=841955191 instance=ExtResource("2_7whhf")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.43494105, 0, -0.38064346)
 
 [node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1525247311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8550289, 0.07640395, -0.8238251)
@@ -182,7 +185,7 @@ material_override = ExtResource("3_qu6cc")
 environment = SubResource("Environment_emot1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=134751511]
-transform = Transform3D(0.96740305, 0.120547496, 0.22270955, -0.16570538, -0.36370814, 0.9166559, 0.19150187, -0.92368007, -0.331877, 2.2268767, -11.058647, 5.2548213)
+transform = Transform3D(-1.2894859e-08, -0.295, 0, 0.295, -1.2894859e-08, 0, 0, 0, 0.295, -0.0072271824, -11.058647, 1.9328823)
 material_override = ExtResource("4_3ah5x")
 mesh = SubResource("SphereMesh_7whhf")
 
@@ -212,94 +215,94 @@ spot_attenuation = -2.36
 spot_angle = 48.36
 
 [node name="ClownRigFBX" parent="Node3D" unique_id=77601808 instance=ExtResource("4_pie25")]
-transform = Transform3D(-0.12128098, -4.6596003e-09, 0.1590312, -0.1590312, -2.5909472e-08, -0.12128098, 2.3427678e-08, -0.2, 1.2006523e-08, 0.60955745, -7.846285, 0.6989892)
+transform = Transform3D(-0.355, 2.997759e-08, 8.0324725e-09, 0, 0.09188077, -0.34290364, -3.1035086e-08, -0.34290364, -0.09188077, -0.005, -7.846, 0.597)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=1991360123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6188245, 1.5487471, -0.4971826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5505977, 1.5487471, -0.4971826)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Node3D" unique_id=2015454633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4642396, 1.4607825, -0.4971826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7463994, 1.4607825, -0.4971826)
 light_energy = 0.658
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Node3D" unique_id=785524507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55888295, -0.39759517, -0.4971826)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, -1.2012179, -0.39759517, -0.4971826)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Node3D" unique_id=1928620331]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.731247, -0.39759517, -0.4971826)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, 1.088912, -0.39759517, -0.4971826)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Node3D" unique_id=1899004780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5587263, -0.39759517, -0.4971826)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, -0.08360863, -0.39759517, -0.4971826)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="Node3D" unique_id=2138953521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55888295, 0.19840771, -1.368267)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, -1.2012179, 0.19840771, -1.368267)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Node3D" unique_id=649529995]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.731247, 0.19840771, -1.368267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.053227, 0.19840771, -1.368267)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Node3D" unique_id=2050595755]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5587263, 0.19840771, -1.368267)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, -0.08360863, 0.19840771, -1.368267)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D10" type="OmniLight3D" parent="Node3D" unique_id=1052225232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55888295, 0.19840771, 0.3969829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2012179, 0.19840771, 0.00057834387)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="Node3D" unique_id=1618510007]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.731247, 0.19840771, 0.3969829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.053227, 0.19840771, 0.00057834387)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D12" type="OmniLight3D" parent="Node3D" unique_id=1702891732]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5587263, 0.19840771, 0.3969829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08360863, 0.19840771, 0.00057834387)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D13" type="OmniLight3D" parent="Node3D" unique_id=2079309494]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55888295, 0.7563292, -0.79841423)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, -1.2012179, 0.7563292, -0.79841423)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D14" type="OmniLight3D" parent="Node3D" unique_id=792323430]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.731247, 0.7563292, -0.79841423)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, 1.088912, 0.7563292, -0.79841423)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D15" type="OmniLight3D" parent="Node3D" unique_id=1654302206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5587263, 0.7563292, -0.79841423)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, -0.08360863, 0.7563292, -0.79841423)
 light_energy = 0.342
 omni_range = 8.287
 omni_shadow_mode = 0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Node3D" unique_id=1613591428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8839785, 1.1954671, -0.9996588)
+transform = Transform3D(0.195, 0, 0, 0, 0.195, 0, 0, 0, 0.195, 0.24164355, 1.1954671, -0.9996588)
 light_energy = 0.658
 omni_range = 8.287
 omni_shadow_mode = 0
@@ -307,9 +310,71 @@ omni_shadow_mode = 0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1814208153]
 transform = Transform3D(0.9909364, -2.7854878e-08, 0.13433212, -0.12544762, -0.35763472, 0.9253974, 0.04804181, -0.93386155, -0.35439327, 1.9530581, 2.0183163, -0.83271074)
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=1441177908]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=246891302]
 
+[node name="GradientBG" type="TextureRect" parent="CanvasLayer" unique_id=732683543]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("6_jhb10")
+
+[node name="CloudParent" type="Control" parent="CanvasLayer" unique_id=232775014]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 710.0
+offset_right = 640.0
+offset_bottom = 710.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("7_fvr0n")
+
+[node name="CloudPivot" type="Control" parent="CanvasLayer/CloudParent" unique_id=789988397]
+anchors_preset = 0
+
+[node name="CloudUpperBounds" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=604380621]
+position = Vector2(0, -1032)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudLowerBounds" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=733368855]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp1" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1997423944]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp2" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=37245995]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp3" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1081597486]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp4" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1395575951]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp5" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1934485235]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp6" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=93097649]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp7" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1075057083]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp8" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1317557290]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1966804035]
+visible = false
 z_index = 10
 position = Vector2(262, 449)
 sprite_frames = SubResource("SpriteFrames_fvr0n")
@@ -317,6 +382,7 @@ autoplay = "default"
 frame_progress = 0.3348266
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1719301613]
+visible = false
 z_index = -10
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 40.0
@@ -324,6 +390,7 @@ offset_bottom = 40.0
 color = Color(0, 0, 0.07450981, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1800898588]
+visible = false
 self_modulate = Color(1, 1, 1, 0.10980392)
 z_index = -10
 custom_minimum_size = Vector2(1280, 720)
@@ -333,6 +400,7 @@ texture = ExtResource("7_jhb10")
 stretch_mode = 1
 
 [node name="BG_Container 5" type="MarginContainer" parent="CanvasLayer" unique_id=1350429468]
+visible = false
 z_index = -10
 custom_minimum_size = Vector2(1280, 1000)
 anchors_preset = 8
@@ -349,11 +417,13 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="Stars Small Shadow" type="TextureRect" parent="CanvasLayer/BG_Container 5" unique_id=1896526634]
+visible = false
 layout_mode = 2
 texture = ExtResource("7_3ah5x")
 stretch_mode = 1
 
 [node name="BG_Container 4" type="MarginContainer" parent="CanvasLayer" unique_id=1131804000]
+visible = false
 z_index = -10
 custom_minimum_size = Vector2(1280, 1000)
 anchors_preset = 8
@@ -370,11 +440,13 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="Stars Large Shadow" type="TextureRect" parent="CanvasLayer/BG_Container 4" unique_id=1993113820]
+visible = false
 layout_mode = 2
 texture = ExtResource("7_75epk")
 stretch_mode = 1
 
 [node name="BG_Container 3" type="MarginContainer" parent="CanvasLayer" unique_id=1355380405]
+visible = false
 z_index = -10
 custom_minimum_size = Vector2(1280, 1000)
 anchors_preset = 8
@@ -391,12 +463,14 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="Stars Small" type="TextureRect" parent="CanvasLayer/BG_Container 3" unique_id=1250172904]
+visible = false
 self_modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
 layout_mode = 2
 texture = ExtResource("8_3ah5x")
 stretch_mode = 1
 
 [node name="BG_Container 2" type="MarginContainer" parent="CanvasLayer" unique_id=149984329]
+visible = false
 z_index = -10
 custom_minimum_size = Vector2(1280, 1000)
 anchors_preset = 8
@@ -413,11 +487,13 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="Stars Large" type="TextureRect" parent="CanvasLayer/BG_Container 2" unique_id=625852770]
+visible = false
 layout_mode = 2
 texture = ExtResource("9_jhb10")
 stretch_mode = 1
 
 [node name="BG_Container" type="MarginContainer" parent="CanvasLayer" unique_id=255953588]
+visible = false
 custom_minimum_size = Vector2(1280, 720)
 anchors_preset = 11
 anchor_left = 1.0
@@ -429,6 +505,7 @@ grow_vertical = 2
 theme_override_constants/margin_right = 650
 
 [node name="AH2" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1767075821]
+visible = false
 self_modulate = Color(0, 0, 0.07450981, 1)
 layout_mode = 2
 texture = ExtResource("10_qfyqv")
@@ -437,12 +514,14 @@ stretch_mode = 5
 flip_h = true
 
 [node name="AH" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1201064109]
+visible = false
 layout_mode = 2
 texture = ExtResource("10_qfyqv")
 expand_mode = 2
 stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
+visible = false
 clip_children = 1
 clip_contents = true
 offset_left = 181.305
