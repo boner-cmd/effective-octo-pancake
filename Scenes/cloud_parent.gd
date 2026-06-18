@@ -1,51 +1,69 @@
 extends Control
+
+var starting_cloud_flag : bool = false
+var iteration_int : int = 0
+var custom_step : float = 0.0
+var cloud_pivot_count : int = 18
+var clone_iteration : int = 0
+var temp_array : Array
+var pivot_offset_float : float
+var cloud_array: Array = []
+var delay_time: float
+
 @onready var cloud_pivot: Control = $CloudPivot
-@onready var cloud_lower_bounds: Sprite2D = $CloudPivot/CloudLowerBounds
-@onready var cloud_temp_1: Sprite2D = $CloudPivot/CloudTemp1
-@onready var cloud_temp_2: Sprite2D = $CloudPivot/CloudTemp2
-@onready var cloud_temp_3: Sprite2D = $CloudPivot/CloudTemp3
-@onready var cloud_temp_4: Sprite2D = $CloudPivot/CloudTemp4
-@onready var cloud_temp_5: Sprite2D = $CloudPivot/CloudTemp5
-@onready var cloud_temp_6: Sprite2D = $CloudPivot/CloudTemp6
-@onready var cloud_temp_7: Sprite2D = $CloudPivot/CloudTemp7
-@onready var cloud_temp_8: Sprite2D = $CloudPivot/CloudTemp8
-@export var cloud_scale_start: float = .025 #change this to adjust starting cloud scale
-var cloud_scale_end: float = 1.4
-var cloud_size: Vector2 = Vector2(cloud_scale_start,cloud_scale_start)
+
+@export var cloud_size_start: float = .25 #change this to adjust starting cloud scale
+@export var cloud_size_end : float = 1.4
 @export var cloud_time: float = 30.0
 
-@onready var cloud_array: Array = [cloud_temp_1, cloud_temp_2, cloud_temp_3, cloud_temp_4, cloud_temp_5, cloud_temp_6, cloud_temp_7, cloud_temp_8]
-@onready var delay_time: float = cloud_time/cloud_array.size()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.ready.connect(tween_clouds)
-	print(delay_time)
-	
-func tween_clouds() -> void:
-	for clouds in cloud_array:
-		tween_object(clouds,"position:y",-1032.0,cloud_time,Tween.TRANS_QUAD,Tween.EASE_IN) #Adjust TRANS_TYPE as lowerbounds cloud scale is adjusted
-		tween_object(clouds,"scale",Vector2(cloud_scale_end,cloud_scale_end),cloud_time,Tween.TRANS_SINE,Tween.EASE_IN)
-		await get_tree().create_timer(delay_time).timeout
-	
+	ready.connect(big_cloud_tween)
+
+
+func big_cloud_tween() -> void:
+	for cloud in cloud_pivot.get_children():
+		cloud_array.append(cloud)
+	delay_time = cloud_time/cloud_array.size()
+	cloud_pivots()
+	tween_object(self, "rotation", 2*PI, 150.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+
+
+func cloud_pivots() -> void:
+	for i in cloud_pivot_count:
+		clone_iteration += 1
+		pivot_offset_float = clone_iteration * 2.5
+		var cloud_clone = cloud_pivot.duplicate()
+		var cloud_clone_array : Array
+		for cloud in cloud_clone.get_children():
+			cloud_clone_array.append(cloud)
+		tween_clouds(cloud_clone_array)
+		cloud_clone.rotation_degrees = round(360.0/cloud_pivot_count * clone_iteration)
+		add_child(cloud_clone)
+
+
+func tween_clouds(new_array : Array) -> void:
+	for clouds in new_array:
+		iteration_int += 1
+		tween_object(clouds, "position:y", -1232.0, cloud_time, Tween.TRANS_SINE, Tween.EASE_IN) #Adjust TRANS_TYPE as lowerbounds cloud scale is adjusted
+		tween_object(clouds, "scale", Vector2(cloud_size_end,cloud_size_end), cloud_time, Tween.TRANS_QUAD, Tween.EASE_IN)
+
 
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
 			transtype : Tween.TransitionType, easetype : Tween.EaseType) -> void:
 	var tweened_object = get_tree().create_tween().set_loops()
-	tweened_object.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	var tweener_object
+	tweened_object.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	
 	if property == ^"position:y": 
 		tweener_object = tweened_object.tween_property(object, property, goal, time).from(0.0)
 	elif property == ^"scale":
-		tweener_object = tweened_object.tween_property(object, property, goal, time).from(cloud_size)
+		tweener_object = tweened_object.tween_property(object, property, goal, time).from(Vector2(cloud_size_start,cloud_size_start))
+	elif property == ^"rotation":
+		tweener_object = tweened_object.tween_property(object, property, goal, time).from(0.0)
 	else:
 		tweener_object = tweened_object.tween_property(object, property, goal, time)
+	
+	tweened_object.custom_step(delay_time * iteration_int + pivot_offset_float)
 	tweener_object.set_trans(transtype).set_ease(easetype)
 	tweened_object.play()
-	await tweened_object.finished
-	if tweened_object and tweened_object.is_valid():
-		tweened_object.kill()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -111,7 +111,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=230064021]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.04865873, 1.0996027, -0.033041)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.1, -0.033)
 projection = 1
 current = true
 size = 2.878
@@ -185,7 +185,7 @@ material_override = ExtResource("3_qu6cc")
 environment = SubResource("Environment_emot1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=134751511]
-transform = Transform3D(-1.2894859e-08, -0.295, 0, 0.295, -1.2894859e-08, 0, 0, 0, 0.295, -0.0072271824, -11.058647, 1.9328823)
+transform = Transform3D(-1.2894859e-08, -0.295, 0, 0.295, -1.2894859e-08, 0, 0, 0, 0.295, 0, -11.059, 1.933)
 material_override = ExtResource("4_3ah5x")
 mesh = SubResource("SphereMesh_7whhf")
 
@@ -323,23 +323,17 @@ texture = ExtResource("6_jhb10")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 640.0
-offset_top = 710.0
+offset_top = 850.875
 offset_right = 640.0
-offset_bottom = 710.0
+offset_bottom = 850.875
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("7_fvr0n")
+cloud_size_start = 0.025
+cloud_size_end = 1.7
+cloud_time = 60.0
 
 [node name="CloudPivot" type="Control" parent="CanvasLayer/CloudParent" unique_id=789988397]
 anchors_preset = 0
-
-[node name="CloudUpperBounds" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=604380621]
-position = Vector2(0, -1032)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("8_o6bmn")
-
-[node name="CloudLowerBounds" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=733368855]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("8_o6bmn")
 
 [node name="CloudTemp1" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1997423944]
 scale = Vector2(0.25, 0.25)
@@ -370,6 +364,14 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_o6bmn")
 
 [node name="CloudTemp8" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1317557290]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp9" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=894913169]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_o6bmn")
+
+[node name="CloudTemp10" type="Sprite2D" parent="CanvasLayer/CloudParent/CloudPivot" unique_id=1590964923]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_o6bmn")
 
