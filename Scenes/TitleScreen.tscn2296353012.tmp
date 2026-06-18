@@ -317,87 +317,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_qu6cc")
 
-[node name="Sound_Wrap" type="Control" parent="CanvasLayer" unique_id=1646498849]
-custom_minimum_size = Vector2(197, 89)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 541.5
-offset_top = 560.0
-offset_right = 738.5
-offset_bottom = 649.0
-size_flags_horizontal = 0
-
-[node name="Options_Wrap" type="Control" parent="CanvasLayer" unique_id=1537814195]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 620.0
-offset_top = 340.0
-offset_right = 670.0
-offset_bottom = 390.0
-size_flags_horizontal = 0
-
-[node name="ControlsButton" type="TextureButton" parent="CanvasLayer/Options_Wrap" unique_id=973049996 groups=["Start_Menu_Buttons"]]
-unique_name_in_owner = true
-process_mode = 3
-z_index = 100
-texture_filter = 1
-material = ExtResource("10_qu6cc")
-custom_minimum_size = Vector2(170, 70)
-layout_mode = 0
-offset_left = 30.0
-offset_top = 217.0
-offset_right = 227.0
-offset_bottom = 306.0
-pivot_offset_ratio = Vector2(0, 0.5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("11_4hokt")
-texture_hover = ExtResource("12_swiah")
-
-[node name="Label" type="Label" parent="CanvasLayer/Options_Wrap/ControlsButton" unique_id=559933507]
-material = ExtResource("13_75epk")
-layout_mode = 0
-offset_left = 17.0
-offset_top = 24.0
-offset_right = 181.0
-offset_bottom = 66.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("14_3ah5x")
-theme_override_font_sizes/font_size = 50
-text = "controls"
-
-[node name="SoundButton" type="TextureButton" parent="CanvasLayer/Options_Wrap" unique_id=168269080 groups=["Start_Menu_Buttons"]]
-unique_name_in_owner = true
-process_mode = 3
-z_index = 100
-texture_filter = 1
-material = ExtResource("10_qu6cc")
-custom_minimum_size = Vector2(170, 70)
-layout_mode = 0
-offset_left = 30.0
-offset_top = 217.0
-offset_right = 227.0
-offset_bottom = 306.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("11_4hokt")
-texture_hover = ExtResource("12_swiah")
-
-[node name="Label" type="Label" parent="CanvasLayer/Options_Wrap/SoundButton" unique_id=1986143947]
-material = ExtResource("13_75epk")
-layout_mode = 0
-offset_left = 45.47998
-offset_top = 24.258373
-offset_right = 204.47998
-offset_bottom = 66.25838
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("14_3ah5x")
-theme_override_font_sizes/font_size = 50
-text = "sound"
-
 [node name="StartMenuButtons" type="Control" parent="CanvasLayer" unique_id=170923540]
 layout_mode = 3
 anchors_preset = 8
@@ -412,6 +331,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Controls_Wrap" type="Control" parent="CanvasLayer/StartMenuButtons" unique_id=1537814195]
+anchors_preset = 0
+size_flags_horizontal = 0
 
 [node name="MainMenuContainer" type="HBoxContainer" parent="CanvasLayer/StartMenuButtons" unique_id=958133507]
 layout_mode = 1
@@ -428,7 +351,7 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/separation = 20
 
-[node name="ContinueButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=146770061 groups=["Start_Menu_Buttons"]]
+[node name="ContinueButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=146770061]
 unique_name_in_owner = true
 process_mode = 3
 z_index = 100
@@ -454,7 +377,7 @@ theme_override_fonts/font = ExtResource("14_3ah5x")
 theme_override_font_sizes/font_size = 50
 text = "continue"
 
-[node name="NewGameButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=325750295 groups=["Start_Menu_Buttons"]]
+[node name="NewGameButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=325750295]
 unique_name_in_owner = true
 process_mode = 3
 z_index = 100
@@ -480,7 +403,61 @@ theme_override_fonts/font = ExtResource("14_3ah5x")
 theme_override_font_sizes/font_size = 44
 text = "new game"
 
-[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=1650350951 groups=["Start_Menu_Buttons"]]
+[node name="ControlsButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=973049996]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+z_index = 100
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenuButtons/MainMenuContainer/ControlsButton" unique_id=559933507]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 17.0
+offset_top = 24.0
+offset_right = 181.0
+offset_bottom = 66.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "controls"
+
+[node name="SoundButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=168269080]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+z_index = 100
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenuButtons/MainMenuContainer/SoundButton" unique_id=1986143947]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 45.47998
+offset_top = 24.258373
+offset_right = 204.47998
+offset_bottom = 66.25838
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "sound"
+
+[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=1650350951]
 unique_name_in_owner = true
 process_mode = 3
 z_index = 100
@@ -506,7 +483,7 @@ theme_override_fonts/font = ExtResource("14_3ah5x")
 theme_override_font_sizes/font_size = 50
 text = "options"
 
-[node name="QuitButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=823918148 groups=["Start_Menu_Buttons"]]
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/StartMenuButtons/MainMenuContainer" unique_id=823918148]
 unique_name_in_owner = true
 process_mode = 3
 z_index = 100
@@ -531,6 +508,15 @@ theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("14_3ah5x")
 theme_override_font_sizes/font_size = 50
 text = "quit"
+
+[node name="Sound_Wrap" type="Control" parent="CanvasLayer/StartMenuButtons" unique_id=1646498849]
+custom_minimum_size = Vector2(197, 89)
+anchors_preset = 0
+offset_left = -78.5
+offset_top = 220.0
+offset_right = 118.5
+offset_bottom = 309.0
+size_flags_horizontal = 0
 
 [connection signal="timeout" from="Node3D/Timer" to="." method="_on_timer_timeout"]
 

@@ -70,8 +70,6 @@ VFX PASS - Michael - ???
 UI PASS - ???
 	Holistically approach the game's UI and design.
 	
-	PAUSE vignette - dark blue gray - 
-	
 	Unique boxes per NPCs (?) - can be related to shader colors if desired
 	
 	MAP
@@ -98,19 +96,14 @@ POST - minimal
 TITLE SCREEN - ???
 	stars revisit
 	buttons updated
-	big head half face may not work actually :'(
 	
 	Reaffirm design direction/menu
 	
 	buttons on left with shader
 	on button hover have AH face different positions interrupting the screen
-	purple gradient sky pink clouds?
-	AH closer
-	letters 1/3rd screen
 	
 	Credits overlay for titlescreen credits button
 	
-	Intro screen before the TITLE screen with the GODOT logo, transition into our "studio" logo, transition into main menu
 	Sparkle VFX
 
 SOUND - 2.5 days ish

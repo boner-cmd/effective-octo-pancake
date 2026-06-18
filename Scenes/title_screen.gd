@@ -7,24 +7,41 @@ var tween_letter_z : Tween
 var tween_letter_x : Tween
 var timer_time : float = 2.0
 
-@onready var bg_container_largeStar: MarginContainer = $"CanvasLayer/BG_Container 2"
-@onready var bg_container_smallStar: MarginContainer = $"CanvasLayer/BG_Container 3"
-@onready var bg_container_largeShadow: MarginContainer = $"CanvasLayer/BG_Container 4"
-@onready var bg_container_smallShadow: MarginContainer = $"CanvasLayer/BG_Container 5"
 @onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
 @onready var title_screen_planet: MeshInstance3D = $Node3D/TitleScreenPlanet
-
 
 @onready var cloud_parent: Control = $CanvasLayer/CloudParent
 @onready var cloud_tweens: Array = cloud_parent.tween_array
 @onready var title_screen_letters: Node3D = $"Node3D/title_screen_letters"
 @onready var timer: Timer = $Node3D/Timer
 
-@onready var sky: TextureRect = $CanvasLayer/Panel/Sky
 
-@onready var new_game_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton
-@onready var quit_button: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton
-@onready var credits: TextureButton = $CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits
+
+@onready var continue_button: TextureButton = %ContinueButton
+@onready var new_game_button: TextureButton = %NewGameButton
+@onready var controls_button: TextureButton = %ControlsButton
+@onready var sound_button: TextureButton = %SoundButton
+@onready var options_button: TextureButton = %OptionsButton
+@onready var quit_button: TextureButton = %QuitButton
+
+
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	timer.wait_time = timer_time
+	letter_array = title_screen_letters.get_children()
+	tween_letters()
+	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
+	_set_buttons()
+
+
+func _process(delta: float) -> void:
+	title_screen_planet.rotation_degrees.x -= delta * 15.0
+	
+	if title_screen_planet.rotation_degrees.x < -360.0:
+		title_screen_planet.rotation_degrees.x = 0.0
 
 
 func tween_letters() -> void:
@@ -37,82 +54,56 @@ func tween_letters() -> void:
 		tween_letter_z.play()
 		tween_letter_x.play()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	timer.wait_time = timer_time
-	quit_button.pivot_offset = quit_button.size / 2.0
-	new_game_button.pivot_offset = new_game_button.size / 2.0
-	credits.pivot_offset = credits.size / 2.0
-	letter_array = title_screen_letters.get_children()
-	tween_letters()
-	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
 
-func _process(delta: float) -> void:
-	sky.rotation_degrees += delta 
-	bg_container_largeStar.rotation_degrees += delta * .3
-	bg_container_largeShadow.rotation_degrees = bg_container_largeStar.rotation_degrees
-	
-	bg_container_smallStar.rotation_degrees += delta * .1
-	bg_container_smallShadow.rotation_degrees = bg_container_smallStar.rotation_degrees
-	
-	title_screen_planet.rotation_degrees.x -= delta * 15.0
-	
-	
-	if bg_container_largeStar.rotation_degrees > 360.0:
-		bg_container_largeStar.rotation_degrees = 0.0
-	if bg_container_smallStar.rotation_degrees > 360.0:
-		bg_container_smallStar.rotation_degrees = 0.0
-	if sky.rotation_degrees > 360.0:
-		sky.rotation_degrees = 0.0
-	if title_screen_planet.rotation_degrees.x < -360.0:
-		title_screen_planet.rotation_degrees.x = 0.0
-		
+func kill_tweens() -> void:
+	for tween in cloud_tweens:
+		tween.kill()
+	tween_letter_x.kill()
+	tween_letter_z.kill()
+
+
+func _set_buttons() -> void: #set pivots, materials, etc
+	for button in get_tree().get_nodes_in_group("Start_Menu_Buttons"):
+		button.pivot_offset_ratio = Vector2(.5,.5)
+		button.mouse_entered.connect(_on_mouse_entered_or_focus, CONNECT_APPEND_SOURCE_OBJECT)
+		button.focus_entered.connect(_on_mouse_entered_or_focus, CONNECT_APPEND_SOURCE_OBJECT)
+		button.mouse_exited.connect(_on_mouse_exited_or_unfocus, CONNECT_APPEND_SOURCE_OBJECT)
+		button.focus_exited.connect(_on_mouse_exited_or_unfocus, CONNECT_APPEND_SOURCE_OBJECT)
+	continue_button.pressed.connect(_on_continue_button_pressed)
+	new_game_button.pressed.connect(_on_new_game_button_pressed)
+	quit_button.pressed.connect(_on_quit_button_pressed)
+	options_button.pressed.connect(_on_options_button_pressed)
+
+func _on_continue_button_pressed() -> void:
+	pass
+
 
 func _on_new_game_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	for tween in cloud_tweens:
-		tween.kill()
+	kill_tweens()
 	get_tree().change_scene_to_file('res://Scenes/MainScene.tscn')
+
+
+func _on_options_button_pressed() -> void:
+	pass
+
 
 func _on_quit_button_pressed() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-	for tween in cloud_tweens:
-		tween.kill()
+	kill_tweens()
 	get_tree().quit()
+
 
 func _on_timer_timeout() -> void:
 	rot_change = rot_change * -1
 	tween_letters()
 
-func _on_new_game_button_focus_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_honk)
-	tween_letter_x.kill()
-	tween_letter_z.kill()
 
-func _on_new_game_button_mouse_entered() -> void:
+func _on_mouse_entered_or_focus(button) -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
-	new_game_button.scale = Vector2(1.2, 1.2)
+	button.scale = Vector2(1.1, 1.1)
 
-func _on_new_game_button_mouse_exited() -> void:
-	new_game_button.scale = Vector2(1.0, 1.0)
 
-func _on_quit_button_focus_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_honk)
-
-func _on_quit_button_mouse_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	quit_button.scale = Vector2(1.2, 1.2)
-
-func _on_quit_button_mouse_exited() -> void:
-	quit_button.scale = Vector2(1.0, 1.0)
-
-func _on_credits_focus_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_honk)
-
-func _on_credits_mouse_entered() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	credits.scale = Vector2(1.2, 1.2)
-
-func _on_credits_mouse_exited() -> void:
-	credits.scale = Vector2(1.0, 1.0)
+func _on_mouse_exited_or_unfocus(button) -> void:
+	button.scale = Vector2(1.0, 1.0)
 	
