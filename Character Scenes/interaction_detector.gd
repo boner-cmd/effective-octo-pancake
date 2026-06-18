@@ -27,7 +27,6 @@ func _on_area_entered(area: Area3D) -> void:
 		current_door = area
 	elif area.is_in_group("Exit_Door"):
 		current_exit = area
-		print(area.get_parent().door_locked)
 		exit_area_entered.emit(area.get_parent().door_locked)
 	else:
 		current_npc = area

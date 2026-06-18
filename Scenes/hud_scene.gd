@@ -87,6 +87,7 @@ func _ready() -> void:
 	interaction_detector.exit_area_exited.connect(_on_door_exited)
 	interaction_detector.npc_entered.connect(_on_npc_entered)
 	interaction_detector.npc_exited.connect(_on_npc_exited)
+	Stopwatch.physics_timer.timeout.connect(assert_interact)
 	
 	#connect mouse area blips and effects
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
@@ -106,10 +107,6 @@ func _ready() -> void:
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	control_acknowledge = false
 
-
-func debounce_timer() -> void :
-	await get_tree().create_timer(.2).timeout
-	debounce_interaction = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -269,6 +266,7 @@ func _on_npc_entered() -> void:
 	#interact_door_open.visible = false # relates to when player touches door and NPC
 	npc_label.text = "Listen to " + DialogueManager.Character_Names[main_scene.current_planet_id]
 	interact_touched = INTERACT_TYPE.NPC
+	assert_interact()
 
 
 func _on_npc_exited() -> void:
@@ -424,50 +422,55 @@ func transition() -> void:
 
 
 func activate_tween_interact(interact_parent : MarginContainer) -> void:
-	next_indicator.modulate.a = 0.0
-	next_indicator_label.visible = false
-	next_indicator_label.modulate.a = 0.0
-	var label_margin = interact_parent.get_child(1)
-	var label = label_margin.get_child(0)
-	await get_tree().create_timer(.05).timeout
-	label_margin.custom_minimum_size.x = 0.0
-	label_margin.pivot_offset_ratio.x = .5
-	interact_parent.modulate.a = 0.0
-	interact_parent.visible = true
-	label.visible = true
-	await get_tree().create_timer(.05).timeout
-	temp_size = label_margin.size.x
-	await get_tree().create_timer(.05).timeout
-	label.modulate.a = 0.0
-	label.visible = false
-	#tween modulate interact_parent
-	await tween_object(interact_parent, "modulate:a", 1.0, .05, Tween.TRANS_SINE, Tween.EASE_IN)
-	#tween size:x
-	await tween_object(label_margin, "custom_minimum_size:x", temp_size, .1, Tween.TRANS_SINE, Tween.EASE_IN)
-	
-	if not interact_parent.name == "InteractDoorLocked":
-		next_indicator.stop()
-		next_indicator.frame = 0
-		next_indicator.modulate.a = 1.0
-		next_indicator.play()
-		next_indicator_label.visible = true
-		tween_object(next_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
-	
-	label.visible = true
-	tween_object(label, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
+	if not debounce_interaction:
+		debounce_interaction = true
+		next_indicator.modulate.a = 0.0
+		next_indicator_label.visible = false
+		next_indicator_label.modulate.a = 0.0
+		var label_margin = interact_parent.get_child(1)
+		var label = label_margin.get_child(0)
+		await get_tree().create_timer(.05).timeout
+		label_margin.custom_minimum_size.x = 0.0
+		label_margin.pivot_offset_ratio.x = .5
+		interact_parent.modulate.a = 0.0
+		interact_parent.visible = true
+		label.visible = true
+		await get_tree().create_timer(.05).timeout
+		temp_size = label_margin.size.x
+		await get_tree().create_timer(.05).timeout
+		label.modulate.a = 0.0
+		label.visible = false
+		#tween modulate interact_parent
+		await tween_object(interact_parent, "modulate:a", 1.0, .05, Tween.TRANS_SINE, Tween.EASE_IN)
+		#tween size:x
+		await tween_object(label_margin, "custom_minimum_size:x", temp_size, .1, Tween.TRANS_SINE, Tween.EASE_IN)
+		
+		if not interact_parent.name == "InteractDoorLocked":
+			next_indicator.stop()
+			next_indicator.frame = 0
+			next_indicator.modulate.a = 1.0
+			next_indicator.play()
+			next_indicator_label.visible = true
+			tween_object(next_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
+		
+		label.visible = true
+		tween_object(label, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
+		
+		debounce_interaction = false
 
 
 func deactivate_tween_interact(interact_parent : MarginContainer) -> void:
-	var label_margin = interact_parent.get_child(1)
-	var label = label_margin.get_child(0)
-	next_indicator.modulate.a = 0.0
-	label_margin.custom_minimum_size.x = temp_size
-	label.visible = false
-	#tween size to 0
-	tween_object(label_margin, "custom_minimum_size:x", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
-	await get_tree().create_timer(.15).timeout
-	await tween_object(interact_parent, "modulate:a", 0.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
-	#interact_parent.visible = false
+	if not debounce_interaction:
+		debounce_interaction = true
+		var label_margin = interact_parent.get_child(1)
+		var label = label_margin.get_child(0)
+		next_indicator.modulate.a = 0.0
+		label_margin.custom_minimum_size.x = temp_size
+		label.visible = false
+		tween_object(label_margin, "custom_minimum_size:x", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+		await get_tree().create_timer(.15).timeout
+		await tween_object(interact_parent, "modulate:a", 0.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
+		debounce_interaction = false
 
 
 ## TODO suspect this needs a better name
@@ -478,6 +481,26 @@ func immediate_interact_false(interact_parent : MarginContainer) -> void:
 	next_indicator.modulate.a = 0.0
 	interact_parent.visible = false
 	label.visible = false
+	assert_timer = false
+
+
+func assert_interact() -> void:
+	match interact_touched:
+		INTERACT_TYPE.NONE:
+			immediate_interact_false(interact_door_open)
+			immediate_interact_false(interact_door_locked)
+			immediate_interact_false(interact_npc_margin)
+		INTERACT_TYPE.NPC:
+			if DialogueManager.is_dialogue_active:
+				immediate_interact_false(interact_npc_margin)
+			elif interact_npc_margin.modulate.a == 0.0:
+				activate_tween_interact(interact_npc_margin)
+		INTERACT_TYPE.DOOR_LOCKED:
+			if interact_door_locked.modulate.a == 0.0:
+				activate_tween_interact(interact_door_locked)
+		INTERACT_TYPE.DOOR_OPEN:
+			if interact_door_open.modulate.a == 0.0:
+				activate_tween_interact(interact_door_open)
 
 
 func tween_vignette_switch(flag : bool) -> void:
