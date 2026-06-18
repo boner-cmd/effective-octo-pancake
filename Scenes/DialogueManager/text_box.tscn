@@ -4,10 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bd60t1t6wqrex" path="res://UI assets/DialogueBoxAssets/Indicator_01.png" id="3_bg0oq"]
 [ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="3_knbji"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="4_55dj6"]
-[ext_resource type="Texture2D" uid="uid://clfp8o0aum4v8" path="res://UI assets/DialogueBoxAssets/dialogue box 4.png" id="6_400be"]
+[ext_resource type="Texture2D" uid="uid://brgqvckqcu1jk" path="res://UI assets/DialogueBoxAssets/dialogue box 5.png" id="6_400be"]
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="7_elf2e"]
 [ext_resource type="Material" uid="uid://caufem2qu7x7c" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_2.tres" id="7_hn7mv"]
-[ext_resource type="Texture2D" uid="uid://bk70ev110usn3" path="res://UI assets/DialogueBoxAssets/dialogue box upper flourish.png" id="7_qlgo5"]
 [ext_resource type="Texture2D" uid="uid://bkqs0iotybusg" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_left.png" id="8_elf2e"]
 [ext_resource type="Texture2D" uid="uid://d22vimc6jng7h" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_middle.png" id="9_hn7mv"]
 [ext_resource type="Texture2D" uid="uid://b8fibxcsct6k1" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_right.png" id="10_v6itg"]
@@ -64,7 +63,7 @@ layout_mode = 2
 visible = false
 texture_filter = 1
 material = ExtResource("3_knbji")
-position = Vector2(-45, 142)
+position = Vector2(-47, 142)
 sprite_frames = SubResource("SpriteFrames_bg0oq")
 animation = &"dialogue_conf_spawn"
 frame = 3
@@ -84,17 +83,10 @@ theme_override_fonts/font = ExtResource("4_55dj6")
 theme_override_font_sizes/font_size = 50
 text = "F"
 
-[node name="NewDialogueBoxChromakey" type="Sprite2D" parent="." unique_id=909585960]
-texture_filter = 1
+[node name="DialogueBox5" type="Sprite2D" parent="." unique_id=1870900646]
 material = ExtResource("3_knbji")
-position = Vector2(0, 53)
+position = Vector2(0, 65)
 texture = ExtResource("6_400be")
-
-[node name="DialogueBoxUpperFlourish" type="Sprite2D" parent="." unique_id=1721775638]
-texture_filter = 1
-material = ExtResource("7_hn7mv")
-position = Vector2(288, -77)
-texture = ExtResource("7_qlgo5")
 
 [node name="DialogueBaubleLeft" type="Sprite2D" parent="." unique_id=691100171]
 texture_filter = 1

@@ -5,7 +5,7 @@ var iteration_int : int = 0
 var custom_step : float = 0.0
 var cloud_pivot_count : int = 18
 var clone_iteration : int = 0
-var temp_array : Array
+var tween_array : Array
 var pivot_offset_float : float
 var cloud_array: Array = []
 var delay_time: float
@@ -52,6 +52,7 @@ func tween_clouds(new_array : Array) -> void:
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
 			transtype : Tween.TransitionType, easetype : Tween.EaseType) -> void:
 	var tweened_object = get_tree().create_tween().set_loops()
+	tween_array.append(tweened_object)
 	var tweener_object
 	tweened_object.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	

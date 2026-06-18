@@ -1,5 +1,6 @@
 extends Node
-
+@onready var cloud_parent: Control = $CanvasLayer/CloudParent
+@onready var cloud_tweens: Array = cloud_parent.tween_array
 @onready var title_screen_letters: Node3D = $"Node3D/title_screen_letters"
 @onready var timer: Timer = $Node3D/Timer
 var letter_array : Array = []
@@ -55,10 +56,14 @@ func _process(delta: float) -> void:
 
 func _on_new_game_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	for tween in cloud_tweens:
+		tween.kill()
 	get_tree().change_scene_to_file('res://Scenes/MainScene.tscn')
 
 func _on_quit_button_pressed() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	for tween in cloud_tweens:
+		tween.kill()
 	get_tree().quit()
 
 func _on_timer_timeout() -> void:

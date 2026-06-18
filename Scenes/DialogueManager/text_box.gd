@@ -6,15 +6,14 @@ extends MarginContainer
 @onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
 @onready var next_indicator : AnimatedSprite2D = $ControlIndicator/NextIndicator
 @onready var next_f : Label = $ControlIndicator/NextIndicator/Label
-@onready var DialogueBox : Sprite2D = $NewDialogueBoxChromakey
+@onready var DialogueBox : Sprite2D = $DialogueBox5
 
 @onready var BaubleLeft : Sprite2D = $DialogueBaubleLeft
 @onready var BaubleMiddle : Sprite2D = $DialogueBaubleMiddle
 @onready var BaubleRight : Sprite2D = $DialogueBaubleRight
-@onready var upper_flourish : Sprite2D = $DialogueBoxUpperFlourish
 
 var baub_left_end_pos : Vector2 = Vector2(-360.0, 56.0)
-var baub_mid_end_pos : Vector2 = Vector2(1.0, 189.0)
+var baub_mid_end_pos : Vector2 = Vector2(1.0, 183.0)
 var baub_right_end_pos : Vector2 = Vector2(361.0, 56.0)
 
 const  MAX_WIDTH : float = 640.0
@@ -34,7 +33,6 @@ func tween_text_box():
 		DialogueManager.already_tweened = true
 		
 		DialogueBox.scale = Vector2(0.001, 0.001)
-		upper_flourish.modulate.a = 0.0
 		
 		BaubleLeft.modulate.a = 0.0
 		BaubleMiddle.modulate.a = 0.0
@@ -87,11 +85,6 @@ func tween_text_box():
 		tween_y_tweener.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween_y.play()
 		
-		var tween_modulate_flourish = get_tree().create_tween()
-		var tween_modulate_flourish_tweener = tween_modulate_flourish.tween_property(upper_flourish, "modulate:a",  1.0, .2)
-		tween_modulate_flourish_tweener.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		tween_modulate_flourish.play()
-		
 		await tween_y.finished
 		
 		if tween_x and tween_x.is_valid():
@@ -110,11 +103,8 @@ func tween_text_box():
 			tween_bauble_M_pos.kill()
 		if tween_bauble_R_pos and tween_bauble_R_pos.is_valid():
 			tween_bauble_R_pos.kill()
-		if tween_modulate_flourish and tween_modulate_flourish.is_valid():
-			tween_modulate_flourish.kill()
 	else:
 		DialogueBox.scale = Vector2(1.0, 1.0)
-		upper_flourish.modulate.a = 1.0
 		BaubleLeft.position = baub_left_end_pos
 		BaubleMiddle.position = baub_mid_end_pos
 		BaubleRight.position = baub_right_end_pos
@@ -134,11 +124,6 @@ func close_text_box() -> void:
 	next_indicator.visible = false
 	label.visible = false
 	
-	var tween_modulate_flourish = get_tree().create_tween()
-	var tween_modulate_flourish_tweener = tween_modulate_flourish.tween_property(upper_flourish, "modulate:a",  0.0, .2)
-	tween_modulate_flourish_tweener.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-	tween_modulate_flourish.play()
-	
 	var tween_y = get_tree().create_tween()
 	var tween_y_tweener = tween_y.tween_property(DialogueBox, "scale:y",  0.001, .2)
 	tween_y_tweener.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
@@ -150,8 +135,6 @@ func close_text_box() -> void:
 	tween_bauble_M_pos.play()
 	
 	await tween_y.finished
-	
-	
 	
 	var tween_bauble_L_pos = get_tree().create_tween()
 	var tween_bauble_L_pos_tweener = tween_bauble_L_pos.tween_property(BaubleLeft, "position:x",  -32.0, .2)
@@ -180,8 +163,6 @@ func close_text_box() -> void:
 		tween_bauble_M_pos.kill()
 	if tween_bauble_R_pos and tween_bauble_R_pos.is_valid():
 		tween_bauble_R_pos.kill()
-	if tween_modulate_flourish and tween_modulate_flourish.is_valid():
-		tween_modulate_flourish.kill()
 
 
 func display_text(text_to_display: String, speech_sfx: AudioStream):
