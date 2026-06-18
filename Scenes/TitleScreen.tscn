@@ -50,63 +50,63 @@ size = 2.878
 [node name="title_screen_letters" parent="Node3D" unique_id=841955191 instance=ExtResource("2_7whhf")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.43494105, 0, -0.38064346)
 
-[node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1708180983]
+[node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1525247311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8550289, 0.07640395, -0.8238251)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=1101734211]
+[node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=998812974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48080724, 0.0746371, -0.9845757)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=649626419]
+[node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=456686928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10858756, 0.074198715, -0.9534257)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=141749152]
+[node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=709786517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25843668, 0.07419868, -0.9238143)
 material_override = ExtResource("3_qu6cc")
 
-[node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=1575611344]
+[node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=317515724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60433537, 0.07387316, -0.88987577)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=322371230]
+[node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=73282359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0063701, 0.0754394, -0.99209625)
 material_override = ExtResource("3_qu6cc")
 
-[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=245440984]
+[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=1048153244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3082354, 0.074427806, -0.8896651)
 material_override = ExtResource("3_qu6cc")
 
-[node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=999350554]
+[node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=1654240848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6126812, 0.073930226, -1.0123352)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=69001312]
+[node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=577323775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.028646, 0.07419868, -0.92381436)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=808913432]
+[node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=739132148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13234362, 0.08711618, -0.27306348)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=1449709585]
+[node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=952742472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3738604, 0.07419868, -0.23683521)
 material_override = ExtResource("3_qu6cc")
 
-[node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=233796594]
+[node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=793056219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3241271, 0.07488507, -0.16352063)
 material_override = ExtResource("3_qu6cc")
 
-[node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=1622759300]
+[node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=736525515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7980862, 0.07671435, -0.29228708)
 material_override = ExtResource("3_qu6cc")
 
-[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=899199309]
+[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=211588167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8975282, 0.074937575, -0.2234381)
 material_override = ExtResource("3_qu6cc")
 
-[node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=83373218]
+[node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=1840408000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7299879, 0.07718342, -0.20627926)
 material_override = ExtResource("3_qu6cc")
 
