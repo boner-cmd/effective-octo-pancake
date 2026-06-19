@@ -1,15 +1,10 @@
 MAIN
 	BUGS
-		- possible bug with horse lock/king talk?
+		clear for now
 		
 	ASSETS
-		Michaelwave assets
-			-planet/skybox texture - Markcy
-			-npc model - Michael
+		NPC Models, Anims, Textures
 		
-		Festering
-			-npc model - Michael
-			
 		Sisyphus planet stuff - Markcy
 		Norgans skybox - Markcy
 		
@@ -39,11 +34,8 @@ DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markc
 		Listen - Give Anim - Listen Anim - Receive Anim - Listen
 		
 
-MODELS - ~ 1 week
-	Make higher-fidelity models for the NPCs		- Michael
-		- Requires Textures 						- Michael
+MODELS -
 	NICE TO HAVE:
-		Rigs (most can be reused at least once) 	- Michael
 		Animations (At least an IDLE and a TALK, but if we're going this far we should have NPC RECEIVE and NPC GIVE)
 	CAMERAS
 		rework the camera system to use less cameras
@@ -53,7 +45,6 @@ MODELS - ~ 1 week
 SHADER PASS
 	adjust shadow falloff for materials for specific planets
 	NPC shader if we want something more than just a toon shader?
-	wiggle distortion attached to shader
 
 VFX PASS - Michael - ???
 	Door particles -
@@ -68,13 +59,15 @@ VFX PASS - Michael - ???
 
 
 UI PASS - ???
-	Holistically approach the game's UI and design.
-	
-	Unique boxes per NPCs (?) - can be related to shader colors if desired
-	
-	MAP
-		revist the "Map" label on the map
-		border that matches the menu UI
+	2 or 3 frame anims for menu options
+		idle
+		sound
+		controls
+		credits
+		continue
+		main menu
+		quit
+
 
 POST - minimal
 	Exe Icon - 64x64 - Honk counter - resize
@@ -93,18 +86,9 @@ POST - minimal
 			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
 			
 
-TITLE SCREEN - ???
-	stars revisit
-	buttons updated
+TITLE SCREEN -
 	
-	Reaffirm design direction/menu
-	
-	buttons on left with shader
 	on button hover have AH face different positions interrupting the screen
-	
-	Credits overlay for titlescreen credits button
-	
-	Sparkle VFX
 
 SOUND - 2.5 days ish
 	Different default speech noises

@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://xce008uj80go" path="res://Map assets/no-eye'd deer.png" id="19_oc4d8"]
 [ext_resource type="Texture2D" uid="uid://xmp1iw05xryg" path="res://Map assets/gatekeeper.png" id="20_74rbg"]
 [ext_resource type="Texture2D" uid="uid://dvacasapt6w4q" path="res://Map assets/O.png" id="21_npi88"]
+[ext_resource type="Texture2D" uid="uid://dkmjlu3h28nhj" path="res://Map assets/map border.png" id="21_qsvm7"]
 [ext_resource type="Texture2D" uid="uid://yqshpd36nbpt" path="res://Map assets/organs.png" id="22_xq43d"]
 [ext_resource type="Texture2D" uid="uid://c02q5l60af8un" path="res://Map assets/festering mass.png" id="23_82vjh"]
 [ext_resource type="Texture2D" uid="uid://bhymmwbixjw6w" path="res://Map assets/lamp.png" id="24_r4epv"]
@@ -814,7 +815,6 @@ text = "look"
 
 [node name="Map" type="TextureRect" parent="." unique_id=432696859]
 unique_name_in_owner = true
-visible = false
 z_index = -100
 texture_filter = 1
 anchors_preset = 15
@@ -825,6 +825,11 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("10_bphkb")
 script = ExtResource("11_iqywv")
+
+[node name="MapBorder" type="Sprite2D" parent="Map" unique_id=425489578]
+material = ExtResource("47_qsvm7")
+texture = ExtResource("21_qsvm7")
+offset = Vector2(640, 360)
 
 [node name="PositionMarker" type="TextureRect" parent="Map" unique_id=774177229]
 z_index = 5
