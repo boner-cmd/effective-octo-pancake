@@ -112,9 +112,10 @@ func _set_initial() -> void: #set pivots, materials, etc
 	for Canvas in get_tree().root.get_children():
 		if Canvas.name == &"TransitionSceneOverlay":
 			Canvas.queue_free()
-	await tween_object(transition, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_OUT)
+	await tween_object(transition, "modulate:a", 0.0, .6, Tween.TRANS_SINE, Tween.EASE_OUT)
 	transition.visible = false
 	tween_object(start_menu_control, "modulate:a", 1.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN)
+	##TODO set the 
 
 
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
@@ -149,7 +150,7 @@ func transition_sequence() -> void:
 ##TODO hook up load game to this button
 func _on_continue_button_pressed() -> void:
 	
-	await transition_sequence()
+	#await transition_sequence() #for when load is implemented
 	pass
 
 

@@ -18,6 +18,8 @@ MAIN
 			Will need to save audio settings
 			Will need to save honk counter from QuestManager
 			Will need to save time counter from QuestManager
+			Will need to hook up Continue button in Title Scene to load game
+
 
 
 DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markcy ~2.5 days rework/denoting
@@ -58,7 +60,7 @@ VFX PASS - Michael - ???
 	Confetti explosion for VICTORY animation
 
 
-UI PASS - ???
+UI PASS - optional
 	2 or 3 frame anims for menu options
 		idle
 		sound
@@ -84,11 +86,10 @@ POST - minimal
 			Honk 100 times (feel out the number if 100 is too low)
 			play the whole game with music set to full (Markcy's #1 Fan)
 			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
-			
 
 TITLE SCREEN -
-	
 	on button hover have AH face different positions interrupting the screen
+	implement optional anims for options menu
 
 SOUND - 2.5 days ish
 	Different default speech noises
