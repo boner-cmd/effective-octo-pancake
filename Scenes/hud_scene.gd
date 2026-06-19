@@ -249,7 +249,9 @@ func _on_menu_button_pressed() -> void:
 	get_tree().root.remove_child(get_parent().current_planet)
 	AudioManager.bgm_cycle(22)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().change_scene_to_file('uid://duig5pisbnbl8')
+	transition_scene.queue_free()
+	get_tree().call_deferred("change_scene_to_file", 'uid://duig5pisbnbl8')
+	
 
 
 func _on_any_mouse_button_entered(source : Object) -> void:

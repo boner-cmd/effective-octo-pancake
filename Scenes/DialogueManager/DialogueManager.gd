@@ -54,6 +54,7 @@ const KING_1_RECEIVE_LINES : PackedStringArray = [
 	"Or some lowly servant of ours lost it, we mean!",
 	"Wait--Nevermind! It's right here. Looks like they put it back just in time.", #desired animation switch point (DASP)
 	]
+const KING_1_RECEIVE_DASP = 5
 const KING_1_POST_LINES : PackedStringArray = ["Hop along now, little buddy!"]
 const HORSE_MEET_LINES : PackedStringArray = ["I'm hungry."]
 const HORSE_GIVE_LINES : PackedStringArray = ["Yum."] #DASP
