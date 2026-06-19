@@ -342,7 +342,7 @@ const INDIVIDUAL_EASTER_LINES : PackedStringArray = [
 	]
 const GIBBERISH_MEET_LINES : PackedStringArray = [
 	"shfripusdfasfh asdifgodsgh afjep dbas;gfjkhzghvz;ios gdsfbn.dgf/al;siozasd .dzdj/zlv zsld/vn zlsdv zbueofg DK>sbgzofuibk.",
-	"lxvbn jkoahdgpoawje iej[tu349tyga sdkgh 8weytkasdgfnk'hgsd'oagh80digflsdakgf0[ar8y4tnsdklgbvzip d]].",
+	"lxvbn jkoahdgpoawje iej[tu349tyga sdkgh 8weytkasdgfnk'hgsd'oagh80digflsda kgf0[ar8y4tnsdklgbvzip d]].",
 	]
 const GIBBERISH_GIVE_LINES : PackedStringArray = ["AOPIEHTA0[SDH GFN0 Y3E4TRASJDBF PF HAISDFH;ALBG AO;JGFDL/;ALG HKFA';DGIPAUSDGFAWJK]."] #DASP
 const GIBBERISH_RECEIVE_LINES : PackedStringArray = ["asdhfioash ipsfhak/shj pf'dkgfh as;idasgf ah;ld shfa/ lfhaog diagonal line ;lsn'awieojdmkxz."] #DASP
@@ -372,9 +372,9 @@ const IDEA_GIVE_LINES : PackedStringArray = [
 	"I think I'm-",
 	"I'm gonna-",
 	"Oh God!",
-	"EEEEEEEEEEEEUUUUUUUUUUUUUUURRRRRRRRR
-	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-	KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+	"EEEEEEEEEEEEUUUUUUUUUUUUUUURRRRRRR
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!",
 	]
 const IDEA_RECEIVE_LINES : PackedStringArray = [
 	"Wheeeeeeeew, that was a BIG one. I ideated soooooo haaard. I haven't thought like that in ages.", #DASP
@@ -392,7 +392,8 @@ const BODHI_MEET_LINES : PackedStringArray = [
 	"Bring balance to this world and in doing so, you may prove worthy to pass along the Great Buddha's teachings.",
 	]
 const BODHI_RECEIVE_LINES : PackedStringArray = [
-	"You have done well. The path of enlightenment can only be travelled by the wheel of dharma, inertia into which the Great Buddha himself breathed with his teachings.",
+	"You have done well. The path of enlightenment can only be travelled by the wheel of dharma,",
+	"inertia into which the Great Buddha himself breathed with his teachings.",
 	"Take the dharmachakra, and help others to break the karmic cycle of desiring and suffering.", #DASP
 	]
 const BODHI_POST_LINES : PackedStringArray = ["Om mani padme hum."]
