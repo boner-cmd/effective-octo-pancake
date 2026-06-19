@@ -1,17 +1,17 @@
 #astronaut dialogue
 @export var initial_lines: Array[String] = [
-	"Mayday! Mayday! Houston, we have a problem: I'm running dangerously low on oxygen.",
-	"Everyone seems to think they can just breathe in space on their own with no helmet!",
-	"Well, I don't believe it, so it's not true.",
+	"Mayday! Mayday! I'm running dangerously low on oxygen.",
+	"Everyone else seems to think they can just breathe in space with no helmet!",
+	"Well I don't believe that, so it's not true.",
 ]
 
 @export var give_lines: Array[String] = [
-	"Oxygen? Oh, sweet oxygen! You're a REAL lifesaver.",
+	"Oh, sweet oxygen! You're a lifesaver!",
 ]
 
 @export var receive_lines: Array[String] = [
-	"Take this space blanket. I don't need it. It's incredibly hot inside my spacesuit.",
-	"You can guess that breathing in the same recycled air has not been pleasant.",
+	"Take this space blanket. I don't need it, since it's incredibly hot inside my spacesuit.",
+	"You can guess that breathing in stale recycled air is not been pleasant.",
 	"And you'd be right about it too.",
 ]
 
@@ -20,5 +20,5 @@
 ]
 
 @export var easter_lines: Array[String] = [
-	"Alright, now it's musty in here again.",
+	"Alright, now it's musty in my spacesuit again.",
 ]

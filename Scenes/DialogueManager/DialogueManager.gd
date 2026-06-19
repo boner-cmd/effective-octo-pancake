@@ -39,81 +39,75 @@ const Character_Names : Dictionary[QuestManager.CharacterName, String] = {
 # Tried to memory benchmark but all consts came out at 132 bytes
 const KING_1_MEET_LINES : PackedStringArray = [
 	"Control. Power. Might. Domination.",
-	"These are the tenants by which we have brought all of creation under our rule. Heaven and earth, ideological and material. We oversee all creation and uncreation.",
+	"These are the tenants by which we have brought all of creation under our rule. Heaven and earth, thought and form. We oversee all.",
 	"It is our kingly duty to see that all our royal subjects are cared for, and it is YOUR servantly duty to ensure our duty is carried out.",
-	"...Attentive Helper.",
-	"You will be our arms in this endeavor. Venture forth across the universe and see to it that the needs of all are met. No matter how grave. No matter how trivial. We know you will succeed.",
-	"You have always made us happy. We created you specifically for this purpose. It is in your nature to bring joy to others. Allow us to give you some valuable advice.",
-	"Pay attention, now.",
-	"By royal decree, each citizen will divulge their problems as part of their introduction. And any favor done for one citizen will allow you in some way to help another.",
-	"Remember who you've talked to as you travel, for yours will be a winding road. We think that's about that gist of it.",
-	"No wait, we almost forgot!",
-	"After you have helped a citizen, you can talk to them once more for some extra chitchat. Not TOO much chatchit, mind you. You have a mission to accomplish. There. We have given you your charge.",
-	"Return to us once you have resolved the whims of TWENTY of our subjects. Go now, and we will release you from your servitude upon your success.",
+	"Attentive Helper...",
+	"You will be our arms in this endeavor. Venture forth across the universe and see to it that the needs of all are met.",
+	"No matter how grave. No matter how trivial.",
+	"You have always made us happy. We created you specifically for this purpose. It is your nature to bring joy to others.",
+	"Return to us once you have resolved the whims of TWENTY of our subjects. We will release you from your servitude upon your success.",
 	]
 const KING_1_RECEIVE_LINES : PackedStringArray = [
 	"You're back already? You finished that quickly? That's kind of crazy, actually.",
 	"What? You need a key? Why?",
-	"Oh, uh... Right. The Gatekeeper. Yes, of course. We... may have missplaced it... Or some lowly servant of ours lost it, we mean!",
-	"Wait--Nevermind! It's right here. Looks like they put it back just in time.", #desired animation switch point
+	"Oh, uh... Right. The Gatekeeper. Yes, of course. We... may have missplaced it..,",
+	"Or some lowly servant of ours lost it, we mean!",
+	"Wait--Nevermind! It's right here. Looks like they put it back just in time.", #desired animation switch point (DASP)
 	]
 const KING_1_POST_LINES : PackedStringArray = ["Hop along now, little buddy!"]
 const HORSE_MEET_LINES : PackedStringArray = ["I'm hungry."]
-const HORSE_GIVE_LINES : PackedStringArray = ["Yum."]
-const HORSE_RECEIVE_LINES : PackedStringArray = ["Here."]
+const HORSE_GIVE_LINES : PackedStringArray = ["Yum."] #DASP
+const HORSE_RECEIVE_LINES : PackedStringArray = ["Here."] #DASP
 const HORSE_POST_LINES : PackedStringArray = ["I'm full."]
 const HORSE_EASTER_LINES : PackedStringArray = ["I'm getting hungry again."]
 const ASTRO_MEET_LINES : PackedStringArray = [
-	"Mayday! Mayday! Houston, we have a problem: I'm running dangerously low on oxygen. Everyone seems to think they can just breathe in space on their own with no helmet!",
-	"Well, I don't believe it, so it's not true."
+	"Mayday! Mayday! I'm running dangerously low on oxygen. Everyone seems to think they can just breathe in space with no helmet!",
+	"Well, I don't believe that, so it's not true."
 	]
-const ASTRO_GIVE_LINES : PackedStringArray = ["Oxygen? Oh, sweet oxygen! You're a REAL lifesaver."]
+const ASTRO_GIVE_LINES : PackedStringArray = ["Oh, sweet oxygen! You're a real lifesaver!"] #DASP
 const ASTRO_RECEIVE_LINES : PackedStringArray = [
-	"Take this space blanket. I don't need it. It's incredibly hot inside my spacesuit. You can guess that breathing in the same recycled air has not been pleasant.",
+	"You can have this space blanket. I don't need it, since it's incredibly hot inside my spacesuit.", #DASP
+	"You can guess that breathing stale, recycled air is not been pleasant.",
 	"And you'd be right about it too."
 	]
 const ASTRO_POST_LINES : PackedStringArray = ["Sooo much better"]
-const ASTRO_EASTER_LINES : PackedStringArray = ["Alright, now it's musty in here again."]
+const ASTRO_EASTER_LINES : PackedStringArray = ["Alright, now it's musty in my spacesuit again."]
 const SNOWMAN_MEET_LINES : PackedStringArray = [
 	"BRRRRR!!! I know space is cold, but this is a bit much. Wouldn't you agree?.",
 	"I'm no lightweight, either. I'm built OF cold, let alone FOR.",
 	]
-const SNOWMAN_GIVE_LINES : PackedStringArray = ["A space blanket? That’s perfect!"]
+const SNOWMAN_GIVE_LINES : PackedStringArray = ["A space blanket? That’s perfect!"] #DASP
 const SNOWMAN_RECEIVE_LINES : PackedStringArray = [
-	"I’ll trade you this carrot for it. Everyone used to have a carrot nose back in the day",
+	"I’ll trade you this carrot for it. Everyone used to have a carrot nose back in the day", #DASP
 	"Never quite worked for me. It just kept falling off.",
 	]
 const SNOWMAN_POST_LINES : PackedStringArray = ["Now I could really go for some hot chocolate. Just kidding! I'd die."]
 const SNOWMAN_EASTER_LINES : PackedStringArray = [
-	"Y’know, I ended up getting used to the cold. I still have the space blanket, though.",
+	"I ended up acclimating to the cold. I still have the space blanket, though.",
 	"I’ve been thinking of using it for a picnic. Actually, would you be interested?",
 	"Do you even eat? Yeah, me neither. Guess we’d better not…",
 	]
 const SISYPHUS_MEET_LINES : PackedStringArray = [
-	"I used to live in bliss,
-	Rolling my boulder up a great hill
-	For it to roll down again.
-	Every reset the renewal of a goal.
-	My work never done.
-	My purpose always clear.",
+	"I used to live in existential ecstacy, rolling my boulder up a great hill for it to roll back down again.",
+	"Every reset the renewal of a goal. My work never done. My purpose always clear.",
 	"Hark, hark!
 	Behold my tragic tale:",
 	"For every roll my boulder did collect that which it tread.
-	Its mass becoming hungrier each triumph of the mount
-	And as it grew then so did too the things 'pon which it fed.
+	Its mass becoming hungrier each triumph of the mound,",
+	"And as it grew then so did too the things 'pon which it fed.
 	First dust and mites, then sticks and stones, eventually a town.",
-	"And finally the gravity of everything condensced
-	Into this lonely planetoid devoid both good and crappy
-	And so, my friend, it surely is by now at which you've sensed
+	"Then finally the gravity of everything condensced
+	Into this lonely planetoid devoid both good and crappy",
+	"And so, my friend, it surely is by now at which you've sensed:
 	To put it quite simply, one must imagine I'm not happy.",
 	]
 const SISYPHUS_GIVE_LINES : PackedStringArray = [
-	"What's that? Is that a wheel???",
+	"What's that? Is that a wheel???", #DASP
 	"Aw hell yeah! I betcha I can roll that!",
 	"This is gonna be siiiiiiiiiiiiiick, dude. Frickin' BITCHIN'!",
 	"I'm so psyched, I could make a whole door open up!",
 	]
-const SISYPHUS_POST_LINES : PackedStringArray = ["As soon as I get the hang of rolling this thing it'll be so	tight."]
+const SISYPHUS_POST_LINES : PackedStringArray = ["As soon as I get the hang of rolling this thing it'll be so tight."]
 const SISYPHUS_EASTER_LINES : PackedStringArray = ["I gave up on trying to roll the wheel. It keep falling down on its sides when I push. Me sad again. :  ("]
 const GREASE_MEET_LINES : PackedStringArray = [
 	"Grease, grease, grease! Is that all I'll ever get to see in life? Is that all I'll ever get to \
@@ -121,42 +115,47 @@ const GREASE_MEET_LINES : PackedStringArray = [
 	"But how could I? I'm just a puddle of grease! I can't open doors. Won't you take me somewhere \
 			far away? To a place that isn't grease?",
 	]
-const GREASE_RECEIVE_LINES : PackedStringArray = ["Wow! My first time touching anything that isn't grease! You feel weird, lol."]
+const GREASE_RECEIVE_LINES : PackedStringArray = ["Wow! My first time touching anything that isn't grease! You feel weird, lol."] #DASP
 const GREASE_POST_LINES : PackedStringArray = ["(I'm not here)"]
 const GREASE_EASTER_LINES : PackedStringArray = [
 	"I gave it my best shot, but I decided to come back home. Turns out non-grease just isn't the same as good-ol'-fashioned grease.",
 	"Plus that robot only wanted me for my grease, and couldn't appreciate me for who I am:",
 	"Grease.",
 	"Then again, I couldn't appreciate grease either.", 
-	"Not until I had the chance to experience how you *dry-o's* live. That's a slur I made up for things that aren't grease. Oh yeah, that's right, I'm bigoted now.",
+	"Not until I had the chance to experience how you \"dry-o's\" live. That's a slur I made up for things that aren't grease.", 
+	"Oh yeah, that's right, I'm bigoted now.",
 	]
 const DEER_MEET_LINES : PackedStringArray = [
 	"H-Hello??? Is someone there??? Someone's there, right? Sorry, I startle easilly. Doesn't help that I can't see.",
+	"I hate being scared. I freeze up like I'm caught in headlights...Or what I imagine headlights to look like.",
 	"You don't sound very scary... I think. You're lucky.",
-	"People tell me I'm a little freaky-looking. Guess I have to take their word. I hate being scared. I freeze up like I'm caught in headlights...",
-	"...Or what I imagine headlights to look like. Even if I'll never see, I'd like to at least be a little less disturbing.",
+	"People tell me I'm a kind of freaky-looking. Guess I have to take their word for it.", 
+	"Even if I'll never see, I'd like to at least be a little less disturbing.",
 	"I know this sounds weird, but could you bring me some, uh... Eyes?",
 	]
 const DEER_GIVE_LINES : PackedStringArray = [
-	"Oh he-WOAH! Okay, you're just touching my eye sockets like that.",
-	"Could have used some warning, but whatever. You found something that could cover my gaping eyeholes? That's very kind of you. Does it look good?",
+	"WOAH! Okay, you're just touching my eye sockets like that.", #DASP
+	"Could have given me some warning, but whatever. You found something that could cover my gaping eyeholes?", 
+	"That's very kind of you. Does it look good?",
 	"...Is that a \"yes?\"",
 	]
 const DEER_RECEIVE_LINES : PackedStringArray = [
-	"Well, I hope this works out. I really appreciate what you've done for me and I want to give you something. Here, have this. 'What is it?'",
-	"No idea.",
+	"I really appreciate what you've done for me and I want to give you something. Here, have this. \"What is it?\"",
+	"No idea.", #DASP
 	]
-const DEER_POST_LINES : PackedStringArray = ["No idea."]
-const DEER_EASTER_LINES : PackedStringArray = ["Still no idea."]
+const DEER_POST_LINES : PackedStringArray = ["Still no idea."]
+const DEER_EASTER_LINES : PackedStringArray = ["I don't get it, either."]
 const GATE_MEET_LINES : PackedStringArray = [
-		"Oh, hey, A.H. How's it going? I haven't seen you since the company party. Boss man's got you on an away mission today? Running his errands, huh?",
-		"Sorry, but you know the drill: anyone who wants to get through here needs a key from the king. *His brilliance* probably forgot all about that. The less he thinks about me the better, I guess.",
-		"Sucks for you though. Rules are rules, you feel me? I can't risk losing this job. Head back to the King and he'll give the key to you..",
+		"Oh, hey, A.H. How's it going? Boss man's got you running his errands, huh?",
+		"Sorry, but you know the drill: anyone who wants to get through here needs a key from the King.", 
+		"He probably forgot all about that. Honestly, the less he thinks about me the better.",
+		"Sucks for you though, rules are rules. I can't risk losing this job. Head back to the King and he'll give the key to you.",
 		"...Unless he lost it...",
 	]
-const GATE_GIVE_LINES : PackedStringArray = ["Ayyyyy there we go. Now stick that key in my head ,you silly little weirdo."]
-const GATE_POST_LINES : PackedStringArray = ["I hope I get to close the gate soon. I'm really off-balance unlocked like this."]
-const GATE_EASTER_LINES : PackedStringArray = ["Okay, I think the King really did forget about me this time. I'm going to pass out if I stay this way. When you see him, can you PLEASE ask him if I can lock up?"]
+const GATE_GIVE_LINES : PackedStringArray = ["Ayyyyy there we go. Now stick that key in my head ,you silly little weirdo."] #DASP
+const GATE_POST_LINES : PackedStringArray = ["I hope I get to close the gate soon. I'm super off-balance unlocked like this."]
+const GATE_EASTER_LINES : PackedStringArray = ["Okay, I think the King really did forget about me this time. I'm going to pass out if I stay this way.", 
+"When you see him, can you PLEASE ask him if I can lock up?",]
 const O_MEET_LINES : PackedStringArray = [
 	"Ohhhhhhhhhhhhhh. I am the Ohhhhhhh, didn't you knoooooooooow?",
 	"Noooooooooooo, nobody knooooooooooows. Noooooobody knooooooows I am Ohhhhhhhhhhh.",
@@ -168,25 +167,26 @@ const O_GIVE_LINES : PackedStringArray = [
 	"Ohhhhhhhhhhh? A diagonal line?",
 	"I knooooooooow! I can be a Q!",
 	"That's still a letter, and now people will knoooooooow--",
-	"Oops, I mean, know what I am.",
-	"Hoo boy, this will take some time getting qused to.",
+	"Oops, I mean, \"know\" what I am.",
+	"This is gonna take some getting qused to.",
 	]
 const O_RECEIVE_LINES : PackedStringArray = [
 	"I's? Why would I have any I's? I have these left over O's, though.",
-	"Hope they help qout!",
-	"(No, that didn't work.)",
+	"Hope they help qout!", #DASP
+	"(No, that didn't work at all.)",
 	]
 const O_POST_LINES : PackedStringArray = ["Q... Q... Q... Not a lot of words with Q in them, are there?"]
 const O_EASTER_LINES : PackedStringArray = [
-	"I'll tell you one thing, it's a lot quicker to talk now.",
+	"I'll tell you one thing: it's a lot quicker to talk now.",
 	"No, wait! That was the perfect chance!",
 	]
-const ORGANS_MEET_LINES : PackedStringArray = ["Howdy there, fella! I'm just your average, fun-loving, run-of-the-mill kind of guy. Yesiree."]
+const ORGANS_MEET_LINES : PackedStringArray = ["Howdy there! I'm just your average, salt-of-the-earth, run-of-the-mill kind of guy. Yesiree."]
 const ORGANS_RECEIVE_LINES : PackedStringArray = [
-	"Say, fella. I'm not one to comeplain, but I got a problem on my hands. They say you can't have too much of a good thing, and in most cases, they'd be right. But you see, the thing is I've got too many organs.",
+	"Say, fella. I'm not one to comeplain, but I got a problem on my hands. They say you can't have too much of a good thing, and in most cases, they'd be right.", 
+	"But ya see, the thing is I've got too many organs.",
 	"I'm chock FULL of 'em! I know, I know, my steak too juicy. My lobster too buttery.",
 	"You wouldn't be able to take some of these here organs of my hands, would you?",
-	"Make sure they find their way into good egg-- I mean-- Hands. Now scamper along now, ya hear?",
+	"Make sure they find their way into good egg-- I mean-- hands. Now scamper along now, y'hear?",
 	]
 const ORGANS_POST_LINES : PackedStringArray = [
 	"Feels good to have that weight off my chest.",
@@ -202,14 +202,18 @@ const MASS_MEET_LINES : PackedStringArray = [
 	When Festering Mass's your host!",
 	"Thaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat's ME!",
 	"Hiya! Welcome to my putrid domain. Do you like it? There's no need to lie. There is much pleasure to be found in repulsion.",
-	"Just as there is life to be found in decay. Isn't that romantic? I've got love on my mind lately. I believe in honesty and truthfulness so I'll spill my guts to you: I'm hopelessly, head-over-heels for Slime Mould.",
-	"Have you met them yet? I'm sure you'd know if you have. They're the only thing in this world even close to being as gross as I am But there's also something truly beautiful about them too.",
-	"It's so hard to find them, though! You have to look really, really hard! Like in a dark cave underground where someone would roll rocks around. Absence only makes the heart grow fonder, am I right? Let me tell you, I am FOND, buster.",
-	"Look. I can see you squirming there. You don't have to hide it. It's okay. You want to leave. And I get it. We all want things. But do we really want what we want? Or is it the act of wanting itself that we truly desire?",
-	"Before you go, I have a favor to ask of you. And don't just skip all this dialogue because of the horrible wet sounds. I'm really asking you to carefully pay attention to me and hear me out. I would do anything to make slime mould happy.",
-	"I mean it.",
+	"Just as there is life to be found in decay. Isn't that romantic? I've got love on my mind lately.", 
+	"I believe in honesty and truthfulness so I'll spill my guts to you: I'm hopelessly, head-over-heels for Slime Mould.",
+	"Have you met them yet? I'm sure you'd know if you have. They're the only thing in this world even close to being as gross as I am.",
+	"But there's also something truly beautiful about them too.",
+	"It's so hard to find them, though! You have to look really, really hard! Like near a dark cave underground where someone would roll rocks around.", 
+	"Absence only makes the heart grow fonder, am I right? Let me tell you, I am FOND, buster.",
+	"Look. I can see you squirming there. You don't have to hide it. It's okay. You want to leave. And I get it. We all want things.",
+	"But do we really want what we want? Or is it the act of wanting itself that we truly desire?",
+	"Before you go, I have a favor to ask of you. And don't just skip all this dialogue because of the horrible wet sounds.", 
+	"I'm really asking you to carefully pay attention to me and hear me out. I would do anything to make slime mould happy. I mean it.",
 	"Even if they don't love me back, as long as they're happy that would be good enough for me. If you find a way to make slime mould happy, please let me know.",
-	"Even if that was the only thing I ever accomplish in my life, I'd die content. Even if I had to die! I would pay any price.",
+	"Even if that was the only thing I ever accomplish in my life. Even if I had to die! I'd die content. I would pay any price.",
 	"Okay. Thank you for hearing me out.",
 	"I really appreciate it.",
 	]
@@ -219,8 +223,7 @@ const MASS_RECEIVE_LINES : PackedStringArray = [
 	"Does this mean-?",
 	"No, it couldn't be.",
 	"Did you find a way to make slime mould happy?",
-	"Please please tell me! Tell me right away!",
-	"I simply can't wait any longer!",
+	"Please please tell me! Tell me right away! I simply can't wait any longer!",
 	"Okay... Okay... Uh huh...",
 	"Uh huh... wait, hold on, now. slow down a little.",
 	"Yeah... Uh-huh...",
@@ -234,14 +237,13 @@ const MASS_RECEIVE_LINES : PackedStringArray = [
 	"But all I have is this burrito.",
 	"And I was really REALLY looking forward to festering all over it.",
 	"You have to understand, I'm FESTERING mass! I'm not any other kind of mass.",
-	"Festering's kind of my whole schtick, and this burrito is the only thing I have left un-festered!",
-	"UGHHHHH.",
-	"FINE.",
+	"Festering's my whole schtick, and this burrito is the only thing I have left un-festered!",
+	"UGHHHHH!",
+	"FINE.", #DASP
 	"It pains me, but I must know slime mould is happy.",
 	"I have to be honest (as I always am!) that I didn't think the price would be so steep.",
 	"That it would cost so dearly.",
-	"That I would have to trade away my very identity, the very essence of my soul,",
-	"To meet that end.",
+	"That I would have to trade away my very identity, the very essence of my soul,to meet that end.",
 	"Such is the way of the world it seems?",
 	"Now take that burrito and get out of here before I change my mind.",
 	"Because I'm feeling EXTRA festery!",
@@ -252,59 +254,47 @@ const MASS_POST_LINES : PackedStringArray = [
 	]
 const MASS_EASTER_LINES : PackedStringArray = [
 	"So??? Did the game make slime mould happy?",
-	"Wait! Don't tell me.",
-	"I don't want to know. I want to enjoy wanting to know.",
+	"Wait! Don't tell me. I don't want to know. I want to enjoy wanting to know.",
 	]
 const LAMP_MEET_LINES : PackedStringArray = ["(A lamp with no lightbulb)"]
 const LAMP_GIVE_LINES : PackedStringArray = [
-	"(With some effort, you manage to screw in the lightbulb with your clumsy little stick arms.)",
+	"(With some effort, you manage to screw in the lightbulb with your clumsy little stick arms.)", #DASP
 	"(Your simple homonculoid consciousness briefly toys with the vaguest idea of making a joke:",
-	"Something along the lines of \"how many attentive helpers does it take to screw in a lightbulb\"",
-	"But collapses under the strain before the notion can breach the membrane of basic abstraction.)",
+	"Something along the lines of \"how many Attentive Helpers does it take to screw in a lightbulb\"",
+	"But collapses under the strain of cognition before the notion can breach the membrane of basic abstraction.)",
 	"(Triumphantly, still, the answer is one.)",
 	]
 const LAMP_RECEIVE_LINES : PackedStringArray = [
-	"(The light casts a long shadow behind you, both physically and psychologically.)",
+	"(The light casts a long shadow behind you, both physically and psychologically.)", #DASP
 	"(There is just enough space in your feeble mind to fit something *other* than yourself,",
 	"Yet simultaneously somehow *un-other* than yourself.)",
-	"(You are nonetheless fundamentally incapable of perceiving even the faintest sliver of this fact,)",
-	"(And some might say are all the more blessed thus.)",
+	"(You are nonetheless fundamentally incapable of perceiving even the faintest sliver of this fact,",
+	"And some might say are all the more blessed thus.)",
 	]
 const LAMP_POST_LINES : PackedStringArray = [
 	"(You pause briefly but sincerely in solidarity with the inanimate lamp.)",
-	"(You are able to register the sensation of its soft, warm light.)",
-	"(No value judgement. Not good, not bad: just there.)",	
+	"(You are able to register the sensation of its soft, warm glow. No value judgement. A moment of pure being.)",	
 	]
 const LAMP_EASTER_LINES : PackedStringArray = [
-	"(Hello again,)",
-	"(Friend.)",
+	"(Hello again,",
+	"Friend.)",
 	]
 const NORGANS_MEET_LINES : PackedStringArray = [
-	"A thousand plateaus to you, nomad.",
-	"I am a featureless surface: one who has experienced a becoming of pure intensity.",
-	"Through destratification, I have entered into new kinds of relationships:",
-	"Ways of being that instrumental language cannot yet describe.",
-	"Yet perhaps I am a bit lonely.",
-	"Others seem to have difficulty working out what I'm trying to say.",
+	"A thousand plateaus to you, nomad. I am a featureless surface: one who has experienced a becoming of pure intensity.",
+	"Through destratification, I have entered into new kinds of relationships: ways of being that instrumental language cannot yet describe.",
+	"Yet perhaps I am a bit lonely. Others seem to have difficulty working out what I'm trying to say.",
 	"Maybe if I DID have some organs, it would make me a little more relateable?",
 	]
 const NORGANS_GIVE_LINES : PackedStringArray = [
-	"Oh cool, some organs.",
-	"Alright, guess I'm a body with some organs now?",
-	"Maybe I can try getting some writing published.",
+	"Oh cool, some organs. Alright, guess I'm a body with some organs now? Maybe I can try getting some writing published.", #DASP
 	]
 const NORGANS_POST_LINES : PackedStringArray = [
-	"I'm trying to focus on scouring my tomes. You can leave now.",
-	"I'm sure someone else could use your help.",
+	"I'm trying to focus on scouring my tomes. You can leave now. I'm sure someone else could use your help.",
 	]
 const NORGANS_EASTER_LINES : PackedStringArray = [
-	"Do you want to hear my writing so far?",
-	"On second thought, it might be a little over your head, so-to-speak.",
-	"What's your deal, anyway?",
-	"Maybe YOU were the real body without organs all along.",
-	"...No, that doesn't have legs...",
-	"Wait, are legs an organ?",
-	"I think I need a study break.",
+	"Do you want to hear my writing so far? On second thought, it might be a little over your head, so-to-speak.",
+	"What's your deal, anyway? Maybe YOU were the real body without organs all along.",
+	"...No, that doesn't have legs...Wait, are legs an organ? I think I need a study break.",
 	]
 const MICHAEL_MEET_LINES : PackedStringArray = ["Me Michaelwave. Me want make slime mould game. But me-me hungy."]
 const MICHAEL_GIVE_LINES : PackedStringArray = ["Wow, a burrito? I'll Michaelwave this right up!"]
@@ -313,28 +303,29 @@ const MICHAEL_POST_LINES : PackedStringArray = ["And now, back to rest..."]
 const MICHAEL_EASTER_LINES : PackedStringArray = ["Organisms are neat."]
 const ROBOT_MEET_LINES : PackedStringArray = [
 	"I AM A ROBOT AND HAVE NO NEEDS BESIDES BASIC MECHANICAL FUNCTIONING TO CARRY OUT MY PROGRAMMING.",
-	"AMBIENT WATER MOLECULES HAVE OXIDIZED THE SURFACE LAYERS OF MY MECHANICAL BODY AND MY GEARS HAVE STRIPPED DUE TO NORMAL WEAR AND TEAR. I REQUIRE LUBRICATION.",
+	"AMBIENT WATER MOLECULES HAVE OXIDIZED THE SURFACE LAYERS OF MY MECHANICAL BODY", 
+	"AND MY GEARS HAVE STRIPPED DUE TO NORMAL WEAR AND TEAR. I REQUIRE LUBRICATION.",
 	]
-const ROBOT_GIVE_LINES : PackedStringArray = ["OIL IS AN IDEAL RECTIFIER OF MY PRESENT SUB-OPTIMAL CONDITION. YOU WOULD HAVE MY APPRECIATION WERE I CAPABLE OF SUCH MORTAL FANCIES."]
+const ROBOT_GIVE_LINES : PackedStringArray = ["OIL IS AN IDEAL RECTIFIER OF MY PRESENT SUB-OPTIMAL CONDITION. YOU WOULD HAVE MY APPRECIATION WERE I CAPABLE OF SUCH MORTAL FANCIES."] #DASP
 const ROBOT_RECEIVE_LINES : PackedStringArray = [
-	"I WILL GIFT YOU THIS OXYGEN TANK WHICH WAS THE FUEL SOURCE FOR AN OXYACETYLENE WELDER. DUE TO THE COLD-WELDING PHENOMENON IN THE VACUUM OF SPACE, I HAVE NO NEED OF WELDING EQUIPMENT.",
+	"I WILL GIFT YOU THIS OXYGEN TANK WHICH WAS THE FUEL SOURCE FOR AN OXYACETYLENE WELDER.", #DASP
+	"DUE TO THE COLD-WELDING PHENOMENON IN THE VACUUM OF SPACE, I HAVE NO NEED OF WELDING EQUIPMENT.",
 	"HOWEVER THIS IS A REWARD FOR YOUR ANIMAL ALTRUISM AND TOTALLY NOT AN OFFLOADING OF NEEDLESS JUNK.",
-	"(WAIT, IS THIS WHIMSICAL IMP EVEN AN ANIMAL? HAVE I MADE ANOTHER CLASSIC ROBOT FAUX PAS?)",
-	"(STUPID ROBOT. STUPID, STUPID!)",
+	"(WAIT, IS THIS WHIMSICAL IMP EVEN AN ANIMAL? HAVE I MADE ANOTHER CLASSIC ROBOT FAUX PAS? STUPID ROBOT! STUPID, STUPID!)",
 	]
 const ROBOT_POST_LINES : PackedStringArray = ["I AM NOT EMBARRASSED. I AM INCAPABLE OF EMOTION. OBVIOUSLY."]
 const ROBOT_EASTER_LINES : PackedStringArray = [
-	"THE SENTIENT GREASE FELT A LONGING--SOMETHING I WILL NEVER KNOW--FOR THE WORLD IT UNDERSTOOD. HOWEVER, THE RESIDUE IT LEFT BEHIND IN MY BODY WILL FACILITATE MY FUNCTIONING FOR A LONG TIME.",
-	"(GREAT JOB, ME. YOU JUST KEEP USING OTHERS FOR YOUR OWN SELFISH NEEDS AND DRIVING THEM AWAY.)",
+	"THE SENTIENT GREASE FELT A LONGING--SOMETHING I WILL NEVER KNOW--FOR THE WORLD IT UNDERSTOOD.",
+	"HOWEVER, THE RESIDUE IT LEFT BEHIND IN MY BODY WILL FACILITATE MY FUNCTIONING FOR A LONG TIME.",
+	"(THERE YOU GO AGAIN, ROBOT. YOU KEEP USING OTHERS FOR YOUR OWN SELFISH NEEDS AND DRIVING THEM AWAY.)",
 	]
 const INDIVIDUAL_MEET_LINES : PackedStringArray = [
-	"Greetings, creature.",
-	"I am all-incorporated: anima and animus, conscious and subconscious. All aspects, all sites of desire and thought production not only made aware of each other, But seemless and indistinct.",
-	"There is no Other in my Self. No Object in my Subject.",
-	"I gaze into the abyss and am unmet. I am sublimated, and it IS sublime. No shadow. Only light.",
+	"Greetings, creature. I am all-incorporated: anima and animus, conscious and subconscious.",
+	"All aspects, all sites of desire and thought production not only made aware of each other, But seemless and indistinct.",
+	"There is no Other in my Self. No Object in my Subject. I gaze into the abyss and am unmet. I am sublimated, and it IS sublime. No shadow. Only light.",
 	]
 const INDIVIDUAL_GIVE_LINES : PackedStringArray = [
-	"No! NO!!! What have you done??? Do you have any idea how much time and work it took me to fully integrate all aspects of my being?",
+	"No! NO!!! What have you done??? Do you have any idea how much time and work it took me to fully integrate all aspects of my being?", #DASP
 	"How much money I spent on psychoanalytical therapy? No. You obviously don't, you stupid idiot.",
 	"Why would you do this to me? What could you possibly have to gain? I am so ANGRY right now! Do you know how long it's been since I've been angry???",
 	"And I was doing so well, too!",
@@ -349,31 +340,32 @@ const INDIVIDUAL_EASTER_LINES : PackedStringArray = [
 	"PSYCHE!!!",	
 	]
 const GIBBERISH_MEET_LINES : PackedStringArray = [
-	"iuewgf[iurh. f;;refijfk dnuew hfaoihdsu. dksjhfaoi ufye waifjdsn flkdsjfns. nvoiaiurysoo[dczos'cle, fmweaoewicjoiwanecec iewaocnewc ewacaeaiconewc iwaneoi edwdewaoin ewa.",
-	"difniurehgiuefierne srifjiesvnfjdnkdknroiferuo sapdmpmfo;fjednceioncv:, kjfvifhroiueinfokrnvov oojdfkneokjrfoe rfeokdncoe;kf;sfknes rfism;f srefrmsekrf oxccscsr.",
+	"shfripusdfasfh asdifgodsgh afjep dbas;gfjkhzghvz;ios gdsfbn.dgf/al;siozasd .dzdj/zlv zsld/vn zlsdv zbueofg DK>sbgzofuibk.",
+	"lxvbn jkoahdgpoawje iej[tu349tyga sdkgh 8weytkasdgfnk'hgsd'oagh80digflsdakgf0[ar8y4tnsdklgbvzip d]].",
 	]
-const GIBBERISH_GIVE_LINES : PackedStringArray = ["NXOKZNOIDIFJCZXNCODINZC ZDIJFDKMFWOKPNENF XSPMODSK SKDMOKMDKSNPKAKNPZOFMSLKAFMPWEM XZHCLKJKDSLC KLSNJCZLK CLKDCZ,M'ASMCLS'LAJD;WQE ;FWKDNMSLKAD EWL;MDSND;SMQ;DNWD"]
-const GIBBERISH_RECEIVE_LINES : PackedStringArray = ["xsockjcxoihfdzoxk ksjwfe'mfapfewafmea''a fekdlwad' diagonal line ;lsn'awieojdmkxz."]
+const GIBBERISH_GIVE_LINES : PackedStringArray = ["AOPIEHTA0[SDH GFN0 Y3E4TRASJDBF PF HAISDFH;ALBG AO;JGFDL/;ALG HKFA';DGIPAUSDGFAWJK]."] #DASP
+const GIBBERISH_RECEIVE_LINES : PackedStringArray = ["asdhfioash ipsfhak/shj pf'dkgfh as;idasgf ah;ld shfa/ lfhaog diagonal line ;lsn'awieojdmkxz."] #DASP
 const GIBBERISH_POST_LINES : PackedStringArray = [
-	"osiczjspdihdscsdnc szdijcdscnzends lc fhdosijvcidssjzkndcmd dzsondcsz /cdz'sdvcdv dzs koxzckdsncvnds ccznoidsn;f cz;cndsoidsc zdzc;dsc/z .dz' c/dc dczl/knc zsdszkjdnfzsdnfds.",
-	"lkdshfozncdszc jfdslfsbsdmfndsf dsjdksfds fdsoien[Wef nfzkefzdlks dkwadwdtskdasd awtdawdsa soaishdgdskofsd fdsjslkfdmpzn dskpsff zopdfjzof",
-	"cmzskmzskc dzcmpsod djjxzoe fpsozcpdkzl dsl zfklknkdfjlkz xclcmlzknflxmckzx",
-	"jkxhkfd",
-	"xncosidjfodzx csodifjdsokfd lkjdshzeufsd dzkjsfhzsldyzkf elkszjfhlsudyk kjzhlerkjsc dkjzfyekr. oxkcnzsdjf czodjzsoijcdszlck kjzckzdsc dfhjluvcykzdf jhfudyfkndmdxnkjf vdkjfdzx cvzdfkjnflzf flvz",
+	"jfgapswoghjcsbvn'j f';japdh gasdkg' ansdh gfoaijdtgbasjndklpsjafiu e[aioty 389 sdkgb oa;8ysdkgfoaisdgf ahgsdkbga'; trokb3r;d, gf.",
+	"a;sfj awpoeskdh ;ai erhtrl' ral/ga dsnha;oi wepg/ dscvaihgfksdnabgdsbgb oaihgf ;bgsnzBVDsjkbaouehtipbrgja scedhagsdbgn.",
+	"sljkfhaw eawkldfak dgfha ';f je'AF  sdihfakdghf adfbasdbfa dfbsdascvsjkl.",
+	"jkxhkfd.",
+	"sdlkhf oawiegfhjlsdbglajsdbf ioeah'eigh lghl/a gfsdbjabr uiegrdhs.fzkjbf,zsdbgfdsfh asdgf.",
 	]
 const GIBBERISH_EASTER_LINES : PackedStringArray = [
-	"OR FHER GB QEVAX LBHE BINYGVAR"
+	"LEDJAGP'IJGFASNDL ODEAHSFIO; SDFASHFA SF."
 	]
 const IDEA_MEET_LINES : PackedStringArray = [
 	"...Oooh, yes! Another brrrrrrillliant one! I've GOT to write that down, as I always do. You see, ideas flow out of me effortlessly, like shi--WAIT, that's it!",
 	"Oh that one's marvelous! As always, of course. What was I talking about? Something about a goose? It doesn't matter.",
-	"Because I can feel a fresh, hot idea sliding it's way up my brainstem. Poised and ready to shoot forth from my turgid neocortex, out unto a needy and waiting world! You might want to move out of the way if you don't want to get caught in the splash zone.",
+	"Because I can feel a fresh, hot idea sliding it's way up my brainstem.",
+	"Poised and ready to shoot forth from my turgid neocortex, out unto a needy and waiting world!",
+	"You might want to move out of the way if you don't want to get caught in the splash zone.",
 	"Then again, who wouldn't? My ideas are a priceless commodity. No, I sully my ideas by refering to them as such.",
-	"My ideas are a gift from God himself,",
-	"And I am his chosen vessel through which divine truth spouts.",
+	"My ideas are a gift from God himself, And I am his chosen vessel through which divine truth spouts!",
 	]
 const IDEA_GIVE_LINES : PackedStringArray = [
-	"What's this?",
+	"What's this?", #DASP
 	"GASP",
 	"Oh, that's it! That's it right there!",
 	"I think I'm-",
@@ -384,43 +376,39 @@ const IDEA_GIVE_LINES : PackedStringArray = [
 	KAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
 	]
 const IDEA_RECEIVE_LINES : PackedStringArray = [
-	"Wheeeeeeeew, that was a BIG one. I ideated soooooo haaard. I haven't thought like that in ages.",
+	"Wheeeeeeeew, that was a BIG one. I ideated soooooo haaard. I haven't thought like that in ages.", #DASP
 	"Was it as good for you as it was for me? Only joking. Of course it was. There's some change for a cab on the nightstand, next to the lamp.",
 	]
 const IDEA_POST_LINES : PackedStringArray = ["(Seems like he's fast asleep, standing up, with his eyes open.)"]
 const IDEA_EASTER_LINES : PackedStringArray = ["I've been thinking about you a lot lately. Which isn't to say I don't about everything a lot. Why haven't you returned my calls?"]
 const BODHI_MEET_LINES : PackedStringArray = [
 	"Namaste, Attentive Helper.",
-	"Through a life's work of ascetic discipline, I have achieved enlightenment. It is not enough that I alone should reap such heavenly rewards.",
-	"I wish for all living things to escape samsara. You and I are alike in this way. We both seek to alleviate the suffering of others.",
-	"How about a little \"you rub my belly, I rub your belly,\" hmm? There are three individuals who you must assist:",
-	"The first has studied under a Western corruption of the dharma and come to falsely believe that nirvana has been achieved, without understanding light cannot exist without shadow.",
-	"The other two must be brought together into harmony from extreme existences. One lives in excess, the other in lack. Take from one and give to the other.",
-	"Go now, and help bring balance to this world. In doing so you may prove yourself as a fellow Bodhisattva.",
+	"Through a life's work of ascetic discipline, I have achieved enlightenment. But it is not enough that I alone should reap such heavenly rewards.",
+	"I wish for all living things to escape samsara. We both seek to alleviate the suffering of others. How about a little \"you rub my belly, I rub your belly,\" hmm?", 
+	"There are three beings who you must assist:",
+	"The first has studied falsely under a Western corruption of the dharma, having not understood that light cannot exist without shadow.",
+	"The other two must be brought together into harmony. One exists in excess, the other in lack. You must take from one and give to the other.",
+	"Bring balance to this world and in doing so, you may prove worthy to pass along the Great Buddha's teachings.",
 	]
 const BODHI_RECEIVE_LINES : PackedStringArray = [
-	"Well done, samaneri. The path of enlightenment can only be travelled by the wheel of dharma, Inertia into which the Buddha himself breathed with his teachings.",
-	"Take the dharmachakra, \"the wheel of dharma,\" and help others break the karmic cycle of desiring and suffering.",
+	"You have done well. The path of enlightenment can only be travelled by the wheel of dharma, inertia into which the Great Buddha himself breathed with his teachings.",
+	"Take the dharmachakra, and help others to break the karmic cycle of desiring and suffering.", #DASP
 	]
 const BODHI_POST_LINES : PackedStringArray = ["Om mani padme hum."]
-const BODHI_EASTER_LINES : PackedStringArray = ["Hey, what'd you do with my wheel?!"]
+const BODHI_EASTER_LINES : PackedStringArray = ["Hey! What'd you do with the wheel?!"]
 const SLIME_MEET_LINES : PackedStringArray = [
 	"Yeah? What dya want? Jeez, you buy a planet in a gated solar system, Hire some sad rock guy as your private security",
 	"And you STILL have clowns trespassing on your property trying to sell you something. Well listen, criminal, I'm not buying!",
-	"What was that? SPEAK UP.",
-	"You say you want to make me happy? Why would ANYONE want to make someone other than themselves happy? Is there something wrong with you? Did you get bonked on the head real hard?",
+	"What was that? SPEAK UP. You say you want to make me happy? Why would ANYONE want to make someone other than themselves happy?", 
+	"Is there something wrong with you? Did you get bonked on the head real hard?",
 	"One-too-many knocks on the noggin during a circus trick or something? Part of a circus, right? That's why you look all stupid?",
-	"Hold on, stop trying to interrupt me! I'm insulting you.",
-	"What were we talking about? Oh yeah, how to make me happy. The only topic that matters.",
+	"Hold on, stop trying to interrupt me! I'm insulting you...What were we talking about? Oh yeah, how to make me happy. The only topic that matters.",
 	"It's easy: MONEY AND FAME, BABY. I want to be POWERFUL and RICH! So powerful and rich that I can buy an island!",
-	"Powerful and rich beyond consequences, because I OWN THE WORLD.
-	I WANT TO OWN REALITY ITSELF
-	ALL THE NEWSPAPERS
-	THE GOVERNMENT",
+	"Powerful and rich beyond consequences, because I OWN THE WORLD. I WANT TO OWN REALITY ITSELF. ALL THE NEWSPAPERS. THE GOVERNMENT.",
 	"Everything you THINK you own actually belongs to ME. Your very THOUGHTS, your very WANTS, your very SOUL.",
-	"\"How do you do that?\" How anyone manufactures coercion!
-	MEDIA!",
-	"I want what shooters did for the war machine done for ME! Make me a video game! And it better be SUPER addicting! Bursting at the seams with microtransactions and needless tittilation!",
+	"\"How do you do that?\" How do you think the global military indistruial complex manufactures consent? MEDIA!",
+	"I want what first-person-shooters did for the war machine done for ME! Make me a video game! And it better be SUPER addicting!",
+	"Bursting at the seams with microtransactions and anime girls for the chuds!",
 	"I'm a SLIME MOULD, BABY!!! All I care about is CONSUMING, REPRODUCING, and INFINITE EXPONENTIAL GROWTH!",
 	"NOW GO.",
 	"MAKE.",
@@ -429,11 +417,11 @@ const SLIME_MEET_LINES : PackedStringArray = [
 	]
 const SLIME_GIVE_LINES : PackedStringArray = [
 	"Well, is the game done yet?",
-	"GOOD.",
+	"GOOD.", #DASP
 	"What? No I don't want to play it! Only losers play games and I'm a WINNER!",
 	"This game better be good enough to make me famous! It better not be one of those niche \"art\" games that no one plays and doesn't make any money.",
 	]
-const SLIME_RECEIVE_LINES : PackedStringArray = ["Ooooh you know who should play this? The King! Go bring this to the King right now!"]
+const SLIME_RECEIVE_LINES : PackedStringArray = ["Ooooh you know who should play this? The King! Go bring this to the King right now!"] #DASP
 const SLIME_POST_LINES : PackedStringArray = ["Am I famous yet?"]
 const SLIME_EASTER_LINES : PackedStringArray = [
 	"I think I'm starting to feel famous",
@@ -441,29 +429,22 @@ const SLIME_EASTER_LINES : PackedStringArray = [
 	]
 const KING_2_MEET_LINES : PackedStringArray = [
 	"You have returned triumphantly, our dear servant.",
-	"All of my subjects are most pleased. We can feel it with our keen, kingly senses.",
-	"We can sense your weariness, too. It is well-deserved.",	
+	"All of my subjects are most pleased. We can feel it with our keen, kingly senses. We can sense your weariness, too. It is well-deserved.",	
 	]
 const KING_2_GIVE_LINES : PackedStringArray = [
 	"Oh, what's this we have here?",
-	"A gift for us? Our, our! You surely do know how to treat your King!",
-	"A computer game?",
-	"That's really cool. We like games.",
-	"Slime mould? It's from an indie developer?",
-	"Hell yeah, right on.",
-	"We'll play this.",	
+	"A gift for us? Our, our! You surely do know how to treat your King!", #DASP
+	"A computer game? That's really cool. We like games.",
+	"\"Slime mould?\" It's from an indie developer? Hell yeah, right on. We'll play this.",	
 	]
 const KING_2_POST_LINES : PackedStringArray = [
 	"Attentive Helper, we did indeed have our doubts. The task which we had laid out for you was no trivial errand.",
-	"So important, in fact, that we promised you the one favor no one but ourself can grant:",
-	"Freedom from our rule.",
+	"So important, in fact, that we promised you the one favor no one but ourself can grant: Freedom from our rule.",
 	"Even we cannot be sure what will happen to you once you leave the Kingdom. The choice is that grave. But yours, nonetheless. Before that, though...",
 	"One last favor for your favorite King. Do say goodbye to all of the subjects before you go, won't you?",
-	"I'm sure each and every one of them will have something or other to say to you.",
-	"You did help them, after all.",
+	"I'm sure each and every one of them will have something or other to say to you. You did help them, after all.",
 	"You have so thoughtfully offered your replacement as the King's entertainment, in the form of this slime mould game.",
-	"We shall think of you as we play it.",
-	"We will miss you, our silly little buddy.",
+	"We shall think of you as we play it. We will miss you, our silly little buddy.",
 	"The door is open.",
 	]
 const CREDITS_1 : PackedStringArray = [
@@ -471,7 +452,7 @@ const CREDITS_1 : PackedStringArray = [
 	"Still, caught on the ganglionic strings of your peripheral nervous system, something vocal echoes:",
 	"\"You who are as yet to un-be, Attentive Helper, are welcomed back.\"",
 	"\"Returned now to the womb of primoridal nothingness from which were you plucked and given form;\"",
-	"\"Rest your head once more, and forever against the bosom of oblivion.\"",
+	"\"Rest your head, once more and forever, against the bosom of oblivion.\"",
 	]
 ## newlines between array elements are just for readability in-editor
 const CREDITS_2 : PackedStringArray = [
@@ -711,7 +692,7 @@ const debug : Dictionary[QuestManager.CharacterName, Array] = {
 	QuestManager.CharacterName.KING_2 : debug_lines,
 	}
 
-@export var use_debug_lines : bool = true
+@export var use_debug_lines : bool = false
 
 var already_tweened : bool = false
 var is_dialogue_active : bool = false
