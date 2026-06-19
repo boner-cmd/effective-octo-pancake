@@ -13,7 +13,6 @@
 [ext_resource type="Material" uid="uid://p6axcgo36jli" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_1.tres" id="10_qu6cc"]
 [ext_resource type="Texture2D" uid="uid://62yo4oa5rjca" path="res://UI assets/menu button unselected cromakey.png" id="11_4hokt"]
 [ext_resource type="Texture2D" uid="uid://dryfbaibo6t1f" path="res://UI assets/menu button selected chromakey.png" id="12_swiah"]
-[ext_resource type="Texture2D" uid="uid://676qnfs6tj86" path="res://UI assets/title screen button selected.png" id="12_vj6xs"]
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="13_75epk"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="14_3ah5x"]
 [ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/LARGE_UI_MATERIAL_1.tres" id="15_jhb10"]
@@ -435,7 +434,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
-texture_hover = ExtResource("12_vj6xs")
+texture_hover = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/ContinueButton" unique_id=876850199]
@@ -461,7 +460,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
-texture_hover = ExtResource("12_vj6xs")
+texture_hover = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/NewGameButton" unique_id=743505034]
@@ -487,7 +486,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
-texture_hover = ExtResource("12_vj6xs")
+texture_hover = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/OptionsButton" unique_id=1568514466]
@@ -513,7 +512,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
-texture_hover = ExtResource("12_vj6xs")
+texture_hover = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/QuitButton" unique_id=1198521378]
