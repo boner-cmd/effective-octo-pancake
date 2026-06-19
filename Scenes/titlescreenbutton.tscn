@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://ccbybwl84dxr3" path="res://UI assets/UIShaders/gradient_squiggle.gdshader" id="1_llxk7"]
 [ext_resource type="Texture2D" uid="uid://oorvexlpdtjw" path="res://UI assets/dialogue box outline gradient.png" id="2_god35"]
 [ext_resource type="Texture2D" uid="uid://bhoprcypwpl6h" path="res://UI assets/UIShaders/noise1_texture_2d.tres" id="3_iwdmk"]
-[ext_resource type="Texture2D" uid="uid://676qnfs6tj86" path="res://UI assets/title screen button selected.png" id="4_l3qmn"]
+[ext_resource type="Texture2D" uid="uid://dryfbaibo6t1f" path="res://UI assets/menu button selected chromakey.png" id="4_llxk7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hqfxs"]
 shader = ExtResource("1_llxk7")
@@ -29,4 +29,4 @@ grow_vertical = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_hqfxs")
 position = Vector2(656, 365)
-texture = ExtResource("4_l3qmn")
+texture = ExtResource("4_llxk7")
