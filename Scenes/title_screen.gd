@@ -14,6 +14,7 @@ var tween_letter_x : Tween
 var timer_time : float = 2.0
 var current_tweens : Dictionary = {}
 var current_options : OPTIONS
+var transition_scene: CanvasLayer
 
 @onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
 @onready var title_screen_planet: MeshInstance3D = $Node3D/TitleScreenPlanet
@@ -50,6 +51,7 @@ func _ready() -> void:
 	tween_letters()
 	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
 	_set_initial()
+	
 
 
 func _process(delta: float) -> void:
@@ -107,6 +109,9 @@ func _set_initial() -> void: #set pivots, materials, etc
 	sound_button.disabled = true
 	credits_button.disabled = true
 	return_button.disabled = true
+	for Canvas in get_tree().root.get_children():
+		if Canvas.name == &"TransitionSceneOverlay":
+			Canvas.queue_free()
 	await tween_object(transition, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_OUT)
 	transition.visible = false
 	tween_object(start_menu_control, "modulate:a", 1.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN)
@@ -138,7 +143,7 @@ func transition_sequence() -> void:
 	tween_object(start_menu_control, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	transition.visible = true
 	await tween_object(transition, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
-	var transition_scene = TRANSITION_SCENE_OVERLAY.instantiate()
+	transition_scene = TRANSITION_SCENE_OVERLAY.instantiate()
 	get_tree().root.add_child(transition_scene)
 
 ##TODO hook up load game to this button
