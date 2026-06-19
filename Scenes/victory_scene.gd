@@ -4,7 +4,7 @@ var transition_screen: ColorRect
 var hud_overlay : CanvasLayer
 var main_scene : Node3D
 
-#pseudo for after dialoguemanager ends
+
 func end_sequence() -> void:
 	transition_screen.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
 	player._set_player_anim(player.AnimStates.VICTORY)
@@ -40,13 +40,14 @@ func end_sequence() -> void:
 	transition_screen.visible = false
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for node in get_tree().root.get_children():
 		if node.name == "MainScene":
-			hud_overlay = node.get_child(0)
-	transition_screen = hud_overlay.get_child(4)
+			for node2 in node:
+				if node2.name == &"HUDOverlay":
+					hud_overlay = node2
+		if node.name == &"TransitionSceneOverlay":
+			transition_screen = node.get_child(0)
 	transition_screen.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
 	await get_tree().create_timer(.2).timeout
 	print("sending to dialogue manager")
