@@ -179,6 +179,7 @@ func _on_options_button_pressed() -> void:
 	return_button.disabled = false
 
 func _on_return_button_pressed() -> void:
+	handle_options()
 	current_options = OPTIONS.NONE
 	controls_button.disabled = true
 	sound_button.disabled = true
