@@ -34,12 +34,13 @@ var interact_touched : INTERACT_TYPE = INTERACT_TYPE.NONE
 @onready var interaction_detector : Area3D = player_rig.get_child(player_rig.get_children().find_custom(func(n : Node): return n.name == "InteractionDetector"))
 
 @onready var main_scene: Node3D = $".."
-@onready var control_schematic_full: Control = $ControlSchematicFull
+@onready var transition_scene: CanvasLayer = get_tree().root.get_child(get_tree().root.get_children().find_custom(func(n : Node): return n.name == "TransitionSceneOverlay"))
+@onready var transition_color: ColorRect = transition_scene.get_child(0)
+@onready var control_schematic_full: Control = transition_scene.get_child(1)
 @onready var keyboard_controls_menu: Control = %KeyboardControlsMenu
 @onready var audio_control: VBoxContainer = %AudioControlVBox
 @onready var map : TextureRect = %Map
 @onready var pause_menu : Control = $PauseContainer
-@onready var transition_color: ColorRect = $ColorRect
 @onready var dialogue_vignette : TextureRect = $DialogueVignette
 @onready var interact_door_open : MarginContainer = %InteractDoorOpen
 @onready var interact_door_locked : MarginContainer = %InteractDoorLocked

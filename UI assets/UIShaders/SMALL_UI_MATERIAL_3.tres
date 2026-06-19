@@ -1,14 +1,11 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://boa6682rd5g03"]
 
 [ext_resource type="Shader" uid="uid://ccbybwl84dxr3" path="res://UI assets/UIShaders/gradient_squiggle.gdshader" id="1_wks6e"]
+[ext_resource type="Gradient" uid="uid://46gc81qiehw0" path="res://UI assets/UIShaders/hslider_gradient.tres" id="2_wks6e"]
 [ext_resource type="Texture2D" uid="uid://bhoprcypwpl6h" path="res://UI assets/UIShaders/noise1_texture_2d.tres" id="3_3y30p"]
 
-[sub_resource type="Gradient" id="Gradient_a6qr1"]
-offsets = PackedFloat32Array(0, 0.54545456, 1)
-colors = PackedColorArray(0.08627451, 0.14117648, 0.28235295, 1, 0.12984905, 0.20117638, 0.3842775, 1, 0.08662658, 0.14299953, 0.2838104, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wks6e"]
-gradient = SubResource("Gradient_a6qr1")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cws2a"]
+gradient = ExtResource("2_wks6e")
 
 [resource]
 shader = ExtResource("1_wks6e")
@@ -16,7 +13,7 @@ shader_parameter/scale = Vector2(1.5, 1.5)
 shader_parameter/strength = 3.0
 shader_parameter/fps = 4.0
 shader_parameter/noise = ExtResource("3_3y30p")
-shader_parameter/gradient = SubResource("GradientTexture1D_wks6e")
+shader_parameter/gradient = SubResource("GradientTexture1D_cws2a")
 shader_parameter/gradient_offset = Vector2(0.05, 0.05)
 shader_parameter/replacement_color = Color(0.23529412, 0, 0.43137255, 1)
 shader_parameter/key_color = Color(0, 1, 0, 1)
