@@ -2,18 +2,15 @@
 extends CanvasLayer
 
 enum PAUSESTATE {UNPAUSED, MAP, PAUSED, MAP_PAUSED}
-enum INTERACT_TYPE {NONE, DOOR_LOCKED, DOOR_OPEN, NPC}
+enum INTERACT_TYPE {NONE, DOOR_LOCKED, DOOR_OPEN, NPC, CONVERSATION}
 
 var temp_size : float
 
 var current_tweens : Dictionary = {}
 var current_tween_index : int
 
-var continue_bool : bool = false
-var quit_bool : bool = false
 var sound_bool : bool = false
 var controls_bool : bool = false
-var menu_bool : bool = false
 var control_acknowledge : bool = true
 
 #  TODO review these
@@ -39,7 +36,9 @@ var previous_interact : INTERACT_TYPE = INTERACT_TYPE.NONE
 @onready var pause_menu : Control = $PauseContainer
 @onready var dialogue_vignette : TextureRect = $DialogueVignette
 @onready var interact_door_open : MarginContainer = %InteractDoorOpen
+@onready var interact_door_open_label : Label = interact_door_open.get_child(1).get_child(0)
 @onready var interact_door_locked : MarginContainer = %InteractDoorLocked
+@onready var interact_door_locked_label : Label = interact_door_locked.get_child(1).get_child(0)
 @onready var interact_npc_margin : MarginContainer = %InteractNPCMargin
 @onready var npc_label: Label = %InteractNPCLabel 
 @onready var next_indicator: AnimatedSprite2D = %NextIndicator
@@ -126,31 +125,22 @@ func _unhandled_input(event: InputEvent) -> void:
 					# hide dialog boxes
 					hide_minor_ui()
 					map.modulate.a = 0.0
-					
-					## TODO necessary?
-					interact_door_open.visible = false
-					interact_door_locked.visible = false
-					interact_npc_margin.visible = false
-					next_indicator.modulate.a = 0.0
-					
 					map.visible = true
 					await tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
 					
 				PAUSESTATE.MAP:
-					# update the state
 					pause_state = PAUSESTATE.UNPAUSED
-					# hide the map
 					get_tree().paused = false
-					# restore dialog boxes
 					show_minor_ui()
 					map.modulate.a = 1.0
 					await tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 					map.visible = false
 				_:
 					pass
-					# do nothing if the pause screen is up
 	
 	if event.is_action_pressed("advance_dialogue"):
+		printt(interact_touched, previous_interact)
+		
 		## control schematic
 		## TODO Mike says there are updates to be made here
 		if not control_acknowledge:
@@ -168,8 +158,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			transition()
 	
 	if event.is_action_pressed("interact"):
-		if not interaction_latch and interact_npc_margin.visible:
-			await deactivate_tween_interact(interact_npc_margin)
+		if not interaction_latch: #and interact_npc_margin.visible:
 			if DialogueManager.is_dialogue_active:
 				tween_vignette_switch(true)
 				interaction_latch = true
@@ -177,8 +166,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if not DialogueManager.is_dialogue_active:
 				interaction_latch = false
 				tween_vignette_switch(false)
-				await get_tree().create_timer(.29).timeout
-				await activate_tween_interact(interact_npc_margin)
+				interact_npc_margin.modulate.a = 0.01
 
 
 func _on_quit_button_pressed() -> void:
@@ -269,9 +257,6 @@ func _on_door_exited() -> void:
 
 
 func _on_exit_door_entered(lock_on_door : bool) -> void:
-	interact_npc_margin.visible = false
-	interact_door_locked.visible = false
-	interact_door_open.visible = false
 	if lock_on_door:
 		interact_touched = INTERACT_TYPE.DOOR_LOCKED
 	else:
@@ -462,10 +447,14 @@ func immediate_interact_false(interact_parent : MarginContainer) -> void:
 
 
 func assert_interact() -> void:
+	if DialogueManager.is_dialogue_active == true:
+		interact_touched = INTERACT_TYPE.CONVERSATION
 	if interact_touched != previous_interact:
 		match interact_touched:
 			INTERACT_TYPE.NONE:
 				match previous_interact:
+					INTERACT_TYPE.NONE:
+						pass
 					INTERACT_TYPE.NPC:
 						await deactivate_tween_interact(interact_npc_margin)
 						previous_interact = INTERACT_TYPE.NONE
@@ -475,22 +464,46 @@ func assert_interact() -> void:
 					INTERACT_TYPE.DOOR_OPEN:
 						await deactivate_tween_interact(interact_door_open)
 						previous_interact = INTERACT_TYPE.NONE
-					_:
+					INTERACT_TYPE.CONVERSATION:
 						pass
-			INTERACT_TYPE.NPC:
-				await activate_tween_interact(interact_npc_margin)
-				previous_interact = INTERACT_TYPE.NPC
-			INTERACT_TYPE.DOOR_LOCKED:
-				await activate_tween_interact(interact_door_locked)
-				previous_interact = INTERACT_TYPE.DOOR_LOCKED
 			INTERACT_TYPE.DOOR_OPEN:
-				await activate_tween_interact(interact_door_open)
 				previous_interact = INTERACT_TYPE.DOOR_OPEN
-	#if previous_interact == INTERACT_TYPE.NPC:
-		#if DialogueManager.is_dialogue_active == true:
-			#await deactivate_tween_interact(interact_npc_margin)
-			#previous_interact = INTERACT_TYPE.NONE
-			#print("interact dialogue active")
+				await activate_tween_interact(interact_door_open)
+			INTERACT_TYPE.NPC:
+				previous_interact = INTERACT_TYPE.NPC
+				await activate_tween_interact(interact_npc_margin)
+			INTERACT_TYPE.CONVERSATION:
+				previous_interact = INTERACT_TYPE.CONVERSATION
+				await deactivate_tween_interact(interact_npc_margin)
+			INTERACT_TYPE.DOOR_LOCKED:
+				previous_interact = INTERACT_TYPE.DOOR_LOCKED
+				await activate_tween_interact(interact_door_locked)
+	else: #to fix that stupid fucking thing where the labels don't show up if you move in and out
+		if debounce_interaction == false:
+			match interact_touched:
+				INTERACT_TYPE.NONE:
+					if interact_npc_margin.visible == true:
+						previous_interact = INTERACT_TYPE.NPC
+					if interact_door_locked_label.visible == true:
+						previous_interact = INTERACT_TYPE.DOOR_LOCKED
+					if interact_door_open_label.visible == true:
+						previous_interact = INTERACT_TYPE.DOOR_OPEN
+				INTERACT_TYPE.CONVERSATION:
+					if DialogueManager.is_dialogue_active == false:
+						await get_tree().create_timer(.29).timeout
+						interact_touched = INTERACT_TYPE.NPC
+					elif interact_npc_margin.modulate.a != 0.0:
+						immediate_interact_false(interact_npc_margin)
+					else:
+						pass
+				INTERACT_TYPE.NPC:
+					pass
+				INTERACT_TYPE.DOOR_LOCKED:
+					if interact_door_locked_label.visible == false:
+						previous_interact = INTERACT_TYPE.NONE
+				INTERACT_TYPE.DOOR_OPEN:
+					if interact_door_open_label.visible == false:
+						previous_interact = INTERACT_TYPE.NONE
 
 
 func tween_vignette_switch(flag : bool) -> void:
