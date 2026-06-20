@@ -437,7 +437,7 @@ func deactivate_tween_interact(interact_parent : MarginContainer) -> void:
 
 
 ## TODO suspect this needs a better name
-func immediate_interact_false(interact_parent : MarginContainer) -> void:
+func immediate_interact_hide(interact_parent : MarginContainer) -> void:
 	var label_margin = interact_parent.get_child(1)
 	var label = label_margin.get_child(0)
 	label_margin.custom_minimum_size.x = 0.0
@@ -493,7 +493,7 @@ func assert_interact() -> void:
 						await get_tree().create_timer(.29).timeout
 						interact_touched = INTERACT_TYPE.NPC
 					elif interact_npc_margin.modulate.a != 0.0:
-						immediate_interact_false(interact_npc_margin)
+						immediate_interact_hide(interact_npc_margin)
 					else:
 						pass
 				INTERACT_TYPE.NPC:
