@@ -875,30 +875,25 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 			
 			match (current_npc):
 				QuestManager.CharacterName.GREASE, QuestManager.CharacterName.ORGANS : # gives but does not receive, no conditions
-					QuestManager.set_completed(current_npc)
 					receive_flag = true
 					dialogue_lines.append_array(used_lines[current_npc][2]) 
 				QuestManager.CharacterName.BODHI : # gives but does not receive, conditions
 					if QuestManager.requirements_met(current_npc):
-						QuestManager.set_completed(current_npc)
 						receive_flag = true
 						dialogue_lines.append_array(used_lines[current_npc][2])
 				QuestManager.CharacterName.NORGANS, QuestManager.CharacterName.INDIVIDUAL, QuestManager.CharacterName.KING_2: # node receives and has no give
 					if QuestManager.requirements_met(current_npc):
-						QuestManager.set_completed(current_npc)
 						give_flag = true
 						dialogue_lines.append_array(used_lines[current_npc][1])
 				QuestManager.CharacterName.KING_1, QuestManager.CharacterName.MASS: # only require meetings, then will give
 					if first_meeting:
 						horse_lock = false
 					if QuestManager.requirements_met(current_npc):
-						QuestManager.set_completed(current_npc)
 						receive_flag = true
 						dialogue_lines.append_array(used_lines[current_npc][2])
 				QuestManager.CharacterName.SISYPHUS, QuestManager.CharacterName.GATE: # receive only, unlocks door
 					if QuestManager.requirements_met(current_npc):
 						give_flag = true
-						QuestManager.set_completed(current_npc)
 						dialogue_lines.append_array(used_lines[current_npc][1])
 						match (current_npc):
 							QuestManager.CharacterName.SISYPHUS:
@@ -910,7 +905,6 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 					if QuestManager.requirements_met(current_npc):
 						give_flag = true
 						receive_flag = true
-						QuestManager.set_completed(current_npc)
 						dialogue_lines.append_array(used_lines[current_npc][1])
 						dialogue_lines.append_array(used_lines[current_npc][2])
 						if current_npc == QuestManager.CharacterName.SLIME:
@@ -935,21 +929,18 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 
 
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
+	if not QuestManager.has_completed(current_npc):
+		QuestManager.set_completed(current_npc)
+		Map.set_completion_sticker(current_npc)
+		planet_state_change.emit()
+		print("QuestManager Completion and Sticker Set on ", pending_animation)
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
 			print("SIGNAL TO REQUEST ITEM FROM: ", current_npc)
 			request_item_add.emit(current_npc)
-			if QuestManager.has_completed(current_npc):
-				Map.set_completion_sticker(current_npc)
-				planet_state_change.emit()
-				print("QuestManager Completion and Sticker Set on PLAYER RECEIVE")
 		CONV_STATE.PLAYER_GIVE:
 			print("SIGNAL TO GIVE ITEM TO: ", current_npc)
 			request_item_remove.emit(current_npc)
-			if QuestManager.has_completed(current_npc):
-				Map.set_completion_sticker(current_npc)
-				planet_state_change.emit()
-				print("QuestManager Completion and Sticker Set on PLAYER GIVE")
 
 
 func show_text_box():

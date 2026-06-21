@@ -1,6 +1,6 @@
 MAIN
 	BUGS
-		clear for now
+		clear for now - need to test after DialogueManager system changed
 		
 	ASSETS
 		NPC Models, Anims, Textures
@@ -22,19 +22,12 @@ MAIN
 
 
 
-DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markcy ~2.5 days rework/denoting
-	Dialogue needs a thorough pass.
+DIALOGUES (DialogueManager, NPC lines) 
 	Delay for skipping ahead (or remove skipping ahead and speed up text)
 		if speed up text, speech sound every 3rd or something
 	Different speech sound
 	Delay for re-speaking to NPC
-	
-	NICE TO HAVE:
-		Notate where in the dialogues swapping from LISTEN state to GIVE and RECEIVE states
-		Pipe-in a calculation for offsetting the current Animation Points to the respective conversation points.
-		Listen - Give Anim - Receive Anim - Listen
-		Listen - Give Anim - Listen Anim - Receive Anim - Listen
-		
+
 
 MODELS -
 	NICE TO HAVE:
