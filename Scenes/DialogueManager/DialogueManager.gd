@@ -54,7 +54,6 @@ const KING_1_RECEIVE_LINES : PackedStringArray = [
 	"Or some lowly servant of ours lost it, we mean!",
 	"Wait--Nevermind! It's right here. Looks like they put it back just in time.", #desired animation switch point (DASP)
 	]
-const KING_1_RECEIVE_DASP = 5
 const KING_1_POST_LINES : PackedStringArray = ["Hop along now, little buddy!"]
 const HORSE_MEET_LINES : PackedStringArray = ["I'm hungry."]
 const HORSE_GIVE_LINES : PackedStringArray = ["Yum."] #DASP
@@ -331,14 +330,14 @@ const INDIVIDUAL_GIVE_LINES : PackedStringArray = [
 	"Why would you do this to me? What could you possibly have to gain? I am so ANGRY right now! Do you know how long it's been since I've been angry???",
 	"And I was doing so well, too!",
 	]
-const INDIVIDUAL_RECEIVE_LINES : PackedStringArray = [
+const INDIVIDUAL_POST_LINES : PackedStringArray = [
 	"What's with that blank-yet-expectant look? You can't seriously believe I'm going to GIVE you something, can you?",
 	"The only thing I'd give you is a broken clown-nose. Now get out of my sight before I do!",
 	]
-const INDIVIDUAL_POST_LINES : PackedStringArray = ["I hate you so much."]
 const INDIVIDUAL_EASTER_LINES : PackedStringArray = [
 	"I actually forgive you.",
-	"PSYCHE!!!",	
+	"PSYCHE!!!",
+	"I hate you so much.",
 	]
 const GIBBERISH_MEET_LINES : PackedStringArray = [
 	"shfripusdfasfh asdifgodsgh afjep dbas;gfjkhzghvz;ios gdsfbn.dgf/al;siozasd .dzdj/zlv zsld/vn zlsdv zbueofg DK>sbgzofuibk.",
@@ -459,24 +458,21 @@ const CREDITS_1 : PackedStringArray = [
 ## newlines between array elements are just for readability in-editor
 const CREDITS_2 : PackedStringArray = [
 	"CREDITS:",
-	"Michael Brissie:",
+	"Michael Brissie:
+	Animation, Modeling, Game and
+	Level Design, Asset Implementation,
+	VFX, Programming, Tech Art, UI",
 	
-	"Animation, Modeling, Game & Level Design,
-	Asset Implementation, VFX,
-	Programming, Tech Art, UI",
+	"Allie Burch:
+	2D Assets",
 	
-	"Allie Burch:",
-	"2D Assets",
+	"Markcy Hilbert:
+	Scenario, Dialogue, Creative Direction,
+	Music and Sound, Game Design,
+	2D and 3D Assets",
 	
-	"Markcy Hilbert:",
-	"Scenario, Dialogue, Creative Direction,
-	Music & Sound, Game Design,
-	2D & 3D Assets",
-	
-	"Dimelo Waterson:",
-	
-	"Systems Design,
-	UI Programming,
+	"Dimelo Waterson:
+	Systems Design,
 	Data Entry",
 	
 	"Truly...",
@@ -596,7 +592,7 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 	QuestManager.CharacterName.INDIVIDUAL : [
 		INDIVIDUAL_MEET_LINES,
 		INDIVIDUAL_GIVE_LINES,
-		INDIVIDUAL_RECEIVE_LINES,
+		[], #individual does not give an item
 		INDIVIDUAL_POST_LINES,
 		INDIVIDUAL_EASTER_LINES,
 		],
@@ -737,8 +733,7 @@ func _input(event):
 				if name_tag:
 					name_tag.exit_tween()
 				await text_box.close_text_box()
-				text_box.queue_free() 
-				
+				text_box.queue_free()
 				combines_lines = false
 				already_tweened = false
 				current_line_index = 0
@@ -786,7 +781,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		var time_res : String = "You've helped everyone in " + Stopwatch.get_time() + "!!"
 		dialogue_lines.append(time_res)
 		#honk count
-		var honk_count : String = "You've honked " + HonkCounter.get_honks() + " times!"
+		var honk_count : String = "You've honked " + HonkCounter.get_honks_string() + " times!"
 		dialogue_lines.append(honk_count)
 		dialogue_lines.append_array(used_lines[current_npc][1])
 		is_dialogue_active = true

@@ -12,3 +12,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("1_8cajw")]
 visible = false
+
+[node name="Transition_Rect_White" type="ColorRect" parent="." unique_id=1198278288]
+visible = false
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2

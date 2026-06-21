@@ -69,35 +69,24 @@ func _ready() -> void:
 	audio_control.modulate.a = 0.0
 	keyboard_controls_menu.modulate.a = 0.0
 	next_indicator.modulate.a = 0.0
-
 	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
 	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	
 	audio_control.position.y = -50.0
-
 	#connect signals for interact
 	interaction_detector.exit_area_entered.connect(_on_exit_door_entered)
 	interaction_detector.exit_area_exited.connect(_on_door_exited)
 	interaction_detector.npc_entered.connect(_on_npc_entered)
 	interaction_detector.npc_exited.connect(_on_npc_exited)
-	Stopwatch.physics_timer.timeout.connect(assert_interact)
-	
 	#connect mouse area blips and effects
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 		button.mouse_entered.connect(_on_any_mouse_button_entered, CONNECT_APPEND_SOURCE_OBJECT)
 		button.mouse_exited.connect(_on_any_mouse_button_exited, CONNECT_APPEND_SOURCE_OBJECT)
-
 	#timer for transition start
 	transition_timer.start()
 	await transition_timer.timeout
-
-	#transition coloration
-	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
-	transition_color.visible = true
-
 	#control schematics UI stuff here
 	await get_tree().create_timer(.1).timeout
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
@@ -113,7 +102,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if transition_color.visible == false:
 			if alpha_modulated(pause_menu):
 				change_pause_state()
-	
 	if event.is_action_pressed("toggle_map"):
 		if alpha_modulated(map):
 			match pause_state:
@@ -127,7 +115,6 @@ func _unhandled_input(event: InputEvent) -> void:
 					map.modulate.a = 0.0
 					map.visible = true
 					await tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
-					
 				PAUSESTATE.MAP:
 					pause_state = PAUSESTATE.UNPAUSED
 					get_tree().paused = false
@@ -137,12 +124,8 @@ func _unhandled_input(event: InputEvent) -> void:
 					map.visible = false
 				_:
 					pass
-	
 	if event.is_action_pressed("advance_dialogue"):
-		printt(interact_touched, previous_interact)
-		
 		## control schematic
-		## TODO Mike says there are updates to be made here
 		if not control_acknowledge:
 			control_acknowledge = true
 			var tween_control_off = get_tree().create_tween()
@@ -156,11 +139,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				tween_control_off.kill()
 			control_schematic_full.queue_free()
 			transition()
-	
+		if not DialogueManager.is_dialogue_active and interaction_latch:
+				interaction_latch = false
+				tween_vignette_switch(false)
+				interact_npc_margin.modulate.a = 0.01
 	if event.is_action_pressed("interact"):
-		if not interaction_latch: #and interact_npc_margin.visible:
+		if not interaction_latch:
 			if DialogueManager.is_dialogue_active:
-				tween_vignette_switch(true)
+				if main_scene.current_planet_id != 21:
+					tween_vignette_switch(true)
 				interaction_latch = true
 		elif interaction_latch:
 			if not DialogueManager.is_dialogue_active:
@@ -436,7 +423,6 @@ func deactivate_tween_interact(interact_parent : MarginContainer) -> void:
 		debounce_interaction = false
 
 
-## TODO suspect this needs a better name
 func immediate_interact_hide(interact_parent : MarginContainer) -> void:
 	var label_margin = interact_parent.get_child(1)
 	var label = label_margin.get_child(0)
@@ -449,6 +435,9 @@ func immediate_interact_hide(interact_parent : MarginContainer) -> void:
 func assert_interact() -> void:
 	if DialogueManager.is_dialogue_active == true:
 		interact_touched = INTERACT_TYPE.CONVERSATION
+	if interact_touched != INTERACT_TYPE.NONE:
+		if interaction_detector.get_overlapping_areas() == []:
+			interact_touched = INTERACT_TYPE.NONE
 	if interact_touched != previous_interact:
 		match interact_touched:
 			INTERACT_TYPE.NONE:
