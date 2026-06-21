@@ -45,7 +45,7 @@ var _camera_input_direction : Vector2 = Vector2.ZERO
 var convo_flip_1 = true
 var convo_flip_2 = true
 var convo_flip_3 = true
-
+var previous_convo_state : DialogueManager.CONV_STATE
 #state stuff
 var exit_check = false
 var respawn_pos : Vector3 = Vector3(0.0, 0.1, 0.0)
@@ -68,7 +68,6 @@ func reset_player():
 
 #camera nonsense and can probably just be put into physics process but didn't want to do that because of compute
 func player_interaction_camera() -> void:
-	
 	if DialogueManager.is_dialogue_active:
 		if not clone: #makes clone for interaction
 			clone = clown.duplicate()
@@ -89,6 +88,8 @@ func player_interaction_camera() -> void:
 						clone._set_player_anim(clown.AnimStates.JUMP)
 					else:
 						clone._set_player_anim(clone.AnimStates.TALK)
+				elif clone.current_anim != clown.AnimStates.JUMP:
+					clone._set_player_anim(clone.AnimStates.TALK)
 				if DialogueManager.current_npc == QuestManager.CharacterName.O \
 						or DialogueManager.current_npc == QuestManager.CharacterName.LAMP \
 						or DialogueManager.current_npc == QuestManager.CharacterName.SLIME \
@@ -153,19 +154,17 @@ func _physics_process(delta: float) -> void:
 		current_raycast = reset_raycast
 	
 	if not DialogueManager.dialogue_state == DialogueManager.CONV_STATE.FINISHED:
-		match DialogueManager.dialogue_state:
-			DialogueManager.CONV_STATE.PLAYER_LISTEN:
-				if convo_flip_1:
+		if DialogueManager.dialogue_state != previous_convo_state:
+			match DialogueManager.dialogue_state:
+				DialogueManager.CONV_STATE.PLAYER_LISTEN:
 					clown._set_player_anim(clown.AnimStates.TALK)
-					convo_flip_1 = false
-			DialogueManager.CONV_STATE.PLAYER_GIVE:
-				if convo_flip_2:
+					previous_convo_state = DialogueManager.CONV_STATE.PLAYER_LISTEN
+				DialogueManager.CONV_STATE.PLAYER_GIVE:
 					clown._set_player_anim(clown.AnimStates.GIVE)
-					convo_flip_2 = false
-			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
-				if convo_flip_3:
+					previous_convo_state = DialogueManager.CONV_STATE.PLAYER_GIVE
+				DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 					clown._set_player_anim(clown.AnimStates.GET)
-					convo_flip_3 = false
+					previous_convo_state = DialogueManager.CONV_STATE.PLAYER_RECEIVE
 		movement_frozen = true
 
 	elif exit_check:
@@ -173,6 +172,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3(0,0,0)
 
 	else:
+		previous_convo_state = DialogueManager.dialogue_state
 		_camera.make_current()
 		movement_frozen = false
 		convo_flip_1 = true

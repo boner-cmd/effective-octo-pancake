@@ -3,7 +3,7 @@ extends Node3D
 @onready var credits_door_locator: Node3D = $Credits_Door_Locator
 
 func on_completion():
-#	if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
+	if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
 		door_credits.global_transform = credits_door_locator.global_transform
 		door_credits.visible = true
 

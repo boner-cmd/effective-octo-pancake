@@ -185,7 +185,7 @@ const ORGANS_RECEIVE_LINES : PackedStringArray = [
 	"Say, fella. I'm not one to comeplain, but I got a problem on my hands. They say you can't have too much of a good thing, and in most cases, they'd be right.", 
 	"But ya see, the thing is I've got too many organs.",
 	"I'm chock FULL of 'em! I know, I know, my steak too juicy. My lobster too buttery.",
-	"You wouldn't be able to take some of these here organs of my hands, would you?",
+	"You wouldn't be able to take some of these here organs of my hands, would you?", #DASP
 	"Make sure they find their way into good egg-- I mean-- hands. Now scamper along now, y'hear?",
 	]
 const ORGANS_POST_LINES : PackedStringArray = [
@@ -638,6 +638,55 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		]
 	}
 
+const PlayerGive_DASP : Dictionary[QuestManager.CharacterName, int] = {
+	QuestManager.CharacterName.KING_1 : 0,
+	QuestManager.CharacterName.HORSE : 0,
+	QuestManager.CharacterName.ASTRO : 0,
+	QuestManager.CharacterName.SNOWMAN : 0,
+	QuestManager.CharacterName.GREASE : 0,
+	QuestManager.CharacterName.DEER : 0,
+	QuestManager.CharacterName.O : 0,
+	QuestManager.CharacterName.ORGANS : 0,
+	QuestManager.CharacterName.MASS : 0,
+	QuestManager.CharacterName.LAMP : 0,
+	QuestManager.CharacterName.MICHAEL : 0,
+	QuestManager.CharacterName.ROBOT : 0,
+	QuestManager.CharacterName.GIBBERISH : 0,
+	QuestManager.CharacterName.IDEA : 0,
+	QuestManager.CharacterName.BODHI : 0,
+	QuestManager.CharacterName.SLIME : 1,
+	QuestManager.CharacterName.GATE : 0,
+	QuestManager.CharacterName.KING_2 : 1,
+	QuestManager.CharacterName.INDIVIDUAL : 0,
+	QuestManager.CharacterName.NORGANS : 0,
+	QuestManager.CharacterName.SISYPHUS : 0,
+	}
+	
+const PlayerReceive_DASP : Dictionary[QuestManager.CharacterName, int] = {
+	QuestManager.CharacterName.KING_1 : 4,
+	QuestManager.CharacterName.HORSE : 0,
+	QuestManager.CharacterName.ASTRO : 0,
+	QuestManager.CharacterName.SNOWMAN : 0,
+	QuestManager.CharacterName.GREASE : 0,
+	QuestManager.CharacterName.DEER : 1,
+	QuestManager.CharacterName.O : 1,
+	QuestManager.CharacterName.ORGANS : 3,
+	QuestManager.CharacterName.MASS : 21,
+	QuestManager.CharacterName.LAMP : 0,
+	QuestManager.CharacterName.MICHAEL : 0,
+	QuestManager.CharacterName.ROBOT : 0,
+	QuestManager.CharacterName.GIBBERISH : 0,
+	QuestManager.CharacterName.IDEA : 0,
+	QuestManager.CharacterName.BODHI : 2,
+	QuestManager.CharacterName.SLIME : 0,
+	QuestManager.CharacterName.GATE : 0,
+	QuestManager.CharacterName.KING_2 : 0,
+	QuestManager.CharacterName.INDIVIDUAL : 0,
+	QuestManager.CharacterName.NORGANS : 0,
+	QuestManager.CharacterName.SISYPHUS : 0,
+	}
+
+
 # debug dialog for expedited traversal
 const debug_initial : PackedStringArray = [
 	"initial 1",
@@ -709,8 +758,16 @@ var pending_animation_1 : CONV_STATE
 var pending_animation_2 : CONV_STATE
 
 var current_line_index : int = 0
+
+##TODO change these
 var animation_point : int
 var animation_point_2 : int
+
+var give_flag : bool = false
+var give_point : int
+var receive_flag : bool = false
+var receive_point : int
+##
 
 var dialogue_lines : Array[String] = []
 
@@ -728,6 +785,25 @@ func _input(event):
 		var NextIndicator = text_box.next_indicator
 		if NextIndicator.get_child(0).visible:
 			current_line_index += 1
+			printt(current_line_index, give_flag, give_point, receive_flag, receive_point)
+			
+			if give_flag:
+				if current_line_index == give_point:
+					dialogue_state = CONV_STATE.PLAYER_GIVE
+					emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_GIVE)
+					give_flag = false
+				else:
+					dialogue_state = CONV_STATE.PLAYER_LISTEN
+			elif receive_flag:
+				if current_line_index == receive_point:
+					dialogue_state = CONV_STATE.PLAYER_RECEIVE
+					emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_RECEIVE)
+					receive_flag = false
+				else:
+					dialogue_state = CONV_STATE.PLAYER_LISTEN
+			else:
+				dialogue_state = CONV_STATE.PLAYER_LISTEN
+			
 			if current_line_index >= dialogue_lines.size():
 				is_dialogue_active = false
 				if name_tag:
@@ -736,10 +812,11 @@ func _input(event):
 				text_box.queue_free()
 				combines_lines = false
 				already_tweened = false
+				give_flag = false
+				receive_flag = false
+				give_point = 0
+				receive_point = 0
 				current_line_index = 0
-				animation_point = 0
-				animation_point_2 = 0
-				# current npc is automatically overridden on next call
 				if name_tag:
 					name_tag.queue_free()
 				dialogue_lines = []
@@ -748,22 +825,10 @@ func _input(event):
 					for node in get_tree().root.get_children():
 						if node.name == "Victory Scene":
 							node.end_sequence()
-			else: 
-				if combines_lines:
-					if animation_point_2 > 0: # there is a set second animation point
-						if current_line_index == animation_point:
-							dialogue_state = pending_animation_1
-							emit_inventory_signal_by_conv_state(pending_animation_1)
-						elif current_line_index == animation_point_2:
-							dialogue_state = pending_animation_2
-							emit_inventory_signal_by_conv_state(pending_animation_2)
-					else:
-						if current_line_index == animation_point:
-							dialogue_state = pending_animation_1
-							emit_inventory_signal_by_conv_state(pending_animation_1)
+			else:
+				
 				text_box.queue_free()
 				show_text_box()
-			
 
 ## TODO placeholder documentation
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.CharacterName, voice_sfx: AudioStream) -> void:
@@ -816,101 +881,67 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 				print("SET MET ", current_npc)
 				print("HAS MET ", QuestManager.has_met(current_npc))
 				dialogue_lines.append_array(used_lines[current_npc][0])
+				give_point = used_lines[current_npc][0].size()
+				receive_point = used_lines[current_npc][0].size()
 
 			match (current_npc):
 				QuestManager.CharacterName.GREASE, QuestManager.CharacterName.ORGANS : # gives but does not receive, no conditions
 					QuestManager.set_completed(current_npc)
-					combines_lines = true
-					animation_point = dialogue_lines.size() # transition to receive
-					dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet and player receive
-					pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-
+					receive_flag = true
+					dialogue_lines.append_array(used_lines[current_npc][2]) 
 				QuestManager.CharacterName.BODHI : # gives but does not receive, conditions
 					if QuestManager.requirements_met(current_npc):
 						QuestManager.set_completed(current_npc)
-						if first_meeting:
-							combines_lines = true
-							animation_point = dialogue_lines.size() # transition to receive
-							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet and player receive
-							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-						else:
-							dialogue_state = CONV_STATE.PLAYER_RECEIVE
-							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines.append_array(used_lines[current_npc][2])
-							
+						receive_flag = true
+						dialogue_lines.append_array(used_lines[current_npc][2])
 				QuestManager.CharacterName.NORGANS, QuestManager.CharacterName.INDIVIDUAL, QuestManager.CharacterName.KING_2: # node receives and has no give
-					if first_meeting:
-						if QuestManager.requirements_met(current_npc):
-							combines_lines = true
-							QuestManager.set_completed(current_npc)
-							animation_point = dialogue_lines.size() # transition to player give
-							dialogue_lines.append_array(used_lines[current_npc][1]) # lines now contains greet and player give
-							pending_animation_1 = CONV_STATE.PLAYER_GIVE
-					else:
-						if QuestManager.requirements_met(current_npc):
-							QuestManager.set_completed(current_npc)
-							dialogue_state = CONV_STATE.PLAYER_GIVE
-							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines.append_array(used_lines[current_npc][1])
-
+					if QuestManager.requirements_met(current_npc):
+						QuestManager.set_completed(current_npc)
+						give_flag = true
+						dialogue_lines.append_array(used_lines[current_npc][1])
 				QuestManager.CharacterName.KING_1, QuestManager.CharacterName.MASS: # only require meetings, then will give
 					if first_meeting:
 						horse_lock = false
-						if QuestManager.requirements_met(current_npc):
-							combines_lines = true
-							QuestManager.set_completed(current_npc)
-							animation_point = dialogue_lines.size() # transition to receive
-							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet and player receive
-							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-					else:
-						if QuestManager.requirements_met(current_npc):
-							QuestManager.set_completed(current_npc)
-							dialogue_state = CONV_STATE.PLAYER_RECEIVE
-							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines.append_array(used_lines[current_npc][2])
-						
-				QuestManager.CharacterName.SISYPHUS, QuestManager.CharacterName.GATE: # receive only, unlocks door
 					if QuestManager.requirements_met(current_npc):
 						QuestManager.set_completed(current_npc)
-						if first_meeting:
-							combines_lines = true
-							animation_point = dialogue_lines.size() # transition to player give
-							dialogue_lines.append_array(used_lines[current_npc][1]) # lines now contains greet and player give
-							pending_animation_1 = CONV_STATE.PLAYER_GIVE
-						else:
-							dialogue_state = CONV_STATE.PLAYER_GIVE
-							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines.append_array(used_lines[current_npc][1])
+						receive_flag = true
+						dialogue_lines.append_array(used_lines[current_npc][2])
+				QuestManager.CharacterName.SISYPHUS, QuestManager.CharacterName.GATE: # receive only, unlocks door
+					if QuestManager.requirements_met(current_npc):
+						give_flag = true
+						QuestManager.set_completed(current_npc)
+						dialogue_lines.append_array(used_lines[current_npc][1])
 						match (current_npc):
 							QuestManager.CharacterName.SISYPHUS:
 								sisyphus_lock = false
 							QuestManager.CharacterName.GATE:
 								gate_lock = false
 								change_king.emit()
-
-				
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
 					if QuestManager.requirements_met(current_npc):
-						combines_lines = true
+						give_flag = true
+						receive_flag = true
 						QuestManager.set_completed(current_npc)
-						if first_meeting:
-							# first meeting and player met reqs
-							animation_point = dialogue_lines.size() # transition to player give
-							pending_animation_1 = CONV_STATE.PLAYER_GIVE
-							dialogue_lines.append_array(used_lines[current_npc][1]) # lines now contains greet and player give
-							animation_point_2 = dialogue_lines.size()
-							pending_animation_2 = CONV_STATE.PLAYER_RECEIVE
-							dialogue_lines.append_array(used_lines[current_npc][2]) # lines now contains greet, player give, player receive
-						else:
-							dialogue_state = CONV_STATE.PLAYER_GIVE
-							emit_inventory_signal_by_conv_state(dialogue_state)
-							dialogue_lines.append_array(used_lines[current_npc][1])
-							animation_point = dialogue_lines.size() # transition to player receive
-							pending_animation_1 = CONV_STATE.PLAYER_RECEIVE
-							dialogue_lines.append_array(used_lines[current_npc][2])
+						dialogue_lines.append_array(used_lines[current_npc][1])
+						dialogue_lines.append_array(used_lines[current_npc][2])
 						if current_npc == QuestManager.CharacterName.SLIME:
 							king2_lock = false
-
+			
+			if give_flag:
+				give_point += PlayerGive_DASP[current_npc]
+			if receive_flag:
+				receive_point += PlayerReceive_DASP[current_npc]
+			if give_flag and receive_flag:
+				receive_point += used_lines[current_npc][1].size()
+			if give_flag and give_point == 0:
+				dialogue_state = CONV_STATE.PLAYER_GIVE
+				emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_GIVE)
+				give_flag = false
+			if receive_flag and receive_point == 0:
+				dialogue_state = CONV_STATE.PLAYER_RECEIVE
+				emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_RECEIVE)
+				receive_flag = false
+		
 		show_text_box()
 	
 
