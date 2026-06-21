@@ -741,10 +741,9 @@ const debug : Dictionary[QuestManager.CharacterName, Array] = {
 
 @export var use_debug_lines : bool = false
 
-var already_tweened : bool = false
+var already_tweened : bool = false #text box gd references this
 var is_dialogue_active : bool = false
 var can_advance_line : bool = false
-var combines_lines : bool = false
 
 # lock flags
 var horse_lock : bool = true
@@ -754,22 +753,14 @@ var king2_lock : bool = true
 
 var current_npc : QuestManager.CharacterName
 var dialogue_state : CONV_STATE = CONV_STATE.FINISHED
-var pending_animation_1 : CONV_STATE
-var pending_animation_2 : CONV_STATE
-
-var current_line_index : int = 0
-
-##TODO change these
-var animation_point : int
-var animation_point_2 : int
 
 var give_flag : bool = false
 var give_point : int
 var receive_flag : bool = false
 var receive_point : int
-##
 
 var dialogue_lines : Array[String] = []
+var current_line_index : int = 0
 
 var hud_overlay : CanvasLayer
 var Map : TextureRect
@@ -785,8 +776,6 @@ func _input(event):
 		var NextIndicator = text_box.next_indicator
 		if NextIndicator.get_child(0).visible:
 			current_line_index += 1
-			printt(current_line_index, give_flag, give_point, receive_flag, receive_point)
-			
 			if give_flag:
 				if current_line_index == give_point:
 					dialogue_state = CONV_STATE.PLAYER_GIVE
@@ -810,7 +799,6 @@ func _input(event):
 					name_tag.exit_tween()
 				await text_box.close_text_box()
 				text_box.queue_free()
-				combines_lines = false
 				already_tweened = false
 				give_flag = false
 				receive_flag = false
@@ -829,6 +817,7 @@ func _input(event):
 				
 				text_box.queue_free()
 				show_text_box()
+
 
 ## TODO placeholder documentation
 func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.CharacterName, voice_sfx: AudioStream) -> void:
@@ -883,7 +872,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 				dialogue_lines.append_array(used_lines[current_npc][0])
 				give_point = used_lines[current_npc][0].size()
 				receive_point = used_lines[current_npc][0].size()
-
+			
 			match (current_npc):
 				QuestManager.CharacterName.GREASE, QuestManager.CharacterName.ORGANS : # gives but does not receive, no conditions
 					QuestManager.set_completed(current_npc)
@@ -943,7 +932,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 				receive_flag = false
 		
 		show_text_box()
-	
+
 
 func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void:
 	match pending_animation:
@@ -962,12 +951,14 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 				planet_state_change.emit()
 				print("QuestManager Completion and Sticker Set on PLAYER GIVE")
 
+
 func show_text_box():
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
 	hud_overlay.add_child(text_box)
 	text_box.display_text(dialogue_lines[current_line_index], sfx)
 	can_advance_line = false
+
 
 func _on_text_box_finished_displaying():
 	can_advance_line = true
