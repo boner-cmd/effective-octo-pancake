@@ -16,48 +16,33 @@ var clone_item_get_bg : AnimatedSprite3D
 var clone_item_give : Sprite3D
 var clone_item_give_bg : AnimatedSprite3D
 
-@onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
+var movement_frozen : bool = false
+var _camera_input_direction : Vector2 = Vector2.ZERO
+
+var exit_check = false
+var respawn_pos : Vector3 = Vector3(0.0, 0.1, 0.0)
+var respawn_rot : Vector3 = Vector3(0.0, 0.0, 0.0)
+var Idle_Check : bool = false
+var move_direction : Vector3
+var grav_strength : float = 10.0
+var grav_vector : Vector3 = Vector3(0,0,0)
+var xform : Transform3D
 
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 5.0
-#character
 @export var move_speed : float = 3.75
 @export var acceleration : float = 2000.0
-var movement_frozen : bool = false
-var _camera_input_direction : Vector2 = Vector2.ZERO
+@export var planet : Node3D
 
+@onready var clown: Node3D = $ClownRigFBX
+@onready var current_anim = clown.AnimStates.IDLE
 @onready var _camera_pivot: Node3D = $CameraPivot
 @onready var _camera: Camera3D = $CameraPivot/Camera3D
-
 @onready var reset_raycast: RayCast3D = $"../Reset_Raycast"
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var current_raycast : RayCast3D
-
-#planet stuff
-@export var planet : Node3D
-@onready var clown: Node3D = $ClownRigFBX
-
-#anim handling
-@onready var current_anim = clown.AnimStates.IDLE
-
-#audio stuff
-var convo_flip_1 = true
-var convo_flip_2 = true
-var convo_flip_3 = true
-var previous_convo_state : DialogueManager.CONV_STATE
-#state stuff
-var exit_check = false
-var respawn_pos : Vector3 = Vector3(0.0, 0.1, 0.0)
-var respawn_rot : Vector3 = Vector3(0.0, 0.0, 0.0)
-
-var Idle_Check : bool = false
-
-var move_direction : Vector3
-
-var grav_strength : float = 10.0
-var grav_vector : Vector3 = Vector3(0,0,0)
-var xform : Transform3D
+@onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 
 func reset_player():
 	position = respawn_pos
@@ -66,7 +51,6 @@ func reset_player():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-#camera nonsense and can probably just be put into physics process but didn't want to do that because of compute
 func player_interaction_camera() -> void:
 	if DialogueManager.is_dialogue_active:
 		if not clone: #makes clone for interaction
@@ -80,7 +64,6 @@ func player_interaction_camera() -> void:
 			clone_item_get_bg = clone.get_child(5).get_child(1)
 			clone_item_give = clone.get_child(6).get_child(0)
 			clone_item_give_bg = clone.get_child(6).get_child(1)
-			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
 				if Input.is_action_just_pressed("jump"):
@@ -103,21 +86,16 @@ func player_interaction_camera() -> void:
 					_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
 				_cam_player_give.make_current()
-				#vfx point
 				clone._set_player_anim(clone.AnimStates.GIVE)
 			DialogueManager.CONV_STATE.PLAYER_RECEIVE:
 				_cam_player_receive.make_current()
-				#vfx point
 				clone._set_player_anim(clone.AnimStates.GET)
-	else:
-		if _cam_player_give:
-			pass #vfx point
-		if _cam_player_receive:
-			pass #vfx point
+
 
 func grav_calc():
 	grav_vector = (planet.position - position).normalized()
 	up_direction = -grav_vector
+
 
 func align_with_floor(floor_normal : Vector3):
 	xform = global_transform
@@ -125,20 +103,20 @@ func align_with_floor(floor_normal : Vector3):
 	xform.basis.x = -xform.basis.z.cross(floor_normal)
 	xform.basis = xform.basis.orthonormalized()
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 	if event.is_action_pressed("left") \
 			or event.is_action_pressed("right") \
 			or event.is_action_pressed("up") \
 			or event.is_action_pressed("down"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 	if is_on_floor() and event.is_action_pressed("jump"):
 		if not DialogueManager.is_dialogue_active:
 			clown._set_player_anim(clown.AnimStates.JUMP)
-		
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion := (
 		event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -146,49 +124,30 @@ func _unhandled_input(event: InputEvent) -> void:
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
+
 func _process(_delta: float) -> void:
 	player_interaction_camera()
+
 
 func _physics_process(delta: float) -> void:
 	if not ray_cast_3d.is_colliding(): #never gets reset to ray_cast_3d if it ever gets set
 		current_raycast = reset_raycast
-	
 	if not DialogueManager.dialogue_state == DialogueManager.CONV_STATE.FINISHED:
-		if DialogueManager.dialogue_state != previous_convo_state:
-			match DialogueManager.dialogue_state:
-				DialogueManager.CONV_STATE.PLAYER_LISTEN:
-					clown._set_player_anim(clown.AnimStates.TALK)
-					previous_convo_state = DialogueManager.CONV_STATE.PLAYER_LISTEN
-				DialogueManager.CONV_STATE.PLAYER_GIVE:
-					clown._set_player_anim(clown.AnimStates.GIVE)
-					previous_convo_state = DialogueManager.CONV_STATE.PLAYER_GIVE
-				DialogueManager.CONV_STATE.PLAYER_RECEIVE:
-					clown._set_player_anim(clown.AnimStates.GET)
-					previous_convo_state = DialogueManager.CONV_STATE.PLAYER_RECEIVE
 		movement_frozen = true
-
 	elif exit_check:
 		movement_frozen = true
 		velocity = Vector3(0,0,0)
-
 	else:
-		previous_convo_state = DialogueManager.dialogue_state
 		_camera.make_current()
 		movement_frozen = false
-		convo_flip_1 = true
-		convo_flip_2 = true
-		convo_flip_3 = true
-
 		if clone:
 			clone.queue_free()
 			clown.visible = true
 			clown._set_player_anim(clown.AnimStates.IDLE)
-
 	if not movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
-
 		_camera_input_direction = Vector2.ZERO
 		
 		var raw_input := Input.get_vector("left", "right", "up", "down")
@@ -202,16 +161,13 @@ func _physics_process(delta: float) -> void:
 		if raw_input != Vector2(0,0):
 			clown.rotation.y = _camera_pivot.rotation.y - (raw_input.angle() + PI/2)
 			Idle_Check = true
-
 			if clown.current_anim != clown.AnimStates.WALK:
 				clown._set_player_anim(clown.AnimStates.WALK)
-
 		elif Idle_Check:
 			clown._set_player_anim(clown.AnimStates.IDLE)
 			Idle_Check = false
 
 		grav_calc()
-
 		velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
 
 		#align character with floor
