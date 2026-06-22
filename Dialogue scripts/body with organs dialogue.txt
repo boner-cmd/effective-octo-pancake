@@ -12,7 +12,7 @@
 ]
 
 @export var receive_lines: Array[String] = [
-	"Say, fella. I'm not one to comeplain, but I got a problem on my hands.",
+	"Say, fella. I'm not one to complain, but I got a problem on my hands.",
 	"They say you can't have too much of a good thing, and in most cases, they'd be right.",
 	"But you see, the thing is I've got too many organs.",
 	"I'm chock FULL of 'em!",

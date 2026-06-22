@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rmb70bkspx0i"
-path="res://.godot/imported/continue unselected.png-ae45498ca34fb046c343d8ea6dc9a344.ctex"
+uid="uid://cdne35f4pxofb"
+path="res://.godot/imported/options menu chromakey.png-6652d9c5e50c64e459c00323db1212cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI assets/continue unselected.png"
-dest_files=["res://.godot/imported/continue unselected.png-ae45498ca34fb046c343d8ea6dc9a344.ctex"]
+source_file="res://UI assets/options menu chromakey.png"
+dest_files=["res://.godot/imported/options menu chromakey.png-6652d9c5e50c64e459c00323db1212cd.ctex"]
 
 [params]
 

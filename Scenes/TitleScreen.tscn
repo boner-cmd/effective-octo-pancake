@@ -5,22 +5,25 @@
 [ext_resource type="Material" uid="uid://bojwl3m1uni8m" path="res://UI assets/TitleLetters.tres" id="3_qu6cc"]
 [ext_resource type="Material" uid="uid://bfc2invtr3bgv" path="res://UI assets/title_planet.tres" id="4_3ah5x"]
 [ext_resource type="PackedScene" uid="uid://byt7wit5jcupg" path="res://Character Scenes/clown_rig_fbx.tscn" id="4_pie25"]
-[ext_resource type="Texture2D" uid="uid://10iou6fqfaoq" path="res://VFX assets/sparkle.png" id="6_4hokt"]
 [ext_resource type="Texture2D" uid="uid://vste313bxffb" path="res://UI assets/NewTitleScreen/title screen background.png" id="6_jhb10"]
-[ext_resource type="Texture2D" uid="uid://bacrhxlcsiudw" path="res://UI assets/quit unselected.png" id="6_pie25"]
-[ext_resource type="Texture2D" uid="uid://d1da4ri8vsaqi" path="res://UI assets/quit selected.png" id="7_2jiiu"]
-[ext_resource type="Texture2D" uid="uid://cofv1s1vfrc2w" path="res://UI assets/tsbg4.png" id="7_3ah5x"]
-[ext_resource type="Texture2D" uid="uid://d4c43yiyd04so" path="res://UI assets/tsbg3.png" id="7_75epk"]
 [ext_resource type="Script" uid="uid://dwtpkemj41uqc" path="res://Scenes/cloud_parent.gd" id="7_fvr0n"]
 [ext_resource type="Texture2D" uid="uid://b1n6ktxlrsojx" path="res://UI assets/AH itchio background trans.png" id="7_jhb10"]
-[ext_resource type="Texture2D" uid="uid://boswrct5xnm4s" path="res://UI assets/tsbg2.png" id="8_3ah5x"]
-[ext_resource type="Texture2D" uid="uid://c8pwuraxgwshx" path="res://UI assets/credits unselected.png" id="8_awp6w"]
+[ext_resource type="Texture2D" uid="uid://c6iewiy116trb" path="res://UI assets/smallSprites/Icon_Sprites.png" id="7_vj6xs"]
 [ext_resource type="Texture2D" uid="uid://gl2j0x06cg84" path="res://UI assets/NewTitleScreen/title screen cloud.png" id="8_o6bmn"]
-[ext_resource type="Texture2D" uid="uid://ruda2duna01l" path="res://UI assets/new unselected.png" id="8_qu6cc"]
-[ext_resource type="Texture2D" uid="uid://bomjbruvphyau" path="res://UI assets/new selected.png" id="9_4hokt"]
-[ext_resource type="Texture2D" uid="uid://c81c88gmqxlj4" path="res://UI assets/tsbg1.png" id="9_jhb10"]
-[ext_resource type="Texture2D" uid="uid://dqmpr0ojjqgq5" path="res://UI assets/credits selected.png" id="9_qu6cc"]
-[ext_resource type="Texture2D" uid="uid://c53fc3d0tl4fd" path="res://UI assets/title screen ah render.png" id="10_qfyqv"]
+[ext_resource type="Texture2D" uid="uid://cdne35f4pxofb" path="res://UI assets/options menu chromakey.png" id="10_4hokt"]
+[ext_resource type="Material" uid="uid://p6axcgo36jli" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_1.tres" id="10_qu6cc"]
+[ext_resource type="Texture2D" uid="uid://62yo4oa5rjca" path="res://UI assets/menu button unselected cromakey.png" id="11_4hokt"]
+[ext_resource type="Texture2D" uid="uid://dryfbaibo6t1f" path="res://UI assets/menu button selected chromakey.png" id="12_swiah"]
+[ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="13_75epk"]
+[ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="14_3ah5x"]
+[ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/LARGE_UI_MATERIAL_1.tres" id="15_jhb10"]
+[ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="17_deutk"]
+[ext_resource type="Material" uid="uid://j7af50emycsi" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_4_HSLIDER.tres" id="18_fvr0n"]
+[ext_resource type="Theme" uid="uid://duv00eumyyl7w" path="res://UI assets/hslider assets/hslider_theme.tres" id="19_o6bmn"]
+[ext_resource type="Texture2D" uid="uid://bbkor4cphpgwq" path="res://UI assets/Mouse.png" id="20_b1y2r"]
+[ext_resource type="Texture2D" uid="uid://bamu3un26lc6f" path="res://UI assets/Key_Normal.png" id="21_vj6xs"]
+[ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="22_1xqr1"]
+[ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="23_y6xv0"]
 
 [sub_resource type="Environment" id="Environment_emot1"]
 background_color = Color(1, 1, 1, 1)
@@ -32,72 +35,69 @@ glow_bloom = 0.17
 radius = 5.0
 height = 10.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhb10"]
-atlas = ExtResource("6_4hokt")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_deutk"]
-atlas = ExtResource("6_4hokt")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvr0n"]
-atlas = ExtResource("6_4hokt")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6bmn"]
-atlas = ExtResource("6_4hokt")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1y2r"]
-atlas = ExtResource("6_4hokt")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vj6xs"]
-atlas = ExtResource("6_4hokt")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fvr0n"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jhb10")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_deutk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvr0n")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_o6bmn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1y2r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vj6xs")
-}, {
-"duration": 50.0,
-"texture": null
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awp6w"]
-border_width_left = 222
-border_width_top = 77
-border_color = Color(0.8, 0.8, 0.8, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoo1u"]
+bg_color = Color(0, 0, 0, 0.36100003)
+border_width_left = 200
+border_width_right = 200
+border_color = Color(0, 0, 0, 0)
 border_blend = true
-corner_radius_top_left = 4000
+corner_radius_top_left = 550
+corner_radius_top_right = 550
+corner_radius_bottom_right = 550
+corner_radius_bottom_left = 550
 corner_detail = 20
+expand_margin_bottom = 100.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1xqr1"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y6xv0"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -32, 0)
+emission_shape = 3
+emission_box_extents = Vector3(640, 0.1, 0.1)
+angle_min = -19.99999
+angle_max = 20.000011
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+anim_offset_max = 1.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qu6cc"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_006ca"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 0.5, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7yed1"]
+gradient = SubResource("Gradient_006ca")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoyyo"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_width_left = 400
+border_width_top = 400
+border_width_right = 400
+border_width_bottom = 400
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 550
+corner_radius_top_right = 550
+corner_radius_bottom_right = 550
+corner_radius_bottom_left = 550
+corner_detail = 20
+expand_margin_left = 200.0
+expand_margin_top = 200.0
+expand_margin_right = 200.0
+expand_margin_bottom = 200.0
 
 [node name="TitleScreen" type="Node" unique_id=998052152]
 script = ExtResource("1_n15yj")
@@ -317,7 +317,38 @@ offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("6_jhb10")
 
+[node name="Vignette2" type="Panel" parent="CanvasLayer" unique_id=951797563]
+clip_children = 1
+clip_contents = true
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aoo1u")
+
+[node name="SpriteParticles" type="GPUParticles2D" parent="CanvasLayer/Vignette2" unique_id=951752709]
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("CanvasItemMaterial_1xqr1")
+position = Vector2(640, 0)
+amount = 120
+texture = ExtResource("7_vj6xs")
+lifetime = 22.0
+preprocess = 15.0
+use_fixed_seed = true
+seed = 123730133
+process_material = SubResource("ParticleProcessMaterial_y6xv0")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1800898588]
+visible = false
+self_modulate = Color(1, 1, 1, 0.10980392)
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("7_jhb10")
+stretch_mode = 1
+
 [node name="CloudParent" type="Control" parent="CanvasLayer" unique_id=232775014]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 640.0
@@ -373,264 +404,688 @@ texture = ExtResource("8_o6bmn")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_o6bmn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1966804035]
-visible = false
-z_index = 10
-position = Vector2(262, 449)
-sprite_frames = SubResource("SpriteFrames_fvr0n")
-autoplay = "default"
-frame_progress = 0.3348266
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1719301613]
-visible = false
-z_index = -10
-custom_minimum_size = Vector2(1280, 720)
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 0, 0.07450981, 1)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1800898588]
-visible = false
-self_modulate = Color(1, 1, 1, 0.10980392)
-z_index = -10
-custom_minimum_size = Vector2(1280, 720)
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_jhb10")
-stretch_mode = 1
-
-[node name="BG_Container 5" type="MarginContainer" parent="CanvasLayer" unique_id=1350429468]
-visible = false
-z_index = -10
-custom_minimum_size = Vector2(1280, 1000)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2240.0
-offset_top = -1560.0
-offset_right = 3760.0
-offset_bottom = 4440.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="Stars Small Shadow" type="TextureRect" parent="CanvasLayer/BG_Container 5" unique_id=1896526634]
-visible = false
-layout_mode = 2
-texture = ExtResource("7_3ah5x")
-stretch_mode = 1
-
-[node name="BG_Container 4" type="MarginContainer" parent="CanvasLayer" unique_id=1131804000]
-visible = false
-z_index = -10
-custom_minimum_size = Vector2(1280, 1000)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2240.0
-offset_top = -1560.0
-offset_right = 3760.0
-offset_bottom = 4440.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="Stars Large Shadow" type="TextureRect" parent="CanvasLayer/BG_Container 4" unique_id=1993113820]
-visible = false
-layout_mode = 2
-texture = ExtResource("7_75epk")
-stretch_mode = 1
-
-[node name="BG_Container 3" type="MarginContainer" parent="CanvasLayer" unique_id=1355380405]
-visible = false
-z_index = -10
-custom_minimum_size = Vector2(1280, 1000)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2240.0
-offset_top = -1560.0
-offset_right = 3760.0
-offset_bottom = 4440.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="Stars Small" type="TextureRect" parent="CanvasLayer/BG_Container 3" unique_id=1250172904]
-visible = false
-self_modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
-layout_mode = 2
-texture = ExtResource("8_3ah5x")
-stretch_mode = 1
-
-[node name="BG_Container 2" type="MarginContainer" parent="CanvasLayer" unique_id=149984329]
-visible = false
-z_index = -10
-custom_minimum_size = Vector2(1280, 1000)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2240.0
-offset_top = -1560.0
-offset_right = 3760.0
-offset_bottom = 4440.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="Stars Large" type="TextureRect" parent="CanvasLayer/BG_Container 2" unique_id=625852770]
-visible = false
-layout_mode = 2
-texture = ExtResource("9_jhb10")
-stretch_mode = 1
-
-[node name="BG_Container" type="MarginContainer" parent="CanvasLayer" unique_id=255953588]
-visible = false
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1520.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/margin_right = 650
-
-[node name="AH2" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1767075821]
-visible = false
-self_modulate = Color(0, 0, 0.07450981, 1)
-layout_mode = 2
-texture = ExtResource("10_qfyqv")
-expand_mode = 2
-stretch_mode = 5
-flip_h = true
-
-[node name="AH" type="TextureRect" parent="CanvasLayer/BG_Container" unique_id=1201064109]
-visible = false
-layout_mode = 2
-texture = ExtResource("10_qfyqv")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1849315618]
-visible = false
-clip_children = 1
-clip_contents = true
-offset_left = 181.305
-offset_top = 274.74
-offset_right = 1461.3049
-offset_bottom = 994.7389
-theme_override_styles/panel = SubResource("StyleBoxFlat_awp6w")
-
-[node name="Sky" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1363266076]
-self_modulate = Color(1, 1, 1, 0.5921569)
-custom_minimum_size = Vector2(3000, 3000)
-layout_mode = 0
-offset_left = -500.0
-offset_top = -300.0
-offset_right = 2500.0
-offset_bottom = 2700.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("7_jhb10")
-stretch_mode = 1
-
 [node name="SubviewportRender" type="TextureRect" parent="CanvasLayer" unique_id=1237389070]
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_qu6cc")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=827505374]
-clip_contents = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="StartMenuControl" type="Control" parent="CanvasLayer" unique_id=170923540]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="ColumnLayout" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1296547097]
-custom_minimum_size = Vector2(0, 300)
+[node name="DialogueVignette" type="TextureRect" parent="CanvasLayer/StartMenuControl" unique_id=321510084]
+modulate = Color(1, 1, 1, 0.79607844)
+layout_mode = 0
+offset_left = -620.0
+offset_top = 122.0
+offset_right = 660.0
+offset_bottom = 381.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_7yed1")
+
+[node name="Vignette" type="Panel" parent="CanvasLayer/StartMenuControl/DialogueVignette" unique_id=853537625]
+visible = false
+z_index = -100
+layout_mode = 0
+offset_top = -350.0
+offset_right = 1280.0
+offset_bottom = 370.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yoyyo")
+
+[node name="MainMenuContainer" type="HBoxContainer" parent="CanvasLayer/StartMenuControl" unique_id=958133507]
+custom_minimum_size = Vector2(0, 177)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = 182.575
+offset_right = 404.0
+offset_bottom = 359.57507
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/separation = 20
+
+[node name="ContinueButton" type="TextureButton" parent="CanvasLayer/StartMenuControl/MainMenuContainer" unique_id=146770061 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(197, 89)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/ContinueButton" unique_id=876850199]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 19.0
+offset_top = 22.0
+offset_right = 178.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "continue"
+
+[node name="NewGameButton" type="TextureButton" parent="CanvasLayer/StartMenuControl/MainMenuContainer" unique_id=325750295 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(197, 89)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/NewGameButton" unique_id=743505034]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 17.5
+offset_top = 22.0
+offset_right = 179.5
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 44
+text = "new game"
+
+[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/StartMenuControl/MainMenuContainer" unique_id=1650350951 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 89)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/OptionsButton" unique_id=1568514466]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.0
+offset_right = 184.5
+offset_bottom = 66.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "options"
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/StartMenuControl/MainMenuContainer" unique_id=823918148 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/QuitButton" unique_id=1198521378]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 57.0
+offset_top = 23.0
+offset_right = 216.0
+offset_bottom = 65.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "quit"
+
+[node name="OptionsControl" type="Control" parent="CanvasLayer" unique_id=1537814195]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Vignette" type="Panel" parent="CanvasLayer/OptionsControl" unique_id=397465115]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aoo1u")
+
+[node name="OptionsMenuChromakey" type="Sprite2D" parent="CanvasLayer/OptionsControl" unique_id=166811202]
+material = ExtResource("15_jhb10")
+position = Vector2(625, 361)
+texture = ExtResource("10_4hokt")
+
+[node name="OptionsButtons" type="VBoxContainer" parent="CanvasLayer/OptionsControl" unique_id=455704846]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 161.0
+offset_right = 410.0
+offset_bottom = 577.0
+theme_override_constants/separation = 13
+
+[node name="ControlsButton" type="TextureButton" parent="CanvasLayer/OptionsControl/OptionsButtons" unique_id=973049996 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/ControlsButton" unique_id=559933507]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 17.0
+offset_top = 24.0
+offset_right = 181.0
+offset_bottom = 66.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "controls"
+
+[node name="SoundButton" type="TextureButton" parent="CanvasLayer/OptionsControl/OptionsButtons" unique_id=168269080 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/SoundButton" unique_id=1986143947]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 45.47998
+offset_top = 24.258373
+offset_right = 204.47998
+offset_bottom = 66.25838
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "sound"
+
+[node name="CreditsButton" type="TextureButton" parent="CanvasLayer/OptionsControl/OptionsButtons" unique_id=227975806 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/CreditsButton" unique_id=888299646]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 31.0
+offset_top = 24.258373
+offset_right = 190.0
+offset_bottom = 66.25838
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "credits"
+
+[node name="ReturnButton" type="TextureButton" parent="CanvasLayer/OptionsControl/OptionsButtons" unique_id=431650770 groups=["Start_Menu_Buttons"]]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+material = ExtResource("10_qu6cc")
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_4hokt")
+texture_hover = ExtResource("12_swiah")
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/ReturnButton" unique_id=7600341]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 35.0
+offset_top = 24.258373
+offset_right = 194.0
+offset_bottom = 66.25838
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 50
+text = "return"
+
+[node name="AudioControlVBox" type="VBoxContainer" parent="CanvasLayer/OptionsControl" unique_id=807437671]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 613.0
+offset_top = 221.0
+offset_right = 615.0
+offset_bottom = 517.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 75
+alignment = 1
+script = ExtResource("17_deutk")
+
+[node name="HSlider1" type="HSlider" parent="CanvasLayer/OptionsControl/AudioControlVBox" unique_id=160893395]
+texture_filter = 1
+material = ExtResource("18_fvr0n")
+layout_mode = 2
+theme = ExtResource("19_o6bmn")
+
+[node name="HSlider2" type="HSlider" parent="CanvasLayer/OptionsControl/AudioControlVBox" unique_id=2078423855]
+texture_filter = 1
+material = ExtResource("18_fvr0n")
+layout_mode = 2
+theme = ExtResource("19_o6bmn")
+
+[node name="HSlider3" type="HSlider" parent="CanvasLayer/OptionsControl/AudioControlVBox" unique_id=1435552532]
+texture_filter = 1
+material = ExtResource("18_fvr0n")
+layout_mode = 2
+theme = ExtResource("19_o6bmn")
+
+[node name="KeyboardControlsMenu" type="Control" parent="CanvasLayer/OptionsControl" unique_id=1050953726]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 122.0
+offset_right = 520.0
+offset_bottom = 122.0
+mouse_filter = 2
+
+[node name="MouseImage" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=989326837]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 308.0
+offset_top = 26.0
+offset_right = 564.0
+offset_bottom = 282.0
+scale = Vector2(0.6, 0.6)
+size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("20_b1y2r")
+stretch_mode = 2
+
+[node name="KeyF" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=1493120659]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 23.0
+offset_top = 188.0
+offset_right = 151.0
+offset_bottom = 316.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("21_vj6xs")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/KeyF" unique_id=1104131413]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 54.99998
+offset_top = 30.00002
+offset_right = 96.99997
+offset_bottom = 59.00002
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "F"
+
+[node name="Tab" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=1970607074]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 5.0
+offset_top = 106.0
+offset_right = 261.0
+offset_bottom = 234.0
+scale = Vector2(0.6, 0.6)
 size_flags_vertical = 8
-alignment = 1
+mouse_filter = 2
+texture = ExtResource("22_1xqr1")
+stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/ColumnLayout" unique_id=533991614]
-layout_mode = 2
-
-[node name="LeftColumn" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer" unique_id=257438566]
-custom_minimum_size = Vector2(0, 280)
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="NewGameButton" type="TextureButton" parent="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn" unique_id=213622232]
+[node name="Label2" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Tab" unique_id=1912740501]
 texture_filter = 1
-custom_minimum_size = Vector2(170, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("8_qu6cc")
-texture_hover = ExtResource("9_4hokt")
-stretch_mode = 5
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 101.666664
+offset_top = 28.333338
+offset_right = 144.66666
+offset_bottom = 57.333336
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "tab"
 
-[node name="QuitButton" type="TextureButton" parent="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn" unique_id=951586802]
+[node name="Key1" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=696910264]
 texture_filter = 1
-custom_minimum_size = Vector2(170, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("6_pie25")
-texture_hover = ExtResource("7_2jiiu")
-stretch_mode = 5
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 20.0
+offset_top = 275.0
+offset_right = 148.0
+offset_bottom = 403.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("21_vj6xs")
+stretch_mode = 2
 
-[node name="Credits" type="TextureButton" parent="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn" unique_id=1842959585]
+[node name="Label4" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Key1" unique_id=221824755]
 texture_filter = 1
-custom_minimum_size = Vector2(170, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("8_awp6w")
-texture_hover = ExtResource("9_qu6cc")
-stretch_mode = 5
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 50.00002
+offset_top = 29.99999
+offset_right = 92.00003
+offset_bottom = 58.999992
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "W"
 
-[node name="MenuOptions" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn" unique_id=361737552]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-alignment = 1
+[node name="Key2" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=1535817912]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 142.0
+offset_top = 274.0
+offset_right = 270.0
+offset_bottom = 402.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("21_vj6xs")
+stretch_mode = 2
 
-[node name="RightColumn" type="CenterContainer" parent="CanvasLayer/MarginContainer/ColumnLayout" unique_id=1504342595]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="Label4" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Key2" unique_id=1600348350]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 55.000042
+offset_top = 30.000025
+offset_right = 97.000046
+offset_bottom = 59.000023
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "S"
 
-[node name="GameLogo" type="TextureRect" parent="CanvasLayer/MarginContainer/ColumnLayout/RightColumn" unique_id=1145879336]
-layout_mode = 2
+[node name="Key3" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=815592319]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 82.0
+offset_top = 275.0
+offset_right = 210.0
+offset_bottom = 403.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("21_vj6xs")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Key3" unique_id=31048329]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 56.406063
+offset_top = 31.758148
+offset_right = 98.40607
+offset_bottom = 56.75815
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "A"
+
+[node name="Key4" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=612372713]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 199.0
+offset_top = 274.0
+offset_right = 327.0
+offset_bottom = 402.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("21_vj6xs")
+stretch_mode = 2
+flip_h = true
+
+[node name="Label4" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Key4" unique_id=1618071915]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 53.333336
+offset_top = 29.333313
+offset_right = 95.33334
+offset_bottom = 54.333313
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "D"
+
+[node name="Esc" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=893430406]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 152.0
+offset_bottom = 150.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("21_vj6xs")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Esc" unique_id=1696092091]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 38.666668
+offset_top = 28.333323
+offset_right = 80.66667
+offset_bottom = 57.33332
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "esc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="TextureRect" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=961257227]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 19.0
+offset_top = 368.0
+offset_right = 531.0
+offset_bottom = 496.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("23_y6xv0")
+stretch_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu/Space" unique_id=649344]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 204.99997
+offset_top = 26.666664
+offset_right = 273.99997
+offset_bottom = 53.666664
+scale = Vector2(1.25, 1.25)
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 32
+text = "space"
+
+[node name="pause" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=98306913]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 138.0
+offset_top = 30.0
+offset_right = 242.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 40
+text = "pause"
+
+[node name="map" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=652869464]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 137.0
+offset_top = 116.0
+offset_right = 213.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 40
+text = "map"
+
+[node name="move" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=1899197618]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 328.0
+offset_top = 296.0
+offset_right = 425.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 40
+text = "move"
+
+[node name="interact" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=798091854]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 136.0
+offset_top = 202.0
+offset_right = 287.0
+offset_bottom = 242.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 40
+text = "interact"
+
+[node name="honk" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=412327845]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 329.0
+offset_top = 381.0
+offset_right = 415.0
+offset_bottom = 421.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 40
+text = "honk"
+
+[node name="look" type="Label" parent="CanvasLayer/OptionsControl/KeyboardControlsMenu" unique_id=1395762888]
+texture_filter = 1
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 349.0
+offset_top = 184.0
+offset_right = 430.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 40
+text = "look"
+
+[node name="CreditsControl" type="Control" parent="CanvasLayer/OptionsControl" unique_id=506005039]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsControl/CreditsControl" unique_id=57665950]
+material = ExtResource("13_75epk")
+layout_mode = 0
+offset_left = 514.0
+offset_top = 100.0
+offset_right = 1029.0
+offset_bottom = 621.0
+theme_override_fonts/font = ExtResource("14_3ah5x")
+theme_override_font_sizes/font_size = 34
+text = "Michael Brissie:
+Animation, Modeling, Game Design
+Asset Implementation, VFX
+Programming, Tech Art, UI
+
+Allie Burch:
+2D Assets
+
+Markcy Hilbert:
+Scenario, Dialogue, Creative Direction
+Music/Sound, Game Design, 2D/3D Assets
+
+Dimelo Waterson:
+Systems Design
+UI Programming
+Data Entry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition" type="ColorRect" parent="CanvasLayer" unique_id=161004670]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Node3D/Timer" to="." method="_on_timer_timeout"]
-[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_focus_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_focus_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="focus_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_credits_focus_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_credits_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/ColumnLayout/MarginContainer/LeftColumn/Credits" to="." method="_on_credits_mouse_exited"]
 
 [editable path="Node3D/title_screen_letters"]

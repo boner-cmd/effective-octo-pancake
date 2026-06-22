@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://xce008uj80go" path="res://Map assets/no-eye'd deer.png" id="19_oc4d8"]
 [ext_resource type="Texture2D" uid="uid://xmp1iw05xryg" path="res://Map assets/gatekeeper.png" id="20_74rbg"]
 [ext_resource type="Texture2D" uid="uid://dvacasapt6w4q" path="res://Map assets/O.png" id="21_npi88"]
+[ext_resource type="Texture2D" uid="uid://dkmjlu3h28nhj" path="res://Map assets/map border.png" id="21_qsvm7"]
 [ext_resource type="Texture2D" uid="uid://yqshpd36nbpt" path="res://Map assets/organs.png" id="22_xq43d"]
 [ext_resource type="Texture2D" uid="uid://c02q5l60af8un" path="res://Map assets/festering mass.png" id="23_82vjh"]
 [ext_resource type="Texture2D" uid="uid://bhymmwbixjw6w" path="res://Map assets/lamp.png" id="24_r4epv"]
@@ -48,7 +49,6 @@
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="49_c6udc"]
 [ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="50_c6udc"]
 [ext_resource type="Texture2D" uid="uid://bd60t1t6wqrex" path="res://UI assets/DialogueBoxAssets/Indicator_01.png" id="51_006ca"]
-[ext_resource type="PackedScene" uid="uid://bpvfp05icadyq" path="res://Scenes/control_schematic_full.tscn" id="52_006ca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsvm7"]
 bg_color = Color(0, 0, 0, 0)
@@ -57,7 +57,7 @@ border_width_left = 400
 border_width_top = 400
 border_width_right = 400
 border_width_bottom = 400
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 0.33800003)
 border_blend = true
 corner_radius_top_left = 550
 corner_radius_top_right = 550
@@ -117,6 +117,7 @@ process_mode = 3
 script = ExtResource("1_1m71x")
 
 [node name="PauseContainer" type="Control" parent="." unique_id=1922139443]
+visible = false
 z_index = 50
 layout_mode = 3
 anchors_preset = 0
@@ -148,7 +149,8 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 60
 text = "gifts"
@@ -319,9 +321,9 @@ texture = ExtResource("7_5rjlw")
 material = ExtResource("49_c6udc")
 custom_minimum_size = Vector2(180, 75)
 layout_mode = 0
-offset_left = 817.0
+offset_left = 779.0
 offset_top = 83.0
-offset_right = 997.0
+offset_right = 959.0
 offset_bottom = 158.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -825,6 +827,11 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("10_bphkb")
 script = ExtResource("11_iqywv")
+
+[node name="MapBorder" type="Sprite2D" parent="Map" unique_id=425489578]
+material = ExtResource("47_qsvm7")
+texture = ExtResource("21_qsvm7")
+offset = Vector2(640, 360)
 
 [node name="PositionMarker" type="TextureRect" parent="Map" unique_id=774177229]
 z_index = 5
@@ -2005,21 +2012,9 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=789935560]
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-texture_repeat = 2
-offset_right = 1280.0
-offset_bottom = 720.0
-mouse_filter = 2
-
 [node name="Timer" type="Timer" parent="." unique_id=1419469419]
 wait_time = 0.5
 one_shot = true
-
-[node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("52_006ca")]
-visible = false
-mouse_filter = 2
 
 [node name="DialogueVignette" type="TextureRect" parent="." unique_id=1226659695]
 visible = false
@@ -2036,6 +2031,7 @@ layout_mode = 0
 offset_top = -350.0
 offset_right = 1280.0
 offset_bottom = 370.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qsvm7")
 

@@ -1,15 +1,10 @@
 MAIN
 	BUGS
-		- possible bug with horse lock/king talk?
+		clear for now - need to test after DialogueManager system changed
 		
 	ASSETS
-		Michaelwave assets
-			-planet/skybox texture - Markcy
-			-npc model - Michael
+		NPC Models, Anims, Textures
 		
-		Festering
-			-npc model - Michael
-			
 		Sisyphus planet stuff - Markcy
 		Norgans skybox - Markcy
 		
@@ -23,27 +18,17 @@ MAIN
 			Will need to save audio settings
 			Will need to save honk counter from QuestManager
 			Will need to save time counter from QuestManager
+			Will need to hook up Continue button in Title Scene to load game
 
 
-DIALOGUES (DialogueManager, NPC lines) - 1 day probably, 2/3 testing bugs, Markcy ~2.5 days rework/denoting
-	Dialogue needs a thorough pass.
-	Delay for skipping ahead (or remove skipping ahead and speed up text)
-		if speed up text, speech sound every 3rd or something
+
+DIALOGUES (DialogueManager, NPC lines) 
 	Different speech sound
-	Delay for re-speaking to NPC
-	
-	NICE TO HAVE:
-		Notate where in the dialogues swapping from LISTEN state to GIVE and RECEIVE states
-		Pipe-in a calculation for offsetting the current Animation Points to the respective conversation points.
-		Listen - Give Anim - Receive Anim - Listen
-		Listen - Give Anim - Listen Anim - Receive Anim - Listen
-		
+	Delay for re-speaking to NPC - this might be getting into the weeds a bit but probably not too difficult
 
-MODELS - ~ 1 week
-	Make higher-fidelity models for the NPCs		- Michael
-		- Requires Textures 						- Michael
+
+MODELS -
 	NICE TO HAVE:
-		Rigs (most can be reused at least once) 	- Michael
 		Animations (At least an IDLE and a TALK, but if we're going this far we should have NPC RECEIVE and NPC GIVE)
 	CAMERAS
 		rework the camera system to use less cameras
@@ -53,7 +38,6 @@ MODELS - ~ 1 week
 SHADER PASS
 	adjust shadow falloff for materials for specific planets
 	NPC shader if we want something more than just a toon shader?
-	wiggle distortion attached to shader
 
 VFX PASS - Michael - ???
 	Door particles -
@@ -67,16 +51,16 @@ VFX PASS - Michael - ???
 	Confetti explosion for VICTORY animation
 
 
-UI PASS - ???
-	Holistically approach the game's UI and design.
-	
-	PAUSE vignette - dark blue gray - 
-	
-	Unique boxes per NPCs (?) - can be related to shader colors if desired
-	
-	MAP
-		revist the "Map" label on the map
-		border that matches the menu UI
+UI PASS - optional
+	2 or 3 frame anims for menu options
+		idle
+		sound
+		controls
+		credits
+		continue
+		main menu
+		quit
+
 
 POST - minimal
 	Exe Icon - 64x64 - Honk counter - resize
@@ -93,25 +77,10 @@ POST - minimal
 			Honk 100 times (feel out the number if 100 is too low)
 			play the whole game with music set to full (Markcy's #1 Fan)
 			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
-			
 
-TITLE SCREEN - ???
-	stars revisit
-	buttons updated
-	big head half face may not work actually :'(
-	
-	Reaffirm design direction/menu
-	
-	buttons on left with shader
-	on button hover have AH face different positions interrupting the screen
-	purple gradient sky pink clouds?
-	AH closer
-	letters 1/3rd screen
-	
-	Credits overlay for titlescreen credits button
-	
-	Intro screen before the TITLE screen with the GODOT logo, transition into our "studio" logo, transition into main menu
-	Sparkle VFX
+TITLE SCREEN -
+	on button hover have AH face different positions interrupting the screen (nice to have)
+	implement anims for options menu
 
 SOUND - 2.5 days ish
 	Different default speech noises

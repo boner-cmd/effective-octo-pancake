@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d15cvkowrk1yl"]
+
+[ext_resource type="PackedScene" uid="uid://bpvfp05icadyq" path="res://Scenes/control_schematic_full.tscn" id="1_8cajw"]
+
+[node name="TransitionSceneOverlay" type="CanvasLayer" unique_id=1436646535]
+
+[node name="Transition_Rect" type="ColorRect" parent="." unique_id=1940508552]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("1_8cajw")]
+visible = false
+
+[node name="Transition_Rect_White" type="ColorRect" parent="." unique_id=1198278288]
+visible = false
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2

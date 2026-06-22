@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tw6g8rafvibi"
-path="res://.godot/imported/continue selected.png-d3539ff26f6296cc4b5b84933edffa74.ctex"
+uid="uid://d4dwrs4k32j0i"
+path="res://.godot/imported/michaelwave.png-f6a8c5d264cc0ee6c81a6a3ba8e77dac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI assets/continue selected.png"
-dest_files=["res://.godot/imported/continue selected.png-d3539ff26f6296cc4b5b84933edffa74.ctex"]
+source_file="res://planets/textures/michaelwave/michaelwave.png"
+dest_files=["res://.godot/imported/michaelwave.png-f6a8c5d264cc0ee6c81a6a3ba8e77dac.ctex"]
 
 [params]
 

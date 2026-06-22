@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bomjbruvphyau"
-path="res://.godot/imported/new selected.png-614fe7252412b41e8c3c859e43b22a40.ctex"
+uid="uid://c5bv53ottundk"
+path="res://.godot/imported/title screen option doodle.png-48eee19dea4332e5190308066b30fdad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI assets/new selected.png"
-dest_files=["res://.godot/imported/new selected.png-614fe7252412b41e8c3c859e43b22a40.ctex"]
+source_file="res://UI assets/OptionsDoodles/title screen option doodle.png"
+dest_files=["res://.godot/imported/title screen option doodle.png-48eee19dea4332e5190308066b30fdad.ctex"]
 
 [params]
 

@@ -2,23 +2,15 @@
 extends CanvasLayer
 
 enum PAUSESTATE {UNPAUSED, MAP, PAUSED, MAP_PAUSED}
-enum INTERACT_TYPE {NONE, DOOR_LOCKED, DOOR_OPEN, NPC}
+enum INTERACT_TYPE {NONE, DOOR_LOCKED, DOOR_OPEN, NPC, CONVERSATION}
 
-var assert_interact_timer : Timer
 var temp_size : float
-
-# TODO replace this with the INTERACT_TYPE enum
-var temp_interact_node : MarginContainer
 
 var current_tweens : Dictionary = {}
 var current_tween_index : int
 
-var continue_bool : bool = false
-var quit_bool : bool = false
 var sound_bool : bool = false
 var controls_bool : bool = false
-var menu_bool : bool = false
-var assert_timer : bool = false
 var control_acknowledge : bool = true
 
 #  TODO review these
@@ -28,21 +20,25 @@ var debounce_interaction : bool = false
 # default states for state trackers
 var pause_state : PAUSESTATE = PAUSESTATE.UNPAUSED
 var interact_touched : INTERACT_TYPE = INTERACT_TYPE.NONE
+var previous_interact : INTERACT_TYPE = INTERACT_TYPE.NONE
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var player_rig = player.clown
 @onready var interaction_detector : Area3D = player_rig.get_child(player_rig.get_children().find_custom(func(n : Node): return n.name == "InteractionDetector"))
 
 @onready var main_scene: Node3D = $".."
-@onready var control_schematic_full: Control = $ControlSchematicFull
+@onready var transition_scene: CanvasLayer = get_tree().root.get_child(get_tree().root.get_children().find_custom(func(n : Node): return n.name == "TransitionSceneOverlay"))
+@onready var transition_color: ColorRect = transition_scene.get_child(0)
+@onready var control_schematic_full: Control = transition_scene.get_child(1)
 @onready var keyboard_controls_menu: Control = %KeyboardControlsMenu
 @onready var audio_control: VBoxContainer = %AudioControlVBox
 @onready var map : TextureRect = %Map
 @onready var pause_menu : Control = $PauseContainer
-@onready var transition_color: ColorRect = $ColorRect
 @onready var dialogue_vignette : TextureRect = $DialogueVignette
 @onready var interact_door_open : MarginContainer = %InteractDoorOpen
+@onready var interact_door_open_label : Label = interact_door_open.get_child(1).get_child(0)
 @onready var interact_door_locked : MarginContainer = %InteractDoorLocked
+@onready var interact_door_locked_label : Label = interact_door_locked.get_child(1).get_child(0)
 @onready var interact_npc_margin : MarginContainer = %InteractNPCMargin
 @onready var npc_label: Label = %InteractNPCLabel 
 @onready var next_indicator: AnimatedSprite2D = %NextIndicator
@@ -73,47 +69,39 @@ func _ready() -> void:
 	audio_control.modulate.a = 0.0
 	keyboard_controls_menu.modulate.a = 0.0
 	next_indicator.modulate.a = 0.0
-
 	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	menu_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	pause_menu.pivot_offset_ratio = Vector2(0.0, 0.5)
 	sound_button.pivot_offset_ratio = Vector2(0.0, 0.5)
-	
 	audio_control.position.y = -50.0
-
 	#connect signals for interact
 	interaction_detector.exit_area_entered.connect(_on_exit_door_entered)
 	interaction_detector.exit_area_exited.connect(_on_door_exited)
 	interaction_detector.npc_entered.connect(_on_npc_entered)
 	interaction_detector.npc_exited.connect(_on_npc_exited)
-	Stopwatch.physics_timer.timeout.connect(assert_interact)
-	
 	#connect mouse area blips and effects
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 		button.mouse_entered.connect(_on_any_mouse_button_entered, CONNECT_APPEND_SOURCE_OBJECT)
 		button.mouse_exited.connect(_on_any_mouse_button_exited, CONNECT_APPEND_SOURCE_OBJECT)
-
 	#timer for transition start
 	transition_timer.start()
 	await transition_timer.timeout
-
-	#transition coloration
-	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
-	transition_color.visible = true
-
 	#control schematics UI stuff here
 	await get_tree().create_timer(.1).timeout
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	control_acknowledge = false
 
 
+func _process(_delta: float) -> void:
+	assert_interact()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_pause"):
-		if alpha_modulated(pause_menu):
-			change_pause_state()
-	
+		if transition_color.visible == false:
+			if alpha_modulated(pause_menu):
+				change_pause_state()
 	if event.is_action_pressed("toggle_map"):
 		if alpha_modulated(map):
 			match pause_state:
@@ -125,33 +113,19 @@ func _unhandled_input(event: InputEvent) -> void:
 					# hide dialog boxes
 					hide_minor_ui()
 					map.modulate.a = 0.0
-					
-					## TODO necessary?
-					interact_door_open.visible = false
-					interact_door_locked.visible = false
-					interact_npc_margin.visible = false
-					next_indicator.modulate.a = 0.0
-					
 					map.visible = true
 					await tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
-					
 				PAUSESTATE.MAP:
-					# update the state
 					pause_state = PAUSESTATE.UNPAUSED
-					# hide the map
 					get_tree().paused = false
-					# restore dialog boxes
 					show_minor_ui()
 					map.modulate.a = 1.0
 					await tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 					map.visible = false
 				_:
 					pass
-					# do nothing if the pause screen is up
-	
 	if event.is_action_pressed("advance_dialogue"):
 		## control schematic
-		## TODO Mike says there are updates to be made here
 		if not control_acknowledge:
 			control_acknowledge = true
 			var tween_control_off = get_tree().create_tween()
@@ -165,26 +139,21 @@ func _unhandled_input(event: InputEvent) -> void:
 				tween_control_off.kill()
 			control_schematic_full.queue_free()
 			transition()
-	
+		if not DialogueManager.is_dialogue_active and interaction_latch:
+				interaction_latch = false
+				tween_vignette_switch(false)
+				interact_npc_margin.modulate.a = 0.01
 	if event.is_action_pressed("interact"):
-		if not interaction_latch and interact_npc_margin.visible:
-			await deactivate_tween_interact(interact_npc_margin)
+		if not interaction_latch:
 			if DialogueManager.is_dialogue_active:
-				#deactivate_tween_interact(interact_npc_margin)
-				tween_vignette_switch(true)
-				#next_indicator.modulate.a = 0.0
-				#next_indicator_label.visible = false
-				#next_indicator_label.modulate.a = 0.0
-				#interact_npc_margin.visible = false
+				if main_scene.current_planet_id != 21:
+					tween_vignette_switch(true)
 				interaction_latch = true
 		elif interaction_latch:
 			if not DialogueManager.is_dialogue_active:
 				interaction_latch = false
-				interact_npc_margin.visible = true
 				tween_vignette_switch(false)
-				await get_tree().create_timer(.29).timeout
-				activate_tween_interact(interact_npc_margin)
-				
+				interact_npc_margin.modulate.a = 0.01
 
 
 func _on_quit_button_pressed() -> void:
@@ -248,7 +217,7 @@ func _on_menu_button_pressed() -> void:
 	get_tree().root.remove_child(get_parent().current_planet)
 	AudioManager.bgm_cycle(22)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().change_scene_to_file('uid://duig5pisbnbl8')
+	get_tree().call_deferred("change_scene_to_file", 'uid://duig5pisbnbl8')
 
 
 func _on_any_mouse_button_entered(source : Object) -> void:
@@ -261,47 +230,31 @@ func _on_any_mouse_button_exited(source : Object) -> void:
 
 
 func _on_npc_entered() -> void:
-	activate_tween_interact(interact_npc_margin)
-	#interact_door_locked.visible = false # relates to when player touches door and NPC
-	#interact_door_open.visible = false # relates to when player touches door and NPC
 	npc_label.text = "Listen to " + DialogueManager.Character_Names[main_scene.current_planet_id]
 	interact_touched = INTERACT_TYPE.NPC
-	assert_interact()
 
 
 func _on_npc_exited() -> void:
-	deactivate_tween_interact(interact_npc_margin)
-	#interact_door_locked.visible = false # relates to when player touches door and NPC
-	#interact_door_open.visible = false # relates to when player touches door and NPC
 	interact_touched = INTERACT_TYPE.NONE
 
 
 func _on_door_exited() -> void:
-	#interact_npc_margin.visible = false # relates to when player touches door and NPC
-	match interact_touched:
-		INTERACT_TYPE.DOOR_LOCKED:
-			deactivate_tween_interact(interact_door_locked)
-		INTERACT_TYPE.DOOR_OPEN:
-			deactivate_tween_interact(interact_door_open)
 	interact_touched = INTERACT_TYPE.NONE
 	next_indicator.modulate.a = 0.0
 
 
 func _on_exit_door_entered(lock_on_door : bool) -> void:
-	interact_npc_margin.visible = false
-	interact_door_locked.visible = false
-	interact_door_open.visible = false
 	if lock_on_door:
-		activate_tween_interact(interact_door_locked)
 		interact_touched = INTERACT_TYPE.DOOR_LOCKED
 	else:
-		activate_tween_interact(interact_door_open)
 		interact_touched = INTERACT_TYPE.DOOR_OPEN
+
 
 func alpha_modulated(c : Control) -> bool:
 	if c.modulate.a == 1.0 or c.modulate.a == 0.0: 
 		return true
 	return false
+
 
 func hide_other_buttons(selected_button : TextureButton) -> void:
 	get_tree().get_nodes_in_group("Pause_Buttons").all(func (b : TextureButton): 
@@ -318,18 +271,15 @@ func change_pause_state() -> void:
 		PAUSESTATE.UNPAUSED:
 			pause_state = PAUSESTATE.PAUSED
 			pause_game()
-		
 		# MAP -> MAP_PAUSED
 		PAUSESTATE.MAP:
 			pause_state = PAUSESTATE.MAP_PAUSED
 			pause_game()
-		
 		# PAUSED -> UNPAUSED
 		PAUSESTATE.PAUSED:
 			pause_state = PAUSESTATE.UNPAUSED
 			get_tree().paused = false
 			restore_game()
-		
 		# MAP_PAUSED -> MAP
 		PAUSESTATE.MAP_PAUSED:
 			# leaving the MAP_PAUSED state to enter the MAP state
@@ -473,34 +423,76 @@ func deactivate_tween_interact(interact_parent : MarginContainer) -> void:
 		debounce_interaction = false
 
 
-## TODO suspect this needs a better name
-func immediate_interact_false(interact_parent : MarginContainer) -> void:
+func immediate_interact_hide(interact_parent : MarginContainer) -> void:
 	var label_margin = interact_parent.get_child(1)
 	var label = label_margin.get_child(0)
 	label_margin.custom_minimum_size.x = 0.0
 	next_indicator.modulate.a = 0.0
 	interact_parent.visible = false
 	label.visible = false
-	assert_timer = false
 
 
 func assert_interact() -> void:
-	match interact_touched:
-		INTERACT_TYPE.NONE:
-			immediate_interact_false(interact_door_open)
-			immediate_interact_false(interact_door_locked)
-			immediate_interact_false(interact_npc_margin)
-		INTERACT_TYPE.NPC:
-			if DialogueManager.is_dialogue_active:
-				immediate_interact_false(interact_npc_margin)
-			elif interact_npc_margin.modulate.a == 0.0:
-				activate_tween_interact(interact_npc_margin)
-		INTERACT_TYPE.DOOR_LOCKED:
-			if interact_door_locked.modulate.a == 0.0:
-				activate_tween_interact(interact_door_locked)
-		INTERACT_TYPE.DOOR_OPEN:
-			if interact_door_open.modulate.a == 0.0:
-				activate_tween_interact(interact_door_open)
+	if DialogueManager.is_dialogue_active == true:
+		interact_touched = INTERACT_TYPE.CONVERSATION
+	if interact_touched != INTERACT_TYPE.NONE:
+		if interaction_detector.get_overlapping_areas() == []:
+			interact_touched = INTERACT_TYPE.NONE
+	if interact_touched != previous_interact:
+		match interact_touched:
+			INTERACT_TYPE.NONE:
+				match previous_interact:
+					INTERACT_TYPE.NONE:
+						pass
+					INTERACT_TYPE.NPC:
+						await deactivate_tween_interact(interact_npc_margin)
+						previous_interact = INTERACT_TYPE.NONE
+					INTERACT_TYPE.DOOR_LOCKED:
+						await deactivate_tween_interact(interact_door_locked)
+						previous_interact = INTERACT_TYPE.NONE
+					INTERACT_TYPE.DOOR_OPEN:
+						await deactivate_tween_interact(interact_door_open)
+						previous_interact = INTERACT_TYPE.NONE
+					INTERACT_TYPE.CONVERSATION:
+						pass
+			INTERACT_TYPE.DOOR_OPEN:
+				previous_interact = INTERACT_TYPE.DOOR_OPEN
+				await activate_tween_interact(interact_door_open)
+			INTERACT_TYPE.NPC:
+				previous_interact = INTERACT_TYPE.NPC
+				await activate_tween_interact(interact_npc_margin)
+			INTERACT_TYPE.CONVERSATION:
+				previous_interact = INTERACT_TYPE.CONVERSATION
+				await deactivate_tween_interact(interact_npc_margin)
+			INTERACT_TYPE.DOOR_LOCKED:
+				previous_interact = INTERACT_TYPE.DOOR_LOCKED
+				await activate_tween_interact(interact_door_locked)
+	else: #to fix that stupid fucking thing where the labels don't show up if you move in and out
+		if debounce_interaction == false:
+			match interact_touched:
+				INTERACT_TYPE.NONE:
+					if interact_npc_margin.visible == true:
+						previous_interact = INTERACT_TYPE.NPC
+					if interact_door_locked_label.visible == true:
+						previous_interact = INTERACT_TYPE.DOOR_LOCKED
+					if interact_door_open_label.visible == true:
+						previous_interact = INTERACT_TYPE.DOOR_OPEN
+				INTERACT_TYPE.CONVERSATION:
+					if DialogueManager.is_dialogue_active == false:
+						await get_tree().create_timer(.29).timeout
+						interact_touched = INTERACT_TYPE.NPC
+					elif interact_npc_margin.modulate.a != 0.0:
+						immediate_interact_hide(interact_npc_margin)
+					else:
+						pass
+				INTERACT_TYPE.NPC:
+					pass
+				INTERACT_TYPE.DOOR_LOCKED:
+					if interact_door_locked_label.visible == false:
+						previous_interact = INTERACT_TYPE.NONE
+				INTERACT_TYPE.DOOR_OPEN:
+					if interact_door_open_label.visible == false:
+						previous_interact = INTERACT_TYPE.NONE
 
 
 func tween_vignette_switch(flag : bool) -> void:

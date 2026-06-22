@@ -111,7 +111,7 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 			Temp_SFX_Player.volume_db += 18
 	Temp_SFX_Player.pitch_scale += pitch_range
 	Temp_SFX_Player.play()
-	HonkCounter.add_honk()
+	#HonkCounter.add_honk()
 	await Temp_SFX_Player.finished
 	Temp_SFX_Player.queue_free()
 

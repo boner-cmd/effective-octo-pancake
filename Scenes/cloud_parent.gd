@@ -45,6 +45,7 @@ func cloud_pivots() -> void:
 func tween_clouds(new_array : Array) -> void:
 	for clouds in new_array:
 		iteration_int += 1
+		clouds.flip_h = randi_range(0, 1)
 		tween_object(clouds, "position:y", -1232.0, cloud_time, Tween.TRANS_SINE, Tween.EASE_IN) #Adjust TRANS_TYPE as lowerbounds cloud scale is adjusted
 		tween_object(clouds, "scale", Vector2(cloud_size_end,cloud_size_end), cloud_time, Tween.TRANS_QUAD, Tween.EASE_IN)
 

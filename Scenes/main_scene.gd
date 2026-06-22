@@ -90,6 +90,6 @@ func on_planet_change_requested(planet_ID : int):
 		current_npc = DialogueManager.current_npc
 	
 	if hud_overlay.interact_door_open.visible:
-		hud_overlay.immediate_interact_false(hud_overlay.interact_door_open)
+		hud_overlay.immediate_interact_hide(hud_overlay.interact_door_open)
 		
 	Player.reset_player()
