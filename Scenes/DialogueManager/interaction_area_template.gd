@@ -7,8 +7,6 @@ extends Node3D
 @onready var player_cutscene_locator: Node3D = %Player_Cutscene_Locator
 @onready var _cam_frame_both: Camera3D = %frame_both
 @onready var _cam_player_give: Camera3D = %player_give
-@onready var _cam_frame_both_puddles: Camera3D = %frame_both_puddles
-@onready var _cam_frame_both_animals: Camera3D = %frame_both_animals
 @onready var _cam_player_receive: Camera3D = %player_receive
 
 var player : CharacterBody3D
@@ -41,6 +39,4 @@ func interact() -> void:
 	player.player_cutscene_locator = player_cutscene_locator
 	player._cam_frame_both = _cam_frame_both
 	player._cam_player_give = _cam_player_give
-	player._cam_frame_both_puddles = _cam_frame_both_puddles
 	player._cam_player_receive = _cam_player_receive
-	player._cam_frame_animals = _cam_frame_both_animals

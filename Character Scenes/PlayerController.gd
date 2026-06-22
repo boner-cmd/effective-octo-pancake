@@ -3,8 +3,6 @@ extends CharacterBody3D
 var player_cutscene_locator: Node3D
 var _cam_frame_both: Camera3D
 var _cam_player_give: Camera3D
-var _cam_frame_both_puddles: Camera3D
-var _cam_frame_animals: Camera3D
 var _cam_player_receive: Camera3D
 
 var npc_camera_locator = Node3D
@@ -73,17 +71,7 @@ func player_interaction_camera() -> void:
 						clone._set_player_anim(clone.AnimStates.TALK)
 				elif clone.current_anim != clown.AnimStates.JUMP:
 					clone._set_player_anim(clone.AnimStates.TALK)
-				if DialogueManager.current_npc == QuestManager.CharacterName.O \
-						or DialogueManager.current_npc == QuestManager.CharacterName.LAMP \
-						or DialogueManager.current_npc == QuestManager.CharacterName.SLIME \
-						or DialogueManager.current_npc == QuestManager.CharacterName.GREASE \
-						or DialogueManager.current_npc == QuestManager.CharacterName.MASS:
-					_cam_frame_both_puddles.make_current()
-				elif DialogueManager.current_npc == QuestManager.CharacterName.DEER \
-						or DialogueManager.current_npc == QuestManager.CharacterName.HORSE:
-					_cam_frame_animals.make_current()
-				else:
-					_cam_frame_both.make_current()
+				_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
 				_cam_player_give.make_current()
 				clone._set_player_anim(clone.AnimStates.GIVE)
