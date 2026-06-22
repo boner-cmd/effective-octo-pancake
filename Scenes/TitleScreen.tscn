@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://vste313bxffb" path="res://UI assets/NewTitleScreen/title screen background.png" id="6_jhb10"]
 [ext_resource type="Script" uid="uid://dwtpkemj41uqc" path="res://Scenes/cloud_parent.gd" id="7_fvr0n"]
 [ext_resource type="Texture2D" uid="uid://b1n6ktxlrsojx" path="res://UI assets/AH itchio background trans.png" id="7_jhb10"]
+[ext_resource type="Texture2D" uid="uid://c6iewiy116trb" path="res://UI assets/smallSprites/Icon_Sprites.png" id="7_vj6xs"]
 [ext_resource type="Texture2D" uid="uid://gl2j0x06cg84" path="res://UI assets/NewTitleScreen/title screen cloud.png" id="8_o6bmn"]
 [ext_resource type="Texture2D" uid="uid://cdne35f4pxofb" path="res://UI assets/options menu chromakey.png" id="10_4hokt"]
 [ext_resource type="Material" uid="uid://p6axcgo36jli" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_1.tres" id="10_qu6cc"]
@@ -34,6 +35,40 @@ glow_bloom = 0.17
 radius = 5.0
 height = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoo1u"]
+bg_color = Color(0, 0, 0, 0.36100003)
+border_width_left = 200
+border_width_right = 200
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+corner_radius_top_left = 550
+corner_radius_top_right = 550
+corner_radius_bottom_right = 550
+corner_radius_bottom_left = 550
+corner_detail = 20
+expand_margin_bottom = 100.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1xqr1"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y6xv0"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -32, 0)
+emission_shape = 3
+emission_box_extents = Vector3(640, 0.1, 0.1)
+angle_min = -19.99999
+angle_max = 20.000011
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+anim_offset_max = 1.0
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_qu6cc"]
 viewport_path = NodePath("SubViewport")
 
@@ -46,25 +81,6 @@ gradient = SubResource("Gradient_006ca")
 fill_from = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoyyo"]
-bg_color = Color(0, 0, 0, 0)
-draw_center = false
-border_width_left = 400
-border_width_top = 400
-border_width_right = 400
-border_width_bottom = 400
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 550
-corner_radius_top_right = 550
-corner_radius_bottom_right = 550
-corner_radius_bottom_left = 550
-corner_detail = 20
-expand_margin_left = 200.0
-expand_margin_top = 200.0
-expand_margin_right = 200.0
-expand_margin_bottom = 200.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoo1u"]
 bg_color = Color(0, 0, 0, 0)
 draw_center = false
 border_width_left = 400
@@ -105,63 +121,63 @@ size = 2.878
 [node name="title_screen_letters" parent="Node3D" unique_id=841955191 instance=ExtResource("2_7whhf")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.43494105, 0, -0.38064346)
 
-[node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1525247311]
+[node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1708180983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8550289, 0.07640395, -0.8238251)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=998812974]
+[node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=1101734211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48080724, 0.0746371, -0.9845757)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=456686928]
+[node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=649626419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10858756, 0.074198715, -0.9534257)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=709786517]
+[node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=141749152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25843668, 0.07419868, -0.9238143)
 material_override = ExtResource("3_qu6cc")
 
-[node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=317515724]
+[node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=1575611344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60433537, 0.07387316, -0.88987577)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=73282359]
+[node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=322371230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0063701, 0.0754394, -0.99209625)
 material_override = ExtResource("3_qu6cc")
 
-[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=1048153244]
+[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=245440984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3082354, 0.074427806, -0.8896651)
 material_override = ExtResource("3_qu6cc")
 
-[node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=1654240848]
+[node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=999350554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6126812, 0.073930226, -1.0123352)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=577323775]
+[node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=69001312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.028646, 0.07419868, -0.92381436)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=739132148]
+[node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=808913432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13234362, 0.08711618, -0.27306348)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=952742472]
+[node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=1449709585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3738604, 0.07419868, -0.23683521)
 material_override = ExtResource("3_qu6cc")
 
-[node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=793056219]
+[node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=233796594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3241271, 0.07488507, -0.16352063)
 material_override = ExtResource("3_qu6cc")
 
-[node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=736525515]
+[node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=1622759300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7980862, 0.07671435, -0.29228708)
 material_override = ExtResource("3_qu6cc")
 
-[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=211588167]
+[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=899199309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8975282, 0.074937575, -0.2234381)
 material_override = ExtResource("3_qu6cc")
 
-[node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=1840408000]
+[node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=83373218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7299879, 0.07718342, -0.20627926)
 material_override = ExtResource("3_qu6cc")
 
@@ -301,7 +317,29 @@ offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("6_jhb10")
 
+[node name="Vignette2" type="Panel" parent="CanvasLayer" unique_id=951797563]
+clip_children = 1
+clip_contents = true
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aoo1u")
+
+[node name="SpriteParticles" type="GPUParticles2D" parent="CanvasLayer/Vignette2" unique_id=951752709]
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("CanvasItemMaterial_1xqr1")
+position = Vector2(640, 0)
+amount = 120
+texture = ExtResource("7_vj6xs")
+lifetime = 22.0
+preprocess = 15.0
+use_fixed_seed = true
+seed = 123730133
+process_material = SubResource("ParticleProcessMaterial_y6xv0")
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1800898588]
+visible = false
 self_modulate = Color(1, 1, 1, 0.10980392)
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 1280.0
