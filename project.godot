@@ -26,6 +26,7 @@ QuestManager="*uid://bl4ppk63mybec"
 AudioManager="*uid://bw1x16iflyfrd"
 Stopwatch="*uid://byuuqnb1gpgn4"
 HonkCounter="*uid://2adl28ou8pyu"
+SaveManager="*uid://debds87pbibx4"
 
 [display]
 
@@ -45,6 +46,8 @@ Completion_Change="this is a group for all characters that have scripts for comp
 UI_on_pause="this group is for hiding on pause"
 Pause_Buttons="a group containing initial button stack in the pause menu"
 Current_Tweened_Objects="group for tweens to be added to"
+Map_Elements="For reading map visibility when saving/loading"
+Main="main scene"
 
 [input]
 
