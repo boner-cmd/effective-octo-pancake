@@ -1,18 +1,6 @@
 extends Node3D
 
-enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
-
-var player : CharacterBody3D
-
-@onready var temp_camera_location : Node3D = $DoorAnims/DoorCameraPosition
-var door_camera_position : Vector3
-var door_camera_rotation : Vector3
-var temp_rotation : Vector3
-var towards_rotation : float
-
-var door_locked : bool = false
-var current_anim := AnimStates.STASIS
-var door_mats : Dictionary[int, Material] = {
+const door_mats : Dictionary[int, Material] = {
 	0 : preload("res://planets/materials/01_kings_door.tres"),
 	1 : preload("res://planets/materials/02_horse_door.tres"),
 	2 : preload("res://planets/materials/03_astronaut_door.tres"),
@@ -37,6 +25,20 @@ var door_mats : Dictionary[int, Material] = {
 	21 : null
 }
 
+enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
+
+var player : CharacterBody3D
+
+@onready var temp_camera_location : Node3D = $DoorAnims/DoorCameraPosition
+var door_camera_position : Vector3
+var door_camera_rotation : Vector3
+var temp_rotation : Vector3
+var towards_rotation : float
+
+var door_locked : bool = false
+var current_anim := AnimStates.STASIS
+
+
 @export var destination_planet_ID : int
 
 @onready var main_ : Node3D
@@ -44,6 +46,7 @@ var door_mats : Dictionary[int, Material] = {
 @onready var door_mesh: MeshInstance3D = $DoorAnims/Skeleton3D/Door
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var player_exit_position: Node3D = $DoorAnims/PlayerAnimationPosition
+@onready var spawn_poof_particles: GPUParticles3D = $SpawnPoofParticles
 
 signal exit_anim_finished()
 signal exit_anim_started()
@@ -81,6 +84,7 @@ func _set_door_anim(anim : AnimStates):
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				
 			AnimStates.SPAWN:
+				spawn_poof_particles.restart()
 				AudioManager.sfx_play(AudioManager.sfx_spawn)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 0.0)
 				anim_tree.set("parameters/DoorSpawnTimescale/scale", 2.0)
@@ -93,12 +97,14 @@ func _set_door_anim(anim : AnimStates):
 				anim_tree.set("parameters/Door_Idle/blend_amount", 0.0)
 
 			AnimStates.DESPAWN:
+				spawn_poof_particles.restart()
 				AudioManager.sfx_play(AudioManager.sfx_despawn)
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 1.0)
 				anim_tree.set("parameters/DoorSpawnTimescale/scale", -2.0)
 				
 			AnimStates.EXIT:
+				spawn_poof_particles.restart()
 				AudioManager.sfx_play(AudioManager.sfx_exit, 0.0)
 				exit_anim_started.emit()
 				anim_tree.set("parameters/Reset_DoorExit/seek_request", 0.0)
