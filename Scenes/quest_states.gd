@@ -166,8 +166,8 @@ const COMPLETION_REQS : PackedInt32Array = [
 ## ln(8)/ln(2), which are two floating point operations followed by division. Even though log2() 
 ## operations on a CPU should be fast, it is unclear if there is optimization for ln(x)/ln(2), and 
 ## such optimizations would be platform-dependent. To sidestep this issue, LOG_2_TABLE provides the 
-## hardcoded solution to log2(b) for values of b up to 2 ** 21, which is the highest used by the
-## game.
+## hardcoded solution to log2(b) for values of b up to 2 ** 31. Only 2 ** 22 is required for the
+## game normally, but supporting up to 2 ** 31 allows using the table for Int32s generally.
 const LOG_2_TABLE : PackedInt32Array = [
 	0b1,
 	0b10,
@@ -180,7 +180,7 @@ const LOG_2_TABLE : PackedInt32Array = [
 	0b100000000,
 	0b1000000000,
 	0b10000000000,
-	0b100000000000,	#Lamp
+	0b100000000000,
 	0b1000000000000,
 	0b10000000000000,
 	0b100000000000000,
@@ -190,7 +190,17 @@ const LOG_2_TABLE : PackedInt32Array = [
 	0b1000000000000000000,
 	0b10000000000000000000,
 	0b100000000000000000000,
-]
+	0b1000000000000000000000,
+	0b10000000000000000000000,
+	0b100000000000000000000000,
+	0b1000000000000000000000000,
+	0b10000000000000000000000000,
+	0b100000000000000000000000000,
+	0b1000000000000000000000000000,
+	0b10000000000000000000000000000,
+	0b100000000000000000000000000000,
+	0b1000000000000000000000000000000,
+	]
   
 ## states stores two-bit state information pairs packed into bytes. Bit pairs are addressed from 
 ## right to left (LSB to MSB). The first bit of each pair, the right bit (0b01 or its equivalent 0b1),

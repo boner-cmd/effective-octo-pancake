@@ -42,8 +42,8 @@ func save_game():
 	# TODO pack these to remove padding between elements
 	save_data.append_array(QuestManager.states)
 	save_data.append(get_tree().get_first_node_in_group("Main").current_planet)
-	save_data.append_array(int16_to_bytes(HonkCounter.honk_total))
-	save_data.append_array(int16_to_bytes(Stopwatch.get_seconds()))
+	#save_data.append_array(int16_to_bytes(HonkCounter.honk_total))
+	#save_data.append_array(int16_to_bytes(Stopwatch.get_seconds()))
 
 func write_data() -> bool:
 	return true
@@ -78,30 +78,3 @@ func set_map_state() -> void:
 
 func set_quest_state() -> void:
 	pass
-
-
-## will handle ints up to int16
-## bytes[0] is msb, bytes[1] is lsb
-func int16_to_bytes(i : int) -> PackedByteArray:
-	var bytes : PackedByteArray = [0]
-	if i < 256:
-		bytes[0] = i
-	else:
-		bytes.resize(2)
-		bytes[0] = i >> 8 # DEBUG make sure this shift is right
-		bytes[1] = i & 0b11111111 # DEBUG make sure this mask is right
-	return bytes
-
-## takes in a byte and outputs an int
-## relies on b[0] being msb and b[1] being lsb
-func byte_pair_to_int(b : PackedByteArray) -> int:
-	assert(b.size() == 2, "PackedByteArray should have 16 bits, even if unused")
-	return (b[0] << 8) + b[1]
-
-
-## removes padding between bytes. Relies on knowing number of bits required for 
-## each piece of data and returns a new compacted PackedByteArray. Works 64 bits
-## at a time.
-func compact_bytes(b : PackedByteArray) -> PackedByteArray:
-	var temp_int_array : Array[int]
-	temp_int_array.resize((b.size()/8)+1
