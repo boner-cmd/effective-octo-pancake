@@ -93,6 +93,8 @@ func align_with_floor(floor_normal : Vector3):
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test save"):
+		SaveManager.save_game()
 	if event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("left") \

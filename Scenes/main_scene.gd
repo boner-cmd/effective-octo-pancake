@@ -10,7 +10,7 @@ var current_npc
 @onready var Player = %PlayerCharacter
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
-@onready var current_planet : Node3D = planet_nodes[0]
+@onready var current_planet_node : Node3D = planet_nodes[0]
 ## TODO convert planet_nodes to use the ResourceLoader with sub-threads
 var planet_nodes : Dictionary[int, Node3D] = {
 	0 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
@@ -53,8 +53,6 @@ func _ready() -> void:
 
 func on_planet_change_requested(planet_ID : int):
 	Player.visible = true
-	## DEBUG print the time
-	print(Stopwatch.get_time())
 	## TODO mention why this is relevant and where it is called from
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
 	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
@@ -65,10 +63,10 @@ func on_planet_change_requested(planet_ID : int):
 	map.unhide_elements(planet_ID)
 	AudioManager.bgm_cycle(planet_ID)
 	get_tree().root.add_child(requested_planet)
-	get_tree().root.remove_child(current_planet)
-	current_planet = requested_planet
+	get_tree().root.remove_child(current_planet_node)
+	current_planet_node = requested_planet
 	if planet_ID < 21:
-		current_planet.door_anim_reset()
+		current_planet_node.door_anim_reset()
 	DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 	current_npc = DialogueManager.current_npc
 	# try to connect new door signal, whether required or not
@@ -78,7 +76,6 @@ func on_planet_change_requested(planet_ID : int):
 	if planet_ID == 21:
 		inventory.visible = false
 		Stopwatch.stop()
-		print(Stopwatch.get_time())
 		planet_nodes[planet_ID].request_ready()
 		hud_overlay.transition()
 		AudioManager.bgm_cycle(planet_ID)

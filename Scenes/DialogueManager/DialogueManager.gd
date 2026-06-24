@@ -844,8 +844,6 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		show_text_box()
 		
 	if not is_dialogue_active:
-		# DEBUG
-		print("Character name: ", planet_id)
 		is_dialogue_active = true
 		hud_overlay = CanvasLayer_in
 		hud_overlay = $/root/MainScene/HUDOverlay
@@ -867,8 +865,6 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 		else:	
 			if first_meeting:
 				QuestManager.set_met(current_npc)
-				print("SET MET ", current_npc)
-				print("HAS MET ", QuestManager.has_met(current_npc))
 				dialogue_lines.append_array(used_lines[current_npc][0])
 				give_point = used_lines[current_npc][0].size()
 				receive_point = used_lines[current_npc][0].size()
@@ -933,13 +929,10 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 		QuestManager.set_completed(current_npc)
 		Map.set_completion_sticker(current_npc)
 		planet_state_change.emit()
-		print("QuestManager Completion and Sticker Set on ", pending_animation)
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
-			print("SIGNAL TO REQUEST ITEM FROM: ", current_npc)
 			request_item_add.emit(current_npc)
 		CONV_STATE.PLAYER_GIVE:
-			print("SIGNAL TO GIVE ITEM TO: ", current_npc)
 			request_item_remove.emit(current_npc)
 
 

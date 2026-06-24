@@ -7,7 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
 radius = 5.0
 
-[node name="MainScene" type="Node3D" unique_id=1858530210]
+[node name="MainScene" type="Node3D" unique_id=1858530210 groups=["Main"]]
 script = ExtResource("1_7rqgy")
 
 [node name="PlayerCharacter" parent="." unique_id=700328766 node_paths=PackedStringArray("planet") groups=["Player"] instance=ExtResource("1_hpc76")]
@@ -46,165 +46,165 @@ follow_viewport_enabled = true
 
 [node name="Map" parent="HUDOverlay" index="1" unique_id=432696859 groups=["Map_Elements"]]
 
-[node name="PositionMarker" parent="HUDOverlay/Map" index="0" unique_id=774177229 groups=["Map_Elements"]]
+[node name="PositionMarker" parent="HUDOverlay/Map" index="1" unique_id=774177229 groups=["Map_Elements"]]
 
-[node name="KingSticker" parent="HUDOverlay/Map" index="1" unique_id=1416114579 groups=["Map_Elements"]]
+[node name="KingSticker" parent="HUDOverlay/Map" index="2" unique_id=1416114579 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/KingSticker" index="0" unique_id=859565293 groups=["Map_Elements"]]
 
-[node name="HorseDarkPlanet" parent="HUDOverlay/Map" index="2" unique_id=2115619113 groups=["Map_Elements"]]
+[node name="HorseDarkPlanet" parent="HUDOverlay/Map" index="3" unique_id=2115619113 groups=["Map_Elements"]]
 
 [node name="HorseSticker" parent="HUDOverlay/Map/HorseDarkPlanet" index="0" unique_id=616505084 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/HorseDarkPlanet/HorseSticker" index="0" unique_id=1308648810 groups=["Map_Elements"]]
 
-[node name="AstroDarkPlanet" parent="HUDOverlay/Map" index="3" unique_id=1513037413 groups=["Map_Elements"]]
+[node name="AstroDarkPlanet" parent="HUDOverlay/Map" index="4" unique_id=1513037413 groups=["Map_Elements"]]
 
 [node name="AstroSticker" parent="HUDOverlay/Map/AstroDarkPlanet" index="0" unique_id=1002752034 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/AstroDarkPlanet/AstroSticker" index="0" unique_id=1985255675 groups=["Map_Elements"]]
 
-[node name="SnowDarkPlanet" parent="HUDOverlay/Map" index="4" unique_id=786787715 groups=["Map_Elements"]]
+[node name="SnowDarkPlanet" parent="HUDOverlay/Map" index="5" unique_id=786787715 groups=["Map_Elements"]]
 
 [node name="SnowSticker" parent="HUDOverlay/Map/SnowDarkPlanet" index="0" unique_id=752233729 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/SnowDarkPlanet/SnowSticker" index="0" unique_id=391427389 groups=["Map_Elements"]]
 
-[node name="SisyphusDarkPlanet" parent="HUDOverlay/Map" index="5" unique_id=487761080 groups=["Map_Elements"]]
+[node name="SisyphusDarkPlanet" parent="HUDOverlay/Map" index="6" unique_id=487761080 groups=["Map_Elements"]]
 
 [node name="SisyphusSticker" parent="HUDOverlay/Map/SisyphusDarkPlanet" index="0" unique_id=784344791 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/SisyphusDarkPlanet/SisyphusSticker" index="0" unique_id=500358005 groups=["Map_Elements"]]
 
-[node name="GreaseDarkPlanet" parent="HUDOverlay/Map" index="6" unique_id=2134932461 groups=["Map_Elements"]]
+[node name="GreaseDarkPlanet" parent="HUDOverlay/Map" index="7" unique_id=2134932461 groups=["Map_Elements"]]
 
 [node name="GreaseSticker" parent="HUDOverlay/Map/GreaseDarkPlanet" index="0" unique_id=1648624159 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/GreaseDarkPlanet/GreaseSticker" index="0" unique_id=1082113751 groups=["Map_Elements"]]
 
-[node name="DeerDarkPlanet" parent="HUDOverlay/Map" index="7" unique_id=687345806 groups=["Map_Elements"]]
+[node name="DeerDarkPlanet" parent="HUDOverlay/Map" index="8" unique_id=687345806 groups=["Map_Elements"]]
 
 [node name="DeerSticker" parent="HUDOverlay/Map/DeerDarkPlanet" index="0" unique_id=1724011015 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/DeerDarkPlanet/DeerSticker" index="0" unique_id=2053545768 groups=["Map_Elements"]]
 
-[node name="GateDarkPlanet" parent="HUDOverlay/Map" index="8" unique_id=1820776948 groups=["Map_Elements"]]
+[node name="GateDarkPlanet" parent="HUDOverlay/Map" index="9" unique_id=1820776948 groups=["Map_Elements"]]
 
 [node name="GateSticker" parent="HUDOverlay/Map/GateDarkPlanet" index="0" unique_id=1480087912 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/GateDarkPlanet/GateSticker" index="0" unique_id=593454003 groups=["Map_Elements"]]
 
-[node name="ODarkPlanet" parent="HUDOverlay/Map" index="9" unique_id=1510612612 groups=["Map_Elements"]]
+[node name="ODarkPlanet" parent="HUDOverlay/Map" index="10" unique_id=1510612612 groups=["Map_Elements"]]
 
 [node name="OSticker" parent="HUDOverlay/Map/ODarkPlanet" index="0" unique_id=1142725549 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/ODarkPlanet/OSticker" index="0" unique_id=840087744 groups=["Map_Elements"]]
 
-[node name="OrgansDarkPlanet" parent="HUDOverlay/Map" index="10" unique_id=1540096737 groups=["Map_Elements"]]
+[node name="OrgansDarkPlanet" parent="HUDOverlay/Map" index="11" unique_id=1540096737 groups=["Map_Elements"]]
 
 [node name="OrgansSticker" parent="HUDOverlay/Map/OrgansDarkPlanet" index="0" unique_id=530485664 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/OrgansDarkPlanet/OrgansSticker" index="0" unique_id=486703812 groups=["Map_Elements"]]
 
-[node name="MassDarkPlanet" parent="HUDOverlay/Map" index="11" unique_id=1773874650 groups=["Map_Elements"]]
+[node name="MassDarkPlanet" parent="HUDOverlay/Map" index="12" unique_id=1773874650 groups=["Map_Elements"]]
 
 [node name="MassSticker" parent="HUDOverlay/Map/MassDarkPlanet" index="0" unique_id=1949142771 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/MassDarkPlanet/MassSticker" index="0" unique_id=1688048375 groups=["Map_Elements"]]
 
-[node name="LampDarkPlanet" parent="HUDOverlay/Map" index="12" unique_id=2120797857 groups=["Map_Elements"]]
+[node name="LampDarkPlanet" parent="HUDOverlay/Map" index="13" unique_id=2120797857 groups=["Map_Elements"]]
 
 [node name="LampSticker" parent="HUDOverlay/Map/LampDarkPlanet" index="0" unique_id=1586886347 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/LampDarkPlanet/LampSticker" index="0" unique_id=1717797188 groups=["Map_Elements"]]
 
-[node name="NorgansDarkPlanet" parent="HUDOverlay/Map" index="13" unique_id=1971469067 groups=["Map_Elements"]]
+[node name="NorgansDarkPlanet" parent="HUDOverlay/Map" index="14" unique_id=1971469067 groups=["Map_Elements"]]
 
 [node name="NorgansSticker" parent="HUDOverlay/Map/NorgansDarkPlanet" index="0" unique_id=823099394 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/NorgansDarkPlanet/NorgansSticker" index="0" unique_id=710538880 groups=["Map_Elements"]]
 
-[node name="MichaelwaveDarkPlanet" parent="HUDOverlay/Map" index="14" unique_id=1651497456 groups=["Map_Elements"]]
+[node name="MichaelwaveDarkPlanet" parent="HUDOverlay/Map" index="15" unique_id=1651497456 groups=["Map_Elements"]]
 
 [node name="MichaelwaveSticker" parent="HUDOverlay/Map/MichaelwaveDarkPlanet" index="0" unique_id=1783725147 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/MichaelwaveDarkPlanet/MichaelwaveSticker" index="0" unique_id=547392601 groups=["Map_Elements"]]
 
-[node name="RobotDarkPlanet" parent="HUDOverlay/Map" index="15" unique_id=1678476683 groups=["Map_Elements"]]
+[node name="RobotDarkPlanet" parent="HUDOverlay/Map" index="16" unique_id=1678476683 groups=["Map_Elements"]]
 
 [node name="RobotSticker" parent="HUDOverlay/Map/RobotDarkPlanet" index="0" unique_id=59128618 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/RobotDarkPlanet/RobotSticker" index="0" unique_id=265166485 groups=["Map_Elements"]]
 
-[node name="GibberishDarkPlanet" parent="HUDOverlay/Map" index="16" unique_id=56957052 groups=["Map_Elements"]]
+[node name="GibberishDarkPlanet" parent="HUDOverlay/Map" index="17" unique_id=56957052 groups=["Map_Elements"]]
 
 [node name="GibberishSticker" parent="HUDOverlay/Map/GibberishDarkPlanet" index="0" unique_id=714743182 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/GibberishDarkPlanet/GibberishSticker" index="0" unique_id=1703559354 groups=["Map_Elements"]]
 
-[node name="IndividualDarkPlanet" parent="HUDOverlay/Map" index="17" unique_id=1368423449 groups=["Map_Elements"]]
+[node name="IndividualDarkPlanet" parent="HUDOverlay/Map" index="18" unique_id=1368423449 groups=["Map_Elements"]]
 
 [node name="IndividualSticker" parent="HUDOverlay/Map/IndividualDarkPlanet" index="0" unique_id=1316062858 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/IndividualDarkPlanet/IndividualSticker" index="0" unique_id=892738760 groups=["Map_Elements"]]
 
-[node name="IdeaDarkPlanet" parent="HUDOverlay/Map" index="18" unique_id=1156328218 groups=["Map_Elements"]]
+[node name="IdeaDarkPlanet" parent="HUDOverlay/Map" index="19" unique_id=1156328218 groups=["Map_Elements"]]
 
 [node name="IdeaSticker" parent="HUDOverlay/Map/IdeaDarkPlanet" index="0" unique_id=434983327 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/IdeaDarkPlanet/IdeaSticker" index="0" unique_id=1656748552 groups=["Map_Elements"]]
 
-[node name="BodhiDarkPlanet" parent="HUDOverlay/Map" index="19" unique_id=2089500911 groups=["Map_Elements"]]
+[node name="BodhiDarkPlanet" parent="HUDOverlay/Map" index="20" unique_id=2089500911 groups=["Map_Elements"]]
 
 [node name="BodhiSticker" parent="HUDOverlay/Map/BodhiDarkPlanet" index="0" unique_id=1228603223 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/BodhiDarkPlanet/BodhiSticker" index="0" unique_id=954082382 groups=["Map_Elements"]]
 
-[node name="SlimeDarkPlanet" parent="HUDOverlay/Map" index="20" unique_id=433289761 groups=["Map_Elements"]]
+[node name="SlimeDarkPlanet" parent="HUDOverlay/Map" index="21" unique_id=433289761 groups=["Map_Elements"]]
 
 [node name="SlimeSticker" parent="HUDOverlay/Map/SlimeDarkPlanet" index="0" unique_id=448576117 groups=["Map_Elements"]]
 
 [node name="CompleteStamp" parent="HUDOverlay/Map/SlimeDarkPlanet/SlimeSticker" index="0" unique_id=700218159 groups=["Map_Elements"]]
 
-[node name="TextureRect" parent="HUDOverlay/Map" index="21" unique_id=1806059079 groups=["Map_Elements"]]
+[node name="TextureRect" parent="HUDOverlay/Map" index="22" unique_id=1806059079 groups=["Map_Elements"]]
 
-[node name="TextureRect2" parent="HUDOverlay/Map" index="22" unique_id=1667193791 groups=["Map_Elements"]]
+[node name="TextureRect2" parent="HUDOverlay/Map" index="23" unique_id=1667193791 groups=["Map_Elements"]]
 
-[node name="TextureRect3" parent="HUDOverlay/Map" index="23" unique_id=264878669 groups=["Map_Elements"]]
+[node name="TextureRect3" parent="HUDOverlay/Map" index="24" unique_id=264878669 groups=["Map_Elements"]]
 
-[node name="TextureRect4" parent="HUDOverlay/Map" index="24" unique_id=2104907904 groups=["Map_Elements"]]
+[node name="TextureRect4" parent="HUDOverlay/Map" index="25" unique_id=2104907904 groups=["Map_Elements"]]
 
-[node name="TextureRect5" parent="HUDOverlay/Map" index="25" unique_id=1804110090 groups=["Map_Elements"]]
+[node name="TextureRect5" parent="HUDOverlay/Map" index="26" unique_id=1804110090 groups=["Map_Elements"]]
 
-[node name="TextureRect6" parent="HUDOverlay/Map" index="26" unique_id=802366047 groups=["Map_Elements"]]
+[node name="TextureRect6" parent="HUDOverlay/Map" index="27" unique_id=802366047 groups=["Map_Elements"]]
 
-[node name="TextureRect7" parent="HUDOverlay/Map" index="27" unique_id=572763915 groups=["Map_Elements"]]
+[node name="TextureRect7" parent="HUDOverlay/Map" index="28" unique_id=572763915 groups=["Map_Elements"]]
 
-[node name="TextureRect8" parent="HUDOverlay/Map" index="28" unique_id=1439585381 groups=["Map_Elements"]]
+[node name="TextureRect8" parent="HUDOverlay/Map" index="29" unique_id=1439585381 groups=["Map_Elements"]]
 
-[node name="TextureRect9" parent="HUDOverlay/Map" index="29" unique_id=1063992812 groups=["Map_Elements"]]
+[node name="TextureRect9" parent="HUDOverlay/Map" index="30" unique_id=1063992812 groups=["Map_Elements"]]
 
-[node name="TextureRect10" parent="HUDOverlay/Map" index="30" unique_id=697850218 groups=["Map_Elements"]]
+[node name="TextureRect10" parent="HUDOverlay/Map" index="31" unique_id=697850218 groups=["Map_Elements"]]
 
-[node name="TextureRect11" parent="HUDOverlay/Map" index="31" unique_id=76902029 groups=["Map_Elements"]]
+[node name="TextureRect11" parent="HUDOverlay/Map" index="32" unique_id=76902029 groups=["Map_Elements"]]
 
-[node name="TextureRect12" parent="HUDOverlay/Map" index="32" unique_id=61547181 groups=["Map_Elements"]]
+[node name="TextureRect12" parent="HUDOverlay/Map" index="33" unique_id=61547181 groups=["Map_Elements"]]
 
-[node name="TextureRect13" parent="HUDOverlay/Map" index="33" unique_id=2649782 groups=["Map_Elements"]]
+[node name="TextureRect13" parent="HUDOverlay/Map" index="34" unique_id=2649782 groups=["Map_Elements"]]
 
-[node name="TextureRect17" parent="HUDOverlay/Map" index="34" unique_id=1798054059 groups=["Map_Elements"]]
+[node name="TextureRect17" parent="HUDOverlay/Map" index="35" unique_id=1798054059 groups=["Map_Elements"]]
 
-[node name="TextureRect14" parent="HUDOverlay/Map" index="35" unique_id=992628077 groups=["Map_Elements"]]
+[node name="TextureRect14" parent="HUDOverlay/Map" index="36" unique_id=992628077 groups=["Map_Elements"]]
 
-[node name="TextureRect15" parent="HUDOverlay/Map" index="36" unique_id=416602136 groups=["Map_Elements"]]
+[node name="TextureRect15" parent="HUDOverlay/Map" index="37" unique_id=416602136 groups=["Map_Elements"]]
 
-[node name="TextureRect16" parent="HUDOverlay/Map" index="37" unique_id=1286383618 groups=["Map_Elements"]]
+[node name="TextureRect16" parent="HUDOverlay/Map" index="38" unique_id=1286383618 groups=["Map_Elements"]]
 
-[node name="TextureRect18" parent="HUDOverlay/Map" index="38" unique_id=1172781042 groups=["Map_Elements"]]
+[node name="TextureRect18" parent="HUDOverlay/Map" index="39" unique_id=1172781042 groups=["Map_Elements"]]
 
-[node name="TextureRect19" parent="HUDOverlay/Map" index="39" unique_id=379326965 groups=["Map_Elements"]]
+[node name="TextureRect19" parent="HUDOverlay/Map" index="40" unique_id=379326965 groups=["Map_Elements"]]
 
-[node name="TextureRect20" parent="HUDOverlay/Map" index="40" unique_id=513213319 groups=["Map_Elements"]]
+[node name="TextureRect20" parent="HUDOverlay/Map" index="41" unique_id=513213319 groups=["Map_Elements"]]
 
 [node name="NextIndicator" parent="HUDOverlay/InteractMargin/Control" parent_id_path=PackedInt32Array(1314492231, 1527224117) index="0" unique_id=625676884]
 visible = true

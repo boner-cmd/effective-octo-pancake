@@ -67,7 +67,6 @@ func _set_player_anim(anim : AnimStates):
 			AnimStates.JUMP:
 				honk_sound_player()
 				HonkCounter.add_honk()
-				print(HonkCounter.honk_total)
 				anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)
 				anim_tree.set("parameters/Exit/blend_amount", 0.0)

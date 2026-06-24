@@ -214,7 +214,7 @@ func _on_menu_button_pressed() -> void:
 	
 	await get_tree().create_timer(3).timeout
 	transition()
-	get_tree().root.remove_child(get_parent().current_planet)
+	get_tree().root.remove_child(get_parent().current_planet_node)
 	AudioManager.bgm_cycle(22)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().call_deferred("change_scene_to_file", 'uid://duig5pisbnbl8')

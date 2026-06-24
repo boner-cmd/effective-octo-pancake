@@ -96,19 +96,18 @@ func remove_item(npc_name : QuestManager.CharacterName) -> void:
 	inventory_slots[found_key] = false
 	match found_key:
 		"Slot1":
+			# remove item in slot 1
 			slot_state &= 0b011
-			print("REMOVE ITEM IN SLOT 1")
 		"Slot2":
+			# remove item in slot 2
 			slot_state &= 0b101
-			print("REMOVE ITEM IN SLOT 2")
 		"Slot3":
+			# remove item in slot 3
 			slot_state &= 0b110
-			print("REMOVE ITEM IN SLOT 3")
 	update_slots()
 	
 
 func update_slots() -> void:
-	print("SLOT STATE: ", slot_state)
 	match (slot_state):
 		0b001:
 			inventory_slots.Slot1 = inventory_slots.Slot3
@@ -130,14 +129,14 @@ func update_slots() -> void:
 			slot_state = 0b110
 		_: 
 			pass
-			
+
 	item_slot1.visible = false
 	item_slot2.visible = false
 	item_slot3.visible = false
 	item_slot_empty_1.visible = true
 	item_slot_empty_2.visible = true
 	item_slot_empty_3.visible = true
-	
+
 	if slot_state & 0b100:
 		item_slot1.texture = item_resources[inventory_slots.Slot1]
 		label_slot1.text = item_texts[inventory_slots.Slot1]
