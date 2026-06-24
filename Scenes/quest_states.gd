@@ -1,71 +1,13 @@
 extends Node
 
-## The original states array of Int64s is stored for reference.
-## @deprecated: for speed and efficiency, old_states should not be used, and is only temporarily
-## retained until final removal. Instead, [states] should be used.
-#const old_states : Array[int] = [
-	#0b00010010000000000000010000000000000000000000000000,
-	#0b01010001000000000000000000000000000000000000001000,
-	#0b01010001000000000000000000000000000100000000000000, #Astronaut
-	#0b01010001000000000000000000000000000000000000000100,
-	#0b01000001000000000000000000000001000000000000000000,
-	#0b00010000000000000000000000000000000000000000000000,
-	#0b01010001000000000000000000000000000000000100000000, # Deer
-	#0b01000001000000000000000000000000000000000000000001, # Gate
-	#0b01010001000000000000000000000000010000000000000000,
-	#0b00010000000000000000000000000000000000000000000000,
-	#0b00010010010000010000000000000000000000000000000000,
-	#0b01010001000000000000000000000000100000000000000000, #
-	#0b01000001000000000000000000000000000000001000000000, # Norgans depends on Organs
-	#0b01010001000000000000000000000000000000010000000000,
-	#0b01010001000000000000000000000000000000000000100000,
-	#0b01010001000000000000000000000000000000100000000000,
-	#0b01010001000000000000000000000000000000000000000010, # Gibberish
-	#0b01010001000000000000000000000000000000000001000000, # Idea depends on Deer?
-	#0b00010001000000000000000000000000001001000000000000, # Bohdi - broken
-	#0b01010001000000000000000000000000000010000000000000, # updated to reflect that mould gives item
-	#0b01000001000000000000000000000010000000000000000000, # updated to reflect that king2 receives item
-#]	
-
-## The original planet ID to NPC name dictionary is stored for reference.
-## @deprecated: planet IDs should not be mapped to names, and instead enum ordering should be used
-## to eliminate an unnecessary lookup
-#const planet_id_by_npc_name : Dictionary[String, int] = {
-	#King 		= 1,
-	#Horse 		= 2,
-	#Astronaut 	= 3,
-	#Snowman 	= 4,
-	#Sisyphus 	= 17,
-	#Grease 		= 7,
-	#Deer 		= 10,
-	#Gate 		= 5,
-	#O 			= 9,
-	#Organs 		= 15,
-	#Mass 		= 18,
-	#Lamp 		= 12,
-	#Norgans 	= 14,
-	#Michaelwave = 19,
-	#Robot 		= 6,
-	#Individual 	= 13,
-	#Gibberish 	= 8,
-	#Idea 		= 11,
-	#Bodhi 		= 16,
-	#Slime 		= 20,
-	#King2 		= 21
-#}
-
-## The main_quest_completed signal is used to determine if Slime Mould, the second-to-last character,
-## has had their quest completed. This is used to stamp the stickerbook complete and prepare the 
-## endgame meeting with KING_2.
-signal main_quest_completed()
-
 ## CharacterName represents the canonical "order" of NPCs whenever a sequential ID is required.
 ## CharacterName values can be transformed into bit IDs with the function 2**CharacterName, and
-## transformed back using log(bit_ID)/log(2), where log in Godot represents the natural log (ln)
-## @experimental: TODO planet IDs must be changed to match CharacterName order. Additionally, some
-## efficiency is wasted if the enum's corresponding values are Int64s. The hope is that Int64s in
-## the worst case are still superior in size and handling to Strings. However, if StringNames are
-## significantly more memory-efficient than Int64s, then another handling may be superior.
+## transformed back using log(bit_ID)/log(2), where log in Godot represents the natural log (ln). In
+## practice, this is handled using the lookup table LOG_2_TABLE.
+## @experimental: Some efficiency is wasted if the enum's corresponding values are Int64s. The hope 
+## is that Int64s in the worst case are still superior in size and handling to Strings. However, if 
+## StringNames are significantly more memory-efficient than Int64s, then another handling may be 
+## superior.
 enum CharacterName {
 	KING_1,
 	HORSE,
@@ -89,7 +31,7 @@ enum CharacterName {
 	SLIME,
 	KING_2,
 	CREDITS,
-}
+	}
 
 ## MEETING_REQS stores the combined character bit IDs of each meeting dependency, indexed
 ## in CharacterName order.
@@ -121,7 +63,7 @@ const MEETING_REQS : PackedInt32Array = [
 	0b000000000000000000000,
 	0b000000000000000000000,
 	0b000000000000000000000,
-]
+	]
 
 ## COMPLETION_REQS stores the combined character bit IDs of each completion dependency, indexed
 ## in CharacterName order.
@@ -136,23 +78,23 @@ const COMPLETION_REQS : PackedInt32Array = [
 	0b000000100000000000000,
 	0b000000000000000000100,
 	0b001000000000000000000,
-	0b000000000000000000000, #Grease
-	0b000000000000100000000, #Deer
+	0b000000000000000000000,
+	0b000000000000100000000,
 	0b000000000000000000001,
 	0b000010000000000000000,
 	0b000000000000000000000,
 	0b000000000000000000000,
-	0b000100000000000000000, #Lamp
+	0b000100000000000000000,
 	0b000000000001000000000,
 	0b000000000010000000000,
-	0b000000000000000100000, #Robot
+	0b000000000000000100000,
 	0b000000000100000000000,
 	0b000000000000000000010,
-	0b000000000000001000000, #Idea
+	0b000000000000001000000,
 	0b000001001000000000000,
 	0b000000010000000000000,
 	0b010000000000000000000,
-]
+	]
 
 ## tl;dr this array maps a CharacterName's numeric equivalent, as the the array index i, to a bit
 ## ID b such that the output of (log(b)/log(2)) = i, where log() is the natural log function.[br]
@@ -209,14 +151,13 @@ const LOG_2_TABLE : PackedInt32Array = [
 ## the array directly, use has_met() and has_completed(), or set_met() and set_completed(),
 ## respectively.
 var states : PackedByteArray = [
-	0b00000000,
+	0b00000000, # the bits in each byte are written here for visualization only.
 	0b00000000,
 	0b00000000,
 	0b00000000,
 	0b00000000, 
-	0b00, # six bits of unused padding
-]
-
+	0b00, # there are six bits of unused padding in the final byte
+	]
 
 ## has_met uses integer division and modulo arithmatic to unpack the bit pairs in the PackedByteArray
 ## states. has_met takes a CharacterName enum as input and returns a boolean. The CharacterName enum 
@@ -240,9 +181,6 @@ func has_met(character : CharacterName) -> bool:
 ## into the least significant bits of the byte. To test for completion, the bit pair is matched to
 ## 0b10 using bitwise and to see if the left bit is 1, representing "true."
 func has_completed (character : CharacterName) -> bool:
-	# character / 4 gives byte index
-	# (character % 4) * 2 gives bit pair index
-	# checking left bit (hasCompleted)
 	@warning_ignore("integer_division")
 	return states[character / 4] >> (character % 4) * 2 & 0b10
 
@@ -296,13 +234,7 @@ func meeting_satisfied(character : CharacterName) -> bool:
 
 
 ## requirements_met is a combination of completion_satisfied and meeting_satisfied. It exists solely
-## to allow the separation of the two checks for readability.
+## to allow the separation of the two checks for readability.An NPC who has their requirements met 
+## is ready to give, receive, or exchange an item on next interact.
 func requirements_met(character : CharacterName) -> bool:
-	# an NPC who has their requirements met is ready to give, receive, or exchange an item on next interact
 	return meeting_satisfied(character) and completion_satisfied(character)
-
-
-## TODO placeholder documentation
-func stamp_completion() -> void:
-	assert(has_completed(CharacterName.SLIME), "stamp_completion should not be called until Slime Mould's quest is complete.")
-	main_quest_completed.emit()
