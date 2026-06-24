@@ -1,4 +1,7 @@
 extends Node3D
+
+signal request_load_check
+
 var current_planet_id : int = 0
 var current_npc
 # CanvasLayer is $HUDOverlay
@@ -49,6 +52,8 @@ func _ready() -> void:
 	initial_door.request_planet_change.connect(on_planet_change_requested)
 	AudioManager.bgm_cycle(0)
 	Stopwatch.start()
+	request_load_check.connect(SaveManager._on_request_check_load)
+	request_load_check.emit()
 	
 
 func on_planet_change_requested(planet_ID : int):

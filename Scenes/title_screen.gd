@@ -147,11 +147,10 @@ func transition_sequence() -> void:
 	transition_scene = TRANSITION_SCENE_OVERLAY.instantiate()
 	get_tree().root.add_child(transition_scene)
 
-##TODO hook up load game to this button
+
 func _on_continue_button_pressed() -> void:
-	
-	#await transition_sequence() #for when load is implemented
-	pass
+	SaveManager.trigger_load = true
+	_on_new_game_button_pressed()
 
 
 func _on_new_game_button_pressed() -> void:

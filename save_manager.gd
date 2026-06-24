@@ -1,29 +1,29 @@
 extends Node
 
-## all invalid values on a byte basis that would contain a two-bit pair of 10 for any quest state
-## in other words, the decimal digits provided correspond to all values of the pattern:
-## 0b10, (2)
-## 0b10XX, (8 - 11)
-## 0b10XXXX, (32 - 47)
-## 0b10XXXXXX. (128 - 191)
-const BAD_QUEST_BYTES : PackedByteArray = [
-	2, 8, 9, 10, 11, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 128, 129, 130, 
-	131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 
-	150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 
-	169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 
-	188, 189, 190, 191,
-	]
+# TODO implement validation of read data
+### all invalid values on a byte basis that would contain a two-bit pair of 10 for any quest state
+### in other words, the decimal digits provided correspond to all values of the pattern:
+### 0b10, (2)
+### 0b10XX, (8 - 11)
+### 0b10XXXX, (32 - 47)
+### 0b10XXXXXX. (128 - 191)
+#const BAD_QUEST_BYTES : PackedByteArray = [
+	#2, 8, 9, 10, 11, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 128, 129, 130, 
+	#131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 
+	#150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 
+	#169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 
+	#188, 189, 190, 191,
+	#]
 
 var save_data : PackedByteArray = [0]
 # load_data is separate from save_data for debugging convenience
 var load_data : PackedByteArray
-var main : Node3D
+var trigger_load : bool = false
 
-func _ready() -> void:
-	pass
-	# TODO resize save_data to the exact length it needs to be and add data by index instead of using
-	# append
-	# save_data.resize(4)
+#func _ready() -> void:
+	## TODO resize save_data to the exact length it needs to be and add data by index instead of using
+	## append()
+	#save_data.resize(4)
 
 
 func save_game():
@@ -62,9 +62,7 @@ func save_game():
 	# map state, bytes 12 - 1923
 	save_data.append_array(get_map_state())
 
-	if write_data(save_data):
-		print("write succeeded")
-	else:
+	if not write_data(save_data):
 		print("write failed")
 
 
@@ -72,6 +70,7 @@ func write_data(d : PackedByteArray) -> bool:
 	var compressed_data : PackedByteArray = d.compress(FileAccess.COMPRESSION_GZIP)
 	var file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.WRITE)
 	return file.store_buffer(compressed_data)
+
 
 func read_data() -> bool:
 	# can remove the below comment if get_file_as_bytes works
@@ -82,19 +81,18 @@ func read_data() -> bool:
 	if FileAccess.get_open_error():
 		print("File access failed")
 		return false
-	if not quest_state_valid():
-		print("Quest state validation failed")
-		return false
-	if not planet_id_valid():
-		print("Planet ID validation failed")
-		return false
+	#if not quest_state_valid():
+		#print("Quest state validation failed")
+		#return false
+	#if not planet_id_valid():
+		#print("Planet ID validation failed")
+		#return false
 	load_data = decompressed_data
 	return true
 
 
 func restore_state() -> void:
 	if read_data():
-		# lock states
 		if load_data[0] & 0b1:
 			DialogueManager.horse_lock = true
 			DialogueManager.gate_lock = true
@@ -115,22 +113,15 @@ func restore_state() -> void:
 			DialogueManager.gate_lock = false
 			DialogueManager.sisyphus_lock = false
 			DialogueManager.king2_lock = true
-		# current planet
-		get_tree().get_first_node_in_group("Main").current_planet_id = load_data[1]
-		# map state
-		
 
+		get_tree().get_first_node_in_group("Main").on_planet_change_requested(load_data[1])
+		HonkCounter.honk_total = load_data.decode_s16(2)
+		Stopwatch.seconds_elapsed = load_data.decode_s16(4)
+		QuestManager.states = load_data.slice(6, 12)
+		set_map_state(load_data.slice(12))
 
-## @experimental not implemented yet
-func quest_state_valid() -> bool:
-	var questplaceholder : int # placeholder
-	return not BAD_QUEST_BYTES.has(questplaceholder)
-
-
-## @experimental not implemented yet 
-func planet_id_valid() -> bool:
-	var planetplaceholder : int # placeholder
-	return planetplaceholder < 23
+	else:
+		print("read failed")
 
 
 ## get a snapshot of the visibility of map elements, then serialize to binary
@@ -154,3 +145,21 @@ func set_map_state(b : PackedByteArray) -> void:
 
 func set_quest_state() -> void:
 	pass
+
+
+func _on_request_check_load() -> void:
+	if trigger_load:
+		restore_state()
+		trigger_load = false
+
+
+### @experimental not implemented yet
+#func quest_state_valid() -> bool:
+	#var questplaceholder : int # placeholder
+	#return not BAD_QUEST_BYTES.has(questplaceholder)
+
+
+### @experimental not implemented yet 
+#func planet_id_valid() -> bool:
+	#var planetplaceholder : int # placeholder
+	#return planetplaceholder < 23
