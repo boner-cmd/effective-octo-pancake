@@ -37,7 +37,7 @@ var towards_rotation : float
 
 var door_locked : bool = false
 var current_anim := AnimStates.STASIS
-
+var previous_anim := AnimStates.STASIS
 
 @export var destination_planet_ID : int
 
@@ -46,7 +46,10 @@ var current_anim := AnimStates.STASIS
 @onready var door_mesh: MeshInstance3D = $DoorAnims/Skeleton3D/Door
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var player_exit_position: Node3D = $DoorAnims/PlayerAnimationPosition
-@onready var spawn_poof_particles: GPUParticles3D = $SpawnPoofParticles
+@onready var spawn_poof_particles: GPUParticles3D = $DoorVFX/SpawnPoofParticles
+
+@onready var vfx_anim_player: AnimationPlayer = $DoorVFX/VFXAnimPlayer
+
 
 signal exit_anim_finished()
 signal exit_anim_started()
@@ -74,6 +77,7 @@ func lock_check():
 		door_locked = king2_lock
 
 func _set_door_anim(anim : AnimStates):
+	previous_anim = current_anim
 	current_anim = anim
 	lock_check()
 	if not door_locked:
@@ -84,7 +88,8 @@ func _set_door_anim(anim : AnimStates):
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				
 			AnimStates.SPAWN:
-				spawn_poof_particles.restart()
+				if previous_anim != AnimStates.EXIT:
+					emit_poof_particles()
 				AudioManager.sfx_play(AudioManager.sfx_spawn)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 0.0)
 				anim_tree.set("parameters/DoorSpawnTimescale/scale", 2.0)
@@ -97,14 +102,14 @@ func _set_door_anim(anim : AnimStates):
 				anim_tree.set("parameters/Door_Idle/blend_amount", 0.0)
 
 			AnimStates.DESPAWN:
-				spawn_poof_particles.restart()
+				emit_poof_particles()
 				AudioManager.sfx_play(AudioManager.sfx_despawn)
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 1.0)
 				anim_tree.set("parameters/DoorSpawnTimescale/scale", -2.0)
 				
 			AnimStates.EXIT:
-				spawn_poof_particles.restart()
+				exit_anim_particles()
 				AudioManager.sfx_play(AudioManager.sfx_exit, 0.0)
 				exit_anim_started.emit()
 				anim_tree.set("parameters/Reset_DoorExit/seek_request", 0.0)
@@ -129,17 +134,22 @@ func _ready() -> void:
 func spawn():
 	_set_door_anim(AnimStates.SPAWN)
 
+
 func despawn():
 	_set_door_anim(AnimStates.DESPAWN)
+
 
 func _on_door_spawn_radius_area_entered(_area: Area3D) -> void:
 	_set_door_anim(AnimStates.SPAWN)
 
+
 func _on_door_spawn_radius_area_exited(_area: Area3D) -> void:
 	_set_door_anim(AnimStates.DESPAWN)
 
+
 func stasis():
 	_set_door_anim(AnimStates.STASIS)
+
 
 func interact():
 	lock_check()
@@ -163,8 +173,21 @@ func interact():
 	else:
 		AudioManager.sfx_play(AudioManager.sfx_sadhonk)
 
+
 func _process(_delta: float) -> void:
 	if current_anim != AnimStates.EXIT:
 		self.look_at(player.global_position)
 		rotation.x = 0
 		rotation.z = 0
+
+
+func emit_poof_particles() -> void:
+	var particle_copy = spawn_poof_particles.duplicate()
+	add_child.call_deferred(particle_copy)
+	particle_copy.restart()
+	await particle_copy.finished
+	particle_copy.queue_free()
+
+
+func exit_anim_particles() -> void:
+	vfx_anim_player.play("VFX_Door_Sequence")

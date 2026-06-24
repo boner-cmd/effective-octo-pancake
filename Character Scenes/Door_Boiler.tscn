@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://cea4qqppfgm2"]
 
 [ext_resource type="PackedScene" uid="uid://df67w758w3f4v" path="res://Character Scenes/door.tscn" id="2_coq8p"]
+[ext_resource type="SphereMesh" uid="uid://bl1xiwubwc5uw" path="res://VFX assets/vfx_sphere_mesh.tres" id="2_cyo0d"]
+[ext_resource type="Material" uid="uid://bxthan4auy6ve" path="res://VFX assets/vfx_sphere_particle_mat.tres" id="2_ua6hq"]
+[ext_resource type="Texture2D" uid="uid://dmx1sqjg873wk" path="res://VFX assets/door_slam_alpha_curve.tres" id="4_pd52u"]
+[ext_resource type="Curve" uid="uid://cte3mufjuevan" path="res://VFX assets/door_slam_scale_curve.tres" id="5_3fx4b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cyo0d"]
 radius = 0.2
@@ -8,12 +12,114 @@ radius = 0.2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ua6hq"]
 radius = 3.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ua6hq"]
-transparency = 1
-diffuse_mode = 3
-specular_mode = 1
-vertex_color_use_as_albedo = true
-ao_enabled = true
+[sub_resource type="Animation" id="Animation_083ic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuckingParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlamPoofParticlesTop:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlamPoofParticlesSide:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpawnPoofParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c6bn4"]
+resource_name = "VFX_Door_Sequence"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuckingParticles:emitting")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlamPoofParticlesTop:emitting")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlamPoofParticlesSide:emitting")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpawnPoofParticles:emitting")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tckcv"]
+_data = {
+&"RESET": SubResource("Animation_083ic"),
+&"VFX_Door_Sequence": SubResource("Animation_c6bn4")
+}
 
 [sub_resource type="Curve" id="Curve_xldbd"]
 _data = [Vector2(0.06086956, 0), 0.0, 0.0, 0, 0, Vector2(0.1847826, 1), 0.0, 0.0, 0, 0, Vector2(0.72173905, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -64,16 +170,92 @@ turbulence_noise_scale = 0.1
 turbulence_influence_min = 0.05
 turbulence_influence_max = 0.05
 
-[sub_resource type="SphereMesh" id="SphereMesh_bx6t3"]
-radius = 0.01
-height = 0.02
-radial_segments = 32
-rings = 16
+[sub_resource type="Curve" id="Curve_pd52u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7594203, 1), 0.0, 0.0, 0, 0, Vector2(0.95942026, 0), 0.03369721, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3fx4b"]
+curve = SubResource("Curve_pd52u")
+
+[sub_resource type="Curve" id="Curve_083ic"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 15.657892, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c6bn4"]
+curve = SubResource("Curve_083ic")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ua6hq"]
+emission_shape_scale = Vector3(4, 4, 2)
+emission_shape = 2
+emission_sphere_radius = 1.0
+velocity_pivot = Vector3(0, -1.5, 3.75)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+radial_velocity_min = -1.0000223
+radial_velocity_max = -2.2351742e-05
+radial_velocity_curve = SubResource("CurveTexture_c6bn4")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -10.000002
+linear_accel_max = -2.2351742e-06
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+scale_min = 10.0
+scale_max = 30.0
+alpha_curve = SubResource("CurveTexture_3fx4b")
+
+[sub_resource type="CurveTexture" id="CurveTexture_4tf3h"]
+curve = ExtResource("5_3fx4b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2rq3l"]
+lifetime_randomness = 0.3
+emission_shape_offset = Vector3(0, -0.1, 0.8)
+emission_shape = 3
+emission_box_extents = Vector3(0.8, 0.1, 0.1)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, -1)
+spread = 20.0
+initial_velocity_min = 1.5
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+damping_min = 2.5
+damping_max = 3.0000002
+scale_min = 10.0
+scale_max = 25.0
+scale_curve = SubResource("CurveTexture_4tf3h")
+alpha_curve = ExtResource("4_pd52u")
+
+[sub_resource type="CurveTexture" id="CurveTexture_g47fr"]
+curve = ExtResource("5_3fx4b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7lhgf"]
+lifetime_randomness = 0.3
+emission_shape_offset = Vector3(-0.7, -1.9, 0.8)
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 1.9, 0.1)
+inherit_velocity_ratio = 1.0
+direction = Vector3(-1, 0.7, -1)
+spread = 20.0
+initial_velocity_min = 1.5
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+damping_min = 2.5
+damping_max = 3.0000002
+scale_min = 10.0
+scale_max = 25.0
+scale_curve = SubResource("CurveTexture_g47fr")
+alpha_curve = ExtResource("4_pd52u")
 
 [node name="Door_Offset" type="Node3D" unique_id=683049571]
 
 [node name="DoorBaseModel" parent="." unique_id=1012687003 groups=["Door_Base"] instance=ExtResource("2_coq8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
+
+[node name="Skeleton3D" parent="DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(1012687003, 1938978798) index="0" unique_id=1115533347]
+bones/1/position = Vector3(1.5865886, 8.3063635e-16, 0)
+bones/3/position = Vector3(1.3756914, 0.48695064, -4.318813e-16)
 
 [node name="DoorCollider" parent="DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(1012687003, 1938978798) index="2" unique_id=1935212185]
 collision_mask = 1
@@ -100,15 +282,53 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBaseModel/DoorSpawnRadius" unique_id=1845192206]
 shape = SubResource("CylinderShape3D_ua6hq")
 
-[node name="SpawnPoofParticles" type="GPUParticles3D" parent="DoorBaseModel" unique_id=1652855794]
+[node name="DoorVFX" type="Node3D" parent="DoorBaseModel" unique_id=2036962083]
+
+[node name="VFXAnimPlayer" type="AnimationPlayer" parent="DoorBaseModel/DoorVFX" unique_id=833946948]
+libraries/ = SubResource("AnimationLibrary_tckcv")
+speed_scale = 2.0
+
+[node name="SpawnPoofParticles" type="GPUParticles3D" parent="DoorBaseModel/DoorVFX" unique_id=1652855794]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007650852, 0)
-material_override = SubResource("StandardMaterial3D_ua6hq")
+material_override = ExtResource("2_ua6hq")
 emitting = false
 amount = 30
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4tf3h")
-draw_pass_1 = SubResource("SphereMesh_bx6t3")
+draw_pass_1 = ExtResource("2_cyo0d")
+
+[node name="SuckingParticles" type="GPUParticles3D" parent="DoorBaseModel/DoorVFX" unique_id=1361920944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.452838, -3.3505073)
+material_override = ExtResource("2_ua6hq")
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.5
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_ua6hq")
+draw_pass_1 = ExtResource("2_cyo0d")
+
+[node name="SlamPoofParticlesTop" type="GPUParticles3D" parent="DoorBaseModel/DoorVFX" unique_id=679371138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7956858, -0.98758495)
+emitting = false
+amount = 10
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2rq3l")
+draw_pass_1 = ExtResource("2_cyo0d")
+
+[node name="SlamPoofParticlesSide" type="GPUParticles3D" parent="DoorBaseModel/DoorVFX" unique_id=2129952610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7956858, -0.98758495)
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7lhgf")
+draw_pass_1 = ExtResource("2_cyo0d")
 
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]
