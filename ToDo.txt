@@ -4,9 +4,8 @@ MAIN
 		
 	ASSETS
 		NPC Models, Anims, Textures
-		
-		Sisyphus planet stuff - Markcy
-		Norgans skybox - Markcy
+		Building and refining Michaelwave Scene
+		Body with organs skybox needs replacing
 		
 	FEATURES
 		SAVING
@@ -25,14 +24,16 @@ MAIN
 DIALOGUES (DialogueManager, NPC lines) 
 	Different speech sound
 	Delay for re-speaking to NPC - this might be getting into the weeds a bit but probably not too difficult
+	Maybe a half second delay between F presses for dialogue
+	MAYBE there is no skipping of the text propagation, but instead text scrolls fast (maybe this idea conflicts with the notion of speedrunning)
+	Michaelwave dialogue needs to be REAL
 
 
 MODELS -
 	NICE TO HAVE:
 		Animations (At least an IDLE and a TALK, but if we're going this far we should have NPC RECEIVE and NPC GIVE)
 	CAMERAS
-		rework the camera system to use less cameras
-		reframe interactions for every scene
+		reframe interactions for every scene (wait until new models)
 		flatter FOV for dialogue camera angles
 
 SHADER PASS
@@ -46,6 +47,7 @@ VFX PASS - Michael - ???
 		Despawn	
 		Stasis	ZzZzZzZzzz....
 		Exit	whooshing lines for open, poofing lines for slam
+		Maybe star particles?
 	
 	any NPC related shaders
 	Confetti explosion for VICTORY animation
@@ -60,6 +62,7 @@ UI PASS - optional
 		continue
 		main menu
 		quit
+	Still Michael's task, maybe Markcy if gets down to wire
 
 
 POST - minimal
@@ -81,7 +84,14 @@ POST - minimal
 TITLE SCREEN -
 	on button hover have AH face different positions interrupting the screen (nice to have)
 	implement anims for options menu
+	Adjust the color of the light on the logo letters
+	World environment - screenshot of the title screen made to be the environment where 
 
 SOUND - 2.5 days ish
 	Different default speech noises
 	Unique speech sound per NPC (?)
+		Maybe its just an initial babble?
+	Michaelwave music + Lamp music
+	Mastering of SFX/changing some
+	Fix horse music bass
+	Borgans doesn't loop right
