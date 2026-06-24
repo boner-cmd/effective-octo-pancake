@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_uu6te"]
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_yykri"]
-[ext_resource type="Material" uid="uid://bnb0pjdjojyn2" path="res://planets/materials/03_astronaut_skybox.tres" id="2_u7ije"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_vya3k"]
 [ext_resource type="Material" uid="uid://dxgrumds886el" path="res://planets/materials/08_gibberish_toon_shader.tres" id="6_vm1ek"]
+[ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="7_qme48"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_vm1ek"]
+[ext_resource type="Texture2D" uid="uid://d4dwrs4k32j0i" path="res://planets/textures/michaelwave/michaelwave.png" id="8_5na63"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_vm1ek"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
@@ -23,6 +24,8 @@ background_mode = 2
 sky = SubResource("Sky_4pae5")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wie8p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vm1ek"]
 radius = 0.4
@@ -42,7 +45,7 @@ shadow_enabled = true
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_uu6te")]
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
-material_override = ExtResource("2_u7ije")
+material_override = SubResource("StandardMaterial3D_wie8p")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_vya3k")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
@@ -67,6 +70,18 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1856469877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("CylinderShape3D_vm1ek")
+
+[node name="Control" type="Control" parent="." unique_id=1454968927]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Michaelwave" type="Sprite2D" parent="Control" unique_id=1396367368]
+texture_filter = 1
+material = ExtResource("7_qme48")
+position = Vector2(130, 129)
+texture = ExtResource("8_5na63")
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
