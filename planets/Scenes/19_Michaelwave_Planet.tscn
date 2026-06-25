@@ -88,4 +88,5 @@ texture = ExtResource("8_5na63")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

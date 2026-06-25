@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt4w1ye6sdywt"
+path="res://.godot/imported/lamp.wav-fd5bd2cba7ef615aa1ed88ecf822b802.sample"
+
+[deps]
+
+source_file="res://music exports/lamp.wav"
+dest_files=["res://.godot/imported/lamp.wav-fd5bd2cba7ef615aa1ed88ecf822b802.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=288000
+edit/loop_end=-1
+compress/mode=2

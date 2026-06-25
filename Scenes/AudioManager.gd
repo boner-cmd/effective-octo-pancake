@@ -13,7 +13,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	8 : preload("res://music exports/o.wav"),
 	9 : null,#preload("res://music exports/body with organs2026-05-2216_17_11.wav"),
 	10 : preload("res://music exports/festering mass.wav"),
-	11 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
+	11 : preload("res://music exports/lamp.wav"),
 	12 : preload("res://music exports/body without organs.wav"),
 	13 : preload("res://music exports/michaelwave.wav"),
 	14 : preload("res://music exports/robot.wav"),
