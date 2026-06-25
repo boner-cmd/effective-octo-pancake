@@ -48,6 +48,9 @@ var test : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveManager.compressed_data = FileAccess.get_file_as_bytes("user://Attentive_Helper_Data.dat")
+	if FileAccess.get_open_error():
+		continue_button.disabled = true
 	timer.wait_time = timer_time
 	letter_array = title_screen_letters.get_children()
 	tween_letters()

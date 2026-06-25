@@ -20,6 +20,7 @@ var inventory_control : Control
 
 # load_data is separate from save_data for debugging convenience
 var load_data : PackedByteArray
+var compressed_data : PackedByteArray # set in TitleScreen when clicking Continue
 var save_data : PackedByteArray = [0]
 
 var trigger_load : bool = false
@@ -86,7 +87,6 @@ func write_data(d : PackedByteArray) -> bool:
 
 
 func read_data() -> bool:
-	var compressed_data : PackedByteArray = FileAccess.get_file_as_bytes("user://Attentive_Helper_Data.dat")
 	# TODO verify that the buffer size is correct
 	var decompressed_data : PackedByteArray = compressed_data.decompress(1939, FileAccess.COMPRESSION_GZIP)
 	if FileAccess.get_open_error():
