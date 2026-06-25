@@ -59,7 +59,7 @@ func on_planet_change_requested(planet_ID : int):
 	Player._camera.current = true
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
-	#await hud_overlay.transition()
+	hud_overlay.transition()
 	map.unhide_elements(planet_ID)
 	AudioManager.bgm_cycle(planet_ID)
 	get_tree().root.add_child(requested_planet)
@@ -77,7 +77,6 @@ func on_planet_change_requested(planet_ID : int):
 		inventory.visible = false
 		Stopwatch.stop()
 		planet_nodes[planet_ID].request_ready()
-		#await hud_overlay.transition()
 		AudioManager.bgm_cycle(planet_ID)
 		Player.set_process_mode(Node.PROCESS_MODE_DISABLED)
 		Player.visible = false
@@ -91,5 +90,5 @@ func on_planet_change_requested(planet_ID : int):
 	
 	
 	Player.reset_player()
-	await get_tree().create_timer(.3).timeout
-	await hud_overlay.transition()
+	
+	

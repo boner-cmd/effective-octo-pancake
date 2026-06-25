@@ -25,9 +25,6 @@ var previous_interact : INTERACT_TYPE = INTERACT_TYPE.NONE
 var transition_color: ColorRect
 var transition_white: ColorRect
 var control_schematic_full: Control
-var cutout_transition_parent : BackBufferCopy
-var cutout_bg : ColorRect
-var animated_cutout : AnimatedSprite2D
 
 var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 
@@ -72,20 +69,12 @@ func _ready() -> void:
 			control_schematic_full = nodes
 		if nodes.name == &"TransitionRectWhite":
 			transition_white = nodes
-		if nodes.name == &"CutoutTransition":
-			cutout_transition_parent = nodes
-	for nodes in cutout_transition_parent.get_children():
-		if nodes.name == &"CutoutBG":
-			cutout_bg = nodes
-		if nodes.name == &"AnimatedCutout":
-			animated_cutout = nodes
+			
 	DialogueManager.hud_overlay = self
 	# set default visiblity states and modulation
 	visible = true
 	map.visible = false
 	pause_menu.visible = false
-	transition_color.visible = false
-	animated_cutout.scale = Vector2(.01,.01)
 	interact_door_open.visible = false
 	interact_door_locked.visible = false
 	interact_npc_margin.visible = false
@@ -113,9 +102,7 @@ func _ready() -> void:
 	transition_timer.start()
 	await transition_timer.timeout
 	#control schematics UI stuff here
-	await get_tree().create_timer(.1).timeout
-	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	
+	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 
 
 func _process(_delta: float) -> void:
@@ -153,15 +140,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		## control schematic
 		if not control_acknowledge:
 			control_acknowledge = true
-			var tween_control_off = get_tree().create_tween()
-			tween_control_off.tween_property(control_schematic_full, "modulate:a", 0.0, .3)
-			tween_control_off.set_trans(Tween.TRANS_SINE)
-			tween_control_off.set_ease(Tween.EASE_IN_OUT)
-			await get_tree().create_timer(.1).timeout
-			tween_control_off.play()
-			await tween_control_off.finished
-			if tween_control_off and tween_control_off.is_valid():
-				tween_control_off.kill()
+			await tween_object(control_schematic_full, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			control_schematic_full.queue_free()
 			transition()
 		if not DialogueManager.is_dialogue_active and interaction_latch:
@@ -181,8 +160,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				interact_npc_margin.modulate.a = 0.01
 		if interact_touched == INTERACT_TYPE.DOOR_OPEN:
 			interact_touched = INTERACT_TYPE.NONE
-			await get_tree().create_timer(1).timeout
-			await transition()
 
 
 func _on_quit_button_pressed() -> void:
@@ -381,7 +358,6 @@ func reset_pause_menu() -> void:
 			b.mouse_filter = Control.MOUSE_FILTER_STOP
 			return true
 			)
-
 	controls_button.position.y = 0.0
 	sound_button.position.y = 0.0
 	keyboard_controls_menu.visible = false
@@ -393,25 +369,12 @@ func reset_pause_menu() -> void:
 
 
 func transition() -> void:
-	#transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
-	#transition_color.visible = true
-	#await get_tree().create_timer(.1).timeout
-	#await tween_object(transition_color, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	#transition_color.visible = false
-	#transition_color.modulate.a = 1.0
-	if animated_cutout.scale.x > .01:
-		await transition_cutout_in()
-	else:
-		await transition_cutout_out()
-
-
-func transition_cutout_in() -> void:
-	await tween_object(animated_cutout, "scale", Vector2(0.01, 0.01), .4, Tween.TRANS_SINE, Tween.EASE_OUT)
-
-
-func transition_cutout_out() -> void:
+	transition_color.modulate = Color(0.0,0.0,0.0,1.0)
+	transition_color.visible = true
 	await get_tree().create_timer(.1).timeout
-	await tween_object(animated_cutout, "scale", Vector2(50.0, 50.0), .4, Tween.TRANS_SINE, Tween.EASE_OUT)
+	await tween_object(transition_color, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	transition_color.visible = false
+	transition_color.modulate.a = 1.0
 
 
 func transition_victory() -> void:
@@ -419,13 +382,12 @@ func transition_victory() -> void:
 	transition_white.modulate.a = 0.0
 	await get_tree().create_timer(3.0).timeout
 	await tween_object(transition_white, "modulate:a", 1.0, 2.0, Tween.TRANS_SINE, Tween.EASE_IN)
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	transition_color.visible = true
 	transition_color.modulate.a = 1.0
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	await tween_object(transition_white, "modulate:a", 0.0, 2.0, Tween.TRANS_SINE, Tween.EASE_OUT)
-	await get_tree().create_timer(2.0).timeout
-	animated_cutout.scale = Vector2(.01, .01)
+	await get_tree().create_timer(1.5).timeout
 	transition_color.visible = false
 
 
@@ -448,11 +410,8 @@ func activate_tween_interact(interact_parent : MarginContainer) -> void:
 		await get_tree().create_timer(.05).timeout
 		label.modulate.a = 0.0
 		label.visible = false
-		#tween modulate interact_parent
 		await tween_object(interact_parent, "modulate:a", 1.0, .05, Tween.TRANS_SINE, Tween.EASE_IN)
-		#tween size:x
 		await tween_object(label_margin, "custom_minimum_size:x", temp_size, .1, Tween.TRANS_SINE, Tween.EASE_IN)
-		
 		if not interact_parent.name == "InteractDoorLocked":
 			next_indicator.stop()
 			next_indicator.frame = 0
@@ -460,10 +419,8 @@ func activate_tween_interact(interact_parent : MarginContainer) -> void:
 			next_indicator.play()
 			next_indicator_label.visible = true
 			tween_object(next_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
-		
 		label.visible = true
 		tween_object(label, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
-		
 		debounce_interaction = false
 
 
