@@ -814,7 +814,7 @@ theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
 text = "look"
 
-[node name="Map" type="TextureRect" parent="." unique_id=432696859]
+[node name="Map" type="TextureRect" parent="." unique_id=432696859 groups=["Map_Elements"]]
 unique_name_in_owner = true
 visible = false
 z_index = -100
@@ -833,7 +833,7 @@ material = ExtResource("47_qsvm7")
 texture = ExtResource("21_qsvm7")
 offset = Vector2(640, 360)
 
-[node name="PositionMarker" type="TextureRect" parent="Map" unique_id=774177229]
+[node name="PositionMarker" type="TextureRect" parent="Map" unique_id=774177229 groups=["Map_Elements"]]
 z_index = 5
 texture_filter = 1
 layout_mode = 0
@@ -846,7 +846,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("12_ftghg")
 
-[node name="KingSticker" type="TextureRect" parent="Map" unique_id=1416114579]
+[node name="KingSticker" type="TextureRect" parent="Map" unique_id=1416114579 groups=["Map_Elements"]]
 z_index = 1
 texture_filter = 1
 layout_mode = 0
@@ -858,7 +858,7 @@ mouse_filter = 2
 texture = ExtResource("11_00uqi")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/KingSticker" unique_id=859565293]
+[node name="CompleteStamp" type="TextureRect" parent="Map/KingSticker" unique_id=859565293 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -871,7 +871,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="HorseDarkPlanet" type="TextureRect" parent="Map" unique_id=2115619113]
+[node name="HorseDarkPlanet" type="TextureRect" parent="Map" unique_id=2115619113 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -883,7 +883,7 @@ offset_bottom = 428.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="HorseSticker" type="TextureRect" parent="Map/HorseDarkPlanet" unique_id=616505084]
+[node name="HorseSticker" type="TextureRect" parent="Map/HorseDarkPlanet" unique_id=616505084 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -896,7 +896,7 @@ mouse_filter = 2
 texture = ExtResource("14_ftghg")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/HorseDarkPlanet/HorseSticker" unique_id=1308648810]
+[node name="CompleteStamp" type="TextureRect" parent="Map/HorseDarkPlanet/HorseSticker" unique_id=1308648810 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -910,7 +910,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="AstroDarkPlanet" type="TextureRect" parent="Map" unique_id=1513037413]
+[node name="AstroDarkPlanet" type="TextureRect" parent="Map" unique_id=1513037413 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -922,7 +922,7 @@ offset_bottom = 255.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="AstroSticker" type="TextureRect" parent="Map/AstroDarkPlanet" unique_id=1002752034]
+[node name="AstroSticker" type="TextureRect" parent="Map/AstroDarkPlanet" unique_id=1002752034 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -935,7 +935,7 @@ mouse_filter = 2
 texture = ExtResource("15_4u7pl")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/AstroDarkPlanet/AstroSticker" unique_id=1985255675]
+[node name="CompleteStamp" type="TextureRect" parent="Map/AstroDarkPlanet/AstroSticker" unique_id=1985255675 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -949,7 +949,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="SnowDarkPlanet" type="TextureRect" parent="Map" unique_id=786787715]
+[node name="SnowDarkPlanet" type="TextureRect" parent="Map" unique_id=786787715 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -961,7 +961,7 @@ offset_bottom = 459.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="SnowSticker" type="TextureRect" parent="Map/SnowDarkPlanet" unique_id=752233729]
+[node name="SnowSticker" type="TextureRect" parent="Map/SnowDarkPlanet" unique_id=752233729 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -974,7 +974,7 @@ mouse_filter = 2
 texture = ExtResource("16_ppan7")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/SnowDarkPlanet/SnowSticker" unique_id=391427389]
+[node name="CompleteStamp" type="TextureRect" parent="Map/SnowDarkPlanet/SnowSticker" unique_id=391427389 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -988,7 +988,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="SisyphusDarkPlanet" type="TextureRect" parent="Map" unique_id=487761080]
+[node name="SisyphusDarkPlanet" type="TextureRect" parent="Map" unique_id=487761080 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1000,7 +1000,7 @@ offset_bottom = 486.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="SisyphusSticker" type="TextureRect" parent="Map/SisyphusDarkPlanet" unique_id=784344791]
+[node name="SisyphusSticker" type="TextureRect" parent="Map/SisyphusDarkPlanet" unique_id=784344791 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1013,7 +1013,7 @@ mouse_filter = 2
 texture = ExtResource("17_s4svx")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/SisyphusDarkPlanet/SisyphusSticker" unique_id=500358005]
+[node name="CompleteStamp" type="TextureRect" parent="Map/SisyphusDarkPlanet/SisyphusSticker" unique_id=500358005 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1027,7 +1027,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="GreaseDarkPlanet" type="TextureRect" parent="Map" unique_id=2134932461]
+[node name="GreaseDarkPlanet" type="TextureRect" parent="Map" unique_id=2134932461 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1039,7 +1039,7 @@ offset_bottom = 132.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="GreaseSticker" type="TextureRect" parent="Map/GreaseDarkPlanet" unique_id=1648624159]
+[node name="GreaseSticker" type="TextureRect" parent="Map/GreaseDarkPlanet" unique_id=1648624159 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1052,7 +1052,7 @@ mouse_filter = 2
 texture = ExtResource("18_a6sf7")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/GreaseDarkPlanet/GreaseSticker" unique_id=1082113751]
+[node name="CompleteStamp" type="TextureRect" parent="Map/GreaseDarkPlanet/GreaseSticker" unique_id=1082113751 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1066,7 +1066,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="DeerDarkPlanet" type="TextureRect" parent="Map" unique_id=687345806]
+[node name="DeerDarkPlanet" type="TextureRect" parent="Map" unique_id=687345806 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1078,7 +1078,7 @@ offset_bottom = 167.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="DeerSticker" type="TextureRect" parent="Map/DeerDarkPlanet" unique_id=1724011015]
+[node name="DeerSticker" type="TextureRect" parent="Map/DeerDarkPlanet" unique_id=1724011015 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1091,7 +1091,7 @@ mouse_filter = 2
 texture = ExtResource("19_oc4d8")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/DeerDarkPlanet/DeerSticker" unique_id=2053545768]
+[node name="CompleteStamp" type="TextureRect" parent="Map/DeerDarkPlanet/DeerSticker" unique_id=2053545768 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1105,7 +1105,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="GateDarkPlanet" type="TextureRect" parent="Map" unique_id=1820776948]
+[node name="GateDarkPlanet" type="TextureRect" parent="Map" unique_id=1820776948 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1117,7 +1117,7 @@ offset_bottom = 260.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="GateSticker" type="TextureRect" parent="Map/GateDarkPlanet" unique_id=1480087912]
+[node name="GateSticker" type="TextureRect" parent="Map/GateDarkPlanet" unique_id=1480087912 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1130,7 +1130,7 @@ mouse_filter = 2
 texture = ExtResource("20_74rbg")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/GateDarkPlanet/GateSticker" unique_id=593454003]
+[node name="CompleteStamp" type="TextureRect" parent="Map/GateDarkPlanet/GateSticker" unique_id=593454003 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1144,7 +1144,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="ODarkPlanet" type="TextureRect" parent="Map" unique_id=1510612612]
+[node name="ODarkPlanet" type="TextureRect" parent="Map" unique_id=1510612612 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1156,7 +1156,7 @@ offset_bottom = 613.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="OSticker" type="TextureRect" parent="Map/ODarkPlanet" unique_id=1142725549]
+[node name="OSticker" type="TextureRect" parent="Map/ODarkPlanet" unique_id=1142725549 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1169,7 +1169,7 @@ mouse_filter = 2
 texture = ExtResource("21_npi88")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/ODarkPlanet/OSticker" unique_id=840087744]
+[node name="CompleteStamp" type="TextureRect" parent="Map/ODarkPlanet/OSticker" unique_id=840087744 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1183,7 +1183,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="OrgansDarkPlanet" type="TextureRect" parent="Map" unique_id=1540096737]
+[node name="OrgansDarkPlanet" type="TextureRect" parent="Map" unique_id=1540096737 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1195,7 +1195,7 @@ offset_bottom = 315.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="OrgansSticker" type="TextureRect" parent="Map/OrgansDarkPlanet" unique_id=530485664]
+[node name="OrgansSticker" type="TextureRect" parent="Map/OrgansDarkPlanet" unique_id=530485664 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1208,7 +1208,7 @@ mouse_filter = 2
 texture = ExtResource("22_xq43d")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/OrgansDarkPlanet/OrgansSticker" unique_id=486703812]
+[node name="CompleteStamp" type="TextureRect" parent="Map/OrgansDarkPlanet/OrgansSticker" unique_id=486703812 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1222,7 +1222,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="MassDarkPlanet" type="TextureRect" parent="Map" unique_id=1773874650]
+[node name="MassDarkPlanet" type="TextureRect" parent="Map" unique_id=1773874650 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1234,7 +1234,7 @@ offset_bottom = 243.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="MassSticker" type="TextureRect" parent="Map/MassDarkPlanet" unique_id=1949142771]
+[node name="MassSticker" type="TextureRect" parent="Map/MassDarkPlanet" unique_id=1949142771 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1247,7 +1247,7 @@ mouse_filter = 2
 texture = ExtResource("23_82vjh")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/MassDarkPlanet/MassSticker" unique_id=1688048375]
+[node name="CompleteStamp" type="TextureRect" parent="Map/MassDarkPlanet/MassSticker" unique_id=1688048375 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1261,7 +1261,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="LampDarkPlanet" type="TextureRect" parent="Map" unique_id=2120797857]
+[node name="LampDarkPlanet" type="TextureRect" parent="Map" unique_id=2120797857 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1273,7 +1273,7 @@ offset_bottom = 664.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="LampSticker" type="TextureRect" parent="Map/LampDarkPlanet" unique_id=1586886347]
+[node name="LampSticker" type="TextureRect" parent="Map/LampDarkPlanet" unique_id=1586886347 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1286,7 +1286,7 @@ mouse_filter = 2
 texture = ExtResource("24_r4epv")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/LampDarkPlanet/LampSticker" unique_id=1717797188]
+[node name="CompleteStamp" type="TextureRect" parent="Map/LampDarkPlanet/LampSticker" unique_id=1717797188 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1300,7 +1300,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="NorgansDarkPlanet" type="TextureRect" parent="Map" unique_id=1971469067]
+[node name="NorgansDarkPlanet" type="TextureRect" parent="Map" unique_id=1971469067 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1312,7 +1312,7 @@ offset_bottom = 625.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="NorgansSticker" type="TextureRect" parent="Map/NorgansDarkPlanet" unique_id=823099394]
+[node name="NorgansSticker" type="TextureRect" parent="Map/NorgansDarkPlanet" unique_id=823099394 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1325,7 +1325,7 @@ mouse_filter = 2
 texture = ExtResource("25_751k0")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/NorgansDarkPlanet/NorgansSticker" unique_id=710538880]
+[node name="CompleteStamp" type="TextureRect" parent="Map/NorgansDarkPlanet/NorgansSticker" unique_id=710538880 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1339,7 +1339,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="MichaelwaveDarkPlanet" type="TextureRect" parent="Map" unique_id=1651497456]
+[node name="MichaelwaveDarkPlanet" type="TextureRect" parent="Map" unique_id=1651497456 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1351,7 +1351,7 @@ offset_bottom = 490.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="MichaelwaveSticker" type="TextureRect" parent="Map/MichaelwaveDarkPlanet" unique_id=1783725147]
+[node name="MichaelwaveSticker" type="TextureRect" parent="Map/MichaelwaveDarkPlanet" unique_id=1783725147 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1364,7 +1364,7 @@ mouse_filter = 2
 texture = ExtResource("26_qsvm7")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/MichaelwaveDarkPlanet/MichaelwaveSticker" unique_id=547392601]
+[node name="CompleteStamp" type="TextureRect" parent="Map/MichaelwaveDarkPlanet/MichaelwaveSticker" unique_id=547392601 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1378,7 +1378,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="RobotDarkPlanet" type="TextureRect" parent="Map" unique_id=1678476683]
+[node name="RobotDarkPlanet" type="TextureRect" parent="Map" unique_id=1678476683 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1390,7 +1390,7 @@ offset_bottom = 345.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="RobotSticker" type="TextureRect" parent="Map/RobotDarkPlanet" unique_id=59128618]
+[node name="RobotSticker" type="TextureRect" parent="Map/RobotDarkPlanet" unique_id=59128618 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1403,7 +1403,7 @@ mouse_filter = 2
 texture = ExtResource("27_82xaf")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/RobotDarkPlanet/RobotSticker" unique_id=265166485]
+[node name="CompleteStamp" type="TextureRect" parent="Map/RobotDarkPlanet/RobotSticker" unique_id=265166485 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1417,7 +1417,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="GibberishDarkPlanet" type="TextureRect" parent="Map" unique_id=56957052]
+[node name="GibberishDarkPlanet" type="TextureRect" parent="Map" unique_id=56957052 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1429,7 +1429,7 @@ offset_bottom = 308.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="GibberishSticker" type="TextureRect" parent="Map/GibberishDarkPlanet" unique_id=714743182]
+[node name="GibberishSticker" type="TextureRect" parent="Map/GibberishDarkPlanet" unique_id=714743182 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1442,7 +1442,7 @@ mouse_filter = 2
 texture = ExtResource("28_c6udc")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/GibberishDarkPlanet/GibberishSticker" unique_id=1703559354]
+[node name="CompleteStamp" type="TextureRect" parent="Map/GibberishDarkPlanet/GibberishSticker" unique_id=1703559354 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1456,7 +1456,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="IndividualDarkPlanet" type="TextureRect" parent="Map" unique_id=1368423449]
+[node name="IndividualDarkPlanet" type="TextureRect" parent="Map" unique_id=1368423449 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1468,7 +1468,7 @@ offset_bottom = 137.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="IndividualSticker" type="TextureRect" parent="Map/IndividualDarkPlanet" unique_id=1316062858]
+[node name="IndividualSticker" type="TextureRect" parent="Map/IndividualDarkPlanet" unique_id=1316062858 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1481,7 +1481,7 @@ mouse_filter = 2
 texture = ExtResource("29_006ca")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/IndividualDarkPlanet/IndividualSticker" unique_id=892738760]
+[node name="CompleteStamp" type="TextureRect" parent="Map/IndividualDarkPlanet/IndividualSticker" unique_id=892738760 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1495,7 +1495,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="IdeaDarkPlanet" type="TextureRect" parent="Map" unique_id=1156328218]
+[node name="IdeaDarkPlanet" type="TextureRect" parent="Map" unique_id=1156328218 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1507,7 +1507,7 @@ offset_bottom = 492.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="IdeaSticker" type="TextureRect" parent="Map/IdeaDarkPlanet" unique_id=434983327]
+[node name="IdeaSticker" type="TextureRect" parent="Map/IdeaDarkPlanet" unique_id=434983327 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1520,7 +1520,7 @@ mouse_filter = 2
 texture = ExtResource("30_5rjlw")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/IdeaDarkPlanet/IdeaSticker" unique_id=1656748552]
+[node name="CompleteStamp" type="TextureRect" parent="Map/IdeaDarkPlanet/IdeaSticker" unique_id=1656748552 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1534,7 +1534,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="BodhiDarkPlanet" type="TextureRect" parent="Map" unique_id=2089500911]
+[node name="BodhiDarkPlanet" type="TextureRect" parent="Map" unique_id=2089500911 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1546,7 +1546,7 @@ offset_bottom = 161.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="BodhiSticker" type="TextureRect" parent="Map/BodhiDarkPlanet" unique_id=1228603223]
+[node name="BodhiSticker" type="TextureRect" parent="Map/BodhiDarkPlanet" unique_id=1228603223 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1559,7 +1559,7 @@ mouse_filter = 2
 texture = ExtResource("31_7jlp0")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/BodhiDarkPlanet/BodhiSticker" unique_id=954082382]
+[node name="CompleteStamp" type="TextureRect" parent="Map/BodhiDarkPlanet/BodhiSticker" unique_id=954082382 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1573,7 +1573,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="SlimeDarkPlanet" type="TextureRect" parent="Map" unique_id=433289761]
+[node name="SlimeDarkPlanet" type="TextureRect" parent="Map" unique_id=433289761 groups=["Map_Elements"]]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -1585,7 +1585,7 @@ offset_bottom = 599.0
 mouse_filter = 2
 texture = ExtResource("13_yo8np")
 
-[node name="SlimeSticker" type="TextureRect" parent="Map/SlimeDarkPlanet" unique_id=448576117]
+[node name="SlimeSticker" type="TextureRect" parent="Map/SlimeDarkPlanet" unique_id=448576117 groups=["Map_Elements"]]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -1598,7 +1598,7 @@ mouse_filter = 2
 texture = ExtResource("32_muo8p")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/SlimeDarkPlanet/SlimeSticker" unique_id=700218159]
+[node name="CompleteStamp" type="TextureRect" parent="Map/SlimeDarkPlanet/SlimeSticker" unique_id=700218159 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1612,7 +1612,7 @@ mouse_filter = 2
 texture = ExtResource("12_iqywv")
 expand_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="Map" unique_id=1806059079]
+[node name="TextureRect" type="TextureRect" parent="Map" unique_id=1806059079 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 587.0
@@ -1623,7 +1623,7 @@ rotation = 1.829105
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect2" type="TextureRect" parent="Map" unique_id=1667193791]
+[node name="TextureRect2" type="TextureRect" parent="Map" unique_id=1667193791 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 516.0
@@ -1634,7 +1634,7 @@ rotation = -0.6981317
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect3" type="TextureRect" parent="Map" unique_id=264878669]
+[node name="TextureRect3" type="TextureRect" parent="Map" unique_id=264878669 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 613.99994
@@ -1645,7 +1645,7 @@ rotation = -0.6981317
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect4" type="TextureRect" parent="Map" unique_id=2104907904]
+[node name="TextureRect4" type="TextureRect" parent="Map" unique_id=2104907904 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 438.0
@@ -1657,7 +1657,7 @@ scale = Vector2(1.26, 1.26)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect5" type="TextureRect" parent="Map" unique_id=1804110090]
+[node name="TextureRect5" type="TextureRect" parent="Map" unique_id=1804110090 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 475.99997
@@ -1668,7 +1668,7 @@ rotation = 3.7716565
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect6" type="TextureRect" parent="Map" unique_id=802366047]
+[node name="TextureRect6" type="TextureRect" parent="Map" unique_id=802366047 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 483.0
@@ -1680,7 +1680,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect7" type="TextureRect" parent="Map" unique_id=572763915]
+[node name="TextureRect7" type="TextureRect" parent="Map" unique_id=572763915 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 402.0
@@ -1691,7 +1691,7 @@ rotation = 2.8658307
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect8" type="TextureRect" parent="Map" unique_id=1439585381]
+[node name="TextureRect8" type="TextureRect" parent="Map" unique_id=1439585381 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 288.0
@@ -1703,7 +1703,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect9" type="TextureRect" parent="Map" unique_id=1063992812]
+[node name="TextureRect9" type="TextureRect" parent="Map" unique_id=1063992812 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 244.00002
@@ -1714,7 +1714,7 @@ rotation = 1.829105
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect10" type="TextureRect" parent="Map" unique_id=697850218]
+[node name="TextureRect10" type="TextureRect" parent="Map" unique_id=697850218 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 256.99997
@@ -1726,7 +1726,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect11" type="TextureRect" parent="Map" unique_id=76902029]
+[node name="TextureRect11" type="TextureRect" parent="Map" unique_id=76902029 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 724.0
@@ -1737,7 +1737,7 @@ rotation = 0.98611104
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect12" type="TextureRect" parent="Map" unique_id=61547181]
+[node name="TextureRect12" type="TextureRect" parent="Map" unique_id=61547181 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 653.0
@@ -1749,7 +1749,7 @@ scale = Vector2(1.2, 1.2)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect13" type="TextureRect" parent="Map" unique_id=2649782]
+[node name="TextureRect13" type="TextureRect" parent="Map" unique_id=2649782 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 803.0
@@ -1761,7 +1761,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect17" type="TextureRect" parent="Map" unique_id=1798054059]
+[node name="TextureRect17" type="TextureRect" parent="Map" unique_id=1798054059 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 885.99994
@@ -1772,7 +1772,7 @@ rotation = 1.1152654
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect14" type="TextureRect" parent="Map" unique_id=992628077]
+[node name="TextureRect14" type="TextureRect" parent="Map" unique_id=992628077 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 778.99994
@@ -1784,7 +1784,7 @@ scale = Vector2(1.2, 1.2)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect15" type="TextureRect" parent="Map" unique_id=416602136]
+[node name="TextureRect15" type="TextureRect" parent="Map" unique_id=416602136 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 851.0
@@ -1796,7 +1796,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect16" type="TextureRect" parent="Map" unique_id=1286383618]
+[node name="TextureRect16" type="TextureRect" parent="Map" unique_id=1286383618 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 828.00006
@@ -1808,7 +1808,7 @@ scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect18" type="TextureRect" parent="Map" unique_id=1172781042]
+[node name="TextureRect18" type="TextureRect" parent="Map" unique_id=1172781042 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 965.0
@@ -1820,7 +1820,7 @@ scale = Vector2(1.2, 1.2)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect19" type="TextureRect" parent="Map" unique_id=379326965]
+[node name="TextureRect19" type="TextureRect" parent="Map" unique_id=379326965 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 961.00006
@@ -1832,7 +1832,7 @@ scale = Vector2(1.2, 1.2)
 mouse_filter = 2
 texture = ExtResource("12_yo8np")
 
-[node name="TextureRect20" type="TextureRect" parent="Map" unique_id=513213319]
+[node name="TextureRect20" type="TextureRect" parent="Map" unique_id=513213319 groups=["Map_Elements"]]
 visible = false
 layout_mode = 0
 offset_left = 1111.0001
