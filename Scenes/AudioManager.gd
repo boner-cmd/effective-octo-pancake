@@ -15,7 +15,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	10 : preload("res://music exports/festering mass.wav"),
 	11 : preload("res://music exports/lamp2026-05-2222_01_50.wav"),
 	12 : preload("res://music exports/body without organs.wav"),
-	13 : preload("res://music exports/astronaut.wav"), # TODO Michaelwave placeholder
+	13 : preload("res://music exports/michaelwave.wav"),
 	14 : preload("res://music exports/robot.wav"),
 	15 : preload("res://music exports/individuated individual.wav"),
 	16 : preload("res://music exports/gibberish.wav"),
