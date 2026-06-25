@@ -29,7 +29,6 @@ enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
 var player : CharacterBody3D
 
-@onready var temp_camera_location : Node3D = $DoorAnims/DoorCameraPosition
 var door_camera_position : Vector3
 var door_camera_rotation : Vector3
 var temp_rotation : Vector3
@@ -47,9 +46,8 @@ var previous_anim := AnimStates.STASIS
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var player_exit_position: Node3D = $DoorAnims/PlayerAnimationPosition
 @onready var spawn_poof_particles: GPUParticles3D = $DoorVFX/SpawnPoofParticles
-
-@onready var vfx_anim_player: AnimationPlayer = $DoorVFX/VFXAnimPlayer
-
+@onready var vfx_parent : Node3D = $DoorVFX
+@onready var temp_camera_location : Node3D = $DoorAnims/DoorCameraPosition
 
 signal exit_anim_finished()
 signal exit_anim_started()
@@ -58,6 +56,7 @@ signal request_planet_change(planet_ID : int)
 func change_king_door():
 	if destination_planet_ID == QuestManager.CharacterName.KING_1:
 		destination_planet_ID = QuestManager.CharacterName.KING_2 
+
 
 func lock_check():
 	var horse_lock = DialogueManager.horse_lock
@@ -76,6 +75,7 @@ func lock_check():
 	if destination_planet_ID == QuestManager.CharacterName.KING_2:
 		door_locked = king2_lock
 
+
 func _set_door_anim(anim : AnimStates):
 	previous_anim = current_anim
 	current_anim = anim
@@ -88,8 +88,7 @@ func _set_door_anim(anim : AnimStates):
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				
 			AnimStates.SPAWN:
-				if previous_anim != AnimStates.EXIT:
-					emit_poof_particles()
+				emit_poof_particles()
 				AudioManager.sfx_play(AudioManager.sfx_spawn)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 0.0)
 				anim_tree.set("parameters/DoorSpawnTimescale/scale", 2.0)
@@ -102,7 +101,8 @@ func _set_door_anim(anim : AnimStates):
 				anim_tree.set("parameters/Door_Idle/blend_amount", 0.0)
 
 			AnimStates.DESPAWN:
-				emit_poof_particles()
+				if previous_anim == AnimStates.IDLE:
+					emit_poof_particles()
 				AudioManager.sfx_play(AudioManager.sfx_despawn)
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 1.0)
@@ -118,17 +118,16 @@ func _set_door_anim(anim : AnimStates):
 				exit_anim_finished.emit()
 				_set_door_anim(AnimStates.STASIS)
 	else:
-		#AnimStates.STASIS:
-		anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
-		anim_tree.set("parameters/DoorExit/blend_amount", 0.0)
 		pass
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	_set_door_anim(AnimStates.STASIS)
+	stasis()
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
 	DialogueManager.change_king.connect(change_king_door)
+	tree_entered.connect(stasis)
 
 
 func spawn():
@@ -158,6 +157,9 @@ func interact():
 			player.exit_check = true
 			var rig = player.get_child(2)
 			var clone = rig.duplicate()
+			for detector in clone.get_children():
+				if detector.name == &"InteractionDetector":
+					detector.queue_free()
 			get_tree().root.add_child(clone)
 			rig.visible = false
 			rig._set_player_anim(rig.AnimStates.IDLE)
@@ -169,7 +171,6 @@ func interact():
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
 			_set_door_anim(AnimStates.STASIS)
-				
 	else:
 		AudioManager.sfx_play(AudioManager.sfx_sadhonk)
 
@@ -190,4 +191,10 @@ func emit_poof_particles() -> void:
 
 
 func exit_anim_particles() -> void:
-	vfx_anim_player.play("VFX_Door_Sequence")
+	var clone_vfx = vfx_parent.duplicate()
+	add_child.call_deferred(clone_vfx)
+	for animplayer in clone_vfx.get_children():
+		if animplayer is AnimationPlayer:
+			animplayer.play("VFX_Door_Sequence")
+			await animplayer.animation_finished
+			clone_vfx.queue_free()
