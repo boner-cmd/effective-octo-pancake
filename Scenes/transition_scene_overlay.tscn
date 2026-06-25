@@ -29,35 +29,37 @@ animations = [{
 
 [node name="TransitionSceneOverlay" type="CanvasLayer" unique_id=1436646535]
 
-[node name="Transition_Rect" type="ColorRect" parent="." unique_id=1940508552]
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1940508552]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("1_8cajw")]
-visible = false
-
-[node name="Transition_Rect_White" type="ColorRect" parent="." unique_id=1198278288]
+[node name="TransitionRectWhite" type="ColorRect" parent="." unique_id=1198278288]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1908958849]
+[node name="CutoutTransition" type="BackBufferCopy" parent="." unique_id=1908958849]
+unique_name_in_owner = true
 texture_filter = 1
 copy_mode = 2
 
-[node name="Transition_BG" type="ColorRect" parent="BackBufferCopy" unique_id=1192201563]
+[node name="CutoutBG" type="ColorRect" parent="CutoutTransition" unique_id=1192201563]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimatedCutout" type="AnimatedSprite2D" parent="BackBufferCopy" unique_id=1381430212]
+[node name="AnimatedCutout" type="AnimatedSprite2D" parent="CutoutTransition" unique_id=1381430212]
+unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_hj8dv")
 position = Vector2(640, 360)
@@ -65,3 +67,7 @@ scale = Vector2(50, 50)
 sprite_frames = SubResource("SpriteFrames_24lvp")
 autoplay = "default"
 frame_progress = 0.07595756
+
+[node name="ControlSchematicFull" parent="." unique_id=700114868 instance=ExtResource("1_8cajw")]
+unique_name_in_owner = true
+visible = false

@@ -22,6 +22,13 @@ var pause_state : PAUSESTATE = PAUSESTATE.UNPAUSED
 var interact_touched : INTERACT_TYPE = INTERACT_TYPE.NONE
 var previous_interact : INTERACT_TYPE = INTERACT_TYPE.NONE
 
+var transition_color: ColorRect
+var transition_white: ColorRect
+var control_schematic_full: Control
+var cutout_transition_parent : BackBufferCopy
+var cutout_bg : ColorRect
+var animated_cutout : AnimatedSprite2D
+
 var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 
 @onready var inventory : Control = $PauseContainer/Inventory
@@ -32,8 +39,7 @@ var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 
 @onready var main_scene: Node3D = $".."
 @onready var transition_scene: CanvasLayer = get_tree().root.get_child(get_tree().root.get_children().find_custom(func(n : Node): return n.name == "TransitionSceneOverlay"))
-@onready var transition_color: ColorRect = transition_scene.get_child(0)
-@onready var control_schematic_full: Control = transition_scene.get_child(1)
+
 @onready var keyboard_controls_menu: Control = %KeyboardControlsMenu
 @onready var audio_control: VBoxContainer = %AudioControlVBox
 @onready var map : TextureRect = %Map
@@ -59,11 +65,26 @@ var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 
 ## TODO documentation
 func _ready() -> void:
+	for nodes in transition_scene.get_children():
+		if nodes.name == &"TransitionRect":
+			transition_color = nodes
+		if nodes.name == &"ControlSchematicFull":
+			control_schematic_full = nodes
+		if nodes.name == &"TransitionRectWhite":
+			transition_white = nodes
+		if nodes.name == &"CutoutTransition":
+			cutout_transition_parent = nodes
+	for nodes in cutout_transition_parent.get_children():
+		if nodes.name == &"CutoutBG":
+			cutout_bg = nodes
+		if nodes.name == &"AnimatedCutout":
+			animated_cutout = nodes
 	# set default visiblity states and modulation
 	visible = true
 	map.visible = false
 	pause_menu.visible = false
-	transition_color.visible = true
+	transition_color.visible = false
+	animated_cutout.scale = Vector2(.01,.01)
 	interact_door_open.visible = false
 	interact_door_locked.visible = false
 	interact_npc_margin.visible = false
@@ -93,6 +114,7 @@ func _ready() -> void:
 	#control schematics UI stuff here
 	await get_tree().create_timer(.1).timeout
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	
 
 
 func _process(_delta: float) -> void:
@@ -158,6 +180,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				interact_npc_margin.modulate.a = 0.01
 		if interact_touched == INTERACT_TYPE.DOOR_OPEN:
 			interact_touched = INTERACT_TYPE.NONE
+			await get_tree().create_timer(1).timeout
+			await transition()
 
 
 func _on_quit_button_pressed() -> void:
@@ -368,12 +392,38 @@ func reset_pause_menu() -> void:
 
 
 func transition() -> void:
-	transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
-	transition_color.visible = true
+	#transition_color.self_modulate = Color(0.0,0.0,0.0,1.0)
+	#transition_color.visible = true
+	#await get_tree().create_timer(.1).timeout
+	#await tween_object(transition_color, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	#transition_color.visible = false
+	#transition_color.modulate.a = 1.0
+	if animated_cutout.scale.x > .01:
+		await transition_cutout_in()
+	else:
+		await transition_cutout_out()
+
+
+func transition_cutout_in() -> void:
+	await tween_object(animated_cutout, "scale", Vector2(0.01, 0.01), .4, Tween.TRANS_SINE, Tween.EASE_OUT)
+
+
+func transition_cutout_out() -> void:
 	await get_tree().create_timer(.1).timeout
-	await tween_object(transition_color, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	transition_color.visible = false
+	await tween_object(animated_cutout, "scale", Vector2(50.0, 50.0), .4, Tween.TRANS_SINE, Tween.EASE_OUT)
+
+
+func transition_victory() -> void:
+	transition_white.visible = true
+	transition_white.modulate.a = 0.0
+	await get_tree().create_timer(3.0).timeout
+	await tween_object(transition_white, "modulate:a", 1.0, 2.0, Tween.TRANS_SINE, Tween.EASE_IN)
+	await get_tree().create_timer(3.0).timeout
+	transition_color.visible = true
 	transition_color.modulate.a = 1.0
+	await get_tree().create_timer(3.0).timeout
+	await tween_object(transition_white, "modulate:a", 0.0, 2.0, Tween.TRANS_SINE, Tween.EASE_OUT)
+	await get_tree().create_timer(3.0).timeout
 
 
 func activate_tween_interact(interact_parent : MarginContainer) -> void:

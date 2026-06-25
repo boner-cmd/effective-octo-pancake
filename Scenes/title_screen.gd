@@ -151,6 +151,7 @@ func transition_sequence() -> void:
 	await tween_object(transition, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	transition_scene = TRANSITION_SCENE_OVERLAY.instantiate()
 	get_tree().root.add_child(transition_scene)
+	transition_scene.request_ready()
 
 
 func _on_continue_button_pressed() -> void:

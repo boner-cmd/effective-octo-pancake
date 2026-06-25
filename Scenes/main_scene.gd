@@ -59,7 +59,7 @@ func on_planet_change_requested(planet_ID : int):
 	Player._camera.current = true
 	var requested_planet = planet_nodes[planet_ID]
 	requested_planet.request_ready() # required to re-roll object locations on planet
-	hud_overlay.transition()
+	#await hud_overlay.transition()
 	map.unhide_elements(planet_ID)
 	AudioManager.bgm_cycle(planet_ID)
 	get_tree().root.add_child(requested_planet)
@@ -77,16 +77,17 @@ func on_planet_change_requested(planet_ID : int):
 		inventory.visible = false
 		Stopwatch.stop()
 		planet_nodes[planet_ID].request_ready()
-		hud_overlay.transition()
+		await hud_overlay.transition()
 		AudioManager.bgm_cycle(planet_ID)
 		Player.set_process_mode(Node.PROCESS_MODE_DISABLED)
 		Player.visible = false
 		Player._camera.current = false
-		hud_overlay.get_child(0).visible = false
 		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 		current_npc = DialogueManager.current_npc
 	
 	if hud_overlay.interact_door_open.visible:
 		hud_overlay.immediate_interact_hide(hud_overlay.interact_door_open)
-		
+	
+	await get_tree().create_timer(.3).timeout
 	Player.reset_player()
+	await hud_overlay.transition()
