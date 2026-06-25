@@ -137,17 +137,13 @@ collision_mask = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1692624550]
 bus = &"Sfx"
 
-[node name="walk_cycle_time" type="Timer" parent="." unique_id=1057465797]
-wait_time = 0.28
-autostart = true
-
 [node name="honk_delay" type="Timer" parent="." unique_id=1170264313]
 wait_time = 0.21
 
+[connection signal="timeout" from="ClownRigFBX/walk_cycle_time" to="ClownRigFBX" method="_on_walk_cycle_time_timeout"]
 [connection signal="area_entered" from="ClownRigFBX/InteractionDetector" to="ClownRigFBX/InteractionDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="ClownRigFBX/InteractionDetector" to="ClownRigFBX/InteractionDetector" method="_on_area_exited"]
 [connection signal="timeout" from="ClownRigFBX/ItemGetLocator/Item_Get_Sprite/Timer" to="ClownRigFBX/ItemGetLocator/Item_Get_Sprite" method="item_tween"]
 [connection signal="timeout" from="ClownRigFBX/ItemGiveLocator/Item_Give_Sprite/Timer" to="ClownRigFBX/ItemGiveLocator/Item_Give_Sprite" method="item_tween"]
-[connection signal="timeout" from="walk_cycle_time" to="ClownRigFBX" method="_on_walk_cycle_time_timeout"]
 
 [editable path="ClownRigFBX"]

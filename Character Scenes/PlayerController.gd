@@ -61,10 +61,10 @@ func player_interaction_camera() -> void:
 			clone.global_position = player_cutscene_locator.global_position
 			clone.global_rotation = player_cutscene_locator.global_rotation
 			clone._set_player_anim(clone.AnimStates.TALK)
-			clone_item_get = clone.get_child(5).get_child(0)
-			clone_item_get_bg = clone.get_child(5).get_child(1)
-			clone_item_give = clone.get_child(6).get_child(0)
-			clone_item_give_bg = clone.get_child(6).get_child(1)
+			clone_item_get = clone.get_child(6).get_child(0)
+			clone_item_get_bg = clone.get_child(6).get_child(1)
+			clone_item_give = clone.get_child(7).get_child(0)
+			clone_item_give_bg = clone.get_child(7).get_child(1)
 			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:

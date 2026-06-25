@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var walk_cycle_time: Timer 
+@onready var walk_cycle_time: Timer = $walk_cycle_time
 @export var honk_delay: Timer
 var item_get_sprite: Sprite3D
 var item_give_sprite: Sprite3D
@@ -23,9 +23,9 @@ func honk_sound_player():
 	honk_time.queue_free()
 
 func _on_walk_cycle_time_timeout() -> void:
-	if current_anim == AnimStates.WALK:
+	if current_anim == AnimStates.WALK and not DialogueManager.is_dialogue_active:
 		AudioManager.sfx_play(AudioManager.sfx_walk)
-		##TODO place particle call here
+	##TODO place particle call here
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 

@@ -1,10 +1,36 @@
 [gd_scene format=3 uid="uid://d15cvkowrk1yl"]
 
 [ext_resource type="PackedScene" uid="uid://bpvfp05icadyq" path="res://Scenes/control_schematic_full.tscn" id="1_8cajw"]
+[ext_resource type="Shader" uid="uid://cjujrsqn62fgn" path="res://UI assets/UIShaders/cutout_mask_distortion.gdshader" id="2_tdt5m"]
+[ext_resource type="Texture2D" uid="uid://bhoprcypwpl6h" path="res://UI assets/UIShaders/noise1_texture_2d.tres" id="3_otjjm"]
+[ext_resource type="Texture2D" uid="uid://bkqs0iotybusg" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_left.png" id="4_otjjm"]
+[ext_resource type="Texture2D" uid="uid://b8fibxcsct6k1" path="res://UI assets/DialogueBoxAssets/dialogue_bauble_right.png" id="5_kghkh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hj8dv"]
+shader = ExtResource("2_tdt5m")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/fps = 10.0
+shader_parameter/noise = ExtResource("3_otjjm")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24lvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_otjjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kghkh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="TransitionSceneOverlay" type="CanvasLayer" unique_id=1436646535]
 
 [node name="Transition_Rect" type="ColorRect" parent="." unique_id=1940508552]
+visible = false
 custom_minimum_size = Vector2(1280, 720)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -19,3 +45,23 @@ custom_minimum_size = Vector2(1280, 720)
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1908958849]
+texture_filter = 1
+copy_mode = 2
+
+[node name="Transition_BG" type="ColorRect" parent="BackBufferCopy" unique_id=1192201563]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedCutout" type="AnimatedSprite2D" parent="BackBufferCopy" unique_id=1381430212]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hj8dv")
+position = Vector2(640, 360)
+scale = Vector2(50, 50)
+sprite_frames = SubResource("SpriteFrames_24lvp")
+autoplay = "default"
+frame_progress = 0.07595756

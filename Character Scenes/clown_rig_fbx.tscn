@@ -296,3 +296,7 @@ parameters/Reset_Idle/seek_request = -1.0
 parameters/Exit/blend_amount = 0.0
 "parameters/TimeScale 3/scale" = 2.0
 parameters/Reset_Exit/seek_request = -1.0
+
+[node name="walk_cycle_time" type="Timer" parent="." index="4" unique_id=1181536570]
+wait_time = 0.28
+autostart = true
