@@ -16,6 +16,8 @@ var current_tweens : Dictionary = {}
 var current_options : OPTIONS
 var transition_scene: CanvasLayer
 
+var test : bool = false
+
 @onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
 @onready var title_screen_planet: MeshInstance3D = $Node3D/TitleScreenPlanet
 
@@ -154,10 +156,11 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
+	new_game_button.disabled = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	await transition_sequence()
 	kill_tweens()
-	get_tree().change_scene_to_file('res://Scenes/MainScene.tscn')
+	SaveManager.check_load()
 
 
 func _on_options_button_pressed() -> void:

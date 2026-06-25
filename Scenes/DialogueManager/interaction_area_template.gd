@@ -26,9 +26,7 @@ func _process(_delta: float) -> void:
 func interact() -> void:
 	var current_status : DialogueManager.CONV_STATE = DialogueManager.dialogue_state
 	if current_status == DialogueManager.CONV_STATE.FINISHED:
-		for node in get_tree().root.get_children():
-			if node.name == "MainScene":
-				main_planet_id = node.current_planet_id
+		main_planet_id = get_tree().get_first_node_in_group("Main").current_planet_id
 		DialogueManager.start_dialogue(DialogueManager.hud_overlay, main_planet_id, speech_sound)
 		
 		for NPC in get_children():

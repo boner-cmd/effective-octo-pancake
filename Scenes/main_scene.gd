@@ -1,19 +1,16 @@
 extends Node3D
 
-signal request_load_check
-
 var current_planet_id : int = 0
-var current_npc
+var current_npc : QuestManager.CharacterName
 # CanvasLayer is $HUDOverlay
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
 @onready var inventory : Control = $HUDOverlay/PauseContainer/Inventory
 @onready var map : TextureRect = $HUDOverlay/Map
 
-
 @onready var Player = %PlayerCharacter
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
-@onready var current_planet_node : Node3D = planet_nodes[0]
+@onready var current_planet_node : Node3D = planet_nodes[current_planet_id]
 ## TODO convert planet_nodes to use the ResourceLoader with sub-threads
 var planet_nodes : Dictionary[int, Node3D] = {
 	0 : preload("res://planets/Scenes/01_Kings_Planet.tscn").instantiate(),
@@ -40,21 +37,19 @@ var planet_nodes : Dictionary[int, Node3D] = {
 	21 : preload("res://Scenes/victory_scene.tscn").instantiate()
 }
 
-
 ## TODO switch to a Dictionary to have different voices per character
 #@onready var speech_sound = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
 
 ## TODO placeholder documentation
 func _ready() -> void:
 	# initial setup for first planet, door, and bgm
-	get_tree().root.add_child(planet_nodes[0])
-	var initial_door : Node3D = get_tree().get_nodes_in_group("Door_Base").front()
-	initial_door.request_planet_change.connect(on_planet_change_requested)
-	AudioManager.bgm_cycle(0)
+	get_tree().root.add_child(planet_nodes[current_planet_id])
+	AudioManager.bgm_cycle(current_planet_id)
+	for door in get_tree().get_nodes_in_group("Door_Base"):
+		if not door.request_planet_change.is_connected(on_planet_change_requested):
+			door.request_planet_change.connect(on_planet_change_requested)
 	Stopwatch.start()
-	request_load_check.connect(SaveManager._on_request_check_load)
-	request_load_check.emit()
-	
+
 
 func on_planet_change_requested(planet_ID : int):
 	Player.visible = true

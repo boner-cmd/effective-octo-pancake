@@ -11,7 +11,7 @@ var current_tween_index : int
 
 var sound_bool : bool = false
 var controls_bool : bool = false
-var control_acknowledge : bool = true
+var control_acknowledge : bool = false
 
 #  TODO review these
 var interaction_latch : bool = false
@@ -63,7 +63,6 @@ func _ready() -> void:
 	interact_door_open.visible = false
 	interact_door_locked.visible = false
 	interact_npc_margin.visible = false
-	transition_color.visible = true
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
 	audio_control.modulate.a = 0.0
@@ -90,7 +89,6 @@ func _ready() -> void:
 	#control schematics UI stuff here
 	await get_tree().create_timer(.1).timeout
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	control_acknowledge = false
 
 
 func _process(_delta: float) -> void:

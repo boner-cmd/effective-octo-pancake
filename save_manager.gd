@@ -19,6 +19,8 @@ var save_data : PackedByteArray = [0]
 # load_data is separate from save_data for debugging convenience
 var load_data : PackedByteArray
 var trigger_load : bool = false
+var test : bool = false
+var main : Node3D = preload("res://Scenes/MainScene.tscn").instantiate()
 
 #func _ready() -> void:
 	## TODO resize save_data to the exact length it needs to be and add data by index instead of using
@@ -114,11 +116,15 @@ func restore_state() -> void:
 			DialogueManager.sisyphus_lock = false
 			DialogueManager.king2_lock = true
 
-		get_tree().get_first_node_in_group("Main").on_planet_change_requested(load_data[1])
+		#main.get_child(1).control_acknowledge = true
+		main.current_planet_id = load_data[1]
 		HonkCounter.honk_total = load_data.decode_s16(2)
 		Stopwatch.seconds_elapsed = load_data.decode_s16(4)
 		QuestManager.states = load_data.slice(6, 12)
 		set_map_state(load_data.slice(12))
+		
+		get_tree().root.add_child(main)
+		get_node("/root/TitleScreen").free()
 
 	else:
 		print("read failed")
@@ -143,14 +149,13 @@ func set_map_state(b : PackedByteArray) -> void:
 		child.visible = map_visibility[child.name]
 
 
-func set_quest_state() -> void:
-	pass
-
-
-func _on_request_check_load() -> void:
+func check_load() -> void:
 	if trigger_load:
 		restore_state()
 		trigger_load = false
+	else:
+		get_node(^"/root/TitleScreen").free()
+		get_tree().root.add_child(main)
 
 
 ### @experimental not implemented yet
