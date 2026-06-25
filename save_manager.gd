@@ -20,7 +20,8 @@ var inventory_control : Control
 
 # load_data is separate from save_data for debugging convenience
 var load_data : PackedByteArray
-var compressed_data : PackedByteArray # set in TitleScreen when clicking Continue
+# set in TitleScreen when clicking Continue as well as by write_data()
+var compressed_data : PackedByteArray
 var save_data : PackedByteArray = [0]
 
 var trigger_load : bool = false
@@ -81,7 +82,7 @@ func save_game():
 
 func write_data(d : PackedByteArray) -> bool:
 	print(d.size())
-	var compressed_data : PackedByteArray = d.compress(FileAccess.COMPRESSION_GZIP)
+	compressed_data = d.compress(FileAccess.COMPRESSION_GZIP)
 	var file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.WRITE)
 	return file.store_buffer(compressed_data)
 
@@ -167,6 +168,7 @@ func check_load() -> void:
 		trigger_load = false
 	else:
 		get_node(^"/root/TitleScreen").free()
+		main = preload("res://Scenes/MainScene.tscn").instantiate()
 		get_tree().root.add_child(main)
 
 
