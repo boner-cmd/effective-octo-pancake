@@ -24,8 +24,10 @@ var previous_interact : INTERACT_TYPE = INTERACT_TYPE.NONE
 
 var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var player_rig = player.clown
+@onready var inventory : Control = $PauseContainer/Inventory
+
+@onready var player : Node3D = get_tree().get_first_node_in_group("Player")
+@onready var player_rig : Node3D = player.clown
 @onready var interaction_detector : Area3D = player_rig.get_child(player_rig.get_children().find_custom(func(n : Node): return n.name == "InteractionDetector"))
 
 @onready var main_scene: Node3D = $".."

@@ -15,16 +15,19 @@ extends Node
 	#188, 189, 190, 191,
 	#]
 
-var save_data : PackedByteArray = [0]
+var main : Node3D
+var inventory_control : Control
+
 # load_data is separate from save_data for debugging convenience
 var load_data : PackedByteArray
+var save_data : PackedByteArray = [0]
+
 var trigger_load : bool = false
 var test : bool = false
-var main : Node3D = preload("res://Scenes/MainScene.tscn").instantiate()
 
+# TODO resize save_data to the exact length it needs to be and add data by index instead of using
+# append()
 #func _ready() -> void:
-	## TODO resize save_data to the exact length it needs to be and add data by index instead of using
-	## append()
 	#save_data.resize(4)
 
 
@@ -61,7 +64,14 @@ func save_game():
 	# quest data, bytes 6 - 11
 	save_data.append_array(QuestManager.states)
 
-	# map state, bytes 12 - 1923
+	# inventory state, bytes 12-14
+	var inventory_dict : Dictionary[StringName, int] = get_tree().get_first_node_in_group("Inventory").inventory_slots
+	save_data.append(inventory_dict.values()[0])
+	save_data.append(inventory_dict.values()[1])
+	save_data.append(inventory_dict.values()[2])
+
+	# map state, bytes 15 - 1939
+	# TODO verify that map state is of consistent size
 	save_data.append_array(get_map_state())
 
 	if not write_data(save_data):
@@ -69,17 +79,16 @@ func save_game():
 
 
 func write_data(d : PackedByteArray) -> bool:
+	print(d.size())
 	var compressed_data : PackedByteArray = d.compress(FileAccess.COMPRESSION_GZIP)
 	var file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.WRITE)
 	return file.store_buffer(compressed_data)
 
 
 func read_data() -> bool:
-	# can remove the below comment if get_file_as_bytes works
-	#var file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.READ)
 	var compressed_data : PackedByteArray = FileAccess.get_file_as_bytes("user://Attentive_Helper_Data.dat")
-	# TODO once the max size of the decompressed data is confirmed, can use decompress() with a fixed buffer size
-	var decompressed_data : PackedByteArray = compressed_data.decompress_dynamic(-1, FileAccess.COMPRESSION_GZIP)
+	# TODO verify that the buffer size is correct
+	var decompressed_data : PackedByteArray = compressed_data.decompress(1939, FileAccess.COMPRESSION_GZIP)
 	if FileAccess.get_open_error():
 		print("File access failed")
 		return false
@@ -115,15 +124,19 @@ func restore_state() -> void:
 			DialogueManager.gate_lock = false
 			DialogueManager.sisyphus_lock = false
 			DialogueManager.king2_lock = true
-
-		#main.get_child(1).control_acknowledge = true
+		
+		main = preload("res://Scenes/MainScene.tscn").instantiate()
 		main.current_planet_id = load_data[1]
 		HonkCounter.honk_total = load_data.decode_s16(2)
 		Stopwatch.seconds_elapsed = load_data.decode_s16(4)
 		QuestManager.states = load_data.slice(6, 12)
-		set_map_state(load_data.slice(12))
-		
+		set_map_state(load_data.slice(15))
+
 		get_tree().root.add_child(main)
+		inventory_control = main.hud_overlay.inventory
+		if load_data[12]: inventory_control.add_item(load_data[12])
+		if load_data[13]: inventory_control.add_item(load_data[13])
+		if load_data[14]: inventory_control.add_item(load_data[14])
 		get_node("/root/TitleScreen").free()
 
 	else:
@@ -135,7 +148,6 @@ func get_map_state() -> PackedByteArray:
 	var map_visibility : Dictionary[StringName, bool]
 	for child in get_tree().get_nodes_in_group(&"Map_Elements"):
 		map_visibility[child.name] = child.visible
-	print(map_visibility)
 	return var_to_bytes(map_visibility)
 
 

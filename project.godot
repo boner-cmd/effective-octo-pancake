@@ -49,6 +49,7 @@ Current_Tweened_Objects="group for tweens to be added to"
 Map_Elements="For reading map visibility when saving/loading"
 Main="main scene"
 Start_Menu_Buttons=""
+Inventory="Inventory"
 
 [input]
 
