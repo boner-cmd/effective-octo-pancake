@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b2krcvl2csd6x" path="res://Scenes/main_scene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://bdas7npc5wwhx" path="res://Character Scenes/player_character.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://b58oygg7njg67" path="res://Scenes/HUDScene.tscn" id="2_y4jh7"]
-[ext_resource type="Material" uid="uid://p6axcgo36jli" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_1.tres" id="4_7rqgy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ylgs7"]
 radius = 5.0
@@ -45,18 +44,6 @@ autoplay = "default"
 unique_name_in_owner = true
 follow_viewport_enabled = true
 
-[node name="ItemSlot1Contents" parent="HUDOverlay/PauseContainer/Inventory" parent_id_path=PackedInt32Array(1314492231, 1618580870) index="0" unique_id=2141845565]
-material = ExtResource("4_7rqgy")
-
-[node name="ItemSlot2Contents" parent="HUDOverlay/PauseContainer/Inventory" parent_id_path=PackedInt32Array(1314492231, 1618580870) index="1" unique_id=480771446]
-material = ExtResource("4_7rqgy")
-
-[node name="ItemSlot3Contents" parent="HUDOverlay/PauseContainer/Inventory" parent_id_path=PackedInt32Array(1314492231, 1618580870) index="2" unique_id=1921023327]
-material = ExtResource("4_7rqgy")
-
-[node name="NextIndicator" parent="HUDOverlay/InteractMargin/Control" parent_id_path=PackedInt32Array(1314492231, 1527224117) index="0" unique_id=625676884]
-visible = true
-
 [node name="DefaultLoadingPlanet" type="StaticBody3D" parent="." unique_id=7469528]
 unique_name_in_owner = true
 collision_layer = 2
@@ -69,4 +56,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.251513, 0)
 
 [editable path="PlayerCharacter"]
 [editable path="PlayerCharacter/ClownRigFBX"]
-[editable path="HUDOverlay"]

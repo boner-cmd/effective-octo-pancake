@@ -1843,7 +1843,6 @@ mouse_filter = 2
 
 [node name="NextIndicator" type="AnimatedSprite2D" parent="InteractMargin/Control" unique_id=625676884]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 material = ExtResource("50_c6udc")
 position = Vector2(640, 43)

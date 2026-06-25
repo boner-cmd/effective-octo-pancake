@@ -77,7 +77,7 @@ func close_text_box() -> void:
 	await get_tree().create_timer(.1).timeout
 	tween_object(BaubleLeft, "position:x",  -32.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 	tween_object(BaubleRight, "position:x", 32.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
-	tween_object(DialogueBox, "scale:x", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
+	await tween_object(DialogueBox, "scale:x", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 
 
 func display_text(text_to_display: String, speech_sfx: AudioStream):
