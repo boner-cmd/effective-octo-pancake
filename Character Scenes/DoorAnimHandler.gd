@@ -28,9 +28,6 @@ const door_mats : Dictionary[int, Material] = {
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
 var player : CharacterBody3D
-
-var door_camera_position : Vector3
-var door_camera_rotation : Vector3
 var temp_rotation : Vector3
 var towards_rotation : float
 
@@ -47,7 +44,7 @@ var previous_anim := AnimStates.STASIS
 @onready var player_exit_position: Node3D = $DoorAnims/PlayerAnimationPosition
 @onready var spawn_poof_particles: GPUParticles3D = $DoorVFX/SpawnPoofParticles
 @onready var vfx_parent : Node3D = $DoorVFX
-@onready var temp_camera_location : Node3D = $DoorAnims/DoorCameraPosition
+@onready var door_camera: Camera3D = $DoorAnims/Camera3D
 
 signal exit_anim_finished()
 signal exit_anim_started()
@@ -155,6 +152,7 @@ func interact():
 	if not door_locked:
 		if player.exit_check == false:
 			player.exit_check = true
+			door_camera.make_current()
 			var rig = player.get_child(2)
 			var clone = rig.duplicate()
 			for detector in clone.get_children():
@@ -170,6 +168,7 @@ func interact():
 			rig.visible = true
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
+			player._camera.make_current()
 			_set_door_anim(AnimStates.STASIS)
 	else:
 		AudioManager.sfx_play(AudioManager.sfx_sadhonk)

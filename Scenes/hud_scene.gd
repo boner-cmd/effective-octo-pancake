@@ -154,6 +154,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				interaction_latch = false
 				tween_vignette_switch(false)
 				interact_npc_margin.modulate.a = 0.01
+		if interact_touched == INTERACT_TYPE.DOOR_OPEN:
+			interact_touched = INTERACT_TYPE.NONE
 
 
 func _on_quit_button_pressed() -> void:

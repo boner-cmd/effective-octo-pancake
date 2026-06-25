@@ -1,11 +1,10 @@
 extends CharacterBody3D
 #camera tweaks
-var player_cutscene_locator: Node3D
+var player_cutscene_locator: Node3D ##Clone Locator for dialogue cutscenes
 var _cam_frame_both: Camera3D
 var _cam_player_give: Camera3D
 var _cam_player_receive: Camera3D
 
-var npc_camera_locator = Node3D
 var interaction_flip : bool = false
 var temp_npc = Node3D
 var clone : Node3D
