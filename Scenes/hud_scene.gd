@@ -22,6 +22,8 @@ var pause_state : PAUSESTATE = PAUSESTATE.UNPAUSED
 var interact_touched : INTERACT_TYPE = INTERACT_TYPE.NONE
 var previous_interact : INTERACT_TYPE = INTERACT_TYPE.NONE
 
+var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
+
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var player_rig = player.clown
 @onready var interaction_detector : Area3D = player_rig.get_child(player_rig.get_children().find_custom(func(n : Node): return n.name == "InteractionDetector"))
@@ -217,7 +219,8 @@ func _on_menu_button_pressed() -> void:
 	get_tree().root.remove_child(get_parent().current_planet_node)
 	AudioManager.bgm_cycle(22)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().call_deferred("change_scene_to_file", 'uid://duig5pisbnbl8')
+	get_tree().root.add_child(TITLE_SCREEN)
+	main_scene.free()
 
 
 func _on_any_mouse_button_entered(source : Object) -> void:
