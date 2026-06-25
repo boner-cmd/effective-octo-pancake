@@ -53,6 +53,10 @@ func player_interaction_camera() -> void:
 	if DialogueManager.is_dialogue_active:
 		if not clone: #makes clone for interaction
 			clone = clown.duplicate()
+			for detector in clone.get_children():
+				if detector.name == &"InteractionDetector":
+					detector.queue_free()
+			clone.get_child(5)
 			get_tree().root.add_child(clone)
 			clown.visible = false
 			clone.global_position = player_cutscene_locator.global_position
@@ -62,6 +66,7 @@ func player_interaction_camera() -> void:
 			clone_item_get_bg = clone.get_child(5).get_child(1)
 			clone_item_give = clone.get_child(6).get_child(0)
 			clone_item_give_bg = clone.get_child(6).get_child(1)
+			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
 				if Input.is_action_just_pressed("jump"):

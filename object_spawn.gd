@@ -6,6 +6,13 @@ extends Node3D
 @export var Obj_4 : Node3D
 @export var Obj_5 : Node3D
 
+@onready var obj_array : Array =[
+	Obj_2,
+	Obj_3,
+	Obj_4,
+	Obj_5,
+]
+
 var obj_determine_placement : Array = [
 	0,
 	1,
@@ -69,16 +76,17 @@ func reset_array() -> void:
 func placement():
 	reset_array()
 	Array_Choice = obj_determine_placement.pick_random()
-	if Array_Choice == 0:
-		order = obj_pos_1
-	if Array_Choice == 1:
-		order = obj_pos_2
-	if Array_Choice == 2:
-		order = obj_pos_3
-	if Array_Choice == 3:
-		order = obj_pos_4
-	if Array_Choice == 4:
-		order = obj_pos_5
+	match Array_Choice:
+		0:
+			order = obj_pos_1
+		1:
+			order = obj_pos_2
+		2:
+			order = obj_pos_3
+		3:
+			order = obj_pos_4
+		4:
+			order = obj_pos_5
 	order.shuffle()
 	
 	if InteractionArea:
@@ -86,14 +94,9 @@ func placement():
 		var king = InteractionArea.get_child(0).get_child(9)
 		if king.visible:
 			king.request_ready()
-	if Obj_2:
-		Obj_2.rotation_degrees = order.pop_back()
-	if Obj_3:
-		Obj_3.rotation_degrees = order.pop_back()
-	if Obj_4:
-		Obj_4.rotation_degrees = order.pop_back()
-	if Obj_5:
-		Obj_5.rotation_degrees = order.pop_back()
+	for obj in obj_array:
+		if obj:
+			obj.rotation_degrees = order.pop_back()
 
 
 func _ready() -> void:
@@ -102,11 +105,6 @@ func _ready() -> void:
 
 
 func door_anim_reset() -> void:
-	if Obj_2:
-		Obj_2.get_child(0).stasis()
-	if Obj_3:
-		Obj_3.get_child(0).stasis()
-	if Obj_4:
-		Obj_4.get_child(0).stasis()
-	if Obj_5:
-		Obj_5.get_child(0).stasis()
+	for obj in obj_array:
+		if obj:
+			obj.get_child(0).stasis()

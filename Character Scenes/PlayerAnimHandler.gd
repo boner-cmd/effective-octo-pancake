@@ -25,6 +25,7 @@ func honk_sound_player():
 func _on_walk_cycle_time_timeout() -> void:
 	if current_anim == AnimStates.WALK:
 		AudioManager.sfx_play(AudioManager.sfx_walk)
+		##TODO place particle call here
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 

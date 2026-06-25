@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bhr3daubfevc3"]
+
+[ext_resource type="ArrayMesh" uid="uid://bre33cu8axrfc" path="res://VFX assets/vfx_wind_mesh.tres" id="1_s7tg1"]
+[ext_resource type="Texture2D" uid="uid://dcbof7tq3lcj0" path="res://VFX assets/wind_streak.png" id="2_xp7tx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yau1q"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_xp7tx")
+uv1_scale = Vector3(2.5, 2.5, 2.5)
+uv1_offset = Vector3(-0.745, 0.205, 0)
+texture_filter = 0
+texture_repeat = false
+
+[node name="WindVFX" type="PathFollow3D" unique_id=140846161]
+transform = Transform3D(-4.371139e-08, 0, -0.9999998, 0, 0.9999998, 0, 1, 0, -4.371138e-08, 0, 0, 0)
+
+[node name="WindMesh" type="MeshInstance3D" parent="." unique_id=796186251]
+transform = Transform3D(-2.0325798e-07, 0, 4.65, 0, 4.6500006, 0, -4.6500006, 0, -2.0325795e-07, 0, 0, 0)
+mesh = ExtResource("1_s7tg1")
+surface_material_override/0 = SubResource("StandardMaterial3D_yau1q")
