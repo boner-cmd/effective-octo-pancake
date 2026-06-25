@@ -812,7 +812,7 @@ func _input(event):
 				if current_npc == QuestManager.CharacterName.CREDITS:
 					for node in get_tree().root.get_children():
 						if node.name == "Victory Scene":
-							node.end_sequence()
+							await node.end_sequence()
 			else:
 				
 				text_box.queue_free()

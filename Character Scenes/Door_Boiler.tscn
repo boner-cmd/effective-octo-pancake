@@ -21,7 +21,7 @@ collision_mask = 1
 transform = Transform3D(-1, -4.5753543e-09, -8.730296e-08, 0, 0.99862945, -0.052335955, 8.742278e-08, -0.052335955, -0.99862945, 0, 0.21699762, -0.604)
 
 [node name="Camera3D" type="Camera3D" parent="DoorBaseModel/DoorAnims" parent_id_path=PackedInt32Array(1012687003, 1938978798) index="4" unique_id=1524589683]
-transform = Transform3D(-1, 2.9328984e-08, -8.235626e-08, 0, 0.94204575, 0.33548445, 8.742278e-08, 0.33548445, -0.94204575, 8.626282e-08, 2.447648, -6.434129)
+transform = Transform3D(-1, 3.2790172e-08, -8.1040405e-08, 0, 0.92699414, 0.37507585, 8.742278e-08, 0.37507585, -0.92699414, -2.036009e-08, 3.4248679, -7.6537533)
 
 [node name="DoorInteractRadius" type="Area3D" parent="DoorBaseModel" unique_id=1921781608 groups=["Exit_Door"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999999, 0)

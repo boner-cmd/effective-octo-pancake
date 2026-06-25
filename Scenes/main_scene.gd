@@ -77,17 +77,19 @@ func on_planet_change_requested(planet_ID : int):
 		inventory.visible = false
 		Stopwatch.stop()
 		planet_nodes[planet_ID].request_ready()
-		await hud_overlay.transition()
+		#await hud_overlay.transition()
 		AudioManager.bgm_cycle(planet_ID)
 		Player.set_process_mode(Node.PROCESS_MODE_DISABLED)
 		Player.visible = false
 		Player._camera.current = false
 		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 		current_npc = DialogueManager.current_npc
+		
 	
 	if hud_overlay.interact_door_open.visible:
 		hud_overlay.immediate_interact_hide(hud_overlay.interact_door_open)
 	
-	await get_tree().create_timer(.3).timeout
+	
 	Player.reset_player()
+	await get_tree().create_timer(.3).timeout
 	await hud_overlay.transition()

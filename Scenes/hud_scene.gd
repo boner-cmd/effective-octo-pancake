@@ -79,6 +79,7 @@ func _ready() -> void:
 			cutout_bg = nodes
 		if nodes.name == &"AnimatedCutout":
 			animated_cutout = nodes
+	DialogueManager.hud_overlay = self
 	# set default visiblity states and modulation
 	visible = true
 	map.visible = false
@@ -423,7 +424,9 @@ func transition_victory() -> void:
 	transition_color.modulate.a = 1.0
 	await get_tree().create_timer(3.0).timeout
 	await tween_object(transition_white, "modulate:a", 0.0, 2.0, Tween.TRANS_SINE, Tween.EASE_OUT)
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
+	animated_cutout.scale = Vector2(.01, .01)
+	transition_color.visible = false
 
 
 func activate_tween_interact(interact_parent : MarginContainer) -> void:
