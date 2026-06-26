@@ -90,5 +90,5 @@ func on_planet_change_requested(planet_ID : int):
 	
 	
 	Player.reset_player()
-	
+	#SaveManager.save_game()
 	

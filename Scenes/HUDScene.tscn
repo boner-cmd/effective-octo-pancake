@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b588u7s7njyqr" path="res://Scenes/hud_scene.gd" id="1_1m71x"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="2_yw1hr"]
+[ext_resource type="Texture2D" uid="uid://c5bv53ottundk" path="res://UI assets/OptionsDoodles/title screen option doodle.png" id="3_82xaf"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="5_ftghg"]
 [ext_resource type="Material" uid="uid://boa6682rd5g03" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_3.tres" id="5_qsvm7"]
 [ext_resource type="Script" uid="uid://c36k3siugrfjo" path="res://Scenes/inventory.gd" id="6_ivp0t"]
@@ -123,6 +124,52 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="DoodleContinue_Placeholder" type="Sprite2D" parent="PauseContainer" unique_id=143530192]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("49_c6udc")
+position = Vector2(848.695, 368.17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_82xaf")
+flip_h = true
+flip_v = true
+
+[node name="DoodleSound_Placeholder" type="Sprite2D" parent="PauseContainer" unique_id=1819548771]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("49_c6udc")
+position = Vector2(848.695, 368.17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_82xaf")
+flip_h = true
+
+[node name="DoodleControls_Placeholder" type="Sprite2D" parent="PauseContainer" unique_id=264141969]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("49_c6udc")
+position = Vector2(848.695, 368.17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_82xaf")
+
+[node name="DoodleMain_Placeholder" type="Sprite2D" parent="PauseContainer" unique_id=92633033]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("49_c6udc")
+position = Vector2(848.695, 368.17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_82xaf")
+flip_v = true
+
+[node name="DoodleQuit_Placeholder" type="Sprite2D" parent="PauseContainer" unique_id=1179814837]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("49_c6udc")
+position = Vector2(848.695, 368.17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_82xaf")
+flip_h = true
+flip_v = true
 
 [node name="Vignette" type="Panel" parent="PauseContainer" unique_id=1985175691]
 z_index = -100

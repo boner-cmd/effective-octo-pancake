@@ -9,6 +9,9 @@ var temp_size : float
 var current_tweens : Dictionary = {}
 var current_tween_index : int
 
+var previous_button_hovered : TextureButton
+var current_button_hovered : TextureButton
+
 var sound_bool : bool = false
 var controls_bool : bool = false
 var control_acknowledge : bool = false
@@ -57,6 +60,19 @@ var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 @onready var sound_button: TextureButton = %SoundButton
 @onready var controls_button: TextureButton = %ControlsButton
 @onready var menu_button: TextureButton = %MenuButton
+#pause menu doodles
+@onready var doodle_continue: Sprite2D = $PauseContainer/DoodleContinue_Placeholder
+@onready var doodle_sound: Sprite2D = $PauseContainer/DoodleSound_Placeholder
+@onready var doodle_controls: Sprite2D = $PauseContainer/DoodleControls_Placeholder
+@onready var doodle_menu: Sprite2D = $PauseContainer/DoodleMain_Placeholder
+@onready var doodle_quit: Sprite2D = $PauseContainer/DoodleQuit_Placeholder
+@onready var doodle_array : Array = [
+	doodle_continue,
+	doodle_sound,
+	doodle_controls,
+	doodle_menu,
+	doodle_quit,
+]
 
 @onready var transition_timer: Timer = $Timer
 
@@ -94,6 +110,8 @@ func _ready() -> void:
 	interaction_detector.exit_area_exited.connect(_on_door_exited)
 	interaction_detector.npc_entered.connect(_on_npc_entered)
 	interaction_detector.npc_exited.connect(_on_npc_exited)
+	previous_button_hovered = continue_button
+	current_button_hovered = continue_button
 	#connect mouse area blips and effects
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 		button.mouse_entered.connect(_on_any_mouse_button_entered, CONNECT_APPEND_SOURCE_OBJECT)
@@ -184,6 +202,7 @@ func _on_controls_button_pressed() -> void:
 		controls_bool = true
 		tween_object(controls_button, "position:y", 194.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 		hide_other_buttons(controls_button)
+		doodle_hide()
 		keyboard_controls_menu.visible = true
 		tween_object(keyboard_controls_menu, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	else:
@@ -192,6 +211,7 @@ func _on_controls_button_pressed() -> void:
 		tween_object(keyboard_controls_menu, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 		await get_tree().create_timer(.5).timeout
 		keyboard_controls_menu.visible = false
+		tween_object(doodle_controls, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
 		reset_pause_menu()
 
 
@@ -201,6 +221,7 @@ func _on_sound_button_pressed() -> void:
 		sound_bool = true
 		tween_object(sound_button, "position:y", 292.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 		hide_other_buttons(sound_button)
+		doodle_hide()
 		audio_control.visible = true
 		tween_object(audio_control, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	else:
@@ -208,6 +229,7 @@ func _on_sound_button_pressed() -> void:
 		tween_object(audio_control, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 		tween_object(sound_button, "position:y", 0.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 		await get_tree().create_timer(.5).timeout
+		tween_object(doodle_sound, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
 		reset_pause_menu()
 
 
@@ -227,12 +249,13 @@ func _on_menu_button_pressed() -> void:
 	main_scene.free()
 
 
-func _on_any_mouse_button_entered(source : Object) -> void:
+func _on_any_mouse_button_entered(source : TextureButton) -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	source.scale = Vector2(1.1, 1.1)
+	doodle_show(source)
 
 
-func _on_any_mouse_button_exited(source : Object) -> void:
+func _on_any_mouse_button_exited(source : TextureButton) -> void:
 	source.scale = Vector2(1.0, 1.0)
 
 
@@ -366,6 +389,38 @@ func reset_pause_menu() -> void:
 	audio_control.visible = false
 	audio_control.modulate.a = 0.0
 	sound_bool = false
+
+
+func doodle_show(button) -> void:
+	previous_button_hovered = current_button_hovered
+	current_button_hovered = button
+	
+	if previous_button_hovered != current_button_hovered:
+		match button.name:
+			&"ContinueButton":
+				doodle_hide(doodle_quit)
+				tween_object(doodle_quit, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			&"SoundButton":
+				doodle_hide(doodle_sound)
+				tween_object(doodle_sound, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			&"ControlsButton":
+				doodle_hide(doodle_controls)
+				tween_object(doodle_controls, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			&"MenuButton":
+				doodle_hide(doodle_menu)
+				tween_object(doodle_menu, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			&"QuitButton":
+				doodle_hide(doodle_quit)
+				tween_object(doodle_quit, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			_:
+				pass
+
+
+func doodle_hide(cur_doodle : Sprite2D = null) -> void:
+	for doodle in doodle_array:
+		if doodle != cur_doodle:
+			if doodle.modulate.a != 0.0:
+				tween_object(doodle, "modulate:a", 0.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
 
 
 func transition() -> void:
