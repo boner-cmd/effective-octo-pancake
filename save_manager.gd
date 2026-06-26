@@ -20,9 +20,7 @@ var inventory_control : Control
 
 # load_data is separate from save_data for debugging convenience
 var load_data : PackedByteArray
-# set in TitleScreen when clicking Continue as well as by write_data()
-var compressed_data : PackedByteArray
-var save_data : PackedByteArray = [0]
+var save_data : PackedByteArray
 
 var trigger_load : bool = false
 var test : bool = false
@@ -34,6 +32,7 @@ var test : bool = false
 
 
 func save_game():
+	save_data = [0]
 	# temporary variable to hold the results of encoding
 	var encode_placeholder : PackedByteArray = [0,0]
 	# lock logic occupies one nybble of byte 0
@@ -82,24 +81,31 @@ func save_game():
 
 func write_data(d : PackedByteArray) -> bool:
 	print(d.size())
-	compressed_data = d.compress(FileAccess.COMPRESSION_GZIP)
+	var save_compressed_data : PackedByteArray = d.compress(FileAccess.COMPRESSION_GZIP)
 	var file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.WRITE)
-	return file.store_buffer(compressed_data)
+	var success : bool = file.store_buffer(save_compressed_data)
+	file.close()
+	return success
 
 
 func read_data() -> bool:
-	# TODO verify that the buffer size is correct
-	var decompressed_data : PackedByteArray = compressed_data.decompress(1939, FileAccess.COMPRESSION_GZIP)
+	var load_file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.READ)
 	if FileAccess.get_open_error():
 		print("File access failed")
 		return false
+	var load_compressed_data : PackedByteArray = load_file.get_buffer(load_file.get_length())
+	# TODO verify that the buffer size is correct
+	var decompressed_data : PackedByteArray = load_compressed_data.decompress(1939, FileAccess.COMPRESSION_GZIP)
+	
 	#if not quest_state_valid():
 		#print("Quest state validation failed")
 		#return false
 	#if not planet_id_valid():
 		#print("Planet ID validation failed")
 		#return false
+		
 	load_data = decompressed_data
+	load_file.close()
 	return true
 
 
