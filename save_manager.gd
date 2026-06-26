@@ -133,9 +133,10 @@ func restore_state() -> void:
 			DialogueManager.king2_lock = true
 		
 		main = preload("res://Scenes/MainScene.tscn").instantiate()
+		main.current_planet_id = load_data[1]
 		get_tree().root.add_child(main)
 		
-		main.current_planet_id = load_data[1]
+		
 		HonkCounter.honk_total = load_data.decode_s16(2)
 		Stopwatch.seconds_elapsed = load_data.decode_s16(4)
 		QuestManager.states = load_data.slice(6, 12)
