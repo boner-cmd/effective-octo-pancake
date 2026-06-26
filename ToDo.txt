@@ -5,7 +5,6 @@ MAIN
 	ASSETS
 		NPC Models, Anims, Textures
 		Building and refining Michaelwave Scene
-		Body with organs skybox needs replacing
 		
 	FEATURES
 		SAVING
@@ -91,7 +90,4 @@ SOUND - 2.5 days ish
 	Different default speech noises
 	Unique speech sound per NPC (?)
 		Maybe its just an initial babble?
-	Michaelwave music + Lamp music
 	Mastering of SFX/changing some
-	Fix horse music bass
-	Borgans doesn't loop right
