@@ -61,7 +61,7 @@ var test : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveManager.compressed_data = FileAccess.get_file_as_bytes("user://Attentive_Helper_Data.dat")
-	if SaveManager.read_data() == false:
+	if FileAccess.get_open_error():
 		continue_button.disabled = true
 		continue_button.material = SMALL_UI_MATERIAL_3
 		continue_button.get_child(0).modulate.a = .5
