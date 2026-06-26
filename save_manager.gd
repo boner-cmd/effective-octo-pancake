@@ -133,13 +133,14 @@ func restore_state() -> void:
 			DialogueManager.king2_lock = true
 		
 		main = preload("res://Scenes/MainScene.tscn").instantiate()
+		get_tree().root.add_child(main)
+		
 		main.current_planet_id = load_data[1]
 		HonkCounter.honk_total = load_data.decode_s16(2)
 		Stopwatch.seconds_elapsed = load_data.decode_s16(4)
 		QuestManager.states = load_data.slice(6, 12)
 		set_map_state(load_data.slice(15))
-
-		get_tree().root.add_child(main)
+		
 		inventory_control = main.hud_overlay.inventory
 		if load_data[12]: inventory_control.add_item(load_data[12])
 		if load_data[13]: inventory_control.add_item(load_data[13])
@@ -166,7 +167,6 @@ func set_map_state(b : PackedByteArray) -> void:
 	var map_elements : Array[Node] = get_tree().get_nodes_in_group(&"Map_Elements")
 	for child in map_elements:
 		child.visible = map_visibility[child.name]
-
 
 func check_load() -> void:
 	if trigger_load:
