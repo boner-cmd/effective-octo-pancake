@@ -1,4 +1,13 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bbtlar482o6lv"]
 
+[ext_resource type="Texture2D" uid="uid://bweaqgsovuogi" path="res://planets/textures/Planet Textures/michaelwave planet texture.png" id="1_s0o03"]
+[ext_resource type="Texture2D" uid="uid://yx8oshbvdda5" path="res://planets/textures/Planet Textures/michaelwave planet roughness.png" id="2_gu0vc"]
+
 [resource]
-uv1_scale = Vector3(2, 2, 2)
+albedo_texture = ExtResource("1_s0o03")
+metallic = 0.77
+roughness_texture = ExtResource("2_gu0vc")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

@@ -2,7 +2,7 @@
 
 [resource]
 transparency = 1
+shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 vertex_color_use_as_albedo = true
-ao_enabled = true
