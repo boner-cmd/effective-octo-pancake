@@ -246,6 +246,7 @@ func _on_menu_button_pressed() -> void:
 	AudioManager.bgm_cycle(22)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().root.add_child(TITLE_SCREEN)
+	TITLE_SCREEN.request_ready()
 	main_scene.free()
 
 
