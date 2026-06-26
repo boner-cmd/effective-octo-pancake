@@ -17,6 +17,7 @@
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="13_75epk"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="14_3ah5x"]
 [ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/LARGE_UI_MATERIAL_1.tres" id="15_jhb10"]
+[ext_resource type="Texture2D" uid="uid://c5bv53ottundk" path="res://UI assets/OptionsDoodles/title screen option doodle.png" id="16_1xqr1"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="17_deutk"]
 [ext_resource type="Material" uid="uid://j7af50emycsi" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_4_HSLIDER.tres" id="18_fvr0n"]
 [ext_resource type="Theme" uid="uid://duv00eumyyl7w" path="res://UI assets/hslider assets/hslider_theme.tres" id="19_o6bmn"]
@@ -473,6 +474,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_disabled = ExtResource("11_4hokt")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/ContinueButton" unique_id=876850199]
@@ -568,7 +570,6 @@ text = "quit"
 
 [node name="OptionsControl" type="Control" parent="CanvasLayer" unique_id=1537814195]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 8
@@ -583,6 +584,38 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
+
+[node name="DoodleControls_Placeholder" type="Sprite2D" parent="CanvasLayer/OptionsControl" unique_id=206055091]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("13_75epk")
+position = Vector2(767.48, 351.19)
+texture = ExtResource("16_1xqr1")
+
+[node name="DoodleSound_Placeholder" type="Sprite2D" parent="CanvasLayer/OptionsControl" unique_id=521730894]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("13_75epk")
+position = Vector2(767.48, 351.19)
+texture = ExtResource("16_1xqr1")
+flip_h = true
+
+[node name="DoodleCredits_Placeholder" type="Sprite2D" parent="CanvasLayer/OptionsControl" unique_id=1588413688]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("13_75epk")
+position = Vector2(767.48, 351.19)
+texture = ExtResource("16_1xqr1")
+flip_v = true
+
+[node name="DoodleOptions_Placeholder" type="Sprite2D" parent="CanvasLayer/OptionsControl" unique_id=604759500]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("13_75epk")
+position = Vector2(767.48, 351.19)
+texture = ExtResource("16_1xqr1")
+flip_h = true
+flip_v = true
 
 [node name="Vignette" type="Panel" parent="CanvasLayer/OptionsControl" unique_id=397465115]
 layout_mode = 0

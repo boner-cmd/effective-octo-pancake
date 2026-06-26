@@ -5,6 +5,8 @@ enum OPTIONS {NONE, SOUND, CONTROLS, CREDITS}
 const MENU_BUTTON_SELECTED_CHROMAKEY = preload("uid://dryfbaibo6t1f")
 const MENU_BUTTON_UNSELECTED_CROMAKEY = preload("uid://62yo4oa5rjca")
 const TRANSITION_SCENE_OVERLAY = preload("uid://d15cvkowrk1yl") # transition scene overlay
+const SMALL_UI_MATERIAL_1 = preload("uid://p6axcgo36jli")
+const SMALL_UI_MATERIAL_3 = preload("uid://boa6682rd5g03")
 
 var letter_array : Array = []
 var tween_letter : Tween
@@ -35,6 +37,9 @@ var test : bool = false
 @onready var credits_button: TextureButton = %CreditsButton
 @onready var return_button: TextureButton = %ReturnButton
 
+@onready var current_button_hovered : TextureButton = new_game_button
+@onready var previous_button_hovered : TextureButton = new_game_button
+
 @onready var start_menu_control: Control = %StartMenuControl
 @onready var options_control: Control = %OptionsControl
 
@@ -45,23 +50,32 @@ var test : bool = false
 @onready var transition: ColorRect = %Transition
 
 
+@onready var doodle_controls: Sprite2D = $CanvasLayer/OptionsControl/DoodleControls_Placeholder
+@onready var doodle_sound: Sprite2D = $CanvasLayer/OptionsControl/DoodleSound_Placeholder
+@onready var doodle_credits: Sprite2D = $CanvasLayer/OptionsControl/DoodleCredits_Placeholder
+@onready var doodle_options: Sprite2D = $CanvasLayer/OptionsControl/DoodleOptions_Placeholder
+
+@onready var doodle_array : Array = [doodle_controls, doodle_sound, doodle_credits, doodle_options,]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveManager.compressed_data = FileAccess.get_file_as_bytes("user://Attentive_Helper_Data.dat")
-	if FileAccess.get_open_error():
+	if SaveManager.read_data() == false:
 		continue_button.disabled = true
+		continue_button.material = SMALL_UI_MATERIAL_3
+		continue_button.get_child(0).modulate.a = .5
+	else:
+		continue_button.material = SMALL_UI_MATERIAL_1
 	timer.wait_time = timer_time
 	letter_array = title_screen_letters.get_children()
 	tween_letters()
 	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
 	_set_initial()
-	
 
 
 func _process(delta: float) -> void:
 	title_screen_planet.rotation_degrees.x -= delta * 15.0
-	
 	if title_screen_planet.rotation_degrees.x < -360.0:
 		title_screen_planet.rotation_degrees.x = 0.0
 
@@ -168,6 +182,8 @@ func _on_new_game_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
+	doodle_options.modulate.a = 1.0
+	
 	current_options = OPTIONS.NONE
 	continue_button.disabled = true
 	new_game_button.disabled = true
@@ -183,6 +199,7 @@ func _on_options_button_pressed() -> void:
 	sound_button.disabled = false
 	credits_button.disabled = false
 	return_button.disabled = false
+
 
 func _on_return_button_pressed() -> void:
 	handle_options()
@@ -205,12 +222,24 @@ func _on_return_button_pressed() -> void:
 
 func _on_options_item_pressed(tweened_object : Object, options_enum : OPTIONS, button : TextureButton) -> void:
 	handle_options()
+	for doodle in doodle_array:
+		doodle.modulate.a = 0.0
+	
 	if current_options != options_enum:
 		button.texture_normal = MENU_BUTTON_SELECTED_CHROMAKEY
-		tween_object(tweened_object, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
+		tween_object(tweened_object, "modulate:a", 1.0, .4, Tween.TRANS_SINE, Tween.EASE_OUT)
 		current_options = options_enum
 	else:
 		button.texture_normal = MENU_BUTTON_UNSELECTED_CROMAKEY
+		match current_options:
+			OPTIONS.CONTROLS:
+				tween_object(doodle_controls, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			OPTIONS.SOUND:
+				tween_object(doodle_sound, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			OPTIONS.CREDITS:
+				tween_object(doodle_credits, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+			_:
+				pass
 		current_options = OPTIONS.NONE
 
 
@@ -241,17 +270,36 @@ func _on_timer_timeout() -> void:
 
 
 func _on_mouse_entered_or_focus(button) -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
-	button.scale = Vector2(1.1, 1.1)
+	if button.disabled == false:
+		AudioManager.sfx_play(AudioManager.sfx_blip)
+		button.scale = Vector2(1.1, 1.1)
 	##TODO these ifs are for the overlay animations for the options panel
-	if button.name == &"ControlsButton":
-		pass
-	elif button.name == &"SoundButton":
-		pass
-	elif button.name == &"CreditsButton":
-		pass
-	elif button.name == &"ReturnButton":
-		pass
+	previous_button_hovered = current_button_hovered
+	current_button_hovered = button
+	if current_options == OPTIONS.NONE:
+		if previous_button_hovered != current_button_hovered:
+			match button.name:
+				&"ControlsButton":
+					tween_off_previous_doodle(doodle_controls)
+					tween_object(doodle_controls, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+				&"SoundButton":
+					tween_off_previous_doodle(doodle_sound)
+					tween_object(doodle_sound, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+				&"CreditsButton":
+					tween_off_previous_doodle(doodle_credits)
+					tween_object(doodle_credits, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+				&"ReturnButton":
+					tween_off_previous_doodle(doodle_options)
+					tween_object(doodle_options, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
+				_:
+					pass
+
+
+func tween_off_previous_doodle(cur_doodle) -> void:
+	for doodle in doodle_array:
+		if doodle != cur_doodle:
+			if doodle.modulate.a != 0.0:
+				tween_object(doodle, "modulate:a", 0.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
 
 
 func _on_mouse_exited_or_unfocus(button) -> void:
