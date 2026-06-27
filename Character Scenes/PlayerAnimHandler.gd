@@ -1,11 +1,18 @@
 extends Node3D
 
+enum AnimStates {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY, EXIT}
+
+@onready var anim_tree: AnimationTree = $AnimationTree
 @onready var walk_cycle_time: Timer = $walk_cycle_time
 @export var honk_delay: Timer
+@onready var player_vfx: Node3D = $PlayerVFX
+
+var current_anim := AnimStates.IDLE
 var item_get_sprite: Sprite3D
 var item_give_sprite: Sprite3D
 var item_give_bg : AnimatedSprite3D
 var item_get_bg : AnimatedSprite3D
+
 
 func _ready() -> void:
 	if not get_parent().name == "Node3D" and not get_parent().name == "Victory Scene":
@@ -13,6 +20,7 @@ func _ready() -> void:
 		item_get_bg = $ItemGetLocator/Item_Get_Sprite_BG
 		item_give_sprite = $ItemGiveLocator/Item_Give_Sprite
 		item_give_bg = $ItemGiveLocator/Item_Give_Sprite_BG
+
 
 func honk_sound_player():
 	var honk_time = honk_delay.duplicate()
@@ -22,15 +30,11 @@ func honk_sound_player():
 	AudioManager.sfx_play(AudioManager.sfx_honk)
 	honk_time.queue_free()
 
+
 func _on_walk_cycle_time_timeout() -> void:
 	if current_anim == AnimStates.WALK and not DialogueManager.is_dialogue_active:
 		AudioManager.sfx_play(AudioManager.sfx_walk)
-	##TODO place particle call here
 
-@onready var anim_tree: AnimationTree = $AnimationTree
-
-enum AnimStates {IDLE, WALK, JUMP, GET, GIVE, TALK, VICTORY, EXIT}
-var current_anim := AnimStates.IDLE
 
 func _get_current_anim() -> AnimStates:
 	return current_anim

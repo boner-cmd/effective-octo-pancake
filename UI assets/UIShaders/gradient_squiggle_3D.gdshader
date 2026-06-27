@@ -46,23 +46,13 @@ vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
     return uv;
 }
 
-vec2 rotateUV_2(vec2 uv_2, vec2 pivot, float rotation) {
-	rotation += floor(TIME * fps) * 90.0;
-    if (rotation >= 360.){
-		rotation = 0.;
-	}
-	float s = sin(rotation);
-    float c = cos(rotation);
-    // Subtract pivot
-    uv_2 -= pivot;
-    // Apply rotation matrix
-    mat2 rotMatrix = mat2(vec2(c, -s), vec2(s, c));
-    uv_2 = rotMatrix * uv_2;
-    // Add pivot back
-    uv_2 += pivot;
-    return uv_2;
+float rotation_amount(){
+	float amount = 0.0;
+	amount += 90.0;
+	if (amount >= 360.0)
+		amount = 0.0;
+	return amount;
 }
-
 
 void vertex() {
 	modulate = COLOR;
@@ -74,7 +64,7 @@ void vertex() {
 #define offset_multiplier vec2(PI, E)
 
 void fragment() {
-	noise_uv = (SCREEN_UV/1.7) / (vec2(textureSize(noise, 0)) * scale);
+	noise_uv = (SCREEN_UV / 1.7) / (vec2(textureSize(noise, 0)) * scale);
 	//this is squiggle stuff
 	vec2 noise_offset = vec2(floor(TIME * fps)) * offset_multiplier;
 	float noise_sample = texture(noise, noise_uv + noise_offset).r * 4.0 * PI;
@@ -96,7 +86,7 @@ void fragment() {
 	
 	
 	
-	vec2 rotatedUV_2 = rotateUV_2(SCREEN_UV*1.7, center, 0);
+	vec2 rotatedUV_2 = rotateUV(SCREEN_UV*vec2(1, .5)*2., center, PI/(2.)*floor(TIME * fps * .25));
 	
 	
 	

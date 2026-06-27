@@ -218,6 +218,29 @@ spot_angle = 48.36
 [node name="ClownRigFBX" parent="Node3D" unique_id=77601808 instance=ExtResource("4_pie25")]
 transform = Transform3D(-0.355, 2.997759e-08, 8.0324725e-09, 0, 0.09188077, -0.34290364, -3.1035086e-08, -0.34290364, -0.09188077, -0.005, -7.846, 0.597)
 
+[node name="Skeleton3D" parent="Node3D/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(77601808, 1346645065) index="0" unique_id=1334537233]
+bones/2/position = Vector3(0, 0.002500003, 0)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/3/position = Vector3(-1.6885689e-10, 0.0029941183, -8.050192e-11)
+bones/4/position = Vector3(-7.222122e-11, 0.0020000006, -0.0017499999)
+bones/4/rotation = Quaternion(-0.9890514, -4.309209e-08, 1.16018036e-07, 0.14757188)
+bones/6/position = Vector3(7.222185e-11, 0.0020000006, 0.0017499998)
+bones/6/rotation = Quaternion(7.69735e-08, 0.16749677, 0.9858726, -1.30775675e-08)
+bones/8/position = Vector3(-5.9928716e-05, -0.002470804, 0.0011162624)
+bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574765, -0.013666067)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/10/position = Vector3(5.9928792e-05, -0.002470801, -0.0011162629)
+bones/10/rotation = Quaternion(0.99952626, 0.00037702578, 0.02757483, 0.013666067)
+bones/11/position = Vector3(6.185368e-07, 0.005622768, -1.1174635e-05)
+bones/11/rotation = Quaternion(0, 0, 0, 1)
+bones/12/position = Vector3(9.199295e-06, 0.0051881243, 0.00019031962)
+bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201042, 0.991851)
+bones/13/position = Vector3(-0.00030511033, 0.003186539, -4.5399648e-10)
+bones/13/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="PlayerVFX" parent="Node3D/ClownRigFBX" index="5" unique_id=903447513]
+local_space = true
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=1991360123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5505977, 1.5487471, -0.4971826)
 light_energy = 0.342
@@ -1122,3 +1145,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="timeout" from="Node3D/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="Node3D/title_screen_letters"]
+[editable path="Node3D/ClownRigFBX"]

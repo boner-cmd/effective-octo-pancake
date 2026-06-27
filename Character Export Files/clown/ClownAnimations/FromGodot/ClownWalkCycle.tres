@@ -151,3 +151,20 @@ tracks/20/path = NodePath("Rig/Skeleton3D:Head_End")
 tracks/20/interp = 0
 tracks/20/loop_wrap = true
 tracks/20/keys = PackedFloat32Array(7.947286e-08, 1, 0.07596139, -0.018975599, -2.6927262e-08, 0.9969302, 0.33233342, 1, 0.07596139, -0.018975599, -2.6927262e-08, 0.9969302, 0.33333334, 1, -0.116173215, 0.029020721, 3.9464133e-08, 0.9928049, 0.49899992, 1, -0.116173215, 0.029020721, 3.9464133e-08, 0.9928049, 0.50000006, 1, 0.07596139, -0.018975599, -2.6927262e-08, 0.9969302, 0.66666657, 1, 0.07596139, -0.018975599, -2.6927262e-08, 0.9969302)
+tracks/21/type = "method"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("PlayerVFX")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0.01, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"walk_particles"
+}, {
+"args": [],
+"method": &"walk_particles"
+}]
+}

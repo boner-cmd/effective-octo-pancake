@@ -272,6 +272,7 @@ emitting = false
 amount = 30
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_4tf3h")
 draw_pass_1 = ExtResource("2_31gus")
 
@@ -284,6 +285,7 @@ lifetime = 2.0
 one_shot = true
 speed_scale = 3.5
 explosiveness = 0.9
+fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_ua6hq")
 draw_pass_1 = ExtResource("2_31gus")
 
@@ -294,6 +296,7 @@ amount = 10
 one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
+fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_2rq3l")
 draw_pass_1 = ExtResource("2_31gus")
 
@@ -304,5 +307,6 @@ amount = 20
 one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
+fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_7lhgf")
 draw_pass_1 = ExtResource("2_31gus")
