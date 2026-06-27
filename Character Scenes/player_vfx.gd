@@ -1,6 +1,6 @@
 extends Node3D
 
-
+@onready var victory_confetti_particles: GPUParticles3D = $VictoryConfettiParticles
 @onready var walk_poof_particles: GPUParticles3D = $WalkPoofParticles
 
 @export var local_space : bool = false
@@ -24,4 +24,12 @@ func walk_particles() -> void:
 	else:
 		new_particle.position = feet_particles_right_pos
 		foot_flag = false
+	new_particle.restart()
+	await new_particle.finished
+	new_particle.queue_free()
+
+
+func victory_particles() -> void:
+	var new_particle = victory_confetti_particles.duplicate()
+	add_child(new_particle)
 	new_particle.restart()

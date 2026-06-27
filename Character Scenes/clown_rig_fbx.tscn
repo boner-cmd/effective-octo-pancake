@@ -378,3 +378,6 @@ explosiveness = 1.0
 fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_7bg5t")
 draw_pass_1 = ExtResource("6_fgftn")
+
+[node name="VictoryConfettiParticles" type="GPUParticles3D" parent="PlayerVFX" index="1" unique_id=1064037148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.702136, 0.33772212)
