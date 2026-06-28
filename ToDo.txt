@@ -41,15 +41,9 @@ SHADER PASS
 
 VFX PASS - Michael - ???
 	Door particles -
-		Spawn	Ideas?
-		Idle	Generic whooshing lines
-		Despawn	
-		Stasis	ZzZzZzZzzz....
-		Exit	whooshing lines for open, poofing lines for slam
-		Maybe star particles?
+		Maybe icon particles on door exit/poofs?
 	
 	any NPC related shaders
-	Confetti explosion for VICTORY animation
 
 
 UI PASS - optional

@@ -41,6 +41,9 @@ shape = SubResource("CylinderShape3D_ua6hq")
 
 [node name="DoorVFX" parent="DoorBaseModel" unique_id=1633280536 instance=ExtResource("2_cyo0d")]
 
+[node name="StasisParticles" parent="DoorBaseModel/DoorVFX" index="5" unique_id=723321282]
+emitting = false
+
 [editable path="DoorBaseModel"]
 [editable path="DoorBaseModel/DoorAnims"]
 [editable path="DoorBaseModel/DoorVFX"]

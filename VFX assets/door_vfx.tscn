@@ -5,6 +5,7 @@
 [ext_resource type="Gradient" uid="uid://dxymjjc1ib2yk" path="res://VFX assets/poof_particle_gradient.tres" id="2_ikck1"]
 [ext_resource type="Texture2D" uid="uid://dmx1sqjg873wk" path="res://VFX assets/door_slam_alpha_curve.tres" id="3_ikck1"]
 [ext_resource type="Curve" uid="uid://cte3mufjuevan" path="res://VFX assets/door_slam_scale_curve.tres" id="4_a06dt"]
+[ext_resource type="Texture2D" uid="uid://b71rvula44huv" path="res://VFX assets/sleeping.png" id="6_ikck1"]
 
 [sub_resource type="Animation" id="Animation_083ic"]
 length = 0.001
@@ -258,6 +259,58 @@ scale_curve = SubResource("CurveTexture_g47fr")
 color_initial_ramp = SubResource("GradientTexture1D_ikck1")
 alpha_curve = ExtResource("3_ikck1")
 
+[sub_resource type="Curve" id="Curve_a06dt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1875, 1), 0.0, 0.0, 0, 0, Vector2(0.54891306, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3coe0"]
+curve = SubResource("Curve_a06dt")
+
+[sub_resource type="Curve" id="Curve_ol0n8"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.51113474), 0.0, 0.0, 0, 0, Vector2(0.15217392, 1.2417817), 0.0, 0.0, 0, 0, Vector2(0.33423913, 0.77306485), 0.0, 0.0, 0, 0, Vector2(0.5027174, 1.1452812), 0.0, 0.0, 0, 0, Vector2(0.6956522, 0.6214211), 0.0, 0.0, 0, 0, Vector2(0.86956525, 0.82820797), 0.0, 0.0, 0, 0, Vector2(1, 0.34570527), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_7rxel"]
+curve = SubResource("Curve_ol0n8")
+
+[sub_resource type="Curve" id="Curve_uv6sr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.4684211, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5ciaj"]
+curve = SubResource("Curve_uv6sr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_axo21"]
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_7rxel")
+alpha_curve = SubResource("CurveTexture_3coe0")
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.0
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.010000001
+turbulence_influence_max = 0.05
+turbulence_influence_over_life = SubResource("CurveTexture_5ciaj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oiule"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("6_ikck1")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_kvwke"]
+material = SubResource("StandardMaterial3D_oiule")
+size = Vector2(0.5, 0.5)
+
 [node name="DoorVFX" type="Node3D" unique_id=1633280536]
 
 [node name="VFXAnimPlayer" type="AnimationPlayer" parent="." unique_id=1224493444]
@@ -310,3 +363,13 @@ explosiveness = 1.0
 fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_7lhgf")
 draw_pass_1 = ExtResource("2_31gus")
+
+[node name="StasisParticles" type="GPUParticles3D" parent="." unique_id=723321282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5738633, 0)
+amount = 6
+lifetime = 3.0
+speed_scale = 0.4
+fixed_fps = 8
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_axo21")
+draw_pass_1 = SubResource("QuadMesh_kvwke")

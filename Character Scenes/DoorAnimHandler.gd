@@ -45,6 +45,7 @@ var previous_anim := AnimStates.STASIS
 @onready var spawn_poof_particles: GPUParticles3D = $DoorVFX/SpawnPoofParticles
 @onready var vfx_parent : Node3D = $DoorVFX
 @onready var door_camera: Camera3D = $DoorAnims/Camera3D
+@onready var stasis_particles: GPUParticles3D = $DoorVFX/StasisParticles
 
 signal exit_anim_finished()
 signal exit_anim_started()
@@ -76,10 +77,16 @@ func lock_check():
 func _set_door_anim(anim : AnimStates):
 	previous_anim = current_anim
 	current_anim = anim
+	stasis_particles.emitting = false
+	stasis_particles.lifetime = 0.01
+	stasis_particles.amount = 1
 	lock_check()
 	if not door_locked:
 		match current_anim:
 			AnimStates.STASIS:
+				stasis_particles.lifetime = 3.0
+				stasis_particles.amount = 6
+				stasis_particles.emitting = true
 				anim_tree.set("parameters/Door_Active/blend_amount", 0.0)
 				anim_tree.set("parameters/DoorExit/blend_amount", 0.0)
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
@@ -100,6 +107,7 @@ func _set_door_anim(anim : AnimStates):
 			AnimStates.DESPAWN:
 				if previous_anim == AnimStates.IDLE:
 					emit_poof_particles()
+					delay_sleeping_particles()
 				AudioManager.sfx_play(AudioManager.sfx_despawn)
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 1.0)
@@ -197,3 +205,12 @@ func exit_anim_particles() -> void:
 			animplayer.play("VFX_Door_Sequence")
 			await animplayer.animation_finished
 			clone_vfx.queue_free()
+
+
+func delay_sleeping_particles() -> void:
+	await get_tree().create_timer(.5).timeout
+	stasis_particles.lifetime = 3.0
+	stasis_particles.amount = 1
+	stasis_particles.emitting = true
+	await get_tree().create_timer(.1).timeout
+	stasis_particles.amount = 6
