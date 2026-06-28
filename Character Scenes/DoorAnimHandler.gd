@@ -212,5 +212,4 @@ func delay_sleeping_particles() -> void:
 	stasis_particles.lifetime = 3.0
 	stasis_particles.amount = 1
 	stasis_particles.emitting = true
-	await get_tree().create_timer(.1).timeout
 	stasis_particles.amount = 6
