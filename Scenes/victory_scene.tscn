@@ -14,6 +14,7 @@ sky_material = SubResource("ProceduralSkyMaterial_3j7m6")
 background_mode = 1
 background_color = Color(1, 1, 1, 1)
 sky = SubResource("Sky_ua0y2")
+ambient_light_energy = 0.0
 tonemap_mode = 2
 glow_enabled = true
 
@@ -22,6 +23,9 @@ script = ExtResource("1_3j7m6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1010044836]
 transform = Transform3D(-0.91938156, -0.37583366, 0.1161316, -0.28253388, 0.83632296, 0.469828, -0.27370068, 0.39914012, -0.8750858, 0, 0, 0)
+light_energy = 0.5
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=224056118]

@@ -4,9 +4,7 @@
 [ext_resource type="Script" uid="uid://dg4u7vgwxj36" path="res://Character Scenes/PlayerAnimHandler.gd" id="2_tpj65"]
 [ext_resource type="AnimationLibrary" uid="uid://wt4lshmxqrle" path="res://Character Export Files/clown/ClownAnimations/FromGodot/ClownAnimLibrary.res" id="3_sqv3x"]
 [ext_resource type="Material" uid="uid://b6n2xwgfekxdl" path="res://Character Export Files/Materials/clown_toon_shader.tres" id="3_tpj65"]
-[ext_resource type="Material" uid="uid://bxthan4auy6ve" path="res://VFX assets/vfx_sphere_particle_mat.tres" id="5_18k66"]
-[ext_resource type="Script" uid="uid://q88n2xtyt45a" path="res://Character Scenes/player_vfx.gd" id="5_fgftn"]
-[ext_resource type="SphereMesh" uid="uid://bl1xiwubwc5uw" path="res://VFX assets/vfx_sphere_mesh.tres" id="6_fgftn"]
+[ext_resource type="PackedScene" uid="uid://qajhxn3c11u8" path="res://Character Scenes/player_vfx.tscn" id="5_ecp6r"]
 
 [sub_resource type="Animation" id="Animation_tpj65"]
 length = 0.001
@@ -177,7 +175,6 @@ animation = &"ClownAnims/ClownWalkCycle"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_stcd8"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7bg5t"]
-graph_offset = Vector2(-444.25958, -294.61984)
 nodes/output/position = Vector2(1800, 120)
 nodes/Anim_Idle/node = SubResource("AnimationNodeAnimation_ecp6r")
 nodes/Anim_Idle/position = Vector2(-80, -220)
@@ -225,85 +222,31 @@ nodes/Reset_Exit/node = SubResource("AnimationNodeTimeSeek_8pnao")
 nodes/Reset_Exit/position = Vector2(1180, 1000)
 node_connections = [&"output", 0, &"Victory", &"Walk", 0, &"Reset_Idle", &"Walk", 1, &"Reset_Walk", &"Jump", 0, &"Walk", &"Jump", 1, &"TimeScale", &"Get", 0, &"Give", &"Get", 1, &"Anim_GetItem", &"Give", 0, &"Anim_Listen", &"Give", 1, &"Anim_GiveItem", &"Talk", 0, &"Jump", &"Talk", 1, &"Get", &"Victory", 0, &"Exit", &"Victory", 1, &"TimeScale 2", &"TimeScale", 0, &"Anim_Jump", &"Reset_Walk", 0, &"Anim_Walk", &"Reset_Victory", 0, &"Anim_Victory", &"TimeScale 2", 0, &"Reset_Victory", &"Reset_Idle", 0, &"Anim_Idle", &"Exit", 0, &"Talk", &"Exit", 1, &"Reset_Exit", &"TimeScale 3", 0, &"Anim_ExitDoor", &"Reset_Exit", 0, &"TimeScale 3"]
 
-[sub_resource type="Curve" id="Curve_ygjs2"]
-_data = [Vector2(0.06086956, 0), 0.0, 0.0, 0, 0, Vector2(0.1847826, 1), 0.0, 0.0, 0, 0, Vector2(0.72173905, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_jq2au"]
-curve = SubResource("Curve_ygjs2")
-
-[sub_resource type="Gradient" id="Gradient_qq7ma"]
-offsets = PackedFloat32Array(0, 0.53554505, 0.99526066)
-colors = PackedColorArray(0.9936051, 0.14639929, 0.99999946, 1, 6.160736e-06, 0.804175, 0.8041751, 1, 1, 1, 0.29748532, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_g4f4y"]
-gradient = SubResource("Gradient_qq7ma")
-
-[sub_resource type="Curve" id="Curve_pchca"]
-_data = [Vector2(0, 0.75471705), 0.0, 0.084580705, 0, 0, Vector2(1, 1), 0.7067469, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_8pnao"]
-curve = SubResource("Curve_pchca")
-
-[sub_resource type="Curve" id="Curve_28by5"]
-_limits = [0.0, 2.0, 0.0, 2.0]
-_data = [Vector2(0, 0.6349468), 0.0, 0.0, 0, 0, Vector2(2, 2), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_stcd8"]
-curve = SubResource("Curve_28by5")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bg5t"]
-lifetime_randomness = 0.61
-angle_min = 1.0728835e-05
-angle_max = 1.0728835e-05
-direction = Vector3(0, 1, 0.2)
-spread = 71.768
-flatness = 0.962
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-radial_velocity_min = 0.049977645
-radial_velocity_max = 0.09997764
-gravity = Vector3(0, 0, 0)
-damping_min = 2.0
-damping_max = 5.0
-damping_curve = SubResource("CurveTexture_8pnao")
-attractor_interaction_enabled = false
-scale_min = 2.0
-scale_max = 10.0
-scale_curve = SubResource("CurveTexture_stcd8")
-color_initial_ramp = SubResource("GradientTexture1D_g4f4y")
-alpha_curve = SubResource("CurveTexture_jq2au")
-turbulence_noise_strength = 0.2
-turbulence_noise_scale = 0.1
-turbulence_influence_min = 0.05
-turbulence_influence_max = 0.05
-
 [node name="ClownRigFBX" unique_id=77601808 instance=ExtResource("1_ygjs2")]
 script = ExtResource("2_tpj65")
 
 [node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(1346645065) index="0" unique_id=1334537233]
-bones/2/position = Vector3(-0.00038921484, 0.005109951, 0.0011016652)
-bones/2/rotation = Quaternion(0.11682901, -0.015101962, 0.001776721, 0.9930356)
-bones/3/position = Vector3(-1.6885689e-10, 0.0029941183, 0.00013737648)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
-bones/4/position = Vector3(-0.0008149565, 0.0022752404, -0.0027402767)
-bones/4/rotation = Quaternion(-0.7818443, 0.48376822, -0.2696046, 0.28635886)
-bones/6/position = Vector3(0.00082597, 0.0016801835, 0.0027084798)
-bones/6/rotation = Quaternion(0.5046854, 0.6364534, 0.5376326, -0.22621015)
-bones/8/position = Vector3(-0.00060435804, -0.003541363, 0.0016517704)
-bones/8/rotation = Quaternion(0.93747884, -0.2648985, -0.027808955, 0.22402915)
-bones/9/position = Vector3(0.00010731806, 0.005562804, -6.0597074e-07)
-bones/9/rotation = Quaternion(0.014920831, -0.105158366, 0.36054656, 0.9266743)
-bones/10/position = Vector3(0.0015495402, -0.003273156, -0.0016060146)
-bones/10/rotation = Quaternion(0.86907774, 0.27021715, 0.31311008, -0.27138296)
-bones/11/position = Vector3(0.0007615509, 0.0067558754, 0.00025194907)
-bones/11/rotation = Quaternion(-0.14617303, -0.40159068, 0.12286817, 0.8956908)
-bones/12/position = Vector3(6.311339e-05, 0.0049924697, 0.00013728402)
-bones/12/rotation = Quaternion(0.058707897, 0.09640312, 0.16382226, 0.9800113)
-bones/13/position = Vector3(-0.00010346502, 0.0043410286, 0.00044243265)
-bones/13/rotation = Quaternion(0.07596139, -0.018975599, -2.6927262e-08, 0.9969302)
+bones/2/position = Vector3(-0.0005950605, -0.004393516, 1.3281064e-09)
+bones/2/rotation = Quaternion(6.5678826e-08, -1.6846222e-08, 0.73529506, 0.67774713)
+bones/3/position = Vector3(0.00088416645, 0.022476383, -0.0012448556)
+bones/3/rotation = Quaternion(-0.041071307, 0.00062529754, -0.7126449, 0.70032144)
+bones/4/position = Vector3(-0.0012877521, -0.009694935, -0.029060898)
+bones/4/rotation = Quaternion(-0.63153386, 0.39905372, -0.36158332, 0.55783397)
+bones/6/position = Vector3(-0.0010880462, 0.0002656679, 0.031673666)
+bones/6/rotation = Quaternion(-0.17472936, 0.6763761, 0.6989764, -0.15302646)
+bones/7/rotation = Quaternion(0, 0.10279464, 0, 0.9947027)
+bones/8/position = Vector3(-0.0016678781, -0.014021423, 0.0027205565)
+bones/8/rotation = Quaternion(0.00076065655, 0.9899084, -0.083693266, 0.11435149)
+bones/9/position = Vector3(-0.011050303, 0.03458543, -0.035468664)
+bones/9/rotation = Quaternion(-0.47815874, 0.11259857, -0.5533902, 0.6726403)
+bones/10/position = Vector3(8.517243e-06, 0.0111521045, -0.0038030767)
+bones/10/rotation = Quaternion(0.739149, -0.2964298, 0.40806928, -0.446394)
+bones/11/position = Vector3(-0.026145376, 0.008281161, 0.017721675)
+bones/11/rotation = Quaternion(0.060632706, 0.02123679, -0.22085509, 0.9731884)
+bones/12/position = Vector3(0.0033952815, 0.0304302, 0.0021568218)
+bones/12/rotation = Quaternion(0.8035984, -0.37718374, 0.08904214, 0.45170084)
+bones/13/position = Vector3(-0.010825609, -0.01184929, 0.0031126826)
+bones/13/rotation = Quaternion(-0.54309934, -0.05100405, 0.506316, 0.66789657)
 
 [node name="Collar_mesh" parent="Rig/Skeleton3D" index="0" unique_id=931603580]
 surface_material_override/0 = ExtResource("3_tpj65")
@@ -364,20 +307,4 @@ parameters/Reset_Exit/seek_request = -1.0
 wait_time = 0.28
 autostart = true
 
-[node name="PlayerVFX" type="Node3D" parent="." index="5" unique_id=903447513]
-script = ExtResource("5_fgftn")
-
-[node name="WalkPoofParticles" type="GPUParticles3D" parent="PlayerVFX" index="0" unique_id=516718436]
-material_override = ExtResource("5_18k66")
-cast_shadow = 0
-emitting = false
-amount = 10
-one_shot = true
-speed_scale = 3.0
-explosiveness = 1.0
-fixed_fps = 8
-process_material = SubResource("ParticleProcessMaterial_7bg5t")
-draw_pass_1 = ExtResource("6_fgftn")
-
-[node name="VictoryConfettiParticles" type="GPUParticles3D" parent="PlayerVFX" index="1" unique_id=1064037148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.702136, 0.33772212)
+[node name="PlayerVFX" parent="." index="5" unique_id=964176650 instance=ExtResource("5_ecp6r")]
