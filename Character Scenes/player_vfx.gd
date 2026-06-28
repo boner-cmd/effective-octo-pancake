@@ -10,13 +10,17 @@ extends Node3D
 
 var feet_particles_left_pos : Vector3 = Vector3(-.1, .008, 0.0)
 var feet_particles_right_pos : Vector3 = Vector3(.1, .008, 0.0)
+var jump_particle_location : Vector3 = Vector3(0.0, 1.846, -.082)
 var foot_flag : bool = true
 var player : CharacterBody3D
+var main : Node3D
 var grav_vector : Vector3
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	
+	main = get_tree().get_first_node_in_group("Main")
+
 
 func reset_foot_flag() -> void:
 	foot_flag = true
@@ -47,3 +51,21 @@ func victory_particles() -> void:
 	victory_confetti_still.process_material.gravity = grav_vector
 	new_particle.restart()
 	new_particle_2.restart()
+	await new_particle.finished
+	new_particle.queue_free()
+
+
+func jump_particles() -> void:
+	grav_vector = player.grav_vector
+	var new_particle = victory_confetti_particles.duplicate()
+	var new_particle_2 = victory_smoke.duplicate()
+	new_particle.position = jump_particle_location
+	new_particle_2.position = jump_particle_location
+	add_child(new_particle)
+	add_child(new_particle_2)
+	victory_confetti_still.seed = new_particle.seed
+	victory_confetti_still.process_material.gravity = grav_vector
+	new_particle.restart()
+	new_particle_2.restart()
+	await new_particle.finished
+	new_particle.queue_free()

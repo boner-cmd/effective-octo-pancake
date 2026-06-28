@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bxthan4auy6ve" path="res://VFX assets/vfx_sphere_particle_mat.tres" id="2_blbs7"]
 [ext_resource type="SphereMesh" uid="uid://bl1xiwubwc5uw" path="res://VFX assets/vfx_sphere_mesh.tres" id="3_wmcq2"]
 [ext_resource type="Gradient" uid="uid://bxpfbe3pvbiee" path="res://VFX assets/confetti_particle_gradient.tres" id="4_wmcq2"]
-[ext_resource type="Texture2D" uid="uid://ck4dddr7t3qvi" path="res://VFX assets/Confetti_Spritesheet.png" id="5_qs8d1"]
+[ext_resource type="Material" uid="uid://dyshxyq4n7uue" path="res://VFX assets/confetti_particle_material.tres" id="5_wmcq2"]
 
 [sub_resource type="Curve" id="Curve_ygjs2"]
 _data = [Vector2(0.06086956, 0), 0.0, 0.0, 0, 0, Vector2(0.1847826, 1), 0.0, 0.0, 0, 0, Vector2(0.72173905, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -101,42 +101,37 @@ sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 1
 sub_emitter_keep_velocity = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erkpb"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-diffuse_mode = 1
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_texture = ExtResource("5_qs8d1")
-texture_filter = 0
-disable_receive_shadows = true
-billboard_mode = 3
-particles_anim_h_frames = 8
-particles_anim_v_frames = 1
-particles_anim_loop = true
-
 [sub_resource type="QuadMesh" id="QuadMesh_bigvl"]
-material = SubResource("StandardMaterial3D_erkpb")
+material = ExtResource("5_wmcq2")
 size = Vector2(0.2, 0.1)
 orientation = 0
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_22fry"]
+[sub_resource type="Curve" id="Curve_qs8d1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.77445656, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -13.216249, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_473y6"]
+curve = SubResource("Curve_qs8d1")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wmcq2"]
 gradient = ExtResource("4_wmcq2")
 width = 6
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6da0h"]
 particle_flag_align_y = true
 inherit_velocity_ratio = 1.0
-velocity_pivot = Vector3(0, -5, 0)
-direction = Vector3(0, 0, 0)
+direction = Vector3(0, 1, 0)
+radial_velocity_min = -1.0000223
+radial_velocity_max = -1.0000223
 gravity = Vector3(0, 0, 0)
-color_initial_ramp = SubResource("GradientTexture1D_22fry")
+color_initial_ramp = SubResource("GradientTexture1D_wmcq2")
+alpha_curve = SubResource("CurveTexture_473y6")
 collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0oe4"]
+transparency = 1
 cull_mode = 2
 shading_mode = 0
 diffuse_mode = 3
@@ -237,6 +232,7 @@ emitting = false
 amount = 50
 sub_emitter = NodePath("../VictoryConfettiStill")
 lifetime = 10.0
+one_shot = true
 explosiveness = 1.0
 fixed_fps = 16
 collision_base_size = 0.1
@@ -249,10 +245,12 @@ strength = 7.0
 radius = 10.0
 
 [node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="." unique_id=1078660414]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-radius = 5.0
+top_level = true
+cull_mask = 4293918721
+radius = 5.03
 
 [node name="VictoryConfettiStill" type="GPUParticles3D" parent="." unique_id=1006977264]
+top_level = true
 emitting = false
 amount = 100
 sub_emitter = NodePath(".")
