@@ -3,6 +3,9 @@ extends Node3D
 @onready var victory_confetti_particles: GPUParticles3D = $VictoryConfettiParticlesFalling
 @onready var victory_confetti_still: GPUParticles3D = $VictoryConfettiStill
 @onready var victory_smoke: GPUParticles3D = $VictorySmoke
+@onready var gpu_particles_attractor_sphere_3d: GPUParticlesAttractorSphere3D = $GPUParticlesAttractorSphere3D
+@onready var gpu_particles_collision_sphere_3d: GPUParticlesCollisionSphere3D = $GPUParticlesCollisionSphere3D
+
 
 @onready var walk_poof_particles: GPUParticles3D = $WalkPoofParticles
 
@@ -69,3 +72,11 @@ func jump_particles() -> void:
 	new_particle_2.restart()
 	await new_particle.finished
 	new_particle.queue_free()
+
+
+func collision_swap() -> void:
+	if gpu_particles_collision_sphere_3d.visible:
+		gpu_particles_collision_sphere_3d.visible = false
+		
+	else:
+		gpu_particles_collision_sphere_3d.visible = true
