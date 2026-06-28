@@ -8,10 +8,19 @@ var _cam_player_receive: Camera3D
 var interaction_flip : bool = false
 var temp_npc = Node3D
 var clone : Node3D
+var clone_vfx : Node3D
 var clone_item_get : Sprite3D
 var clone_item_get_bg : AnimatedSprite3D
 var clone_item_give : Sprite3D
 var clone_item_give_bg : AnimatedSprite3D
+
+var temp_confetti_name : StringName = &"VictoryConfettiParticlesFalling"
+var temp_still_name : StringName = &"VictoryConfettiStill"
+var temp_smoke_name : StringName = &"VictorySmoke"
+var temp_attactor_sphere_name : StringName = &"GPUParticlesAttractorSphere3D"
+var temp_collision_name : StringName = &"GPUParticlesCollisionSphere3D"
+var temp_poof_name : StringName = &"WalkPoofParticles"
+var temp_box_name : StringName = &"GPUParticlesCollisionBox3D"
 
 var movement_frozen : bool = false
 var _camera_input_direction : Vector2 = Vector2.ZERO
@@ -40,6 +49,8 @@ var xform : Transform3D
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var current_raycast : RayCast3D
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
+@onready var player_vfx : Node3D = $ClownRigFBX/PlayerVFX
+
 
 func reset_player():
 	position = respawn_pos
@@ -52,19 +63,57 @@ func player_interaction_camera() -> void:
 	if DialogueManager.is_dialogue_active:
 		if not clone: #makes clone for interaction
 			clone = clown.duplicate()
-			for detector in clone.get_children():
-				if detector.name == &"InteractionDetector":
-					detector.queue_free()
-			clone.get_child(5)
+			for node in clone.get_children():
+				if node.name == &"InteractionDetector":
+					node.queue_free()
+				if node.name == &"PlayerVFX":
+					clone_vfx = node
 			get_tree().root.add_child(clone)
+			for children in clone_vfx.get_children():
+				children.queue_free()
+			for children in player_vfx.get_children():
+				if children.name == &"WalkPoofParticles":
+					children.reparent(clone_vfx)
+					children.name = temp_poof_name
+					
+				elif children.name == &"VictoryConfettiParticlesFalling":
+					children.reparent(clone_vfx)
+					#children.name = temp_confetti_name
+					clone_vfx.victory_confetti_particles = children
+				elif children.name == &"GPUParticlesAttractorSphere3D":
+					children.reparent(clone_vfx)
+					#children.name = temp_attactor_sphere_name
+					clone_vfx.gpu_particles_attractor_sphere_3d = children
+				elif children.name == &"GPUParticlesCollisionSphere3D":
+					children.reparent(clone_vfx)
+					#children.name = temp_collision_name
+					clone_vfx.gpu_particles_collision_sphere_3d = children
+				elif children.name == &"VictoryConfettiStill":
+					children.reparent(clone_vfx)
+					#children.name = temp_still_name
+					clone_vfx.victory_confetti_still = children
+				elif children.name == &"VictorySmoke":
+					children.reparent(clone_vfx)
+					#children.name = temp_smoke_name
+					clone_vfx.victory_smoke = children
+				elif children.name == &"GPUParticlesCollisionBox3D":
+					children.reparent(clone_vfx)
+					#children.name = temp_box_name
+					
+				else:
+					children.reparent(clone_vfx)
+			
 			clown.visible = false
 			clone.global_position = player_cutscene_locator.global_position
 			clone.global_rotation = player_cutscene_locator.global_rotation
 			clone._set_player_anim(clone.AnimStates.TALK)
-			clone_item_get = clone.get_child(8).get_child(0)
-			clone_item_get_bg = clone.get_child(8).get_child(1)
-			clone_item_give = clone.get_child(9).get_child(0)
-			clone_item_give_bg = clone.get_child(9).get_child(1)
+			for node in clone.get_children():
+				if node.name == &"ItemGetLocator":
+					clone_item_get = node.get_child(0)
+					clone_item_get_bg = node.get_child(1)
+				if node.name == &"ItemGiveLocator":
+					clone_item_give = node.get_child(0)
+					clone_item_give_bg = node.get_child(1)
 			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
@@ -135,6 +184,37 @@ func _physics_process(delta: float) -> void:
 		_camera.make_current()
 		movement_frozen = false
 		if clone:
+			for children in clone_vfx.get_children():
+				if children.name == &"WalkPoofParticles":
+					children.reparent(player_vfx)
+					#children.name = temp_poof_name
+					
+				elif children.name == &"VictoryConfettiParticlesFalling":
+					children.reparent(player_vfx)
+					#children.name = temp_confetti_name
+					player_vfx.victory_confetti_particles = children
+				elif children.name == &"GPUParticlesAttractorSphere3D":
+					children.reparent(player_vfx)
+					#children.name = temp_attactor_sphere_name
+					player_vfx.gpu_particles_attractor_sphere_3d = children
+				elif children.name == &"GPUParticlesCollisionSphere3D":
+					children.reparent(player_vfx)
+					#children.name = temp_collision_name
+					player_vfx.gpu_particles_collision_sphere_3d = children
+				elif children.name == &"VictoryConfettiStill":
+					children.reparent(player_vfx)
+					#children.name = temp_still_name
+					player_vfx.victory_confetti_still = children
+				elif children.name == &"VictorySmoke":
+					children.reparent(player_vfx)
+					#children.name = temp_smoke_name
+					player_vfx.victory_smoke = children
+				elif children.name == &"GPUParticlesCollisionBox3D":
+					children.reparent(player_vfx)
+					#children.name = temp_box_name
+					
+				else:
+					children.reparent(player_vfx)
 			clone.queue_free()
 			clown.visible = true
 			clown._set_player_anim(clown.AnimStates.IDLE)

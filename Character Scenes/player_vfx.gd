@@ -52,6 +52,7 @@ func victory_particles() -> void:
 	add_child(new_particle_2)
 	victory_confetti_still.seed = new_particle.seed
 	victory_confetti_still.process_material.gravity = grav_vector
+	new_particle.sub_emitter = victory_confetti_still.get_path()
 	new_particle.restart()
 	new_particle_2.restart()
 	await new_particle.finished
@@ -68,6 +69,7 @@ func jump_particles() -> void:
 	add_child(new_particle_2)
 	victory_confetti_still.seed = new_particle.seed
 	victory_confetti_still.process_material.gravity = grav_vector
+	new_particle.sub_emitter = victory_confetti_still.get_path()
 	new_particle.restart()
 	new_particle_2.restart()
 	await new_particle.finished
