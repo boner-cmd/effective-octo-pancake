@@ -159,7 +159,9 @@ func _ready() -> void:
 
 func _on_item_add_requested(giver_name : QuestManager.CharacterName) -> void:
 	add_item(giver_name)
+	SaveManager.save_game()
 
 
 func _on_item_remove_requested(receiver_name : QuestManager.CharacterName) -> void:
 	remove_item(origin_by_desiring_npc[receiver_name])
+	SaveManager.save_game()

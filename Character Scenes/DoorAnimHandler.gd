@@ -120,7 +120,7 @@ func _set_door_anim(anim : AnimStates):
 			AnimStates.DESPAWN:
 				if previous_anim == AnimStates.IDLE:
 					emit_poof_particles()
-					delay_sleeping_particles()
+				delay_sleeping_particles()
 				AudioManager.sfx_play(AudioManager.sfx_despawn)
 				anim_tree.set("parameters/Door_Idle/blend_amount", 1.0)
 				anim_tree.set("parameters/Reset_DoorSpawn/seek_request", 1.0)
