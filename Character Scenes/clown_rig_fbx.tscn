@@ -300,6 +300,3 @@ wait_time = 0.28
 autostart = true
 
 [node name="PlayerVFX" parent="." index="5" unique_id=964176650 instance=ExtResource("5_ecp6r")]
-
-[node name="Node3D" type="Node3D" parent="." index="7" unique_id=679146081]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.845592, -0.08229065)

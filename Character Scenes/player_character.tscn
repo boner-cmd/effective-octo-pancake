@@ -65,7 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8853936, 0.46484205, 0, -0.46484205, 0.885
 
 [node name="ClownRigFBX" parent="." unique_id=77601808 instance=ExtResource("2_4chgf")]
 
-[node name="Skeleton3D" parent="ClownRigFBX/Rig" parent_id_path=PackedInt32Array(77601808, 1057419232) index="0" unique_id=2121263908]
+[node name="Skeleton3D" parent="ClownRigFBX/Rig" parent_id_path=PackedInt32Array(77601808, 1346645065) index="0" unique_id=1334537233]
 bones/2/position = Vector3(0.0007913627, 0.004041649, 0.000114312104)
 bones/2/rotation = Quaternion(6.927638e-24, -8.271806e-25, 0.036849633, 0.9993208)
 bones/3/rotation = Quaternion(-0.01986351, 0.0006861176, 0.097609155, 0.99502635)

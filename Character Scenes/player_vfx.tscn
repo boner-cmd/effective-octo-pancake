@@ -266,9 +266,3 @@ explosiveness = 0.9
 fixed_fps = 8
 process_material = SubResource("ParticleProcessMaterial_22fry")
 draw_pass_1 = SubResource("SphereMesh_c0oe4")
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1958586855]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-visible = false
-cull_mask = 4293918721
-size = Vector3(20, 0.5, 20)

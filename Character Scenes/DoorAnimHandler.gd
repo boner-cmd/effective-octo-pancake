@@ -28,12 +28,24 @@ const door_mats : Dictionary[int, Material] = {
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
 var player : CharacterBody3D
+var player_rig : Node3D
+var player_vfx : Node3D
 var temp_rotation : Vector3
 var towards_rotation : float
 
 var door_locked : bool = false
 var current_anim := AnimStates.STASIS
 var previous_anim := AnimStates.STASIS
+
+var clone
+var clone_vfx : Node3D
+var temp_confetti_name : StringName = &"VictoryConfettiParticlesFalling"
+var temp_still_name : StringName = &"VictoryConfettiStill"
+var temp_smoke_name : StringName = &"VictorySmoke"
+var temp_attactor_sphere_name : StringName = &"GPUParticlesAttractorSphere3D"
+var temp_collision_name : StringName = &"GPUParticlesCollisionSphere3D"
+var temp_poof_name : StringName = &"WalkPoofParticles"
+var temp_box_name : StringName = &"GPUParticlesCollisionBox3D"
 
 @export var destination_planet_ID : int
 
@@ -46,6 +58,7 @@ var previous_anim := AnimStates.STASIS
 @onready var vfx_parent : Node3D = $DoorVFX
 @onready var door_camera: Camera3D = $DoorAnims/Camera3D
 @onready var stasis_particles: GPUParticles3D = $DoorVFX/StasisParticles
+
 
 signal exit_anim_finished()
 signal exit_anim_started()
@@ -161,19 +174,23 @@ func interact():
 		if player.exit_check == false:
 			player.exit_check = true
 			door_camera.make_current()
-			var rig = player.get_child(2)
-			var clone = rig.duplicate()
+			for children in player.get_children():
+				if children.name == &"ClownRigFBX":
+					player_rig = children
+			clone = player_rig.duplicate()
 			for detector in clone.get_children():
 				if detector.name == &"InteractionDetector":
 					detector.queue_free()
 			get_tree().root.add_child(clone)
-			rig.visible = false
-			rig._set_player_anim(rig.AnimStates.IDLE)
+			transfer_vfx_to_clone()
+			player_rig.visible = false
+			player_rig._set_player_anim(player_rig.AnimStates.IDLE)
 			clone.global_position = player_exit_position.global_position
 			clone.global_rotation = player_exit_position.global_rotation
 			clone._set_player_anim(clone.AnimStates.EXIT)
 			await _set_door_anim(AnimStates.EXIT)
-			rig.visible = true
+			player_rig.visible = true
+			transfer_vfx_to_player()
 			clone.queue_free()
 			request_planet_change.emit(destination_planet_ID)
 			player._camera.make_current()
@@ -198,13 +215,13 @@ func emit_poof_particles() -> void:
 
 
 func exit_anim_particles() -> void:
-	var clone_vfx = vfx_parent.duplicate()
-	add_child.call_deferred(clone_vfx)
-	for animplayer in clone_vfx.get_children():
+	var clone_vfx_door = vfx_parent.duplicate()
+	add_child.call_deferred(clone_vfx_door)
+	for animplayer in clone_vfx_door.get_children():
 		if animplayer is AnimationPlayer:
 			animplayer.play("VFX_Door_Sequence")
 			await animplayer.animation_finished
-			clone_vfx.queue_free()
+			clone_vfx_door.queue_free()
 
 
 func delay_sleeping_particles() -> void:
@@ -213,3 +230,22 @@ func delay_sleeping_particles() -> void:
 	stasis_particles.amount = 1
 	stasis_particles.emitting = true
 	stasis_particles.amount = 6
+
+
+func transfer_vfx_to_clone() -> void:
+	for node in clone.get_children():
+		if node.name == &"PlayerVFX":
+			node.name = &"CloneVFX"
+	for node in player_rig.get_children():
+		if node.name == &"PlayerVFX":
+			player_vfx = node
+	player_vfx.reparent(clone)
+	clone_vfx = player_vfx
+	player_vfx.position = Vector3(0.0,0.0,0.0)
+	player_vfx.rotation = Vector3(0.0,0.0,0.0)
+
+
+func transfer_vfx_to_player() -> void:
+	player_vfx.reparent(player_rig)
+	player_vfx.position = Vector3(0.0,0.0,0.0)
+	player_vfx.rotation = Vector3(0.0,0.0,0.0)
