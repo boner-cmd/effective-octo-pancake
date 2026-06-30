@@ -296,11 +296,30 @@ const NORGANS_EASTER_LINES : PackedStringArray = [
 	"What's your deal, anyway? Maybe YOU were the real body without organs all along.",
 	"...No, that doesn't have legs...Wait, are legs an organ? I think I need a study break.",
 	]
-const MICHAEL_MEET_LINES : PackedStringArray = ["Me Michaelwave. Me want make slime mould game. But me-me hungy."]
-const MICHAEL_GIVE_LINES : PackedStringArray = ["Wow, a burrito? I'll Michaelwave this right up!"]
-const MICHAEL_RECEIVE_LINES : PackedStringArray = ["Here you go, one game about slime mould. What do you mean, \"What's that have to do with connections?\""]
-const MICHAEL_POST_LINES : PackedStringArray = ["And now, back to rest..."]
-const MICHAEL_EASTER_LINES : PackedStringArray = ["Organisms are neat."]
+const MICHAEL_MEET_LINES : PackedStringArray = [
+	"Oh god, they found me! Whatever it is, I didn't do it, I swear! Who sent you? Was it the King? Don't tell me the King sent you!",
+	"...I don't hear you telling me he sent you, so that can only mean he didn't. I guess I have no choice but to trust you.",
+	"Let me clue you in: I'm into some pretty radical, extremist lines of thinking. So far down the iceberg that I can't see the top anymore.",
+	"It's a dangerous game knowing the truth. That's what gave me the idea: make video games about the truth!",
+	"What is this world, after all, but one big horrible game? Something something \"Master's tools\" something something \"Master's house.\"",
+	"This makes me an artist. An important, politically charged artist! ...But a starving artist, nonetheless.",
+	"Creating truly submersive magnum opuses doesn't put bread on the table. At first I thought I had Havana Syndrome,",
+	"But juuuuuuust this once, it's probably more likely me too hungey to think. Gonna need to think to make game. That's just material conditions!",
+	"Just to be clear: something like a carrot won't do. That's a snack, not a meal. Bring me carbs and protein.",
+	"I hate relying on the drippings of capitalistic pigs, but what we need is a whale. That's in-the-bizz speak for someone who likes to waste money.",
+	"Find a class-traitor (the good kind) willing to support the cause. I'm counting on you, comrade.",
+	]
+const MICHAEL_GIVE_LINES : PackedStringArray = [
+	"What's that smell??? It's awful! Is it coming from that burrito? That's really all you can find? I guess it'll have to do.", #DASP
+	"It has to be about a \"slime mould?\" I'm being bowdlerized! How am I supposed to work like this?",
+	"Fine, whatever. The voices will help me find a workaround.",
+	]
+const MICHAEL_RECEIVE_LINES : PackedStringArray = [
+	"BEEP BEEP, Done! This may be my finest schizo-post yet! It only runs on Temple-OS, of course.", #DASP
+	"I may have gone a little crazy with this one, even by my standards. It's some really shocking stuff. Easilly Pasolini-level.",
+	"Make sure the King never sees this. I'm counting on you to only distribute this amongst the sheeple."] 
+const MICHAEL_POST_LINES : PackedStringArray = ["All that praxis has gotten me so sleepy..."]
+const MICHAEL_EASTER_LINES : PackedStringArray = ["AGH! I had a nightmare someone put a grape in me!"]
 const ROBOT_MEET_LINES : PackedStringArray = [
 	"I AM A ROBOT AND HAVE NO NEEDS BESIDES BASIC MECHANICAL FUNCTIONING TO CARRY OUT MY PROGRAMMING.",
 	"AMBIENT WATER MOLECULES HAVE OXIDIZED THE SURFACE LAYERS OF MY MECHANICAL BODY", 
