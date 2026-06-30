@@ -1,10 +1,9 @@
 MAIN
 	BUGS
-		clear for now - need to test after DialogueManager system changed
+		clear for now - need to test
 		
 	ASSETS
 		NPC Models, Anims, Textures
-		Building and refining Michaelwave Scene
 		
 	FEATURES
 		SAVING
@@ -17,7 +16,6 @@ MAIN
 			Will need to save honk counter from QuestManager
 			Will need to save time counter from QuestManager
 			Will need to hook up Continue button in Title Scene to load game
-
 
 
 DIALOGUES (DialogueManager, NPC lines) 
@@ -35,19 +33,27 @@ MODELS -
 		reframe interactions for every scene (wait until new models)
 		flatter FOV for dialogue camera angles
 
+
 SHADER PASS
 	adjust shadow falloff for materials for specific planets
 	NPC shader if we want something more than just a toon shader?
 
+
 VFX PASS - Michael - ???
 	Door particles -
 		Maybe icon particles on door exit/poofs?
-	
 	any NPC related shaders
+		king planet: maybe different colored godrays from the stained glass
+		horse planet: bugs flying around? wiggly clouds?
+		snowman planet: snow falling, maybe skybox large flakes move/are animated
+		astro planet: different layers of stars? more sylized? wiggly? a comet or two?
+		grease planet: scrolling textures would be nice, combined with animated textures
+		deer planet: blinking big eyes (ideally offset)
+		
 
 
 UI PASS - optional
-	2 or 3 frame anims for menu options
+	2 or 3 frame anims for menu options 320 x 450
 		idle
 		sound
 		controls
@@ -55,6 +61,7 @@ UI PASS - optional
 		continue
 		main menu
 		quit
+		
 	Still Michael's task, maybe Markcy if gets down to wire
 
 
