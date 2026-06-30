@@ -152,6 +152,8 @@ func _physics_process(delta: float) -> void:
 		current_raycast = reset_raycast
 	if not DialogueManager.dialogue_state == DialogueManager.CONV_STATE.FINISHED:
 		movement_frozen = true
+	if clown.current_anim == clown.AnimStates.VICTORY:
+		movement_frozen = true
 	elif exit_check:
 		movement_frozen = true
 		velocity = Vector3(0,0,0)

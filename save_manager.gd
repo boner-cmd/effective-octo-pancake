@@ -133,9 +133,12 @@ func restore_state() -> void:
 			DialogueManager.king2_lock = true
 		
 		main = preload("res://Scenes/MainScene.tscn").instantiate()
-		main.current_planet_id = load_data[1]
+		main.request_ready()
+		if load_data[1] == 21:
+			main.current_planet_id = 0
+		else:
+			main.current_planet_id = load_data[1]
 		get_tree().root.add_child(main)
-		
 		
 		HonkCounter.honk_total = load_data.decode_s16(2)
 		Stopwatch.seconds_elapsed = load_data.decode_s16(4)

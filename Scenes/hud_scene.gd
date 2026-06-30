@@ -237,8 +237,8 @@ func _on_sound_button_pressed() -> void:
 func _on_menu_button_pressed() -> void:
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	change_pause_state()
+	DialogueManager.reset_manager()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
-	#TODO auto save here probably
 	
 	await get_tree().create_timer(3).timeout
 	transition()

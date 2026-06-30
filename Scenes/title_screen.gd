@@ -72,6 +72,13 @@ func _ready() -> void:
 	tween_letters()
 	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
 	_set_initial()
+	
+	DialogueManager.reset_manager()
+	
+	for node in get_tree().root.get_children():
+		if node is Node3D:
+			node.queue_free()
+
 
 
 func _process(delta: float) -> void:

@@ -790,6 +790,26 @@ var text_box : MarginContainer
 var sfx : AudioStream
 var dialogue_finished_sfx : AudioStream
 
+
+func reset_manager() -> void:
+	is_dialogue_active = false
+	if name_tag:
+		name_tag.exit_tween()
+	if text_box:
+		await text_box.close_text_box()
+		text_box.queue_free()
+	if name_tag:
+		name_tag.queue_free()
+	already_tweened = false
+	give_flag = false
+	receive_flag = false
+	give_point = 0
+	receive_point = 0
+	current_line_index = 0
+	dialogue_lines = []
+	dialogue_state = CONV_STATE.FINISHED
+
+
 func _input(event):
 	if event.is_action_pressed("advance_dialogue") and is_dialogue_active and can_advance_line:
 		var NextIndicator = text_box.next_indicator
