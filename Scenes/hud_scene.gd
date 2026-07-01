@@ -12,6 +12,7 @@ var current_tween_index : int
 var previous_button_hovered : TextureButton
 var current_button_hovered : TextureButton
 
+var quit_bool : bool = false
 var sound_bool : bool = false
 var controls_bool : bool = false
 var control_acknowledge : bool = false
@@ -94,6 +95,7 @@ func _ready() -> void:
 	interact_door_open.visible = false
 	interact_door_locked.visible = false
 	interact_npc_margin.visible = false
+	quit_bool = false
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
 	audio_control.modulate.a = 0.0
@@ -128,59 +130,61 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_pause"):
-		if transition_color.visible == false:
-			if alpha_modulated(pause_menu):
-				change_pause_state()
-	if event.is_action_pressed("toggle_map"):
-		if alpha_modulated(map):
-			match pause_state:
-				PAUSESTATE.UNPAUSED:
-					# update the state
-					pause_state = PAUSESTATE.MAP
-					# show the map
-					get_tree().paused = true
-					# hide dialog boxes
-					hide_minor_ui()
-					map.modulate.a = 0.0
-					map.visible = true
-					await tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
-				PAUSESTATE.MAP:
-					pause_state = PAUSESTATE.UNPAUSED
-					get_tree().paused = false
-					show_minor_ui()
-					map.modulate.a = 1.0
-					await tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
-					map.visible = false
-				_:
-					pass
-	if event.is_action_pressed("advance_dialogue"):
-		## control schematic
-		if not control_acknowledge:
-			control_acknowledge = true
-			await tween_object(control_schematic_full, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-			control_schematic_full.queue_free()
-			transition()
-		if not DialogueManager.is_dialogue_active and interaction_latch:
-				interaction_latch = false
-				tween_vignette_switch(false)
-				interact_npc_margin.modulate.a = 0.01
-	if event.is_action_pressed("interact"):
-		if not interaction_latch:
-			if DialogueManager.is_dialogue_active:
-				if main_scene.current_planet_id != 21:
-					tween_vignette_switch(true)
-				interaction_latch = true
-		elif interaction_latch:
-			if not DialogueManager.is_dialogue_active:
-				interaction_latch = false
-				tween_vignette_switch(false)
-				interact_npc_margin.modulate.a = 0.01
-		if interact_touched == INTERACT_TYPE.DOOR_OPEN:
-			interact_touched = INTERACT_TYPE.NONE
+	if not quit_bool:
+		if event.is_action_pressed("toggle_pause"):
+			if transition_color.visible == false:
+				if alpha_modulated(pause_menu):
+					change_pause_state()
+		if event.is_action_pressed("toggle_map"):
+			if alpha_modulated(map):
+				match pause_state:
+					PAUSESTATE.UNPAUSED:
+						# update the state
+						pause_state = PAUSESTATE.MAP
+						# show the map
+						get_tree().paused = true
+						# hide dialog boxes
+						hide_minor_ui()
+						map.modulate.a = 0.0
+						map.visible = true
+						await tween_object(map, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
+					PAUSESTATE.MAP:
+						pause_state = PAUSESTATE.UNPAUSED
+						get_tree().paused = false
+						show_minor_ui()
+						map.modulate.a = 1.0
+						await tween_object(map, "modulate:a", 0.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
+						map.visible = false
+					_:
+						pass
+		if event.is_action_pressed("advance_dialogue"):
+			## control schematic
+			if not control_acknowledge:
+				control_acknowledge = true
+				await tween_object(control_schematic_full, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+				control_schematic_full.queue_free()
+				transition()
+			if not DialogueManager.is_dialogue_active and interaction_latch:
+					interaction_latch = false
+					tween_vignette_switch(false)
+					interact_npc_margin.modulate.a = 0.01
+		if event.is_action_pressed("interact"):
+			if not interaction_latch:
+				if DialogueManager.is_dialogue_active:
+					if main_scene.current_planet_id != 21:
+						tween_vignette_switch(true)
+					interaction_latch = true
+			elif interaction_latch:
+				if not DialogueManager.is_dialogue_active:
+					interaction_latch = false
+					tween_vignette_switch(false)
+					interact_npc_margin.modulate.a = 0.01
+			if interact_touched == INTERACT_TYPE.DOOR_OPEN:
+				interact_touched = INTERACT_TYPE.NONE
 
 
 func _on_quit_button_pressed() -> void:
+	quit_bool = true
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
 	change_pause_state()
 	#TODO auto save here probably
@@ -235,6 +239,7 @@ func _on_sound_button_pressed() -> void:
 
 ## main menu button
 func _on_menu_button_pressed() -> void:
+	quit_bool = true
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	change_pause_state()
 	DialogueManager.reset_manager()
