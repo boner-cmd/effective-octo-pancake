@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cfrvqrfsuonyf" path="res://Scenes/DialogueManager/interaction_area_template.gd" id="1_5i06m"]
 [ext_resource type="PackedScene" uid="uid://4vq3mwkin4tn" path="res://Character Scenes/NPCs/astronaut.tscn" id="4_rmjit"]
 [ext_resource type="PackedScene" uid="uid://b2caujdauh4hq" path="res://Character Scenes/NPCs/bodhisattva.tscn" id="5_wgsat"]
+[ext_resource type="PackedScene" uid="uid://cbr27o0yk8xhm" path="res://Character Scenes/NPCs/gatekeeper_2.tscn" id="6_rmjit"]
 [ext_resource type="PackedScene" uid="uid://dl64ndaxlgl11" path="res://Character Scenes/NPCs/Body_Organs.tscn" id="6_uypxe"]
 [ext_resource type="PackedScene" uid="uid://chwvoa582jgf1" path="res://Character Scenes/NPCs/festering_mass.tscn" id="7_tnrcw"]
-[ext_resource type="PackedScene" uid="uid://prhivk67gykt" path="res://Character Scenes/NPCs/gatekeeper.tscn" id="8_1nt4o"]
 [ext_resource type="PackedScene" uid="uid://2f37epmgchvw" path="res://Character Scenes/NPCs/gibberish.tscn" id="9_rxrm2"]
 [ext_resource type="PackedScene" uid="uid://b6io2rohjs3a3" path="res://Character Scenes/NPCs/horse.tscn" id="10_0ltci"]
 [ext_resource type="PackedScene" uid="uid://ouu7ac5fbhbc" path="res://Character Scenes/NPCs/idea_guy.tscn" id="11_pfi2n"]
@@ -54,8 +54,8 @@ visible = false
 transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
-[node name="gatekeeper unlocked" parent="Area3D" unique_id=1866931042 instance=ExtResource("8_1nt4o")]
-transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
+[node name="Gatekeeper2" parent="Area3D" unique_id=487687114 instance=ExtResource("6_rmjit")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.128, 0)
 visible = false
 
 [node name="horse" parent="Area3D" unique_id=1429058884 instance=ExtResource("10_0ltci")]

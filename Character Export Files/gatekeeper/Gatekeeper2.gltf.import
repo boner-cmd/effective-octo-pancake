@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://edeskmjqsxmf"
-path="res://.godot/imported/individuated individual.gltf-a7ea5a3f758893bd8feee53f98339dee.scn"
+uid="uid://bye3g5l44tn0o"
+path="res://.godot/imported/Gatekeeper2.gltf-6122c1d738140a9f4eb80a502bebf2d0.scn"
 
 [deps]
 
-source_file="res://Character Export Files/gatekeeper/individuated individual.gltf"
-dest_files=["res://.godot/imported/individuated individual.gltf-a7ea5a3f758893bd8feee53f98339dee.scn"]
+source_file="res://Character Export Files/gatekeeper/Gatekeeper2.gltf"
+dest_files=["res://.godot/imported/Gatekeeper2.gltf-6122c1d738140a9f4eb80a502bebf2d0.scn"]
 
 [params]
 

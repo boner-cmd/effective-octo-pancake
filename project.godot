@@ -129,3 +129,4 @@ toggle_pause={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/decals/filter=0

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cbr27o0yk8xhm"]
+
+[ext_resource type="PackedScene" uid="uid://bye3g5l44tn0o" path="res://Character Export Files/gatekeeper/Gatekeeper2.gltf" id="1_yujwm"]
+[ext_resource type="Texture2D" uid="uid://bjlgsvyj25ryr" path="res://Character Scenes/NPCs/Gatekeeper_Hole.png" id="2_credq"]
+[ext_resource type="Texture2D" uid="uid://tj08tvdja20k" path="res://Character Scenes/NPCs/Gatekeeper_Hole_ORM.png" id="3_iwxd8"]
+[ext_resource type="PackedScene" uid="uid://c6lc2rdj4r2eu" path="res://Character Scenes/NPCs/gatekeeper_key.tscn" id="4_80axq"]
+
+[node name="Gatekeeper2" unique_id=487687114 instance=ExtResource("1_yujwm")]
+
+[node name="Cube_001" parent="." index="0" unique_id=915758211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="Cylinder" parent="." index="1" unique_id=1011752146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="body" parent="." index="2" unique_id=219491452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="left arm" parent="." index="3" unique_id=844415711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="right arm" parent="." index="4" unique_id=1937359088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="left leg" parent="." index="5" unique_id=1635172518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="right leg" parent="." index="6" unique_id=735141981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23861265)
+
+[node name="Decal" type="Decal" parent="." index="7" unique_id=599067494]
+transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, -0.75, 0, 0.75, -3.278354e-08, -0.050006032, 5.3471, -0.57741535)
+size = Vector3(2, 0.104003906, 2)
+texture_albedo = ExtResource("2_credq")
+texture_orm = ExtResource("3_iwxd8")
+
+[node name="GatekeeperKey" parent="." index="8" unique_id=668859299 instance=ExtResource("4_80axq")]
+transform = Transform3D(-61.87, 0, -5.4088473e-06, 0, 61.87, 0, 5.4088473e-06, 0, -61.87, -4.7683716e-07, 5.534921, -1.395352)
+visible = false

@@ -48,7 +48,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_wv5cx")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_wv5cx")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1189905620]
@@ -56,12 +56,9 @@ mesh = SubResource("SphereMesh_84pt0")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_n7ksx")]
 
-[node name="gatekeeper unlocked" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="5" unique_id=1866931042 groups=["Completion_Change"]]
+[node name="Gatekeeper2" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="5" unique_id=487687114 groups=["Completion_Change"]]
 visible = true
 script = ExtResource("7_n7ksx")
-
-[node name="Cylinder" parent="InteractionArea/Area3D/gatekeeper unlocked" index="2" unique_id=926887980]
-visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1323657896]
 collision_layer = 2
@@ -90,13 +87,15 @@ destination_planet_ID = 15
 
 [editable path="CubedSkybox"]
 [editable path="InteractionArea"]
-[editable path="InteractionArea/Area3D/gatekeeper unlocked"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="Door2"]
 [editable path="Door2/DoorBaseModel"]
 [editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door2/DoorBaseModel/DoorVFX"]
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="Door3/DoorBaseModel/DoorVFX"]
