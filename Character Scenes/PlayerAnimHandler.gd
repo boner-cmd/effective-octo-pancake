@@ -71,6 +71,7 @@ func _set_player_anim(anim : AnimStates):
 				anim_tree.set("parameters/Give/blend_amount", 0.0)
 			AnimStates.JUMP:
 				honk_sound_player()
+				AudioManager.sfx_play(AudioManager.sfx_jump)
 				HonkCounter.add_honk()
 				anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 				anim_tree.set("parameters/Walk/blend_amount", 0.0)

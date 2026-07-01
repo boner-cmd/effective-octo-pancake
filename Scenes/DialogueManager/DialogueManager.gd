@@ -477,8 +477,9 @@ const CREDITS_1 : PackedStringArray = [
 ## newlines between array elements are just for readability in-editor
 const CREDITS_2 : PackedStringArray = [
 	"CREDITS:",
+	
 	"Michael Brissie:
-	Animation, Modeling, Game and
+	Animation, Modeling, Game /
 	Level Design, Asset Implementation,
 	VFX, Programming, Tech Art, UI",
 	
@@ -487,12 +488,16 @@ const CREDITS_2 : PackedStringArray = [
 	
 	"Markcy Hilbert:
 	Scenario, Dialogue, Creative Direction,
-	Music and Sound, Game Design,
-	2D and 3D Assets",
+	Music / Sound, Game Design,
+	2D / 3D Assets",
 	
 	"Dimelo Waterson:
 	Systems Design,
 	Data Entry",
+	
+	"Software Used:
+	Aesprite, Godot 4.6,
+	Maya, Reaper",
 	
 	"Truly...",
 	
