@@ -106,9 +106,13 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 	get_tree().root.add_child.call_deferred(Temp_SFX_Player)
 	await Temp_SFX_Player.tree_entered
 	if sfx == sfx_explode:
-			Temp_SFX_Player.volume_db -= 12.0
+			Temp_SFX_Player.volume_db += 3.0
 	if sfx == sfx_blip:
 			Temp_SFX_Player.volume_db += 13
+	if sfx == sfx_get_item:
+			Temp_SFX_Player.volume_db += 3
+	if sfx == sfx_give_item:
+			Temp_SFX_Player.volume_db += 3
 	Temp_SFX_Player.pitch_scale += pitch_range
 	Temp_SFX_Player.play()
 	#HonkCounter.add_honk()
@@ -161,6 +165,8 @@ func bgm_cycle(planetID: int):
 		get_tree().root.add_child(temp_BGM_Player)
 	if planetID == 21:
 		temp_BGM_Player.volume_db = 5.0
+	if planetID == 17:
+		temp_BGM_Player.volume_db += 4
 	if temp_BGM_Player:
 		temp_BGM_Player.play()
 	if planetID == 9:
