@@ -36,25 +36,25 @@ const BORGANS_F = preload("uid://cys3kix6r1d62")
 const BORGANS_G = preload("uid://dkelsetuy76ok")
 
 #SFX player
-const sfx_get_item : AudioStream = preload("uid://cp17cger7bu5p")
-const sfx_give_item : AudioStream = preload("uid://dkwc6p8t3hdek")
-const sfx_walk : AudioStream = preload("uid://c02mhuc0dk48x")
-const sfx_jump : AudioStream = preload("uid://cduu2q6v1l1yk")
-const sfx_explode : AudioStream = preload("uid://conpnqqcjln5n")
-const sfx_honk : AudioStream = preload("uid://eqfmf8j0l8u2")
+const sfx_get_item : AudioStream = preload("uid://bx7pwyxc06eie")
+const sfx_give_item : AudioStream = preload("uid://d2icinwappgvl")
+const sfx_walk : AudioStream = preload("uid://djk0in4783yru")
+const sfx_jump : AudioStream = preload("uid://b0a537a07c3i1")
+const sfx_explode : AudioStream = preload("uid://4v4v16xmj2um")
+const sfx_honk : AudioStream = preload("uid://b0gtkt510d2a7")
 const sfx_sadhonk : AudioStream = preload("res://sound fx exports/sadhonk.wav")
 
 #SFX door
-const sfx_despawn : AudioStream = preload("uid://7banle6yv2gq")
-const sfx_spawn : AudioStream = preload("uid://t6h5ww03rkm7")
-const sfx_exit : AudioStream = preload("uid://dklltp1vyr8pp")
+const sfx_despawn : AudioStream = preload("uid://bwwuvx20oomv1")
+const sfx_spawn : AudioStream = preload("uid://bs3nlrnptk4a3")
+const sfx_exit : AudioStream = preload("uid://6vga7euy8mhe")
 
 #Misc SFX
-const sfx_blip : AudioStream = preload("res://sound fx exports/menu choice blip2026-05-2222_33_19.wav")
+const sfx_blip : AudioStream = preload("res://sound fx exports/menu choice blip.wav")
 
 #speech sounds
-const speech_sound : AudioStream = preload("res://sound fx exports/typewriter2026-05-20_13_26_04.wav")
-const conf_sound : AudioStream = preload("res://sound fx exports/typewriter slide2026-05-2014_01_48.wav")
+const speech_sound : AudioStream = preload("res://sound fx exports/typewriter.wav")
+const conf_sound : AudioStream = preload("res://sound fx exports/typewriter slide.wav")
 
 
 var BORGANS_BOOL : bool = false
@@ -108,7 +108,7 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 	if sfx == sfx_explode:
 			Temp_SFX_Player.volume_db -= 12.0
 	if sfx == sfx_blip:
-			Temp_SFX_Player.volume_db += 18
+			Temp_SFX_Player.volume_db += 13
 	Temp_SFX_Player.pitch_scale += pitch_range
 	Temp_SFX_Player.play()
 	#HonkCounter.add_honk()
