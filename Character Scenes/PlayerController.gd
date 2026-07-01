@@ -6,7 +6,6 @@ var _cam_frame_both: Camera3D
 var _cam_player_give: Camera3D
 var _cam_player_receive: Camera3D
 
-var interaction_flip : bool = false
 var temp_npc = Node3D
 var clone : Node3D
 var clone_vfx : Node3D
@@ -14,6 +13,7 @@ var clone_item_get : Sprite3D
 var clone_item_get_bg : AnimatedSprite3D
 var clone_item_give : Sprite3D
 var clone_item_give_bg : AnimatedSprite3D
+var clone_flag : bool = false
 
 var movement_frozen : bool = false
 var _camera_input_direction : Vector2 = Vector2.ZERO
@@ -71,7 +71,9 @@ func transfer_vfx_to_player() -> void:
 
 func player_interaction_camera() -> void:
 	if DialogueManager.is_dialogue_active:
-		if not clone: #makes clone for interaction
+		Idle_Check = false
+		if not clone_flag: #makes clone for interaction
+			clone_flag = true
 			clone = clown.duplicate()
 			for node in clone.get_children():
 				if node.name == &"InteractionDetector":
@@ -89,15 +91,14 @@ func player_interaction_camera() -> void:
 				if node.name == &"ItemGiveLocator":
 					clone_item_give = node.get_child(0)
 					clone_item_give_bg = node.get_child(1)
-			
 		match DialogueManager.dialogue_state:
 			DialogueManager.CONV_STATE.PLAYER_LISTEN:
 				if Input.is_action_just_pressed("jump"):
-					if clone.current_anim != clown.AnimStates.JUMP:
-						clone._set_player_anim(clown.AnimStates.JUMP)
+					if clone.current_anim != clone.AnimStates.JUMP:
+						clone._set_player_anim(clone.AnimStates.JUMP)
 					else:
 						clone._set_player_anim(clone.AnimStates.TALK)
-				elif clone.current_anim != clown.AnimStates.JUMP:
+				elif clone.current_anim != clone.AnimStates.JUMP:
 					clone._set_player_anim(clone.AnimStates.TALK)
 				_cam_frame_both.make_current()
 			DialogueManager.CONV_STATE.PLAYER_GIVE:
@@ -160,11 +161,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		_camera.make_current()
 		movement_frozen = false
-		if clone:
+		if DialogueManager.is_dialogue_active == false and clone_flag == true:
+			clone_flag = false
 			transfer_vfx_to_player()
 			clone.queue_free()
 			clown.visible = true
-			clown._set_player_anim(clown.AnimStates.IDLE)
 	if not movement_frozen:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)

@@ -122,63 +122,63 @@ size = 2.878
 [node name="title_screen_letters" parent="Node3D" unique_id=841955191 instance=ExtResource("2_7whhf")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.43494105, 0, -0.38064346)
 
-[node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=2059957736]
+[node name="A" parent="Node3D/title_screen_letters" index="0" unique_id=1708180983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8550289, 0.07640395, -0.8238251)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=948488532]
+[node name="T1" parent="Node3D/title_screen_letters" index="1" unique_id=1101734211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48080724, 0.0746371, -0.9845757)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=1392599070]
+[node name="T2" parent="Node3D/title_screen_letters" index="2" unique_id=649626419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10858756, 0.074198715, -0.9534257)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=2010169060]
+[node name="E1" parent="Node3D/title_screen_letters" index="3" unique_id=141749152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25843668, 0.07419868, -0.9238143)
 material_override = ExtResource("3_qu6cc")
 
-[node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=1047267258]
+[node name="N" parent="Node3D/title_screen_letters" index="4" unique_id=1575611344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60433537, 0.07387316, -0.88987577)
 material_override = ExtResource("3_qu6cc")
 
-[node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=131660208]
+[node name="T3" parent="Node3D/title_screen_letters" index="5" unique_id=322371230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0063701, 0.0754394, -0.99209625)
 material_override = ExtResource("3_qu6cc")
 
-[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=1991026594]
+[node name="I" parent="Node3D/title_screen_letters" index="6" unique_id=245440984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3082354, 0.074427806, -0.8896651)
 material_override = ExtResource("3_qu6cc")
 
-[node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=2105917257]
+[node name="V" parent="Node3D/title_screen_letters" index="7" unique_id=999350554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6126812, 0.073930226, -1.0123352)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=1370735423]
+[node name="E2" parent="Node3D/title_screen_letters" index="8" unique_id=69001312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.028646, 0.07419868, -0.92381436)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=1857176818]
+[node name="E3" parent="Node3D/title_screen_letters" index="9" unique_id=808913432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13234362, 0.08711618, -0.27306348)
 material_override = ExtResource("3_qu6cc")
 
-[node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=1229502482]
+[node name="E4" parent="Node3D/title_screen_letters" index="10" unique_id=1449709585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3738604, 0.07419868, -0.23683521)
 material_override = ExtResource("3_qu6cc")
 
-[node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=1109847124]
+[node name="L" parent="Node3D/title_screen_letters" index="11" unique_id=233796594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3241271, 0.07488507, -0.16352063)
 material_override = ExtResource("3_qu6cc")
 
-[node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=803671204]
+[node name="P" parent="Node3D/title_screen_letters" index="12" unique_id=1622759300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7980862, 0.07671435, -0.29228708)
 material_override = ExtResource("3_qu6cc")
 
-[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=1185040788]
+[node name="R" parent="Node3D/title_screen_letters" index="13" unique_id=899199309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8975282, 0.074937575, -0.2234381)
 material_override = ExtResource("3_qu6cc")
 
-[node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=1920329857]
+[node name="H" parent="Node3D/title_screen_letters" index="14" unique_id=83373218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7299879, 0.07718342, -0.20627926)
 material_override = ExtResource("3_qu6cc")
 
@@ -218,27 +218,7 @@ spot_angle = 48.36
 [node name="ClownRigFBX" parent="Node3D" unique_id=77601808 instance=ExtResource("4_pie25")]
 transform = Transform3D(-0.355, 2.997759e-08, 8.0324725e-09, 0, 0.09188077, -0.34290364, -3.1035086e-08, -0.34290364, -0.09188077, -0.005, -7.846, 0.597)
 
-[node name="Skeleton3D" parent="Node3D/ClownRigFBX/Rig" parent_id_path=PackedInt32Array(77601808, 1346645065) index="0" unique_id=1334537233]
-bones/2/position = Vector3(0, 0.002500003, 0)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
-bones/3/position = Vector3(-1.6885689e-10, 0.0029941183, -8.050192e-11)
-bones/4/position = Vector3(-7.222122e-11, 0.0020000006, -0.0017499999)
-bones/4/rotation = Quaternion(-0.9890514, -4.309209e-08, 1.16018036e-07, 0.14757188)
-bones/6/position = Vector3(7.222185e-11, 0.0020000006, 0.0017499998)
-bones/6/rotation = Quaternion(7.69735e-08, 0.16749677, 0.9858726, -1.30775675e-08)
-bones/8/position = Vector3(-5.9928716e-05, -0.002470804, 0.0011162624)
-bones/8/rotation = Quaternion(0.99952626, 0.00037702796, -0.027574765, -0.013666067)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
-bones/10/position = Vector3(5.9928792e-05, -0.002470801, -0.0011162629)
-bones/10/rotation = Quaternion(0.99952626, 0.00037702578, 0.02757483, 0.013666067)
-bones/11/position = Vector3(6.185368e-07, 0.005622768, -1.1174635e-05)
-bones/11/rotation = Quaternion(0, 0, 0, 1)
-bones/12/position = Vector3(9.199295e-06, 0.0051881243, 0.00019031962)
-bones/12/rotation = Quaternion(0.036402073, -0.004477922, 0.12201042, 0.991851)
-bones/13/position = Vector3(-0.00030511033, 0.003186539, -4.5399648e-10)
-bones/13/rotation = Quaternion(0, 0, 0, 1)
-
-[node name="PlayerVFX" parent="Node3D/ClownRigFBX" index="5" unique_id=903447513]
+[node name="PlayerVFX" parent="Node3D/ClownRigFBX" index="5" unique_id=964176650]
 local_space = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=1991360123]
