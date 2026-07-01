@@ -179,6 +179,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					interaction_latch = false
 					tween_vignette_switch(false)
 					interact_npc_margin.modulate.a = 0.01
+					player.set_current_anim(player.AnimStates.IDLE)
 			if interact_touched == INTERACT_TYPE.DOOR_OPEN:
 				interact_touched = INTERACT_TYPE.NONE
 
