@@ -953,10 +953,12 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 				receive_point += used_lines[current_npc][1].size()
 			if give_flag and give_point == 0:
 				dialogue_state = CONV_STATE.PLAYER_GIVE
+				AudioManager.sfx_play(AudioManager.sfx_give_item)
 				emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_GIVE)
 				give_flag = false
 			if receive_flag and receive_point == 0:
 				dialogue_state = CONV_STATE.PLAYER_RECEIVE
+				AudioManager.sfx_play(AudioManager.sfx_get_item)
 				emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_RECEIVE)
 				receive_flag = false
 		
