@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c2ywp6nx0g7wm"]
+
+[ext_resource type="Shader" uid="uid://cw7oixe0hprfi" path="res://UI assets/UIShaders/gradient_squiggle_3D.gdshader" id="1_lbpga"]
+[ext_resource type="Texture2D" uid="uid://d16r8ei2no08y" path="res://planets/textures/Skybox Textures/gibberish skybox.png" id="2_blbvb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lbpga")
+shader_parameter/scale = 1.0
+shader_parameter/strength = 0.3
+shader_parameter/fps = 4.0
+shader_parameter/gradient_offset = Vector2(0.05, 0.05)
+shader_parameter/main_texture_scale = Vector2(1, 1)
+shader_parameter/replacement_texture = ExtResource("2_blbvb")
+shader_parameter/replacement_texture_scale = Vector2(1, 1)
+shader_parameter/replacement_color = Color(0.70000815, 0.67337203, 0.7547807, 1)
+shader_parameter/key_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.1
