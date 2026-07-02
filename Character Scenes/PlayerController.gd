@@ -151,9 +151,9 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not ray_cast_3d.is_colliding(): #never gets reset to ray_cast_3d if it ever gets set
 		current_raycast = reset_raycast
-	if not DialogueManager.dialogue_state == DialogueManager.CONV_STATE.FINISHED:
+	if DialogueManager.dialogue_state != DialogueManager.CONV_STATE.FINISHED:
 		movement_frozen = true
-	if clown.current_anim == clown.AnimStates.VICTORY:
+	elif clown.current_anim == clown.AnimStates.VICTORY:
 		movement_frozen = true
 	elif exit_check:
 		movement_frozen = true
@@ -161,7 +161,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_camera.make_current()
 		movement_frozen = false
-		if DialogueManager.is_dialogue_active == false and clone_flag == true:
+		if clone_flag == true:
 			clone_flag = false
 			transfer_vfx_to_player()
 			clone.queue_free()
