@@ -113,7 +113,8 @@ func sfx_play(sfx : AudioStream, pitch_range: float = randf_range(-0.1, 0.1)):
 			Temp_SFX_Player.volume_db += 3
 	if sfx == sfx_give_item:
 			Temp_SFX_Player.volume_db += 3
-	Temp_SFX_Player.pitch_scale += pitch_range
+	if Temp_SFX_Player != sfx_get_item or sfx_give_item:
+		Temp_SFX_Player.pitch_scale += pitch_range
 	Temp_SFX_Player.play()
 	#HonkCounter.add_honk()
 	await Temp_SFX_Player.finished
