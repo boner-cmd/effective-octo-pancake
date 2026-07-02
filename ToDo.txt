@@ -20,10 +20,7 @@ MAIN
 
 DIALOGUES (DialogueManager, NPC lines) 
 	Different speech sound
-	Delay for re-speaking to NPC - this might be getting into the weeds a bit but probably not too difficult
-	Maybe a half second delay between F presses for dialogue
 	MAYBE there is no skipping of the text propagation, but instead text scrolls fast (maybe this idea conflicts with the notion of speedrunning)
-	Michaelwave dialogue needs to be REAL
 
 
 MODELS -
@@ -88,7 +85,6 @@ TITLE SCREEN -
 	World environment - screenshot of the title screen made to be the environment where 
 
 SOUND - 2.5 days ish
-	Different default speech noises
+	Different default speech noises?
 	Unique speech sound per NPC (?)
 		Maybe its just an initial babble?
-	Mastering of SFX/changing some
