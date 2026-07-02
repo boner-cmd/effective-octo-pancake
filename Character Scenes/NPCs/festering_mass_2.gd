@@ -7,8 +7,8 @@ var mat : StandardMaterial3D
 
 func _ready() -> void:
 	mat = festering_mass.get_surface_override_material(0)
-	timer.start()
 	timer.timeout.connect(move_texture)
+	timer.start()
 
 func move_texture() -> void:
 	match offset_int:
@@ -44,5 +44,3 @@ func move_texture() -> void:
 			mat.uv1_offset.y = 0.01
 			mat.grow_amount = 0.001
 			offset_int = 0
-	
-	
