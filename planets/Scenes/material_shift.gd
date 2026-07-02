@@ -1,10 +1,10 @@
 extends MeshInstance3D
 var mat
-
+@export var uv_offset_y_goal : float = -1.0
 
 func _ready() -> void:
 	mat = get_active_material(0)
-	tween_object(mat, "uv1_offset:y", -1.0, 30.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween_object(mat, "uv1_offset:y", uv_offset_y_goal, 30.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 
 
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
