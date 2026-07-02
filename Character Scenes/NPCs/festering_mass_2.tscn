@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cul2ktcuiypwi"]
+
+[ext_resource type="PackedScene" uid="uid://eul8p8jndq8e" path="res://Character Export Files/festering mass/FesteringMass.fbx" id="1_7th7w"]
+[ext_resource type="Texture2D" uid="uid://bpstcawqcrg7o" path="res://Character Export Files/festering mass/FesteringMass.png" id="2_8imlj"]
+[ext_resource type="Script" uid="uid://58y4mex7cgqr" path="res://Character Scenes/NPCs/festering_mass_2.gd" id="2_yp0c5"]
+[ext_resource type="Texture2D" uid="uid://qnh3muie47ek" path="res://Character Export Files/festering mass/FesteringMassRougness.png" id="3_yp0c5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mok6"]
+albedo_texture = ExtResource("2_8imlj")
+metallic_specular = 0.15
+roughness_texture = ExtResource("3_yp0c5")
+uv1_offset = Vector3(0.01, 0.01, 0)
+texture_filter = 0
+grow = true
+
+[node name="FesteringMass" unique_id=999152094 instance=ExtResource("1_7th7w")]
+script = ExtResource("2_yp0c5")
+
+[node name="FesteringMass" parent="." index="0" unique_id=1681926018]
+surface_material_override/0 = SubResource("StandardMaterial3D_6mok6")
+
+[node name="Timer" type="Timer" parent="." index="1" unique_id=1119432136]
+wait_time = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="." index="2" unique_id=1625222742]
+transform = Transform3D(1, 0, 0, 0, 0.74205774, 0.67033595, 0, -0.67033595, 0.74205774, -0.5983577, 6.6183677, 8.680749)

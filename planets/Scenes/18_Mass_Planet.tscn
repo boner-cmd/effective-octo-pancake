@@ -60,7 +60,7 @@ mesh = SubResource("SphereMesh_6rb65")
 [node name="CollisionShape3D" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="0" unique_id=1777274432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45211267, 0)
 
-[node name="festering mass" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="4" unique_id=1082976903]
+[node name="FesteringMass" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="4" unique_id=999152094]
 visible = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1962741861]
@@ -80,3 +80,4 @@ destination_planet_ID = 6
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
