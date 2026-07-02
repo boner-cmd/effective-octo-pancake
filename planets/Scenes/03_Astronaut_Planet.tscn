@@ -133,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, -0.3554332, 0.9347017, 0, -0.9347017, -0.355
 destination_planet_ID = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1993366863]
-amount = 150
+amount = 600
 lifetime = 15.0
 preprocess = 10.0
 use_fixed_seed = true
