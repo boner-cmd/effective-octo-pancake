@@ -30,7 +30,19 @@ material_override = ExtResource("6_b4dn5")
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_660us")]
 
 [node name="gibberish" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="21" unique_id=1320364681]
+transform = Transform3D(-0.27, 0, 4.0768867e-08, 0, 0.27, 0, -4.0768867e-08, 0, -0.27, 0.28460404, -1.3188357, -0.26716217)
 visible = true
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.70710677, -0.2114538, -0.67474985, 0, 0.95424044, -0.29904082, 0.70710677, -0.2114538, -0.67474985, -0.020674821, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.07824434, -0.34996057, 0.93349105, -0.20289686, 0.9223544, 0.32877886, -0.97606915, -0.16367733, -0.14317487, 3.891635, 0.3606968, -1.3769938)
+visible = true
+fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(0.067905836, -0.21419732, 0.97442716, -0.1843229, 0.95717525, 0.2232501, -0.98051715, -0.19476922, 0.025516313, 1.3650001, 0.3080001, -1.4574326)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1489584397]
 collision_layer = 2
