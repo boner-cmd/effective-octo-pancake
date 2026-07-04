@@ -254,13 +254,15 @@ func _on_return_button_pressed() -> void:
 	await tween_object(start_menu_control, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	options_control.visible = false
 	
-	
 	if is_continue_disabled == true:
 		continue_button.disabled = true
-		new_game_button.grab_focus()
+		if _input_used == _inputs.CONTROLLER:
+			new_game_button.grab_focus()
 	else:
 		continue_button.disabled = false
-		continue_button.grab_focus()
+		if _input_used == _inputs.CONTROLLER:
+			continue_button.grab_focus()
+		
 	new_game_button.disabled = false
 	options_button.disabled = false
 	quit_button.disabled = false
