@@ -69,6 +69,7 @@ script = ExtResource("5_06bkn")
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_d0l1o")]
 
 [node name="grease_puddle" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="20" unique_id=513399140 groups=["Completion_Change"]]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.0194478, 0)
 visible = true
 script = ExtResource("6_d0l1o")
 

@@ -6,8 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_wxs3e"]
 [ext_resource type="Script" uid="uid://cqprlsvq8gfet" path="res://Character Scenes/NPCs/individual_completion.gd" id="5_dkal1"]
 [ext_resource type="Material" uid="uid://cipybu1vobpug" path="res://Character Export Files/Materials/glow_placeholder.tres" id="5_rp6ui"]
-[ext_resource type="PackedScene" uid="uid://b5dfwoc7pqgqn" path="res://Character Scenes/NPCs/individuated_individual.tscn" id="6_emtk8"]
-[ext_resource type="Material" uid="uid://pli4l85p8u2o" path="res://Character Export Files/Materials/Shadow.tres" id="7_dkal1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_teqbg"]
+sky_top_color = Color(0.25, 0.25, 0.25, 1)
+sky_horizon_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+ground_bottom_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+ground_horizon_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[sub_resource type="Sky" id="Sky_emtk8"]
+sky_material = SubResource("ProceduralSkyMaterial_teqbg")
+
+[sub_resource type="Environment" id="Environment_dkal1"]
+background_mode = 2
+sky = SubResource("Sky_emtk8")
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wxs3e"]
 radius = 0.3
@@ -17,9 +31,8 @@ script = ExtResource("1_0s5uc")
 InteractionArea = NodePath("InteractionArea")
 Obj_2 = NodePath("Door")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5369616]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2017051348]
+environment = SubResource("Environment_dkal1")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_jqsyd")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
@@ -36,47 +49,33 @@ destination_planet_ID = 7
 visible = true
 script = ExtResource("5_dkal1")
 
-[node name="head" parent="InteractionArea/Area3D/individuated individual" index="0" unique_id=1808132387]
+[node name="head" parent="InteractionArea/Area3D/individuated individual" index="0" unique_id=423503737]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="body" parent="InteractionArea/Area3D/individuated individual" index="1" unique_id=1751058952]
+[node name="body" parent="InteractionArea/Area3D/individuated individual" index="1" unique_id=1475139839]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="left arm" parent="InteractionArea/Area3D/individuated individual" index="2" unique_id=286963912]
+[node name="left arm" parent="InteractionArea/Area3D/individuated individual" index="2" unique_id=956956932]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="right arm" parent="InteractionArea/Area3D/individuated individual" index="3" unique_id=1867238260]
+[node name="right arm" parent="InteractionArea/Area3D/individuated individual" index="3" unique_id=1725218058]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="left leg" parent="InteractionArea/Area3D/individuated individual" index="4" unique_id=948640204]
+[node name="left leg" parent="InteractionArea/Area3D/individuated individual" index="4" unique_id=1296097962]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="right leg" parent="InteractionArea/Area3D/individuated individual" index="5" unique_id=430201069]
+[node name="right leg" parent="InteractionArea/Area3D/individuated individual" index="5" unique_id=1803999577]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
-[node name="individuated individual2" parent="InteractionArea/Area3D/individuated individual" index="6" unique_id=1322525116 instance=ExtResource("6_emtk8")]
-transform = Transform3D(0.9999998, 0, 0, 0, -0.06568182, 0.9978406, 0, -0.9978406, -0.06568182, 0, 0.5147095, 0)
-visible = false
-
-[node name="head" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="0" unique_id=1808132387]
-transform = Transform3D(1, 0, 0, 0, 0.9999997, -7.450581e-09, 0, 7.450581e-09, 0.9999997, 0, -0.37197793, -0.8191099)
-surface_material_override/0 = ExtResource("7_dkal1")
-
-[node name="body" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="1" unique_id=1751058952]
-transform = Transform3D(1, 0, 0, 0, 0.99854225, 0.05397424, 0, -0.05397424, 0.99854225, 0, 0, 0)
-surface_material_override/0 = ExtResource("7_dkal1")
-
-[node name="left arm" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="2" unique_id=286963912]
-surface_material_override/0 = ExtResource("7_dkal1")
-
-[node name="right arm" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="3" unique_id=1867238260]
-surface_material_override/0 = ExtResource("7_dkal1")
-
-[node name="left leg" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="4" unique_id=948640204]
-surface_material_override/0 = ExtResource("7_dkal1")
-
-[node name="right leg" parent="InteractionArea/Area3D/individuated individual/individuated individual2" index="5" unique_id=430201069]
-surface_material_override/0 = ExtResource("7_dkal1")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InteractionArea/Area3D/individuated individual" index="6" unique_id=5369616]
+transform = Transform3D(-2.297117, -0.9094226, -2.237702, -2.3745599, 0.28448468, 2.3219912, -0.44252393, 3.1942344, -0.8438916, 0, -16.30837, 0)
+shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1441861947]
 collision_layer = 2
@@ -89,6 +88,6 @@ shape = SubResource("CylinderShape3D_wxs3e")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]
 [editable path="InteractionArea/Area3D/individuated individual"]
-[editable path="InteractionArea/Area3D/individuated individual/individuated individual2"]

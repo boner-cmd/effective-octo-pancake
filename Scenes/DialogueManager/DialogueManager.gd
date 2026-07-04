@@ -152,7 +152,10 @@ const GATE_MEET_LINES : PackedStringArray = [
 		"Sucks for you though, rules are rules. I can't risk losing this job. Head back to the King and he'll give the key to you.",
 		"...Unless he lost it...",
 	]
-const GATE_GIVE_LINES : PackedStringArray = ["Ayyyyy there we go. Now stick that key in my head ,you silly little weirdo."] #DASP
+const GATE_GIVE_LINES : PackedStringArray = [
+	"Stick that key in my head, you silly little weirdo.",
+	"Ayyyyy there we go.",
+	]
 const GATE_POST_LINES : PackedStringArray = ["I hope I get to close the gate soon. I'm super off-balance unlocked like this."]
 const GATE_EASTER_LINES : PackedStringArray = ["Okay, I think the King really did forget about me this time. I'm going to pass out if I stay this way.", 
 "When you see him, can you PLEASE ask him if I can lock up?",]
@@ -836,7 +839,8 @@ func _input(event):
 					dialogue_state = CONV_STATE.PLAYER_LISTEN
 			else:
 				dialogue_state = CONV_STATE.PLAYER_LISTEN
-			
+				if QuestManager.has_completed(QuestManager.CharacterName.GATE):
+					planet_state_change.emit()
 			if current_line_index >= dialogue_lines.size():
 				is_dialogue_active = false
 				if name_tag:
@@ -972,7 +976,8 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 	if not QuestManager.has_completed(current_npc):
 		QuestManager.set_completed(current_npc)
 		Map.set_completion_sticker(current_npc)
-		planet_state_change.emit()
+		if current_npc != QuestManager.CharacterName.GATE:
+			planet_state_change.emit()
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
 			request_item_add.emit(current_npc)

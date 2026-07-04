@@ -58,12 +58,10 @@ UI PASS - optional
 		continue
 		main menu
 		quit
-		
-	Still Michael's task, maybe Markcy if gets down to wire
+	Dialogue Indicator swap for Controller Inputs
 
 
 POST - minimal
-	Exe Icon - 64x64 - Honk counter - resize
 	STEAM Integration + Listing (?)
 		includes STEAM banner, screenshots
 		promotional materials / trailer
@@ -73,16 +71,13 @@ POST - minimal
 			Complete whole quest
 			Embrace the Void
 			All dialogues (Yap Fetishist)
-			Speed Run
+			Speed Run - less than 18 minutes should be doable
 			Honk 100 times (feel out the number if 100 is too low)
 			play the whole game with music set to full (Markcy's #1 Fan)
 			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
 
 TITLE SCREEN -
-	on button hover have AH face different positions interrupting the screen (nice to have)
 	implement anims for options menu
-	Adjust the color of the light on the logo letters
-	World environment - screenshot of the title screen made to be the environment where 
 
 SOUND - 2.5 days ish
 	Different default speech noises?

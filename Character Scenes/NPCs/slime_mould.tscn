@@ -5,6 +5,6 @@
 [node name="slime_mould" type="Node3D" unique_id=1114862664]
 
 [node name="Decal" type="Decal" parent="." unique_id=733051989]
-size = Vector3(2.5, 2.5, 2.5)
+size = Vector3(2.5, 0.5, 2.5)
 texture_albedo = ExtResource("1_lgkf0")
 emission_energy = 2.0
