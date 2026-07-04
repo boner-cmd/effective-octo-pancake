@@ -17,7 +17,7 @@
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="13_75epk"]
 [ext_resource type="FontFile" uid="uid://bnyf5t008eyns" path="res://UI assets/Ah2-Regular.ttf" id="14_3ah5x"]
 [ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/LARGE_UI_MATERIAL_1.tres" id="15_jhb10"]
-[ext_resource type="Texture2D" uid="uid://c5bv53ottundk" path="res://UI assets/OptionsDoodles/title screen option doodle.png" id="16_1xqr1"]
+[ext_resource type="Texture2D" uid="uid://c6klj2o3but8m" path="res://UI assets/OptionsDoodles/AH1.png" id="16_1xqr1"]
 [ext_resource type="Script" uid="uid://drc3sjbe2lmsk" path="res://Scenes/audio_sliders.gd" id="17_deutk"]
 [ext_resource type="Material" uid="uid://j7af50emycsi" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_4_HSLIDER.tres" id="18_fvr0n"]
 [ext_resource type="Theme" uid="uid://duv00eumyyl7w" path="res://UI assets/hslider assets/hslider_theme.tres" id="19_o6bmn"]

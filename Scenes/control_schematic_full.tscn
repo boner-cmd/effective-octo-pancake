@@ -7,6 +7,10 @@
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="4_n6npy"]
 [ext_resource type="Texture2D" uid="uid://dg7ahal8mvkdm" path="res://UI assets/Key_Wide.png" id="5_sguyi"]
 [ext_resource type="Texture2D" uid="uid://cnoryljdux3ku" path="res://UI assets/Key_Space.png" id="6_pkqj0"]
+[ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="8_pkqj0"]
+[ext_resource type="Texture2D" uid="uid://c1pmc3p585jum" path="res://UI assets/Controller.png" id="9_1r8ue"]
+[ext_resource type="Material" uid="uid://p6axcgo36jli" path="res://UI assets/UIShaders/SMALL_UI_MATERIAL_1.tres" id="10_6g8qa"]
+[ext_resource type="Texture2D" uid="uid://cqjuayexjtfyn" path="res://UI assets/control_indicator.png" id="11_8nx05"]
 
 [node name="ControlSchematicFull" type="Control" unique_id=700114868]
 layout_mode = 3
@@ -24,7 +28,11 @@ offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MouseImage" type="TextureRect" parent="." unique_id=614692523]
+[node name="Mouse" type="Control" parent="." unique_id=64611267]
+visible = false
+anchors_preset = 0
+
+[node name="MouseImage" type="TextureRect" parent="Mouse" unique_id=614692523]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 0
@@ -38,7 +46,7 @@ mouse_filter = 2
 texture = ExtResource("2_n6npy")
 expand_mode = 1
 
-[node name="KeyF" type="TextureRect" parent="." unique_id=1297354600]
+[node name="KeyF" type="TextureRect" parent="Mouse" unique_id=1297354600]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -47,10 +55,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -60.0
-offset_right = 34.0
-offset_bottom = 68.0
+offset_left = 546.0
+offset_top = 298.0
+offset_right = 674.0
+offset_bottom = 426.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.08726646
@@ -59,7 +67,7 @@ mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
-[node name="Label4" type="Label" parent="KeyF" unique_id=713036947]
+[node name="Label4" type="Label" parent="Mouse/KeyF" unique_id=713036947]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -72,7 +80,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "F"
 
-[node name="Tab" type="TextureRect" parent="." unique_id=561295447]
+[node name="Tab" type="TextureRect" parent="Mouse" unique_id=561295447]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -81,10 +89,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -449.0
-offset_top = -121.00003
-offset_right = -193.0
-offset_bottom = 7.0
+offset_left = 191.0
+offset_top = 236.99998
+offset_right = 447.0
+offset_bottom = 365.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
@@ -93,7 +101,7 @@ mouse_filter = 2
 texture = ExtResource("5_sguyi")
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="Tab" unique_id=2126516475]
+[node name="Label2" type="Label" parent="Mouse/Tab" unique_id=2126516475]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -106,7 +114,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "tab"
 
-[node name="Key1" type="TextureRect" parent="." unique_id=1524927217]
+[node name="Key1" type="TextureRect" parent="Mouse" unique_id=1524927217]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -115,10 +123,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -124.00008
-offset_right = -112.0
-offset_bottom = 3.999939
+offset_left = 400.00006
+offset_top = 233.99997
+offset_right = 528.00006
+offset_bottom = 362.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.017453292
@@ -127,7 +135,7 @@ mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
-[node name="Label4" type="Label" parent="Key1" unique_id=1425489761]
+[node name="Label4" type="Label" parent="Mouse/Key1" unique_id=1425489761]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -140,7 +148,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "W"
 
-[node name="Key2" type="TextureRect" parent="." unique_id=1063130079]
+[node name="Key2" type="TextureRect" parent="Mouse" unique_id=1063130079]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -149,10 +157,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = -57.00006
-offset_right = -114.0
-offset_bottom = 70.99997
+offset_left = 397.99994
+offset_top = 300.99994
+offset_right = 525.99994
+offset_bottom = 428.99997
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.10471976
@@ -161,7 +169,7 @@ mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
-[node name="Label4" type="Label" parent="Key2" unique_id=1275155945]
+[node name="Label4" type="Label" parent="Mouse/Key2" unique_id=1275155945]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -174,7 +182,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "S"
 
-[node name="Key3" type="TextureRect" parent="." unique_id=1091958545]
+[node name="Key3" type="TextureRect" parent="Mouse" unique_id=1091958545]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -183,10 +191,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -307.0
-offset_top = -64.0
-offset_right = -179.0
-offset_bottom = 64.0
+offset_left = 333.0
+offset_top = 294.00003
+offset_right = 461.0
+offset_bottom = 422.00003
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.05235988
@@ -195,7 +203,7 @@ mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
-[node name="Label4" type="Label" parent="Key3" unique_id=868392297]
+[node name="Label4" type="Label" parent="Mouse/Key3" unique_id=868392297]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -208,7 +216,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "A"
 
-[node name="Key4" type="TextureRect" parent="." unique_id=1794707984]
+[node name="Key4" type="TextureRect" parent="Mouse" unique_id=1794707984]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -217,10 +225,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -64.0
-offset_right = -37.0
-offset_bottom = 64.0
+offset_left = 475.0
+offset_top = 294.0
+offset_right = 603.0
+offset_bottom = 422.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
@@ -229,7 +237,7 @@ texture = ExtResource("3_x2725")
 stretch_mode = 3
 flip_h = true
 
-[node name="Label4" type="Label" parent="Key4" unique_id=188533739]
+[node name="Label4" type="Label" parent="Mouse/Key4" unique_id=188533739]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -242,7 +250,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "D"
 
-[node name="Esc" type="TextureRect" parent="." unique_id=2087249008]
+[node name="Esc" type="TextureRect" parent="Mouse" unique_id=2087249008]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 1
@@ -251,10 +259,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -417.0
-offset_top = -202.00002
-offset_right = -289.0
-offset_bottom = -74.0
+offset_left = 223.0
+offset_top = 156.0
+offset_right = 351.0
+offset_bottom = 284.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
@@ -262,7 +270,7 @@ mouse_filter = 2
 texture = ExtResource("3_x2725")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="Esc" unique_id=823175579]
+[node name="Label" type="Label" parent="Mouse/Esc" unique_id=823175579]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -277,7 +285,7 @@ text = "esc"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Space" type="TextureRect" parent="." unique_id=1955849026]
+[node name="Space" type="TextureRect" parent="Mouse" unique_id=1955849026]
 texture_filter = 1
 material = ExtResource("1_n6npy")
 layout_mode = 0
@@ -289,7 +297,7 @@ scale = Vector2(0.75, 0.75)
 mouse_filter = 2
 texture = ExtResource("6_pkqj0")
 
-[node name="Label3" type="Label" parent="Space" unique_id=1895933830]
+[node name="Label3" type="Label" parent="Mouse/Space" unique_id=1895933830]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -302,7 +310,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 30
 text = "space"
 
-[node name="pause" type="Label" parent="." unique_id=1861889215]
+[node name="pause" type="Label" parent="Mouse" unique_id=1861889215]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -314,7 +322,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
 text = "pause"
 
-[node name="map" type="Label" parent="." unique_id=2016569667]
+[node name="map" type="Label" parent="Mouse" unique_id=2016569667]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -326,7 +334,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
 text = "map"
 
-[node name="move" type="Label" parent="." unique_id=1711279950]
+[node name="move" type="Label" parent="Mouse" unique_id=1711279950]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -338,7 +346,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
 text = "move"
 
-[node name="interact" type="Label" parent="." unique_id=1258254125]
+[node name="interact" type="Label" parent="Mouse" unique_id=1258254125]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -350,7 +358,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
 text = "interact"
 
-[node name="honk" type="Label" parent="." unique_id=1849823594]
+[node name="honk" type="Label" parent="Mouse" unique_id=1849823594]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -362,7 +370,7 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
 text = "honk"
 
-[node name="look" type="Label" parent="." unique_id=1529538845]
+[node name="look" type="Label" parent="Mouse" unique_id=1529538845]
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
@@ -374,8 +382,134 @@ theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
 text = "look"
 
-[node name="Timer" type="Timer" parent="." unique_id=1010457779]
-wait_time = 0.8
-autostart = true
+[node name="Controller" type="Control" parent="." unique_id=720235891]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[connection signal="timeout" from="Timer" to="." method="shift"]
+[node name="ControllerImage" type="Sprite2D" parent="Controller" unique_id=857848089]
+texture_filter = 1
+material = ExtResource("8_pkqj0")
+position = Vector2(640, 391)
+scale = Vector2(2, 2)
+texture = ExtResource("9_1r8ue")
+
+[node name="pause" type="Label" parent="Controller" unique_id=1060668673]
+texture_filter = 1
+material = ExtResource("4_n6npy")
+layout_mode = 0
+offset_left = 631.0
+offset_top = 81.0
+offset_right = 735.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_0n0u2")
+theme_override_font_sizes/font_size = 48
+text = "pause"
+
+[node name="map" type="Label" parent="Controller" unique_id=1573956840]
+texture_filter = 1
+material = ExtResource("4_n6npy")
+layout_mode = 0
+offset_left = 961.0
+offset_top = 167.0
+offset_right = 1047.0
+offset_bottom = 207.0
+theme_override_fonts/font = ExtResource("4_0n0u2")
+theme_override_font_sizes/font_size = 48
+text = "map"
+
+[node name="move" type="Label" parent="Controller" unique_id=129898143]
+texture_filter = 1
+material = ExtResource("4_n6npy")
+layout_mode = 0
+offset_left = 219.0
+offset_top = 246.75302
+offset_right = 316.0
+offset_bottom = 286.75302
+theme_override_fonts/font = ExtResource("4_0n0u2")
+theme_override_font_sizes/font_size = 48
+text = "move"
+
+[node name="interact" type="Label" parent="Controller" unique_id=7909119]
+texture_filter = 1
+material = ExtResource("4_n6npy")
+layout_mode = 0
+offset_left = 937.0
+offset_top = 239.0
+offset_right = 1088.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("4_0n0u2")
+theme_override_font_sizes/font_size = 48
+text = "interact"
+
+[node name="honk" type="Label" parent="Controller" unique_id=1200616646]
+texture_filter = 1
+material = ExtResource("4_n6npy")
+layout_mode = 0
+offset_left = 957.0
+offset_top = 310.0
+offset_right = 1083.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("4_0n0u2")
+theme_override_font_sizes/font_size = 48
+text = "honk"
+
+[node name="look" type="Label" parent="Controller" unique_id=226797292]
+texture_filter = 1
+material = ExtResource("4_n6npy")
+layout_mode = 0
+offset_left = 970.0
+offset_top = 363.0
+offset_right = 1096.0
+offset_bottom = 403.0
+theme_override_fonts/font = ExtResource("4_0n0u2")
+theme_override_font_sizes/font_size = 48
+text = "look"
+
+[node name="ControlIndicator" type="Sprite2D" parent="Controller" unique_id=477326540]
+texture_filter = 1
+material = ExtResource("10_6g8qa")
+position = Vector2(895, 201.99998)
+rotation = -0.1668545
+scale = Vector2(1.88, 1.88)
+texture = ExtResource("11_8nx05")
+
+[node name="ControlIndicator2" type="Sprite2D" parent="Controller" unique_id=1461418722]
+texture_filter = 1
+material = ExtResource("10_6g8qa")
+position = Vector2(900.99994, 259)
+rotation = -0.0025821924
+scale = Vector2(0.985, 0.985)
+texture = ExtResource("11_8nx05")
+
+[node name="ControlIndicator3" type="Sprite2D" parent="Controller" unique_id=574530373]
+texture_filter = 1
+material = ExtResource("10_6g8qa")
+position = Vector2(894, 319)
+rotation = 0.2131254
+scale = Vector2(1.91, 1.91)
+texture = ExtResource("11_8nx05")
+
+[node name="ControlIndicator4" type="Sprite2D" parent="Controller" unique_id=161546899]
+texture_filter = 1
+material = ExtResource("10_6g8qa")
+position = Vector2(886.00006, 381.00003)
+rotation = 0.020899717
+scale = Vector2(2.395, 2.395)
+texture = ExtResource("11_8nx05")
+
+[node name="ControlIndicator5" type="Sprite2D" parent="Controller" unique_id=753630960]
+texture_filter = 1
+material = ExtResource("10_6g8qa")
+position = Vector2(376.00003, 265.75302)
+rotation = 3.1390061
+scale = Vector2(1.85, 1.85)
+texture = ExtResource("11_8nx05")
+
+[node name="ControlIndicator6" type="Sprite2D" parent="Controller" unique_id=1522254959]
+texture_filter = 1
+material = ExtResource("10_6g8qa")
+position = Vector2(682.00006, 178)
+rotation = 4.723753
+scale = Vector2(1.932, 1.932)
+texture = ExtResource("11_8nx05")

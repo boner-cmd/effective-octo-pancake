@@ -1,6 +1,9 @@
 extends Node
 
 enum OPTIONS {NONE, SOUND, CONTROLS, CREDITS}
+enum _inputs {CONTROLLER, MOUSE}
+var _input_used : _inputs
+var mouse_bool : bool = false
 
 const MENU_BUTTON_SELECTED_CHROMAKEY = preload("uid://dryfbaibo6t1f")
 const MENU_BUTTON_UNSELECTED_CROMAKEY = preload("uid://62yo4oa5rjca")
@@ -19,8 +22,6 @@ var current_options : OPTIONS
 var transition_scene: CanvasLayer
 
 var is_continue_disabled : bool = true
-
-var test : bool = false
 
 @onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
 @onready var title_screen_planet: MeshInstance3D = $Node3D/TitleScreenPlanet
@@ -95,13 +96,13 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouse:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if event is InputEventJoypadMotion:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
-
+	if not mouse_bool:
+		if event is InputEventMouse:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			_input_used = _inputs.MOUSE
+		if event is InputEventJoypadMotion:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			_input_used = _inputs.CONTROLLER
 
 
 func tween_letters() -> void:
@@ -189,6 +190,18 @@ func transition_sequence() -> void:
 	await tween_object(transition, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	transition_scene = TRANSITION_SCENE_OVERLAY.instantiate()
 	get_tree().root.add_child(transition_scene)
+	#mouse or controller used controls schematic here
+	if _input_used == _inputs.MOUSE:
+		for node in transition_scene.get_children():
+			if node.name == &"ControlSchematicFull":
+				node.get_child(1).visible = true
+				node.get_child(2).visible = false
+	else:
+		for node in transition_scene.get_children():
+			if node.name == &"ControlSchematicFull":
+				node.get_child(1).visible = false
+				node.get_child(2).visible = true
+	
 	transition_scene.request_ready()
 
 
@@ -199,6 +212,7 @@ func _on_continue_button_pressed() -> void:
 
 func _on_new_game_button_pressed() -> void:
 	new_game_button.disabled = true
+	mouse_bool = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	await transition_sequence()
 	kill_tweens()
