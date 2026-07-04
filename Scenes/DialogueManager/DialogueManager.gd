@@ -5,6 +5,7 @@ signal request_item_add(npc : QuestManager.CharacterName) # sends the NPC who gi
 signal request_item_remove(npc : QuestManager.CharacterName) # sends the NPC who consumes the time
 signal planet_state_change()
 signal change_king()
+signal door_unlock()
 
 # enums for passing between NPCs and dialogue interaction
 enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, FINISHED, EASTER}
@@ -932,6 +933,7 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 				QuestManager.CharacterName.KING_1, QuestManager.CharacterName.MASS: # only require meetings, then will give
 					if first_meeting:
 						horse_lock = false
+						door_unlock.emit()
 					if QuestManager.requirements_met(current_npc):
 						receive_flag = true
 						dialogue_lines.append_array(used_lines[current_npc][2])
@@ -942,8 +944,10 @@ func start_dialogue(CanvasLayer_in : CanvasLayer, planet_id : QuestManager.Chara
 						match (current_npc):
 							QuestManager.CharacterName.SISYPHUS:
 								sisyphus_lock = false
+								door_unlock.emit()
 							QuestManager.CharacterName.GATE:
 								gate_lock = false
+								door_unlock.emit()
 								change_king.emit()
 				_: # exchange branch - NPC gives and receives when reqs (completion) met
 					if QuestManager.requirements_met(current_npc):

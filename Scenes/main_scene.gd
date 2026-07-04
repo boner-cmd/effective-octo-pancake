@@ -83,12 +83,11 @@ func on_planet_change_requested(planet_ID : int):
 		Player._camera.current = false
 		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 		current_npc = DialogueManager.current_npc
-		
+	if planet_ID == 0:
+		DialogueManager.planet_state_change.emit()
 	
 	if hud_overlay.interact_door_open.visible:
 		hud_overlay.immediate_interact_hide(hud_overlay.interact_door_open)
 	
-	
 	Player.reset_player()
 	SaveManager.save_game()
-	

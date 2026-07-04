@@ -146,6 +146,7 @@ func _ready() -> void:
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
 	DialogueManager.change_king.connect(change_king_door)
 	tree_entered.connect(stasis)
+	DialogueManager.door_unlock.connect(door_unlock_sequence)
 
 
 func spawn():
@@ -249,3 +250,12 @@ func transfer_vfx_to_player() -> void:
 	player_vfx.reparent(player_rig)
 	player_vfx.position = Vector3(0.0,0.0,0.0)
 	player_vfx.rotation = Vector3(0.0,0.0,0.0)
+
+
+func door_unlock_sequence() -> void:
+	if destination_planet_ID == QuestManager.CharacterName.HORSE \
+	or destination_planet_ID == QuestManager.CharacterName.ROBOT \
+	or destination_planet_ID == QuestManager.CharacterName.INDIVIDUAL \
+	or destination_planet_ID == QuestManager.CharacterName.SLIME \
+	or destination_planet_ID == QuestManager.CharacterName.KING_2:
+		delay_sleeping_particles()

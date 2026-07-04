@@ -5,14 +5,8 @@ extends Node3D
 
 func on_completion():
 	if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
-		door_credits.global_transform = credits_door_locator.global_transform
-		door_credits.visible = true
-
-func _ready() -> void:
-	if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
-		door_credits.global_transform = credits_door_locator.global_transform
-		door_credits.visible = true
-		door_credits.get_child(0).stasis()
-	if debug_victory:
-		door_credits.global_transform = credits_door_locator.global_transform
+		door_credits.reparent(credits_door_locator)
+		door_credits.position = Vector3(0.0, 0.0, 0.0)
+		door_credits.rotation = Vector3(0.0, 0.0, 0.0)
+		door_credits.top_level = true
 		door_credits.visible = true
