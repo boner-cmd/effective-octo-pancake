@@ -13,7 +13,10 @@ config_version=5
 config/name="GDTV Game Jam May 2026"
 run/main_scene="uid://duig5pisbnbl8"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Placeholder Assets (UI)/icon.svg"
+run/max_fps=120
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://d3qq12j6tx1fj"
+config/icon="uid://nx02rathe61o"
 
 [audio]
 
@@ -35,6 +38,7 @@ window/size/viewport_height=720
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+mouse_cursor/custom_image="uid://cyknubu8ddlfs"
 
 [global_group]
 
