@@ -35,6 +35,7 @@ SaveManager="*uid://debds87pbibx4"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://cyknubu8ddlfs"
