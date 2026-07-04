@@ -27,6 +27,9 @@ var grav_strength : float = 10.0
 var grav_vector : Vector3 = Vector3(0,0,0)
 var xform : Transform3D
 
+enum _inputs {CONTROLLER, MOUSE}
+var _input_used : _inputs
+
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 5.0
@@ -142,6 +145,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
+		_input_used = _inputs.MOUSE
 
 
 func _process(_delta: float) -> void:
@@ -167,6 +171,12 @@ func _physics_process(delta: float) -> void:
 			clone.queue_free()
 			clown.visible = true
 	if not movement_frozen:
+		var camera_axis_input := Input.get_vector("camera_look_left", "camera_look_right", "camera_look_up", "camera_look_down")
+		if camera_axis_input.length() >= .2:
+			_camera_input_direction.x = camera_axis_input.x * 1.75
+			_camera_input_direction.y = camera_axis_input.y * 1.75
+			_input_used = _inputs.CONTROLLER
+		
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta

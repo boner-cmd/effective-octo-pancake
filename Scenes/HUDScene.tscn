@@ -47,6 +47,7 @@
 [ext_resource type="Material" uid="uid://ca0m3hg50a27j" path="res://UI assets/UIShaders/SMALL_DIALOGUE_UI_MATERIAL_1.tres" id="45_82vjh"]
 [ext_resource type="Material" uid="uid://ng1yjo18ohs0" path="res://UI assets/UIShaders/LARGE_UI_MATERIAL_1.tres" id="47_qsvm7"]
 [ext_resource type="Texture2D" uid="uid://nc5hmhehg8rn" path="res://UI assets/DialogueBoxAssets/Interact_9_Patch.png" id="48_82xaf"]
+[ext_resource type="Texture2D" uid="uid://mh84f7kdq63o" path="res://UI assets/DialogueBoxAssets/controller_indicator.png" id="49_006ca"]
 [ext_resource type="Material" uid="uid://dlpo6o8wl5ol" path="res://UI assets/UIShaders/SquiggleTextMaterial_1.tres" id="49_c6udc"]
 [ext_resource type="Material" uid="uid://bnny7ydiluj36" path="res://UI assets/UIShaders/DIALOGUE_UI_MATERIAL_1.tres" id="50_c6udc"]
 [ext_resource type="Texture2D" uid="uid://bd60t1t6wqrex" path="res://UI assets/DialogueBoxAssets/Indicator_01.png" id="51_006ca"]
@@ -386,6 +387,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
+texture_focused = ExtResource("11_muo8p")
 
 [node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/ContinueButton" unique_id=1276166054]
 material = ExtResource("49_c6udc")
@@ -421,6 +423,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
+texture_focused = ExtResource("11_muo8p")
 
 [node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/Sound_Wrap/SoundButton" unique_id=516837959]
 material = ExtResource("49_c6udc")
@@ -455,6 +458,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
+texture_focused = ExtResource("11_muo8p")
 
 [node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/Controls_Wrap/ControlsButton" unique_id=943305220]
 material = ExtResource("49_c6udc")
@@ -481,6 +485,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
+texture_focused = ExtResource("11_muo8p")
 
 [node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/MenuButton" unique_id=1183872336]
 material = ExtResource("49_c6udc")
@@ -507,6 +512,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("9_5rjlw")
 texture_hover = ExtResource("11_muo8p")
+texture_focused = ExtResource("11_muo8p")
 
 [node name="Label" type="Label" parent="PauseContainer/PauseMargin/ButtonContainerVBox/QuitButton" unique_id=147428945]
 material = ExtResource("49_c6udc")
@@ -1899,6 +1905,15 @@ frame = 3
 frame_progress = 1.0
 centered = false
 offset = Vector2(-45, 0)
+
+[node name="ControllerIndicatorLabel" type="Sprite2D" parent="InteractMargin/Control/NextIndicator" unique_id=705112308]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+material = ExtResource("9_7jlp0")
+position = Vector2(0.5, 43)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("49_006ca")
 
 [node name="NextIndicatorLabel" type="Label" parent="InteractMargin/Control/NextIndicator" unique_id=1247362194]
 unique_name_in_owner = true

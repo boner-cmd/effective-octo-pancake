@@ -18,6 +18,8 @@ var current_tweens : Dictionary = {}
 var current_options : OPTIONS
 var transition_scene: CanvasLayer
 
+var is_continue_disabled : bool = true
+
 var test : bool = false
 
 @onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
@@ -62,16 +64,22 @@ var test : bool = false
 func _ready() -> void:
 	FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.READ)
 	if FileAccess.get_open_error():
+		is_continue_disabled = true
 		continue_button.disabled = true
 		continue_button.material = SMALL_UI_MATERIAL_3
 		continue_button.get_child(0).modulate.a = .5
 	else:
+		is_continue_disabled = false
 		continue_button.material = SMALL_UI_MATERIAL_1
 	timer.wait_time = timer_time
 	letter_array = title_screen_letters.get_children()
 	tween_letters()
 	clown_rig_fbx._set_player_anim(clown_rig_fbx.AnimStates.WALK)
 	_set_initial()
+	if is_continue_disabled == false:
+		continue_button.grab_focus()
+	else:
+		new_game_button.grab_focus()
 	
 	DialogueManager.reset_manager()
 	
@@ -80,11 +88,20 @@ func _ready() -> void:
 			node.queue_free()
 
 
-
 func _process(delta: float) -> void:
 	title_screen_planet.rotation_degrees.x -= delta * 15.0
 	if title_screen_planet.rotation_degrees.x < -360.0:
 		title_screen_planet.rotation_degrees.x = 0.0
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event is InputEventJoypadMotion:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+
 
 
 func tween_letters() -> void:
@@ -202,6 +219,8 @@ func _on_options_button_pressed() -> void:
 	await tween_object(options_control, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	start_menu_control.visible = false
 	
+	controls_button.grab_focus()
+	
 	controls_button.disabled = false
 	sound_button.disabled = false
 	credits_button.disabled = false
@@ -221,7 +240,13 @@ func _on_return_button_pressed() -> void:
 	await tween_object(start_menu_control, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	options_control.visible = false
 	
-	continue_button.disabled = false
+	
+	if is_continue_disabled == true:
+		continue_button.disabled = true
+		new_game_button.grab_focus()
+	else:
+		continue_button.disabled = false
+		continue_button.grab_focus()
 	new_game_button.disabled = false
 	options_button.disabled = false
 	quit_button.disabled = false
@@ -280,6 +305,7 @@ func _on_mouse_entered_or_focus(button) -> void:
 	if button.disabled == false:
 		AudioManager.sfx_play(AudioManager.sfx_blip)
 		button.scale = Vector2(1.1, 1.1)
+		button.grab_focus()
 	##TODO these ifs are for the overlay animations for the options panel
 	previous_button_hovered = current_button_hovered
 	current_button_hovered = button

@@ -30,6 +30,8 @@ var transition_color: ColorRect
 var transition_white: ColorRect
 var control_schematic_full: Control
 
+
+
 var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 
 @onready var inventory : Control = $PauseContainer/Inventory
@@ -54,7 +56,8 @@ var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 @onready var npc_label: Label = %InteractNPCLabel 
 @onready var next_indicator: AnimatedSprite2D = %NextIndicator
 @onready var next_indicator_label: Label = %NextIndicatorLabel
-
+@onready var controller_indicator_label: Sprite2D = %ControllerIndicatorLabel
+@onready var used_indicator_label = next_indicator_label
 #pause menu buttons
 @onready var continue_button: TextureButton = %ContinueButton
 @onready var quit_button: TextureButton = %QuitButton
@@ -117,12 +120,15 @@ func _ready() -> void:
 	#connect mouse area blips and effects
 	for button in get_tree().get_nodes_in_group("Pause_Buttons"):
 		button.mouse_entered.connect(_on_any_mouse_button_entered, CONNECT_APPEND_SOURCE_OBJECT)
+		button.focus_entered.connect(_on_any_mouse_button_entered, CONNECT_APPEND_SOURCE_OBJECT)
 		button.mouse_exited.connect(_on_any_mouse_button_exited, CONNECT_APPEND_SOURCE_OBJECT)
+		button.focus_exited.connect(_on_any_mouse_button_exited, CONNECT_APPEND_SOURCE_OBJECT)
 	#timer for transition start
 	transition_timer.start()
 	await transition_timer.timeout
 	#control schematics UI stuff here
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
+	used_indicator_label = next_indicator_label
 
 
 func _process(_delta: float) -> void:
@@ -298,6 +304,7 @@ func hide_other_buttons(selected_button : TextureButton) -> void:
 			if b.name != selected_button.name:
 				tween_object(b, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_OUT)
 				b.disabled = true
+				b.focus_mode = Control.FOCUS_NONE
 				b.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			return true)
 
@@ -327,12 +334,15 @@ func change_pause_state() -> void:
 ## TODO description
 func pause_game() -> void:
 	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if player._input_used == player._inputs.MOUSE:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	hide_minor_ui()
 	reset_pause_menu()
 	pause_menu.modulate.a = 0.0
 	pause_menu.visible = true
 	tween_object(pause_menu, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_OUT)
+	if player._input_used == player._inputs.CONTROLLER:
+		continue_button.grab_focus()
 
 
 ## TODO description
@@ -385,6 +395,7 @@ func reset_pause_menu() -> void:
 	get_tree().get_nodes_in_group("Pause_Buttons").all(func(b : Object):
 			tween_object(b, "modulate:a", 1.0, .25, Tween.TRANS_SINE, Tween.EASE_OUT)
 			b.disabled = false
+			b.focus_mode = Control.FOCUS_ALL
 			b.mouse_filter = Control.MOUSE_FILTER_STOP
 			return true
 			)
@@ -455,10 +466,11 @@ func transition_victory() -> void:
 
 func activate_tween_interact(interact_parent : MarginContainer) -> void:
 	if not debounce_interaction:
+		set_used_indicator()
 		debounce_interaction = true
 		next_indicator.modulate.a = 0.0
-		next_indicator_label.visible = false
-		next_indicator_label.modulate.a = 0.0
+		used_indicator_label.visible = false
+		used_indicator_label.modulate.a = 0.0
 		var label_margin = interact_parent.get_child(1)
 		var label = label_margin.get_child(0)
 		await get_tree().create_timer(.05).timeout
@@ -479,8 +491,8 @@ func activate_tween_interact(interact_parent : MarginContainer) -> void:
 			next_indicator.frame = 0
 			next_indicator.modulate.a = 1.0
 			next_indicator.play()
-			next_indicator_label.visible = true
-			tween_object(next_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
+			used_indicator_label.visible = true
+			tween_object(used_indicator_label, "modulate:a", 1.0, .1, Tween.TRANS_SINE, Tween.EASE_IN)
 		label.visible = true
 		tween_object(label, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 		debounce_interaction = false
@@ -491,6 +503,7 @@ func deactivate_tween_interact(interact_parent : MarginContainer) -> void:
 		debounce_interaction = true
 		var label_margin = interact_parent.get_child(1)
 		var label = label_margin.get_child(0)
+		used_indicator_label.modulate.a = 0.0
 		next_indicator.modulate.a = 0.0
 		label_margin.custom_minimum_size.x = temp_size
 		label.visible = false
@@ -581,3 +594,10 @@ func tween_vignette_switch(flag : bool) -> void:
 		dialogue_vignette.modulate.a = 1.0
 		await tween_object(dialogue_vignette, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 		dialogue_vignette.visible = false
+
+
+func set_used_indicator() -> void:
+	if player._input_used == player._inputs.MOUSE:
+		used_indicator_label = next_indicator_label
+	else:
+		used_indicator_label = controller_indicator_label

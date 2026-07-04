@@ -493,6 +493,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
 texture_disabled = ExtResource("11_4hokt")
+texture_focused = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/ContinueButton" unique_id=876850199]
@@ -519,6 +520,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/NewGameButton" unique_id=743505034]
@@ -545,6 +547,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/OptionsButton" unique_id=1568514466]
@@ -571,6 +574,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/StartMenuControl/MainMenuContainer/QuitButton" unique_id=1198521378]
@@ -666,6 +670,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 
 [node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/ControlsButton" unique_id=559933507]
 material = ExtResource("13_75epk")
@@ -691,6 +696,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 
 [node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/SoundButton" unique_id=1986143947]
 material = ExtResource("13_75epk")
@@ -716,6 +722,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 
 [node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/CreditsButton" unique_id=888299646]
 material = ExtResource("13_75epk")
@@ -741,6 +748,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("11_4hokt")
 texture_hover = ExtResource("12_swiah")
+texture_focused = ExtResource("12_swiah")
 
 [node name="Label" type="Label" parent="CanvasLayer/OptionsControl/OptionsButtons/ReturnButton" unique_id=7600341]
 material = ExtResource("13_75epk")

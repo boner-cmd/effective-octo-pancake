@@ -91,4 +91,6 @@ func bus_setup() -> void:
 		# connect signals
 		temp_slider.value_changed.connect(_on_any_value_changed, CONNECT_APPEND_SOURCE_OBJECT )
 		temp_slider.mouse_entered.connect(set_slider_hover_material, CONNECT_APPEND_SOURCE_OBJECT)
+		temp_slider.focus_entered.connect(set_slider_hover_material, CONNECT_APPEND_SOURCE_OBJECT)
 		temp_slider.mouse_exited.connect(unset_slider_hover_material, CONNECT_APPEND_SOURCE_OBJECT)
+		temp_slider.focus_exited.connect(unset_slider_hover_material, CONNECT_APPEND_SOURCE_OBJECT)
