@@ -44,6 +44,8 @@ var TITLE_SCREEN = preload("uid://duig5pisbnbl8").instantiate()
 @onready var transition_scene: CanvasLayer = get_tree().root.get_child(get_tree().root.get_children().find_custom(func(n : Node): return n.name == "TransitionSceneOverlay"))
 
 @onready var keyboard_controls_menu: Control = %KeyboardControlsMenu
+@onready var controller_controls_menu : Control = %ControllerControlsMenu
+@onready var used_controls_menu = keyboard_controls_menu
 @onready var audio_control: VBoxContainer = %AudioControlVBox
 @onready var map : TextureRect = %Map
 @onready var pause_menu : Control = $PauseContainer
@@ -103,6 +105,7 @@ func _ready() -> void:
 	control_schematic_full.modulate.a = 0.0
 	audio_control.modulate.a = 0.0
 	keyboard_controls_menu.modulate.a = 0.0
+	controller_controls_menu.modulate.a = 0.0
 	next_indicator.modulate.a = 0.0
 	quit_button.pivot_offset_ratio = Vector2(0.0, 0.5)
 	continue_button.pivot_offset_ratio = Vector2(0.0, 0.5)
@@ -214,14 +217,14 @@ func _on_controls_button_pressed() -> void:
 		tween_object(controls_button, "position:y", 194.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 		hide_other_buttons(controls_button)
 		doodle_hide()
-		keyboard_controls_menu.visible = true
-		tween_object(keyboard_controls_menu, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
+		used_controls_menu.visible = true
+		tween_object(used_controls_menu, "modulate:a", 1.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 	else:
 		controls_bool = false
 		tween_object(controls_button, "position:y", 0.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
-		tween_object(keyboard_controls_menu, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
+		tween_object(used_controls_menu, "modulate:a", 0.0, .5, Tween.TRANS_SINE, Tween.EASE_IN)
 		await get_tree().create_timer(.5).timeout
-		keyboard_controls_menu.visible = false
+		used_controls_menu.visible = false
 		tween_object(doodle_controls, "modulate:a", 1.0, .3, Tween.TRANS_SINE, Tween.EASE_OUT)
 		reset_pause_menu()
 
@@ -401,8 +404,8 @@ func reset_pause_menu() -> void:
 			)
 	controls_button.position.y = 0.0
 	sound_button.position.y = 0.0
-	keyboard_controls_menu.visible = false
-	keyboard_controls_menu.modulate.a = 0.0
+	used_controls_menu.visible = false
+	used_controls_menu.modulate.a = 0.0
 	controls_bool = false
 	audio_control.visible = false
 	audio_control.modulate.a = 0.0
@@ -599,5 +602,7 @@ func tween_vignette_switch(flag : bool) -> void:
 func set_used_indicator() -> void:
 	if player._input_used == player._inputs.MOUSE:
 		used_indicator_label = next_indicator_label
+		used_controls_menu = keyboard_controls_menu
 	else:
 		used_indicator_label = controller_indicator_label
+		used_controls_menu = controller_controls_menu

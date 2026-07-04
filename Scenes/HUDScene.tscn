@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cxkw523xw1am2" path="res://Map assets/sisyphus.png" id="17_s4svx"]
 [ext_resource type="Texture2D" uid="uid://cgc8xtrc7rude" path="res://Map assets/grease.png" id="18_a6sf7"]
 [ext_resource type="Texture2D" uid="uid://xce008uj80go" path="res://Map assets/no-eye'd deer.png" id="19_oc4d8"]
+[ext_resource type="Texture2D" uid="uid://c1pmc3p585jum" path="res://UI assets/Controller.png" id="20_006ca"]
 [ext_resource type="Texture2D" uid="uid://xmp1iw05xryg" path="res://Map assets/gatekeeper.png" id="20_74rbg"]
 [ext_resource type="Texture2D" uid="uid://dvacasapt6w4q" path="res://Map assets/O.png" id="21_npi88"]
 [ext_resource type="Texture2D" uid="uid://dkmjlu3h28nhj" path="res://Map assets/map border.png" id="21_qsvm7"]
@@ -119,7 +120,6 @@ process_mode = 3
 script = ExtResource("1_1m71x")
 
 [node name="PauseContainer" type="Control" parent="." unique_id=1922139443]
-visible = false
 z_index = 50
 layout_mode = 3
 anchors_preset = 0
@@ -842,6 +842,90 @@ offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("5_ftghg")
 theme_override_font_sizes/font_size = 40
 text = "look"
+
+[node name="ControllerControlsMenu" type="Control" parent="PauseContainer" unique_id=629663708]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="pause" type="Label" parent="PauseContainer/ControllerControlsMenu" unique_id=1732719730]
+texture_filter = 1
+layout_mode = 0
+offset_left = 682.0
+offset_top = 225.0
+offset_right = 786.0
+offset_bottom = 265.0
+pivot_offset = Vector2(56, 162)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
+text = "pause"
+
+[node name="map" type="Label" parent="PauseContainer/ControllerControlsMenu" unique_id=234225449]
+texture_filter = 1
+layout_mode = 0
+offset_left = 817.0
+offset_top = 249.0
+offset_right = 893.0
+offset_bottom = 289.0
+pivot_offset = Vector2(57, 88)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
+text = "map"
+
+[node name="move" type="Label" parent="PauseContainer/ControllerControlsMenu" unique_id=1057240614]
+texture_filter = 1
+layout_mode = 0
+offset_left = 495.0
+offset_top = 312.0
+offset_right = 592.0
+offset_bottom = 352.0
+pivot_offset = Vector2(-134, -65)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
+text = "move"
+
+[node name="interact" type="Label" parent="PauseContainer/ControllerControlsMenu" unique_id=1766908114]
+texture_filter = 1
+layout_mode = 0
+offset_left = 857.0
+offset_top = 310.0
+offset_right = 1008.0
+offset_bottom = 350.0
+pivot_offset = Vector2(58, 14)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
+text = "interact"
+
+[node name="honk" type="Label" parent="PauseContainer/ControllerControlsMenu" unique_id=248992637]
+texture_filter = 1
+layout_mode = 0
+offset_left = 878.0
+offset_top = 361.0
+offset_right = 964.0
+offset_bottom = 400.99976
+pivot_offset = Vector2(-136, -133)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
+text = "honk"
+
+[node name="look" type="Label" parent="PauseContainer/ControllerControlsMenu" unique_id=828610162]
+texture_filter = 1
+layout_mode = 0
+offset_left = 710.0
+offset_top = 422.0
+offset_right = 791.0
+offset_bottom = 462.0
+pivot_offset = Vector2(-107, 33)
+theme_override_fonts/font = ExtResource("5_ftghg")
+theme_override_font_sizes/font_size = 40
+text = "look"
+
+[node name="Controller" type="Sprite2D" parent="PauseContainer/ControllerControlsMenu" unique_id=1002076548]
+texture_filter = 1
+position = Vector2(715, 391)
+texture = ExtResource("20_006ca")
 
 [node name="Map" type="TextureRect" parent="." unique_id=432696859 groups=["Map_Elements"]]
 unique_name_in_owner = true

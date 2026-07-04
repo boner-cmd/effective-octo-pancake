@@ -770,7 +770,7 @@ var is_dialogue_active : bool = false
 var can_advance_line : bool = false
 
 # lock flags
-var horse_lock : bool = false
+var horse_lock : bool = true
 var sisyphus_lock : bool = true
 var gate_lock : bool = true
 var king2_lock : bool = true
