@@ -61,6 +61,10 @@ mesh = SubResource("SphereMesh_adu81")
 [node name="slime_mould" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="19" unique_id=1114862664]
 visible = true
 
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(0.1006541, 0.8880281, -0.44863674, 0.051710267, 0.44564798, 0.8937136, 0.99357677, -0.113155074, -0.0010638707, -2.490139, 3.040331, -0.59172106)
+fov = 60.0
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_itxan")]
 transform = Transform3D(0.35161296, 0.9361455, 0, -0.9361455, 0.35161296, 0, 0, 0, 1, 0, 0, 0)
 
@@ -72,3 +76,4 @@ destination_planet_ID = 4
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]

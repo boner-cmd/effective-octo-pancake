@@ -57,8 +57,16 @@ mesh = SubResource("SphereMesh_84pt0")
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_n7ksx")]
 
 [node name="Gatekeeper2" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="5" unique_id=487687114 groups=["Completion_Change"]]
+transform = Transform3D(0.2941103, 0, 0.05915349, 0, 0.3, 0, -0.05915349, 0, 0.2941103, 0, -1.1280003, 0)
 visible = true
 script = ExtResource("7_n7ksx")
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.8311913, 0.16620849, 0.53056115, -0.00028196746, 0.9541448, -0.2993459, -0.5559859, -0.24896349, -0.79302996, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.046637956, 0.26349208, -0.9635336, 0.16257456, 0.95372456, 0.2529406, 0.98559344, -0.1448494, -0.08731687, -2.9229274, 0.17541027, -1.1469088)
+fov = 60.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1323657896]
 collision_layer = 2

@@ -89,6 +89,7 @@ destination_planet_ID = 12
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("10_fvbbk")]
 
 [node name="o" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="13" unique_id=454906086 groups=["Completion_Change"]]
+transform = Transform3D(-0.455, 0, 6.8703095e-08, 0, 0.455, 0, -6.8703095e-08, 0, -0.455, 0, -1.0443826, 0)
 visible = true
 script = ExtResource("11_k3bn4")
 
@@ -100,13 +101,26 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_7nae5")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/q" parent_id_path=PackedInt32Array(1441746603, 292895040) index="2" unique_id=1306592615]
+[node name="q" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="15" unique_id=292895040]
+transform = Transform3D(-0.45, 0, 6.794811e-08, 0, 0.45, 0, -6.794811e-08, 0, -0.45, 0, -1.04, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/q" index="2" unique_id=1306592615]
 transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, -16.239998, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/Area3D/q/StaticBody3D" unique_id=1714565276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_7nae5")
+
+[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
+visible = false
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.81449354, 0.17345305, 0.5536369, -0.00028196746, 0.9541448, -0.2993459, -0.5801721, -0.2439716, -0.77709585, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.15669432, 0.23425657, -0.95946383, 0.15812312, 0.96488315, 0.20975594, 0.97490716, -0.118845835, -0.18823309, -2.8964744, 0.06311846, -1.3439982)
+fov = 60.0
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
@@ -115,10 +129,13 @@ shape = SubResource("BoxShape3D_7nae5")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="Door2"]
 [editable path="Door2/DoorBaseModel"]
 [editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door2/DoorBaseModel/DoorVFX"]
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="Door3/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

@@ -34,11 +34,10 @@ transform = Transform3D(-0.27, 0, 4.0768867e-08, 0, 0.27, 0, -4.0768867e-08, 0, 
 visible = true
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
-transform = Transform3D(-0.70710677, -0.2114538, -0.67474985, 0, 0.95424044, -0.29904082, 0.70710677, -0.2114538, -0.67474985, -0.020674821, -1.2292776, -1.4966549)
+transform = Transform3D(-0.8988017, 0.13108619, 0.41829643, -1.470324e-08, 0.9542407, -0.29904085, -0.43835548, -0.2687784, -0.85767275, -0.020674821, -1.2292776, -1.4966549)
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
-transform = Transform3D(-0.07824434, -0.34996057, 0.93349105, -0.20289686, 0.9223544, 0.32877886, -0.97606915, -0.16367733, -0.14317487, 3.891635, 0.3606968, -1.3769938)
-visible = true
+transform = Transform3D(-0.11009424, 0.014129371, -0.9938207, 0.124057814, 0.99227494, 0.0003644228, 0.9861486, -0.1232511, -0.110996604, -4.318894, -0.6586609, -1.0886794)
 fov = 60.0
 
 [node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]

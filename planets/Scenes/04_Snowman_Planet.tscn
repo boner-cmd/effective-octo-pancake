@@ -75,6 +75,9 @@ destination_planet_ID = 8
 transform = Transform3D(-0.43, 0, 6.4928194e-08, 0, 0.43, 0, -6.4928194e-08, 0, -0.43, 0, -1.1280003, 0)
 visible = true
 
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.15414502, 0.26879606, -0.9507829, 0.15814191, 0.9565901, 0.24479915, 0.97531044, -0.11262406, -0.18996152, -2.7638602, 0.015320778, -1.5038798)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=116790964]
 collision_layer = 2
 
@@ -86,10 +89,13 @@ shape = SubResource("CylinderShape3D_6e6r8")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="Door2"]
 [editable path="Door2/DoorBaseModel"]
 [editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door2/DoorBaseModel/DoorVFX"]
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="Door3/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

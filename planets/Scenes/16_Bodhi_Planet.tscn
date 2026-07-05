@@ -54,7 +54,15 @@ mesh = SubResource("SphereMesh_436d7")
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("6_d2ex3")]
 
 [node name="bodhisattva" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="2" unique_id=1700854843]
+transform = Transform3D(-0.2999886, 0, 0.0026179722, 0, 0.29999992, 0, -0.0026179722, 0, -0.2999886, 0, -1.1280003, 0)
 visible = true
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.85476077, 0.15513708, 0.49529392, -0.00028196746, 0.9541448, -0.2993459, -0.5190217, -0.25600895, -0.81552166, 0.5411762, -1.2292776, -1.4032687)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.3481381, 0.25479484, -0.90215266, 0.14976388, 0.9651111, 0.2147827, 0.92540306, -0.06033586, -0.37415078, -2.383252, 0.06180668, -1.8329742)
+fov = 60.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=193573402]
 collision_layer = 2
@@ -74,3 +82,4 @@ destination_planet_ID = 16
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]

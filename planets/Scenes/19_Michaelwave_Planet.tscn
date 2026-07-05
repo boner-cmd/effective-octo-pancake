@@ -59,7 +59,15 @@ destination_planet_ID = 11
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_vm1ek")]
 
 [node name="michaelwave" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="11" unique_id=1980506230]
+transform = Transform3D(-0.29815713, 0, -0.03320129, 0, 0.29999998, 0, 0.03320129, 0, -0.29815713, 0, -1.1280003, 0)
 visible = true
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.83643264, 0.16383724, 0.52300787, -0.00028196746, 0.9541448, -0.2993459, -0.5480692, -0.25053036, -0.7980316, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.15328366, 0.2547974, -0.9547683, 0.16143155, 0.95966345, 0.23018672, 0.97490716, -0.11884586, -0.18823308, -3.2039595, 0.16108418, -1.4316244)
+fov = 60.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=375603284]
 collision_layer = 2

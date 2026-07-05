@@ -63,6 +63,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45211267, 0)
 [node name="FesteringMass" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="4" unique_id=999152094]
 visible = true
 
+[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
+visible = false
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.97737277, 0.06305578, 0.20190677, -0.00028201946, 0.9541447, -0.299346, -0.21152371, -0.29262963, -0.93253726, 0.03795882, -1.2292776, -2.3235369)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.8141611, 0.41926232, -0.4016975, 0.04581018, 0.73604465, 0.6753812, 0.57882917, 0.53146726, -0.6184655, -2.670443, 2.5624762, -4.7225995)
+fov = 50.0
+
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1962741861]
 collision_layer = 2
 

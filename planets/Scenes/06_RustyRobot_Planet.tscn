@@ -73,6 +73,7 @@ destination_planet_ID = 16
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_kw8ol")]
 
 [node name="robot" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=1916101213]
+transform = Transform3D(-0.296396, 0, -0.04636134, 0, 0.29999992, 0, 0.04636134, 0, -0.296396, 0, -1.1280003, 0)
 visible = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/robot" index="9" unique_id=7053957]
@@ -83,15 +84,25 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_8hxeg")
 
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.8808602, 0.14146614, 0.45174336, -0.00028195503, 0.9541448, -0.2993459, -0.47337583, -0.26380944, -0.84042823, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.044426914, 0.23965459, -0.96984124, 0.14123534, 0.9625558, 0.23138458, 0.9889787, -0.12669615, -0.07661108, -2.9525676, 0.17950535, -1.0356185)
+fov = 60.0
+
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="Door2"]
 [editable path="Door2/DoorBaseModel"]
 [editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door2/DoorBaseModel/DoorVFX"]
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="Door3/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

@@ -49,7 +49,15 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_a54x6")]
 
 [node name="body without organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="12" unique_id=265873924]
+transform = Transform3D(-0.46, 0, 6.945807e-08, 0, 0.46, 0, -6.945807e-08, 0, -0.46, 0, -1.1280003, 0)
 visible = true
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.81725866, 0.17228435, 0.5499144, -0.00028195584, 0.95414466, -0.29934588, -0.57627046, -0.24479826, -0.7797345, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.15328366, 0.2547974, -0.9547683, 0.16143155, 0.95966345, 0.23018672, 0.97490716, -0.11884586, -0.18823308, -3.30494, 0.18591881, -1.4252298)
+fov = 60.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1386157990]
 collision_layer = 2
@@ -69,3 +77,4 @@ destination_planet_ID = 8
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]

@@ -80,6 +80,14 @@ destination_planet_ID = 19
 
 [node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
 visible = true
+transform = Transform3D(-0.28359073, 0, -0.097858526, 0, 0.29999998, 0, 0.097858526, 0, -0.28359073, 0, -1.1280003, 0)
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.8217793, 0.17034784, 0.5437461, -0.00028196746, 0.9541448, -0.2993459, -0.5698053, -0.2461498, -0.78404844, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.14310695, 0.31310564, -0.9388745, 0.17051809, 0.94225293, 0.2882413, 0.9749072, -0.11884573, -0.18823312, -2.7475421, 0.22331142, -1.4074969)
+fov = 60.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1586051049]
 collision_layer = 2
@@ -98,7 +106,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c2lp6")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="Door2"]
 [editable path="Door2/DoorBaseModel"]
 [editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door2/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

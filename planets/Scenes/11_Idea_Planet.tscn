@@ -59,7 +59,15 @@ destination_planet_ID = 14
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_kh0pl")]
 
 [node name="idea guy" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="7" unique_id=1608837145]
+transform = Transform3D(-0.29621828, 0, -0.04748358, 0, 0.29999998, 0, 0.04748358, 0, -0.29621828, 0, -1.1280003, 0)
 visible = true
+
+[node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
+transform = Transform3D(-0.8872468, 0.13784781, 0.44021627, -0.00028197977, 0.9541448, -0.2993459, -0.4612943, -0.265718, -0.84652305, -0.015068884, -1.2292776, -1.4966549)
+
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.14725077, 0.21976827, -0.964375, 0.14252268, 0.9695427, 0.19918407, 0.97877705, -0.10811529, -0.17408787, -2.9313462, 0.16930008, -1.3703153)
+fov = 60.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=857719675]
 collision_layer = 2
@@ -73,4 +81,5 @@ shape = SubResource("CylinderShape3D_2508a")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

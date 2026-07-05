@@ -73,4 +73,5 @@ shape = SubResource("CylinderShape3D_hnx0q")
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="InteractionArea"]

@@ -39,7 +39,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 shape = SubResource("CylinderShape3D_ihs6g")
 
 [node name="astronaut" parent="Area3D" unique_id=297081268 instance=ExtResource("4_rmjit")]
-transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
+transform = Transform3D(-0.27590325, 0, -0.11780224, 0, 0.29999998, 0, 0.11780224, 0, -0.27590325, 0, -1.1280003, 0)
 visible = false
 
 [node name="bodhisattva" parent="Area3D" unique_id=1700854843 instance=ExtResource("5_wgsat")]
@@ -47,7 +47,7 @@ transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0
 visible = false
 
 [node name="body with organs" parent="Area3D" unique_id=500840685 instance=ExtResource("6_uypxe")]
-transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
+transform = Transform3D(-0.2722167, 0, -0.12608746, 0, 0.29999998, 0, 0.12608746, 0, -0.2722167, 0, -1.1280003, 0)
 visible = false
 
 [node name="FesteringMass" parent="Area3D" unique_id=999152094 instance=ExtResource("5_rmjit")]
@@ -107,7 +107,7 @@ transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0
 visible = false
 
 [node name="snowman" parent="Area3D" unique_id=832919613 instance=ExtResource("22_lspox")]
-transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
+transform = Transform3D(-0.47529417, 0, -0.19829364, 0, 0.515, 0, 0.19829364, 0, -0.47529417, 0, -1.1280003, 0)
 visible = false
 
 [node name="slime_mould" parent="Area3D" unique_id=1114862664 instance=ExtResource("36_6b0et")]
@@ -125,13 +125,12 @@ script = null
 
 [node name="Player_Cutscene_Locator" type="Node3D" parent="Area3D" unique_id=1659489742]
 unique_name_in_owner = true
-transform = Transform3D(-0.9999579, -0.0030137077, -0.008663905, -0.00028201943, 0.9541447, -0.29934603, 0.009168757, -0.29933098, -0.95410544, -0.015068884, -1.2292776, -1.4966549)
+transform = Transform3D(-0.8620568, 0.15147993, 0.48364386, -0.00028197502, 0.95414484, -0.29934594, -0.5068111, -0.25818977, -0.82248425, -0.015068884, -1.2292776, -1.4966549)
 
 [node name="frame_both" type="Camera3D" parent="Area3D" unique_id=1500776819]
 unique_name_in_owner = true
-transform = Transform3D(-0.37176424, -0.29631037, 0.8797679, -0.19020815, 0.9518988, 0.24022804, -0.9086321, -0.07803083, -0.4102426, 1.808, 0.396, -1.593)
-visible = false
-fov = 77.2
+transform = Transform3D(-0.15328366, 0.2547974, -0.9547683, 0.16143155, 0.95966345, 0.23018672, 0.97490716, -0.11884586, -0.18823308, -2.2111464, -0.0137581825, -1.2581816)
+fov = 70.0
 
 [node name="player_give" type="Camera3D" parent="Area3D" unique_id=1211501517]
 unique_name_in_owner = true
