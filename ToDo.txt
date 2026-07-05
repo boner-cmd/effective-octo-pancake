@@ -7,6 +7,8 @@ MAIN
 		
 	FEATURES
 		SAVING
+			done, I think?
+			
 			Will need to include Current Planet ID and initialization
 			Will need to include quest states
 			Will need to include inventory states (???)
@@ -43,10 +45,7 @@ VFX PASS - Michael - ???
 		king planet: maybe different colored godrays from the stained glass
 		horse planet: bugs flying around? wiggly clouds?
 		snowman planet: snow falling, maybe skybox large flakes move/are animated
-		astro planet: different layers of stars? more sylized? wiggly? a comet or two?
-		grease planet: scrolling textures would be nice, combined with animated textures
-		deer planet: blinking big eyes (ideally offset)
-		
+		deer planet: screen space blinking big eye (ideally offset)
 
 
 UI PASS - optional
@@ -76,8 +75,10 @@ POST - minimal
 			play the whole game with music set to full (Markcy's #1 Fan)
 			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
 
+
 TITLE SCREEN -
-	implement anims for options menu
+	clear
+
 
 SOUND - 2.5 days ish
 	Different default speech noises?
