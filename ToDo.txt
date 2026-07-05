@@ -77,7 +77,7 @@ POST - minimal
 
 
 TITLE SCREEN -
-	clear
+	Possible to have softer transition from dark loading screen to light title screen?
 
 
 SOUND - 2.5 days ish
