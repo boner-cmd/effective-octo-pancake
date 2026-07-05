@@ -95,7 +95,7 @@ func read_data() -> bool:
 		return false
 	var load_compressed_data : PackedByteArray = load_file.get_buffer(load_file.get_length())
 	# TODO verify that the buffer size is correct
-	var decompressed_data : PackedByteArray = load_compressed_data.decompress(1939, FileAccess.COMPRESSION_GZIP)
+	var decompressed_data : PackedByteArray = load_compressed_data.decompress(2499, FileAccess.COMPRESSION_GZIP)
 	
 	#if not quest_state_valid():
 		#print("Quest state validation failed")
@@ -168,6 +168,7 @@ func get_map_state() -> PackedByteArray:
 ## this shouldn't occur, but it is possible.
 func set_map_state(b : PackedByteArray) -> void:
 	var map_visibility : Dictionary[StringName, bool] = bytes_to_var(b)
+	print(map_visibility)
 	var map_elements : Array[Node] = get_tree().get_nodes_in_group(&"Map_Elements")
 	for child in map_elements:
 		child.visible = map_visibility[child.name]
