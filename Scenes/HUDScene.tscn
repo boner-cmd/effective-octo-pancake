@@ -971,7 +971,7 @@ mouse_filter = 2
 texture = ExtResource("11_00uqi")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/KingSticker" unique_id=859565293 groups=["Map_Elements"]]
+[node name="KingComplete" type="TextureRect" parent="Map/KingSticker" unique_id=859565293 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1009,7 +1009,7 @@ mouse_filter = 2
 texture = ExtResource("14_ftghg")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/HorseDarkPlanet/HorseSticker" unique_id=1308648810 groups=["Map_Elements"]]
+[node name="HorseComplete" type="TextureRect" parent="Map/HorseDarkPlanet/HorseSticker" unique_id=1308648810 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1048,7 +1048,7 @@ mouse_filter = 2
 texture = ExtResource("15_4u7pl")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/AstroDarkPlanet/AstroSticker" unique_id=1985255675 groups=["Map_Elements"]]
+[node name="AstroComplete" type="TextureRect" parent="Map/AstroDarkPlanet/AstroSticker" unique_id=1985255675 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1087,7 +1087,7 @@ mouse_filter = 2
 texture = ExtResource("16_ppan7")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/SnowDarkPlanet/SnowSticker" unique_id=391427389 groups=["Map_Elements"]]
+[node name="SnowComplete" type="TextureRect" parent="Map/SnowDarkPlanet/SnowSticker" unique_id=391427389 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1126,7 +1126,7 @@ mouse_filter = 2
 texture = ExtResource("17_s4svx")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/SisyphusDarkPlanet/SisyphusSticker" unique_id=500358005 groups=["Map_Elements"]]
+[node name="SisyphusComplete" type="TextureRect" parent="Map/SisyphusDarkPlanet/SisyphusSticker" unique_id=500358005 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1165,7 +1165,7 @@ mouse_filter = 2
 texture = ExtResource("18_a6sf7")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/GreaseDarkPlanet/GreaseSticker" unique_id=1082113751 groups=["Map_Elements"]]
+[node name="GreaseComplete" type="TextureRect" parent="Map/GreaseDarkPlanet/GreaseSticker" unique_id=1082113751 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1204,7 +1204,7 @@ mouse_filter = 2
 texture = ExtResource("19_oc4d8")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/DeerDarkPlanet/DeerSticker" unique_id=2053545768 groups=["Map_Elements"]]
+[node name="DeerComplete" type="TextureRect" parent="Map/DeerDarkPlanet/DeerSticker" unique_id=2053545768 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1243,7 +1243,7 @@ mouse_filter = 2
 texture = ExtResource("20_74rbg")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/GateDarkPlanet/GateSticker" unique_id=593454003 groups=["Map_Elements"]]
+[node name="GateComplete" type="TextureRect" parent="Map/GateDarkPlanet/GateSticker" unique_id=593454003 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1282,7 +1282,7 @@ mouse_filter = 2
 texture = ExtResource("21_npi88")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/ODarkPlanet/OSticker" unique_id=840087744 groups=["Map_Elements"]]
+[node name="OComplete" type="TextureRect" parent="Map/ODarkPlanet/OSticker" unique_id=840087744 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1321,7 +1321,7 @@ mouse_filter = 2
 texture = ExtResource("22_xq43d")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/OrgansDarkPlanet/OrgansSticker" unique_id=486703812 groups=["Map_Elements"]]
+[node name="OrgansComplete" type="TextureRect" parent="Map/OrgansDarkPlanet/OrgansSticker" unique_id=486703812 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1360,7 +1360,7 @@ mouse_filter = 2
 texture = ExtResource("23_82vjh")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/MassDarkPlanet/MassSticker" unique_id=1688048375 groups=["Map_Elements"]]
+[node name="MassComplete" type="TextureRect" parent="Map/MassDarkPlanet/MassSticker" unique_id=1688048375 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1399,7 +1399,7 @@ mouse_filter = 2
 texture = ExtResource("24_r4epv")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/LampDarkPlanet/LampSticker" unique_id=1717797188 groups=["Map_Elements"]]
+[node name="LampSticker" type="TextureRect" parent="Map/LampDarkPlanet/LampSticker" unique_id=1717797188 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1438,7 +1438,7 @@ mouse_filter = 2
 texture = ExtResource("25_751k0")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/NorgansDarkPlanet/NorgansSticker" unique_id=710538880 groups=["Map_Elements"]]
+[node name="NorgansComplete" type="TextureRect" parent="Map/NorgansDarkPlanet/NorgansSticker" unique_id=710538880 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1477,7 +1477,7 @@ mouse_filter = 2
 texture = ExtResource("26_qsvm7")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/MichaelwaveDarkPlanet/MichaelwaveSticker" unique_id=547392601 groups=["Map_Elements"]]
+[node name="MichaelwaveComplete" type="TextureRect" parent="Map/MichaelwaveDarkPlanet/MichaelwaveSticker" unique_id=547392601 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1516,7 +1516,7 @@ mouse_filter = 2
 texture = ExtResource("27_82xaf")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/RobotDarkPlanet/RobotSticker" unique_id=265166485 groups=["Map_Elements"]]
+[node name="RobotComplete" type="TextureRect" parent="Map/RobotDarkPlanet/RobotSticker" unique_id=265166485 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1555,7 +1555,7 @@ mouse_filter = 2
 texture = ExtResource("28_c6udc")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/GibberishDarkPlanet/GibberishSticker" unique_id=1703559354 groups=["Map_Elements"]]
+[node name="GibberishComplete" type="TextureRect" parent="Map/GibberishDarkPlanet/GibberishSticker" unique_id=1703559354 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1594,7 +1594,7 @@ mouse_filter = 2
 texture = ExtResource("29_006ca")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/IndividualDarkPlanet/IndividualSticker" unique_id=892738760 groups=["Map_Elements"]]
+[node name="IndividualComplete" type="TextureRect" parent="Map/IndividualDarkPlanet/IndividualSticker" unique_id=892738760 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1633,7 +1633,7 @@ mouse_filter = 2
 texture = ExtResource("30_5rjlw")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/IdeaDarkPlanet/IdeaSticker" unique_id=1656748552 groups=["Map_Elements"]]
+[node name="IdeaComplete" type="TextureRect" parent="Map/IdeaDarkPlanet/IdeaSticker" unique_id=1656748552 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1672,7 +1672,7 @@ mouse_filter = 2
 texture = ExtResource("31_7jlp0")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/BodhiDarkPlanet/BodhiSticker" unique_id=954082382 groups=["Map_Elements"]]
+[node name="BodhiComplete" type="TextureRect" parent="Map/BodhiDarkPlanet/BodhiSticker" unique_id=954082382 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
@@ -1711,7 +1711,7 @@ mouse_filter = 2
 texture = ExtResource("32_muo8p")
 expand_mode = 1
 
-[node name="CompleteStamp" type="TextureRect" parent="Map/SlimeDarkPlanet/SlimeSticker" unique_id=700218159 groups=["Map_Elements"]]
+[node name="SlimeComplete" type="TextureRect" parent="Map/SlimeDarkPlanet/SlimeSticker" unique_id=700218159 groups=["Map_Elements"]]
 visible = false
 top_level = true
 z_index = 2
