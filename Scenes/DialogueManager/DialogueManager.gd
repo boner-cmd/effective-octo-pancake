@@ -819,6 +819,13 @@ func reset_manager() -> void:
 	dialogue_state = CONV_STATE.FINISHED
 
 
+func reset_locks()-> void:
+	horse_lock = true
+	sisyphus_lock = true
+	gate_lock = true
+	king2_lock = true
+
+
 func _input(event):
 	if event.is_action_pressed("advance_dialogue") and is_dialogue_active and can_advance_line:
 		var NextIndicator = text_box.next_indicator

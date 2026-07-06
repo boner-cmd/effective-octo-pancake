@@ -252,10 +252,11 @@ func _on_menu_button_pressed() -> void:
 	quit_bool = true
 	AudioManager.sfx_play(AudioManager.sfx_blip)
 	change_pause_state()
-	DialogueManager.reset_manager()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
-	
+	SaveManager.save_game()
 	await get_tree().create_timer(3).timeout
+	DialogueManager.reset_manager()
+	DialogueManager.reset_locks()
 	transition()
 	get_tree().root.remove_child(get_parent().current_planet_node)
 	AudioManager.bgm_cycle(22)

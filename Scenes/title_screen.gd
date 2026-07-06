@@ -11,18 +11,6 @@ const TRANSITION_SCENE_OVERLAY = preload("uid://d15cvkowrk1yl") # transition sce
 const SMALL_UI_MATERIAL_1 = preload("uid://p6axcgo36jli")
 const SMALL_UI_MATERIAL_3 = preload("uid://boa6682rd5g03")
 
-var letter_array : Array = []
-var tween_letter : Tween
-var rot_change : float = deg_to_rad(-20.0)
-var tween_letter_z : Tween
-var tween_letter_x : Tween
-var timer_time : float = 2.0
-var current_tweens : Dictionary = {}
-var current_options : OPTIONS
-var transition_scene: CanvasLayer
-
-var is_continue_disabled : bool = true
-
 @onready var clown_rig_fbx: Node3D = $Node3D/ClownRigFBX
 @onready var title_screen_planet: MeshInstance3D = $Node3D/TitleScreenPlanet
 
@@ -52,7 +40,6 @@ var is_continue_disabled : bool = true
 
 @onready var transition: ColorRect = %Transition
 
-
 @onready var doodle_controls: Sprite2D = $CanvasLayer/OptionsControl/DoodleControls_Placeholder
 @onready var doodle_sound: Sprite2D = $CanvasLayer/OptionsControl/DoodleSound_Placeholder
 @onready var doodle_credits: Sprite2D = $CanvasLayer/OptionsControl/DoodleCredits_Placeholder
@@ -60,8 +47,19 @@ var is_continue_disabled : bool = true
 
 @onready var doodle_array : Array = [doodle_controls, doodle_sound, doodle_credits, doodle_options,]
 
+var letter_array : Array = []
+var tween_letter : Tween
+var rot_change : float = deg_to_rad(-20.0)
+var tween_letter_z : Tween
+var tween_letter_x : Tween
+var timer_time : float = 2.0
+var current_tweens : Dictionary = {}
+var current_options : OPTIONS
+var transition_scene: CanvasLayer
 
-# Called when the node enters the scene tree for the first time.
+var is_continue_disabled : bool = true
+
+
 func _ready() -> void:
 	FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.READ)
 	if FileAccess.get_open_error():
@@ -156,10 +154,9 @@ func _set_initial() -> void: #set pivots, materials, etc
 	for Canvas in get_tree().root.get_children():
 		if Canvas.name == &"TransitionSceneOverlay":
 			Canvas.queue_free()
-	await tween_object(transition, "modulate:a", 0.0, .6, Tween.TRANS_SINE, Tween.EASE_OUT)
+	await tween_object(transition, "modulate:a", 0.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN)
 	transition.visible = false
-	tween_object(start_menu_control, "modulate:a", 1.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN)
-	##TODO set the 
+	tween_object(start_menu_control, "modulate:a", 1.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN) 
 
 
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
