@@ -26,6 +26,14 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
 radius = 1.0
 
+[sub_resource type="SphereMesh" id="SphereMesh_rmjit"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_wgsat"]
+radius = 0.1
+height = 0.2
+
 [node name="InteractionArea" type="Node3D" unique_id=1441746603]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1533181775]
@@ -125,7 +133,11 @@ script = null
 
 [node name="Player_Cutscene_Locator" type="Node3D" parent="Area3D" unique_id=1659489742]
 unique_name_in_owner = true
-transform = Transform3D(-0.8620568, 0.15147993, 0.48364386, -0.00028197502, 0.95414484, -0.29934594, -0.5068111, -0.25818977, -0.82248425, -0.015068884, -1.2292776, -1.4966549)
+transform = Transform3D(-0.8810524, -0.0027575835, 0.4730102, -0.14401995, 0.9540698, -0.26269668, -0.4505602, -0.29957262, -0.84098244, -0.013787807, -1.2296524, -1.4978626)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Player_Cutscene_Locator" unique_id=1195451389]
+visible = false
+mesh = SubResource("SphereMesh_rmjit")
 
 [node name="frame_both" type="Camera3D" parent="Area3D" unique_id=1500776819]
 unique_name_in_owner = true
@@ -141,5 +153,16 @@ fov = 77.2
 unique_name_in_owner = true
 transform = Transform3D(0.8915987, -0.22266579, 0.39429897, -0.065610744, 0.79803884, 0.5990235, -0.448048, -0.5599589, 0.696921, 0.678, 1.397, -0.408)
 fov = 40.0
+
+[node name="Node3D" type="Node3D" parent="Area3D" unique_id=697001812]
+transform = Transform3D(0.9999962, -0.0027575616, 1.751807e-05, 0.0026256642, 0.9540695, 0.29957372, -0.00084280595, -0.29957253, 0.95407313, 0, -6, 0)
+visible = false
+
+[node name="Node3D" type="Node3D" parent="Area3D/Node3D" unique_id=313769293]
+transform = Transform3D(0.88105255, 0.0027575877, -0.4730102, -0.14401995, 0.9540695, -0.26269668, 0.4505602, 0.29957253, 0.8409825, 0.013787938, 4.7703476, 1.4978626)
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Node3D/Node3D" unique_id=147910045]
+mesh = SubResource("SphereMesh_wgsat")
 
 [connection signal="child_entered_tree" from="Area3D" to="Area3D" method="_on_child_entered_tree"]
