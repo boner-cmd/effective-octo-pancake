@@ -68,15 +68,20 @@ spot_attenuation = 3.12
 spot_angle = 46.19
 spot_angle_attenuation = 0.07179398
 
-[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
-visible = false
-
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
 transform = Transform3D(-0.85168403, 0.1566446, 0.5000962, -0.00028196746, 0.9541448, -0.2993459, -0.5240551, -0.2550893, -0.81258565, -0.015068884, -1.2292776, -1.4966549)
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
 transform = Transform3D(0.0052463855, 0.23240818, -0.9726042, 0.16143155, 0.9596634, 0.23018673, 0.98686993, -0.15821666, -0.03248324, -3.3485641, 0.11161947, -0.85745484)
 fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.77731246, 0.28748453, -0.55958736, 0.06061114, 0.9195679, 0.38822845, 0.62618816, 0.26785758, -0.73221636, -2.5897355, 1.1674962, -4.214756)
+fov = 40.0
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.2535954, 0.5771298, -0.7762799, 0.029213617, 0.7975783, 0.60250765, 0.9668691, -0.17547113, 0.18540214, -3.2107084, 1.8772421, 0.04416986)
+fov = 52.9
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1301493009]
 collision_layer = 2

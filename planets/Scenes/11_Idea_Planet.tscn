@@ -69,6 +69,13 @@ transform = Transform3D(-0.8872468, 0.13784781, 0.44021627, -0.00028197977, 0.95
 transform = Transform3D(-0.14725077, 0.21976827, -0.964375, 0.14252268, 0.9695427, 0.19918407, 0.97877705, -0.10811529, -0.17408787, -2.9313462, 0.16930008, -1.3703153)
 fov = 60.0
 
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.7057584, 0.02919039, -0.707851, 0.0332053, 0.9994157, 0.00810681, 0.707674, -0.017782958, -0.7063153, -1.9927261, 0.0012669563, -3.0505831)
+fov = 40.0
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.6876573, 0.16072972, -0.7080208, 0.0648578, 0.9576896, 0.2804001, 0.7231328, -0.23873985, 0.64813757, -3.2137134, 1.060317, 2.2133894)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=857719675]
 collision_layer = 2
 

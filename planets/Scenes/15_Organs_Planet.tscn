@@ -62,6 +62,13 @@ destination_planet_ID = 6
 [node name="body with organs" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="3" unique_id=500840685]
 visible = true
 
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.106076084, 0.24876772, -0.962737, 0.16143155, 0.95966345, 0.23018673, 0.98116654, -0.1309988, -0.1419563, -3.8393779, 0.49316692, -1.4862565)
+fov = 40.0
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.46917614, 0.51371324, -0.71831226, 0.13104281, 0.76389027, 0.63190156, 0.8733279, -0.3906028, 0.29108062, -3.1862946, 2.5684242, 0.43060127)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=189983169]
 collision_layer = 2
 

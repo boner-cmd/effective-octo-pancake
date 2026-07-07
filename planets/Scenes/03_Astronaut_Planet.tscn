@@ -107,6 +107,17 @@ mesh = SubResource("SphereMesh_biw4r")
 [node name="astronaut" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="1" unique_id=297081268]
 visible = true
 
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.14925417, 0.20377417, -0.96757394, 0.14763223, 0.9721589, 0.1819666, 0.9777157, -0.115685806, -0.17518242, -2.9961586, -0.0137581825, -1.3981979)
+fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.7586789, 0.07297017, -0.6473652, 0.039324373, 0.9970247, 0.06629718, 0.65027684, 0.024841037, -0.7592911, -2.184927, -0.13002491, -3.5088203)
+fov = 40.0
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.84139025, 0.17712164, -0.5105785, 0.03970068, 0.9219564, 0.38525352, 0.5389679, -0.34441882, 0.76869327, -2.2531207, 1.3947167, 2.6666286)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1500770957]
 collision_layer = 2
 

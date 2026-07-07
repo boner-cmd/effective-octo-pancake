@@ -81,6 +81,16 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0.062656224)
 shape = SubResource("BoxShape3D_txy1j")
 
+[node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
+transform = Transform3D(-0.16858451, 0.158053, -0.972933, 0.14537986, 0.98025256, 0.13405141, 0.97490716, -0.11884588, -0.1882331, -2.6741333, -0.19014883, -1.2581816)
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.68380904, 0.04722381, -0.7281313, -0.00982336, 0.99721724, 0.073901094, 0.72959495, 0.057686925, -0.6814422, -2.9681258, -0.14034367, -3.5586302)
+fov = 40.0
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.7531303, 0.225181, -0.6181328, 0.056079894, 0.91420037, 0.4013636, 0.6554767, -0.33694392, 0.6758839, -2.207398, 1.3566027, 1.9272909)
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("9_5tpbv")]
 transform = Transform3D(1, 0, 0, 0, -0.33123907, -0.94354683, 0, 0.94354683, -0.33123907, 0, 0, 0)
 
@@ -107,9 +117,12 @@ destination_planet_ID = 10
 [editable path="Door"]
 [editable path="Door/DoorBaseModel"]
 [editable path="Door/DoorBaseModel/DoorAnims"]
+[editable path="Door/DoorBaseModel/DoorVFX"]
 [editable path="Door2"]
 [editable path="Door2/DoorBaseModel"]
 [editable path="Door2/DoorBaseModel/DoorAnims"]
+[editable path="Door2/DoorBaseModel/DoorVFX"]
 [editable path="Door3"]
 [editable path="Door3/DoorBaseModel"]
 [editable path="Door3/DoorBaseModel/DoorAnims"]
+[editable path="Door3/DoorBaseModel/DoorVFX"]

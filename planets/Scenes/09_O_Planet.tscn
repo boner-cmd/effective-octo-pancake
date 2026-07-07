@@ -112,15 +112,16 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_7nae5")
 
-[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
-visible = false
-
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
-transform = Transform3D(-0.81449354, 0.17345305, 0.5536369, -0.00028196746, 0.9541448, -0.2993459, -0.5801721, -0.2439716, -0.77709585, -0.015068884, -1.2292776, -1.4966549)
+transform = Transform3D(-0.670379, 0.22193994, 0.7080496, -0.0002819588, 0.9541448, -0.2993459, -0.7420185, -0.20087504, -0.6395761, -0.015068884, -1.2292776, -1.4966549)
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
-transform = Transform3D(-0.15669432, 0.23425657, -0.95946383, 0.15812312, 0.96488315, 0.20975594, 0.97490716, -0.118845835, -0.18823309, -2.8964744, 0.06311846, -1.3439982)
+transform = Transform3D(-0.5116854, 0.2617508, -0.81833035, 0.12683406, 0.96504, 0.22937047, 0.84975946, 0.013573357, -0.5269957, -2.8964741, 0.06311846, -2.6453168)
 fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.91322964, 0.14195904, -0.38191527, 0.045915708, 0.9672268, 0.24972814, 0.40484983, 0.21052325, -0.8898183, -1.7712401, 0.6061177, -4.76638)
+fov = 40.0
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]

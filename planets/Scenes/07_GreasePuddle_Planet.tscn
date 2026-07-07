@@ -68,9 +68,6 @@ script = ExtResource("5_06bkn")
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("5_d0l1o")]
 
-[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
-visible = false
-
 [node name="grease_puddle" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="20" unique_id=513399140 groups=["Completion_Change"]]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.0194478, 0)
 visible = true
@@ -82,6 +79,9 @@ transform = Transform3D(-0.99579585, 0.027152143, 0.08748374, -0.00028201946, 0.
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
 transform = Transform3D(0.14278401, 0.896447, -0.41951823, 0.14623947, 0.400101, 0.9047283, 0.9788906, -0.19053085, -0.07396791, -2.2852595, 2.811922, -1.0182996)
 fov = 60.0
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.760954, 0.22699282, -0.60780203, 0.1548268, 0.8462055, 0.50986767, 0.6300617, -0.48208988, 0.60877883, -3.2804787, 2.2405615, 1.6870201)
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("6_06bkn")]
 transform = Transform3D(1, 0, 0, 0, 0.5311324, -0.84728885, 0, 0.84728885, 0.5311324, 0, 0, 0)

@@ -79,15 +79,19 @@ destination_planet_ID = 19
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_c2lp6")]
 
 [node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
-visible = true
 transform = Transform3D(-0.28359073, 0, -0.097858526, 0, 0.29999998, 0, 0.097858526, 0, -0.28359073, 0, -1.1280003, 0)
+visible = true
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
-transform = Transform3D(-0.8217793, 0.17034784, 0.5437461, -0.00028196746, 0.9541448, -0.2993459, -0.5698053, -0.2461498, -0.78404844, -0.015068884, -1.2292776, -1.4966549)
+transform = Transform3D(-0.85476065, 0.15513712, 0.495294, -0.00028196743, 0.9541447, -0.2993459, -0.5190216, -0.25600886, -0.81552166, -0.2842109, -0.829526, 0.06761995)
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
-transform = Transform3D(-0.14310695, 0.31310564, -0.9388745, 0.17051809, 0.94225293, 0.2882413, 0.9749072, -0.11884573, -0.18823312, -2.7475421, 0.22331142, -1.4074969)
+transform = Transform3D(-0.17370969, 0.3166899, -0.9324873, 0.17051807, 0.94225293, 0.28824133, 0.96992195, -0.10893562, -0.21767978, -2.7253325, 0.22331142, -1.4078279)
 fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.7057584, 0.029190388, -0.7078511, 0.0332053, 0.9994157, 0.008106809, 0.7076741, -0.01778296, -0.70631534, -1.9927261, 0.0012669563, -3.0505831)
+fov = 40.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1586051049]
 collision_layer = 2

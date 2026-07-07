@@ -75,11 +75,8 @@ cast_shadow = 0
 surface_material_override/0 = ExtResource("5_rp6ui")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="InteractionArea/Area3D/individuated individual" index="6" unique_id=5369616]
-transform = Transform3D(-2.297117, -0.9094226, -2.237702, -2.3745599, 0.28448468, 2.3219912, -0.44252393, 3.1942344, -0.8438916, 0, -16.30837, 0)
+transform = Transform3D(-2.2604942, 0.45662403, -2.406818, -2.3942327, 0.28146324, 2.302074, 0.51858395, 3.2898912, 0.13710544, 0, -16.30837, 0)
 shadow_enabled = true
-
-[node name="sisyphus" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="17" unique_id=403637881]
-visible = false
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
 transform = Transform3D(-0.8566394, 0.15420666, 0.49233016, -0.0002819512, 0.9541448, -0.29934588, -0.51591533, -0.25657046, -0.81731445, -0.015068884, -1.2292776, -1.4966549)
@@ -87,6 +84,10 @@ transform = Transform3D(-0.8566394, 0.15420666, 0.49233016, -0.0002819512, 0.954
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
 transform = Transform3D(-0.06454884, 0.16641669, -0.98394054, 0.15691632, 0.9754234, 0.15468207, 0.9855003, -0.14441177, -0.089075945, -2.8933704, -0.16662121, -1.0770669)
 fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.7970592, 0.31695554, -0.51403874, 0.06774128, 0.8927503, 0.4454301, 0.6000898, 0.3202125, -0.7330459, -2.4882615, 1.4264426, -4.417657)
+fov = 40.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1441861947]
 collision_layer = 2

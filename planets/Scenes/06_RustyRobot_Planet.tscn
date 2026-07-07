@@ -85,10 +85,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_8hxeg")
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
-transform = Transform3D(-0.8808602, 0.14146614, 0.45174336, -0.00028195503, 0.9541448, -0.2993459, -0.47337583, -0.26380944, -0.84042823, -0.015068884, -1.2292776, -1.4966549)
+transform = Transform3D(-0.8810524, -0.0027575644, 0.4730102, -0.14401995, 0.9540697, -0.26269668, -0.45056018, -0.29957262, -0.8409824, -0.013787807, -1.1397729, -1.4978626)
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
 transform = Transform3D(-0.044426914, 0.23965459, -0.96984124, 0.14123534, 0.9625558, 0.23138458, 0.9889787, -0.12669615, -0.07661108, -2.9525676, 0.17950535, -1.0356185)
+fov = 60.0
+
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.67880756, 0.07534402, -0.7304407, 0.03932438, 0.9970247, 0.06629719, 0.7332625, 0.016278906, -0.6797508, -2.0431294, -0.3114071, -2.8491342)
 fov = 60.0
 
 [editable path="CubedSkybox"]

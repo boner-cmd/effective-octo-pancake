@@ -133,7 +133,7 @@ script = null
 
 [node name="Player_Cutscene_Locator" type="Node3D" parent="Area3D" unique_id=1659489742]
 unique_name_in_owner = true
-transform = Transform3D(-0.8810524, -0.0027575835, 0.4730102, -0.14401995, 0.9540698, -0.26269668, -0.4505602, -0.29957262, -0.84098244, -0.013787807, -1.2296524, -1.4978626)
+transform = Transform3D(-0.8810524, -0.002757565, 0.4730102, -0.14401996, 0.9540698, -0.26269668, -0.4505602, -0.29957265, -0.8409824, -0.013787807, -1.1397729, -1.4978626)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Player_Cutscene_Locator" unique_id=1195451389]
 visible = false
@@ -146,12 +146,12 @@ fov = 70.0
 
 [node name="player_give" type="Camera3D" parent="Area3D" unique_id=1211501517]
 unique_name_in_owner = true
-transform = Transform3D(0.067905836, -0.21419731, 0.97442716, -0.1843229, 0.9571752, 0.2232501, -0.98051715, -0.19476923, 0.025516318, 1.365, 0.308, -0.565)
-fov = 77.2
+transform = Transform3D(-0.6019959, -0.07911907, -0.7945698, 0.07012944, 0.985995, -0.1513129, 0.79541355, -0.1468125, -0.5880164, -1.9789091, -0.62043333, -2.5888107)
+fov = 60.0
 
 [node name="player_receive" type="Camera3D" parent="Area3D" unique_id=275622376]
 unique_name_in_owner = true
-transform = Transform3D(0.8915987, -0.22266579, 0.39429897, -0.065610744, 0.79803884, 0.5990235, -0.448048, -0.5599589, 0.696921, 0.678, 1.397, -0.408)
+transform = Transform3D(0.23201999, 0.5960643, -0.7686833, 0.13104281, 0.7638902, 0.6319016, 0.9638436, -0.24734426, 0.099127844, -3.145903, 2.6725397, -0.4724711)
 fov = 40.0
 
 [node name="Node3D" type="Node3D" parent="Area3D" unique_id=697001812]
