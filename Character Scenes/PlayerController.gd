@@ -82,7 +82,7 @@ func player_interaction_camera() -> void:
 				if node.name == &"InteractionDetector":
 					node.queue_free()
 			get_tree().root.add_child(clone)
-			clone.scale.x *= -1
+			#clone.scale = Vector3(-1.0, 1.0, 1.0)
 			transfer_vfx_to_clone()
 			clown.visible = false
 			clone.global_position = player_cutscene_locator.global_position
