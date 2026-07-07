@@ -28,7 +28,7 @@ var grav_vector : Vector3 = Vector3(0,0,0)
 var xform : Transform3D
 
 enum _inputs {CONTROLLER, MOUSE}
-var _input_used : _inputs
+var _input_used : _inputs = _inputs.MOUSE
 
 @export_range(0.0, 1.0) var mouse_sensitivity : float = 0.25
 @export var tilt_upper_limit := PI / 3.0

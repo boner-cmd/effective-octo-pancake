@@ -150,6 +150,15 @@ const LOG_2_TABLE : PackedInt32Array = [
 ## represents if a character's quest has been completed. Instead of trying to access or manipulate 
 ## the array directly, use has_met() and has_completed(), or set_met() and set_completed(),
 ## respectively.
+const state_initial : PackedByteArray = [
+	0b00000000, # the bits in each byte are written here for visualization only.
+	0b00000000,
+	0b00000000,
+	0b00000000,
+	0b00000000, 
+	0b00, # there are six bits of unused padding in the final byte
+	]
+
 var states : PackedByteArray = [
 	0b00000000, # the bits in each byte are written here for visualization only.
 	0b00000000,
@@ -238,3 +247,7 @@ func meeting_satisfied(character : CharacterName) -> bool:
 ## is ready to give, receive, or exchange an item on next interact.
 func requirements_met(character : CharacterName) -> bool:
 	return meeting_satisfied(character) and completion_satisfied(character)
+
+
+func reset_states() -> void:
+	states = state_initial.duplicate()

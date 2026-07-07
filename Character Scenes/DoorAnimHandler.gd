@@ -226,7 +226,6 @@ func exit_anim_particles() -> void:
 
 
 func delay_sleeping_particles() -> void:
-	await get_tree().create_timer(.5).timeout
 	stasis_particles.lifetime = 3.0
 	stasis_particles.amount = 1
 	stasis_particles.emitting = true
