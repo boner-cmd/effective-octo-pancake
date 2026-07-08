@@ -65,6 +65,13 @@ visible = true
 transform = Transform3D(0.1006541, 0.8880281, -0.44863674, 0.051710267, 0.44564798, 0.8937136, 0.99357677, -0.113155074, -0.0010638707, -2.490139, 3.040331, -0.59172106)
 fov = 60.0
 
+[node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
+transform = Transform3D(-0.8245202, 0.33794594, -0.45382714, 0.0054931343, 0.8067949, 0.5908061, 0.5658059, 0.48463857, -0.6670751, -1.9927714, 1.2243967, -3.2075846)
+
+[node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
+transform = Transform3D(0.38874272, 0.40227827, -0.8288856, 0.0028016479, 0.8991258, 0.4376816, 0.92134213, -0.17246774, 0.34840155, -2.9070125, 0.473289, 0.6131953)
+fov = 74.4
+
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_itxan")]
 transform = Transform3D(0.35161296, 0.9361455, 0, -0.9361455, 0.35161296, 0, 0, 0, 1, 0, 0, 0)
 

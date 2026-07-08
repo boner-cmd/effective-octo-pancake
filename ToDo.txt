@@ -1,6 +1,6 @@
 MAIN
 	BUGS
-		clear for now - need to test
+		No-eye'd deer reverts to prequest state upon loading a saved game
 		
 	ASSETS
 		NPC Models, Anims, Textures
