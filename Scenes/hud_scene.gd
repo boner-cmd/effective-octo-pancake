@@ -169,6 +169,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("advance_dialogue"):
 			## control schematic
 			if not control_acknowledge:
+				AudioManager.sfx_play(AudioManager.sfx_blip)
+				await get_tree().create_timer(.5).timeout
 				control_acknowledge = true
 				await tween_object(control_schematic_full, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 				control_schematic_full.queue_free()
