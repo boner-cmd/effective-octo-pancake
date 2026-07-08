@@ -29,7 +29,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Mouse" type="Control" parent="." unique_id=64611267]
-visible = false
 anchors_preset = 0
 
 [node name="MouseImage" type="TextureRect" parent="Mouse" unique_id=614692523]
@@ -314,13 +313,13 @@ text = "space"
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
-offset_left = 121.0
-offset_top = 188.99998
-offset_right = 225.0
-offset_bottom = 228.99998
+offset_left = 143.0
+offset_top = 117.0
+offset_right = 444.0
+offset_bottom = 157.0
 theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
-text = "pause"
+text = "pause/inventory"
 
 [node name="map" type="Label" parent="Mouse" unique_id=2016569667]
 texture_filter = 1
@@ -383,6 +382,7 @@ theme_override_font_sizes/font_size = 48
 text = "look"
 
 [node name="Controller" type="Control" parent="." unique_id=720235891]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -398,13 +398,13 @@ texture = ExtResource("9_1r8ue")
 texture_filter = 1
 material = ExtResource("4_n6npy")
 layout_mode = 0
-offset_left = 631.0
+offset_left = 534.0
 offset_top = 81.0
-offset_right = 735.0
+offset_right = 835.0
 offset_bottom = 121.0
 theme_override_fonts/font = ExtResource("4_0n0u2")
 theme_override_font_sizes/font_size = 48
-text = "pause"
+text = "pause/inventory"
 
 [node name="map" type="Label" parent="Controller" unique_id=1573956840]
 texture_filter = 1
