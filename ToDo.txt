@@ -78,13 +78,3 @@ POST - minimal
 
 TITLE SCREEN -
 	Possible to have softer transition from dark loading screen to light title screen?
-
-
-SOUND - 2.5 days ish
-	Different default speech noises?
-	Unique speech sound per NPC (?)
-		Maybe its just an initial babble?
-		
-CAMERA PASS
-	Flip AH animations to be more appealing from new camera angle
-	Flip gatekeeper across x-axis (so open lock points towards camera)
