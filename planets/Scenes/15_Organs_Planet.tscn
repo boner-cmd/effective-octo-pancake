@@ -44,7 +44,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_23ujk")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 surface_material_override/0 = ExtResource("2_0dh2h")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=1213588319]
@@ -67,7 +67,7 @@ transform = Transform3D(-0.106076084, 0.24876772, -0.962737, 0.16143155, 0.95966
 fov = 40.0
 
 [node name="player_receive" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="25" unique_id=275622376]
-transform = Transform3D(0.46917614, 0.51371324, -0.71831226, 0.13104281, 0.76389027, 0.63190156, 0.8733279, -0.3906028, 0.29108062, -3.1862946, 2.5684242, 0.43060127)
+transform = Transform3D(0.46917617, 0.46853742, -0.74856305, 0.13104281, 0.80132747, 0.583697, 0.8733279, -0.37195054, 0.31456524, -3.1862946, 2.5684242, 0.43060127)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=189983169]
 collision_layer = 2
