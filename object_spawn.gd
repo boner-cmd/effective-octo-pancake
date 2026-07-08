@@ -107,4 +107,4 @@ func _ready() -> void:
 func door_anim_reset() -> void:
 	for obj in obj_array:
 		if obj:
-			obj.get_child(0).stasis()
+			obj.get_child(0).request_ready()

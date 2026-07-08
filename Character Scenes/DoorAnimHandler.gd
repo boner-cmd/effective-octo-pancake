@@ -1,6 +1,6 @@
 extends Node3D
 
-const door_mats : Dictionary[int, Material] = {
+var door_mats : Dictionary[int, Material] = {
 	0 : preload("res://planets/materials/01_kings_door.tres"),
 	1 : preload("res://planets/materials/02_horse_door.tres"),
 	2 : preload("res://planets/materials/03_astronaut_door.tres"),
@@ -24,6 +24,8 @@ const door_mats : Dictionary[int, Material] = {
 	20 : preload("res://planets/materials/01_kings_door.tres"),
 	21 : null
 }
+
+const q_door : Material = preload("uid://c1g6jbgdco2oy")
 
 enum AnimStates {IDLE, STASIS, SPAWN, DESPAWN, EXIT}
 
@@ -144,6 +146,7 @@ func _ready() -> void:
 	stasis()
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
+	set_q_door()
 	DialogueManager.change_king.connect(change_king_door)
 	tree_entered.connect(stasis)
 	DialogueManager.door_unlock.connect(door_unlock_sequence)
@@ -258,3 +261,10 @@ func door_unlock_sequence() -> void:
 	or destination_planet_ID == QuestManager.CharacterName.SLIME \
 	or destination_planet_ID == QuestManager.CharacterName.KING_2:
 		delay_sleeping_particles()
+
+
+func set_q_door() -> void:
+	if destination_planet_ID == 8:
+		if QuestManager.has_completed(QuestManager.CharacterName.O):
+			door_mats[8] = q_door
+			door_mesh.set_surface_override_material(0, door_mats[8])
