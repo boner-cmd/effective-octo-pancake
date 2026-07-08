@@ -657,7 +657,7 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		KING_2_GIVE_LINES,
 		[], # king_2 does not give an item
 		KING_2_POST_LINES,
-		[], # king_2 does not have easter lines
+		KING_2_POST_LINES, # king_2 does not have easter lines
 		],
 	QuestManager.CharacterName.CREDITS : [
 		CREDITS_1,

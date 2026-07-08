@@ -55,13 +55,13 @@ shadow_enabled = true
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_kiytl")]
 visible = false
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_jbkmu")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_qrq4l")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1371780892]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
 material_override = ExtResource("6_ekkq8")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_x2x1x")]
@@ -83,7 +83,7 @@ transform = Transform3D(-0.28359073, 0, -0.097858526, 0, 0.29999998, 0, 0.097858
 visible = true
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
-transform = Transform3D(-0.85476065, 0.15513712, 0.495294, -0.00028196743, 0.9541447, -0.2993459, -0.5190216, -0.25600886, -0.81552166, -0.2842109, -0.829526, 0.06761995)
+transform = Transform3D(-0.8810523, -0.002757583, 0.4730102, -0.14401993, 0.9540697, -0.26269668, -0.45056018, -0.2995726, -0.84098244, -0.013787807, -1.2296524, -1.4978626)
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
 transform = Transform3D(-0.17370969, 0.3166899, -0.9324873, 0.17051807, 0.94225293, 0.28824133, 0.96992195, -0.10893562, -0.21767978, -2.7253325, 0.22331142, -1.4078279)
@@ -92,6 +92,10 @@ fov = 60.0
 [node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
 transform = Transform3D(-0.7057584, 0.029190388, -0.7078511, 0.0332053, 0.9994157, 0.008106809, 0.7076741, -0.01778296, -0.70631534, -1.9927261, 0.0012669563, -3.0505831)
 fov = 40.0
+
+[node name="Node3D" parent="InteractionArea/Area3D/Node3D" parent_id_path=PackedInt32Array(1441746603, 697001812) index="0" unique_id=313769293]
+transform = Transform3D(-0.88104755, -2.0372681e-10, 0.47302753, 0, 1, 0, -0.47302753, 0, -0.8810476, 1.1641532e-09, 5.0000005, 2.3841858e-07)
+top_level = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea" unique_id=1586051049]
 collision_layer = 2

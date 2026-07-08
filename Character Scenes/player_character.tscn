@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.6638414)
 shape = SubResource("CylinderShape3D_4chgf")
 
 [node name="ItemGetLocator" type="Node3D" parent="ClownRigFBX" unique_id=1374952081]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238, 1.9, -0.204)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36127415, 1.9484371, -0.2967797)
 
 [node name="Item_Get_Sprite" type="Sprite3D" parent="ClownRigFBX/ItemGetLocator" unique_id=1273379059]
 billboard = 1

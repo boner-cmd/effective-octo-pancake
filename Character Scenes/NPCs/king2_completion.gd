@@ -5,8 +5,9 @@ extends Node3D
 
 func on_completion():
 	if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
-		door_credits.reparent(credits_door_locator)
-		door_credits.position = Vector3(0.0, 0.0, 0.0)
-		door_credits.rotation = Vector3(0.0, 0.0, 0.0)
-		door_credits.top_level = true
-		door_credits.visible = true
+		if door_credits.is_inside_tree():
+			door_credits.reparent(credits_door_locator)
+			door_credits.position = Vector3(0.0, 0.0, 0.0)
+			door_credits.rotation = Vector3(0.0, 0.0, 0.0)
+			door_credits.reparent($"../../..")
+			door_credits.visible = true

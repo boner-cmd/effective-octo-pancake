@@ -58,12 +58,15 @@ destination_planet_ID = 21
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_b0uid")]
 
 [node name="king" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="9" unique_id=1530485904 groups=["Completion_Change"]]
-transform = Transform3D(2.6704651e-08, 0.6109312, -0.45206535, 0.76, -3.3220655e-08, 0, -1.9760403e-08, -0.45206535, -0.6109312, 0, -1.1280003, 0)
+transform = Transform3D(3.5137695e-08, 0.8038568, -0.5948229, 1, -4.371139e-08, 0, -2.6000533e-08, -0.5948229, -0.8038568, 0, -1.1280003, 0)
 visible = true
 script = ExtResource("8_ndrcc")
 
+[node name="Armature" parent="InteractionArea/Area3D/king" index="0" unique_id=36423942]
+transform = Transform3D(-3.1909313e-08, 0.73, 0, -0.73, -3.1909313e-08, 0, 0, 0, 0.73, 0, 0, 0)
+
 [node name="Credits_Door_Locator" type="Node3D" parent="InteractionArea/Area3D/king" index="1" unique_id=1053453054]
-transform = Transform3D(-0.9074155, 1.7514791, -0.33002633, -1.7758235, -0.92002773, 1.4901161e-08, -0.15181667, 0.29303426, 1.9725827, -9.7439995, 4.2592376e-07, 0)
+transform = Transform3D(-0.4897844, 0.86782795, 0.08358449, -0.8693041, -0.4787969, -0.122734904, -0.066492766, -0.13277406, 0.9889134, -5, 0, 0)
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
 transform = Transform3D(-0.6605303, 0.22457103, 0.71642697, -0.00028201644, 0.95414484, -0.299346, -0.75079924, -0.19792928, -0.63017833, -0.015068884, -1.2292776, -1.4966549)

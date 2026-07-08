@@ -8,6 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_660us"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="8_myhd6"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cqn2m"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_b4dn5"]
+sky_material = SubResource("ProceduralSkyMaterial_cqn2m")
+
+[sub_resource type="Environment" id="Environment_660us"]
+background_mode = 2
+sky = SubResource("Sky_b4dn5")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b4dn5"]
 
 [node name="08_Gibberish_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3")]
@@ -15,6 +30,9 @@ script = ExtResource("1_b4dn5")
 InteractionArea = NodePath("InteractionArea")
 Obj_2 = NodePath("Door")
 Obj_3 = NodePath("Door2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1578431524]
+environment = SubResource("Environment_660us")
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_u12uo")]
 
