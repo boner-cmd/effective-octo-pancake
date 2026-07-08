@@ -80,7 +80,7 @@ func save_game():
 
 
 func write_data(d : PackedByteArray) -> bool:
-	print(d.size())
+	#print(d.size())
 	var save_compressed_data : PackedByteArray = d.compress(FileAccess.COMPRESSION_GZIP)
 	var file : FileAccess = FileAccess.open("user://Attentive_Helper_Data.dat", FileAccess.WRITE)
 	var success : bool = file.store_buffer(save_compressed_data)
@@ -168,7 +168,7 @@ func get_map_state() -> PackedByteArray:
 ## this shouldn't occur, but it is possible.
 func set_map_state(b : PackedByteArray) -> void:
 	var map_visibility : Dictionary[StringName, bool] = bytes_to_var(b)
-	print(map_visibility)
+	#print(map_visibility)
 	var map_elements : Array[Node] = get_tree().get_nodes_in_group(&"Map_Elements")
 	for child in map_elements:
 		child.visible = map_visibility[child.name]

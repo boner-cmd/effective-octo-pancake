@@ -10,7 +10,7 @@ signal door_unlock()
 # enums for passing between NPCs and dialogue interaction
 enum CONV_STATE {PLAYER_LISTEN, PLAYER_GIVE, PLAYER_RECEIVE, POST, FINISHED, EASTER}
 
-const Character_Names : Dictionary[QuestManager.CharacterName, String] = {
+var Character_Names : Dictionary[QuestManager.CharacterName, String] = {
 	QuestManager.CharacterName.KING_1 : "King",
 	QuestManager.CharacterName.HORSE : "Hungry Horse",
 	QuestManager.CharacterName.ASTRO : "Astronaut",

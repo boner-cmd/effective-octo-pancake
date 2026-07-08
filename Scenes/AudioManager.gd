@@ -25,6 +25,7 @@ const BGM_nodes : Dictionary[int, AudioStream] = {
 	20 : preload("res://music exports/king.wav"),
 	21 : preload("res://music exports/void2.wav"),
 	22 : preload("res://music exports/title screen proper.wav"), #title
+	23 : preload("res://music exports/o.wav"), #replace this with Q music 
 }
 
 const BORGANS_A = preload("uid://ckbl50xceswh4")
@@ -162,7 +163,13 @@ func bgm_cycle(planetID: int):
 			await tween_old.finished
 			temp_BGM_Player.queue_free()
 		temp_BGM_Player = BGM_Player.duplicate()
-		temp_BGM_Player.stream = BGM_nodes[planetID]
+		if planetID == 8:
+			if QuestManager.has_completed(QuestManager.CharacterName.O):
+				temp_BGM_Player.stream = BGM_nodes[23]
+			else:
+				temp_BGM_Player.stream = BGM_nodes[planetID]
+		else:
+			temp_BGM_Player.stream = BGM_nodes[planetID]
 		get_tree().root.add_child(temp_BGM_Player)
 	if planetID == 21:
 		temp_BGM_Player.volume_db = 5.0

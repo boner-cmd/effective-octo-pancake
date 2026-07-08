@@ -1,4 +1,6 @@
 extends TextureRect
+
+const Q_PLANET_ICON = preload("uid://dcjo5apqe7h1q")
 #planets should be set visible = true, first child is completion sticker vis = false set true on completion
 @onready var position_marker: TextureRect = $PositionMarker
 @onready var Position_by_Int : Array = [
@@ -33,6 +35,7 @@ extends TextureRect
 @onready var deer_sticker: TextureRect = $DeerDarkPlanet/DeerSticker
 @onready var gate_sticker: TextureRect = $GateDarkPlanet/GateSticker
 @onready var o_sticker: TextureRect = $ODarkPlanet/OSticker
+
 @onready var organs_sticker: TextureRect = $OrgansDarkPlanet/OrgansSticker
 @onready var mass_sticker: TextureRect = $MassDarkPlanet/MassSticker
 @onready var lamp_sticker: TextureRect = $LampDarkPlanet/LampSticker
@@ -281,3 +284,9 @@ func _ready() -> void:
 	horse_dark_planet.visible = true
 	texture_rect.visible = true
 	position_marker.position = Position_by_Int[0]
+	change_o_sticker()
+
+
+func change_o_sticker() -> void:
+	if QuestManager.has_completed(QuestManager.CharacterName.O):
+		o_sticker.texture = Q_PLANET_ICON

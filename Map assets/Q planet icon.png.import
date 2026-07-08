@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcjo5apqe7h1q"
-path="res://.godot/imported/Q planet icon copy.png-3d2fc98cb2fe2331f5da104e7a159d74.ctex"
+path="res://.godot/imported/Q planet icon.png-73961fdb1239f750679f2943b67c4a04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map assets/Q planet icon copy.png"
-dest_files=["res://.godot/imported/Q planet icon copy.png-3d2fc98cb2fe2331f5da104e7a159d74.ctex"]
+source_file="res://Map assets/Q planet icon.png"
+dest_files=["res://.godot/imported/Q planet icon.png-73961fdb1239f750679f2943b67c4a04.ctex"]
 
 [params]
 
