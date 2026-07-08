@@ -11,3 +11,7 @@ func on_completion():
 			door_credits.rotation = Vector3(0.0, 0.0, 0.0)
 			door_credits.reparent($"../../..")
 			door_credits.visible = true
+		DialogueManager.horse_lock = false
+		DialogueManager.gate_lock = false
+		DialogueManager.sisyphus_lock = false
+		DialogueManager.king2_lock = false

@@ -471,6 +471,9 @@ const KING_2_POST_LINES : PackedStringArray = [
 	"We shall think of you as we play it. We will miss you, our silly little buddy.",
 	"The door is open.",
 	]
+const KING_2_EASTER_LINES : PackedStringArray = [
+	"We will miss you, our silly little buddy.",
+]
 const CREDITS_1 : PackedStringArray = [
 	"True lack belies the cacophony of internal noise ever tuned out through somatic satiation.",
 	"Still, caught on the ganglionic strings of your peripheral nervous system, something vocal echoes:",
@@ -655,9 +658,9 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 	QuestManager.CharacterName.KING_2 : [
 		KING_2_MEET_LINES,
 		KING_2_GIVE_LINES,
-		[], # king_2 does not give an item
+		KING_2_POST_LINES, # king_2 does not give an item
+		KING_2_POST_LINES, # king_2 does not have post lines
 		KING_2_POST_LINES,
-		KING_2_POST_LINES, # king_2 does not have easter lines
 		],
 	QuestManager.CharacterName.CREDITS : [
 		CREDITS_1,
