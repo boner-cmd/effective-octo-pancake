@@ -12,7 +12,7 @@ func end_sequence() -> void:
 	for node in player.get_children():
 		if node.name == &"PlayerVFX":
 			node.collision_swap()
-	main_scene.on_planet_change_requested(0)
+	main_scene.on_planet_change_requested(20)
 	player_player._camera.make_current()
 
 

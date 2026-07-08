@@ -659,7 +659,7 @@ const all_lines : Dictionary[QuestManager.CharacterName, Array] = {
 		KING_2_MEET_LINES,
 		KING_2_GIVE_LINES,
 		KING_2_POST_LINES, # king_2 does not give an item
-		KING_2_POST_LINES, # king_2 does not have post lines
+		KING_2_POST_LINES, # king_2 does not have post lines?
 		KING_2_POST_LINES,
 		],
 	QuestManager.CharacterName.CREDITS : [
