@@ -1,36 +1,21 @@
 MAIN
 	BUGS
-		No-eye'd deer reverts to prequest state upon loading a saved game
-		
-	ASSETS
-		NPC Models, Anims, Textures
-		
+		Needs testing
 	FEATURES
-		SAVING
-			done, I think?
-			
-			Will need to include Current Planet ID and initialization
-			Will need to include quest states
-			Will need to include inventory states (???)
-			Will need to include door lock states
-			Will need to include map visibility states
-			Will need to save audio settings
-			Will need to save honk counter from QuestManager
-			Will need to save time counter from QuestManager
-			Will need to hook up Continue button in Title Scene to load game
+		Clear
 
 
 DIALOGUES (DialogueManager, NPC lines) 
 	Different speech sound
-	MAYBE there is no skipping of the text propagation, but instead text scrolls fast (maybe this idea conflicts with the notion of speedrunning)
 
 
 MODELS -
 	NICE TO HAVE:
+		NPC Models, Anims, Textures
 		Animations (At least an IDLE and a TALK, but if we're going this far we should have NPC RECEIVE and NPC GIVE)
-	CAMERAS
-		reframe interactions for every scene (wait until new models)
-		flatter FOV for dialogue camera angles
+	IF MODELS:
+		CAMERAS
+			reframe interactions for every scene (wait until new models)
 
 
 SHADER PASS
@@ -57,7 +42,6 @@ UI PASS - optional
 		continue
 		main menu
 		quit
-	Dialogue Indicator swap for Controller Inputs
 
 
 POST - minimal
@@ -70,11 +54,7 @@ POST - minimal
 			Complete whole quest
 			Embrace the Void
 			All dialogues (Yap Fetishist)
-			Speed Run - less than 18 minutes should be doable
+			Speed Run - less than 15 minutes is possible
 			Honk 100 times (feel out the number if 100 is too low)
 			play the whole game with music set to full (Markcy's #1 Fan)
 			optional: singular NPC quest (if these can be deferred while others aren't, that'd be great)
-
-
-TITLE SCREEN -
-	Possible to have softer transition from dark loading screen to light title screen?
