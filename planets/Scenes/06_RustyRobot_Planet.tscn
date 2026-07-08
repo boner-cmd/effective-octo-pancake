@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_p7die"]
 [ext_resource type="Material" uid="uid://ce1kr4rg6d1x" path="res://planets/materials/06_robot_toon_shader.tres" id="6_8hxeg"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="7_8bo3w"]
+[ext_resource type="Script" uid="uid://c5h6fybo7d6dv" path="res://Character Scenes/NPCs/robot_completion.gd" id="8_8bo3w"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_kw8ol"]
+[ext_resource type="PackedScene" uid="uid://usbtc8as77uh" path="res://Character Export Files/rusty robot/gear_mesh.tscn" id="9_kw8ol"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -43,13 +45,13 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_s4htp")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_li07w")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_p7die")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
 
-[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1371780892]
+[node name="Cubed_Planet" parent="Cubed_Planet" index="0" unique_id=1134823557]
 material_override = ExtResource("6_8hxeg")
 
 [node name="Door" parent="." unique_id=683049571 instance=ExtResource("7_8bo3w")]
@@ -72,9 +74,10 @@ destination_planet_ID = 16
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("8_kw8ol")]
 
-[node name="robot" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=1916101213]
+[node name="robot" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="16" unique_id=1916101213 groups=["Completion_Change"]]
 transform = Transform3D(-0.296396, 0, -0.04636134, 0, 0.29999992, 0, 0.04636134, 0, -0.296396, 0, -1.1280003, 0)
 visible = true
+script = ExtResource("8_8bo3w")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractionArea/Area3D/robot" index="9" unique_id=7053957]
 transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, -16.239998, 0)
@@ -83,6 +86,201 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/Area3D/robot/StaticBody3D" unique_id=862920507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9486732, 0)
 shape = SubResource("BoxShape3D_8hxeg")
+
+[node name="Gears" type="Node3D" parent="InteractionArea/Area3D/robot" index="10" unique_id=246086407]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 4.7683716e-07, 0)
+top_level = true
+
+[node name="GearOffset1" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=2075170198]
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset1" unique_id=734476767 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset2" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=455761489]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset2" unique_id=2145225236 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset3" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=813141257]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1.0000001, 0, -1.0000001, -4.3711392e-08, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset3" unique_id=1023361437 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset4" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1368155285]
+transform = Transform3D(1, 0, 0, 0, -0.7071068, 0.7071068, 0, -0.7071068, -0.7071068, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset4" unique_id=586030555 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset5" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1504440553]
+transform = Transform3D(1, 0, 0, 0, -1.0000002, -8.74228e-08, 0, 8.74228e-08, -1.0000002, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset5" unique_id=5720168 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset6" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1128621105]
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.70710695, 0, 0.707107, -0.70710695, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset6" unique_id=2141741493 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset7" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1032279444]
+transform = Transform3D(1, 0, 0, 0, -4.3711402e-08, -1.0000004, 0, 1.0000004, -4.3711402e-08, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset7" unique_id=1191539499 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset8" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=965745709]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset8" unique_id=1311450475 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset9" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1775889584]
+transform = Transform3D(0.53458834, -0.5975848, 0.5975848, 0, 0.70710677, 0.70710677, -0.84511256, -0.37801102, 0.37801102, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset9" unique_id=466342357 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset10" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=643509561]
+transform = Transform3D(0.53458834, -0.8451127, -3.694105e-08, 0, -4.3711395e-08, 1.0000001, -0.84511256, -0.5345884, -2.3367601e-08, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset10" unique_id=2078764376 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset11" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1420184784]
+transform = Transform3D(0.53458834, -0.59758484, -0.59758484, 0, -0.7071068, 0.7071068, -0.84511256, -0.37801108, -0.37801108, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset11" unique_id=380478557 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset12" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=2090209129]
+transform = Transform3D(0.53458834, 0.597585, -0.59758496, 0, -0.707107, -0.70710695, -0.8451125, 0.3780111, -0.37801108, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset12" unique_id=260567605 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset13" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=138002642]
+transform = Transform3D(0.53458834, 0.84511286, -3.694106e-08, 0, -4.3711406e-08, -1.0000004, -0.84511256, 0.5345885, -2.3367608e-08, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset13" unique_id=330572578 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset14" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1312760049]
+transform = Transform3D(0.53458834, 0.597585, 0.597585, 0, 0.707107, -0.707107, -0.84511256, 0.37801117, 0.37801117, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset14" unique_id=281445645 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset15" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=466692273]
+transform = Transform3D(-0.5108431, -0.6078813, 0.6078813, 0, 0.7071068, 0.7071068, -0.859674, 0.36122054, -0.36122054, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset15" unique_id=995340853 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset16" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1356935481]
+transform = Transform3D(-0.510843, -0.8596741, -3.7577546e-08, 0, -4.371139e-08, 1, -0.8596739, 0.5108431, 2.2329665e-08, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset16" unique_id=32509601 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset17" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=467096765]
+transform = Transform3D(-0.51084304, -0.60788125, -0.60788125, 0, -0.7071068, 0.7071068, -0.8596739, 0.3612206, 0.3612206, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset17" unique_id=1373673487 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset18" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1425800248]
+transform = Transform3D(-0.5108429, 0.60788137, -0.6078815, 4.2183625e-08, -0.707107, -0.70710695, -0.8596738, -0.3612207, 0.36122072, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset18" unique_id=1178651 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset19" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=426874197]
+transform = Transform3D(-0.51084304, 0.8596742, -3.7577554e-08, -1.90119e-15, -4.3711402e-08, -1.0000004, -0.859674, -0.5108431, 2.2329663e-08, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset19" unique_id=1061033075 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset20" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=25546645]
+transform = Transform3D(-0.5108431, 0.6078815, 0.6078815, 0, 0.707107, -0.707107, -0.8596739, -0.36122072, -0.36122072, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset20" unique_id=491940588 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset21" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1383959256]
+transform = Transform3D(0.36290973, -0.9318243, 0, 0.93182445, 0.36290973, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset21" unique_id=1347037229 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset22" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1968817643]
+transform = Transform3D(-0.31109118, -0.95038, 0, 0.9503802, -0.31109118, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset22" unique_id=996814742 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset23" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1063330836]
+transform = Transform3D(-0.34688663, 0.93790704, 0, -0.9379072, -0.3468866, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset23" unique_id=432307242 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset24" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=621086375]
+transform = Transform3D(0.3273333, 0.94490886, 0, -0.9449092, 0.32733333, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset24" unique_id=938602109 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset25" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=754917567]
+transform = Transform3D(0.17234674, -0.44252568, 0.88003844, 0.93182445, 0.3629097, 0, -0.31937447, 0.82004124, 0.47490248, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset25" unique_id=480917756 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset26" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=748213692]
+transform = Transform3D(-0.14773798, -0.45133784, 0.88003844, 0.9503803, -0.3110912, 0, 0.2737722, 0.83637094, 0.47490248, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset26" unique_id=1872964915 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset27" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=998266639]
+transform = Transform3D(-0.16473734, 0.4454144, 0.88003844, -0.93790734, -0.3468866, 0, 0.30527353, -0.8253943, 0.47490248, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset27" unique_id=513174053 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset28" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=888095857]
+transform = Transform3D(0.15545142, 0.44873956, 0.88003844, -0.9449093, 0.3273333, 1.776357e-15, -0.28806585, -0.83155614, 0.47490248, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset28" unique_id=198690716 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset29" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1978280762]
+transform = Transform3D(-0.17616358, 0.45232627, 0.8742809, 0.9318245, 0.36290967, -1.0396023e-09, -0.31728512, 0.8146763, -0.48542008, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset29" unique_id=2025247170 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset30" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=473269651]
+transform = Transform3D(0.15100989, 0.46133345, 0.8742809, 0.9503803, -0.3110912, -1.3113597e-08, 0.27198112, 0.83089924, -0.48542008, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset30" unique_id=1195400218 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset31" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1159683824]
+transform = Transform3D(0.16838568, -0.45527896, 0.874281, -0.93790746, -0.34688663, 2.6227195e-08, 0.30327636, -0.81999433, -0.48542008, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset31" unique_id=96077285 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
+
+[node name="GearOffset32" type="Node3D" parent="InteractionArea/Area3D/robot/Gears" unique_id=1997107899]
+transform = Transform3D(-0.15889409, -0.45867777, 0.8742809, -0.9449093, 0.3273333, -1.3113594e-08, -0.28618133, -0.8261159, -0.48542008, 0, 0, 0)
+
+[node name="GearMesh" parent="InteractionArea/Area3D/robot/Gears/GearOffset32" unique_id=43585213 instance=ExtResource("9_kw8ol")]
+transform = Transform3D(999.9999, 0, 0, 0, 1000, 0, 0, 0, 999.99994, 0, 40, 0)
 
 [node name="Player_Cutscene_Locator" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="22" unique_id=1659489742]
 transform = Transform3D(-0.8810524, -0.0027575644, 0.4730102, -0.14401995, 0.9540697, -0.26269668, -0.45056018, -0.29957262, -0.8409824, -0.013787807, -1.1397729, -1.4978626)
@@ -93,7 +291,6 @@ fov = 60.0
 
 [node name="player_give" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="24" unique_id=1211501517]
 transform = Transform3D(-0.67880756, 0.07534402, -0.7304407, 0.03932438, 0.9970247, 0.06629719, 0.7332625, 0.016278906, -0.6797508, -2.0431294, -0.3114071, -2.8491342)
-fov = 60.0
 
 [editable path="CubedSkybox"]
 [editable path="Cubed_Planet"]

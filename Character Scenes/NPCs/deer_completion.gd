@@ -6,7 +6,9 @@ extends Node3D
 @onready var cubed_skybox: Node3D = $"../../../CubedSkybox"
 @onready var cubed_skybox_2: Node3D = $"../../../CubedSkybox2"
 
+
 func on_completion():
+	await get_tree().create_timer(.5).timeout
 	if QuestManager.has_completed(QuestManager.CharacterName.DEER):
 		cube1.visible = false
 		cube2.visible = false
@@ -14,3 +16,7 @@ func on_completion():
 		cylinder_001.visible = true
 		cubed_skybox.visible = false
 		cubed_skybox_2.visible = true
+
+
+func _ready() -> void:
+	on_completion()

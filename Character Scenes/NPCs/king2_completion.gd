@@ -1,7 +1,9 @@
 extends Node3D
+
 @onready var door_credits: Node3D = $"../../../Door_Credits"
 @onready var credits_door_locator: Node3D = $Credits_Door_Locator
 @export var debug_victory = false
+
 
 func on_completion():
 	if QuestManager.has_completed(QuestManager.CharacterName.KING_2):
@@ -15,3 +17,7 @@ func on_completion():
 		DialogueManager.gate_lock = false
 		DialogueManager.sisyphus_lock = false
 		DialogueManager.king2_lock = false
+
+
+func _ready() -> void:
+	on_completion()

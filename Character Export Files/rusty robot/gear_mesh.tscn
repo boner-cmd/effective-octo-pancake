@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://usbtc8as77uh"]
+
+[ext_resource type="ArrayMesh" uid="uid://p34onshvixid" path="res://Character Export Files/rusty robot/gear_mesh.tres" id="1_76c6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76c6x"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.702705, 0.6873, 0.79, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3yg3"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.64, 0.33279997, 0.47103995, 1)
+
+[node name="GearMesh" type="MeshInstance3D" unique_id=734476767]
+transform = Transform3D(999.9999, 0, 0, 0, 999.9999, 0, 0, 0, 999.99994, 0, 0, 0)
+rotation_order = 1
+mesh = ExtResource("1_76c6x")
+surface_material_override/0 = SubResource("StandardMaterial3D_76c6x")
+surface_material_override/1 = SubResource("StandardMaterial3D_d3yg3")
