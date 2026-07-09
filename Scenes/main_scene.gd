@@ -6,7 +6,6 @@ var current_npc : QuestManager.CharacterName
 @onready var hud_overlay: CanvasLayer = $HUDOverlay
 @onready var inventory : Control = $HUDOverlay/PauseContainer/Inventory
 @onready var map : TextureRect = $HUDOverlay/Map
-
 @onready var Player = %PlayerCharacter
 ## Current planet is used to manage planet-swapping. It is default-assigned to the first planet to
 ## ensure that the initial planet is removed after transition.
@@ -49,10 +48,13 @@ func _ready() -> void:
 		if not door.request_planet_change.is_connected(on_planet_change_requested):
 			door.request_planet_change.connect(on_planet_change_requested)
 	Stopwatch.start()
+	connect_planet_state_change()
+	emit_state_change()
 
 
 func on_planet_change_requested(planet_ID : int):
 	Player.visible = true
+	disconnect_planet_state_change()
 	## TODO mention why this is relevant and where it is called from
 	current_planet_id = planet_ID #DON'T DELETE THIS EVEN IF IT SEEMS REDUNDANT
 	Player.set_process_mode(Node.PROCESS_MODE_INHERIT)
@@ -83,11 +85,30 @@ func on_planet_change_requested(planet_ID : int):
 		Player._camera.current = false
 		DialogueManager.current_npc = planet_ID as QuestManager.CharacterName
 		current_npc = DialogueManager.current_npc
-	if planet_ID == 0:
-		DialogueManager.planet_state_change.emit()
-	
 	if hud_overlay.interact_door_open.visible:
 		hud_overlay.immediate_interact_hide(hud_overlay.interact_door_open)
-	
+	connect_planet_state_change()
+	emit_state_change()
 	Player.reset_player()
 	SaveManager.save_game()
+
+
+func connect_planet_state_change() -> void:
+	var NPC = get_tree().get_first_node_in_group("Completion_Change")
+	if NPC:
+		DialogueManager.planet_state_change.connect(NPC.on_completion)
+		if DialogueManager.planet_state_change.is_connected(NPC.on_completion):
+			print(NPC, " connected to planet state change")
+
+
+func disconnect_planet_state_change() -> void:
+	var NPC = get_tree().get_first_node_in_group("Completion_Change")
+	if NPC:
+		DialogueManager.planet_state_change.disconnect(NPC.on_completion)
+		if not DialogueManager.planet_state_change.is_connected(NPC.on_completion):
+			print(NPC, " disconnected from planet state change")
+
+
+func emit_state_change() -> void:
+	await get_tree().create_timer(.5).timeout
+	DialogueManager.planet_state_change.emit()
