@@ -100,7 +100,7 @@ func _ready() -> void:
 	interact_door_open.visible = false
 	interact_door_locked.visible = false
 	interact_npc_margin.visible = false
-	quit_bool = false
+	quit_bool = true
 	control_schematic_full.visible = true
 	control_schematic_full.modulate.a = 0.0
 	audio_control.modulate.a = 0.0
@@ -132,6 +132,8 @@ func _ready() -> void:
 	#control schematics UI stuff here
 	tween_object(control_schematic_full, "modulate:a", 1.0, .2, Tween.TRANS_SINE, Tween.EASE_IN)
 	used_indicator_label = next_indicator_label
+	await get_tree().create_timer(.5).timeout
+	quit_bool = false
 
 
 func _process(_delta: float) -> void:
@@ -170,7 +172,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			## control schematic
 			if not control_acknowledge:
 				AudioManager.sfx_play(AudioManager.sfx_blip)
-				await get_tree().create_timer(.5).timeout
 				control_acknowledge = true
 				await tween_object(control_schematic_full, "modulate:a", 0.0, .3, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 				control_schematic_full.queue_free()

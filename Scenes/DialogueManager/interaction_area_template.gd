@@ -28,16 +28,8 @@ func interact() -> void:
 	rig._set_player_anim(rig.AnimStates.IDLE)
 	var current_status : DialogueManager.CONV_STATE = DialogueManager.dialogue_state
 	if current_status == DialogueManager.CONV_STATE.FINISHED:
-		for NPC in get_children():
-			if NPC.is_in_group("Completion_Change"):
-				if NPC.visible:
-					if not DialogueManager.planet_state_change.is_connected(NPC.on_completion):
-						DialogueManager.planet_state_change.connect(NPC.on_completion)
-				else:
-					DialogueManager.planet_state_change.disconnect(NPC.on_completion)
 		main_planet_id = get_tree().get_first_node_in_group("Main").current_planet_id
 		DialogueManager.start_dialogue(DialogueManager.hud_overlay, main_planet_id, speech_sound)
-		
 	player.player_cutscene_locator = player_cutscene_locator
 	player._cam_frame_both = _cam_frame_both
 	player._cam_player_give = _cam_player_give

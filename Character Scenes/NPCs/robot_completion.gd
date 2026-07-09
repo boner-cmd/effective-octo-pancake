@@ -21,16 +21,23 @@ func _ready() -> void:
 
 
 func on_completion() -> void:
-	await get_tree().create_timer(.1).timeout
-	if not QuestManager.has_completed(QuestManager.CharacterName.ROBOT):
-		for gear_offset in gears_group.get_children():
-			var gear : MeshInstance3D = gear_offset.get_child(0)
-			var rot_goal : float = deg_to_rad(randf_range(10.0, 30.0))
-			tween_object(gear, "rotation:y", rot_goal, randf_range(6.0, 12.0), Tween.TRANS_BOUNCE, Tween.EASE_IN)
+	if QuestManager.has_completed(QuestManager.CharacterName.ROBOT):
+		tween_gears()
 	else:
-		for gear_offset in gears_group.get_children():
-			var gear : MeshInstance3D = gear_offset.get_child(0)
-			tween_object(gear, "rotation:y", deg_to_rad(360.0), randf_range(5.0, 9.0), Tween.TRANS_LINEAR, Tween.EASE_IN)
+		tween_gears_stuck()
+
+
+func tween_gears_stuck() -> void:
+	for gear_offset in gears_group.get_children():
+		var gear : MeshInstance3D = gear_offset.get_child(0)
+		var rot_goal : float = deg_to_rad(randf_range(10.0, 30.0))
+		tween_object(gear, "rotation:y", rot_goal, randf_range(6.0, 12.0), Tween.TRANS_BOUNCE, Tween.EASE_IN)
+
+
+func tween_gears() -> void:
+	for gear_offset in gears_group.get_children():
+		var gear : MeshInstance3D = gear_offset.get_child(0)
+		tween_object(gear, "rotation:y", deg_to_rad(360.0), randf_range(5.0, 9.0), Tween.TRANS_LINEAR, Tween.EASE_IN)
 
 
 func tween_object(object : Object, property : NodePath, goal : Variant, time : float, 
