@@ -147,6 +147,8 @@ func _ready() -> void:
 	main_ = get_tree().get_root().get_node("MainScene")
 	door_mesh.set_surface_override_material(0, door_mats[destination_planet_ID])
 	set_q_door()
+	
+	
 	DialogueManager.change_king.connect(change_king_door)
 	tree_entered.connect(stasis)
 	DialogueManager.door_unlock.connect(door_unlock_sequence)
@@ -265,6 +267,8 @@ func door_unlock_sequence() -> void:
 
 func set_q_door() -> void:
 	if destination_planet_ID == 8:
+		if not DialogueManager.planet_state_change.is_connected(set_q_door):
+			DialogueManager.planet_state_change.connect(set_q_door)
 		if QuestManager.has_completed(QuestManager.CharacterName.O):
 			door_mats[8] = q_door
 			door_mesh.set_surface_override_material(0, door_mats[8])
