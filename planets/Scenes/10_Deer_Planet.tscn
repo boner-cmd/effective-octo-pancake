@@ -148,6 +148,7 @@ frame_progress = 0.328408
 
 [node name="DeerPupil" type="Sprite3D" parent="Eye Offset/EyeContainer" unique_id=1082271110]
 transform = Transform3D(0.74189967, 0, 0, 0, 0.74189967, 0, 0, 0, 1, -0.089, -0.074, 0.03)
+visible = false
 sorting_offset = 1.0
 texture = ExtResource("14_hguxs")
 

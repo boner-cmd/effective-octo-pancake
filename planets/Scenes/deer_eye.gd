@@ -15,9 +15,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	set_active()
-	eye_offset.global_rotation.x = lerp_angle(eye_offset.global_rotation.x, active_camera.global_rotation.x, 2 * delta)
-	eye_offset.global_rotation.y = lerp_angle(eye_offset.global_rotation.y, active_camera.global_rotation.y, 2 * delta)
-	eye_offset.global_rotation.z = lerp_angle(eye_offset.global_rotation.z, active_camera.global_rotation.z, 2 * delta)
+	eye_offset.global_rotation.x = lerp_angle(eye_offset.global_rotation.x, active_camera.global_rotation.x, 2.5 * delta)
+	eye_offset.global_rotation.y = lerp_angle(eye_offset.global_rotation.y, active_camera.global_rotation.y, 2.5 * delta)
+	eye_offset.global_rotation.z = lerp_angle(eye_offset.global_rotation.z, active_camera.global_rotation.z, 2.5 * delta)
 	eye_offset.global_position = active_camera.global_position
 	if completed:
 		if deer_eye.get_frame() == 5:
