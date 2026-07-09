@@ -6,8 +6,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_tqj4y")
-shader_parameter/ToonRampOffset = 0.50000002375
-shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampOffset = 0.4590000218025
+shader_parameter/ToonRampSmoothness = 0.278000013205
 shader_parameter/ToonRampTinting = Color(0, 0, 0, 1)
 shader_parameter/UV_Scaling_U = 3.0000001425
 shader_parameter/UV_Scaling_V = 3.0000001425
