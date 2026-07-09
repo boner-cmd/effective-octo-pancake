@@ -1,6 +1,6 @@
 extends Node3D
 
-# TODO move everything into Main and delete this script
+# TODO move most things into Main or player
 @onready var main_planet_id : int = 0
 @onready var speech_sound = AudioManager.speech_sound
 
@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 	self.look_at(player.global_position)
 	rotation.x = 0
 	rotation.z = 0
-	
+
 
 #this should only run if child is an NPC and should probably be moved to the player's interact script I guess
 func interact() -> void:

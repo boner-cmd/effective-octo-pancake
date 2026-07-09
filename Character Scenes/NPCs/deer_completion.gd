@@ -3,9 +3,8 @@ extends Node3D
 @onready var cube2: MeshInstance3D = $Cube_002
 @onready var cylinder: MeshInstance3D = $Cylinder
 @onready var cylinder_001: MeshInstance3D = $Cylinder_001
-@onready var cubed_skybox: Node3D = $"../../../CubedSkybox"
-@onready var cubed_skybox_2: Node3D = $"../../../CubedSkybox2"
 
+signal completion
 
 func on_completion():
 	await get_tree().create_timer(.5).timeout
@@ -14,8 +13,7 @@ func on_completion():
 		cube2.visible = false
 		cylinder.visible = true
 		cylinder_001.visible = true
-		cubed_skybox.visible = false
-		cubed_skybox_2.visible = true
+		completion.emit()
 
 
 func _ready() -> void:

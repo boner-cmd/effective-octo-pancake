@@ -3,12 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_hb5q0"]
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_txy1j"]
 [ext_resource type="Material" uid="uid://chrf665sj6kbi" path="res://planets/materials/10_Deer_skybox.tres" id="2_swx71"]
-[ext_resource type="Material" uid="uid://ekgtxdnawfrf" path="res://planets/materials/10_O_Deer_skybox.tres" id="4_3pjkr"]
 [ext_resource type="PackedScene" uid="uid://bkytuxq3o6ibv" path="res://planets/models/cubed_planet.tscn" id="4_m2m7x"]
 [ext_resource type="Material" uid="uid://ko5cwwv6vhts" path="res://planets/materials/10_deer_toon_shader.tres" id="7_36we4"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="8_36we4"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="9_5tpbv"]
 [ext_resource type="Script" uid="uid://ckvcl8m1n4tpl" path="res://Character Scenes/NPCs/deer_completion.gd" id="9_36we4"]
+[ext_resource type="Script" uid="uid://dt064pgj60x8f" path="res://planets/Scenes/deer_eye.gd" id="9_thosl"]
+[ext_resource type="Texture2D" uid="uid://m7ghw8jcuuf6" path="res://Character Export Files/o-eye'd deer/SCLERA_f_3.png" id="10_enk6n"]
+[ext_resource type="Texture2D" uid="uid://bic62mmdwf2sr" path="res://Character Export Files/o-eye'd deer/SCLERA_f_2.png" id="11_ye8co"]
+[ext_resource type="Texture2D" uid="uid://cyt4038tqgwq7" path="res://Character Export Files/o-eye'd deer/SCLERA_f_1.png" id="12_dxixy"]
+[ext_resource type="Texture2D" uid="uid://lvp0pxpgwti7" path="res://Character Export Files/o-eye'd deer/SCLERA_f_4.png" id="13_2k5u0"]
+[ext_resource type="Texture2D" uid="uid://bupvxf7vuf1q4" path="res://Character Export Files/o-eye'd deer/PUPIL.png" id="14_hguxs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -29,6 +34,32 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_txy1j"]
 size = Vector3(0.5, 2, 1.5)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_xprqk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_enk6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ye8co")
+}, {
+"duration": 100.0,
+"texture": ExtResource("12_dxixy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ye8co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_enk6n")
+}, {
+"duration": 2.0,
+"texture": ExtResource("13_2k5u0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="10_Deer_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
 script = ExtResource("1_txy1j")
 InteractionArea = NodePath("InteractionArea")
@@ -47,12 +78,6 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_swx71")
-
-[node name="CubedSkybox2" parent="." unique_id=991346088 instance=ExtResource("1_hb5q0")]
-visible = false
-
-[node name="Cubed_Skybox" parent="CubedSkybox2" index="0" unique_id=880234612]
-material_override = ExtResource("4_3pjkr")
 
 [node name="Cubed_Planet" parent="." unique_id=313376245 instance=ExtResource("4_m2m7x")]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
@@ -109,8 +134,24 @@ transform = Transform3D(1, 0, 0, 0, -0.33123907, -0.94354683, 0, 0.94354683, -0.
 [node name="DoorBaseModel" parent="Door3" index="0" unique_id=1012687003]
 destination_planet_ID = 10
 
+[node name="Eye Offset" type="Node3D" parent="." unique_id=140912838]
+script = ExtResource("9_thosl")
+
+[node name="EyeContainer" type="Node3D" parent="Eye Offset" unique_id=517889321]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 10, -42)
+
+[node name="DeerEye" type="AnimatedSprite3D" parent="Eye Offset/EyeContainer" unique_id=1574850876]
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_xprqk")
+autoplay = "default"
+frame_progress = 0.328408
+
+[node name="DeerPupil" type="Sprite3D" parent="Eye Offset/EyeContainer" unique_id=1082271110]
+transform = Transform3D(0.74189967, 0, 0, 0, 0.74189967, 0, 0, 0, 1, -0.089, -0.074, 0.03)
+sorting_offset = 1.0
+texture = ExtResource("14_hguxs")
+
 [editable path="CubedSkybox"]
-[editable path="CubedSkybox2"]
 [editable path="Cubed_Planet"]
 [editable path="InteractionArea"]
 [editable path="InteractionArea/Area3D/o-eye\'d deer"]
