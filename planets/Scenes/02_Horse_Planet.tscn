@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://byg2pu1oat7ky" path="res://planets/materials/02_horse_toon_shader.tres" id="2_t51te"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="4_t51te"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="5_t51te"]
+[ext_resource type="Texture2D" uid="uid://iqulsrvyu4gl" path="res://VFX assets/bug_sprite.png" id="6_oaqhs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -34,6 +35,117 @@ height = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t51te"]
 size = Vector3(0.5, 1, 2)
+
+[sub_resource type="Curve" id="Curve_2sr43"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.3151751, 0.33934432), 0.0, 0.0, 0, 0, Vector2(0.4085603, 1), -2.5963382e-07, -2.5963382e-07, 0, 0, Vector2(0.50583655, 0.32868856), 0.0, 0.0, 0, 0, Vector2(0.56809336, 0.99999994), 0.0, 0.0, 0, 0, Vector2(0.6614786, 0.33934432), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_tsdpc"]
+curve = SubResource("Curve_2sr43")
+
+[sub_resource type="Curve" id="Curve_mb2vt"]
+_data = [Vector2(0.24124512, 0), 0.0, 0.0, 0, 0, Vector2(0.50583655, 0.3713115), 0.0, 0.0, 0, 0, Vector2(0.78988326, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gmqye"]
+curve = SubResource("Curve_mb2vt")
+
+[sub_resource type="Curve" id="Curve_kvoka"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), -9.08829, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_stceh"]
+curve = SubResource("Curve_kvoka")
+
+[sub_resource type="Curve" id="Curve_ti60w"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99221784, -1), -3.6258337, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jgpy0"]
+curve = SubResource("Curve_ti60w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1cbwq"]
+particle_flag_damping_as_friction = true
+emission_shape = 2
+emission_sphere_radius = 6.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+orbit_velocity_min = 0.010000096
+orbit_velocity_max = 0.1000001
+orbit_velocity_curve = SubResource("CurveTexture_gmqye")
+radial_velocity_min = 0.09997764
+radial_velocity_max = 0.39997762
+radial_velocity_curve = SubResource("CurveTexture_stceh")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -1.0000023
+radial_accel_max = 0.09999776
+tangential_accel_min = 0.24999776
+tangential_accel_max = 0.74999774
+tangential_accel_curve = SubResource("CurveTexture_jgpy0")
+damping_min = 100.00001
+damping_max = 100.00001
+scale_min = 0.099999994
+alpha_curve = SubResource("CurveTexture_tsdpc")
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
+sub_emitter_mode = 1
+sub_emitter_frequency = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txvin"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_oaqhs")
+texture_filter = 0
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_chpro"]
+material = SubResource("StandardMaterial3D_txvin")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_q33d8"]
+_data = [Vector2(0.5097276, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.9689975, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ed0t7"]
+curve = SubResource("Curve_q33d8")
+
+[sub_resource type="Gradient" id="Gradient_ssi1d"]
+colors = PackedColorArray(1, 1, 1, 1, 0.39688927, 0.39688927, 0.39688924, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ivao1"]
+gradient = SubResource("Gradient_ssi1d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cbr4m"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_ivao1")
+alpha_curve = SubResource("CurveTexture_ed0t7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7oq2g"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_oaqhs")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_r0sdj"]
+material = SubResource("StandardMaterial3D_7oq2g")
+size = Vector2(0.1, 0.1)
 
 [node name="02_Horse_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4", "Obj_5")]
 script = ExtResource("1_0yh3f")
@@ -104,6 +216,32 @@ destination_planet_ID = 4
 
 [node name="Door4" parent="." unique_id=1294301402 instance=ExtResource("5_t51te")]
 transform = Transform3D(1, 0, 0, 0, 0.21817726, 0.9759092, 0, -0.9759092, 0.21817726, 0, 0, 0)
+
+[node name="PlanetVFX" type="Node3D" parent="." unique_id=1641182164]
+
+[node name="BugsParticle" type="GPUParticles3D" parent="PlanetVFX" unique_id=1430659544]
+layers = 2
+amount = 75
+sub_emitter = NodePath("../Trail Particle")
+lifetime = 20.0
+preprocess = 20.0
+use_fixed_seed = true
+seed = 172547266
+collision_base_size = 0.2
+visibility_aabb = AABB(-10, -10, -10, 20, 20, 20)
+process_material = SubResource("ParticleProcessMaterial_1cbwq")
+draw_pass_1 = SubResource("QuadMesh_chpro")
+
+[node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="PlanetVFX" unique_id=491853596]
+layers = 2
+cull_mask = 4293918722
+radius = 5.02
+
+[node name="Trail Particle" type="GPUParticles3D" parent="PlanetVFX" unique_id=641785827]
+amount = 2000
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_cbr4m")
+draw_pass_1 = SubResource("QuadMesh_r0sdj")
 
 [editable path="InteractionArea"]
 [editable path="Door"]
