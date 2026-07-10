@@ -240,6 +240,7 @@ draw_pass_1 = SubResource("QuadMesh_bigvl")
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="." unique_id=275952900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 strength = 7.0
+cull_mask = 4293918721
 radius = 10.0
 
 [node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="." unique_id=1078660414]

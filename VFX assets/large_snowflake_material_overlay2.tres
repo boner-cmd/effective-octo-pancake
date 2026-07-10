@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cinpdpc68ilyk"]
+
+[ext_resource type="Texture2D" uid="uid://daqoctk7nqy1r" path="res://VFX assets/snowflake_overlay.png" id="1_6a3xj"]
+
+[resource]
+render_priority = 1
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.13725491)
+albedo_texture = ExtResource("1_6a3xj")

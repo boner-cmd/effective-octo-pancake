@@ -3,10 +3,16 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_x2kwg"]
 [ext_resource type="Material" uid="uid://c4dc8tgvesidv" path="res://planets/materials/04_snowman_skybox.tres" id="2_x2kwg"]
+[ext_resource type="Material" uid="uid://bbr2ocbm1x8gy" path="res://planets/materials/04_snowman_skybox_overlay.tres" id="4_35w8r"]
 [ext_resource type="Material" uid="uid://dj7s7820eoffe" path="res://planets/materials/04_snowman_toon_shader.tres" id="5_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_grmqm"]
 [ext_resource type="Script" uid="uid://s65m864cjpod" path="res://planets/Scenes/snowman_completion.gd" id="7_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_gwu52"]
+[ext_resource type="Script" uid="uid://bmc4u4nm8uu4j" path="res://planets/Scenes/planet_snowflakes.gd" id="8_gwu52"]
+[ext_resource type="Texture2D" uid="uid://btje3qx4t0l2y" path="res://planets/textures/Skybox Textures/snowflake.png" id="9_35w8r"]
+[ext_resource type="Material" uid="uid://41vl5r16v0oj" path="res://VFX assets/large_snowflake_material.tres" id="10_1brpk"]
+[ext_resource type="Material" uid="uid://gdpeskd2bua5" path="res://VFX assets/snowflake_falling_material.tres" id="11_23wl2"]
+[ext_resource type="Material" uid="uid://hh4w4mrltjog" path="res://VFX assets/snowflake_stationary_material.tres" id="12_1brpk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
 sky_top_color = Color(0.7019608, 0.7019608, 0.72156864, 1)
@@ -32,6 +38,56 @@ height = 10.0
 height = 1.0
 radius = 0.3
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kr7ot"]
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 10.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_max = 100.0
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+scale_min = 0.5
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 5.0
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_6jhrq"]
+material = ExtResource("11_23wl2")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="Curve" id="Curve_tsb7d"]
+_data = [Vector2(0.4941634, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.060980104, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lah3o"]
+curve = SubResource("Curve_tsb7d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhiod"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 0.0
+radial_velocity_min = -1.0000223
+radial_velocity_max = -1.0000223
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+alpha_curve = SubResource("CurveTexture_lah3o")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_g5v5c"]
+material = ExtResource("12_1brpk")
+size = Vector2(0.25, 0.25)
+orientation = 1
+
 [node name="04_Snowman_Planet" type="Node3D" unique_id=731662202 node_paths=PackedStringArray("InteractionArea", "Obj_2", "Obj_3", "Obj_4")]
 script = ExtResource("1_6e6r8")
 InteractionArea = NodePath("InteractionArea")
@@ -50,6 +106,7 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_x2kwg")
+material_overlay = ExtResource("4_35w8r")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=145002734]
 material_override = ExtResource("5_6e6r8")
@@ -93,6 +150,366 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea/StaticBody3D" unique_id=1036887213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4943275, 0)
 shape = SubResource("CylinderShape3D_6e6r8")
+
+[node name="Snowflakes" type="Node3D" parent="." unique_id=662887700]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 4.7683716e-07, 0)
+top_level = true
+script = ExtResource("8_gwu52")
+
+[node name="Offset1" type="Node3D" parent="Snowflakes" unique_id=936700496]
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset1" unique_id=524430170]
+transform = Transform3D(10.000001, 0, 0, 0, 10, 0, 0, 0, 10.000001, 0, 40, 0)
+rotation_order = 4
+material_override = ExtResource("10_1brpk")
+cast_shadow = 0
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset2" type="Node3D" parent="Snowflakes" unique_id=580053440]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset2" unique_id=1660239183]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset3" type="Node3D" parent="Snowflakes" unique_id=1738457871]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1.0000001, 0, -1.0000001, -4.3711392e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset3" unique_id=1249405558]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset4" type="Node3D" parent="Snowflakes" unique_id=1651681]
+transform = Transform3D(1, 0, 0, 0, -0.7071068, 0.7071068, 0, -0.7071068, -0.7071068, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset4" unique_id=2082910458]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset5" type="Node3D" parent="Snowflakes" unique_id=42829190]
+transform = Transform3D(1, 0, 0, 0, -1.0000002, -8.74228e-08, 0, 8.74228e-08, -1.0000002, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset5" unique_id=1403026064]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset6" type="Node3D" parent="Snowflakes" unique_id=777815700]
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.70710695, 0, 0.707107, -0.70710695, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset6" unique_id=738536805]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset7" type="Node3D" parent="Snowflakes" unique_id=1361339004]
+transform = Transform3D(1, 0, 0, 0, -4.3711402e-08, -1.0000004, 0, 1.0000004, -4.3711402e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset7" unique_id=804860008]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset8" type="Node3D" parent="Snowflakes" unique_id=1774612307]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset8" unique_id=1556533194]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset9" type="Node3D" parent="Snowflakes" unique_id=1295020716]
+transform = Transform3D(0.53458834, -0.5975848, 0.5975848, 0, 0.70710677, 0.70710677, -0.84511256, -0.37801102, 0.37801102, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset9" unique_id=1342319487]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset10" type="Node3D" parent="Snowflakes" unique_id=951177976]
+transform = Transform3D(0.53458834, -0.8451127, -3.694105e-08, 0, -4.3711395e-08, 1.0000001, -0.84511256, -0.5345884, -2.3367601e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset10" unique_id=1920794959]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset11" type="Node3D" parent="Snowflakes" unique_id=458214190]
+transform = Transform3D(0.53458834, -0.59758484, -0.59758484, 0, -0.7071068, 0.7071068, -0.84511256, -0.37801108, -0.37801108, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset11" unique_id=1944139424]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset12" type="Node3D" parent="Snowflakes" unique_id=1858407003]
+transform = Transform3D(0.53458834, 0.597585, -0.59758496, 0, -0.707107, -0.70710695, -0.8451125, 0.3780111, -0.37801108, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset12" unique_id=339405185]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset13" type="Node3D" parent="Snowflakes" unique_id=328982003]
+transform = Transform3D(0.53458834, 0.84511286, -3.694106e-08, 0, -4.3711406e-08, -1.0000004, -0.84511256, 0.5345885, -2.3367608e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset13" unique_id=421221084]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset14" type="Node3D" parent="Snowflakes" unique_id=1825886385]
+transform = Transform3D(0.53458834, 0.597585, 0.597585, 0, 0.707107, -0.707107, -0.84511256, 0.37801117, 0.37801117, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset14" unique_id=601689416]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset15" type="Node3D" parent="Snowflakes" unique_id=1970654602]
+transform = Transform3D(-0.5108431, -0.6078813, 0.6078813, 0, 0.7071068, 0.7071068, -0.859674, 0.36122054, -0.36122054, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset15" unique_id=1145253228]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset16" type="Node3D" parent="Snowflakes" unique_id=962971960]
+transform = Transform3D(-0.510843, -0.8596741, -3.7577546e-08, 0, -4.371139e-08, 1, -0.8596739, 0.5108431, 2.2329665e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset16" unique_id=1211546121]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset17" type="Node3D" parent="Snowflakes" unique_id=1193982737]
+transform = Transform3D(-0.51084304, -0.60788125, -0.60788125, 0, -0.7071068, 0.7071068, -0.8596739, 0.3612206, 0.3612206, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset17" unique_id=766822920]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset18" type="Node3D" parent="Snowflakes" unique_id=1554677108]
+transform = Transform3D(-0.5108429, 0.60788137, -0.6078815, 4.2183625e-08, -0.707107, -0.70710695, -0.8596738, -0.3612207, 0.36122072, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset18" unique_id=177123920]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset19" type="Node3D" parent="Snowflakes" unique_id=1761761959]
+transform = Transform3D(-0.51084304, 0.8596742, -3.7577554e-08, -1.90119e-15, -4.3711402e-08, -1.0000004, -0.859674, -0.5108431, 2.2329663e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset19" unique_id=901535857]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset20" type="Node3D" parent="Snowflakes" unique_id=1253929188]
+transform = Transform3D(-0.5108431, 0.6078815, 0.6078815, 0, 0.707107, -0.707107, -0.8596739, -0.36122072, -0.36122072, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset20" unique_id=1974857418]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset21" type="Node3D" parent="Snowflakes" unique_id=1384691195]
+transform = Transform3D(0.36290973, -0.9318243, 0, 0.93182445, 0.36290973, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset21" unique_id=1382874940]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset22" type="Node3D" parent="Snowflakes" unique_id=570410137]
+transform = Transform3D(-0.31109118, -0.95038, 0, 0.9503802, -0.31109118, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset22" unique_id=152879966]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset23" type="Node3D" parent="Snowflakes" unique_id=711263687]
+transform = Transform3D(-0.34688663, 0.93790704, 0, -0.9379072, -0.3468866, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset23" unique_id=449076743]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset24" type="Node3D" parent="Snowflakes" unique_id=990688035]
+transform = Transform3D(0.3273333, 0.94490886, 0, -0.9449092, 0.32733333, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset24" unique_id=821588384]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset25" type="Node3D" parent="Snowflakes" unique_id=71375864]
+transform = Transform3D(0.17234674, -0.44252568, 0.88003844, 0.93182445, 0.3629097, 0, -0.31937447, 0.82004124, 0.47490248, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset25" unique_id=256787489]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset26" type="Node3D" parent="Snowflakes" unique_id=1814739088]
+transform = Transform3D(-0.14773798, -0.45133784, 0.88003844, 0.9503803, -0.3110912, 0, 0.2737722, 0.83637094, 0.47490248, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset26" unique_id=148361874]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset27" type="Node3D" parent="Snowflakes" unique_id=739774615]
+transform = Transform3D(-0.16473734, 0.4454144, 0.88003844, -0.93790734, -0.3468866, 0, 0.30527353, -0.8253943, 0.47490248, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset27" unique_id=203404400]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset28" type="Node3D" parent="Snowflakes" unique_id=296685096]
+transform = Transform3D(0.15545142, 0.44873956, 0.88003844, -0.9449093, 0.3273333, 1.776357e-15, -0.28806585, -0.83155614, 0.47490248, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset28" unique_id=280261511]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset29" type="Node3D" parent="Snowflakes" unique_id=115213073]
+transform = Transform3D(-0.17616358, 0.45232627, 0.8742809, 0.9318245, 0.36290967, -1.0396023e-09, -0.31728512, 0.8146763, -0.48542008, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset29" unique_id=2089675382]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset30" type="Node3D" parent="Snowflakes" unique_id=968539976]
+transform = Transform3D(0.15100989, 0.46133345, 0.8742809, 0.9503803, -0.3110912, -1.3113597e-08, 0.27198112, 0.83089924, -0.48542008, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset30" unique_id=1048232310]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset31" type="Node3D" parent="Snowflakes" unique_id=140171932]
+transform = Transform3D(0.16838568, -0.45527896, 0.874281, -0.93790746, -0.34688663, 2.6227195e-08, 0.30327636, -0.81999433, -0.48542008, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset31" unique_id=347792882]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="Offset32" type="Node3D" parent="Snowflakes" unique_id=147598633]
+transform = Transform3D(-0.15889409, -0.45867777, 0.8742809, -0.9449093, 0.3273333, -1.3113594e-08, -0.28618133, -0.8261159, -0.48542008, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Snowflakes/Offset32" unique_id=204577851]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 40, 0)
+rotation_order = 4
+axis = 1
+texture_filter = 0
+texture = ExtResource("9_35w8r")
+
+[node name="snowVFX" type="Node3D" parent="." unique_id=1094917194]
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="snowVFX" unique_id=1149911799]
+layers = 2
+strength = 5.0
+cull_mask = 4293918722
+radius = 80.0
+
+[node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="snowVFX" unique_id=1067799376]
+layers = 2
+cull_mask = 4293918722
+radius = 5.02
+
+[node name="snow_falling" type="GPUParticles3D" parent="snowVFX" unique_id=2097013271]
+layers = 2
+amount = 1000
+sub_emitter = NodePath("../snow_on_ground")
+lifetime = 30.0
+preprocess = 30.0
+use_fixed_seed = true
+seed = 640184713
+collision_base_size = 0.02
+process_material = SubResource("ParticleProcessMaterial_kr7ot")
+draw_pass_1 = SubResource("QuadMesh_6jhrq")
+
+[node name="snow_on_ground" type="GPUParticles3D" parent="snowVFX" unique_id=1051552177]
+layers = 2
+emitting = false
+amount = 1000
+lifetime = 4.0
+collision_base_size = 0.02
+process_material = SubResource("ParticleProcessMaterial_yhiod")
+draw_pass_1 = SubResource("QuadMesh_g5v5c")
 
 [editable path="CubedSkybox"]
 [editable path="Door"]

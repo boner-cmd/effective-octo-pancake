@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://41vl5r16v0oj"]
+
+[ext_resource type="Texture2D" uid="uid://btje3qx4t0l2y" path="res://planets/textures/Skybox Textures/snowflake.png" id="1_wnhti"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_wnhti")

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbr2ocbm1x8gy"]
+
+[resource]
+render_priority = -1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.82809997, 0.89771503, 0.91, 0.42352942)
+uv1_scale = Vector3(2, 2, 2)
+texture_filter = 0

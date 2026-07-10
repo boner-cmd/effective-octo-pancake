@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://hh4w4mrltjog"]
+
+[ext_resource type="Texture2D" uid="uid://bv7je27r4mw1m" path="res://VFX assets/snowflake_particle.png" id="1_mjcfd"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_mjcfd")
+texture_filter = 0
+texture_repeat = false
