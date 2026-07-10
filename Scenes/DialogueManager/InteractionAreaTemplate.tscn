@@ -17,14 +17,42 @@
 [ext_resource type="PackedScene" uid="uid://c4mw3llgpf4pp" path="res://Character Scenes/NPCs/o.tscn" id="17_rltig"]
 [ext_resource type="PackedScene" uid="uid://b8ab8kk2m2tnj" path="res://Character Scenes/NPCs/o_eye'd_deer.tscn" id="18_ey1ty"]
 [ext_resource type="PackedScene" uid="uid://dv0c0afvkyj5n" path="res://Character Scenes/NPCs/q.tscn" id="19_k8mm5"]
+[ext_resource type="ArrayMesh" uid="uid://dyxrx8ntm8r4a" path="res://Character Export Files/snowman/snowman_mesh.tres" id="19_tnrcw"]
+[ext_resource type="Texture2D" uid="uid://c4gballvaaebg" path="res://planets/textures/Planet Textures/snowman planet texture.png" id="20_1nt4o"]
 [ext_resource type="PackedScene" uid="uid://g2u7c57lv33c" path="res://Character Scenes/NPCs/robot.tscn" id="20_6b0et"]
+[ext_resource type="ArrayMesh" uid="uid://biiui6puh4k3y" path="res://Character Export Files/snowman/space_blanket.tres" id="21_rxrm2"]
 [ext_resource type="PackedScene" uid="uid://comafvxbn074i" path="res://Character Scenes/NPCs/sisyphus.tscn" id="21_ub32n"]
-[ext_resource type="PackedScene" uid="uid://ds0s8jav4pti3" path="res://Character Scenes/NPCs/snowman.tscn" id="22_lspox"]
+[ext_resource type="Texture2D" uid="uid://dpv7awwgeaxsr" path="res://Character Export Files/snowman/space_blanket_texture.png" id="22_0ltci"]
 [ext_resource type="PackedScene" uid="uid://yuj2sdn8i08i" path="res://Character Scenes/NPCs/slime_mould.tscn" id="36_6b0et"]
 [ext_resource type="PackedScene" uid="uid://b1p31ofqvqdrn" path="res://Character Scenes/NPCs/grease_puddle.tscn" id="37_ub32n"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ihs6g"]
 radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfi2n"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03vyx"]
+albedo_texture = ExtResource("20_1nt4o")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(-0.5, 0, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6xia"]
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("22_0ltci")
+uv1_scale = Vector3(3, 3, 3)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js1ou"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.8515, 0.19, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_rmjit"]
 radius = 0.1
@@ -114,9 +142,22 @@ visible = false
 transform = Transform3D(-0.3, 0, 2.6226834e-08, 0, 0.3, 0, -2.6226834e-08, 0, -0.3, 0, -1.1280003, 0)
 visible = false
 
-[node name="snowman" parent="Area3D" unique_id=832919613 instance=ExtResource("22_lspox")]
-transform = Transform3D(-0.47529417, 0, -0.19829364, 0, 0.515, 0, 0.19829364, 0, -0.47529417, 0, -1.1280003, 0)
+[node name="snowman_" type="Node3D" parent="Area3D" unique_id=649836544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1245522, 0)
 visible = false
+
+[node name="SnowmanMesh" type="MeshInstance3D" parent="Area3D/snowman_" unique_id=182878711]
+transform = Transform3D(-0.52, 0, -4.5459842e-08, 0, 0.52, 0, 4.5459842e-08, 0, -0.52, 0, 0, 0)
+mesh = ExtResource("19_tnrcw")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfi2n")
+surface_material_override/1 = SubResource("StandardMaterial3D_03vyx")
+
+[node name="SpaceBlanketMesh" type="MeshInstance3D" parent="Area3D/snowman_" unique_id=261542749]
+transform = Transform3D(-0.53, 0, -4.633407e-08, 0, 0.53, 0, 4.633407e-08, 0, -0.53, 0, 0, 0)
+visible = false
+mesh = ExtResource("21_rxrm2")
+surface_material_override/0 = SubResource("StandardMaterial3D_s6xia")
+surface_material_override/1 = SubResource("StandardMaterial3D_js1ou")
 
 [node name="slime_mould" parent="Area3D" unique_id=1114862664 instance=ExtResource("36_6b0et")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.93801594, 0)

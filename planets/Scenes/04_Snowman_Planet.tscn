@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://c4dc8tgvesidv" path="res://planets/materials/04_snowman_skybox.tres" id="2_x2kwg"]
 [ext_resource type="Material" uid="uid://dj7s7820eoffe" path="res://planets/materials/04_snowman_toon_shader.tres" id="5_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_grmqm"]
+[ext_resource type="Script" uid="uid://s65m864cjpod" path="res://planets/Scenes/snowman_completion.gd" id="7_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://dd1q0dg8wn1nx" path="res://Scenes/DialogueManager/InteractionAreaTemplate.tscn" id="7_gwu52"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id08o"]
@@ -47,7 +48,7 @@ shadow_enabled = true
 
 [node name="CubedSkybox" parent="." unique_id=780089516 instance=ExtResource("1_x2kwg")]
 
-[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=172727627]
+[node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_x2kwg")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=145002734]
@@ -71,9 +72,9 @@ destination_planet_ID = 8
 
 [node name="InteractionArea" parent="." unique_id=1441746603 instance=ExtResource("7_gwu52")]
 
-[node name="snowman" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="18" unique_id=832919613]
-transform = Transform3D(-0.43, 0, 6.4928194e-08, 0, 0.43, 0, -6.4928194e-08, 0, -0.43, 0, -1.1280003, 0)
+[node name="snowman_" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="18" unique_id=649836544 groups=["Completion_Change"]]
 visible = true
+script = ExtResource("7_6e6r8")
 
 [node name="frame_both" parent="InteractionArea/Area3D" parent_id_path=PackedInt32Array(1441746603, 1533181775) index="23" unique_id=1500776819]
 transform = Transform3D(-0.28850445, 0.17870113, -0.9406547, 0.13990481, 0.9797525, 0.14321911, 0.94720215, -0.09028276, -0.30766413, -2.5547092, 0.09670973, -1.797645)

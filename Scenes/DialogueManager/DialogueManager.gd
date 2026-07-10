@@ -846,6 +846,8 @@ func _input(event):
 					dialogue_state = CONV_STATE.PLAYER_RECEIVE
 					emit_inventory_signal_by_conv_state(CONV_STATE.PLAYER_RECEIVE)
 					receive_flag = false
+					if current_npc == QuestManager.CharacterName.SNOWMAN:
+						planet_state_change.emit()
 				else:
 					dialogue_state = CONV_STATE.PLAYER_LISTEN
 			else:
@@ -990,7 +992,10 @@ func emit_inventory_signal_by_conv_state(pending_animation : CONV_STATE) -> void
 	if not QuestManager.has_completed(current_npc):
 		QuestManager.set_completed(current_npc)
 		Map.set_completion_sticker(current_npc)
-		if current_npc != QuestManager.CharacterName.GATE:
+		if current_npc == QuestManager.CharacterName.GATE \
+		or current_npc == QuestManager.CharacterName.SNOWMAN:
+			pass
+		else:
 			planet_state_change.emit()
 	match pending_animation:
 		CONV_STATE.PLAYER_RECEIVE:
