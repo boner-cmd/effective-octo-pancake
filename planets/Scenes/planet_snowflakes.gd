@@ -18,7 +18,7 @@ func _ready() -> void:
 		sprite.rotation_degrees.z = randf_range(0, 45)
 		var sprite_scale = randf_range(scale_off_min, scale_off_max)
 		sprite.scale = Vector3(sprite_scale, sprite_scale, sprite_scale)
-		tween_object(sprite, "rotation:y", deg_to_rad(360.0 * direction_flip), randf_range(15.0, 30.0), Tween.TRANS_LINEAR, Tween.EASE_IN)
+		#tween_object(sprite, "rotation:y", deg_to_rad(360.0 * direction_flip), randf_range(15.0, 30.0), Tween.TRANS_LINEAR, Tween.EASE_IN)
 		direction_flip *= -1
 		if sprite.position.y >= 67.0:
 			sprite.material_overlay = LARGE_SNOWFLAKE_MATERIAL_OVERLAY_1

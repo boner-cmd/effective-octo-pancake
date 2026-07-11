@@ -221,7 +221,7 @@ transform = Transform3D(1, 0, 0, 0, 0.21817726, 0.9759092, 0, -0.9759092, 0.2181
 
 [node name="BugsParticle" type="GPUParticles3D" parent="PlanetVFX" unique_id=1430659544]
 layers = 2
-amount = 75
+amount = 25
 sub_emitter = NodePath("../Trail Particle")
 lifetime = 20.0
 preprocess = 20.0
