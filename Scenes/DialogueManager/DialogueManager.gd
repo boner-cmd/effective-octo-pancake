@@ -76,16 +76,17 @@ const ASTRO_EASTER_LINES : PackedStringArray = ["Alright, now it's musty in my s
 const SNOWMAN_MEET_LINES : PackedStringArray = [
 	"BRRRRR!!! I know space is cold, but this is a bit much. Wouldn't you agree?.",
 	"I'm no lightweight, either. I'm built OF cold, let alone FOR.",
+	"But a high-quality, pedigree snowman such as myself needs the perfect temperature to maintain my immaculate figure.",
 	]
 const SNOWMAN_GIVE_LINES : PackedStringArray = ["A space blanket? That’s perfect!"] #DASP
 const SNOWMAN_RECEIVE_LINES : PackedStringArray = [
-	"I’ll trade you this carrot for it. Everyone used to have a carrot nose back in the day", #DASP
+	"Just look at the craftsmanship on this baby! Easilly Befitting of yours truly.",
+	"I’ll trade you this carrot for it. Everyone used to have a carrot nose back in the day. Quite the height of fashion.", #DASP
 	"Never quite worked for me. It just kept falling off.",
 	]
 const SNOWMAN_POST_LINES : PackedStringArray = ["Now I could really go for some hot chocolate. Just kidding! I'd die."]
 const SNOWMAN_EASTER_LINES : PackedStringArray = [
-	"I ended up acclimating to the cold. I still have the space blanket, though.",
-	"I’ve been thinking of using it for a picnic. Actually, would you be interested?",
+	"I’ve been thinking of using the blanket for a picnic. Actually, would you care to join me?",
 	"Do you even eat? Yeah, me neither. Guess we’d better not…",
 	]
 const SISYPHUS_MEET_LINES : PackedStringArray = [

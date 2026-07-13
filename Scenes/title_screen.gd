@@ -203,11 +203,13 @@ func transition_sequence() -> void:
 
 
 func _on_continue_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	SaveManager.trigger_load = true
 	_on_new_game_button_pressed()
 
 
 func _on_new_game_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	new_game_button.disabled = true
 	mouse_bool = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -217,6 +219,7 @@ func _on_new_game_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	doodle_options.modulate.a = 1.0
 	
 	current_options = OPTIONS.NONE
@@ -239,6 +242,7 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_return_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	handle_options()
 	current_options = OPTIONS.NONE
 	controls_button.disabled = true
@@ -266,6 +270,7 @@ func _on_return_button_pressed() -> void:
 
 
 func _on_options_item_pressed(tweened_object : Object, options_enum : OPTIONS, button : TextureButton) -> void:
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	handle_options()
 	for doodle in doodle_array:
 		doodle.modulate.a = 0.0
@@ -304,6 +309,7 @@ func handle_options() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	kill_tweens()
 	get_tree().quit()

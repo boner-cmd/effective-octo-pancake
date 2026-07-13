@@ -143,10 +143,12 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not quit_bool:
 		if event.is_action_pressed("toggle_pause"):
+			AudioManager.sfx_play(AudioManager.sfx_select)
 			if transition_color.visible == false:
 				if alpha_modulated(pause_menu):
 					change_pause_state()
 		if event.is_action_pressed("toggle_map"):
+			AudioManager.sfx_play(AudioManager.sfx_select)
 			if alpha_modulated(map):
 				match pause_state:
 					PAUSESTATE.UNPAUSED:
@@ -210,11 +212,11 @@ func _on_quit_button_pressed() -> void:
 
 func _on_continue_button_pressed() -> void:
 	change_pause_state()
-	AudioManager.sfx_play(AudioManager.sfx_blip)
+	AudioManager.sfx_play(AudioManager.sfx_select)
 
 
 func _on_controls_button_pressed() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	if not controls_bool:
 		controls_bool = true
 		tween_object(controls_button, "position:y", 194.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
@@ -233,7 +235,7 @@ func _on_controls_button_pressed() -> void:
 
 
 func _on_sound_button_pressed() -> void:
-	AudioManager.sfx_play(AudioManager.sfx_blip)
+	AudioManager.sfx_play(AudioManager.sfx_select)
 	if not sound_bool:
 		sound_bool = true
 		tween_object(sound_button, "position:y", 292.0, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
@@ -253,7 +255,7 @@ func _on_sound_button_pressed() -> void:
 ## main menu button
 func _on_menu_button_pressed() -> void:
 	quit_bool = true
-	AudioManager.sfx_play(AudioManager.sfx_blip)
+	#AudioManager.sfx_play(AudioManager.sfx_select)
 	change_pause_state()
 	player_rig._set_player_anim(player_rig.AnimStates.VICTORY)
 	SaveManager.save_game()

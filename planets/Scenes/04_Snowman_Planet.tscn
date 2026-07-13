@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://j00k3fiecr05" path="res://object_spawn.gd" id="1_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://dkew5vyxchdx1" path="res://planets/models/cubed_skybox.tscn" id="1_x2kwg"]
 [ext_resource type="Material" uid="uid://c4dc8tgvesidv" path="res://planets/materials/04_snowman_skybox.tres" id="2_x2kwg"]
-[ext_resource type="Material" uid="uid://bbr2ocbm1x8gy" path="res://planets/materials/04_snowman_skybox_overlay.tres" id="4_35w8r"]
 [ext_resource type="Material" uid="uid://dj7s7820eoffe" path="res://planets/materials/04_snowman_toon_shader.tres" id="5_6e6r8"]
 [ext_resource type="PackedScene" uid="uid://cea4qqppfgm2" path="res://Character Scenes/Door_Boiler.tscn" id="6_grmqm"]
 [ext_resource type="Script" uid="uid://s65m864cjpod" path="res://planets/Scenes/snowman_completion.gd" id="7_6e6r8"]
@@ -106,7 +105,6 @@ shadow_enabled = true
 
 [node name="Cubed_Skybox" parent="CubedSkybox" index="0" unique_id=880234612]
 material_override = ExtResource("2_x2kwg")
-material_overlay = ExtResource("4_35w8r")
 
 [node name="PlanetSphere" type="MeshInstance3D" parent="." unique_id=145002734]
 material_override = ExtResource("5_6e6r8")
@@ -154,6 +152,7 @@ shape = SubResource("CylinderShape3D_6e6r8")
 [node name="Snowflakes" type="Node3D" parent="." unique_id=662887700]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 4.7683716e-07, 0)
 top_level = true
+visible = false
 script = ExtResource("8_gwu52")
 
 [node name="Offset1" type="Node3D" parent="Snowflakes" unique_id=936700496]

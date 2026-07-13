@@ -52,6 +52,7 @@ const sfx_exit : AudioStream = preload("uid://6vga7euy8mhe")
 
 #Misc SFX
 const sfx_blip : AudioStream = preload("res://sound fx exports/menu choice blip.wav")
+const sfx_select : AudioStream = preload("res://sound fx exports/sprinkle.wav")
 
 #speech sounds
 const speech_sound : AudioStream = preload("res://sound fx exports/typewriter.wav")
