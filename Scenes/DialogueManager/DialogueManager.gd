@@ -131,7 +131,7 @@ const DEER_MEET_LINES : PackedStringArray = [
 	"H-Hello??? Is someone there??? Someone's there, right? Sorry, I startle easilly. Doesn't help that I can't see.",
 	"I hate being scared. I freeze up like I'm caught in headlights...Or what I imagine headlights to look like.",
 	"You don't sound very scary... I think. You're lucky.",
-	"People tell me I'm a kind of freaky-looking. Guess I have to take their word for it.", 
+	"People tell me I'm kind of freaky-looking. Guess I have to take their word for it.", 
 	"Even if I'll never see, I'd like to at least be a little less disturbing.",
 	"I know this sounds weird, but could you bring me some, uh... Eyes?",
 	]
@@ -382,7 +382,7 @@ const GIBBERISH_EASTER_LINES : PackedStringArray = [
 const IDEA_MEET_LINES : PackedStringArray = [
 	"...Oooh, yes! Another brrrrrrillliant one! I've GOT to write that down, as I always do. You see, ideas flow out of me effortlessly, like shi--WAIT, that's it!",
 	"Oh that one's marvelous! As always, of course. What was I talking about? Something about a goose? It doesn't matter.",
-	"Because I can feel a fresh, hot idea sliding it's way up my brainstem.",
+	"Because I can feel a fresh, hot idea sliding its way up my brainstem.",
 	"Poised and ready to shoot forth from my turgid neocortex, out unto a needy and waiting world!",
 	"You might want to move out of the way if you don't want to get caught in the splash zone.",
 	"Then again, who wouldn't? My ideas are a priceless commodity. No, I sully my ideas by refering to them as such.",
