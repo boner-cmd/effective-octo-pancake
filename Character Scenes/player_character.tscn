@@ -142,6 +142,8 @@ bus = &"Sfx"
 [node name="honk_delay" type="Timer" parent="." unique_id=1170264313]
 wait_time = 0.21
 
+[node name="pointer" type="Node3D" parent="." unique_id=644720290]
+
 [connection signal="timeout" from="ClownRigFBX/walk_cycle_time" to="ClownRigFBX" method="_on_walk_cycle_time_timeout"]
 [connection signal="area_entered" from="ClownRigFBX/InteractionDetector" to="ClownRigFBX/InteractionDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="ClownRigFBX/InteractionDetector" to="ClownRigFBX/InteractionDetector" method="_on_area_exited"]

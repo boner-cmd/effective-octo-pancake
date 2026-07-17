@@ -47,6 +47,7 @@ var _input_used : _inputs = _inputs.MOUSE
 @onready var collision_shape_3d: CollisionShape3D = $ClownRigFBX/InteractionDetector/CollisionShape3D
 @onready var player_vfx : Node3D = $ClownRigFBX/PlayerVFX
 
+@onready var pointer : Node3D = $pointer
 
 func reset_player():
 	position = respawn_pos
@@ -183,13 +184,17 @@ func _physics_process(delta: float) -> void:
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 		_camera_input_direction = Vector2.ZERO
 		
-		var raw_input := Input.get_vector("left", "right", "up", "down")
-		var forward := _camera.global_basis.z
-		var right := _camera.global_basis.x
+		var raw_input : Vector2 = Input.get_vector("left", "right", "up", "down")
+		var cam_basis : Basis = _camera.global_basis
+		var forward : Vector3 = pointer.global_basis.z
+		var right : Vector3 = cam_basis.x
+		
+		pointer.position = _camera_pivot.position
+		pointer.rotation = Vector3(0.0, _camera_pivot.rotation.y, 0.0)
 
+		
 		move_direction = forward * raw_input.y + right * raw_input.x
 		move_direction = move_direction.normalized()
-
 		#rotate char mesh
 		if raw_input != Vector2(0,0):
 			clown.rotation.y = _camera_pivot.rotation.y - (raw_input.angle() + PI/2)
@@ -201,8 +206,8 @@ func _physics_process(delta: float) -> void:
 			Idle_Check = false
 
 		grav_calc()
-		velocity = velocity.move_toward((move_direction * move_speed) + (grav_vector * grav_strength), acceleration * delta)
-
+		velocity = velocity.move_toward((move_direction * move_speed), acceleration * delta)
+		velocity += (grav_vector * grav_strength)
 		#align character with floor
 		align_with_floor(ray_cast_3d.get_collision_normal()) # get collision normal can return a zero vector if no collision
 		global_transform = global_transform.interpolate_with(xform, .3)
